@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三大技术指标的本质 —— 一眼看懂 RSI · KDJ · MACD</title>
+<style>
+  :root{
+    --bg:#0d1117; --card:#161b22; --border:#30363d;
+    --text:#e6edf3; --muted:#8b949e;
+    --up:#ff5b5b; --down:#3ddc84;   /* A股习惯：红涨绿跌 */
+    --gold:#f0b429; --blue:#58a6ff; --purple:#bc8cff; --cyan:#39d2e5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;
+    line-height:1.85; overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ===== HERO ===== */
+  header{
+    text-align:center;padding:80px 20px 60px;
+    background:radial-gradient(ellipse at 50% -20%, #1f3a5f 0%, transparent 60%),
+               radial-gradient(ellipse at 80% 10%, #3a1f4f 0%, transparent 50%);
+  }
+  header h1{font-size:clamp(28px,5vw,48px);letter-spacing:2px;margin-bottom:16px}
+  header h1 span{color:var(--gold)}
+  header p{color:var(--muted);font-size:18px;max-width:720px;margin:0 auto}
+  .tags{margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .tag{padding:6px 18px;border-radius:999px;font-size:14px;border:1px solid var(--border)}
+  .tag:nth-child(1){color:var(--gold);border-color:#f0b42955}
+  .tag:nth-child(2){color:var(--cyan);border-color:#39d2e555}
+  .tag:nth-child(3){color:var(--purple);border-color:#bc8cff55}
+
+  /* ===== 通用卡片 ===== */
+  section{padding:60px 0}
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:36px;margin-bottom:44px;position:relative;overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+  .card.rsi::before{background:linear-gradient(90deg,#f0b429,#ff8c42)}
+  .card.kdj::before{background:linear-gradient(90deg,#39d2e5,#58a6ff)}
+  .card.macd::before{background:linear-gradient(90deg,#bc8cff,#ff5ca8)}
+
+  .badge{display:inline-block;padding:4px 14px;border-radius:8px;font-size:13px;margin-bottom:10px;font-weight:700}
+  .rsi .badge{background:#f0b42922;color:var(--gold)}
+  .kdj .badge{background:#39d2e522;color:var(--cyan)}
+  .macd .badge{background:#bc8cff22;color:var(--purple)}
+
+  .card h2{font-size:30px;margin-bottom:6px}
+  .subtitle{color:var(--muted);font-size:15px;margin-bottom:22px}
+
+  .metaphor{
+    border-left:4px solid var(--gold);background:#ffffff08;
+    padding:18px 22px;border-radius:0 12px 12px 0;margin:22px 0;font-size:16px
+  }
+  .kdj .metaphor{border-color:var(--cyan)}
+  .macd .metaphor{border-color:var(--purple)}
+  .metaphor b{color:var(--gold)}
+  .kdj .metaphor b{color:var(--cyan)}
+  .macd .metaphor b{color:var(--purple)}
+
+  h3{font-size:19px;margin:26px 0 10px;color:#fff}
+  .formula{
+    background:#00000055;border:1px dashed var(--border);border-radius:10px;
+    padding:14px 20px;font-family:Consolas,monospace;font-size:14.5px;color:#9fd6ff;
+    margin:10px 0;overflow-x:auto;white-space:pre
+  }
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+  th,td{border:1px solid var(--border);padding:10px 14px;text-align:left}
+  th{background:#ffffff08;color:var(--gold);font-weight:600}
+  .rsi th{color:var(--gold)} .kdj th{color:var(--cyan)} .macd th{color:var(--purple)}
+
+  .scene{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+  @media(max-width:760px){.scene{grid-template-columns:1fr}}
+  .mini{
+    background:#0a0e14;border:1px solid var(--border);border-radius:12px;padding:18px
+  }
+  .mini h4{font-size:15px;margin-bottom:8px}
+  .mini p{font-size:14px;color:var(--muted)}
+
+  .key{color:#fff;font-weight:600}
+  .warn{color:#ff9d5c}
+  .good{color:#3ddc84}
+
+  /* ===== 对比表 ===== */
+  .compare td:first-child{color:#fff;font-weight:600}
+  .compare .rsi-c{color:var(--gold)} .compare .kdj-c{color:var(--cyan)} .compare .macd-c{color:var(--purple)}
+
+  footer{text-align:center;padding:50px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
+
+  .punch{
+    text-align:center;font-size:clamp(17px,2.6vw,22px);padding:26px;
+    background:linear-gradient(135deg,#1c2333,#241c33);border-radius:14px;margin-top:30px
+  }
+  .punch b{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>用「人话」讲透 <span>RSI · KDJ · MACD</span></h1>
+  <p>不看公式推导，不讲玄学。用一个比喻 + 一个场景，让你彻底明白这三个指标到底在"看"什么。</p>
+  <div class="tags">
+    <span class="tag">🌡️ RSI = 体温计</span>
+    <span class="tag">🎢 KDJ = 弹簧秤</span>
+    <span class="tag">🚗 MACD = 油门表</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ================= RSI ================= -->
+<section>
+<div class="card rsi">
+  <span class="badge">指标一 · RSI 相对强弱指标</span>
+  <h2>🌡️ 市场的体温计</h2>
+  <p class="subtitle">Relative Strength Index ｜ 一句话：最近 N 天里，多头和空头谁打得猛？</p>
+
+  <div class="metaphor">
+    💡 <b>本质比喻：</b>把市场当成一个发烧的病人。RSI 就是体温计——<br>
+    • <b>体温 ≥ 70℃（RSI&gt;70）</b>：烧得厉害（涨太猛），该物理降温了 → <span class="warn">超买</span><br>
+    • <b>体温 ≤ 30℃（RSI&lt;30）</b>：失温了（跌太狠），该进被窝了 → <span class="good">超卖</span><br>
+    • <b>体温只是"度数"</b>：它不告诉你病人什么时候退烧，只告诉你现在烧到几度！
+  </div>
+
+  <h3>📐 根原理：一场"拔河比赛"的力量测量</h3>
+  <p>过去 N 天（常用 14 天），把每一天分成两派：</p>
+  <div class="scene">
+    <div class="mini">
+      <h4>💪 涨的那几天</h4>
+      <p>收盘价比前一天高 → 涨幅加总，得到「平均上涨力量」</p>
+    </div>
+    <div class="mini">
+      <h4>📉 跌的那几天</h4>
+      <p>收盘价比前一天低 → 跌幅加总，得到「平均下跌力量」</p>
+    </div>
+  </div>
+  <div class="formula">RSI = 100 × 涨的力量 ÷ (涨的力量 + 跌的力量)</div>
+  <p>所以 RSI 天生就被摁在 <span class="key">0 ~ 100</span> 之间：</p>
+  <p>• 如果 14 天全在涨 → 分母全是涨 → RSI = 100（烧到极限）<br>
+     • 如果 14 天全在跌 → 涨的力量 = 0 → RSI = 0（冰冻极限）<br>
+     • 多空势均力敌 → RSI = 50（不烧不冷，正常体温）</p>
+
+  <h3>🎯 用途与实战读法</h3>
+  <table>
+    <tr><th>RSI 数值</th><th>市场状态</th><th>经典做法</th></tr>
+    <tr><td>70 ~ 100</td><td>🔴 超买（涨过头，情绪亢奋）</td><td>警惕回调，不追高</td></tr>
+    <tr><td>50 附近</td><td>⚪ 多空平衡（方向不明）</td><td>观望或看更大周期</td></tr>
+    <tr><td>0 ~ 30</td><td>🟢 超卖（跌过头，恐慌抛售）</td><td>关注反弹机会</td></tr>
+    <tr><td>背离（价新高，RSI不新高）</td><td>⚠️ 体力透支</td><td>最强的预警信号</td></tr>
+  </table>
+
+  <div class="metaphor">
+    ⚠️ <b>大坑提醒：</b>体温计在<span class="key">单边行情里会"失灵"</span>——强趋势中 RSI 可以在 80 以上"高烧"好几个月不退。
+    就像运动员体温偏高不是病，是状态好。别一看到 70 就做空！
+  </div>
+</div>
+</section>
+
+<!-- ================= KDJ ================= -->
+<section>
+<div class="card kdj">
+  <span class="badge">指标二 · KDJ 随机指标</span>
+  <h2>🎢 装了弹簧的价格秤</h2>
+  <p class="subtitle">Stochastic Oscillator ｜ 一句话：现在的价格，站在最近一段行情的哪个位置？</p>
+
+  <div class="metaphor">
+    💡 <b>本质比喻：</b>想象一个<b>电梯井</b>，井壁就是最近 9 天的最高价（天花板）和最低价（地板）：<br>
+    • 价格贴着天花板（KDJ≈100）→ 已经被顶到极限，往上没空间了<br>
+    • 价格贴着地板（KDJ≈0）→ 被压到极限，往下没空间了<br>
+    • 而 <b>J 值就是那根被压扁/拉长的弹簧</b>——它可以被压到 0 以下、拉到 100 以上（超调），但弹簧迟早要弹回来！
+  </div>
+
+  <h3>📐 根原理：三兄弟是这样诞生的</h3>
+  <div class="formula">RSV = 100 × (今收盘 − 9日最低) ÷ (9日最高 − 9日最低)
+K  = RSV 的平滑（老司机，反应慢一点）
+D  = K 的平滑  （更老的司机，反应更慢）
+J  = 3K − 2D   （K和D的"夸张版"，弹簧最灵敏也最疯）</div>
+  <p>这就是为什么 <span class="key">J 值可以超过 100 或低于 0</span>：它不是被限制在区间里的，它是 K 和 D 拉开差距时的"夸张放大器"。</p>
+
+  <div class="scene">
+    <div class="mini">
+      <h4>🟡 金叉（K 上穿 D）</h4>
+      <p>灵敏的年轻人（K）从下往上穿过迟钝的老人（D）→ 短期动能转强，偏多信号</p>
+    </div>
+    <div class="mini">
+      <h4>🟣 死叉（K 下穿 D）</h4>
+      <p>年轻人率先掉头向下，跌破老人 → 短期动能转弱，偏空信号</p>
+    </div>
+  </div>
+
+  <h3>🎯 用途与实战读法</h3>
+  <table>
+    <tr><th>信号</th><th>含义</th><th>用法</th></tr>
+    <tr><td>K、D &lt; 20 后金叉</td><td>低位弹簧压到底再弹开</td><td class="good">抄反弹的经典信号</td></tr>
+    <tr><td>K、D &gt; 80 后死叉</td><td>高位弹簧拉到顶再松手</td><td class="warn">逃顶的经典信号</td></tr>
+    <tr><td>J &gt; 100 或 J &lt; 0</td><td>弹簧被过度拉伸/压缩</td><td>短线极值，随时回弹</td></tr>
+    <tr><td>低位/高位背离</td><td>价新低但 KDJ 不新低</td><td>反转预警</td></tr>
+  </table>
+
+  <div class="metaphor">
+    ⚠️ <b>大坑提醒：</b>KDJ 太灵敏，就像弹簧一碰就晃。在<span class="key">震荡市里它是神，在单边趋势里它是坑</span>——
+    强势上涨中它会天天"超买死叉"骗你下车。周期越短，假信号越多。
+  </div>
+</div>
+</section>
+
+<!-- ================= MACD ================= -->
+<section>
+<div class="card macd">
+  <span class="badge">指标三 · MACD 指数平滑异同均线</span>
+  <h2>🚗 市场的油门与刹车表</h2>
+  <p class="subtitle">Moving Average Convergence Divergence ｜ 一句话：涨跌的"速度"在加快还是减慢？</p>
+
+  <div class="metaphor">
+    💡 <b>本质比喻：</b>价格是车，均线是司机的平均驾驶习惯：<br>
+    • <b>快线（EMA12）</b>= 年轻司机，脚踩油门反应快<br>
+    • <b>慢线（EMA26）</b>= 老司机，开得稳、变道慢<br>
+    • <b>DIF（快线 − 慢线）</b>= 两车距离 → 油门踩多深<br>
+    • <b>DEA（DIF 的平滑）</b>= DIF 的"平均速度"<br>
+    • <b>红绿柱（DIF − DEA）</b>= <b>加速度！</b> 柱子在变长 = 越踩越深；柱子缩短 = 开始松油门<br><br>
+    🔑 <b>最关键的直觉：</b>价格创新高，但柱子在缩短 = 车还在往前开，但<span class="key">已经开始松油门了</span>——这就是顶背离！
+  </div>
+
+  <h3>📐 根原理：速度 = 位移的差分</h3>
+  <div class="formula">DIF  = EMA(12) − EMA(26)      ← 快慢两车拉开了多远
+DEA  = DIF 的 9日平滑          ← 这个"距离"的平均水平
+柱子 = 2 × (DIF − DEA)         ← 距离还在不在扩大（加速度）</div>
+  <p>均线跟得上涨价，DIF 就在 0 轴上方（多头油门区）；均线跌下来，DIF 落到 0 轴下方（空头刹车区）。
+  所以 <span class="key">0 轴就是多空油门的分界线</span>。</p>
+
+  <h3>🎯 用途与实战读法</h3>
+  <table>
+    <tr><th>信号</th><th>人话翻译</th><th>含义</th></tr>
+    <tr><td>DIF 上穿 DEA（金叉）</td><td>油门踩下，速度超过均值</td><td class="good">做多信号</td></tr>
+    <tr><td>DIF 下穿 DEA（死叉）</td><td>刹车踩下</td><td class="warn">做空/离场信号</td></tr>
+    <tr><td>0 轴上方金叉</td><td>本来就在快车道又踩油门</td><td>强势，信号更可靠</td></tr>
+    <tr><td>顶背离（价新高，柱缩短）</td><td>车还在前进但已松油门</td><td>最强的见顶预警</td></tr>
+    <tr><td>底背离（价新低，柱缩短）</td><td>车还在后退但已松刹车</td><td>最强的见底预警</td></tr>
+  </table>
+
+  <div class="metaphor">
+    ⚠️ <b>大坑提醒：</b>MACD 是"滞后指标"——它像老司机的反应，总是慢半拍。
+    震荡市里会反复金叉死叉来回打脸。它的强项是<span class="key">看趋势和动能衰竭（背离）</span>，不是精确抄底逃顶。
+  </div>
+</div>
+</section>
+
+<!-- ================= 三者对比 ================= -->
+<section>
+  <h2 style="text-align:center;margin-bottom:30px">⚔️ 三兄弟同台对比</h2>
+  <table class="compare">
+    <tr><th>维度</th><th class="rsi-c">🌡️ RSI 体温计</th><th class="kdj-c">🎢 KDJ 弹簧秤</th><th class="macd-c">🚗 MACD 油门表</th></tr>
+    <tr><td>回答的问题</td><td>涨跌谁的力量大？</td><td>价格在近期区间哪个位置？</td><td>趋势的速度在加还是减？</td></tr>
+    <tr><td>核心哲学</td><td>物极必反（均值回归）</td><td>物极必反（区间定位）</td><td>趋势延续（动能追踪）</td></tr>
+    <tr><td>灵敏度</td><td>中等</td><td>⭐ 最灵敏（噪音多）</td><td>迟钝（信号少而稳）</td></tr>
+    <tr><td>最擅长的行情</td><td>震荡市</td><td>震荡市（短线）</td><td>单边趋势市</td></tr>
+    <tr><td>最怕的行情</td><td>强单边（长期超买）</td><td>强单边（天天假死叉）</td><td>窄幅震荡（来回打脸）</td></tr>
+    <tr><td>杀手锏</td><td>背离</td><td>超买超卖+金死叉</td><td>0轴+背离</td></tr>
+    <tr><td>适合人群</td><td>波段交易者</td><td>短线/日内交易者</td><td>趋势/中线交易者</td></tr>
+  </table>
+
+  <div class="punch">
+    🧠 <b>终极心法：</b>KDJ 告诉你"现在贵不贵"，RSI 告诉你"情绪疯没疯"，MACD 告诉你"趋势还在不在"。<br>
+    没有圣杯，只有<b>互相验证</b>——三个都指向同一方向时，才敢重仓下注。
+  </div>
+
+  <div class="metaphor" style="margin-top:24px">
+    🛡️ <b>最后一句大实话：</b>所有指标都是由<b>过去的价格</b>算出来的，它们不预测未来，只是把已经发生的事
+    <span class="key">换一种更容易读懂的方式呈现</span>。工具没有错，错的是把工具当预言家。
+  </div>
+</section>
+
+</div>
+
+<footer>
+  📚 RSI(1978, Welles Wilder) · KDJ(源于 George Lane 的 Stochastic) · MACD(1979, Gerald Appel)<br>
+  本页内容仅供学习交流，不构成任何投资建议 · 市场有风险，投资需谨慎
+</footer>
+
+</body>
+</html>
