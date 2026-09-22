@@ -352,11 +352,16 @@
         { id: 'list-ta', dir: 'ta' },
         { id: 'list-ht', dir: 'ht' }
       ];
-
+    
+      // 计算 6 天前的时间点
+      const sixDaysAgo = new Date();
+      sixDaysAgo.setDate(sixDaysAgo.getDate() - 6);
+      sixDaysAgo.setHours(0, 0, 0, 0);   // 从当天 0 点开始算，更清晰
+    
       await Promise.all(configs.map(async ({ id, dir }) => {
         try {
           const files = await fetchDirFiles(dir);
-
+    
           // 并行获取每个文件的最后提交时间
           const withDates = await Promise.all(
             files.map(async file => {
@@ -364,11 +369,14 @@
               return { ...file, lastDate: date };
             })
           );
-
-          // 按最后生成时间倒序（最新在前）
-          withDates.sort((a, b) => b.lastDate - a.lastDate);
-
-          renderList(id, withDates, dir);
+    
+          // ① 只保留最近 6 天内生成的文件
+          const recentFiles = withDates.filter(f => f.lastDate >= sixDaysAgo);
+    
+          // ② 再按时间倒序（最新在前）
+          recentFiles.sort((a, b) => b.lastDate - a.lastDate);
+    
+          renderList(id, recentFiles, dir);
         } catch (err) {
           console.error(dir, err);
           document.getElementById(id).innerHTML =
