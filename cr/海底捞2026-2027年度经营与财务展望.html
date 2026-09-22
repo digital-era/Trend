@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海底捞2026-2027年度经营与财务展望深度分析</title>
+
+  <!-- Essential CDN Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: 'hsl(20, 90%, 95%)',
+              100: 'hsl(20, 90%, 85%)',
+              200: 'hsl(20, 90%, 75%)',
+              300: 'hsl(20, 90%, 65%)',
+              400: 'hsl(20, 90%, 55%)',
+              500: 'hsl(20, 90%, 50%)',
+              600: 'hsl(20, 90%, 45%)',
+              700: 'hsl(20, 90%, 35%)',
+              800: 'hsl(20, 90%, 25%)',
+              900: 'hsl(20, 90%, 15%)'
+            },
+            accent: {
+              50: 'hsl(30, 85%, 95%)',
+              100: 'hsl(30, 85%, 85%)',
+              200: 'hsl(30, 85%, 75%)',
+              300: 'hsl(30, 85%, 65%)',
+              400: 'hsl(30, 85%, 60%)',
+              500: 'hsl(30, 85%, 55%)',
+              600: 'hsl(30, 85%, 50%)',
+              700: 'hsl(30, 85%, 40%)',
+              800: 'hsl(30, 85%, 30%)',
+              900: 'hsl(30, 85%, 20%)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+
+  <!-- Preline UI Components -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.js"></script>
+
+  <!-- Micro-interactions & Custom Styles -->
+  <style>
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    .btn-interactive {
+      transition: all 0.2s ease-out;
+    }
+    
+    .btn-interactive:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .btn-interactive:active {
+      transform: scale(0.95);
+    }
+
+    .card-interactive {
+      transition: all 0.3s ease-out;
+      border: 1px solid transparent;
+      --border-lightness: 40%;
+    }
+
+    .dark .card-interactive {
+      --border-lightness: 60%;
+    }
+
+    .card-interactive:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      filter: brightness(0.98);
+    }
+    
+    /* Primary colored cards */
+    .card-interactive[class*="primary"]:hover,
+    .card-interactive[class*="white"]:hover,
+    .card-interactive[class*="gray-"]:hover {
+      border-color: hsl(20, 90%, var(--border-lightness));
+    }
+    
+    /* Accent colored cards */
+    .card-interactive[class*="accent"]:hover {
+      border-color: hsl(30, 85%, var(--border-lightness));
+    }
+  </style>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+      document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+  <!-- Progress Bar -->
+  <div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+
+  <!-- Floating Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">海底捞2026-2027展望</h1>
+        
+        <nav class="hidden md:flex space-x-6">
+          <a href="#home" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">首页</a>
+          <a href="#expansion" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">扩张</a>
+          <a href="#overseas" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">海外</a>
+          <a href="#supply" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">供应链</a>
+          <a href="#financials" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务</a>
+          <a href="#dividends" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">分红</a>
+          <a href="#conclusion" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+        </nav>
+
+        <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all">
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section id="home" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+          海底捞2026-2027年度经营与财务展望深度分析
+        </h2>
+        <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+          本研究聚焦于海底捞公司2026-2027年度的经营发展、财务状况与分红前景，开展深度调研与预测分析。研究涵盖门店扩张策略、海外市场布局、供应链优化、财务表现及分红政策五大核心维度，基于最新年报数据与市场预测，提供前瞻性洞察。
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+          <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                <i data-lucide="building-2" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+              </div>
+              <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">门店扩张</h3>
+            </div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">
+              全球网络扩展与新品牌孵化战略
+            </p>
+          </div>
+
+          <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+                <i data-lucide="globe" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+              </div>
+              <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">海外市场</h3>
+            </div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">
+              东南亚与全球扩张计划执行情况
+            </p>
+          </div>
+
+          <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+            <div class="flex items-center space-x-4 mb-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                <i data-lucide="truck" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+              </div>
+              <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">供应链</h3>
+            </div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">
+              智能化物流与自动化升级
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: 门店扩张策略 -->
+    <section id="expansion" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+          门店扩张策略与增长模式转型
+        </h2>
+
+        <div class="space-y-6">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://finance.biggo.com/news/1f200768-03f9-4fde-ab0a-fe3566daaa3f|64">
+            海底捞正在经历重大组织变革，从"单店驱动"的增长模式转向"总部平台驱动"的新模式。这一转变由创始人张勇于2026年1月重新担任CEO领导，而郭一鸣则专注于流程智能化与自动化领域。
+          </p>
+
+          <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed" data-ref="https://finance.biggo.com/news/1f200768-03f9-4fde-ab0a-fe3566daaa3f|64">
+              <i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              核心发现：公司系统性评估"Pomegranate Plan"孵化机制下的项目，成熟的项目将由总部中台规模化推广，而非由创业团队独立管理。
+            </p>
+          </div>
+
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://finance.biggo.com/news/1f200768-03f9-4fde-ab0a-fe3566daaa3f|64">
+            作为新战略的一部分，公司已选定两个重点孵化项目："Dai Pai Dang Hotpot"和"Sushi"，预计将成为2027年重要的收入增长来源。2027年，海底捞计划加速旗舰品牌门店开业，利用新中台输出的不同模型，在高线城市优质购物中心及下沉市场同时发力。
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mt-8">
+            <img
+              src="https://cdn.qwenlm.ai/d19cfa32-e65c-44b7-a2a4-03d8cc7c6c33/349f4040-2b9b-48ed-b34d-39dd626315cf/eee982b5-c5fa-4cca-b12e-2821103160ae.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoiZDE5Y2ZhMzItZTY1Yy00NGI3LWEyYTQtMDNkOGNjN2M2YzMzIiwicmVzb3VyY2VfaWQiOiIzNDlmNDA0MC0yYjliLTQ4ZWQtYjM0ZC0zOWRkNjI2MzE1Y2YiLCJyZXNvdXJjZV9jaGF0X2lkIjpudWxsfQ.wlDUHnEiiFQivFutqVC9YszdjifnUVBBPIZ431xXiXk"
+              alt="一张展示海底捞餐厅内部现代化装修的图片。背景为暖色调橙色墙面（色值约#FF8C42），天花板采用白色石膏线条装饰。中央区域有一张圆形餐桌，桌面为深木色（色值约#654321），桌面上摆放着红色火锅锅具（色值约#DC143C）。餐桌周围环绕四把现代风格的深棕色皮质餐椅。左侧墙面悬挂一幅中国传统水墨画，画中描绘竹林景色。右侧墙角放置一个白色陶瓷花瓶，插有几枝粉色桃花。地面铺设浅灰色大理石瓷砖（色值约#D3D3D3）。整个场景营造出传统与现代融合的用餐氛围，突出海底捞注重服务体验的品牌特色。"
+              class="w-full rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            />
+
+            <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+              <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4" data-ref="https://finance.biggo.com/news/1f200768-03f9-4fde-ab0a-fe3566daaa3f|64">新品牌孵化成果</h3>
+              <ul class="space-y-3">
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="circle-check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">Dai Pai Dang Hotpot - 专注小火锅细分市场</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="circle-check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">Sushi - 进军寿司品类拓展</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="trending-up" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">预计2027年成为重要收入来源</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+              交付业务与多品牌收入爆发式增长
+            </h3>
+            
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4" data-ref="https://finance.biggo.com/news/1f200768-03f9-4fde-ab0a-fe3566daaa3f|64">
+              2026年上半年，交付业务收入达到
+              <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">20.5亿元</span>
+              （同比增长121.2%），其占集团总收入比重翻倍至
+              <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">9.2%</span>。
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://finance.biggo.com/news/1f200768-03f9-4fde-ab0a-fe3566daaa3f|64">
+              其他餐厅品牌收入总计
+              <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">12.7亿元</span>
+              （同比增长113.1%），占比提升至
+              <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">5.7%</span>。
+              这些细分业务被识别为2026年下半年的主要增长引擎。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: 海外市场布局 -->
+    <section id="overseas" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+          海外市场扩张与区域布局深化
+        </h2>
+
+        <div class="space-y-6">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://back-to-link.com/en/food/haidilao-global-expansion-strategy-2026|62">
+            海底捞的国际扩张战略以"体验优先"定位为核心，采用"核心+本地化"方法论。通过将其独特的服务模式与本地化产品相结合，在全球市场脱颖而出。该战略分析基于其2026年发展规划。
+          </p>
+
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://www.researchgate.net/publication/394618596_Analysis_of_Haidilao's_Business_Model_and_Market_Performance_Research_Based_on_Operating_Data_and_Customer_Satisfaction|32">
+            海底捞在国外应用了"30%标准化+70%本地化"的战略。例如，印尼分店推出了当地特色的沙巴酱调味品，体现了其灵活适应不同市场的运营能力。
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mt-8">
+            <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4" data-ref="https://ir.superhiinternational.com/static-files/e91b2838-9704-47cc-9d12-a71337d52b9e|152">2025年底全球门店网络</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">总门店数</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">126家</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">覆盖国家</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">14个</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">北美地区</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">20家</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">东南亚地区</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">73家</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4" data-ref="https://markets.businessinsider.com/news/stocks/super-hi-reports-unaudited-financial-results-for-the-second-quarter-of-2026-1036493535|155">2026年第二季度扩张进展</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">3月底门店数</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">127家</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">新增门店</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">2家</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">6月底门店数</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">129家</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">同比增长率</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">1.6%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed" data-ref="https://koalagains.com/stocks/NASDAQ/HDL/business-and-moat|123">
+              <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              关键洞察：截至2025年底，Super Hi运营126家海底捞餐厅，其中新加坡市场贡献1.6258亿元收入，占2024财年总收入的21%，是最大海外市场。
+            </p>
+          </div>
+
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://www.vietnam-briefing.com/news/foreign-food-chains-thrive-in-vietnams-growing-fb-market.html/|61">
+            2025年上半年，海底捞在越南创造了
+            <span class="mx-1 px-1.5 py-0.5 rounded-md bg-accent-100 dark:bg-accent-900/30 text-accent-800 dark:text-accent-300 font-semibold text-sm">4360万美元</span>
+            的收入，超过其全球总收入的10%，显示出东南亚市场的强劲增长潜力。
+          </p>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+              海外业务盈利能力提升
+            </h3>
+            
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://www.ft.com/content/26b4d949-3e3d-4172-a2f0-435eb797f3d8?syn-25a6b1a6=1|34">
+              2026年上半年，海底捞海外业务（独立上市的Super Hi International）的餐厅级营业利润率增长至
+              <span class="mx-1 px-1.5 py-0.5 rounded-md bg-accent-100 dark:bg-accent-900/30 text-accent-800 dark:text-accent-300 font-semibold text-sm">10.7%</span>，
+              显示出海外市场的盈利能力和运营效率持续改善。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: 供应链优化 -->
+    <section id="supply" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+          供应链智能化升级与冷链物流建设
+        </h2>
+
+        <div class="space-y-6">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://www.morningstar.com/company-reports/1497792-yihai-internationals-supply-chain-know-how-will-support-domestic-and-international-expansion|81">
+            颐海国际成功利用海底捞这家中国最大的火锅连锁餐厅，增加其餐饮业务的收入和利润。颐海国际的专业知识支持国内供应链优化，提升了整体运营效率。
+          </p>
+
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://www.mordorintelligence.com/industry-reports/china-cold-chain-logistics-market|11">
+            中国冷链物流市场规模预计将从2025年的
+            <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">944.6亿美元</span>
+            增长到2026年的
+            <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">1044.3亿美元</span>，
+            显示出冷链基础设施投资的强劲需求。
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mt-8">
+            <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+              <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4" data-ref="https://datagent.io/fmcg-supply-chain-cold-chain-southeast-asia-2026/|17">东南亚冷链市场增长</h3>
+              <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">
+                东南亚冷链物流市场在2026年达到
+                <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">199.8亿美元</span>，
+                预计将以
+                <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">4.94%</span>
+                的复合年增长率增长至2031年的244.3亿美元。
+              </p>
+              <p class="text-sm text-gray-700 dark:text-gray-300">
+                吉隆坡国际机场（KLIA）在2026年成为关键物流枢纽，支持区域冷链网络建设。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+              <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4" data-ref="https://www.linkedin.com/pulse/building-resilient-cold-chains-lessons-from-southeast-asia-beyond-efvxf|13">东南亚冷链投资趋势</h3>
+              <p class="text-sm text-gray-700 dark:text-gray-300">
+                在东南亚，冷链投资与不断增长的城市中产阶级、加工食品类别扩张密切相关，为海底捞等餐饮企业提供了完善的供应链基础设施支撑。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+              人工智能与机器人技术应用
+            </h3>
+            
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4" data-ref="https://www.fortna.com/insights-resources/ai-and-robotics-powering-the-next-generation-of-supply-chains/|21">
+              2026年，人工智能、机器人技术和仓库自动化正在帮助组织构建更快、更智能的分销网络，解决供应链挑战。
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4" data-ref="https://www.instagram.com/reel/DXQBy4lvNOD/?hl=en|83">
+              海底捞的实际成就：从单店验证到多店复制。该公司正从在一家门店证明人形机器人价值，扩展到在多家门店部署规模化应用。
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://www.instagram.com/p/DWndQdkkf9c/|88">
+              中国现在拥有150多人形机器人公司，预计到2026年，人形机器人的部署数量将超过
+              <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">10万台</span>，
+              日常供应链自动化的时程大幅缩短。
+            </p>
+          </div>
+
+          <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-amber-500 bg-amber-50/40 dark:bg-amber-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-amber-900 dark:text-amber-100 leading-relaxed" data-ref="https://theresarobotforthat.com/blog/humanoid-robot-deployment-mistakes-avoid-failures/|87">
+              <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              注意：人形机器人部署失败的试点项目可能造成50万至100万美元的损失（2026年行业数据），企业在推进自动化时需要谨慎评估风险与回报。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: 财务表现 -->
+    <section id="financials" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+          财务表现与盈利预测
+        </h2>
+
+        <div class="space-y-6">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://quartr.com/events/haidilao-international-holding-ltd-6862-h1-2026_FssdH6ia|135">
+            2026年上半年，海底捞实现营业收入
+            <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">223.37亿元</span>
+            （同比增长7.9%），归属于股东的净利润为
+            <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">17.64亿元</span>
+            （同比增长0.5%）。
+          </p>
+
+          <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed" data-ref="https://finance.biggo.com/news/1f200768-03f9-4fde-ab0a-fe3566daaa3f|64">
+              <i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              重要观察：出现"营收增长但利润增长缓慢"的模式，核心原因是毛利率压力，核心营业利润率从约11.63%下降至约11.25%，净利率从8.49%降至7.90%。
+            </p>
+          </div>
+
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://www.webull.com/news/15477063123944448|35">
+            分析师预测，海底捞国际控股2026年收入将达到
+            <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">463亿元</span>，
+            相较前一年实现令人满意的3.2%增长。
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-6 mt-8">
+            <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center space-x-3 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                  <i data-lucide="dollar-sign" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300" data-ref="https://simplywall.st/stocks/us/consumer-services/otc-hdal.f/haidilao-international-holding/future|36">收入增长</h3>
+              </div>
+              <p class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-2">6.6%/年</p>
+              <p class="text-xs text-gray-600 dark:text-gray-400">分析师预测三年复合增长率</p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center space-x-3 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+                  <i data-lucide="trending-up" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300" data-ref="https://simplywall.st/stocks/us/consumer-services/otc-hdal.f/haidilao-international-holding/future|36">盈利增长</h3>
+              </div>
+              <p class="text-2xl font-bold text-accent-600 dark:text-accent-400 mb-2">9%/年</p>
+              <p class="text-xs text-gray-600 dark:text-gray-400">分析师预测三年复合增长率</p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center space-x-3 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+                  <i data-lucide="wallet" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300" data-ref="https://uk.marketscreener.com/quote/stock/HAIDILAO-INTERNATIONAL-HO-47006633/finances/|39">EBITDA利润率</h3>
+              </div>
+              <p class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-2">47.2%</p>
+              <p class="text-xs text-gray-600 dark:text-gray-400">2029年预测水平</p>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+              资本支出与现金流状况
+            </h3>
+            
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4" data-ref="https://www.fitchratings.com/research/corporate-finance/fitch-affirms-haidilao-at-bbb-outlook-stable-04-08-2025|41">
+              评级机构预测，2025-2026年EBITDA利润率约为18%，EBITDAR利润率约为20%。预计资本支出为25亿元人民币，显示出公司在维持盈利能力的同时保持适度扩张节奏。
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://finance.biggo.com/news/1f200768-03f9-4fde-ab0a-fe3566daaa3f|64">
+              海底捞财务状况稳健，现金及现金等价物从2025年底的
+              <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">39.5亿元</span>
+              增加至2026年中旬的
+              <span class="mx-1 px-1.5 py-0.5 rounded-md bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 font-semibold text-sm">49.4亿元</span>。
+              2025年全年经营活动现金流为62.7亿元，相当于净利润的1.4倍。
+            </p>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+              股价表现与市场情绪
+            </h3>
+            
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4" data-ref="https://www.alphaspread.com/comparison/nyse/yumc/vs/hkex/6862|65">
+              与百胜中国相比，海底捞国际控股表现出更强的股价韧性。百胜中国实现了-7%的回报，而海底捞国际控股股价下跌17%，显示投资者对其长期增长前景的信心相对稳定。
+            </p>
+
+            <div class="pl-4 pr-3 py-3 border-l-4 border-amber-500 bg-amber-50/40 dark:bg-amber-900/30 rounded-r-lg">
+              <p class="text-sm font-medium text-amber-900 dark:text-amber-100 leading-relaxed" data-ref="https://www.bloomberg.com/news/articles/2026-09-14/china-s-tax-clampdown-raises-fears-of-founder-share-disposals|115">
+                <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+                风险提示：2026年海底捞联合创始人突然出售约3.5亿美元股份导致股价暴跌，引发了市场对其长期增长前景的担忧。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: 分红政策 -->
+    <section id="dividends" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+          分红政策与股东回报展望
+        </h2>
+
+        <div class="space-y-6">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://finance.biggo.com/news/1f200768-03f9-4fde-ab0a-fe3566daaa3f|64">
+            2026年上半年，董事会宣布派发中期股息每股
+            <span class="mx-1 px-1.5 py-0.5 rounded-md bg-accent-100 dark:bg-accent-900/30 text-accent-800 dark:text-accent-300 font-semibold text-sm">0.377港元</span>，
+            较去年同期增长11.5%。该股息将于2026年9月23日前支付。基于 earnings release 时11.41港元的股价，这暗示过去十二个月的股息收益率约为6.33%。
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6 mt-8">
+            <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+              <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4" data-ref="https://www.google.com/finance/quote/6862:HKG|69">2025年股息详情</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">每股股息</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">0.76港元</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">股息收益率</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">7.88%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">分红频率</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">季度分红</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-700 dark:text-gray-300">除息日期</span>
+                  <span class="text-base font-semibold text-accent-600 dark:text-accent-400">9月7日</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+              <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4" data-ref="https://stocksguide.com/en/dividends/Haidilao-International-Holding-KYG4290A1013|109">2026年股息预测</h3>
+              <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">
+                2026年股息预测：基于2025年每股0.76港元的股息，考虑到公司盈利增长预期，预计2026年全年股息将保持稳定或略有增长。
+              </p>
+              <p class="text-sm text-gray-700 dark:text-gray-300">
+                当前股价10.06港元（2026年9月11日），静态股息收益率约为7.55%。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+              分红政策与同业对比
+            </h3>
+            
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4" data-ref="https://stockanalysis.com/stocks/yumc/dividend/|128">
+              与百胜中国相比，海底捞展现出更强的股东回报意愿。百胜中国控股的年股息为每股1.16美元，收益率为2.82%，派息率为40.83%。
+            </p>
+
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4" data-ref="https://www.gurufocus.com/stock/HKSE:06862/summary|140">
+              海底捞国际控股的股息收益率为
+              <span class="mx-1 px-1.5 py-0.5 rounded-md bg-accent-100 dark:bg-accent-900/30 text-accent-800 dark:text-accent-300 font-semibold text-sm">7.74%</span>
+              （截至今日），显示出较高的股东回报水平。
+            </p>
+
+            <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+              <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed" data-ref="https://www.morningstar.com/company-reports/1496788-haidilao-earnings-growth-in-a-weak-market-points-to-more-share-gains-shares-undervalued|136">
+                <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+                核心优势：公司核心营业利润增长4%，并将上半年全部利润作为股息派发给股东，体现出管理层对股东利益的高度关注。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+              投资者预期与市场评价
+            </h3>
+            
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://www.investing.com/equities/haidilao-intl-consensus-estimates|139">
+              对海底捞国际的共识评级为"买入"，基于27位分析师的见解。24位分析师建议买入股票，0位建议卖出，5位推荐持有，显示出市场对其增长前景的普遍乐观态度。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: 总结与展望 -->
+    <section id="conclusion" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+          2026-2027年展望与结论
+        </h2>
+
+        <div class="space-y-6">
+          <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+              综合评估
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4" data-ref="https://www.moomoo.com/news/post/67375576/haidilao-s-2026-outlook-likely-more-upbeat-than-expected-market|108">
+              2026年海底捞的前景比市场预期更加乐观。花旗分析师指出，这家中国火锅餐厅运营商的增长前景超出预期，显示出管理层在战略转型方面的执行力。
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-ref="https://finance.biggo.com/news/9d2f631a-d0cf-40ee-b794-159f4b2c3383|165">
+              公司正在推进中台建设，并预计在2027年进入新的发展阶段，平衡门店改造与增量扩张，为可持续增长奠定基础。
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+              <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">
+                核心增长动力
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">总部平台驱动新模式</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">新品牌孵化（Dai Pai Dang Hotpot &amp; Sushi）</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">交付业务快速增长（+121.2%）</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">海外业务盈利能力提升（10.7%）</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+              <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">
+                财务与股东回报
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">2026年收入预测463亿元</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">三年收入CAGR 6.6%</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">股息收益率7.74%</span>
+                </li>
+                <li class="flex items-start space-x-3">
+                  <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+                  <span class="text-sm text-gray-700 dark:text-gray-300">"买入"评级（24/27分析师）</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed" data-ref="https://finance.biggo.com/news/b359d7f4-7259-44cd-844a-84fd3944335a|98">
+              <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              展望2027：公司预计2027年标志着同时进行门店改造和增量扩张的新阶段开始，新店开业速度将加快，为投资者带来持续的价值创造。
+            </p>
+          </div>
+
+          <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-amber-500 bg-amber-50/40 dark:bg-amber-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-amber-900 dark:text-amber-100 leading-relaxed" data-ref="https://www.bloomberg.com/news/articles/2025-09-11/short-sellers-target-china-s-haidilao-on-dimmer-growth-outlook|114">
+              <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              风险提示：空头投资者正在密切关注海底捞的长期增长前景，特别是在创始人股份减持事件后，投资者应保持审慎态度，密切关注公司执行新战略的效果。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本研究</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            本研究基于海底捞2025年年报及2026年上半年财报数据，结合行业分析与市场预测，提供2026-2027年度经营与财务展望。
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>• 门店扩张策略</li>
+            <li>• 海外市场布局</li>
+            <li>• 供应链优化</li>
+            <li>• 财务表现分析</li>
+            <li>• 分红政策展望</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            本研究报告仅供教育与信息参考用途，不构成投资建议。所有数据基于公开信息整理，仅供参考。
+          </p>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+        <p>&copy; 2026 海底捞经营展望研究。保留所有权利。</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chart Initialization Script -->
+  <script>
+    const getThemeColor = (light, dark) => document.body.classList.contains('dark') ? dark : light;
+    let charts = {};
+    
+    const getColors = () => ({
+      primary: getThemeColor('hsl(20, 90%, 35%)', 'hsl(20, 90%, 65%)'),
+      accent: getThemeColor('hsl(30, 85%, 40%)', 'hsl(30, 85%, 65%)'),
+      text: getThemeColor('#374151', '#d1d5db'),
+      grid: getThemeColor('#e5e7eb', '#374151')
+    });
+    
+    const updateCharts = () => {
+      const { text, grid } = getColors();
+      
+      Object.values(charts).forEach(chart => {
+        if (chart?.options) {
+          if (chart.options.plugins?.legend?.labels) chart.options.plugins.legend.labels.color = text;
+          if (chart.options.plugins?.title) chart.options.plugins.title.color = text;
+          if (chart.options.scales) {
+            Object.values(chart.options.scales).forEach(scale => {
+              if (scale.ticks) scale.ticks.color = text;
+              if (scale.grid) scale.grid.color = grid;
+              if (scale.pointLabels) scale.pointLabels.color = text;
+              if (scale.title) scale.title.color = text;
+            });
+          }
+          chart.update('none');
+        }
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+      AOS.init({ duration: 800, once: true });
+      
+      // Initialize Preline components
+      setTimeout(() => {
+        window.HSStaticMethods.autoInit();
+        updateCharts();
+      }, 100);
+
+      // Progress bar
+      window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progressBar').style.width = scrolled + '%';
+      });
+
+      // Re-initialize icons after Alpine renders
+      setTimeout(() => {
+        lucide.createIcons();
+        initCitationSystem();
+      }, 500);
+    });
+
+    document.addEventListener('astro:before-swap', () => {
+      Object.values(charts).forEach(chart => chart.destroy());
+      charts = {};
+    });
+
+    // Citation System
+    function initCitationSystem() {
+      let i = 1, map = new Map();
+      document.querySelectorAll('[data-ref]').forEach(el => {
+        if (el.dataset.citationProcessed) return;
+        const raw = (el.getAttribute('data-ref')||'').trim();
+        if (!raw) return;
+
+        const parts = raw.split('|');
+        const url = parts[0].trim();
+        const idx = (parts[1]||'').trim() || map.get(raw) || (map.set(raw, String(i)), String(i++));
+
+        if (!el.textContent || !el.textContent.trim()) { el.dataset.citationProcessed = 'true'; return; }
+
+        const btn = document.createElement('sup'); btn.textContent = String(idx);
+        Object.assign(btn.style, { fontSize:'8px', color:'#fff', cursor:'pointer', top: '1px', fontWeight:'bold', backgroundColor:'#0284c7', borderRadius:'50%', transition:'all .15s', userSelect:'none', minWidth:'19px', height:'19px', marginLeft:'6px', display:'inline-flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 3px rgba(0,0,0,.2)', lineHeight:'1'});
+        btn.addEventListener('mouseenter', ()=> Object.assign(btn.style, { backgroundColor:'#0369a1', transform:'scale(1.12)' }));
+        btn.addEventListener('mouseleave', ()=> Object.assign(btn.style, { backgroundColor:'#0284c7', transform:'scale(1)' }));
+        btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(url, '_blank'); });
+
+        el.appendChild(btn); el.dataset.citationProcessed = 'true';
+      });
+    }
+  </script>
+</body>
+</html>
