@@ -290,8 +290,8 @@
     // ========== 配置 ==========
     const REPO = 'digital-era/Trend';
     const BRANCH = 'main';
-    // 线上正式域名（解决本地 file:// 打开时链接变成 file:///C:/ 的问题）
-    const SITE_ORIGIN = 'https://trend.aivibeinvestment.com';
+    // 正确的线上域名（没有 ment）
+    const SITE_ORIGIN = 'https://trend.aivibeinvest.com';
 
     // 美化显示名称
     function prettyName(filename) {
@@ -315,7 +315,7 @@
     async function getLastCommitDate(path) {
       const url = `https://api.github.com/repos/${REPO}/commits?path=${encodeURIComponent(path)}&per_page=1`;
       const res = await fetch(url);
-      if (!res.ok) return new Date(0); // 失败时给最早时间
+      if (!res.ok) return new Date(0);
       const data = await res.json();
       if (!data.length) return new Date(0);
       return new Date(data[0].commit.committer.date || data[0].commit.author.date);
@@ -331,7 +331,7 @@
 
       ul.innerHTML = files.map(file => {
         const display = prettyName(file.name);
-        // 强制使用线上完整地址，避免本地打开变成 file:///
+        // 使用正确域名的完整链接
         const href = `${SITE_ORIGIN}/${dir}/${encodeURIComponent(file.name)}`;
         return `
           <li class="file-item">
@@ -355,10 +355,9 @@
 
       await Promise.all(configs.map(async ({ id, dir }) => {
         try {
-          // 1. 获取文件列表
           const files = await fetchDirFiles(dir);
 
-          // 2. 并行获取每个文件的最后提交时间
+          // 并行获取每个文件的最后提交时间
           const withDates = await Promise.all(
             files.map(async file => {
               const date = await getLastCommitDate(file.path);
@@ -366,10 +365,9 @@
             })
           );
 
-          // 3. 按最后生成/提交时间倒序（最新在前）
+          // 按最后生成时间倒序（最新在前）
           withDates.sort((a, b) => b.lastDate - a.lastDate);
 
-          // 4. 渲染
           renderList(id, withDates, dir);
         } catch (err) {
           console.error(dir, err);
