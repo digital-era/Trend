@@ -12,7 +12,6 @@
     :root {
       --bg: #0b0f19;
       --card: #12161f;
-      --card-hover: #161b26;
       --border: rgba(255, 255, 255, 0.07);
       --text: #e8ecf4;
       --text-muted: #94a3b8;
@@ -38,7 +37,6 @@
       padding: 48px 24px 80px;
     }
 
-    /* Header */
     header {
       text-align: center;
       margin-bottom: 48px;
@@ -79,7 +77,6 @@
       margin-top: 6px;
     }
 
-    /* Grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -90,12 +87,10 @@
       .grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
     }
 
-    /* Card */
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 0;
       overflow: hidden;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       display: flex;
@@ -107,11 +102,7 @@
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
     }
 
-    .card-top {
-      height: 3px;
-      width: 100%;
-    }
-
+    .card-top { height: 3px; width: 100%; }
     .card.cr .card-top { background: linear-gradient(90deg, #38bdf8, #0ea5e9); }
     .card.ta .card-top { background: linear-gradient(90deg, #34d399, #10b981); }
     .card.ht .card-top { background: linear-gradient(90deg, #f472b6, #ec4899); }
@@ -145,18 +136,9 @@
     .card.ta .card-icon { background: rgba(52, 211, 153, 0.12); }
     .card.ht .card-icon { background: rgba(244, 114, 182, 0.12); }
 
-    .card-title {
-      font-size: 1.15rem;
-      font-weight: 600;
-    }
+    .card-title { font-size: 1.15rem; font-weight: 600; }
+    .card-desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 1px; }
 
-    .card-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 1px;
-    }
-
-    /* File list */
     .file-list {
       list-style: none;
       display: flex;
@@ -193,7 +175,6 @@
 
     .file-name {
       flex: 1;
-      /* 关键显示：最多两行，超出显示省略号 */
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -216,7 +197,6 @@
       transform: translateX(0);
     }
 
-    /* Loading & empty */
     .status {
       color: var(--text-muted);
       font-size: 0.88rem;
@@ -224,11 +204,8 @@
       text-align: center;
     }
 
-    .status.error {
-      color: #f87171;
-    }
+    .status.error { color: #f87171; }
 
-    /* Footer */
     footer {
       text-align: center;
       margin-top: 56px;
@@ -255,7 +232,6 @@
     </header>
 
     <div class="grid">
-      <!-- 公司调研 -->
       <section class="card cr">
         <div class="card-top"></div>
         <div class="card-body">
@@ -272,7 +248,6 @@
         </div>
       </section>
 
-      <!-- 交易分析 -->
       <section class="card ta">
         <div class="card-top"></div>
         <div class="card-body">
@@ -289,7 +264,6 @@
         </div>
       </section>
 
-      <!-- 热点事件 -->
       <section class="card ht">
         <div class="card-top"></div>
         <div class="card-body">
@@ -313,8 +287,11 @@
   </div>
 
   <script>
+    // ========== 配置 ==========
     const REPO = 'digital-era/Trend';
     const BRANCH = 'main';
+    // 线上正式域名（解决本地 file:// 打开时链接变成 file:///C:/ 的问题）
+    const SITE_ORIGIN = 'https://trend.aivibeinvestment.com';
 
     // 美化显示名称
     function prettyName(filename) {
@@ -326,17 +303,25 @@
     }
 
     // 获取某个目录下的所有 .html 文件
-    async function fetchDir(dir) {
+    async function fetchDirFiles(dir) {
       const url = `https://api.github.com/repos/${REPO}/contents/${dir}?ref=${BRANCH}`;
       const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (!res.ok) throw new Error(`目录 ${dir} 加载失败 (${res.status})`);
       const data = await res.json();
-      return data
-        .filter(item => item.type === 'file' && item.name.toLowerCase().endsWith('.html'))
-        .sort((a, b) => b.name.localeCompare(a.name, 'zh')); // 新文件靠前（按名称倒序）
+      return data.filter(item => item.type === 'file' && /\.html$/i.test(item.name));
     }
 
-    // 渲染某个列表
+    // 获取单个文件的最后提交时间
+    async function getLastCommitDate(path) {
+      const url = `https://api.github.com/repos/${REPO}/commits?path=${encodeURIComponent(path)}&per_page=1`;
+      const res = await fetch(url);
+      if (!res.ok) return new Date(0); // 失败时给最早时间
+      const data = await res.json();
+      if (!data.length) return new Date(0);
+      return new Date(data[0].commit.committer.date || data[0].commit.author.date);
+    }
+
+    // 渲染列表
     function renderList(containerId, files, dir) {
       const ul = document.getElementById(containerId);
       if (!files.length) {
@@ -346,11 +331,11 @@
 
       ul.innerHTML = files.map(file => {
         const display = prettyName(file.name);
-        // 使用相对路径，确保在 Cloudflare Pages 上正确跳转
-        const href = `/${dir}/${encodeURIComponent(file.name)}`;
+        // 强制使用线上完整地址，避免本地打开变成 file:///
+        const href = `${SITE_ORIGIN}/${dir}/${encodeURIComponent(file.name)}`;
         return `
           <li class="file-item">
-            <a href="${href}" title="${file.name}">
+            <a href="${href}" title="${file.name}" target="_blank" rel="noopener">
               <span class="file-icon">📄</span>
               <span class="file-name">${display}</span>
               <span class="arrow">→</span>
@@ -362,16 +347,30 @@
 
     // 主加载逻辑
     async function loadAll() {
-      const dirs = [
+      const configs = [
         { id: 'list-cr', dir: 'cr' },
         { id: 'list-ta', dir: 'ta' },
         { id: 'list-ht', dir: 'ht' }
       ];
 
-      await Promise.all(dirs.map(async ({ id, dir }) => {
+      await Promise.all(configs.map(async ({ id, dir }) => {
         try {
-          const files = await fetchDir(dir);
-          renderList(id, files, dir);
+          // 1. 获取文件列表
+          const files = await fetchDirFiles(dir);
+
+          // 2. 并行获取每个文件的最后提交时间
+          const withDates = await Promise.all(
+            files.map(async file => {
+              const date = await getLastCommitDate(file.path);
+              return { ...file, lastDate: date };
+            })
+          );
+
+          // 3. 按最后生成/提交时间倒序（最新在前）
+          withDates.sort((a, b) => b.lastDate - a.lastDate);
+
+          // 4. 渲染
+          renderList(id, withDates, dir);
         } catch (err) {
           console.error(dir, err);
           document.getElementById(id).innerHTML =
@@ -380,7 +379,6 @@
       }));
     }
 
-    // 页面加载后执行
     loadAll();
   </script>
 </body>
