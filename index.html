@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trend · AI Vibes Investment</title>
+  <meta name="description" content="公司调研 · 交易分析 · 热点事件" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: rgba(255, 255, 255, 0.04);
+      --card-hover: rgba(255, 255, 255, 0.07);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e8ecf4;
+      --text-muted: #94a3b8;
+      --accent: #f59e0b;
+      --accent-soft: rgba(245, 158, 11, 0.15);
+      --cr: #38bdf8;
+      --ta: #34d399;
+      --ht: #f472b6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245, 158, 11, 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 0%, rgba(56, 189, 248, 0.08), transparent),
+        radial-gradient(ellipse 50% 30% at 0% 100%, rgba(52, 211, 153, 0.06), transparent);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 30%, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-top: 8px;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .card.cr::before { background: linear-gradient(90deg, #38bdf8, #0ea5e9); }
+    .card.ta::before { background: linear-gradient(90deg, #34d399, #10b981); }
+    .card.ht::before { background: linear-gradient(90deg, #f472b6, #ec4899); }
+
+    .card:hover {
+      background: var(--card-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .card.cr .card-icon { background: rgba(56, 189, 248, 0.15); color: var(--cr); }
+    .card.ta .card-icon { background: rgba(52, 211, 153, 0.15); color: var(--ta); }
+    .card.ht .card-icon { background: rgba(244, 114, 182, 0.15); color: var(--ht); }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* File list */
+    .file-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .file-item a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .file-item a:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--border);
+    }
+
+    .file-item a::before {
+      content: '📄';
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+
+    .file-name {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .arrow {
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: all 0.2s ease;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .file-item a:hover .arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Empty state */
+    .empty {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding: 12px 0;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 64px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container { padding: 32px 16px 60px; }
+      h1 { font-size: 1.9rem; }
+      .card { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">📈</div>
+        <h1>Trend</h1>
+      </div>
+      <p class="subtitle">公司调研 · 交易分析 · 热点事件</p>
+    </header>
+
+    <div class="grid">
+      <!-- 公司调研 CR -->
+      <section class="card cr">
+        <div class="card-header">
+          <div class="card-icon">🏢</div>
+          <div>
+            <div class="card-title">公司调研</div>
+            <div class="card-desc">Company Research</div>
+          </div>
+        </div>
+        <ul class="file-list">
+          <li class="file-item">
+            <a href="/cr/海底捞2026-2027年度经营与财务展望.html">
+              <span class="file-name">海底捞2026-2027年度经营与财务展望</span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li class="file-item">
+            <a href="/cr/海底捞体系全景解析.html">
+              <span class="file-name">海底捞体系全景解析</span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 交易分析 TA -->
+      <section class="card ta">
+        <div class="card-header">
+          <div class="card-icon">📊</div>
+          <div>
+            <div class="card-title">交易分析</div>
+            <div class="card-desc">Trading Analysis</div>
+          </div>
+        </div>
+        <ul class="file-list">
+          <li class="file-item">
+            <a href="/ta/大流盘前分析报告_2026-09-21.html">
+              <span class="file-name">大流盘前分析报告 · 2026-09-21</span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li class="file-item">
+            <a href="/ta/红利盘前分析报告_2026-09-21.html">
+              <span class="file-name">红利盘前分析报告 · 2026-09-21</span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li class="file-item">
+            <a href="/ta/行业盘前分析报告_2026-09-21.html">
+              <span class="file-name">行业盘前分析报告 · 2026-09-21</span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li class="file-item">
+            <a href="/ta/大流盘前分析报告_2026-09-20.html">
+              <span class="file-name">大流盘前分析报告 · 2026-09-20</span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li class="file-item">
+            <a href="/ta/行业盘前分析报告_2026-09-20.html">
+              <span class="file-name">行业盘前分析报告 · 2026-09-20</span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 热点事件 HT -->
+      <section class="card ht">
+        <div class="card-header">
+          <div class="card-icon">🔥</div>
+          <div>
+            <div class="card-title">热点事件</div>
+            <div class="card-desc">Hot Topics</div>
+          </div>
+        </div>
+        <ul class="file-list">
+          <li class="file-item">
+            <a href="/ht/24小时热点2026.09.22.html">
+              <span class="file-name">24小时热点 · 2026.09.22</span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>
+      <p>Powered by <a href="https://github.com/digital-era/Trend" target="_blank" rel="noopener">digital-era/Trend</a> · Cloudflare Pages</p>
+    </footer>
+  </div>
+</body>
+</html>
