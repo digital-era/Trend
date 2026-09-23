@@ -293,9 +293,8 @@
     // ========== 配置 ==========
     const REPO = 'digital-era/Trend';
     const BRANCH = 'main';
-    // 正确的线上域名（没有 ment）
     const SITE_ORIGIN = 'https://trend.aivibeinvest.com';
-
+  
     // 美化显示名称
     function prettyName(filename) {
       return filename
@@ -304,8 +303,16 @@
         .replace(/(\d{4}-\d{2}-\d{2})/g, '· $1')
         .replace(/(\d{4}\.\d{2}\.\d{2})/g, '· $1');
     }
-
-    // 获取某个目录下的所有 .html 文件
+  
+    // 从文件名提取日期（用于排序），没有日期返回 0
+    function extractDateFromName(name) {
+      // 匹配 2026-09-21 或 2026.09.22
+      const m = name.match(/(\d{4})[-.](\d{2})[-.](\d{2})/);
+      if (!m) return 0;
+      return new Date(`${m[1]}-${m[2]}-${m[3]}`).getTime();
+    }
+  
+    // 获取某个目录下的所有 .html 文件（只请求一次）
     async function fetchDirFiles(dir) {
       const url = `https://api.github.com/repos/${REPO}/contents/${dir}?ref=${BRANCH}`;
       const res = await fetch(url);
@@ -313,17 +320,7 @@
       const data = await res.json();
       return data.filter(item => item.type === 'file' && /\.html$/i.test(item.name));
     }
-
-    // 获取单个文件的最后提交时间
-    async function getLastCommitDate(path) {
-      const url = `https://api.github.com/repos/${REPO}/commits?path=${encodeURIComponent(path)}&per_page=1`;
-      const res = await fetch(url);
-      if (!res.ok) return new Date(0);
-      const data = await res.json();
-      if (!data.length) return new Date(0);
-      return new Date(data[0].commit.committer.date || data[0].commit.author.date);
-    }
-
+  
     // 渲染列表
     function renderList(containerId, files, dir) {
       const ul = document.getElementById(containerId);
@@ -331,10 +328,9 @@
         ul.innerHTML = '<li class="status">暂无文件</li>';
         return;
       }
-
+  
       ul.innerHTML = files.map(file => {
         const display = prettyName(file.name);
-        // 使用正确域名的完整链接
         const href = `${SITE_ORIGIN}/${dir}/${encodeURIComponent(file.name)}`;
         return `
           <li class="file-item">
@@ -347,7 +343,7 @@
         `;
       }).join('');
     }
-
+  
     // 主加载逻辑
     async function loadAll() {
       const configs = [
@@ -355,39 +351,29 @@
         { id: 'list-ta', dir: 'ta' },
         { id: 'list-ht', dir: 'ht' }
       ];
-    
-      // 计算 6 天前的时间点
-      const sixDaysAgo = new Date();
-      sixDaysAgo.setDate(sixDaysAgo.getDate() - 6);
-      sixDaysAgo.setHours(0, 0, 0, 0);   // 从当天 0 点开始算，更清晰
-    
+  
       await Promise.all(configs.map(async ({ id, dir }) => {
         try {
           const files = await fetchDirFiles(dir);
-    
-          // 并行获取每个文件的最后提交时间
-          const withDates = await Promise.all(
-            files.map(async file => {
-              const date = await getLastCommitDate(file.path);
-              return { ...file, lastDate: date };
-            })
-          );
-    
-          // ① 只保留最近 6 天内生成的文件
-          const recentFiles = withDates.filter(f => f.lastDate >= sixDaysAgo);
-    
-          // ② 再按时间倒序（最新在前）
-          recentFiles.sort((a, b) => b.lastDate - a.lastDate);
-    
-          renderList(id, recentFiles, dir);
+  
+          // 按文件名中的日期倒序（最新在前），没有日期的排后面
+          files.sort((a, b) => {
+            const da = extractDateFromName(a.name);
+            const db = extractDateFromName(b.name);
+            if (db !== da) return db - da;
+            // 日期相同再按文件名倒序
+            return b.name.localeCompare(a.name, 'zh');
+          });
+  
+          renderList(id, files, dir);
         } catch (err) {
           console.error(dir, err);
           document.getElementById(id).innerHTML =
-            `<li class="status error">加载失败，请稍后刷新</li>`;
+            `<li class="status error">加载失败：${err.message}</li>`;
         }
       }));
     }
-
+  
     loadAll();
   </script>
 </body>
