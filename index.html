@@ -411,11 +411,13 @@
     }
     
      // 渲染列表
-     // 判断是否处于「仅热点」模式
+    // 判断是否处于「仅热点」模式
     function isOnlyHotTopics() {
       const user = window.__TRADE_AGENT_USER__ || {};
       return user.from === 'talktonorthstar';
     }
+    
+    let readerOpen = false;
     
     // 打开同页阅读层
     function openReader(url, title) {
@@ -431,19 +433,31 @@
       overlay.classList.add('open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      readerOpen = true;
+    
+      // 写入历史记录，让浏览器「后退」可以关闭阅读层
+      history.pushState({ reader: true }, '', location.pathname + location.search);
     }
     
     // 关闭阅读层
-    function closeReader() {
+    function closeReader(fromPopstate) {
+      if (!readerOpen) return;
+    
       const overlay = document.getElementById('readerOverlay');
       const frame = document.getElementById('readerFrame');
     
       overlay.classList.remove('open');
       overlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      readerOpen = false;
     
       // 延迟清空，避免关闭动画时闪白
       setTimeout(() => { frame.src = 'about:blank'; }, 280);
+    
+      // 如果是点 ✕ / ESC 关闭，主动回退一步历史，避免留下多余记录
+      if (!fromPopstate && history.state && history.state.reader) {
+        history.back();
+      }
     }
     
     // 渲染列表（支持同页打开）
@@ -461,10 +475,10 @@
         const href = `${SITE_ORIGIN}/${dir}/${encodeURIComponent(file.name)}`;
     
         if (onlyHot) {
-          // 对话北极星模式：同页打开
           return `
             <li class="file-item">
-              <a href="${href}" title="${file.name}" data-reader-url="${href}" data-reader-title="${display}">
+              <a href="javascript:void(0)" title="${file.name}"
+                 data-reader-url="${href}" data-reader-title="${display}">
                 <span class="file-icon">📄</span>
                 <span class="file-name">${display}</span>
                 <span class="arrow">→</span>
@@ -473,7 +487,6 @@
           `;
         }
     
-        // 普通模式：新标签打开
         return `
           <li class="file-item">
             <a href="${href}" title="${file.name}" target="_blank" rel="noopener">
@@ -485,7 +498,6 @@
         `;
       }).join('');
     
-      // 仅热点模式：拦截点击，改为同页阅读
       if (onlyHot) {
         ul.querySelectorAll('a[data-reader-url]').forEach(a => {
           a.addEventListener('click', (e) => {
@@ -496,10 +508,18 @@
       }
     }
     
-    // 绑定关闭按钮 + ESC
-    document.getElementById('readerClose').addEventListener('click', closeReader);
+    // 绑定关闭按钮 + ESC + 浏览器后退
+    document.getElementById('readerClose').addEventListener('click', () => closeReader(false));
+    
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeReader();
+      if (e.key === 'Escape') closeReader(false);
+    });
+    
+    window.addEventListener('popstate', () => {
+      // 用户点了浏览器后退
+      if (readerOpen) {
+        closeReader(true);
+      }
     });
     
     // ========== 主加载逻辑 ==========
@@ -517,11 +537,26 @@
           ];
     
       // 只显示热点事件时，隐藏另外两个卡片
+      // if (onlyHotTopics) {
+      //   const crCard = document.querySelector('.card.cr');
+      //   const taCard = document.querySelector('.card.ta');
+      //   if (crCard) crCard.style.display = 'none';
+      //   if (taCard) taCard.style.display = 'none';
+      // }
+
       if (onlyHotTopics) {
         const crCard = document.querySelector('.card.cr');
         const taCard = document.querySelector('.card.ta');
         if (crCard) crCard.style.display = 'none';
         if (taCard) taCard.style.display = 'none';
+      
+        // 热点卡片拉满宽度
+        const grid = document.querySelector('.grid');
+        if (grid) {
+          grid.style.gridTemplateColumns = '1fr';
+          grid.style.maxWidth = '640px';
+          grid.style.margin = '0 auto';
+        }
       }
     
       await Promise.all(configs.map(async ({ id, dir }) => {
