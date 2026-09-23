@@ -209,6 +209,84 @@
 
     .status.error { color: #f87171; }
 
+    /* ========== 同页阅读层 ========== */
+    .reader-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #0b0f19;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s;
+    }
+    
+    .reader-overlay.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .reader-header {
+      flex-shrink: 0;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(18, 22, 31, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    
+    .reader-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #e8ecf4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 70%;
+    }
+    
+    .reader-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .reader-actions a,
+    .reader-actions button {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      color: #94a3b8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    .reader-actions a:hover,
+    .reader-actions button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e8ecf4;
+    }
+    
+    .reader-frame {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #0f1419;
+    }
+
     footer {
       text-align: center;
       margin-top: 56px;
@@ -288,6 +366,18 @@
       <p>Powered by <a href="https://github.com/digital-era/Trend" target="_blank" rel="noopener">digital-era/Trend</a></p>
     </footer>
   </div>
+  
+  <!-- 热点事件同页阅读层 -->
+  <div id="readerOverlay" class="reader-overlay" aria-hidden="true">
+    <div class="reader-header">
+      <div class="reader-title" id="readerTitle">热点事件</div>
+      <div class="reader-actions">
+        <a id="readerOpenNew" href="#" target="_blank" rel="noopener" title="在新标签打开">↗</a>
+        <button id="readerClose" title="关闭">✕</button>
+      </div>
+    </div>
+    <iframe id="readerFrame" class="reader-frame" title="报告内容"></iframe>
+  </div>
 
   <script>
     // ========== 配置 ==========
@@ -320,7 +410,43 @@
       return data.filter(item => item.type === 'file' && /\.html$/i.test(item.name));
     }
     
-    // 渲染列表
+     // 渲染列表
+     // 判断是否处于「仅热点」模式
+    function isOnlyHotTopics() {
+      const user = window.__TRADE_AGENT_USER__ || {};
+      return user.from === 'talktonorthstar';
+    }
+    
+    // 打开同页阅读层
+    function openReader(url, title) {
+      const overlay = document.getElementById('readerOverlay');
+      const frame = document.getElementById('readerFrame');
+      const titleEl = document.getElementById('readerTitle');
+      const openNew = document.getElementById('readerOpenNew');
+    
+      titleEl.textContent = title || '热点事件';
+      openNew.href = url;
+      frame.src = url;
+    
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    // 关闭阅读层
+    function closeReader() {
+      const overlay = document.getElementById('readerOverlay');
+      const frame = document.getElementById('readerFrame');
+    
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    
+      // 延迟清空，避免关闭动画时闪白
+      setTimeout(() => { frame.src = 'about:blank'; }, 280);
+    }
+    
+    // 渲染列表（支持同页打开）
     function renderList(containerId, files, dir) {
       const ul = document.getElementById(containerId);
       if (!files.length) {
@@ -328,9 +454,26 @@
         return;
       }
     
+      const onlyHot = isOnlyHotTopics();
+    
       ul.innerHTML = files.map(file => {
         const display = prettyName(file.name);
         const href = `${SITE_ORIGIN}/${dir}/${encodeURIComponent(file.name)}`;
+    
+        if (onlyHot) {
+          // 对话北极星模式：同页打开
+          return `
+            <li class="file-item">
+              <a href="${href}" title="${file.name}" data-reader-url="${href}" data-reader-title="${display}">
+                <span class="file-icon">📄</span>
+                <span class="file-name">${display}</span>
+                <span class="arrow">→</span>
+              </a>
+            </li>
+          `;
+        }
+    
+        // 普通模式：新标签打开
         return `
           <li class="file-item">
             <a href="${href}" title="${file.name}" target="_blank" rel="noopener">
@@ -341,7 +484,23 @@
           </li>
         `;
       }).join('');
+    
+      // 仅热点模式：拦截点击，改为同页阅读
+      if (onlyHot) {
+        ul.querySelectorAll('a[data-reader-url]').forEach(a => {
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            openReader(a.dataset.readerUrl, a.dataset.readerTitle);
+          });
+        });
+      }
     }
+    
+    // 绑定关闭按钮 + ESC
+    document.getElementById('readerClose').addEventListener('click', closeReader);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeReader();
+    });
     
     // ========== 主加载逻辑 ==========
     async function loadAll() {
