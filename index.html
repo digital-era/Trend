@@ -416,10 +416,9 @@
       const user = window.__TRADE_AGENT_USER__ || {};
       return user.from === 'talktonorthstar';
     }
-    
+        
     let readerOpen = false;
     
-    // 打开同页阅读层
     function openReader(url, title) {
       const overlay = document.getElementById('readerOverlay');
       const frame = document.getElementById('readerFrame');
@@ -428,20 +427,37 @@
     
       titleEl.textContent = title || '热点事件';
       openNew.href = url;
-      frame.src = url;
+    
+      // 先清空，避免旧内容闪一下
+      frame.src = 'about:blank';
     
       overlay.classList.add('open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       readerOpen = true;
     
-      // 写入历史记录，让浏览器「后退」可以关闭阅读层
-      history.pushState({ reader: true }, '', location.pathname + location.search);
+      // 只推一次历史（用 hash，便于识别）
+      if (location.hash !== '#reader') {
+        history.pushState({ reader: true }, '', '#reader');
+      }
+    
+      // 同域用 replace，减少 iframe 额外历史记录
+      frame.onload = function () {
+        frame.onload = null;
+        try {
+          frame.contentWindow.location.replace(url);
+        } catch (e) {
+          frame.src = url;
+        }
+      };
+      // 触发一次 about:blank 的 onload
+      frame.src = 'about:blank';
     }
     
-    // 关闭阅读层
     function closeReader(fromPopstate) {
-      if (!readerOpen) return;
+      if (!readerOpen && !document.getElementById('readerOverlay').classList.contains('open')) {
+        return;
+      }
     
       const overlay = document.getElementById('readerOverlay');
       const frame = document.getElementById('readerFrame');
@@ -451,14 +467,30 @@
       document.body.style.overflow = '';
       readerOpen = false;
     
-      // 延迟清空，避免关闭动画时闪白
-      setTimeout(() => { frame.src = 'about:blank'; }, 280);
+      // 立刻清空，避免出现「只剩标题的黑页」
+      frame.src = 'about:blank';
     
-      // 如果是点 ✕ / ESC 关闭，主动回退一步历史，避免留下多余记录
-      if (!fromPopstate && history.state && history.state.reader) {
+      // 仅在点 ✕ / ESC 时主动退历史；浏览器后退触发的 popstate 不再 back
+      if (!fromPopstate && location.hash === '#reader') {
         history.back();
+      } else if (location.hash === '#reader') {
+        // popstate 后若 hash 还在，清掉（兼容部分浏览器）
+        history.replaceState(null, '', location.pathname + location.search);
       }
     }
+    
+    // 关闭按钮 / ESC
+    document.getElementById('readerClose').addEventListener('click', () => closeReader(false));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeReader(false);
+    });
+    
+    // 浏览器后退 / 前进
+    window.addEventListener('popstate', () => {
+      if (readerOpen || document.getElementById('readerOverlay').classList.contains('open')) {
+        closeReader(true);
+      }
+    });
     
     // 渲染列表（支持同页打开）
     function renderList(containerId, files, dir) {
