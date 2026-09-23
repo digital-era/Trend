@@ -294,7 +294,7 @@
     const REPO = 'digital-era/Trend';
     const BRANCH = 'main';
     const SITE_ORIGIN = 'https://trend.aivibeinvest.com';
-  
+    
     // 美化显示名称
     function prettyName(filename) {
       return filename
@@ -303,15 +303,14 @@
         .replace(/(\d{4}-\d{2}-\d{2})/g, '· $1')
         .replace(/(\d{4}\.\d{2}\.\d{2})/g, '· $1');
     }
-  
+    
     // 从文件名提取日期（用于排序），没有日期返回 0
     function extractDateFromName(name) {
-      // 匹配 2026-09-21 或 2026.09.22
       const m = name.match(/(\d{4})[-.](\d{2})[-.](\d{2})/);
       if (!m) return 0;
       return new Date(`${m[1]}-${m[2]}-${m[3]}`).getTime();
     }
-  
+    
     // 获取某个目录下的所有 .html 文件（只请求一次）
     async function fetchDirFiles(dir) {
       const url = `https://api.github.com/repos/${REPO}/contents/${dir}?ref=${BRANCH}`;
@@ -320,7 +319,7 @@
       const data = await res.json();
       return data.filter(item => item.type === 'file' && /\.html$/i.test(item.name));
     }
-  
+    
     // 渲染列表
     function renderList(containerId, files, dir) {
       const ul = document.getElementById(containerId);
@@ -328,7 +327,7 @@
         ul.innerHTML = '<li class="status">暂无文件</li>';
         return;
       }
-  
+    
       ul.innerHTML = files.map(file => {
         const display = prettyName(file.name);
         const href = `${SITE_ORIGIN}/${dir}/${encodeURIComponent(file.name)}`;
@@ -343,37 +342,53 @@
         `;
       }).join('');
     }
-  
-    // 主加载逻辑
+    
+    // ========== 主加载逻辑 ==========
     async function loadAll() {
-      const configs = [
-        { id: 'list-cr', dir: 'cr' },
-        { id: 'list-ta', dir: 'ta' },
-        { id: 'list-ht', dir: 'ht' }
-      ];
-  
+      const user = window.__TRADE_AGENT_USER__ || {};
+      const onlyHotTopics = (user.from === 'talktonorthstar');
+    
+      // 根据来源决定加载哪些目录
+      const configs = onlyHotTopics
+        ? [{ id: 'list-ht', dir: 'ht' }]
+        : [
+            { id: 'list-cr', dir: 'cr' },
+            { id: 'list-ta', dir: 'ta' },
+            { id: 'list-ht', dir: 'ht' }
+          ];
+    
+      // 只显示热点事件时，隐藏另外两个卡片
+      if (onlyHotTopics) {
+        const crCard = document.querySelector('.card.cr');
+        const taCard = document.querySelector('.card.ta');
+        if (crCard) crCard.style.display = 'none';
+        if (taCard) taCard.style.display = 'none';
+      }
+    
       await Promise.all(configs.map(async ({ id, dir }) => {
         try {
           const files = await fetchDirFiles(dir);
-  
+    
           // 按文件名中的日期倒序（最新在前），没有日期的排后面
           files.sort((a, b) => {
             const da = extractDateFromName(a.name);
             const db = extractDateFromName(b.name);
             if (db !== da) return db - da;
-            // 日期相同再按文件名倒序
             return b.name.localeCompare(a.name, 'zh');
           });
-  
+    
           renderList(id, files, dir);
         } catch (err) {
           console.error(dir, err);
-          document.getElementById(id).innerHTML =
-            `<li class="status error">加载失败：${err.message}</li>`;
+          const el = document.getElementById(id);
+          if (el) {
+            el.innerHTML = `<li class="status error">加载失败：${err.message}</li>`;
+          }
         }
       }));
     }
-  
+    
+    // 页面加载后执行
     loadAll();
   </script>
 </body>
