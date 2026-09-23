@@ -1,4 +1,3 @@
-<script>
 (function guardAccess() {
   // ========== 配置 ==========
   // 拒绝访问后可跳转的首页（按优先级）
@@ -134,4 +133,3 @@
 
   console.log('[Trend] Access granted:', window.__TRADE_AGENT_USER__);
 })();
-</script>
