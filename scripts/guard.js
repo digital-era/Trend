@@ -1,16 +1,16 @@
 (function guardAccess() {
   // ========== 配置 ==========
-  // 拒绝访问后可跳转的首页（按优先级）
   var HOME_URLS = [
     'https://talktonorthstar.aivibeinvestment.com/',
     'https://aivibeinvestment.com/QuantGuardians/'
   ];
-  var HOME_URL = HOME_URLS[0];   // 默认跳第一个
+  var HOME_URL = HOME_URLS[0];
 
   var VIP_USER_TYPE  = 'vip';
   var VVIP_USER_TYPE = 'vvip';
   var SESSION_KEY    = 'qgr_trend_ok';
-  var SESSION_MAX_MS = 8 * 60 * 60 * 1000;   // 会话 8 小时
+  var FROM_KEY       = 'qgr_trend_from';          // 新增：记录来源
+  var SESSION_MAX_MS = 8 * 60 * 60 * 1000;
 
   function deny(reason) {
     console.warn('[Trend] Access denied:', reason);
@@ -31,7 +31,6 @@
     setTimeout(function () { window.location.replace(HOME_URL); }, 3000);
   }
 
-  // ---------- 工具：解析 JWT payload ----------
   function parseJwtPayload(token) {
     var parts = token.split('.');
     if (parts.length !== 3) throw new Error('Token 格式非法');
@@ -44,14 +43,15 @@
     );
   }
 
-  // ---------- 1. 优先从 URL 参数获取 token（主站跨域带来）----------
-  var params = new URLSearchParams(location.search);
+  // ---------- 1. 读取 URL 参数 ----------
+  var params   = new URLSearchParams(location.search);
   var urlToken = params.get('token');
   var ts       = params.get('ts');
+  var from     = params.get('from');   // 新增：来源标识
 
+  // ---------- 2. 处理 token ----------
   if (urlToken) {
     try {
-      // 先校验再写入，避免脏数据污染
       var tmpPayload = parseJwtPayload(urlToken);
       if (!tmpPayload.exp || Date.now() > tmpPayload.exp) {
         return deny('携带的 Token 已过期');
@@ -63,11 +63,9 @@
     }
   }
 
-  // ---------- 2. 从 localStorage 读取最终 token ----------
   var token = localStorage.getItem('qgr_jwt_token');
   if (!token) return deny('未检测到登录凭证，请从主站进入');
 
-  // ---------- 3. 解析并校验 ----------
   var payload;
   try {
     payload = parseJwtPayload(token);
@@ -76,14 +74,13 @@
     return deny('Token 解析失败');
   }
 
-  // 过期
   if (!payload.exp || Date.now() > payload.exp) {
     localStorage.removeItem('qgr_jwt_token');
     sessionStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(FROM_KEY);
     return deny('登录已过期，请重新登录');
   }
 
-  // VIP 校验（admin → vvip → vip）
   var username = payload.user || '';
   var isAdmin  = (username === 'admin');
   var isVVIP   = (username.indexOf(VVIP_USER_TYPE) === 0);
@@ -92,7 +89,7 @@
     return deny('当前账号无 VIP 权限');
   }
 
-  // ---------- 4. 入场券 / 会话校验 ----------
+  // ---------- 3. 入场券 / 会话 ----------
   var sessionOk = false;
   try {
     var sess = sessionStorage.getItem(SESSION_KEY);
@@ -102,33 +99,42 @@
         sessionOk = true;
       } else {
         sessionStorage.removeItem(SESSION_KEY);
+        sessionStorage.removeItem(FROM_KEY);
       }
     }
   } catch (e) {}
 
   if (!sessionOk) {
-    // 没有有效会话 → 必须带 60 秒内的 ts
     if (!ts) return deny('缺少入场券，请从主站进入');
     var ticketAge = Date.now() - parseInt(ts, 10);
     if (isNaN(ticketAge) || ticketAge > 60 * 1000) {
       return deny('入场券已过期（超过 60 秒）');
     }
-    // 首次通过，写入会话标记
-    try { sessionStorage.setItem(SESSION_KEY, String(Date.now())); } catch (e) {}
+    try {
+      sessionStorage.setItem(SESSION_KEY, String(Date.now()));
+      // 首次进入时记录来源
+      if (from) {
+        sessionStorage.setItem(FROM_KEY, from);
+      }
+    } catch (e) {}
   }
 
-  // ---------- 5. 立刻抹掉敏感参数（token + ts），防止泄露到历史/分享 ----------
+  // ---------- 4. 抹掉敏感参数 ----------
   try {
     var proxyParam = params.get('proxy');
     var keepSearch = (proxyParam === '0' || proxyParam === '1') ? '?proxy=' + proxyParam : '';
     history.replaceState({}, '', location.pathname + keepSearch);
   } catch (e) {}
 
-  // ---------- 6. 挂载用户信息 ----------
+  // ---------- 5. 挂载用户信息 + 来源 ----------
+  var fromValue = null;
+  try { fromValue = sessionStorage.getItem(FROM_KEY); } catch (e) {}
+
   window.__TRADE_AGENT_USER__ = {
     username:  username,
     level:     isAdmin ? 'admin' : (isVVIP ? 'vvip' : 'vip'),
-    grantedAt: Date.now()
+    grantedAt: Date.now(),
+    from:      fromValue          // 新增：'talktonorthstar' 或其他
   };
 
   console.log('[Trend] Access granted:', window.__TRADE_AGENT_USER__);
