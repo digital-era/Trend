@@ -9,8 +9,8 @@
   var VIP_USER_TYPE  = 'vip';
   var VVIP_USER_TYPE = 'vvip';
   var SESSION_KEY    = 'qgr_trend_ok';
-  var FROM_KEY       = 'qgr_trend_from';          // 新增：记录来源
-  var SESSION_MAX_MS = 8 * 60 * 60 * 1000;
+  var FROM_KEY       = 'qgr_trend_from';
+  var SESSION_MAX_MS = 8 * 60 * 60 * 1000;   // 会话 8 小时
 
   function deny(reason) {
     console.warn('[Trend] Access denied:', reason);
@@ -47,9 +47,9 @@
   var params   = new URLSearchParams(location.search);
   var urlToken = params.get('token');
   var ts       = params.get('ts');
-  var from     = params.get('from');   // 新增：来源标识
+  var from     = params.get('from');
 
-  // ---------- 2. 处理 token ----------
+  // ---------- 2. 处理 token（主站跨域带来）----------
   if (urlToken) {
     try {
       var tmpPayload = parseJwtPayload(urlToken);
@@ -74,6 +74,7 @@
     return deny('Token 解析失败');
   }
 
+  // 过期校验
   if (!payload.exp || Date.now() > payload.exp) {
     localStorage.removeItem('qgr_jwt_token');
     sessionStorage.removeItem(SESSION_KEY);
@@ -81,6 +82,7 @@
     return deny('登录已过期，请重新登录');
   }
 
+  // VIP 校验
   var username = payload.user || '';
   var isAdmin  = (username === 'admin');
   var isVVIP   = (username.indexOf(VVIP_USER_TYPE) === 0);
@@ -89,7 +91,7 @@
     return deny('当前账号无 VIP 权限');
   }
 
-  // ---------- 3. 入场券 / 会话 ----------
+  // ---------- 3. 入场券 / 会话校验 ----------
   var sessionOk = false;
   try {
     var sess = sessionStorage.getItem(SESSION_KEY);
@@ -105,6 +107,7 @@
   } catch (e) {}
 
   if (!sessionOk) {
+    // 没有有效会话 → 必须带 60 秒内的 ts
     if (!ts) return deny('缺少入场券，请从主站进入');
     var ticketAge = Date.now() - parseInt(ts, 10);
     if (isNaN(ticketAge) || ticketAge > 60 * 1000) {
@@ -112,29 +115,34 @@
     }
     try {
       sessionStorage.setItem(SESSION_KEY, String(Date.now()));
-      // 首次进入时记录来源
-      if (from) {
-        sessionStorage.setItem(FROM_KEY, from);
-      }
     } catch (e) {}
   }
 
-  // ---------- 4. 抹掉敏感参数 ----------
+  // ---------- 4. 关键修复：只要 URL 带了 from，就立刻写入（不依赖是否首次）----------
+  if (from) {
+    try {
+      sessionStorage.setItem(FROM_KEY, from);
+    } catch (e) {}
+  }
+
+  // ---------- 5. 抹掉敏感参数（token + ts + from）----------
   try {
     var proxyParam = params.get('proxy');
     var keepSearch = (proxyParam === '0' || proxyParam === '1') ? '?proxy=' + proxyParam : '';
     history.replaceState({}, '', location.pathname + keepSearch);
   } catch (e) {}
 
-  // ---------- 5. 挂载用户信息 + 来源 ----------
+  // ---------- 6. 挂载用户信息 ----------
   var fromValue = null;
-  try { fromValue = sessionStorage.getItem(FROM_KEY); } catch (e) {}
+  try {
+    fromValue = sessionStorage.getItem(FROM_KEY);
+  } catch (e) {}
 
   window.__TRADE_AGENT_USER__ = {
     username:  username,
     level:     isAdmin ? 'admin' : (isVVIP ? 'vvip' : 'vip'),
     grantedAt: Date.now(),
-    from:      fromValue          // 新增：'talktonorthstar' 或其他
+    from:      fromValue
   };
 
   console.log('[Trend] Access granted:', window.__TRADE_AGENT_USER__);
