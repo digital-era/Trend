@@ -12,6 +12,9 @@
   var FROM_KEY       = 'qgr_trend_from';
   var SESSION_MAX_MS = 8 * 60 * 60 * 1000;   // 会话 8 小时
 
+  // ── 新增：允许「非 VIP 的登录用户」访问的来源白名单 ──
+  var PUBLIC_FROM_SOURCES = ['talktonorthstar'];
+
   function deny(reason) {
     console.warn('[Trend] Access denied:', reason);
     try {
@@ -49,7 +52,15 @@
   var ts       = params.get('ts');
   var from     = params.get('from');
 
-  // ---------- 2. 处理 token（主站跨域带来）----------
+  // ---------- 2. 判定来源是否允许「非 VIP 登录用户」----------
+  // 优先 URL 里的 from；否则回退 sessionStorage（上次记录的来源）
+  var fromEarly = from || null;
+  if (!fromEarly) {
+    try { fromEarly = sessionStorage.getItem(FROM_KEY); } catch (e) {}
+  }
+  var allowNonVip = PUBLIC_FROM_SOURCES.indexOf(fromEarly) !== -1;
+
+  // ---------- 3. 处理 token（主站跨域带来）----------
   if (urlToken) {
     try {
       var tmpPayload = parseJwtPayload(urlToken);
@@ -82,16 +93,26 @@
     return deny('登录已过期，请重新登录');
   }
 
-  // VIP 校验
+  // ---------- 4. VIP 校验（talktonorthstar 来源放宽为「任意登录用户」）----------
   var username = payload.user || '';
   var isAdmin  = (username === 'admin');
   var isVVIP   = (username.indexOf(VVIP_USER_TYPE) === 0);
   var isVIP    = (username.indexOf(VIP_USER_TYPE)  === 0);
-  if (!isAdmin && !isVVIP && !isVIP) {
-    return deny('当前账号无 VIP 权限');
+  var isLogged = !!username;   // 有效 token 即视为已登录
+
+  if (!allowNonVip) {
+    // 非白名单来源：仍要求 admin / vvip / vip
+    if (!isAdmin && !isVVIP && !isVIP) {
+      return deny('当前账号无 VIP 权限');
+    }
+  } else {
+    // talktonorthstar 来源：只要是登录用户就放行
+    if (!isLogged) {
+      return deny('未检测到登录用户信息');
+    }
   }
 
-  // ---------- 3. 入场券 / 会话校验 ----------
+  // ---------- 5. 入场券 / 会话校验 ----------
   var sessionOk = false;
   try {
     var sess = sessionStorage.getItem(SESSION_KEY);
@@ -118,21 +139,21 @@
     } catch (e) {}
   }
 
-  // ---------- 4. 关键修复：只要 URL 带了 from，就立刻写入（不依赖是否首次）----------
+  // ---------- 6. 写入 from ----------
   if (from) {
     try {
       sessionStorage.setItem(FROM_KEY, from);
     } catch (e) {}
   }
 
-  // ---------- 5. 抹掉敏感参数（token + ts + from）----------
+  // ---------- 7. 抹掉敏感参数（token + ts + from）----------
   try {
     var proxyParam = params.get('proxy');
     var keepSearch = (proxyParam === '0' || proxyParam === '1') ? '?proxy=' + proxyParam : '';
     history.replaceState({}, '', location.pathname + keepSearch);
   } catch (e) {}
 
-  // ---------- 6. 挂载用户信息 ----------
+  // ---------- 8. 挂载用户信息 ----------
   var fromValue = null;
   try {
     fromValue = sessionStorage.getItem(FROM_KEY);
@@ -140,7 +161,7 @@
 
   window.__TRADE_AGENT_USER__ = {
     username:  username,
-    level:     isAdmin ? 'admin' : (isVVIP ? 'vvip' : 'vip'),
+    level:     isAdmin ? 'admin' : (isVVIP ? 'vvip' : (isVIP ? 'vip' : 'user')),
     grantedAt: Date.now(),
     from:      fromValue
   };
