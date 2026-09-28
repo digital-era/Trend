@@ -590,13 +590,11 @@
           grid.style.margin = '0 auto';
         }
 
-        // 修改主标题
-        const h1 = document.querySelector('header h1');
-        if (h1) h1.textContent = '科技 · 商业 · 社会 最新热点图谱';
-        
-        // 修改副标题（可选）
+        // 只修改副标题，主标题 Trend 不变
         const subtitle = document.querySelector('.subtitle');
-        if (subtitle) subtitle.textContent = '最新热点图谱';
+        if (subtitle) {
+          subtitle.textContent = '科技 · 商业 · 社会 最新热点图谱';
+        }
       }
     
       await Promise.all(configs.map(async ({ id, dir }) => {
