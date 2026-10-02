@@ -237,7 +237,7 @@
         </div>
 
         <!-- 移动端下拉菜单 -->
-        <div id="mobileMenu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div id="mobileMenu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
           <nav class="flex flex-col space-y-3">
             <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
             <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
@@ -609,7 +609,7 @@
               与主要竞争对手的护城河对比
             </h3>
             <div
-              class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
+              class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
             >
               <table
                 class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
@@ -831,7 +831,7 @@
 
           <!-- 收入与利润表 -->
           <div
-            class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+            class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
           >
             <table
               class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
@@ -1773,6 +1773,11 @@
 
     <!-- Scripts -->
     <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (menu) menu.classList.toggle("hidden");
+      }
+
       window.addEventListener("scroll", () => {
         const winScroll =
           document.body.scrollTop || document.documentElement.scrollTop;
@@ -1787,10 +1792,6 @@
         lucide.createIcons();
         AOS.init({ duration: 800, once: true });
       });
-            function toggleMobileMenu() {
-        const menu = document.getElementById("mobileMenu");
-        if (menu) menu.classList.toggle("hidden");
-      }
     </script>
   </body>
 </html>
