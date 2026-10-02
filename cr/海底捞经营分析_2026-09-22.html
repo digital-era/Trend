@@ -171,10 +171,20 @@
         color: #e5e7eb !important;
       }
 
-      /* ===== 移动端菜单：桌面端强制隐藏 ===== */
+      /* ===== 移动端菜单 ===== */
+      #mobileMenu {
+        display: none;
+      }
+      
       @media (min-width: 768px) {
         #mobileMenu {
           display: none !important;
+        }
+      }
+      
+      @media (max-width: 767px) {
+        #mobileMenu.mobile-menu-open {
+          display: block !important;
         }
       }
     </style>
@@ -207,7 +217,7 @@
       >
       <div class="max-w-7xl mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
-          <h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">
+          <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
             海底捞 06862.HK 经营分析
           </h1>
           <!-- 桌面端导航 -->
@@ -244,7 +254,7 @@
         </div>
 
         <!-- 移动端下拉菜单（初始由内联 style 隐藏，JS 直接切换 display） -->
-        <div id="mobileMenu"  class="hidden md:hidden mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+        <div   id="mobileMenu"  class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
           <nav class="flex flex-col space-y-3">
             <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
             <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
@@ -1784,7 +1794,7 @@
         const menu = document.getElementById("mobileMenu");
         if (!menu) return;
       
-        menu.classList.toggle("hidden");
+        menu.classList.toggle("mobile-menu-open");
       }
 
       window.addEventListener("scroll", () => {
