@@ -170,6 +170,13 @@
       .dark .text-gray-700 {
         color: #e5e7eb !important;
       }
+
+      /* ===== 移动端菜单：桌面端强制隐藏 ===== */
+      @media (min-width: 768px) {
+        #mobileMenu {
+          display: none !important;
+        }
+      }
     </style>
     <script>
       function toggleDarkMode() {
@@ -236,8 +243,8 @@
           </div>
         </div>
 
-        <!-- 移动端下拉菜单 -->
-        <div id="mobileMenu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+        <!-- 移动端下拉菜单（初始由内联 style 隐藏，JS 直接切换 display） -->
+        <div id="mobileMenu" class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto" style="display: none;">
           <nav class="flex flex-col space-y-3">
             <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
             <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
@@ -1775,7 +1782,8 @@
     <script>
       function toggleMobileMenu() {
         const menu = document.getElementById("mobileMenu");
-        if (menu) menu.classList.toggle("hidden");
+        if (!menu) return;
+        menu.style.display = menu.style.display === "none" ? "block" : "none";
       }
 
       window.addEventListener("scroll", () => {
