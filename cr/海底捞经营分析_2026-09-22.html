@@ -1,51 +1,189 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100">
-    <div class="max-w-7xl mx-auto px-6 py-4">
-      <div class="flex items-center justify-between">
-        <h1 class="text-lg md:text-xl font-bold text-primary-700 dark:text-primary-300">海底捞 06862.HK 经营分析</h1>
-        
-        <!-- 桌面端导航 -->
-        <nav class="hidden md:flex space-x-5">
-          <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
-          <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
-          <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
-          <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
-          <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
-          <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
-          <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
-          <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
-        </nav>
-  
-        <div class="flex items-center space-x-2">
-          <!-- 移动端菜单切换按钮 -->
-          <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300">
-            <i data-lucide="menu" class="w-5 h-5"></i>
-          </button>
-  
-          <!-- 暗色模式切换按钮 -->
-          <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all">
-            <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
-            <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
-          </button>
-        </div>
-      </div>
-  
-      <!-- 移动端下拉菜单 -->
-      <div id="mobileMenu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-        <nav class="flex flex-col space-y-3">
-          <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
-          <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
-          <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
-          <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
-          <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
-          <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
-          <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
-          <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>海底捞（06862.HK）经营分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "hsl(20, 90%, 95%)",
+                100: "hsl(20, 90%, 85%)",
+                200: "hsl(20, 90%, 75%)",
+                300: "hsl(20, 90%, 65%)",
+                400: "hsl(20, 90%, 55%)",
+                500: "hsl(20, 90%, 50%)",
+                600: "hsl(20, 90%, 45%)",
+                700: "hsl(20, 90%, 35%)",
+                800: "hsl(20, 90%, 25%)",
+                900: "hsl(20, 90%, 15%)",
+              },
+              accent: {
+                50: "hsl(30, 85%, 95%)",
+                100: "hsl(30, 85%, 85%)",
+                200: "hsl(30, 85%, 75%)",
+                300: "hsl(30, 85%, 65%)",
+                400: "hsl(30, 85%, 60%)",
+                500: "hsl(30, 85%, 55%)",
+                600: "hsl(30, 85%, 50%)",
+                700: "hsl(30, 85%, 40%)",
+                800: "hsl(30, 85%, 30%)",
+                900: "hsl(30, 85%, 20%)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      .btn-interactive {
+        transition: all 0.2s ease-out;
+      }
+      .btn-interactive:hover {
+        transform: scale(1.05);
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .btn-interactive:active {
+        transform: scale(0.95);
+      }
+      .card-interactive {
+        transition: all 0.3s ease-out;
+        border: 1px solid transparent;
+        --border-lightness: 40%;
+      }
+      .dark .card-interactive {
+        --border-lightness: 60%;
+      }
+      .card-interactive:hover {
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        filter: brightness(0.98);
+      }
+      .card-interactive[class*="primary"]:hover,
+      .card-interactive[class*="white"]:hover,
+      .card-interactive[class*="gray-"]:hover {
+        border-color: hsl(20, 90%, var(--border-lightness));
+      }
+      .card-interactive[class*="accent"]:hover {
+        border-color: hsl(30, 85%, var(--border-lightness));
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.75rem;
+        border-bottom: 1px solid hsl(0, 0%, 90%);
+      }
+      .dark th,
+      .dark td {
+        border-bottom-color: hsl(0, 0%, 30%);
+      }
+      .moat-bar {
+        height: 10px;
+        border-radius: 5px;
+        background: hsl(0, 0%, 90%);
+        overflow: hidden;
+      }
+      .dark .moat-bar {
+        background: hsl(0, 0%, 30%);
+      }
+      .moat-fill {
+        height: 100%;
+        border-radius: 5px;
+        background: linear-gradient(
+          90deg,
+          hsl(20, 90%, 55%),
+          hsl(30, 85%, 55%)
+        );
+        transition: width 1.2s ease-out;
+      }
+      .risk-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      /* ===== 暗色模式全局对比度增强 ===== */
+      .dark body {
+        color: #f3f4f6;
+      }
+      .dark header nav a {
+        color: #e5e7eb !important;
+      }
+      .dark header nav a:hover {
+        color: hsl(20, 90%, 65%) !important;
+      }
+      /* 辅助灰色文字在暗色下调亮 */
+      .dark .text-gray-400,
+      .dark .text-gray-500 {
+        color: #9ca3af !important;
+      }
+      /* 表格文字强制可见 */
+      .dark table th {
+        color: #f3f4f6;
+      }
+      .dark table td {
+        color: #e5e7eb;
+      }
+      /* 卡片内灰色说明文字 */
+      .dark .text-gray-600 {
+        color: #d1d5db !important;
+      }
+      .dark .text-gray-700 {
+        color: #e5e7eb !important;
+      }
+    </style>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark");
+        const isDark = document.body.classList.contains("dark");
+        document.getElementById("sunIcon").style.display = isDark
+          ? "block"
+          : "none";
+        document.getElementById("moonIcon").style.display = isDark
+          ? "none"
+          : "block";
+      }
+    </script>
+  </head>
   <body
     class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen"
   >
@@ -65,65 +203,51 @@
           <h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">
             海底捞 06862.HK 经营分析
           </h1>
+          <!-- 桌面端导航 -->
           <nav class="hidden md:flex space-x-5">
-            <a
-              href="#model"
-              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >商业模式</a
-            >
-            <a
-              href="#moat"
-              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >护城河</a
-            >
-            <a
-              href="#industry"
-              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >行业趋势</a
-            >
-            <a
-              href="#financial"
-              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >财务状况</a
-            >
-            <a
-              href="#valuation"
-              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >估值</a
-            >
-            <a
-              href="#outlook"
-              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >展望</a
-            >
-            <a
-              href="#risk"
-              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >风险</a
-            >
-            <a
-              href="#longshort"
-              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >多空</a
-            >
+            <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
           </nav>
-          <button
-            onclick="toggleDarkMode()"
-            class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
-          >
-            <i
-              data-lucide="sun"
-              id="sunIcon"
-              class="w-5 h-5"
-              style="display: none"
-            ></i>
-            <i
-              data-lucide="moon"
-              id="moonIcon"
-              class="w-5 h-5"
-              style="display: block"
-            ></i>
-          </button>
+
+          <div class="flex items-center space-x-2">
+            <!-- 移动端汉堡菜单按钮 -->
+            <button
+              onclick="toggleMobileMenu()"
+              class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300"
+              aria-label="菜单"
+            >
+              <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+
+            <!-- 暗色模式切换 -->
+            <button
+              onclick="toggleDarkMode()"
+              class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+            >
+              <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+              <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 移动端下拉菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <nav class="flex flex-col space-y-3">
+            <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
         </div>
       </div>
     </header>
@@ -706,8 +830,9 @@
           </p>
 
           <!-- 收入与利润表 -->
-          <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8">
-          <!-- 表格内容保持不变 -->
+          <div
+            class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+          >
             <table
               class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
             >
@@ -890,16 +1015,26 @@
             </h3>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4">
               <div class="text-center">
-                <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">41.9%</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">ROE (TTM)</div>
+                <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">
+                  41.9%
+                </div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  ROE (TTM)
+                </div>
               </div>
               <div class="text-center">
-                <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">16.3%</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">ROA (TTM)</div>
+                <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">
+                  16.3%
+                </div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  ROA (TTM)
+                </div>
               </div>
               <div class="text-center">
-                <div class="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-400">1.22</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">流动比率</div>
+                <div class="text-3xl sm:text-4xl font-bold text-green-600">1.22</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  流动比率
+                </div>
               </div>
             </div>
             <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -1077,7 +1212,7 @@
               根据第三方估值平台Simply Wall
               St的DCF模型估算，海底捞的公允价值约在22–23港元区间，当前股价（约9.4–15港元区间）存在不同程度的折价。申万宏源基于DCF模型维持目标价17.3港元，国投证券基于DCF和同业比较给出15.3港元目标价。[reference:19][reference:20][reference:21]
             </p>
-            <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
               <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
                 <div
                   class="text-lg font-bold text-primary-600 dark:text-primary-400"
@@ -1652,10 +1787,9 @@
         lucide.createIcons();
         AOS.init({ duration: 800, once: true });
       });
-
-      function toggleMobileMenu() {
-        const menu = document.getElementById('mobileMenu');
-        menu.classList.toggle('hidden');
+            function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (menu) menu.classList.toggle("hidden");
       }
     </script>
   </body>
