@@ -98,6 +98,87 @@ th, td {
 .dark th, .dark td {
   border-bottom-color: hsl(0, 0%, 30%);
 }
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+  display: none;
+}
+
+#mobileMenu.mobile-menu-open {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  #mobileMenu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  header .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  header .flex.items-center.justify-between > h1 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    margin-right: 0.5rem;
+  }
+
+  #mobileMenu {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid rgba(20, 20, 20, 0.12);
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dark #mobileMenu {
+    border-top-color: rgba(255, 255, 255, 0.15);
+  }
+
+  #mobileMenu a {
+    display: block;
+    width: 100%;
+    padding: 0.7rem 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  #mobileMenu a:active {
+    background: rgba(20, 20, 20, 0.06);
+  }
+
+  .dark #mobileMenu a:active {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* 桌面端导航：明确指定亮色/暗色文字，避免 dark 模式下依赖继承导致不可见 */
+@media (min-width: 768px) {
+  header nav[aria-label="桌面端导航"] a {
+    color: #374151;
+  }
+
+  .dark header nav[aria-label="桌面端导航"] a {
+    color: #e5e7eb;
+  }
+
+  header nav[aria-label="桌面端导航"] a:hover {
+    color: hsl(20, 90%, 45%);
+  }
+
+  .dark header nav[aria-label="桌面端导航"] a:hover {
+    color: hsl(20, 90%, 55%);
+  }
+}
+
+/* 防止固定 Header 在展开移动菜单时被内容裁剪 */
+header {
+  overflow: visible;
+}
 </style>
 <script>
 function toggleDarkMode() {
@@ -116,19 +197,56 @@ document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
 <div class="max-w-7xl mx-auto px-6 py-4">
 <div class="flex items-center justify-between">
 <h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">海底捞体系全景解析</h1>
-    <nav class="hidden md:flex space-x-6">
-      <a href="#overview" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
-      <a href="#founder" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">创始人</a>
-      <a href="#capital" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
-      <a href="#equity" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
-      <a href="#companies" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
-      <a href="#employee" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
-      <a href="#summary" class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+    <!-- 桌面端导航 -->
+    <nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+      <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+      <a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">创始人</a>
+      <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+      <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+      <a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+      <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+      <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
     </nav>
-    <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all">
-      <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
-      <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
-    </button>
+
+    <!-- 右侧按钮 -->
+    <div class="flex items-center space-x-2 flex-shrink-0">
+      <!-- 移动端汉堡菜单 -->
+      <button
+        type="button"
+        onclick="toggleMobileMenu()"
+        class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        aria-label="打开或关闭导航菜单"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+        id="mobileMenuButton"
+      >
+        <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+      </button>
+
+      <!-- 暗色模式 -->
+      <button
+        type="button"
+        onclick="toggleDarkMode()"
+        class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        aria-label="切换暗色模式"
+      >
+        <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+        <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 移动端导航菜单 -->
+  <div id="mobileMenu" aria-hidden="true">
+    <nav class="flex flex-col space-y-1">
+      <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+      <a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">创始人</a>
+      <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+      <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+      <a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+      <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+      <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+    </nav>
   </div>
 </div>
 </header>
@@ -641,6 +759,47 @@ document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
 </footer>
 <!-- Scripts -->
 <script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+
+  if (!menu) return;
+
+  const isOpen = menu.classList.toggle('mobile-menu-open');
+
+  menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+
+  if (button) {
+    button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  if (icon) {
+    icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+    lucide.createIcons();
+  }
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+
+  if (!menu) return;
+
+  menu.classList.remove('mobile-menu-open');
+  menu.setAttribute('aria-hidden', 'true');
+
+  if (button) {
+    button.setAttribute('aria-expanded', 'false');
+  }
+
+  if (icon) {
+    icon.setAttribute('data-lucide', 'menu');
+    lucide.createIcons();
+  }
+}
+
 // Progress Bar
 window.addEventListener('scroll', () => {
 const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -652,6 +811,14 @@ document.getElementById('progressBar').style.width = scrolled + '%';
 document.addEventListener('DOMContentLoaded', function() {
   lucide.createIcons();
   AOS.init({ duration: 800, once: true });
+
+  // 点击移动端导航后自动收起菜单
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  });
+
   // Citation System
   let i = 1, map = new Map();
   document.querySelectorAll('[data-ref]').forEach(el => {
