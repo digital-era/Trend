@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>猫眼娱乐体系全景解析</title>
+<!-- Essential CDN Libraries -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -44,6 +45,7 @@ accent: {
 <script src="https://unpkg.com/lucide@latest"></script>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Micro-interactions & Custom Styles -->
 <style>
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
@@ -54,90 +56,213 @@ html { scroll-behavior: smooth; }
   }
   html { scroll-behavior: auto; }
 }
-.btn-interactive { transition: all 0.2s ease-out; }
-.btn-interactive:hover { transform: scale(1.05); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-.btn-interactive:active { transform: scale(0.95); }
-.card-interactive { transition: all 0.3s ease-out; border: 1px solid transparent; --border-lightness: 40%; }
-.dark .card-interactive { --border-lightness: 60%; }
-.card-interactive:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); filter: brightness(0.98); }
+.btn-interactive {
+  transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+  transform: scale(0.95);
+}
+.card-interactive {
+  transition: all 0.3s ease-out;
+  border: 1px solid transparent;
+  --border-lightness: 40%;
+}
+.dark .card-interactive {
+  --border-lightness: 60%;
+}
+.card-interactive:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  filter: brightness(0.98);
+}
 .card-interactive[class*="primary"]:hover,
 .card-interactive[class*="white"]:hover,
-.card-interactive[class*="gray-"]:hover { border-color: hsl(20, 90%, var(--border-lightness)); }
-.card-interactive[class*="accent"]:hover { border-color: hsl(30, 85%, var(--border-lightness)); }
-table { width: 100%; border-collapse: collapse; }
-th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid hsl(0, 0%, 90%); }
-.dark th, .dark td { border-bottom-color: hsl(0, 0%, 30%); }
-.moat-bar { height: 8px; border-radius: 4px; background: hsl(0, 0%, 90%); overflow: hidden; }
-.dark .moat-bar { background: hsl(0, 0%, 25%); }
-.moat-fill { height: 100%; border-radius: 4px; transition: width 1s ease-out; }
-#mobileMenu { display: none; }
-#mobileMenu.mobile-menu-open { display: block; }
-@media (min-width: 768px) { #mobileMenu { display: none !important; } }
-@media (max-width: 767px) {
-  header .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
-  header .flex.items-center.justify-between > h1 { font-size: 1rem; line-height: 1.25rem; white-space: nowrap; margin-right: 0.5rem; }
-  #mobileMenu { margin-top: 1rem; padding-top: 1rem; padding-bottom: 0.5rem; border-top: 1px solid rgba(20, 20, 20, 0.12); max-height: calc(100vh - 90px); overflow-y: auto; -webkit-overflow-scrolling: touch; }
-  .dark #mobileMenu { border-top-color: rgba(255, 255, 255, 0.15); }
-  #mobileMenu a { display: block; width: 100%; padding: 0.7rem 0.5rem; border-radius: 0.5rem; }
-  #mobileMenu a:active { background: rgba(20, 20, 20, 0.06); }
-  .dark #mobileMenu a:active { background: rgba(255, 255, 255, 0.08); }
+.card-interactive[class*="gray-"]:hover {
+  border-color: hsl(20, 90%, var(--border-lightness));
 }
+.card-interactive[class*="accent"]:hover {
+  border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th, .dark td {
+  border-bottom-color: hsl(0, 0%, 30%);
+}
+/* moat-bar 评分条 */
+.moat-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: hsl(0, 0%, 90%);
+  overflow: hidden;
+}
+.dark .moat-bar {
+  background: hsl(0, 0%, 25%);
+}
+.moat-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1s ease-out;
+}
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+  display: none;
+}
+
+#mobileMenu.mobile-menu-open {
+  display: block;
+}
+
 @media (min-width: 768px) {
-  header nav[aria-label="桌面端导航"] a { color: #374151; }
-  .dark header nav[aria-label="桌面端导航"] a { color: #e5e7eb; }
-  header nav[aria-label="桌面端导航"] a:hover { color: hsl(20, 90%, 45%); }
-  .dark header nav[aria-label="桌面端导航"] a:hover { color: hsl(20, 90%, 55%); }
+  #mobileMenu {
+    display: none !important;
+  }
 }
-header { overflow: visible; }
+
+@media (max-width: 767px) {
+  header .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  header .flex.items-center.justify-between > h1 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    margin-right: 0.5rem;
+  }
+
+  #mobileMenu {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid rgba(20, 20, 20, 0.12);
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dark #mobileMenu {
+    border-top-color: rgba(255, 255, 255, 0.15);
+  }
+
+  #mobileMenu a {
+    display: block;
+    width: 100%;
+    padding: 0.7rem 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  #mobileMenu a:active {
+    background: rgba(20, 20, 20, 0.06);
+  }
+
+  .dark #mobileMenu a:active {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* 桌面端导航 */
+@media (min-width: 768px) {
+  header nav[aria-label="桌面端导航"] a {
+    color: #374151;
+  }
+
+  .dark header nav[aria-label="桌面端导航"] a {
+    color: #e5e7eb;
+  }
+
+  header nav[aria-label="桌面端导航"] a:hover {
+    color: hsl(20, 90%, 45%);
+  }
+
+  .dark header nav[aria-label="桌面端导航"] a:hover {
+    color: hsl(20, 90%, 55%);
+  }
+}
+
+header {
+  overflow: visible;
+}
 </style>
 <script>
 function toggleDarkMode() {
-  document.body.classList.toggle('dark');
-  const isDark = document.body.classList.contains('dark');
-  document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
-  document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+document.body.classList.toggle('dark');
+const isDark = document.body.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
 }
 </script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
 <div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<!-- Floating Header -->
 <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
 <div class="max-w-7xl mx-auto px-6 py-4">
 <div class="flex items-center justify-between">
 <h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">猫眼娱乐体系全景解析</h1>
-<nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
-<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
-<a href="#management" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
-<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
-<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
-<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
-<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
-<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
-</nav>
-<div class="flex items-center space-x-2 flex-shrink-0">
-<button type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all" aria-label="打开或关闭导航菜单" aria-controls="mobileMenu" aria-expanded="false" id="mobileMenuButton">
-<i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
-</button>
-<button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all" aria-label="切换暗色模式">
-<i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
-<i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
-</button>
-</div>
-</div>
-<div id="mobileMenu" aria-hidden="true">
-<nav class="flex flex-col space-y-1">
-<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
-<a href="#management" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
-<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
-<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
-<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
-<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
-<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
-</nav>
-</div>
+    <!-- 桌面端导航 -->
+    <nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+      <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+      <a href="#management" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+      <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+      <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+      <a href="#related" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+      <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
+      <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+    </nav>
+
+    <!-- 右侧按钮 -->
+    <div class="flex items-center space-x-2 flex-shrink-0">
+      <button
+        type="button"
+        onclick="toggleMobileMenu()"
+        class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        aria-label="打开或关闭导航菜单"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+        id="mobileMenuButton"
+      >
+        <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+      </button>
+
+      <button
+        type="button"
+        onclick="toggleDarkMode()"
+        class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        aria-label="切换暗色模式"
+      >
+        <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+        <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 移动端导航菜单 -->
+  <div id="mobileMenu" aria-hidden="true">
+    <nav class="flex flex-col space-y-1">
+      <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+      <a href="#management" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+      <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+      <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+      <a href="#related" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+      <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
+      <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+    </nav>
+  </div>
 </div>
 </header>
-
+<!-- Main Content -->
 <main class="min-h-screen">
 <!-- Hero Section -->
 <section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
@@ -146,647 +271,694 @@ function toggleDarkMode() {
 猫眼娱乐体系全景解析
 </h2>
 <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-本页系统梳理猫眼娱乐（01896.HK）的核心治理与资本议题：以光线传媒为控股股东、腾讯与美团为战略股东的三方制衡格局，CEO郑志昊的管理层战略演进，公司股本从IPO至今的稳定结构，光线系家族信托与控股平台架构，关联交易规模与业务协同，以及以购股权和限制性股份单位为核心的市场化激励机制。通过把公司治理、股权结构、关联交易与激励机制放在同一框架内，帮助读者快速理解这家“内容+渠道”闭环型文娱平台的全貌。
+本页系统梳理了围绕猫眼娱乐（01896.HK）的核心议题：以郑志昊为核心的管理团队发展历程、公司股本结构变化、光线传媒主导的股权架构、猫眼微影体系下的关联企业关系，以及员工股权激励与薪酬机制。通过把公司治理、资本运作、经营表现与组织文化放在同一框架内，帮助你快速理解猫眼娱乐这家"科技+全文娱"服务提供商的整体面貌。
 </p>
-<div class="grid md:grid-cols-3 gap-6 mt-12">
-<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
-<div class="flex items-center space-x-4 mb-4">
-<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
-<i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
-</div>
-<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">管理层与战略</h3>
-</div>
-<p class="text-sm text-gray-700 dark:text-gray-300">
-郑志昊的“科技+全文娱”战略与光线系治理格局
-</p>
-</div>
-<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
-<div class="flex items-center space-x-4 mb-4">
-<div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
-<i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
-</div>
-<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与股权</h3>
-</div>
-<p class="text-sm text-gray-700 dark:text-gray-300">
-11.74亿股稳定结构、光线系41.81%控股权与腾讯/美团制衡
-</p>
-</div>
-<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
-<div class="flex items-center space-x-4 mb-4">
-<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
-<i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
-</div>
-<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">关联与激励</h3>
-</div>
-<p class="text-sm text-gray-700 dark:text-gray-300">
-光线系关联交易、腾猫联盟流量协同与市场化股权激励
-</p>
-</div>
-</div>
-</div>
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+            <i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">核心管理层</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">
+          郑志昊与王长田的战略分工与协同
+        </p>
+      </div>
+      <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+            <i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与股权</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">
+          总股本11.74亿股与光线系控制权
+        </p>
+      </div>
+      <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+            <i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">关联与激励</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">
+          猫眼微影体系与股权激励计划
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Section 1: 管理层发展 -->
+<!-- Section 1: 核心管理层发展 -->
 <section id="management" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
-<div class="max-w-5xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
-创始人及核心管理层发展：从美团孵化到“科技+全文娱”平台
-</h2>
-<div class="space-y-6">
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-猫眼娱乐的管理层结构并非由单一创始人主导，而是“光线系控制权 + 职业经理人运营 + 战略股东制衡”的复合模式。王长田作为董事会主席代表光线传媒的控股股东意志，郑志昊作为CEO负责日常战略执行，腾讯与美团则通过非执行董事席位参与治理。这一结构既保证了光线在内容端的战略协同，也保留了猫眼作为独立平台的市场化决策能力。
-</p>
-<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
-<i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-关键治理特征：猫眼董事会共有十一名董事，其中执行董事仅郑志昊一人；六名非执行董事中，光线系占三席，腾讯占两席，微影时代占一席。这一席位分配精确反映了“光线控盘、腾讯制衡、微影残余影响”的治理格局。
-</p>
-</div>
-<div class="grid md:grid-cols-2 gap-6 mt-8">
-<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
-<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">管理层关键人物</h3>
-<ul class="space-y-3">
-<li class="flex items-start space-x-3">
-<i data-lucide="user" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>王长田（董事会主席）：</strong>光线传媒创始人，自2016年7月起担任天津猫眼微影董事长，代表光线系行使控制权。持有Vibrant Wide Limited 100%股权，通过光线控股间接持有猫眼大量股份。</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="user" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>郑志昊（CEO）：</strong>原猫眼CEO，2017年猫眼与微影合并后继续担任CEO。2025年担任《飞驰人生3》等电影的出品人，持有Rhythm Brilliant Limited全资股权及1,237.46万份未行使购股权。</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="user" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>李晓萍、王牮、孙忠怀（非执行董事）：</strong>李晓萍与王牮代表光线系，孙忠怀代表腾讯。陈少晖（原美团代表）已于2026年5月辞任。</span>
-</li>
-</ul>
-</div>
-<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
-<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">发展历程关键节点</h3>
-<ul class="space-y-3">
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300">2012年：猫眼从美团电影孵化，为美团旗下在线票务平台</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300">2016年：光线传媒+光线控股出资47.83亿元收购猫眼57.4%股权，光线系成为控股股东</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300">2017年：猫眼与微影时代合并，同年与腾讯达成战略合作，成为微信及QQ钱包独家娱乐票务平台，成立“腾猫联盟”</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300">2019年2月：猫眼娱乐在香港联交所上市，发行价14.80港元</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="mt-8">
-<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">战略框架：“猫爪模型”与全文娱布局</h3>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-猫眼娱乐以“科技+全文娱”为战略定位，核心业务覆盖在线娱乐票务、内容制作与宣发、广告营销及现场娱乐。公司发布的“猫爪模型”以五大平台服务文娱产业链，与腾讯共同启动的“腾猫联盟”深化了在电影宣发领域的合作。
-</p>
-<div class="grid md:grid-cols-3 gap-4 mt-6">
-<div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-3">
-<i data-lucide="ticket" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
-<h4 class="font-semibold text-primary-700 dark:text-primary-300 text-sm">在线票务</h4>
-</div>
-<p class="text-xs text-gray-600 dark:text-gray-400">2025年在线电影票务市占率48.7%，在线售票占有率稳定超60%，线上出票占比87%以上</p>
-</div>
-<div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-3">
-<i data-lucide="film" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
-<h4 class="font-semibold text-accent-700 dark:text-accent-300 text-sm">内容宣发</h4>
-</div>
-<p class="text-xs text-gray-600 dark:text-gray-400">主要项目电影发行市占率超50%，2025年参投及发行多部头部影片</p>
-</div>
-<div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-3">
-<i data-lucide="music" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
-<h4 class="font-semibold text-primary-700 dark:text-primary-300 text-sm">现场娱乐</h4>
-</div>
-<p class="text-xs text-gray-600 dark:text-gray-400">现场活动业务成为第二增长曲线，带动收入及利润扩张</p>
-</div>
-</div>
-</div>
-<div class="mt-8">
-<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">管理层能力评估</h3>
-<div class="space-y-4">
-<div>
-<div class="flex justify-between mb-1">
-<span class="text-sm text-gray-700 dark:text-gray-300">内容选品与发行能力</span>
-<span class="text-sm font-semibold text-primary-600 dark:text-primary-400">85%</span>
-</div>
-<div class="moat-bar"><div class="moat-fill bg-primary-500" style="width: 85%;"></div></div>
-</div>
-<div>
-<div class="flex justify-between mb-1">
-<span class="text-sm text-gray-700 dark:text-gray-300">流量入口获取能力（腾讯+美团）</span>
-<span class="text-sm font-semibold text-accent-600 dark:text-accent-400">90%</span>
-</div>
-<div class="moat-bar"><div class="moat-fill bg-accent-500" style="width: 90%;"></div></div>
-</div>
-<div>
-<div class="flex justify-between mb-1">
-<span class="text-sm text-gray-700 dark:text-gray-300">业务多元化执行效率</span>
-<span class="text-sm font-semibold text-primary-600 dark:text-primary-400">72%</span>
-</div>
-<div class="moat-bar"><div class="moat-fill bg-primary-400" style="width: 72%;"></div></div>
-</div>
-<div>
-<div class="flex justify-between mb-1">
-<span class="text-sm text-gray-700 dark:text-gray-300">股东利益协调与治理平衡</span>
-<span class="text-sm font-semibold text-accent-600 dark:text-accent-400">78%</span>
-</div>
-<div class="moat-bar"><div class="moat-fill bg-accent-500" style="width: 78%;"></div></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+      核心管理层：郑志昊与王长田的双核驱动
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        猫眼娱乐的管理架构呈现"董事长+CEO"的双核模式：王长田作为董事长负责战略方向与资本运作，郑志昊作为首席执行官负责日常经营与业务执行。这一架构自2017年猫眼微影合并以来基本保持稳定，并在2026年继续发挥战略引领作用。
+      </p>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          关键背景：2017年猫眼与微影时代合并后，王长田担任董事长，原猫眼CEO郑志昊继续担任CEO，光线系与管理层形成稳定的治理格局。
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">郑志昊：首席执行官</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">主导"科技+全文娱"核心战略，持续巩固电影宣发领先优势</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">推动演出票务、IP运营及AI技术在影视行业的应用</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">担任提名委员会及薪酬委员会成员</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">王长田：董事长</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">光线传媒创始人，通过多层持股实际控制猫眼约41.45%表决权</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">主导战略投资与行业资源整合，主导资本运作方向</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">与郑志昊形成"战略-执行"高效分工</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+          2026年战略重点与近期动态
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          2026年，猫眼娱乐面临电影市场阶段性承压的挑战。上半年全国电影总票房173.56亿元，同比下降40.6%；观影人次4.21亿，同比下降34.3%。在此背景下，公司管理层明确了三大战略方向：持续巩固电影内容及宣发服务的领先优势、加大演出业务投入、积极发展IP运营等新业务，并进一步探索AI技术在影视行业的应用。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          尽管短期业绩承压，公司主控发行影片28部、票房覆盖率创历史同期新高，春节档主控宣发的《飞驰人生3》以44.2亿元成为档期冠军，延续主控发行影片连续六年稳居春节档前两名的成绩。
+        </p>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md mt-6">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">管理层能力评估</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">战略执行力</span>
+                <span class="text-sm font-semibold text-accent-600 dark:text-accent-400">85 / 100</span>
+              </div>
+              <div class="moat-bar">
+                <div class="moat-bar-fill bg-accent-500" style="width: 85%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">行业资源整合</span>
+                <span class="text-sm font-semibold text-accent-600 dark:text-accent-400">90 / 100</span>
+              </div>
+              <div class="moat-bar">
+                <div class="moat-bar-fill bg-accent-500" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">逆境应对能力</span>
+                <span class="text-sm font-semibold text-accent-600 dark:text-accent-400">72 / 100</span>
+              </div>
+              <div class="moat-bar">
+                <div class="moat-bar-fill bg-accent-500" style="width: 72%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">新业务拓展</span>
+                <span class="text-sm font-semibold text-accent-600 dark:text-accent-400">78 / 100</span>
+              </div>
+              <div class="moat-bar">
+                <div class="moat-bar-fill bg-accent-500" style="width: 78%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Section 2: 股本数量变化 -->
 <section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
-<div class="max-w-5xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
-股本数量变化：IPO以来的稳定结构与期权微量稀释
-</h2>
-<div class="space-y-6">
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-猫眼娱乐自2019年2月上市以来，总股本结构高度稳定。公司法定股本维持25亿股普通股，面值每股0.00002美元，注册股本总额50,000美元。截至2026年9月30日，已发行股份总数为11.74亿股，库藏股数量为0，报告期间未发生新增发行、购回或注销行为。唯一的股本增量来源是购股权行使带来的微量发行，但规模极小，对总股本的影响可以忽略。
-</p>
-<div class="grid md:grid-cols-2 gap-6 mt-8">
-<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">股本关键数据</h3>
-<table class="text-sm">
-<thead><tr><th class="text-gray-600 dark:text-gray-400 font-medium">项目</th><th class="text-gray-600 dark:text-gray-400 font-medium">数据</th></tr></thead>
-<tbody>
-<tr><td class="text-gray-700 dark:text-gray-300">已发行股份总数（2026年9月）</td><td class="font-semibold text-primary-600 dark:text-primary-400">1,174,142,157股</td></tr>
-<tr><td class="text-gray-700 dark:text-gray-300">法定/注册股本</td><td class="font-semibold text-primary-600 dark:text-primary-400">USD 50,000</td></tr>
-<tr><td class="text-gray-700 dark:text-gray-300">股票面值</td><td class="font-semibold text-primary-600 dark:text-primary-400">USD 0.00002</td></tr>
-<tr><td class="text-gray-700 dark:text-gray-300">库藏股数量</td><td class="font-semibold text-primary-600 dark:text-primary-400">0股</td></tr>
-<tr><td class="text-gray-700 dark:text-gray-300">未行使购股权数量</td><td class="font-semibold text-primary-600 dark:text-primary-400">19,574,659份</td></tr>
-</tbody>
-</table>
-</div>
-<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">股本变动时间线</h3>
-<ul class="space-y-4">
-<li class="flex items-start space-x-3">
-<div class="flex-shrink-0 w-8 h-8 bg-accent-100 dark:bg-accent-900/30 rounded-full flex items-center justify-center text-xs font-bold text-accent-600 dark:text-accent-400">1</div>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2019年2月</strong>：IPO发行约7.5亿股，上市价14.80港元，总股本约9.3亿股</span>
-</li>
-<li class="flex items-start space-x-3">
-<div class="flex-shrink-0 w-8 h-8 bg-accent-100 dark:bg-accent-900/30 rounded-full flex items-center justify-center text-xs font-bold text-accent-600 dark:text-accent-400">2</div>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2019-2025年</strong>：总股本逐步增长至约11.51亿股，主要来自购股权行使的微量发行</span>
-</li>
-<li class="flex items-start space-x-3">
-<div class="flex-shrink-0 w-8 h-8 bg-accent-100 dark:bg-accent-900/30 rounded-full flex items-center justify-center text-xs font-bold text-accent-600 dark:text-accent-400">3</div>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2026年8月</strong>：股本增至1,174,142,157股，主要来自2026年8月31日授出530万份购股权后的行使</span>
-</li>
-<li class="flex items-start space-x-3">
-<div class="flex-shrink-0 w-8 h-8 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center text-xs font-bold text-primary-600 dark:text-primary-400">4</div>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2026年9月</strong>：股本保持稳定，无购回或注销行为</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
-<i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>股份回购授权：</strong>公司股东周年大会持续授予董事会一般及无条件授权，回购不超过已发行股份总数10%的股份。截至2026年9月，该授权尚未被实际使用，库藏股数量为0，表明管理层倾向于保持股本稳定而非通过回购缩股。
-</p>
-</div>
-<div class="mt-8">
-<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">市值与估值关键指标</h3>
-<div class="grid md:grid-cols-4 gap-4">
-<div class="card-interactive p-4 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md text-center">
-<p class="text-xs text-gray-500 dark:text-gray-400 mb-1">2025年营收</p>
-<p class="text-xl font-bold text-primary-600 dark:text-primary-400">46.31亿元</p>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">同比+13.5%</p>
-</div>
-<div class="card-interactive p-4 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md text-center">
-<p class="text-xs text-gray-500 dark:text-gray-400 mb-1">2025年净利润</p>
-<p class="text-xl font-bold text-primary-600 dark:text-primary-400">5.63亿元</p>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">同比+209.6%</p>
-</div>
-<div class="card-interactive p-4 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md text-center">
-<p class="text-xs text-gray-500 dark:text-gray-400 mb-1">经调整溢利净额</p>
-<p class="text-xl font-bold text-accent-600 dark:text-accent-400">6.77亿元</p>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">同比+118.7%</p>
-</div>
-<div class="card-interactive p-4 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md text-center">
-<p class="text-xs text-gray-500 dark:text-gray-400 mb-1">末期股息</p>
-<p class="text-xl font-bold text-accent-600 dark:text-accent-400">0.22港元/股</p>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">超出20%派息目标</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+      股本数量变化：从IPO到回购计划
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        猫眼娱乐自2019年2月在香港联交所上市以来，总股本整体保持稳定。截至2026年10月9日，公司已发行股本为1,174,142,157股，法定股本为2,500,000,000股（每股面值0.00002美元），总市值约44.73亿港元。2026年的主要股本动态体现为频繁的股权激励行使带来的微幅增加，以及公司首次推出的大规模股份回购计划。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">股本关键节点</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2019年2月IPO上市，法定股本25亿股</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2026年股权激励持续行使，已发行股本从约11.62亿股微增至11.74亿股</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2026年10月推出不超过2.5亿港元的股份回购计划</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026年10月回购计划概览</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">回购上限</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">1.16亿股</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">占已发行股本</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约10%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">动用资金上限</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">2.5亿港元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">资金来源</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">现有现金储备及自由现金流</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">股本变动关键事件表</h3>
+        <div class="overflow-x-auto card-interactive bg-white/90 dark:bg-gray-900 rounded-xl shadow-md p-1">
+          <table>
+            <thead>
+              <tr class="bg-primary-50 dark:bg-primary-900/30">
+                <th class="text-sm font-semibold text-primary-700 dark:text-primary-300">时间</th>
+                <th class="text-sm font-semibold text-primary-700 dark:text-primary-300">事件</th>
+                <th class="text-sm font-semibold text-primary-700 dark:text-primary-300">已发行股本</th>
+                <th class="text-sm font-semibold text-primary-700 dark:text-primary-300">备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-sm text-gray-700 dark:text-gray-300">2019年2月</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">港交所IPO</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">约11.27亿股</td>
+                <td class="text-sm text-gray-600 dark:text-gray-400">首发上市，法定股本25亿股</td>
+              </tr>
+              <tr>
+                <td class="text-sm text-gray-700 dark:text-gray-300">2026年1月</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">购股权行使</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">约11.62亿股</td>
+                <td class="text-sm text-gray-600 dark:text-gray-400">新增2,000股行使</td>
+              </tr>
+              <tr>
+                <td class="text-sm text-gray-700 dark:text-gray-300">2026年5月</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">股权激励行使</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">约11.62亿股</td>
+                <td class="text-sm text-gray-600 dark:text-gray-400">微幅增长</td>
+              </tr>
+              <tr>
+                <td class="text-sm text-gray-700 dark:text-gray-300">2026年10月</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">股份回购计划</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">约11.74亿股</td>
+                <td class="text-sm text-gray-600 dark:text-gray-400">拟回购最多1.16亿股</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          市场反应：2026年10月5日回购计划公告后，猫眼娱乐股价反弹近5%，触及3.6港元的历史低点后出现企稳迹象。董事会认为股份现行成交价未能反映内在价值及实际业务前景。
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Section 3: 股权结构变化 -->
 <section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
-<div class="max-w-5xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
-股权结构变化：光线系控盘、腾讯美团制衡的三方格局
-</h2>
-<div class="space-y-6">
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-猫眼娱乐的股权结构自2017年猫眼与微影合并后基本定型，形成“光线系控股 + 腾讯战略持股 + 美团战略持股”的三方格局。光线系通过直接持股和关联方合计持有约41.81%的股份，为单一最大股东集团；腾讯持股约13.65%，美团旗下Inspired Elite Investments持有约7.14%。这一结构既保证了光线对猫眼的战略控制，也赋予了腾讯和美团在流量入口和支付场景上的深度绑定。
-</p>
-<div class="grid md:grid-cols-2 gap-6 mt-8">
-<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
-<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">主要股东持股结构（截至2025年10月）</h3>
-<table class="text-sm">
-<thead><tr><th class="text-gray-600 dark:text-gray-400 font-medium">股东</th><th class="text-gray-600 dark:text-gray-400 font-medium">持股量（股）</th><th class="text-gray-600 dark:text-gray-400 font-medium">持股比例</th></tr></thead>
-<tbody>
-<tr><td class="text-gray-700 dark:text-gray-300 font-medium">王长田及关连人士（光线系）</td><td class="text-gray-700 dark:text-gray-300">485,859,409</td><td class="font-semibold text-accent-600 dark:text-accent-400">41.81%</td></tr>
-<tr><td class="text-gray-700 dark:text-gray-300 font-medium">腾讯控股</td><td class="text-gray-700 dark:text-gray-300">157,169,260</td><td class="font-semibold text-accent-600 dark:text-accent-400">13.65%</td></tr>
-<tr><td class="text-gray-700 dark:text-gray-300 font-medium">Inspired Elite（美团）</td><td class="text-gray-700 dark:text-gray-300">82,693,975</td><td class="font-semibold text-accent-600 dark:text-accent-400">7.14%</td></tr>
-<tr><td class="text-gray-700 dark:text-gray-300 font-medium">FountainVest（方源资本）</td><td class="text-gray-700 dark:text-gray-300">66,127,317</td><td class="font-semibold text-accent-600 dark:text-accent-400">5.74%</td></tr>
-</tbody>
-</table>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">数据来源：港交所权益披露及公司年报</p>
-</div>
-<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
-<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">光线系控股平台架构</h3>
-<ul class="space-y-3">
-<li class="flex items-start space-x-3">
-<i data-lucide="git-branch" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>Vibrant Wide Limited：</strong>王长田100%持股，直接持有277,979,625股</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="git-branch" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>香港影业国际有限公司：</strong>光线传媒全资附属，持有201,974,784股（2025年末）</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="git-branch" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>光线传媒（300251.SZ）：</strong>直接持有5,905,000股</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="shield" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>控制链条：</strong>王长田→光线控股（95%）→光线传媒（37.4%）→香港影业国际→猫眼娱乐</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="mt-8">
-<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">腾讯与美团的持股实体与战略意义</h3>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-腾讯通过全资附属公司意像之旅投资（香港）有限公司持有157,169,260股，占已发行股份约13.65%。美团则通过Inspired Elite Investments Limited持有82,693,975股，该实体由王兴作为委托人的家族信托通过Songtao Limited最终控制，TMF (Cayman) Ltd.为受托人。
-</p>
-<div class="grid md:grid-cols-2 gap-6 mt-6">
-<div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-3">
-<i data-lucide="message-circle" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
-<h4 class="font-semibold text-accent-700 dark:text-accent-300 text-sm">腾讯：流量与支付入口</h4>
-</div>
-<p class="text-xs text-gray-600 dark:text-gray-400">猫眼是微信支付及QQ钱包入口内置的少数娱乐票务平台之一，腾讯亦是“腾猫联盟”的核心合作方，在电影宣发体系上深度协同</p>
-</div>
-<div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-3">
-<i data-lucide="shopping-bag" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
-<h4 class="font-semibold text-primary-700 dark:text-primary-300 text-sm">美团：本地生活场景协同</h4>
-</div>
-<p class="text-xs text-gray-600 dark:text-gray-400">猫眼是美团点评应用程序及大众点评的娱乐票务合作平台，借助美团在本地生活服务的流量优势获取用户</p>
-</div>
-</div>
-</div>
-<div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
-<i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>控制权稳定性评估：</strong>光线系41.81%的持股比例远超30%的控股门槛，且王长田通过多层控股平台实现稳固控制。腾讯和美团虽为重要战略股东，但合计持股约20.79%，不足以挑战光线系的控制地位。三方在流量、内容和票务上的互补关系使得股权结构具有内在稳定性，预计中短期不会出现控制权变动。
-</p>
-</div>
-</div>
-</div>
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+      股权结构变化：光线系主导的集中控制
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        猫眼娱乐的股权结构以光线传媒为核心，通过光线控股与光线传媒两家主体合计控制较高比例股权。王长田作为光线传媒创始人，通过多层持股实际控制猫眼约41.45%表决权，主导公司战略决策。2026年，美团系投资平台完成减持，持股比例降至4.23%，正式退出5%以上主要股东行列。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">主要股东持股结构</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">光线控股</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约47.02%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">光线传媒（含香港影业国际）</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约16.81%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">美团系（上海汉涛）</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约4.23%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">其他公众股东</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约31.94%</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2025-2026年股权调整</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2025年：光线传媒通过全资香港子公司间接持有猫眼16.81%</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2026年8月：美团系完成减持，持股从6%降至4.23%</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2026年9月：光线传媒在公开市场增持180.24万股，均价7.96港元</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          股权结构演变时间线
+        </h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-3 h-3 mt-1.5 rounded-full bg-primary-500"></div>
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">2017年：猫眼微影合并</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">光线传媒参股子公司猫眼与微影时代合并，光线传媒持股比例从30.11%降至19.83%，光线系合计控制约50.79%。</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-3 h-3 mt-1.5 rounded-full bg-primary-500"></div>
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">2019年：港股上市</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">猫眼娱乐在联交所主板上市，光线系为第一大股东，腾讯、美团为主要战略股东。</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-3 h-3 mt-1.5 rounded-full bg-accent-500"></div>
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">2025年：光线传媒增持</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">光线传媒通过全资子公司香港影业国际增持，持股达16.81%。</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-3 h-3 mt-1.5 rounded-full bg-accent-500"></div>
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-gray-800 dark:text-gray-200">2026年：美团系减持</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">美团旗下上海汉涛减持5191.31万股，套现约6.38亿元，持股降至4.23%，正式退出5%以上主要股东行列。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          控制权稳定性分析
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          尽管美团系在2026年完成减持，但光线系对猫眼的控制权并未动摇。王长田通过光线控股和光线传媒合计控制约41.45%表决权，在董事会层面占据主导地位。光线传媒在2026年9月主动增持180.24万股，均价7.96港元，彰显了控股股东对公司长期价值的信心。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          从董事会构成看，猫眼娱乐董事会包括执行董事郑志昊（CEO），非执行董事王长田（董事长）、李晓萍、王牮、孙忠怀，以及独立非执行董事汪华、陈尚伟、尹红、刘琳。光线系在董事会中占据多数席位，确保战略决策的主导权。
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Section 4: 关联上市公司/企业关系 -->
-<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
-<div class="max-w-6xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
-关联上市公司与企业关系：光线系的“内容+渠道”闭环
-</h2>
-<div class="space-y-6">
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-猫眼娱乐本身是港股上市公司，但其核心关联关系围绕A股上市公司光线传媒（300251.SZ）展开。二者属于同一实际控制人王长田，光线系是猫眼的控股股东，光线传媒负责影视内容出品，猫眼负责电影票务与宣发渠道，形成“内容+发行渠道”的上下游组合。此外，腾讯和美团作为战略股东，通过流量入口和支付场景与猫眼形成业务协同，但不构成关联交易意义上的控制关系。
-</p>
-<div class="grid md:grid-cols-2 gap-6 mt-8">
-<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-4">
-<div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
-<i data-lucide="clapperboard" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
-</div>
-<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">光线传媒（300251.SZ）</h3>
-</div>
-<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">猫眼娱乐的控股股东及核心内容合作方</p>
-<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-<li>2025年营收40.4亿元，同比+154.8%</li>
-<li>2025年归母净利润16.72亿元，同比+472.62%</li>
-<li>《哪吒之魔童闹海》票房154亿元，2025H1营收32.42亿元</li>
-<li>与猫眼签署《IP衍生业务合作框架协议》，有效期至2027年底</li>
-</ul>
-</div>
-<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-4">
-<div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
-<i data-lucide="link" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
-</div>
-<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">腾讯控股（00700.HK）</h3>
-</div>
-<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">战略股东与流量入口合作方</p>
-<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-<li>持股约13.65%，为第二大股东</li>
-<li>猫眼是微信支付及QQ钱包内置娱乐票务平台</li>
-<li>“腾猫联盟”共同打造电影行业宣发体系</li>
-<li>非执行董事孙忠怀代表腾讯参与猫眼治理</li>
-</ul>
-</div>
-</div>
-<div class="grid md:grid-cols-2 gap-6 mt-6">
-<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-4">
-<div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
-<i data-lucide="store" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
-</div>
-<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">美团（03690.HK）</h3>
-</div>
-<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">战略股东与本地生活场景合作方</p>
-<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-<li>通过Inspired Elite持股约7.14%</li>
-<li>猫眼是美团及大众点评的娱乐票务合作平台</li>
-<li>王兴通过家族信托控制Inspired Elite，陈少晖（原美团代表）已于2026年5月辞任猫眼非执行董事</li>
-</ul>
-</div>
-<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-4">
-<div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
-<i data-lucide="handshake" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
-</div>
-<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">微影时代（历史关联）</h3>
-</div>
-<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">已合并入猫眼体系的原竞争对手</p>
-<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-<li>2017年猫眼与微影时代合并，微影原股东通过微影持有猫眼股份</li>
-<li>林宁曾任猫眼副董事长，微影时代占据一席非执行董事</li>
-<li>微影的合并在早期显著扩大了猫眼的用户基础和市场份额</li>
-</ul>
-</div>
-</div>
-<div class="mt-8">
-<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">关联交易分析：光线系IP衍生合作</h3>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-猫眼与光线传媒之间最核心的关联交易是IP衍生业务合作。2026年3月，双方签署《IP衍生业务合作框架协议》，在IP衍生品开发销售及现场娱乐业务活动等领域展开合作，协议有效期至2027年12月31日。
-</p>
-<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
-<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">光线传媒与猫眼娱乐关联交易规模</h3>
-<table class="text-sm">
-<thead><tr><th class="text-gray-600 dark:text-gray-400 font-medium">年度</th><th class="text-gray-600 dark:text-gray-400 font-medium">关联交易金额（万元）</th><th class="text-gray-600 dark:text-gray-400 font-medium">主要交易内容</th></tr></thead>
-<tbody>
-<tr><td class="text-gray-700 dark:text-gray-300">2023年</td><td class="font-semibold text-accent-600 dark:text-accent-400">6,006.89</td><td class="text-gray-600 dark:text-gray-400">IP衍生品开发销售及现场娱乐</td></tr>
-<tr><td class="text-gray-700 dark:text-gray-300">2024年</td><td class="font-semibold text-accent-600 dark:text-accent-400">11,050.35</td><td class="text-gray-600 dark:text-gray-400">IP衍生品开发销售及现场娱乐</td></tr>
-<tr><td class="text-gray-700 dark:text-gray-300">2025年</td><td class="font-semibold text-accent-600 dark:text-accent-400">6,787.55</td><td class="text-gray-600 dark:text-gray-400">IP衍生品开发销售及现场娱乐</td></tr>
-</tbody>
-</table>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">数据来源：光线传媒公告</p>
-</div>
-</div>
-<div class="mt-8">
-<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">业务协同与潜在风险</h3>
-<div class="space-y-4">
-<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
-<i data-lucide="check-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>协同优势：</strong>光线传媒的内容制作能力（尤其是动画IP，如《哪吒》系列）与猫眼的票务分发和宣发渠道形成“内容+渠道”闭环。猫眼约六成电影用户数据帮助光线提升选片和发行成功率，光线的头部IP则通过猫眼的衍生品平台实现价值延伸。
-</p>
-</div>
-<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
-<i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>潜在风险：</strong>关联交易规模波动较大（2024年1.1亿元 vs 2025年6,787万元），可能反映IP衍生业务尚处于探索期。此外，猫眼对光线内容供应的依赖度较高，若光线头部项目周期波动，可能间接影响猫眼的发行收入。投资者需关注关联交易定价的公允性以及猫眼第三方内容获取能力的建设进展。
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section id="related" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+      关联企业关系：猫眼微影体系与光线生态
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        猫眼娱乐通过2017年与微影时代的合并，构建了完整的"猫眼微影"体系，涵盖电影票务、演出业务、电影投资宣发等核心业务。同时，作为光线传媒的重要参股公司，猫眼与光线传媒在IP开发、影片投资、宣传发行等领域保持深度协同。
+      </p>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">猫眼微影（核心运营主体）</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">电影票务、演出业务、电影投资宣发</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>2017年由猫眼与微影时代合并组建</li>
+            <li>天津猫眼微影文化传媒持股100%</li>
+            <li>北京猫眼文化传媒、天津猫眼影业等均为全资子公司</li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="film" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">光线传媒 (300251.SZ)</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">控股股东，IP内容与宣发协同</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>通过香港影业国际间接持股约16.81%</li>
+            <li>2025年与猫眼签署IP衍生业务合作框架协议</li>
+            <li>光线控股合计控制约47.02%</li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">其他关联方</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">腾讯、美团等战略股东</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>腾讯为重要股东，提供微信入口资源</li>
+            <li>美团系2026年减持后持股约4.23%</li>
+            <li>微光时代等子公司负责特定业务板块</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          猫眼微影合并的里程碑意义
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          2017年9月，猫眼与微影时代宣布合并，组建新公司"猫眼微影"。交易完成后，微格时代和瑞海方圆成为猫眼全资子公司，微影时代和林芝利新成为猫眼股东。猫眼获得电影、演出和赛事的微信入口资源，微影时代则彻底离开在线票务市场。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          此次合并奠定了猫眼在中国在线票务市场的龙头地位。合并后新公司整体估值超过200亿元，光线、微影、腾讯、美团点评成为主要直接股东。光线传媒董事长王长田担任新公司董事长，原猫眼CEO郑志昊担任CEO。
+        </p>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          关联交易与业务协同
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+            <h4 class="text-base font-semibold text-primary-700 dark:text-primary-300 mb-3">IP衍生业务合作</h4>
+            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              2025年，猫眼与光线传媒签署IP衍生业务合作框架协议，双方在IP开发、衍生品运营等领域展开深度合作。光线传媒丰富的影视IP资源与猫眼的平台运营能力形成互补，共同拓展IP变现路径。
+            </p>
+          </div>
+          <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+            <h4 class="text-base font-semibold text-accent-700 dark:text-accent-300 mb-3">物业租赁与协同办公</h4>
+            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+              光线传媒与猫眼微影之间存在物业租赁关联交易。2026年4月，光线传媒旗下北京棫霖与北京猫眼微影签署房屋租赁合同，基于双方业务合作与协同发展需要，实现办公资源的有效利用。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          协同风险提示：猫眼与光线传媒之间的关联交易需关注定价公允性。同时，光线传媒作为A股上市公司，其与猫眼之间的关联交易需遵守深交所信息披露规则，猫眼方面也需遵守港交所上市规则中的关联交易条款。
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Section 5: 员工持股与激励机制 -->
 <section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
-<div class="max-w-5xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
-员工持股与激励机制：市场化购股权与限制性股份单位
-</h2>
-<div class="space-y-6">
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-猫眼娱乐作为科技驱动型文娱平台，其员工激励体系高度市场化，核心工具是首次公开发售后购股权计划和受限制股份单位（RSU）。与海底捞的师徒制虚拟分红不同，猫眼的激励更接近典型互联网公司的做法：以期权/RSU绑定核心员工与股东利益，归属期通常为四年，附带追索和没收条款。
-</p>
-<div class="grid md:grid-cols-2 gap-6 mt-8">
-<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
-<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">购股权计划</h3>
-<ul class="space-y-3">
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2026年8月授出：</strong>向合资格员工授出530万份购股权，行使价4.345港元，有效期十年</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>归属安排：</strong>四年逐步归属，每年归属25%</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>CEO激励：</strong>郑志昊持有2021年授出的237.46万份及2025年授出的1,000万份购股权，截至2025年末尚未行使</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>剩余额度：</strong>计划下剩余可用股份约307.55万股</span>
-</li>
-</ul>
-</div>
-<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
-<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">受限制股份单位（RSU）</h3>
-<ul class="space-y-3">
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2026年7月授出：</strong>向雇员参与者授出1,312,505份RSU，占已发行股份约0.113%</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>归属周期：</strong>四年归属期</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>追索条款：</strong>若存在不当行为或终止雇佣，公司可追回已授出的RSU</span>
-</li>
-<li class="flex items-start space-x-3">
-<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
-<span class="text-sm text-gray-700 dark:text-gray-300"><strong>绩效挂钩：</strong>购股权不附带绩效指标，公司认为有助于激励员工并绑定股东利益</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="mt-8">
-<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">薪酬与绩效考核体系</h3>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-猫眼董事会下设薪酬委员会，由独立非执行董事汪华担任主席，成员包括郑志昊、刘琳。薪酬委员会负责检讨本集团薪酬政策及待遇，包括评估个人表现、奖励的吸引力、人才挽留及激励效果，并参照董事会的企业目标及宗旨检视高级管理层薪酬建议。本集团薪酬政策基于雇员的职位、职责和表现，薪酬构成可能包括薪金、奖金及各种补贴。
-</p>
-<div class="grid md:grid-cols-3 gap-4 mt-6">
-<div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-3">
-<i data-lucide="award" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
-<h4 class="font-semibold text-primary-700 dark:text-primary-300 text-sm">核心高管</h4>
-</div>
-<p class="text-xs text-gray-600 dark:text-gray-400">购股权 + RSU + 基本薪金 + 奖金，长期激励占比高，与股价表现强绑定</p>
-</div>
-<div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-3">
-<i data-lucide="users" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
-<h4 class="font-semibold text-accent-700 dark:text-accent-300 text-sm">中层骨干</h4>
-</div>
-<p class="text-xs text-gray-600 dark:text-gray-400">购股权 + 绩效奖金 + 岗位晋升，2026年8月向“若干雇员参与者”授出530万份购股权，覆盖面较广</p>
-</div>
-<div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
-<div class="flex items-center space-x-3 mb-3">
-<i data-lucide="heart" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
-<h4 class="font-semibold text-primary-700 dark:text-primary-300 text-sm">基层员工</h4>
-</div>
-<p class="text-xs text-gray-600 dark:text-gray-400">绩效奖金 + 弹性工作 + 技能培训 + 岗位晋升，招聘信息显示扁平化管理与技能培训为特色</p>
-</div>
-</div>
-</div>
-<div class="mt-8">
-<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">激励效果与潜在矛盾</h3>
-<div class="space-y-4">
-<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
-<i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>激励优势：</strong>购股权和RSU将员工利益与股东价值直接绑定，四年归属期有助于核心团队稳定。2026年8月的购股权授出覆盖“若干雇员参与者”而非仅限高管，体现了较广的激励覆盖范围。RSU的追索条款则强化了合规约束。
-</p>
-</div>
-<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
-<i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>潜在矛盾：</strong>购股权行使价4.345港元（2026年8月）与当前股价（约4.43港元）接近，若股价长期低迷，期权可能沦为“水下期权”，激励效果将显著下降。此外，期权不附带绩效指标，在业绩不达预期时仍可因股价波动获益，长期可能引发股东对激励公平性的质疑。
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+      员工持股与激励机制：股权激励与绩效体系
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        猫眼娱乐建立了以购股权计划和受限制股份单位计划为核心的员工激励体系，通过股权绑定核心员工利益与公司长期发展。2026年，公司分别在7月和8月向员工授出受限制股份单位和购股权，体现了公司持续通过股权激励留住人才的策略。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">2026年7月：受限制股份单位</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">授出数量：1,312,505份受限制股份单位</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">占已发行股份总数约0.113%</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">购买价为零，25%于四年内每个周年日归属</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026年8月：购股权计划</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">授出数量：5,300,000份购股权</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">行使价：每股4.345港元</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">有效期十年，四年归属期（每年25%）</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+          股权激励计划核心条款对比
+        </h3>
+        <div class="overflow-x-auto card-interactive bg-white/90 dark:bg-gray-900 rounded-xl shadow-md p-1">
+          <table>
+            <thead>
+              <tr class="bg-primary-50 dark:bg-primary-900/30">
+                <th class="text-sm font-semibold text-primary-700 dark:text-primary-300">激励工具</th>
+                <th class="text-sm font-semibold text-primary-700 dark:text-primary-300">授出日期</th>
+                <th class="text-sm font-semibold text-primary-700 dark:text-primary-300">授出数量</th>
+                <th class="text-sm font-semibold text-primary-700 dark:text-primary-300">行使价/购买价</th>
+                <th class="text-sm font-semibold text-primary-700 dark:text-primary-300">归属安排</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-sm text-gray-700 dark:text-gray-300">受限制股份单位</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">2026年7月20日</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">131.25万份</td>
+                <td class="text-sm text-gray-600 dark:text-gray-400">零购买价</td>
+                <td class="text-sm text-gray-600 dark:text-gray-400">四年内每年归属25%</td>
+              </tr>
+              <tr>
+                <td class="text-sm text-gray-700 dark:text-gray-300">购股权</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">2026年8月31日</td>
+                <td class="text-sm text-gray-700 dark:text-gray-300">530万份</td>
+                <td class="text-sm text-gray-600 dark:text-gray-400">每股4.345港元</td>
+                <td class="text-sm text-gray-600 dark:text-gray-400">十年有效，每年归属25%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+          薪酬与绩效考核体系
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          猫眼娱乐的薪酬体系由基本薪酬、绩效奖金和股权激励三部分构成。董事会下设薪酬委员会，由独立非执行董事汪华担任主席，负责制定董事及高级管理人员的薪酬政策。公司2025年度每股派息0.22港元，派息比率约62.99%，体现了较为积极的股东回报政策。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          从员工激励效果看，2026年公司连续授出股权激励，显示在行业承压背景下，公司仍重视通过股权工具绑定核心人才。然而，2026年购股权行使价4.345港元较2026年10月股价约3.8港元存在约14%的溢价，意味着员工需在公司股价回升至行使价以上时方能获得实质收益，激励效果与股价表现高度相关。
+        </p>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+          激励机制评估
+        </h3>
+        <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">激励覆盖面</span>
+                <span class="text-sm font-semibold text-primary-600 dark:text-primary-400">75 / 100</span>
+              </div>
+              <div class="moat-bar">
+                <div class="moat-bar-fill bg-primary-500" style="width: 75%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">长期绑定效果</span>
+                <span class="text-sm font-semibold text-primary-600 dark:text-primary-400">80 / 100</span>
+              </div>
+              <div class="moat-bar">
+                <div class="moat-bar-fill bg-primary-500" style="width: 80%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">与业绩挂钩程度</span>
+                <span class="text-sm font-semibold text-primary-600 dark:text-primary-400">65 / 100</span>
+              </div>
+              <div class="moat-bar">
+                <div class="moat-bar-fill bg-primary-500" style="width: 65%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300">激励力度（行业对比）</span>
+                <span class="text-sm font-semibold text-primary-600 dark:text-primary-400">70 / 100</span>
+              </div>
+              <div class="moat-bar">
+                <div class="moat-bar-fill bg-primary-500" style="width: 70%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Section 6: 综合研判 -->
 <section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
-<div class="max-w-5xl mx-auto px-6">
-<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
-综合研判与关键结论
-</h2>
-<div class="space-y-6">
-<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
-1. 治理结构：三方制衡下的“内容+渠道”闭环
-</h3>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-猫眼娱乐的治理结构在国内上市公司中较为罕见：光线系以41.81%的持股比例实现控制，腾讯和美团合计约20.79%的战略持股构成有效制衡。这一结构赋予了猫眼独特的竞争优势——光线的内容制作能力、腾讯的社交流量入口、美团的本地生活场景，三者通过猫眼这一票务与宣发平台形成了完整的产业闭环。
-</p>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-但这也意味着猫眼在战略自主性上受到多方利益协调的约束。当光线的内容战略、腾讯的流量政策或美团的本地生活布局发生变化时，猫眼的业务方向可能需要相应调整。
-</p>
-</div>
-<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
-2. 财务表现：2025年强劲复苏但持续性待观察
-</h3>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-2025年猫眼娱乐交出了亮眼的成绩单：营收46.31亿元（同比+13.5%），净利润5.63亿元（同比+209.6%），经调整溢利净额6.77亿元（同比+118.7%），经营溢利724.4百万元（同比+269.8%）。复苏主要由电影大盘回暖（《哪吒之魔童闹海》等头部影片带动）和现场娱乐业务扩张驱动。
-</p>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-但需注意，猫眼的电影票务收入与电影大盘高度相关，具有明显的周期性。2026年Q1光线传媒营收同比下降93.59%已释放出行业波动信号。猫眼需要证明其在现场娱乐、IP衍生等非票务业务上能够持续贡献增量，以平滑电影周期的波动。
-</p>
-</div>
-<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
-3. 关联交易与股东生态的“双刃剑”效应
-</h3>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-与光线传媒的IP衍生合作是猫眼拓展非票务收入的重要路径。《哪吒》系列等头部IP的衍生品开发具有较大商业化潜力，但关联交易规模尚不稳定（2023-2025年分别为6,006.89万、11,050.35万和6,787.55万元），说明该业务仍处于探索阶段。
-</p>
-<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-腾讯和美团的流量入口是猫眼用户获取的核心渠道，但流量政策的任何调整都可能对猫眼的用户成本和活跃度产生影响。投资者需持续关注三大股东与猫眼之间合作协议的续约条件和条款变化。
-</p>
-</div>
-<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
-<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
-4. 风险提示
-</h3>
-<div class="space-y-4">
-<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
-<i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>电影大盘依赖风险：</strong>在线娱乐票务收入（2025年22.94亿元）与电影票房高度相关。若电影内容供给不足或观众观影习惯进一步迁移，票务收入可能承压。猫眼虽以48.7%的在线票务市占率居首，但市场整体规模的变化不受单一平台控制。
-</p>
-</div>
-<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
-<i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>股东利益协调风险：</strong>光线系、腾讯、美团三方在猫眼战略方向上可能存在不同诉求。光线希望猫眼强化内容宣发协同，腾讯关注流量入口的变现效率，美团关注本地生活场景的延伸。若三方利益出现分歧，可能影响猫眼的决策效率。
-</p>
-</div>
-<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
-<i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>新业务培育风险：</strong>现场娱乐和IP衍生业务虽增长迅速，但面临大麦（阿里系）等强劲竞争对手。猫眼在现场娱乐领域的市场份额和盈利能力能否达到票务业务的水平，尚需时间验证。
-</p>
-</div>
-<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
-<i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>股权激励稀释与“水下期权”风险：</strong>未行使购股权约1,957万份（占已发行股份约1.67%），若大量行使将对每股收益产生稀释效应。同时，当前股价接近期权行使价，若股价持续低迷，激励效果可能下降，影响核心团队稳定性。
-</p>
-</div>
-</div>
-</div>
-<div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
-<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
-<i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
-<strong>一句话总结：</strong>猫眼娱乐的故事，是一个“渠道平台”如何在大股东的内容野心、二股东和三股东的流量诉求之间寻找平衡的故事。它拥有中国在线票务市场最稳固的龙头地位和最完整的产业股东生态，但能否将票务流量转化为可持续的非票务收入，将决定它能否摆脱“电影大盘影子股”的估值标签。
-</p>
-</div>
-</div>
-</div>
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+      综合研判与关键结论
+    </h2>
+    <div class="space-y-6">
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          1. 组织与战略进入"逆境坚守"阶段
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          2026年猫眼娱乐面临行业性挑战：上半年全国电影总票房173.56亿元，同比下降40.6%；观影人次4.21亿，同比下降34.3%。公司收入从上年同期的24.72亿元降至17.90亿元，同比减少27.6%，由盈转亏，录得净亏损约0.28亿元。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          管理层以"科技+全文娱"战略为核心，在保持电影宣发领先地位的同时，积极拓展演出票务、IP运营和AI应用等新方向。公司主控发行影片28部、票房覆盖率创历史同期新高，春节档《飞驰人生3》以44.2亿元成为档期冠军。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          2. 财务上"由盈转亏"压力显著
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          猫眼娱乐的财务表现呈现明显的周期性波动。2025年全年收入46.31亿元，同比增长13.5%；净利润5.63亿元，同比增长209.6%，多项指标创历史新高。然而2026年上半年急转直下，收入17.90亿元，归母净利润亏损2759.2万元，毛利率从37.9%降至31.3%。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          分业务看，在线娱乐票务服务收入8.34亿元，同比下降29.3%；娱乐内容服务收入8.88亿元，同比下降26.6%。公司股价也从52周高点8.16港元回落至约3.8港元，市值约44.73亿港元，反映市场对行业前景的谨慎定价。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          3. 控股股东信心与回购计划构成"稳定器"
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          在行业承压期，光线传媒在2026年9月增持180.24万股，均价7.96港元，彰显控股股东信心。同时，公司推出不超过2.5亿港元的股份回购计划，拟回购最多1.16亿股（占已发行股份10%），以现有现金储备及自由现金流拨付。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          公司当前现金储备充裕，总现金约37.5亿港元，企业价值仅约6.49亿港元，账面价值对市值形成有力支撑。2025年度每股派息0.22港元，股息率约5.7%，在港股文娱板块中处于较高水平。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          4. 风险提示
+        </h3>
+        <div class="space-y-4">
+          <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>电影市场供需错配风险。</strong>2026年上半年票房同比下滑超40%，国庆档首四日票房仅6.85亿元，同比大跌38%。大摩预计2026年国内票房同比缩减约23%，供需错配为票房前景蒙上阴影。
+            </p>
+          </div>
+          <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>新业务培育风险。</strong>演出票务和IP衍生业务虽增长迅速，但在线演出票务市场的竞争格局尚未稳定，IP商业化的盈利模型仍在探索期。公司需要在传统票务收入下滑的同时，加速新业务对收入的贡献。
+            </p>
+          </div>
+          <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>股东减持与股权变动风险。</strong>美团系2026年完成减持退出主要股东行列，虽然光线系增持形成对冲，但战略股东的退出可能影响猫眼在流量入口和业务协同方面的资源优势。
+            </p>
+          </div>
+          <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>股权激励效果不确定性。</strong>2026年购股权行使价4.345港元高于当前股价约14%，若股价长期低于行使价，股权激励的留才效果可能打折扣，核心员工的积极性将受到影响。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          一句话总结：猫眼娱乐正处于从"电影票务平台"向"全文娱服务商"转型的关键期，短期业绩受电影大盘波动冲击明显，但其在宣发领域的龙头地位、充裕的现金储备以及控股股东的坚定支持，为穿越行业低谷提供了基础，新业务的培育进展将是决定其长期价值的关键变量。
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
-
+<!-- Footer -->
 <footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
 <div class="max-w-5xl mx-auto px-6">
 <div class="grid md:grid-cols-3 gap-8">
 <div>
 <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
 <p class="text-sm text-gray-400 leading-relaxed">
-本页综合猫眼娱乐公司公告、港交所权益披露、光线传媒关联交易公告及公开市场数据，系统梳理猫眼娱乐的管理层结构、股本与股权变化、关联企业关系与员工激励机制。
+本页综合猫眼娱乐公司公告、港交所披露文件、券商研报及市场公开数据，系统梳理核心管理层发展、股本与股权变化、关联企业关系与员工激励机制。
 </p>
 </div>
 <div>
 <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
 <ul class="space-y-2 text-sm text-gray-400">
-<li>• 管理层与战略演进</li>
-<li>• 股本数量与结构变化</li>
-<li>• 股权结构与控制权</li>
-<li>• 关联上市公司与企业关系</li>
-<li>• 员工持股与激励</li>
+<li>• 核心管理层与战略演进</li>
+<li>• 股本数量变化与回购计划</li>
+<li>• 股权结构与控制权分析</li>
+<li>• 关联企业关系与协同</li>
+<li>• 员工持股与激励机制</li>
 </ul>
 </div>
 <div>
 <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
 <p class="text-sm text-gray-400 leading-relaxed">
-本页面仅供教育与信息参考，不构成投资建议。数据基于公开信息整理，分析观点仅供参考。投资者应自行核实相关数据并独立判断。
+本页面仅供教育与信息参考，不构成投资建议。数据基于公开信息整理，分析观点仅供参考。
 </p>
 </div>
 </div>
@@ -795,39 +967,66 @@ function toggleDarkMode() {
 </div>
 </div>
 </footer>
-
+<!-- Scripts -->
 <script>
 function toggleMobileMenu() {
   const menu = document.getElementById('mobileMenu');
   const button = document.getElementById('mobileMenuButton');
   const icon = document.getElementById('mobileMenuIcon');
+
   if (!menu) return;
+
   const isOpen = menu.classList.toggle('mobile-menu-open');
+
   menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-  if (button) { button.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); }
-  if (icon) { icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu'); lucide.createIcons(); }
+
+  if (button) {
+    button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  if (icon) {
+    icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+    lucide.createIcons();
+  }
 }
+
 function closeMobileMenu() {
   const menu = document.getElementById('mobileMenu');
   const button = document.getElementById('mobileMenuButton');
   const icon = document.getElementById('mobileMenuIcon');
+
   if (!menu) return;
+
   menu.classList.remove('mobile-menu-open');
   menu.setAttribute('aria-hidden', 'true');
-  if (button) { button.setAttribute('aria-expanded', 'false'); }
-  if (icon) { icon.setAttribute('data-lucide', 'menu'); lucide.createIcons(); }
+
+  if (button) {
+    button.setAttribute('aria-expanded', 'false');
+  }
+
+  if (icon) {
+    icon.setAttribute('data-lucide', 'menu');
+    lucide.createIcons();
+  }
 }
+
+// Progress Bar
 window.addEventListener('scroll', () => {
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  document.getElementById('progressBar').style.width = scrolled + '%';
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
 });
+// Initialize AOS & Lucide
 document.addEventListener('DOMContentLoaded', function() {
   lucide.createIcons();
   AOS.init({ duration: 800, once: true });
+
+  // 点击移动端导航后自动收起菜单
   document.querySelectorAll('#mobileMenu a').forEach(link => {
-    link.addEventListener('click', () => { closeMobileMenu(); });
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
   });
 });
 </script>
