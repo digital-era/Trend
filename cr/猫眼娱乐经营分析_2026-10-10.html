@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>猫眼娱乐（01896.HK）经营分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "hsl(20, 90%, 95%)",
+                100: "hsl(20, 90%, 85%)",
+                200: "hsl(20, 90%, 75%)",
+                300: "hsl(20, 90%, 65%)",
+                400: "hsl(20, 90%, 55%)",
+                500: "hsl(20, 90%, 50%)",
+                600: "hsl(20, 90%, 45%)",
+                700: "hsl(20, 90%, 35%)",
+                800: "hsl(20, 90%, 25%)",
+                900: "hsl(20, 90%, 15%)",
+              },
+              accent: {
+                50: "hsl(30, 85%, 95%)",
+                100: "hsl(30, 85%, 85%)",
+                200: "hsl(30, 85%, 75%)",
+                300: "hsl(30, 85%, 65%)",
+                400: "hsl(30, 85%, 60%)",
+                500: "hsl(30, 85%, 55%)",
+                600: "hsl(30, 85%, 50%)",
+                700: "hsl(30, 85%, 40%)",
+                800: "hsl(30, 85%, 30%)",
+                900: "hsl(30, 85%, 20%)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+      .btn-interactive {
+        transition: all 0.2s ease-out;
+      }
+      .btn-interactive:hover {
+        transform: scale(1.05);
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .btn-interactive:active {
+        transform: scale(0.95);
+      }
+      .card-interactive {
+        transition: all 0.3s ease-out;
+        border: 1px solid transparent;
+        --border-lightness: 40%;
+      }
+      .dark .card-interactive {
+        --border-lightness: 60%;
+      }
+      .card-interactive:hover {
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        filter: brightness(0.98);
+      }
+      .card-interactive[class*="primary"]:hover,
+      .card-interactive[class*="white"]:hover,
+      .card-interactive[class*="gray-"]:hover {
+        border-color: hsl(20, 90%, var(--border-lightness));
+      }
+      .card-interactive[class*="accent"]:hover {
+        border-color: hsl(30, 85%, var(--border-lightness));
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.75rem;
+        border-bottom: 1px solid hsl(0, 0%, 90%);
+      }
+      .dark th,
+      .dark td {
+        border-bottom-color: hsl(0, 0%, 30%);
+      }
+      .moat-bar {
+        height: 10px;
+        border-radius: 5px;
+        background: hsl(0, 0%, 90%);
+        overflow: hidden;
+      }
+      .dark .moat-bar {
+        background: hsl(0, 0%, 30%);
+      }
+      .moat-fill {
+        height: 100%;
+        border-radius: 5px;
+        background: linear-gradient(
+          90deg,
+          hsl(20, 90%, 55%),
+          hsl(30, 85%, 55%)
+        );
+        transition: width 1.2s ease-out;
+      }
+      .risk-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .dark body {
+        color: #f3f4f6;
+      }
+      .dark header nav a {
+        color: #e5e7eb !important;
+      }
+      .dark header nav a:hover {
+        color: hsl(20, 90%, 65%) !important;
+      }
+      .dark .text-gray-400,
+      .dark .text-gray-500 {
+        color: #9ca3af !important;
+      }
+      .dark table th {
+        color: #f3f4f6;
+      }
+      .dark table td {
+        color: #e5e7eb;
+      }
+      .dark .text-gray-600 {
+        color: #d1d5db !important;
+      }
+      .dark .text-gray-700 {
+        color: #e5e7eb !important;
+      }
+      #mobileMenu {
+        display: none;
+      }
+      @media (min-width: 768px) {
+        #mobileMenu {
+          display: none !important;
+        }
+      }
+      @media (max-width: 767px) {
+        #mobileMenu.mobile-menu-open {
+          display: block !important;
+        }
+      }
+    </style>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark");
+        const isDark = document.body.classList.contains("dark");
+        document.getElementById("sunIcon").style.display = isDark
+          ? "block"
+          : "none";
+        document.getElementById("moonIcon").style.display = isDark
+          ? "none"
+          : "block";
+      }
+    </script>
+  </head>
+  <body
+    class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen"
+  >
+    <!-- Progress Bar -->
+    <div
+      class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out"
+      id="progressBar"
+      style="width: 0%"
+    ></div>
+
+    <!-- Floating Header -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100"
+    >
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1
+            class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap"
+          >
+            猫眼娱乐 01896.HK 经营分析
+          </h1>
+          <nav class="hidden md:flex space-x-5">
+            <a
+              href="#model"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >商业模式</a
+            >
+            <a
+              href="#moat"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >护城河</a
+            >
+            <a
+              href="#industry"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >行业趋势</a
+            >
+            <a
+              href="#financial"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >财务状况</a
+            >
+            <a
+              href="#valuation"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >估值</a
+            >
+            <a
+              href="#outlook"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >展望</a
+            >
+            <a
+              href="#risk"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >风险</a
+            >
+            <a
+              href="#longshort"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >多空</a
+            >
+          </nav>
+          <div class="flex items-center space-x-2">
+            <button
+              onclick="toggleMobileMenu()"
+              class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300"
+              aria-label="菜单"
+            >
+              <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+            <button
+              onclick="toggleDarkMode()"
+              class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+            >
+              <i
+                data-lucide="sun"
+                id="sunIcon"
+                class="w-5 h-5"
+                style="display: none"
+              ></i>
+              <i
+                data-lucide="moon"
+                id="moonIcon"
+                class="w-5 h-5"
+                style="display: block"
+              ></i>
+            </button>
+          </div>
+        </div>
+        <div
+          id="mobileMenu"
+          class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto"
+        >
+          <nav class="flex flex-col space-y-3">
+            <a
+              href="#model"
+              onclick="toggleMobileMenu()"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >商业模式</a
+            >
+            <a
+              href="#moat"
+              onclick="toggleMobileMenu()"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >护城河</a
+            >
+            <a
+              href="#industry"
+              onclick="toggleMobileMenu()"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >行业趋势</a
+            >
+            <a
+              href="#financial"
+              onclick="toggleMobileMenu()"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >财务状况</a
+            >
+            <a
+              href="#valuation"
+              onclick="toggleMobileMenu()"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >估值</a
+            >
+            <a
+              href="#outlook"
+              onclick="toggleMobileMenu()"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >展望</a
+            >
+            <a
+              href="#risk"
+              onclick="toggleMobileMenu()"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >风险</a
+            >
+            <a
+              href="#longshort"
+              onclick="toggleMobileMenu()"
+              class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              >多空</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen">
+      <!-- Hero -->
+      <section
+        class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+        data-aos="fade-up"
+      >
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300"
+              >港股 · 互联网文娱 · 在线票务</span
+            >
+            <span
+              class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300"
+              >01896.HK</span
+            >
+          </div>
+          <h2
+            class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300"
+          >
+            猫眼娱乐<br /><span
+              class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium"
+              >经营分析报告</span
+            >
+          </h2>
+          <p
+            class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl"
+          >
+            猫眼娱乐是中国在线娱乐票务市场的绝对龙头，以48.7%的市场份额稳居行业第一，与淘票票合计占据84.9%的市场份额，形成稳固的双寡头格局。2025年公司实现营收46.31亿元，净利润同比大增209.6%，盈利能力大幅修复。公司正从“在线票务平台”向“全链路娱乐内容服务商”转型，现场演出、IP衍生品和海外业务构成第二增长曲线。本报告从八个维度系统评估其投资价值。
+          </p>
+          <div class="grid md:grid-cols-4 gap-4">
+            <div
+              class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+            >
+              <div
+                class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >
+                46.31亿
+              </div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                2025年营收（人民币）
+              </div>
+            </div>
+            <div
+              class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+            >
+              <div
+                class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+              >
+                5.63亿
+              </div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                2025年归母净利润
+              </div>
+            </div>
+            <div
+              class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+            >
+              <div
+                class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >
+                48.7%
+              </div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                在线电影票务市场份额
+              </div>
+            </div>
+            <div
+              class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+            >
+              <div
+                class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+              >
+                43.3%
+              </div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                2025年毛利率
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 一、商业模式 -->
+      <section
+        id="model"
+        class="py-20 bg-white/80 dark:bg-gray-900"
+        data-aos="fade-up"
+      >
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div
+              class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+            >
+              <i
+                data-lucide="store"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+            </div>
+            <h2
+              class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+            >
+              一、商业模式
+            </h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              猫眼娱乐的核心商业模式可以概括为<strong>“票务平台引流 + 内容服务变现 + 数据能力赋能”</strong>的三层结构。公司以在线娱乐票务服务作为流量入口和基础设施，深度嵌入美团、腾讯两大生态获取用户；同时向上游延伸至电影宣发、出品和开发，形成“票务+内容”的双向赋能格局。2025年，在线娱乐票务服务收入22.94亿元（占总营收49.5%），娱乐内容服务收入21.27亿元（占45.9%），广告服务及其他收入2.11亿元（占4.6%）。
+            </p>
+            <div class="grid md:grid-cols-3 gap-5">
+              <div
+                class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+              >
+                <div class="flex items-center gap-2 mb-3">
+                  <i
+                    data-lucide="ticket"
+                    class="w-5 h-5 text-primary-600 dark:text-primary-400"
+                  ></i>
+                  <h3
+                    class="font-semibold text-primary-700 dark:text-primary-300"
+                  >
+                    在线票务：流量入口
+                  </h3>
+                </div>
+                <p
+                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                >
+                  依托美团、腾讯生态的流量互通优势，线上出票占比稳定在87%以上，用户转化效率保持行业领先。票务业务不仅贡献稳定收入，更是获取用户数据和触达消费者的核心通道。
+                </p>
+              </div>
+              <div
+                class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+              >
+                <div class="flex items-center gap-2 mb-3">
+                  <i
+                    data-lucide="film"
+                    class="w-5 h-5 text-accent-600 dark:text-accent-400"
+                  ></i>
+                  <h3
+                    class="font-semibold text-accent-700 dark:text-accent-300"
+                  >
+                    内容服务：利润引擎
+                  </h3>
+                </div>
+                <p
+                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                >
+                  2025年参与宣发、出品影片共73部，主控发行影片数量创历史新高。内容服务的毛利率显著高于票务，是公司利润弹性的核心来源。《疯狂动物城2》票房超45亿元，创中国影史进口片票房纪录。
+                </p>
+              </div>
+              <div
+                class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+              >
+                <div class="flex items-center gap-2 mb-3">
+                  <i
+                    data-lucide="database"
+                    class="w-5 h-5 text-primary-600 dark:text-primary-400"
+                  ></i>
+                  <h3
+                    class="font-semibold text-primary-700 dark:text-primary-300"
+                  >
+                    数据能力：生态壁垒
+                  </h3>
+                </div>
+                <p
+                  class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                >
+                  猫眼专业版依托独家大数据算法，为全行业提供高时效、高精度的票房决策依据。数据平台既是服务行业的工具，也是公司宣发决策的“情报系统”，形成了独特的信息优势。
+                </p>
+              </div>
+            </div>
+            <div
+              class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6"
+            >
+              <p
+                class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+              >
+                <i
+                  data-lucide="lightbulb"
+                  class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+                ></i>
+                猫眼娱乐的商业模式本质上是“数据驱动的娱乐基础设施”——用票务平台锁定用户入口，用数据能力降低内容投资风险，用内容服务放大利润弹性。掌握购票端口的猫眼，实际上在“挣所有电影公司的钱”。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 二、竞争优势（护城河） -->
+      <section
+        id="moat"
+        class="py-20 bg-primary-50/50 dark:bg-gray-800"
+        data-aos="fade-up"
+      >
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div
+              class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+            >
+              <i
+                data-lucide="shield"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+              二、竞争优势：护城河评估
+            </h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            护城河是公司抵御竞争、维持超额回报的结构性优势。以下从五个维度对猫眼娱乐进行打分（1–10分），并与主要竞争对手进行对比。
+          </p>
+
+          <div class="space-y-6">
+            <!-- 品牌实力 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <div class="flex items-center justify-between mb-3">
+                <h3
+                  class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+                >
+                  品牌实力
+                </h3>
+                <span
+                  class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+                  >8<span class="text-sm font-normal text-gray-400"
+                    >/10</span
+                  ></span
+                >
+              </div>
+              <div class="moat-bar mb-3">
+                <div class="moat-fill" style="width: 80%"></div>
+              </div>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                猫眼是中国在线电影票务市场的第一品牌，以48.7%的市场份额稳居行业首位。“猫眼”二字在中国电影消费者心中已等同于“买电影票”的代名词。猫眼专业版在影视从业者中具有近乎垄断性的影响力，是行业数据的事实标准。
+              </p>
+            </div>
+
+            <!-- 网络效应 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <div class="flex items-center justify-between mb-3">
+                <h3
+                  class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+                >
+                  网络效应
+                </h3>
+                <span
+                  class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+                  >7<span class="text-sm font-normal text-gray-400"
+                    >/10</span
+                  ></span
+                >
+              </div>
+              <div class="moat-bar mb-3">
+                <div class="moat-fill" style="width: 70%"></div>
+              </div>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                票务平台具有典型的双边网络效应：用户越多，影院和片方越愿意与猫眼合作；合作资源越丰富，用户体验越好，吸引更多用户。2025年Q3，猫眼与淘票票的月活用户合计占行业总量的89.3%，猫眼的下单转化率达27.6%，远超行业平均水平。
+              </p>
+            </div>
+
+            <!-- 转换成本 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <div class="flex items-center justify-between mb-3">
+                <h3
+                  class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+                >
+                  转换成本
+                </h3>
+                <span
+                  class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+                  >4<span class="text-sm font-normal text-gray-400"
+                    >/10</span
+                  ></span
+                >
+              </div>
+              <div class="moat-bar mb-3">
+                <div class="moat-fill" style="width: 40%"></div>
+              </div>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                在线购票平台的用户转换成本较低，消费者可以随时在猫眼和淘票票之间切换。但猫眼通过会员积分体系、观影记录、个性化推荐等在一定程度上提高了用户粘性。更高的转换成本来自B端——影院和片方一旦接入猫眼的票务系统和数据平台，迁移成本较高。
+              </p>
+            </div>
+
+            <!-- 成本优势 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <div class="flex items-center justify-between mb-3">
+                <h3
+                  class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+                >
+                  成本优势
+                </h3>
+                <span
+                  class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+                  >6<span class="text-sm font-normal text-gray-400"
+                    >/10</span
+                  ></span
+                >
+              </div>
+              <div class="moat-bar mb-3">
+                <div class="moat-fill" style="width: 60%"></div>
+              </div>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                猫眼背靠美团和腾讯两大生态，获客成本显著低于独立平台。2025年毛利率从39.8%提升至43.3%，成本管控与业务协同效应持续释放。票务业务的边际成本极低，规模效应显著。
+              </p>
+            </div>
+
+            <!-- 专利或自有技术 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <div class="flex items-center justify-between mb-3">
+                <h3
+                  class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+                >
+                  专利或自有技术
+                </h3>
+                <span
+                  class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+                  >7<span class="text-sm font-normal text-gray-400"
+                    >/10</span
+                  ></span
+                >
+              </div>
+              <div class="moat-bar mb-3">
+                <div class="moat-fill" style="width: 70%"></div>
+              </div>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                猫眼专业版的数据算法和预测模型是公司的核心技术资产。公司持续投入AI动态定价、区块链票务系统应用，优化运营全流程效率。数据积累（超过80万部电影、12万部电视剧的资料库）构成了难以复制的数据壁垒。
+              </p>
+            </div>
+          </div>
+
+          <!-- 竞对对比 -->
+          <div class="mt-10">
+            <h3
+              class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5"
+            >
+              与主要竞争对手的护城河对比
+            </h3>
+            <div
+              class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
+            >
+              <table
+                class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+              >
+                <thead class="bg-primary-50 dark:bg-primary-900/30">
+                  <tr>
+                    <th
+                      class="font-semibold text-primary-700 dark:text-primary-300"
+                    >
+                      维度
+                    </th>
+                    <th
+                      class="font-semibold text-primary-700 dark:text-primary-300"
+                    >
+                      猫眼娱乐
+                    </th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">
+                      淘票票（阿里影业）
+                    </th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">
+                      大麦网
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr>
+                    <td class="font-medium">市场份额（电影票务）</td>
+                    <td
+                      class="text-primary-600 dark:text-primary-400 font-semibold"
+                    >
+                      48.7%
+                    </td>
+                    <td>36.2%</td>
+                    <td>—（现场娱乐龙头）</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">品牌实力</td>
+                    <td
+                      class="text-primary-600 dark:text-primary-400 font-semibold"
+                    >
+                      8
+                    </td>
+                    <td>7</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">网络效应</td>
+                    <td
+                      class="text-primary-600 dark:text-primary-400 font-semibold"
+                    >
+                      7
+                    </td>
+                    <td>7</td>
+                    <td>6</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">数据能力</td>
+                    <td
+                      class="text-primary-600 dark:text-primary-400 font-semibold"
+                    >
+                      9
+                    </td>
+                    <td>7</td>
+                    <td>6</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">内容发行能力</td>
+                    <td
+                      class="text-primary-600 dark:text-primary-400 font-semibold"
+                    >
+                      8
+                    </td>
+                    <td>7</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">2025年营收</td>
+                    <td>46.31亿元</td>
+                    <td>阿里影业67.02亿元（含大麦）</td>
+                    <td>大麦网20.57亿元</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+              数据来源：艾瑞咨询、公司公告、券商研报整理。
+            </p>
+          </div>
+
+          <div
+            class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg"
+          >
+            <p
+              class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed"
+            >
+              <i
+                data-lucide="award"
+                class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+              ></i>
+              综合护城河评分：<strong>6.4/10</strong>。猫眼在数据能力和品牌认知上拥有显著优势，票务平台的双边网络效应也较为稳固。护城河的核心来源是“腾讯+美团生态流量 + 猫眼专业版数据壁垒 + 内容发行渠道优势”的组合。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三、行业趋势 -->
+      <section
+        id="industry"
+        class="py-20 bg-white/80 dark:bg-gray-900"
+        data-aos="fade-up"
+      >
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div
+              class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+            >
+              <i
+                data-lucide="trending-up"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+            </div>
+            <h2
+              class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+            >
+              三、行业趋势
+            </h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              中国电影市场在经历2024年的低谷后，2025年迎来强劲复苏。全年电影总票房达518.32亿元，同比增长近22%。同期，全国营业性演出（不含娱乐场所演出）票房收入616.55亿元，场次达64.04万场，电影与演艺市场的双重繁荣为票务平台提供了广阔的增长空间。
+            </p>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div
+                class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+              >
+                <h3
+                  class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+                >
+                  <i data-lucide="film" class="w-5 h-5"></i
+                  >电影市场：复苏但波动
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 2025年总票房518亿元，同比增长22%</li>
+                  <li>• 2026年春节档票房57.52亿元，较2025年同期回调</li>
+                  <li>• 2026年国庆档票房11.35亿元，供给端大片减少</li>
+                  <li>• 平均票价从2025年初的50元降至2026年初的42元</li>
+                </ul>
+              </div>
+              <div
+                class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+              >
+                <h3
+                  class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2"
+                >
+                  <i data-lucide="music" class="w-5 h-5"></i
+                  >现场演出：高速增长
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 2025年全国演出市场票房收入616.55亿元</li>
+                  <li>• 大型演出项目总代场次同比增长超30%</li>
+                  <li>• 地方曲艺GMV同比增长90%，脱口秀GMV增长70%</li>
+                  <li>• 演出市场持续火热，成为票务平台重要增长极</li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="mt-4 p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700"
+            >
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                <strong class="text-gray-800 dark:text-gray-200"
+                  >对猫眼娱乐的影响：</strong
+                >电影市场的复苏直接推动猫眼票务业务收入增长19.36%，但2026年票房前景能见度有限——春节档和国庆档均出现同比回调，瑞银预计内地票房收入将下降。演出市场的持续火热则提供了重要的对冲，猫眼在演出票务领域的深度布局（张学友、周杰伦、陈奕迅等头部艺人演唱会票务代理）正在成为越来越重要的收入来源。IP衍生品业务（MmmGoods吃谷子）则瞄准Z世代的“谷子经济”，拓展娱乐消费的变现边界。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四、财务状况 -->
+      <section
+        id="financial"
+        class="py-20 bg-primary-50/50 dark:bg-gray-800"
+        data-aos="fade-up"
+      >
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div
+              class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+            >
+              <i
+                data-lucide="bar-chart-3"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+              四、财务状况
+            </h2>
+          </div>
+
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            以下分析猫眼娱乐2021–2025年五年财务表现，数据来源于公司年报及公开财务数据库。
+          </p>
+
+          <!-- 收入与利润表 -->
+          <div
+            class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+          >
+            <table
+              class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+            >
+              <thead class="bg-accent-50 dark:bg-accent-900/30">
+                <tr>
+                  <th
+                    class="font-semibold text-accent-700 dark:text-accent-300"
+                  >
+                    指标（人民币亿元）
+                  </th>
+                  <th
+                    class="font-semibold text-accent-700 dark:text-accent-300"
+                  >
+                    2021
+                  </th>
+                  <th
+                    class="font-semibold text-accent-700 dark:text-accent-300"
+                  >
+                    2022
+                  </th>
+                  <th
+                    class="font-semibold text-accent-700 dark:text-accent-300"
+                  >
+                    2023
+                  </th>
+                  <th
+                    class="font-semibold text-accent-700 dark:text-accent-300"
+                  >
+                    2024
+                  </th>
+                  <th
+                    class="font-semibold text-accent-700 dark:text-accent-300"
+                  >
+                    2025
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr>
+                  <td class="font-medium">营业收入</td>
+                  <td>33.23</td>
+                  <td>23.20</td>
+                  <td>47.57</td>
+                  <td>40.82</td>
+                  <td
+                    class="font-semibold text-primary-600 dark:text-primary-400"
+                  >
+                    46.31
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-medium">营收同比</td>
+                  <td>—</td>
+                  <td class="text-red-600 dark:text-red-400">-30.2%</td>
+                  <td class="text-green-600 dark:text-green-400">+105.1%</td>
+                  <td class="text-red-600 dark:text-red-400">-14.2%</td>
+                  <td class="text-green-600 dark:text-green-400">+13.5%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">年内溢利</td>
+                  <td class="text-red-600 dark:text-red-400">-5.44</td>
+                  <td>1.05</td>
+                  <td>9.15</td>
+                  <td>1.82</td>
+                  <td
+                    class="font-semibold text-primary-600 dark:text-primary-400"
+                  >
+                    5.63
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-medium">经调整净利润</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>3.10</td>
+                  <td
+                    class="font-semibold text-primary-600 dark:text-primary-400"
+                  >
+                    6.77
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-medium">毛利率</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>39.8%</td>
+                  <td>43.3%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">净利率</td>
+                  <td>—</td>
+                  <td>4.5%</td>
+                  <td>19.2%</td>
+                  <td>4.5%</td>
+                  <td>12.2%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">资产负债率</td>
+                  <td>27.6%</td>
+                  <td>20.3%</td>
+                  <td>27.9%</td>
+                  <td>27.6%</td>
+                  <td>27.0%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <!-- 收入增长分析 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+              >
+                <i data-lucide="trending-up" class="w-5 h-5"></i
+                >收入增长：大盘复苏驱动
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                2025年营收46.31亿元，同比增长13.5%，主要由电影票房大盘回暖驱动。票务业务收入增长19.36%至22.94亿元，线上出票占比稳定在87%以上。但2024年营收曾因电影市场低迷下滑14.2%，显示出业绩与票房大盘的高度相关性。2026年春节档和国庆档票房同比回调，对收入增长构成压力。
+              </p>
+            </div>
+            <!-- 净利润趋势 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+              >
+                <i data-lucide="trending-up" class="w-5 h-5"></i
+                >净利润趋势：V型反转
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                净利润从2024年的1.82亿元跃升至2025年的5.63亿元，增幅达209.6%；经调整净利润从3.10亿元增至6.77亿元，增长118.7%。利润暴增的核心驱动是毛利率从39.8%大幅提升至43.3%，以及经营杠杆的释放——营收增长13.5%而经营利润增长269.8%。
+              </p>
+            </div>
+            <!-- 自由现金流 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+              >
+                <i data-lucide="wallet" class="w-5 h-5"></i
+                >自由现金流：大幅改善
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                2025年经营活动现金流净额为11.97亿元，较2024年的-8.46亿元大幅转正，同比增加20.44亿元。自由现金流（含杠杆）约14.4亿港元。现金流的强劲改善反映了公司业务模式的现金生成能力——票务业务具有预收性质，内容服务在项目结算后回款。
+              </p>
+            </div>
+            <!-- 利润率与债务 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+              >
+                <i data-lucide="scale" class="w-5 h-5"></i>利润率与债务水平
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                毛利率从39.8%提升至43.3%，净利率从4.5%提升至12.2%，盈利能力显著增强。债务方面，资产负债率从27.6%降至27.0%，总债项/股东权益比率仅1.13%，短期借款较上期末减少79.9%。公司持有现金及现金等价物21.39亿元，财务结构极为稳健。
+              </p>
+            </div>
+          </div>
+
+          <!-- ROE 与财务稳健性判断 -->
+          <div
+            class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+          >
+            <h3
+              class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4"
+            >
+              股本回报率（ROE）与整体判断
+            </h3>
+            <div
+              class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4"
+            >
+              <div class="text-center">
+                <div
+                  class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400"
+                >
+                  6.23%
+                </div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  平均净资产收益率
+                </div>
+              </div>
+              <div class="text-center">
+                <div
+                  class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400"
+                >
+                  1.88
+                </div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  流动比率
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-green-600">
+                  1.13%
+                </div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  总债项/股东权益
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              ROE从2024年的约2%提升至6.23%，虽然绝对水平不高（受限于较厚的股东权益基数），但改善趋势明确。综合来看，猫眼娱乐的财务状况<strong>稳健且处于改善通道</strong>——现金流强劲、负债极低、毛利率持续提升。但需注意，2026年上半年公司发布盈利警告，预计净利润同比下降，显示业绩的波动性仍然较大，与电影票房大盘的“强关联”是财务模型中不可忽视的风险因子。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五、估值分析 -->
+      <section
+        id="valuation"
+        class="py-20 bg-white/80 dark:bg-gray-900"
+        data-aos="fade-up"
+      >
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div
+              class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+            >
+              <i
+                data-lucide="calculator"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+            </div>
+            <h2
+              class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+            >
+              五、估值分析
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div
+              class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300 mb-4"
+              >
+                市盈率（P/E）对比
+              </h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400"
+                    >猫眼娱乐（TTM）</span
+                  >
+                  <span
+                    class="font-bold text-primary-600 dark:text-primary-400"
+                    >10.75x</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400"
+                    >猫眼娱乐（2026E）</span
+                  >
+                  <span class="font-semibold text-gray-600 dark:text-gray-400"
+                    >13–15x</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400"
+                    >阿里影业（TTM）</span
+                  >
+                  <span class="font-semibold text-gray-600 dark:text-gray-400"
+                    >约35x</span
+                  >
+                </div>
+                <div
+                  class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+                >
+                  <span
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >互联网文娱行业平均</span
+                  >
+                  <span class="font-semibold text-gray-700 dark:text-gray-300"
+                    >20–30x</span
+                  >
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 mt-3">
+                猫眼当前P/E显著低于行业平均，也低于自身历史中枢。P/B仅0.65倍，P/S约1.31倍，估值处于历史低位。
+              </p>
+            </div>
+
+            <div
+              class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-accent-700 dark:text-accent-300 mb-4"
+              >
+                券商目标价汇总
+              </h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400"
+                    >花旗</span
+                  >
+                  <span
+                    class="font-semibold text-accent-600 dark:text-accent-400"
+                    >9.30 港元（买入）</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400"
+                    >瑞银</span
+                  >
+                  <span
+                    class="font-semibold text-accent-600 dark:text-accent-400"
+                    >7.80 港元（中性）</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400"
+                    >广发证券</span
+                  >
+                  <span
+                    class="font-semibold text-accent-600 dark:text-accent-400"
+                    >7.08 港元（买入）</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400"
+                    >里昂</span
+                  >
+                  <span
+                    class="font-semibold text-accent-600 dark:text-accent-400"
+                    >8.78 港元（跑赢大市）</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400"
+                    >某券商（最新）</span
+                  >
+                  <span
+                    class="font-semibold text-accent-600 dark:text-accent-400"
+                    >6.80 港元（买入）</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DCF 参考 -->
+          <div
+            class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8"
+          >
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"
+            >
+              <i data-lucide="line-chart" class="w-5 h-5"></i
+              >现金流折现（DCF）估算参考
+            </h3>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+            >
+              基于两阶段自由现金流到股权模型，猫眼娱乐的预计公允值为7.46港元。瑞银基于现金流折现法给出的目标价为7.8港元，隐含2026年预测13倍市盈率。广发证券参照可比公司给予2026年15倍市盈率（以经调整净利润计算），目标价7.08港元。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+                <div
+                  class="text-lg font-bold text-primary-600 dark:text-primary-400"
+                >
+                  7.46港元
+                </div>
+                <div class="text-xs text-gray-500">DCF模型公允值</div>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+                <div
+                  class="text-lg font-bold text-accent-600 dark:text-accent-400"
+                >
+                  7.80港元
+                </div>
+                <div class="text-xs text-gray-500">瑞银DCF目标价</div>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div class="text-lg font-bold text-gray-700 dark:text-gray-300">
+                  6.80–9.30港元
+                </div>
+                <div class="text-xs text-gray-500">券商目标价区间</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+          >
+            <p
+              class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+            >
+              <i
+                data-lucide="search"
+                class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+              ></i>
+              <strong>估值结论：</strong
+              >猫眼娱乐当前P/E仅约10.75倍，P/B仅0.65倍，估值处于历史绝对低位。市场当前定价隐含了对2026年票房下滑和业绩回落的悲观预期。如果2026年票房下滑幅度有限，且演出票务和IP衍生业务能够持续提供增量，则当前估值存在明显的修复空间。综合判断：<strong
+                >股票可能被低估，但低估的修复取决于票房大盘走势和新业务的盈利兑现节奏。</strong
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 六、经营展望 -->
+      <section
+        id="outlook"
+        class="py-20 bg-accent-50/50 dark:bg-gray-800"
+        data-aos="fade-up"
+      >
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div
+              class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+            >
+              <i
+                data-lucide="calendar"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+              六、经营展望（12–24个月）
+            </h2>
+          </div>
+
+          <div class="space-y-5">
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+              >
+                电影票务：守住基本盘，等待大盘企稳
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                2026年电影票房面临高基数压力，春节档和国庆档均出现同比回调。猫眼的核心策略是在大盘波动中维持市场份额稳定（48.7%），并通过AI动态定价和区块链票务系统提升运营效率。公司参与发行/出品的影片储备丰富，但单片票房表现的不确定性仍然较高。预计2026年票务收入将小幅承压，2027年有望随内容供给改善而恢复增长。
+              </p>
+            </div>
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+              >
+                现场演出：确定性最高的增长极
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                演出票务的增速远高于电影票务。猫眼为张学友、周杰伦、陈奕迅、林俊杰等头部艺人的多站演出提供票务及现场服务，大型演出项目总代场次同比增长超30%。地方曲艺和脱口秀的GMV同比增长分别达90%和70%。演出业务不依赖电影内容供给，增长确定性更高，预计将成为未来12–24个月最重要的增量收入来源。
+              </p>
+            </div>
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+              >
+                IP衍生与海外：中长期增长期权
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                IP衍生业务完成全链路能力建设，2025年合作动画电影14部，计划于2026年上半年在北京开设首家IP主题旗舰店，推出新零售品牌“MmmGoods吃谷子”。与光线传媒签署IP衍生业务合作框架协议，有望进一步拓展变现空间。海外方面，以广州演艺总部为核心辐射港澳及东南亚，泰国、越南本地化平台月活用户突破500万，境外演出GMV同比增长超300%。这些业务目前收入贡献有限，但代表公司在娱乐消费领域的长期战略延伸。
+              </p>
+            </div>
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+            >
+              <h3
+                class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+              >
+                股东回报：高分红政策提供安全垫
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                公司2025–2027年派息计划目标为分派不少于当年归母溢利的20%，2025财年实际派息超出该目标。以每股0.22港元的末期股息计算，当前股息率约4–5%。高分红政策在利润波动期为投资者提供了一定的安全垫。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 七、风险识别 -->
+      <section
+        id="risk"
+        class="py-20 bg-white/80 dark:bg-gray-900"
+        data-aos="fade-up"
+      >
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div
+              class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+            >
+              <i
+                data-lucide="alert-triangle"
+                class="w-5 h-5 text-red-600 dark:text-red-400"
+              ></i>
+            </div>
+            <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">
+              七、风险识别
+            </h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            按危险程度从高到低排序：
+          </p>
+
+          <div class="space-y-4">
+            <!-- 风险1 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500"
+            >
+              <div class="flex items-start gap-4">
+                <div
+                  class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0"
+                >
+                  1
+                </div>
+                <div>
+                  <h3
+                    class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2"
+                  >
+                    经济风险 — 票房大盘的高波动性
+                  </h3>
+                  <p
+                    class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  >
+                    猫眼的收入与电影票房大盘高度相关。2024年票房低迷导致公司营收下滑14.2%、净利润下降78%；2025年票房回暖推动营收增长13.5%、净利润增长209.6%。2026年上半年公司发布盈利警告，预计净利润同比下降，主要因票房下滑和部分影片票房不及预期导致减值拨备。这种“靠天吃饭”的业绩波动性是最大风险——票房大盘的不可预测性使得公司的盈利预测难度极高。2026年春节档和国庆档票房均已同比回调，全年票房走势不容乐观。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 风险2 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500"
+            >
+              <div class="flex items-start gap-4">
+                <div
+                  class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0"
+                >
+                  2
+                </div>
+                <div>
+                  <h3
+                    class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2"
+                  >
+                    监管威胁 — 反垄断与行业规范
+                  </h3>
+                  <p
+                    class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  >
+                    猫眼与淘票票合计占据在线电影票务市场84.9%的份额，双寡头格局的高度集中已引起市场监管部门的密切关注。近年来频繁出现猫眼、大麦等平台动用“渠道权”干预影院排片的案例。随着国家对平台经济反垄断行为的监管日趋严格，猫眼可能面临更严格的合规要求，包括排片干预限制、票务费率监管等。此外，公司存在合约安排（VIE架构）相关的合规风险，若相关法规变动，可能面临严重后果。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 风险3 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500"
+            >
+              <div class="flex items-start gap-4">
+                <div
+                  class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0"
+                >
+                  3
+                </div>
+                <div>
+                  <h3
+                    class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2"
+                  >
+                    行业颠覆 — 短视频与流媒体分流
+                  </h3>
+                  <p
+                    class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  >
+                    短视频平台和流媒体正在重塑用户的娱乐消费习惯。抖音、快手等平台已成为电影宣发的重要渠道，部分影片选择“院转网”或缩短院线窗口期。虽然短期内院线观影的社交属性和沉浸体验难以被完全替代，但长期来看，注意力碎片化和娱乐方式多元化将持续对电影票房大盘构成压力。猫眼在短视频宣发领域的布局尚处于早期阶段，需要加速适应渠道变迁。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 风险4 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500"
+            >
+              <div class="flex items-start gap-4">
+                <div
+                  class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0"
+                >
+                  4
+                </div>
+                <div>
+                  <h3
+                    class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2"
+                  >
+                    竞争 — 淘票票的持续挑战
+                  </h3>
+                  <p
+                    class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  >
+                    淘票票以36.2%的份额紧随其后，背靠阿里生态拥有强大的资金和资源支持。阿里影业2025财年营收67.02亿元，增速33.1%，远超行业平均。大麦网在演出票务领域的绝对优势也对猫眼的现场娱乐业务构成直接竞争。猫眼需要在票务费率、内容投资和用户体验之间找到平衡，避免陷入“补贴换份额”的消耗战。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 风险5 -->
+            <div
+              class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500"
+            >
+              <div class="flex items-start gap-4">
+                <div
+                  class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0"
+                >
+                  5
+                </div>
+                <div>
+                  <h3
+                    class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2"
+                  >
+                    债务或财务风险 — 极低
+                  </h3>
+                  <p
+                    class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+                  >
+                    公司资产负债率仅27%，总债项/股东权益比率1.13%，持有现金21.39亿元。财务结构极为稳健，债务风险在当前阶段几乎可以忽略。唯一需要关注的是内容投资带来的潜在减值风险——2026年上半年已因部分影片票房不及预期计提减值拨备。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 八、多空视角 -->
+      <section
+        id="longshort"
+        class="py-20 bg-primary-50/50 dark:bg-gray-800"
+        data-aos="fade-up"
+      >
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div
+              class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+            >
+              <i
+                data-lucide="scale"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+            </div>
+            <h2
+              class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+            >
+              八、多空视角：机构投资组合经理评估
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- 可能买入的原因 -->
+            <div
+              class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800"
+            >
+              <h3
+                class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2"
+              >
+                <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>估值处于历史绝对低位</strong
+                    >：P/E仅10.75倍，P/B仅0.65倍，P/S约1.31倍。市场对2026年业绩下滑的悲观预期已较为充分地定价，估值下行空间有限。</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>市场份额稳固，竞争格局清晰</strong
+                    >：48.7%的在线电影票务份额，与淘票票合计占84.9%，双寡头格局难以被打破，公司拥有稳定的定价权和渠道控制力。</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>现场演出业务提供增长确定性</strong
+                    >：演出票务GMV增速远超电影票务，头部艺人演唱会票务代理具有高粘性和高利润率，是未来12–24个月最可靠的增量来源。</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>财务健康，高分红</strong
+                    >：资产负债率仅27%，2025年派息超出目标指引，股息率约4–5%，在低利率环境下提供稳定的现金回报。</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>腾讯+美团生态的长期价值</strong
+                    >：依托两大互联网巨头的流量入口，猫眼的获客成本和用户转化效率在行业中具有结构性优势。</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- 可能回避的原因 -->
+            <div
+              class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800"
+            >
+              <h3
+                class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2"
+              >
+                <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="x-circle"
+                    class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>业绩与票房高度绑定，缺乏独立性</strong
+                    >：2024年净利润暴跌78%，2025年暴增210%，2026年上半年再度预警下滑。这种“过山车”式的业绩表现使得公司难以获得稳定的估值溢价。</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="x-circle"
+                    class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>2026年票房前景不乐观</strong
+                    >：春节档和国庆档票房均同比回调，瑞银预计内地票房收入将下降。高基数效应下，2026年业绩大概率出现明显回落。</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="x-circle"
+                    class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>反垄断监管的不确定性</strong
+                    >：双寡头合计份额超84%，已引起监管关注。“渠道权”干预排片等问题可能招致更严格的监管审查，对商业模式构成潜在威胁。</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="x-circle"
+                    class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>新业务盈利路径尚不清晰</strong
+                    >：IP衍生品和海外业务仍处于投入期，短期内难以对利润形成实质性贡献。内容投资存在减值风险，2026年上半年已计提拨备。</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="x-circle"
+                    class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+                  ></i>
+                  <span
+                    ><strong>ROE绝对水平偏低</strong
+                    >：平均净资产收益率仅6.23%，即使在2025年的强劲复苏年份也未达到两位数。较厚的权益基数意味着股东回报效率有待提升。</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 关键因素与投资论点 -->
+          <div
+            class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6"
+          >
+            <h3
+              class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4"
+            >
+              关键因素：需要密切跟踪的3个指标
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div
+                class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center"
+              >
+                <i
+                  data-lucide="film"
+                  class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"
+                ></i>
+                <div
+                  class="font-semibold text-sm text-primary-700 dark:text-primary-300"
+                >
+                  电影票房大盘走势
+                </div>
+                <p class="text-xs text-gray-500 mt-1">
+                  2026年全年票房能否守住450亿元以上，是判断票务收入底部的关键
+                </p>
+              </div>
+              <div
+                class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center"
+              >
+                <i
+                  data-lucide="music"
+                  class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"
+                ></i>
+                <div
+                  class="font-semibold text-sm text-accent-700 dark:text-accent-300"
+                >
+                  演出票务收入占比
+                </div>
+                <p class="text-xs text-gray-500 mt-1">
+                  演出票务收入在总营收中的占比能否持续提升，是判断业务多元化成效的核心
+                </p>
+              </div>
+              <div
+                class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center"
+              >
+                <i
+                  data-lucide="percent"
+                  class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"
+                ></i>
+                <div
+                  class="font-semibold text-sm text-gray-700 dark:text-gray-300"
+                >
+                  内容投资的减值情况
+                </div>
+                <p class="text-xs text-gray-500 mt-1">
+                  参与出品/发行的影片票房表现，直接影响内容服务利润和减值拨备规模
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 投资论点 -->
+          <div
+            class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+          >
+            <p
+              class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+            >
+              <i
+                data-lucide="target"
+                class="inline-block w-5 h-5 mr-2 -mt-0.5"
+              ></i>
+              <strong>投资论点：</strong
+              >猫眼娱乐是中国在线娱乐票务市场的绝对龙头，拥有稳固的双寡头格局、腾讯美团生态的流量优势和猫眼专业版的数据壁垒。公司当前以约10.75倍P/E和0.65倍P/B交易，估值处于历史绝对低位，市场对2026年票房下滑的悲观预期已较为充分地定价。现场演出票务的快速增长和IP衍生业务的长期布局，为公司提供了穿越票房周期的增长期权。对于能够承受票房波动、愿意以12–24个月视角持有的投资者而言，当前价位提供了具有吸引力的风险回报比。但这一论点成立的前提是：<strong>2026年票房下滑幅度可控（不低于450亿元），且演出票务和IP衍生业务能够持续提供增量收入。如果票房出现超预期的大幅下滑，或者反垄断监管带来实质性的商业模式限制，公司可能长期停留在“低估值陷阱”中。</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3
+              class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+            >
+              关于本报告
+            </h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告基于猫眼娱乐（01896.HK）公开财务报告、券商研报及行业数据，从商业模式、护城河、财务状况、估值、风险与多空视角等八个维度进行系统分析。
+            </p>
+          </div>
+          <div>
+            <h3
+              class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+            >
+              数据来源
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>• 猫眼娱乐2025年度全年业绩公告</li>
+              <li>• 花旗、瑞银、广发证券、里昂等券商研报</li>
+              <li>• 艾瑞咨询《2026-2030中国网上电影票务服务行业市场发展趋势与前景展望战略分析研究报告》</li>
+              <li>• 国家电影局票房数据</li>
+              <li>• 猫眼专业版数据</li>
+            </ul>
+          </div>
+          <div>
+            <h3
+              class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+            >
+              免责声明
+            </h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告仅供教育与信息参考，不构成投资建议或买卖推荐。数据基于公开信息整理，分析观点仅代表研究判断。投资有风险，决策需谨慎。
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500"
+        >
+          <p>© 2026 猫眼娱乐经营分析报告 · 生成日期：2026-10-10</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (!menu) return;
+        menu.classList.toggle("mobile-menu-open");
+      }
+
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+        AOS.init({ duration: 800, once: true });
+      });
+    </script>
+  </body>
+</html>
