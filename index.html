@@ -384,6 +384,7 @@
     const REPO = 'digital-era/Trend';
     const BRANCH = 'main';
     const SITE_ORIGIN = 'https://trend.aivibeinvest.com';
+    const MAX_ITEMS_PER_COLUMN = 30;   // 每个专栏最多展示的文章数
     
     // 美化显示名称
     function prettyName(filename) {
@@ -608,8 +609,9 @@
             if (db !== da) return db - da;
             return b.name.localeCompare(a.name, 'zh');
           });
-    
-          renderList(id, files, dir);
+
+          // ★ 新增：每个专栏最多展示 30 篇
+          renderList(id, files.slice(0, MAX_ITEMS_PER_COLUMN ), dir);
         } catch (err) {
           console.error(dir, err);
           const el = document.getElementById(id);
