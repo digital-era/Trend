@@ -41,8 +41,20 @@ html { scroll-behavior: smooth; }
 .card-interactive[class*="primary"]:hover,.card-interactive[class*="white"]:hover,.card-interactive[class*="gray-"]:hover { border-color: hsl(20, 90%, var(--border-lightness)); }
 .card-interactive[class*="accent"]:hover { border-color: hsl(30, 85%, var(--border-lightness)); }
 table { width: 100%; border-collapse: collapse; }
-th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid hsl(0,0%,90%); }
-.dark th, .dark td { border-bottom-color: hsl(0,0%,30%); }
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+  color: #1f2937; /* gray-800，亮色模式 */
+}
+.dark th, .dark td {
+  border-bottom-color: hsl(0, 0%, 30%);
+  color: #e5e7eb; /* gray-200，暗色模式 */
+}
+/* 让 td 在暗色模式下更亮，避免与 gray-900 卡片背景混淆 */
+.dark td {
+  color: #f3f4f6; /* gray-100 */
+}
 #mobileMenu { display: none; }
 #mobileMenu.mobile-menu-open { display: block; }
 @media (min-width: 768px) { #mobileMenu { display: none !important; } }
@@ -231,7 +243,7 @@ document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
           <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">股本关键节点</h3>
           <table class="text-sm">
             <thead><tr><th class="text-gray-600 dark:text-gray-400">时间</th><th class="text-gray-600 dark:text-gray-400">事件</th><th class="text-gray-600 dark:text-gray-400">总股本/影响</th></tr></thead>
-            <tbody>
+            <tbody class="text-gray-900 dark:text-gray-100">
               <tr><td>2020年5月</td><td>科创板IPO</td><td>奠定上市股本基础</td></tr>
               <tr><td>2025年8月</td><td>回购注销2023年激励部分限制性股票</td><td>减少44.18万股</td></tr>
               <tr><td>2026年4月</td><td>2025年报披露股本基数</td><td>315,330,141股</td></tr>
@@ -279,7 +291,7 @@ document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
           <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">核心持股主体（减持前口径）</h3>
           <table class="text-sm">
             <thead><tr><th>主体</th><th>性质</th><th>持股比例</th></tr></thead>
-            <tbody>
+            <tbody class="text-gray-900 dark:text-gray-100">
               <tr><td>葛志勇</td><td>实控人/董事长/总经理</td><td>24.68%</td></tr>
               <tr><td>李文</td><td>实控人/副总经理/技术总监</td><td>15.72%</td></tr>
               <tr><td>无锡奥创</td><td>员工持股平台（葛志勇任GP）</td><td>2.78%</td></tr>
