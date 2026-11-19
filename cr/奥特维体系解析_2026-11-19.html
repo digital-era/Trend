@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奥特维体系全景解析</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)',100: 'hsl(20, 90%, 85%)',200: 'hsl(20, 90%, 75%)',300: 'hsl(20, 90%, 65%)',400: 'hsl(20, 90%, 55%)',500: 'hsl(20, 90%, 50%)',600: 'hsl(20, 90%, 45%)',700: 'hsl(20, 90%, 35%)',800: 'hsl(20, 90%, 25%)',900: 'hsl(20, 90%, 15%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)',100: 'hsl(30, 85%, 85%)',200: 'hsl(30, 85%, 75%)',300: 'hsl(30, 85%, 65%)',400: 'hsl(30, 85%, 60%)',500: 'hsl(30, 85%, 55%)',600: 'hsl(30, 85%, 50%)',700: 'hsl(30, 85%, 40%)',800: 'hsl(30, 85%, 30%)',900: 'hsl(30, 85%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}
+.btn-interactive { transition: all 0.2s ease-out; }
+.btn-interactive:hover { transform: scale(1.05); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+.btn-interactive:active { transform: scale(0.95); }
+.card-interactive { transition: all 0.3s ease-out; border: 1px solid transparent; --border-lightness: 40%; }
+.dark .card-interactive { --border-lightness: 60%; }
+.card-interactive:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); filter: brightness(0.98); }
+.card-interactive[class*="primary"]:hover,.card-interactive[class*="white"]:hover,.card-interactive[class*="gray-"]:hover { border-color: hsl(20, 90%, var(--border-lightness)); }
+.card-interactive[class*="accent"]:hover { border-color: hsl(30, 85%, var(--border-lightness)); }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid hsl(0,0%,90%); }
+.dark th, .dark td { border-bottom-color: hsl(0,0%,30%); }
+#mobileMenu { display: none; }
+#mobileMenu.mobile-menu-open { display: block; }
+@media (min-width: 768px) { #mobileMenu { display: none !important; } }
+@media (max-width: 767px) {
+  header .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
+  header .flex.items-center.justify-between > h1 { font-size: 1rem; line-height: 1.25rem; white-space: nowrap; margin-right: 0.5rem; }
+  #mobileMenu { margin-top: 1rem; padding-top: 1rem; padding-bottom: 0.5rem; border-top: 1px solid rgba(20,20,20,0.12); max-height: calc(100vh - 90px); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dark #mobileMenu { border-top-color: rgba(255,255,255,0.15); }
+  #mobileMenu a { display: block; width: 100%; padding: 0.7rem 0.5rem; border-radius: 0.5rem; }
+  #mobileMenu a:active { background: rgba(20,20,20,0.06); }
+  .dark #mobileMenu a:active { background: rgba(255,255,255,0.08); }
+}
+@media (min-width: 768px) {
+  header nav[aria-label="桌面端导航"] a { color: #374151; }
+  .dark header nav[aria-label="桌面端导航"] a { color: #e5e7eb; }
+  header nav[aria-label="桌面端导航"] a:hover { color: hsl(20, 90%, 45%); }
+  .dark header nav[aria-label="桌面端导航"] a:hover { color: hsl(20, 90%, 55%); }
+}
+header { overflow: visible; }
+.moat-bar { height: 8px; border-radius: 9999px; background: hsl(0,0%,88%); overflow: hidden; }
+.dark .moat-bar { background: hsl(0,0%,25%); }
+.moat-fill { height: 100%; border-radius: 9999px; background: linear-gradient(90deg, hsl(20,90%,55%), hsl(30,85%,55%)); }
+</style>
+<script>
+function toggleDarkMode() {
+document.body.classList.toggle('dark');
+const isDark = document.body.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">奥特维体系全景解析</h1>
+<nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+  <a href="#overview" class="text-sm font-medium transition-colors">总览</a>
+  <a href="#founder" class="text-sm font-medium transition-colors">管理层</a>
+  <a href="#capital" class="text-sm font-medium transition-colors">股本</a>
+  <a href="#equity" class="text-sm font-medium transition-colors">股权</a>
+  <a href="#companies" class="text-sm font-medium transition-colors">关联企业</a>
+  <a href="#employee" class="text-sm font-medium transition-colors">员工激励</a>
+  <a href="#summary" class="text-sm font-medium transition-colors">研判</a>
+</nav>
+<div class="flex items-center space-x-2 flex-shrink-0">
+  <button type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all" aria-label="打开或关闭导航菜单" aria-controls="mobileMenu" aria-expanded="false" id="mobileMenuButton">
+    <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+  </button>
+  <button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all" aria-label="切换暗色模式">
+    <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+    <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+  </button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+  <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+  <a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+  <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+  <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+  <a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+  <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
+  <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">研判</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main class="min-h-screen">
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">奥特维体系全景解析</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+本页以公司治理与资本运作的框架，系统梳理奥特维（688516）的核心议题：创始人葛志勇与李文的创业历程与战略演进、上市以来的股本变动与股东行为、以一致行动人平台为核心的股权控制结构、子公司与关联企业布局，以及多层次员工激励机制。2025年是光伏设备周期的底部，2026年三季度则出现了明确的经营拐点信号，第一曲线修复与第二曲线放量同时发生，使这家全球串焊机龙头的资本叙事进入新阶段。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+  <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+        <i data-lucide="users" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">同窗创业</h3>
+    </div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">葛志勇与李文，2010年从自动化集成切入，以串焊机单品撬动全球组件设备格局。</p>
+  </div>
+  <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+        <i data-lucide="trending-up" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">周期拐点</h3>
+    </div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">2025年净利触底4.45亿元，2026Q3扣非净利同比+236.83%，在手订单114.50亿元。</p>
+  </div>
+  <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+        <i data-lucide="layers" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">双曲线切换</h3>
+    </div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">光伏主业修复之外，锂电储能与半导体封测设备正在成为真实的收入与订单增量。</p>
+  </div>
+</div>
+</div>
+</section>
+
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">创始人/核心管理层：同窗搭档与战略演进</h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        奥特维的治理结构高度稳定：葛志勇与李文自2010年共同创业以来一直是公司的共同实际控制人，两人为同窗好友，均具有体制内工程师背景与企业管理经验。葛志勇现任董事长兼总经理，李文任副总经理兼技术总监。这种“一人主经营、一人主技术”的搭档结构，在科创板装备类公司中较为典型，也决定了公司战略在技术驱动与商业落地之间保持了相对均衡的节奏。<sup>[reference:4]</sup>
+      </p>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="flag" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          关键转折：2013—2014年，奥特维以“试用+调试”策略切入被外资垄断的串焊机市场，凭借性价比完成从0到1的客户验证。2014年销售额从300万元级别跃升至2亿元，自此奠定组件设备龙头地位。<sup>[reference:10]</sup>
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">创业与上市路径</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2010年2月，无锡奥特维成立，初期承接工业自动化集成项目</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2013年推出首款光伏串焊机，2014年打开头部客户市场</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2016年新三板挂牌，2020年5月科创板上市</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2020—2024年营收增长超7倍，净利润增长超7.1倍</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">战略重心的三次迁移</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>第一阶段：单品突破。</strong>以串焊机为矛，拿下全球组件前十客户，市占率超过60%。<sup>[reference:14]</sup></span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>第二阶段：光伏平台化。</strong>向硅片分选、单晶炉、电池设备延伸，覆盖拉棒至组件全环节。</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>第三阶段：跨赛道平台。</strong>锂电/储能与半导体封测设备从“种子业务”转向规模化放量，2026年成为订单与收入的重要边际增量。</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">管理哲学：技术长期主义与周期应对</h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          奥特维管理层在光伏上行期并未将资源全部押注于单一环节的产能扩张，而是持续将串焊机积累的精密运动控制、视觉检测与自动化能力向锂电叠片/模组PACK、半导体铝线键合/AOI等相邻工艺迁移。2025年光伏行业进入深度调整，公司光伏设备收入同比下降约43%，但同期锂电/储能设备收入达到5.47亿元，半导体设备订单从2024年的突破1亿元进一步扩张，使公司在周期底部保留了组织与研发的连续性，而非被动收缩。<sup>[reference:15]</sup>
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          另一个值得注意的管理信号是分红策略。2025年归母净利润4.45亿元，公司拟现金分红约4.1亿元，占净利润的92.2%。在业绩大幅下滑的年份选择高分红，一方面反映了账面现金与现金流仍可支撑，另一方面也向市场传递了实控人对短期业绩波动并不恐慌的态度。<sup>[reference:7]</sup>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">股本数量变化：科创板上市后的稳定与微调</h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        奥特维2020年5月科创板上市后，总股本长期保持在3.15亿股级别，未发生大规模增发或资本公积转增。股本层面的“变化”主要来自限制性股票回购注销带来的微小缩减，以及可转债转股可能带来的边际增量，而非融资性扩张。截至2026年11月中旬，公司总股本约3.15亿股，总市值在118亿至128亿元区间波动。<sup>[reference:6]</sup>
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">股本关键节点</h3>
+          <table class="text-sm">
+            <thead><tr><th class="text-gray-600 dark:text-gray-400">时间</th><th class="text-gray-600 dark:text-gray-400">事件</th><th class="text-gray-600 dark:text-gray-400">总股本/影响</th></tr></thead>
+            <tbody>
+              <tr><td>2020年5月</td><td>科创板IPO</td><td>奠定上市股本基础</td></tr>
+              <tr><td>2025年8月</td><td>回购注销2023年激励部分限制性股票</td><td>减少44.18万股</td></tr>
+              <tr><td>2026年4月</td><td>2025年报披露股本基数</td><td>315,330,141股</td></tr>
+              <tr><td>2026年9月</td><td>2026年限制性股票首次授予</td><td>授予450万股（占1.43%）</td></tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">数据来源：公司公告。<sup>[reference:0][reference:9]</sup></p>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">当前市值快照（2026年11月中旬）</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center"><span class="text-sm text-gray-700 dark:text-gray-300">总股本</span><span class="font-semibold text-accent-600 dark:text-accent-400">约3.15亿股</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm text-gray-700 dark:text-gray-300">总市值</span><span class="font-semibold text-accent-600 dark:text-accent-400">118—128亿元</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm text-gray-700 dark:text-gray-300">股价区间</span><span class="font-semibold text-accent-600 dark:text-accent-400">约37—41元</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm text-gray-700 dark:text-gray-300">动态PE（TTM）</span><span class="font-semibold text-accent-600 dark:text-accent-400">约20—21倍</span></div>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">注：市值随二级市场波动，此处为2026年11月中旬区间参考。<sup>[reference:6][reference:23]</sup></p>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">大股东与一致行动人减持记录</h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          2025—2026年，实控人方进行了多轮减持，核心主体包括葛志勇、李文个人，以及两人控制的员工持股平台无锡奥创、无锡奥利。2025年7月，葛志勇、李文及一致行动人通过询价转让合计减持1575万股，占总股本约4.99%，套现约4.47亿元。2026年2月披露的新一轮减持计划中，四人/主体合计拟减持不超过996.55万股，占总股本3.16%，截至2026年5月7日已实施227.85万股，持股比例从44.69%降至43.97%。<sup>[reference:4][reference:5][reference:11]</sup>
+        </p>
+        <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+          <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+            <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+            减持的背景需要放在两个框架下理解：其一，员工持股平台无锡奥创与无锡奥利本身具有“激励变现”的功能属性，平台份额在员工离职或约定期限届满后需要流动性出口；其二，实控人个人减持发生在2025年业绩预告披露前后与2026年光伏板块主题交易活跃期，信号含义与纯粹的“看空”不能简单等同，但对市场情绪的压制是客观存在的。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">股权结构：双实控人+员工平台的一致行动格局</h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        奥特维没有采用海底捞式的境外家族信托架构，而是以“两位自然人实控人直接持股+员工持股平台一致行动”的境内结构实现控制权集中。葛志勇与李文为一致行动人，无锡奥创与无锡奥利为葛志勇担任执行事务合伙人的员工持股平台，亦被认定为一致行动人。这一结构在减持后仍保持了43.97%的合计持股比例，控制权稳定性较高，但也意味着任何进一步的平台退出都会直接作用于二级市场供给。<sup>[reference:11][reference:19]</sup>
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">核心持股主体（减持前口径）</h3>
+          <table class="text-sm">
+            <thead><tr><th>主体</th><th>性质</th><th>持股比例</th></tr></thead>
+            <tbody>
+              <tr><td>葛志勇</td><td>实控人/董事长/总经理</td><td>24.68%</td></tr>
+              <tr><td>李文</td><td>实控人/副总经理/技术总监</td><td>15.72%</td></tr>
+              <tr><td>无锡奥创</td><td>员工持股平台（葛志勇任GP）</td><td>2.78%</td></tr>
+              <tr><td>无锡奥利</td><td>员工持股平台（葛志勇任GP）</td><td>1.52%</td></tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">合计约44.70%；减持后（2026年5月7日）合计降至43.97%。<sup>[reference:8][reference:11]</sup></p>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">控制权稳定性的三个支撑</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="shield" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>一致行动关系明确。</strong>葛志勇与李文为一致行动人，员工平台与葛志勇的执行事务合伙人身份绑定，表决权集中度高。</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="shield" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>减持后仍远超“控制权安全线”。</strong>43.97%的合计持股在科创板公司中仍属于相当集中的水平，不存在控制权旁落风险。</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="shield" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>创始人仍在一线。</strong>葛志勇继续担任董事长兼总经理，李文继续负责技术，战略连续性未因减持而中断。</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">股权结构的隐含约束</h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          这种结构的优点是控制权清晰、决策链条短，在装备类公司需要长期研发投入和技术路线押注时，减少了外部股东短期业绩压力对战略的干扰。但另一面是，员工持股平台的“激励—退出”节奏与二级市场承受力之间存在张力。无锡奥创与无锡奥利的份额最初来自2017年葛志勇、李文及潘叙的低价转让，属于典型的股份支付安排；当平台份额持有人需要变现时，减持是唯一通道。<sup>[reference:17]</sup>
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          因此，市场对奥特维“实控人减持”的敏感，本质上不是对控制权稳定性的担忧，而是对供给节奏与治理信号的双重定价。在2026年基本面出现拐点的背景下，减持是否从“常态化退出”转为“趋势性收缩”，是观察治理层面的一个关键变量。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">关联企业与子公司：从光伏设备到泛半导体的触角延伸</h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        奥特维没有海底捞式的分拆上市矩阵，关联企业关系以控股子公司和战略性参股为主。上市公司主体之下，子公司承担海外销售、特定工艺设备研发与区域运营职能；近年新设的合资公司则指向半导体、激光等相邻赛道的前瞻卡位。对投资者而言，需要区分“表内子公司”与“表外战略参股”——前者的经营直接影响合并报表，后者更多是期权价值。
+      </p>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">海外运营主体</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">AUTOWELL日本、Autowell新加坡等</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>100%持股的销售与研发触点</li>
+            <li>支撑产品覆盖全球40多个国家和地区</li>
+            <li>在中美贸易摩擦与光伏本地化趋势下，海外主体的本地化交付能力具有战略价值</li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="cpu" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">苏州奥特维镭智装备</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">2026年1月成立，注册资本3000万元</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>奥特维与尤毅、张志强共同持股</li>
+            <li>经营范围覆盖智能基础制造装备、半导体器件专用设备</li>
+            <li>指向激光/半导体工艺设备的早期卡位，尚处于投入期</li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="database" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">无锡唯因特数据技术</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">控股子公司，曾接受上市公司财务资助</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>与装备主业形成“硬件+数据/软件”的协同尝试</li>
+            <li>体量较小，对合并报表影响有限</li>
+            <li>关联交易需关注资金往来的必要性与公允性</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">关联交易与财务影响</h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          奥特维的关联交易复杂度远低于餐饮或消费品集团，核心关联方是实控人控制的企业以及员工持股平台，交易类型以财务资助、租赁、少数股权合作为主。无锡唯因特接受上市公司财务资助的关联交易曾履行专项核查程序，规模不大，不构成利润表的主要扰动项。<sup>[reference:3]</sup>
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          真正影响财务表现的“关联”不在传统关联交易层面，而在于客户集中度与光伏产业链的周期传导。奥特维的前五大客户长期以全球组件龙头为主，这些客户的资本开支节奏直接决定串焊机与整线设备的验收与收入确认。2025年收入下滑的核心机制正是“客户经营承压→验收周期拉长→收入与利润同步收缩”，而非关联方利益输送。<sup>[reference:15]</sup>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">员工持股与激励机制：员工平台+限制性股票的双层结构</h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        奥特维的激励体系可以概括为“历史平台承接存量激励，限制性股票负责增量绑定”。无锡奥创与无锡奥利是2017年前后通过股份支付形成的员工持股平台，承载了上市前核心员工的股权利益；2023年及2026年的限制性股票计划则面向更广泛的骨干员工，以市价折扣和业绩考核实现新的绑定。这种双层结构在科创板公司中并不罕见，但奥特维的特点是员工平台同时被认定为实控人的一致行动人，使激励与治理的边界比一般公司更模糊。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">存量：员工持股平台</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">无锡奥创（葛志勇任执行事务合伙人）与无锡奥利，2017年通过实控人低价转让份额形成股份支付</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">平台份额的退出通过减持上市公司股票实现，2025—2026年的减持中有相当部分来自平台正常退出</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">平台被认定为实控人一致行动人，减持需遵守相应预披露与额度约束</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">增量：2026年限制性股票</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2026年9月29日首次授予，价格21.36元/股，向492名激励对象授予450万股第二类限制性股票</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">约占授予时总股本31476.0458万股的1.43%，覆盖范围从核心技术人员向中层与业务骨干扩展</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">归属条件包含公司层面业绩考核与个人层面考核，具体目标未在首次授予公告中完整展开，需关注后续草案细节</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">薪酬与考核体系的隐含逻辑</h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          装备类公司的激励有效性，最终要看“激励对象是否真正对设备交付、客户验收和技术迭代负责”。奥特维的研发与交付体系高度依赖项目制团队，限制性股票的覆盖面若集中在项目经理、工艺工程师和客户现场负责人，其绑定效果会优于泛化的全员持股。2026年授予的492人占公司员工总数比例有限，属于选择性激励，而非普惠式安排，这与公司在周期底部“保留关键能力”的意图是一致的。<sup>[reference:9]</sup>
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          潜在矛盾在于：员工平台的存量退出与限制性股票的增量授予之间存在时间差和价格差。平台份额持有人可能在21—40元区间退出，而新授予对象的成本为21.36元，两者对股价的敏感度不同。若二级市场股价长期低于平台持有人的心理价位，存量退出压力与新激励的吸引力可能同时受到考验。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">综合研判与关键结论</h2>
+    <div class="space-y-6">
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">1. 2025年是周期底部，2026年拐点的真实性高于主题性</h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          2025年营收63.97亿元（同比-30.6%），归母净利润4.45亿元（同比-64.64%），光伏设备收入同比下降约43%，是光伏行业开工率低位、客户验收周期拉长的直接结果。<sup>[reference:7][reference:15]</sup>2026年Q3单季扣非净利润1.85亿元，同比大增236.83%，毛利率修复至38.88%，在手订单114.50亿元（同比+15.19%），表明收入确认节奏与盈利能力正在同步改善。<sup>[reference:21]</sup>拐点的驱动力不仅是光伏主业的边际修复，还包括锂电/储能与半导体设备的订单放量，后者使公司在光伏资本开支尚未全面回暖时获得了额外的收入支撑。
+        </p>
+        <div class="space-y-3 mt-4">
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span class="text-gray-700 dark:text-gray-300">光伏主业修复确定性</span><span class="text-gray-600 dark:text-gray-400">中等偏高</span></div>
+            <div class="moat-bar"><div class="moat-fill" style="width: 68%;"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span class="text-gray-700 dark:text-gray-300">第二曲线放量持续性</span><span class="text-gray-600 dark:text-gray-400">中等</span></div>
+            <div class="moat-bar"><div class="moat-fill" style="width: 55%;"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1"><span class="text-gray-700 dark:text-gray-300">盈利修复的可持续性</span><span class="text-gray-600 dark:text-gray-400">中等偏高</span></div>
+            <div class="moat-bar"><div class="moat-fill" style="width: 62%;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">2. 财务核心矛盾已经从“收入下滑”转向“结构切换的毛利率代价”</h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          2025年的矛盾是量价齐跌与减值计提；2026年的矛盾则变为：光伏主业毛利率在低位企稳，锂电/储能与半导体设备的毛利率虽在改善，但收入占比尚不足以完全对冲光伏设备的利润率缺口。前三季度综合毛利率36.50%，较上半年提升1.3个百分点，方向正确但绝对水平仍低于光伏上行期。<sup>[reference:21]</sup>市场需要观察的是，当锂电/储能订单从“项目制交付”进入“规模化复购”阶段后，毛利率能否稳定在30%以上，而非在竞争加剧后再次下探。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">3. 治理层面的核心观察点：减持节奏与激励结构</h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          双实控人43.97%的一致行动持股提供了控制权安全垫，但员工平台的存量退出是持续性的供给来源。2026年限制性股票以21.36元/股授予492人，将增量激励与当期股价绑定，客观上要求公司在2027—2028年交出可验证的业绩，否则激励的保留效果会打折扣。治理层面不支持“控制权风险”叙事，但支持“供给节奏压制估值弹性”的判断。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">4. 风险提示</h3>
+        <div class="space-y-4">
+          <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>光伏资本开支二次探底。</strong>若2027年全球组件扩产再次低于预期，串焊机与整线的验收周期可能再次拉长，2026年的盈利修复将难以线性外推。
+            </p>
+          </div>
+          <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>第二曲线竞争烈度上升。</strong>锂电储能与半导体封测设备均面临国内装备公司的密集布局，奥特维的工艺迁移能力是优势，但先发窗口并非无限。
+            </p>
+          </div>
+          <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>减持与激励的博弈。</strong>员工平台退出若与限制性股票归属期重叠，可能形成阶段性供给压力；反之，若股价持续低于激励授予价，激励的保留效果也会减弱。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          一句话总结：奥特维的串焊机龙头地位没有动摇，2025年的利润底与2026年的订单拐点共同构成了一个可验证的修复叙事；真正的考验不在于光伏主业能否回暖，而在于锂电/储能与半导体设备能否在竞争全面加剧之前，把“第二曲线”从订单放量推进到利润放量。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合奥特维（688516）2025年年报、2026年三季报、股权激励公告、减持公告及券商研究数据，系统梳理其管理层、股本、股权、关联企业与激励机制。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 创始人/核心管理层</li>
+<li>• 股本变动与股东行为</li>
+<li>• 股权结构与一致行动关系</li>
+<li>• 子公司与关联企业</li>
+<li>• 员工持股与限制性股票</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供信息参考与研究讨论，不构成投资建议。数据基于公开披露与市场信息整理，分析观点不预示未来表现。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 奥特维体系全景研究。保留所有权利。</p>
+</div>
+</div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+  if (!menu) return;
+  const isOpen = menu.classList.toggle('mobile-menu-open');
+  menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  if (button) button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  if (icon) { icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu'); lucide.createIcons(); }
+}
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+  if (!menu) return;
+  menu.classList.remove('mobile-menu-open');
+  menu.setAttribute('aria-hidden', 'true');
+  if (button) button.setAttribute('aria-expanded', 'false');
+  if (icon) { icon.setAttribute('data-lucide', 'menu'); lucide.createIcons(); }
+}
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+});
+document.addEventListener('DOMContentLoaded', function() {
+  lucide.createIcons();
+  AOS.init({ duration: 800, once: true });
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => closeMobileMenu());
+  });
+});
+</script>
+</body>
+</html>

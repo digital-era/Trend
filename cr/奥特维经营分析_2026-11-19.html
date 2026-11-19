@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>奥特维（688516.SH）经营分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "hsl(200, 80%, 95%)",
+                100: "hsl(200, 80%, 85%)",
+                200: "hsl(200, 80%, 75%)",
+                300: "hsl(200, 80%, 65%)",
+                400: "hsl(200, 80%, 55%)",
+                500: "hsl(200, 80%, 45%)",
+                600: "hsl(200, 80%, 38%)",
+                700: "hsl(200, 80%, 30%)",
+                800: "hsl(200, 80%, 22%)",
+                900: "hsl(200, 80%, 14%)",
+              },
+              accent: {
+                50: "hsl(170, 60%, 95%)",
+                100: "hsl(170, 60%, 85%)",
+                200: "hsl(170, 60%, 75%)",
+                300: "hsl(170, 60%, 65%)",
+                400: "hsl(170, 60%, 55%)",
+                500: "hsl(170, 60%, 45%)",
+                600: "hsl(170, 60%, 38%)",
+                700: "hsl(170, 60%, 30%)",
+                800: "hsl(170, 60%, 22%)",
+                900: "hsl(170, 60%, 14%)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        html { scroll-behavior: auto; }
+      }
+      .btn-interactive { transition: all 0.2s ease-out; }
+      .btn-interactive:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+      }
+      .btn-interactive:active { transform: scale(0.95); }
+      .card-interactive {
+        transition: all 0.3s ease-out;
+        border: 1px solid transparent;
+        --border-lightness: 40%;
+      }
+      .dark .card-interactive { --border-lightness: 60%; }
+      .card-interactive:hover {
+        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        filter: brightness(0.98);
+      }
+      .card-interactive[class*="primary"]:hover,
+      .card-interactive[class*="white"]:hover,
+      .card-interactive[class*="gray-"]:hover {
+        border-color: hsl(200, 80%, var(--border-lightness));
+      }
+      .card-interactive[class*="accent"]:hover {
+        border-color: hsl(170, 60%, var(--border-lightness));
+      }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid hsl(0,0%,90%); }
+      .dark th, .dark td { border-bottom-color: hsl(0,0%,30%); }
+      .moat-bar { height: 10px; border-radius: 5px; background: hsl(0,0%,90%); overflow: hidden; }
+      .dark .moat-bar { background: hsl(0,0%,30%); }
+      .moat-fill {
+        height: 100%; border-radius: 5px;
+        background: linear-gradient(90deg, hsl(200,80%,50%), hsl(170,60%,50%));
+        transition: width 1.2s ease-out;
+      }
+      .risk-badge {
+        display: inline-flex; align-items: center; justify-content: center;
+        min-width: 28px; height: 28px; border-radius: 8px; font-weight: 700; font-size: 13px;
+      }
+      .dark body { color: #f3f4f6; }
+      .dark header nav a { color: #e5e7eb !important; }
+      .dark header nav a:hover { color: hsl(200,80%,65%) !important; }
+      .dark .text-gray-400, .dark .text-gray-500 { color: #9ca3af !important; }
+      .dark table th { color: #f3f4f6; }
+      .dark table td { color: #e5e7eb; }
+      .dark .text-gray-600 { color: #d1d5db !important; }
+      .dark .text-gray-700 { color: #e5e7eb !important; }
+      #mobileMenu { display: none; }
+      @media (min-width: 768px) { #mobileMenu { display: none !important; } }
+      @media (max-width: 767px) { #mobileMenu.mobile-menu-open { display: block !important; } }
+    </style>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark");
+        const isDark = document.body.classList.contains("dark");
+        document.getElementById("sunIcon").style.display = isDark ? "block" : "none";
+        document.getElementById("moonIcon").style.display = isDark ? "none" : "block";
+      }
+    </script>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width:0%"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+            奥特维 688516.SH 经营分析
+          </h1>
+          <nav class="hidden md:flex space-x-5">
+            <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+              <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+            <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all">
+              <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i>
+              <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display:block"></i>
+            </button>
+          </div>
+        </div>
+        <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+          <nav class="flex flex-col space-y-3">
+            <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200">商业模式</a>
+            <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200">护城河</a>
+            <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200">行业趋势</a>
+            <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200">财务状况</a>
+            <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200">估值</a>
+            <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200">展望</a>
+            <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200">风险</a>
+            <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200">多空</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen">
+      <!-- Hero -->
+      <section class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300">A股科创板 · 光伏设备</span>
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300">688516.SH</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+            无锡奥特维科技股份有限公司<br />
+            <span class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium">经营分析报告</span>
+          </h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl">
+            奥特维是全球光伏组件串焊机的绝对龙头，全球市占率超过70%。公司正站在从“光伏单核”向“光伏+储能+半导体”平台型设备企业转型的关键节点。2025年是光伏周期底部，营收与利润大幅承压；但2026年三季报显示扣非利润强劲修复，在手订单回升至114.5亿元。本报告从八个维度评估：这究竟是一次周期底部的买入机会，还是一场尚未完成的平台化叙事。
+          </p>
+          <div class="grid md:grid-cols-4 gap-4">
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">42.50亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2026前三季营收（人民币）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">4.64亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2026前三季归母净利（+19.0%）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">114.50亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Q3末在手订单（含税，+15.2%）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">70%+</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">串焊机全球市占率</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 一、商业模式 -->
+      <section id="model" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="factory" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">一、商业模式</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              奥特维的核心商业模式可以概括为<strong>“高市占率设备销售 + 类耗材化更新 + 平台化横向扩张”</strong>。公司向光伏组件厂商销售串焊机、硅片分选机、单晶炉等核心生产设备，单台设备价值量高、技术壁垒深。但与传统“资本开支型”设备商不同，光伏技术迭代极快（硅片薄片化、N型电池、SMBB/0BB、多分片），串焊机的更新周期从3–5年缩短至约2年，设备从一次性资本开支逐渐具备<strong>“类耗材”属性</strong>，为龙头厂商创造了持续的收入流[reference:0]。在此基础上，公司正将能力复用至锂电/储能和半导体封测设备，试图降低对光伏单一周期的暴露。
+            </p>
+            <div class="grid md:grid-cols-3 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="cog" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">设备销售 + 改造升级</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  串焊机是绝对拳头产品，全球市占率超70%，服务全球前十大组件企业。设备进入客户产线后，备品备件、改造升级和二手设备翻新形成持续性收入，客户切换成本极高。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+                  <h3 class="font-semibold text-accent-700 dark:text-accent-300">从单核到三核平台化</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  光伏设备仍是基本盘（收入占比超70%），但锂电/储能设备2025年新签订单9.50亿元（+近70%），半导体设备新签订单超2.5亿元（+107%），第二曲线正在从“概念”走向“订单”。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="globe-2" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">海外渗透对冲国内下行</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  2025年境外销售收入17.42亿元，同比增长13.82%。海外订单占比从2024年的约30%持续提升，纯海外客户占海外订单的70%以上，欧洲、非洲、亚太及澳洲是主要增量区域。
+                </p>
+              </div>
+            </div>
+            <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6">
+              <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+                <i data-lucide="lightbulb" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+                奥特维商业模式的本质是<strong>用“串焊机70%市占率”构筑现金流底座，用“类耗材化更新”平滑设备周期，再用平台化尝试打开第二增长曲线</strong>。但平台化能否成功，决定了它是“周期成长股”还是“周期股”。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 二、竞争优势（护城河） -->
+      <section id="moat" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="shield" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">二、竞争优势：护城河评估</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            奥特维的护城河在设备制造行业中属于较深的一档，但其来源高度集中于<strong>技术代际领先 + 客户产线深度嵌入</strong>，而非品牌或网络效应。以下从五个维度打分（1–10分）。
+          </p>
+          <div class="space-y-6">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">品牌实力（B2B设备品牌）</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">7<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width:70%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                在光伏组件设备领域，“奥特维串焊机”几乎是默认选项。全球前十大组件企业全部是其客户，这种B2B端的品牌信任来自十余年、数千条产线的稳定运行记录，新进入者极难在短期内建立同等信誉。但品牌影响力局限于光伏设备圈，跨行业（半导体、储能）的品牌认知尚在建立中。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">网络效应</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">4<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width:40%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                设备行业不存在典型的用户侧网络效应。但存在一种<strong>“客户生态正反馈”</strong>：服务头部客户 → 获得最前沿工艺需求 → 迭代出更领先的设备 → 进一步巩固头部客户份额。这种效应在组织与研发生态层面运作，强度弱于互联网平台，但足以维持马太效应[reference:1]。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">转换成本</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">8<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width:80%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                这是奥特维护城河最扎实的来源。串焊机嵌入组件产线的核心节拍，更换设备意味着整线重新验证、良率爬坡和停机损失。设备商的工艺参数与客户产线深度耦合，0BB、多分片等新工艺更依赖原厂联合开发。一旦进入供应体系，客户在后续改造和扩产中倾向于延续原厂方案，粘性极强。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">成本优势</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">6<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width:60%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                规模采购和核心零部件自制带来一定成本优势，但设备行业的价格竞争更多取决于技术溢价而非单纯制造成本。2025年光伏设备毛利率下降至29.10%，说明在行业下行期成本优势不足以完全对冲价格压力。成本是“防守项”，而非核心进攻壁垒。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">专利或自有技术</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width:90%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                奥特维最深的壁垒。2013年至今推出9代串焊机，主力机型MS100B系列产能达7,200片/小时、良率98.5%以上、碎片率0.15%以下，参数全面领先。截至2026年6月末累计授权知识产权2,838项，研发人员占员工总数26.57%。在0BB、多分片、边缘钝化、钙钛矿设备等前沿方向均有前瞻布局，技术代际领先至少1–2年[reference:2][reference:3]。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">与主要竞争对手的护城河对比</h3>
+            <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+              <table class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+                <thead class="bg-primary-50 dark:bg-primary-900/30">
+                  <tr>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">奥特维</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">迈为股份</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">金辰股份</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">先导智能</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr><td class="font-medium">核心赛道</td><td class="text-primary-600 dark:text-primary-400 font-semibold">串焊机（组件）</td><td>HJT整线（电池）</td><td>组件自动化产线</td><td>组件端智能装备</td></tr>
+                  <tr><td class="font-medium">细分市占率</td><td class="text-primary-600 dark:text-primary-400 font-semibold">70%+</td><td>HJT整线70–80%</td><td>层压机为主，串焊机份额较低</td><td>组件端装备份额分散</td></tr>
+                  <tr><td class="font-medium">技术代际</td><td class="text-primary-600 dark:text-primary-400 font-semibold">9代串焊机，0BB/多分片领先</td><td>HJT整线强，NBB布局</td><td>业务面广，单点深度弱于奥特维</td><td>自动化强，核心焊接设备非最强项</td></tr>
+                  <tr><td class="font-medium">客户粘性</td><td class="text-primary-600 dark:text-primary-400 font-semibold">产线深度嵌入，转换成本高</td><td>HJT整线绑定，但路线风险集中</td><td>整线方案粘性中等</td><td>中等</td></tr>
+                  <tr><td class="font-medium">平台化进展</td><td>光伏+储能+半导体，初步成型</td><td>聚焦HJT及泛半导体</td><td>组件自动化为主</td><td>锂电设备为主，光伏组件为延伸</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">数据来源：券商研报、行业报告整理。市占率为2025–2026年口径。</p>
+          </div>
+
+          <div class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="award" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              综合护城河评分：<strong>6.8/10</strong>。串焊机领域的技术与转换成本护城河极深（8–9分），但公司整体仍高度依赖光伏单一行业，平台化业务尚未形成同等深度的壁垒。护城河的“宽度”足够，但“抗周期韧性”仍需第二曲线来补强。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三、行业趋势 -->
+      <section id="industry" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="trending-up" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">三、行业趋势</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              光伏设备行业正处于<strong>“国内产能出清 + 海外扩产 + 技术迭代”</strong>三股力量交织的阶段。2026年上半年国内光伏新增装机72.07GW，同比下降66.04%，新增产能的设备采购几乎停摆，行业主流叙事是产能出清与价格战[reference:4]。但设备商的故事并未结束：技术升级正在把“扩产设备采购”转化为“存量改造与更新需求”，而海外一体化产能建设提供了第二重增量。
+            </p>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                  <i data-lucide="arrow-down-circle" class="w-5 h-5"></i>国内：产能出清尚未完成
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 2026年上半年国内新增装机同比骤降66%，设备采购进入冰点</li>
+                  <li>• 光伏设备商面临降价保份额的压力，毛利率承压</li>
+                  <li>• 行业供给侧改革推进中，但出清节奏慢于市场年初预期</li>
+                  <li>• 国内需求从“扩产驱动”转向“技术升级驱动”</li>
+                </ul>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2">
+                  <i data-lucide="zap" class="w-5 h-5"></i>结构性增量：海外 + 技术迭代
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 海外产能从组件向电池、拉晶/切片一体化延伸，2026年欧洲、非洲、亚太、澳洲项目增多</li>
+                  <li>• TOPCon 0BB、多分片、BC铜浆、边缘钝化等技术进入规模化导入期，存量产线改造需求释放</li>
+                  <li>• 钙钛矿设备、太空光伏（SpaceX/特斯拉100GW规划）提供远期期权</li>
+                  <li>• 储能与半导体设备需求独立于光伏周期，形成对冲</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-4 p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <strong class="text-gray-800 dark:text-gray-200">对奥特维的影响：</strong>行业趋势对奥特维是“短空长多”。短期光伏设备收入仍将承压，但串焊机的“类耗材”属性使公司在存量改造中受益程度高于纯扩产驱动的设备商。0BB和多分片带来的单GW设备价值量提升，部分抵消了新增产能下滑。海外订单占比提升和储能/半导体订单放量，是2027年之前最值得跟踪的阿尔法来源。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四、财务状况 -->
+      <section id="financial" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="bar-chart-3" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">四、财务状况</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            以下分析奥特维2021–2025年五年财务表现，并结合2026年三季报的最新边际变化。这是一家经历了完整“高增长—周期下行—底部修复”的典型设备公司。
+          </p>
+
+          <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8">
+            <table class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+              <thead class="bg-accent-50 dark:bg-accent-900/30">
+                <tr>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">指标（人民币亿元）</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2021</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2022</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2023</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2024</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2025</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr><td class="font-medium">营业收入</td><td>20.47</td><td>35.40</td><td>63.02</td><td>92.18</td><td class="font-semibold text-primary-600 dark:text-primary-400">63.97</td></tr>
+                <tr><td class="font-medium">营收同比</td><td>+78.9%</td><td>+72.9%</td><td>+78.1%</td><td>+46.3%</td><td class="text-red-600 dark:text-red-400">-30.6%</td></tr>
+                <tr><td class="font-medium">归母净利润</td><td>3.71</td><td>7.13</td><td>12.56</td><td>12.57</td><td class="font-semibold text-primary-600 dark:text-primary-400">4.45</td></tr>
+                <tr><td class="font-medium">净利润同比</td><td>+138.6%</td><td>+92.4%</td><td>+76.1%</td><td>+0.1%</td><td class="text-red-600 dark:text-red-400">-64.6%</td></tr>
+                <tr><td class="font-medium">毛利率</td><td>37.66%</td><td>38.92%</td><td>36.55%</td><td>32.83%</td><td>32.04%</td></tr>
+                <tr><td class="font-medium">加权平均ROE</td><td>29.69%</td><td>35.84%</td><td>40.28%</td><td>31.40%</td><td>11.21%</td></tr>
+                <tr><td class="font-medium">经营现金流净额</td><td>—</td><td>—</td><td>7.42</td><td>7.33</td><td>8.88</td></tr>
+                <tr><td class="font-medium">资产负债率</td><td>—</td><td>—</td><td>—</td><td>—</td><td>72.57%</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="trending-down" class="w-5 h-5"></i>收入与利润：从超高速增长到周期深蹲
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2021–2024年是典型的高增长期，营收从20亿飙升至92亿，净利润从3.7亿升至12.6亿。但2025年光伏周期急剧下行，光伏设备收入同比萎缩42.81%，营收回落至64亿，净利润仅4.45亿。值得注意的是，<strong>2026年前三季度营收42.5亿（同比-9.0%），但归母净利4.64亿（同比+19.0%），Q3单季扣非净利同比大增236.8%</strong>，盈利底部大概率已经确认[reference:5][reference:6][reference:7]。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="wallet" class="w-5 h-5"></i>现金流与应收账款：最需要盯住的地方
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2025年经营现金流8.88亿元，同比增长21.2%，看似健康。但截至2025年末应收账款账面价值达35.42亿元，占总资产26.48%，部分下游光伏客户出现支付困难。2025年全年计提信用及资产减值约5.7亿元，直接侵蚀利润。2026年前三季度经营现金流仅1.39亿元（同比-74.7%），Q3单季为-1.58亿元，回款压力仍然显著[reference:8][reference:9][reference:10]。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="scale" class="w-5 h-5"></i>利润率与债务：杠杆偏高，但流动性尚可
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                毛利率从2022年的38.9%降至2025年的32.0%，2026年前三季度回升至36.5%，Q3单季38.9%，显示产品结构改善和减值压力减轻。资产负债率72.57%在设备行业中偏高，但合同负债30.01亿元（同比+5.4%）表明预收款支撑仍在。长桥证券等平台显示的PE（TTM）约23–28倍，对应的是底部利润，而非正常化利润[reference:11][reference:12]。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="percent" class="w-5 h-5"></i>ROE：周期性回撤，而非结构性恶化
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                ROE从2023年的40.28%骤降至2025年的11.21%，降幅巨大，但驱动因素是利润下滑和资产周转放缓，而非杠杆失控或资产质量崩坏。随着2026年利润修复，年化ROE有望回升至15–18%区间。对于设备公司而言，关键不是单一年份的ROE高低，而是<strong>下行期是否守住了资产负债表，上行期是否具备利润弹性</strong>——奥特维目前两者都还成立。
+              </p>
+            </div>
+          </div>
+
+          <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">整体判断：短期承压，但财务底盘未失</h3>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4">
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">36.5%</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2026前三季毛利率</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">114.5亿</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">在手订单（含税）</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-orange-600">35.4亿</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">应收账款（2025末）</div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              奥特维的财务状况可以定性为<strong>“周期底部承压，但资产负债表仍有韧性”</strong>。2025年是利润和现金流的双重低点，应收账款和减值是最突出的瑕疵。但2026年三季报显示毛利率修复、扣非利润高增、在手订单重回增长，经营最差的时点大概率已经过去。真正的考验在于：在手订单能否顺利转化为收入和回款，而不是停留在“纸面订单”阶段。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五、估值分析 -->
+      <section id="valuation" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="calculator" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">五、估值分析</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">市盈率（P/E）对比</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">奥特维（TTM）</span>
+                  <span class="font-bold text-primary-600 dark:text-primary-400">23–28x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">奥特维（2026E，一致预期）</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">约18–20x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">新能源设备行业平均（TTM）</span>
+                  <span class="font-semibold text-gray-700 dark:text-gray-300">约39.5x</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3">
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">光伏设备可比公司2026E PE均值</span>
+                  <span class="font-semibold text-gray-700 dark:text-gray-300">约33–48x</span>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 mt-3">
+                当前TTM PE看似不低，但分母是2025年4.45亿的底部利润。若以2026年一致预期6.2–6.6亿计算，PE压缩至18–20倍，低于行业平均，也低于公司自身历史中枢。市场定价的核心分歧在于：2026年的利润修复是可持续的正常化，还是周期反弹的脉冲。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">券商目标价与评级</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">分析师平均目标价</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">69.98 元</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">最高目标价</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">94.90 元</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">最低目标价</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">54.56 元</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">长江证券（2026-11-18）</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">买入 · 2026E PE 18x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">国泰海通（2026-11-11）</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">买入 · 目标价 58.37 元</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">华泰证券（2026-10-27）</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">目标价 54.56 元</span>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 mt-3">近90天10家机构覆盖，8家买入、2家增持。目标价分歧较大，最低与最高相差近一倍。</p>
+            </div>
+          </div>
+
+          <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8">
+            <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2">
+              <i data-lucide="line-chart" class="w-5 h-5"></i>现金流折现（DCF）估算：高度依赖假设，仅作参考
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+              DCF对奥特维的估值结果极为分散，恰恰说明公司正处于周期拐点和业务结构转换期，远期现金流假设的微小变化会显著改变结果。一个基于二阶段自由现金流模型的第三方估算给出约<strong>67元</strong>的公允价值，而另一个基于历史自由现金流的保守模型仅给出约<strong>13.7元</strong>的内在价值[reference:13]。两者的巨大差异并非模型错误，而是对“2027年之后光伏设备是恢复增长还是永久性下台阶”的不同假设。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+                <div class="text-lg font-bold text-primary-600 dark:text-primary-400">约67元</div>
+                <div class="text-xs text-gray-500">乐观DCF（二阶段FCF）</div>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+                <div class="text-lg font-bold text-accent-600 dark:text-accent-400">58–70元</div>
+                <div class="text-xs text-gray-500">券商目标价中枢</div>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div class="text-lg font-bold text-gray-700 dark:text-gray-300">约13.7元</div>
+                <div class="text-xs text-gray-500">保守DCF（历史FCF外推）</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="search" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>估值结论：</strong>以2026年11月中旬约45–47元的股价计算，奥特维对应2026年一致预期净利润的PE约为18–20倍，低于新能源设备行业平均（约39.5倍），也低于多数券商的目标价。从相对估值看，<strong>股票存在温和低估</strong>，理论修复空间约20–40%（至54–65元区间）。但这一低估并非“无风险套利”：它的兑现依赖两个前提——<strong>光伏设备毛利率不再恶化，且平台化业务（储能/半导体）的收入占比在2027年之前提升到足以改变估值锚</strong>。如果2027年光伏周期二次探底，当前18倍PE可能只是“周期中继”而非底部。综合判断：<strong>估值有吸引力，但属于“有条件低估”，而非深度价值。</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 六、经营展望 -->
+      <section id="outlook" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="calendar" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">六、经营展望（12–24个月）</h2>
+          </div>
+          <div class="space-y-5">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">光伏主业：从“扩产设备”切换到“改造设备”</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2027年之前，国内新增扩产大概率维持低位，但0BB、多分片、边缘钝化的存量改造需求将逐步接棒。公司2026年已获得多分片测试分选机订单和批量0BB改造订单，单GW设备价值量高于传统串焊机。关键跟踪指标是<strong>Q4及2027年Q1的串焊机新签订单结构</strong>：如果改造订单占比持续提升，说明“类耗材”逻辑正在兑现，可以部分脱离扩产周期。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">储能/半导体：从“订单突破”到“收入放量”</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                储能方面，截至2026年7月储能产线全球累计出货超300条，固态电池设备已发往客户端；半导体方面，铝线键合机累计合同签约量超过1,000台，划片机/装片机获小批量订单，光模块AOI获头部客户批量复购。2025年锂电/储能收入5.47亿元、半导体收入1.46亿元，基数尚小。2027年的看点是储能收入能否突破10亿元、半导体收入能否突破3–4亿元——这将是估值从“光伏设备”切换为“平台型设备”的关键证据[reference:14][reference:15]。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:text-gray-400 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">海外与在手订单：短期业绩的能见度来源</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                Q3末在手订单114.50亿元（含税），同比增长15.2%，合同负债30.01亿元，同比增长5.4%。海外订单占比持续提升，2025年海外订单接近20亿元，纯海外客户占比70%以上。2026–2027年欧洲、非洲、亚太及澳洲的组件/电池一体化项目，是订单转化的主要来源。在手订单提供了约1.5–2年的收入能见度，但需警惕订单向收入转化过程中的验收延迟和回款问题。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">盈利预测：2026年利润修复，2027年看平台化弹性</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                市场一致预期2026年归母净利润约6.2–6.6亿元（同比+40%左右），2027年约7.5–7.7亿元。2026年的修复主要来自毛利率回升和减值压力减轻，2027年的增量则取决于储能/半导体收入和光伏改造订单的持续性。如果平台化业务在2027年贡献超过15%的毛利，公司的估值框架有望从“周期设备股”向“成长设备股”切换。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 七、风险识别 -->
+      <section id="risk" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+              <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">七、风险识别</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">按危险程度从高到低排序：</p>
+          <div class="space-y-4">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0">1</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2">财务风险 — 应收账款与减值（危险程度最高）</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    截至2025年末应收账款35.42亿元，占总资产26.48%，部分光伏客户支付困难。2025年计提信用及资产减值约5.7亿元，2026年前三季度经营现金流仅1.39亿元（同比-74.7%）。如果下游光伏企业破产或重组数量增加，应收账款回收风险将从“利润侵蚀”升级为“现金流冲击”。这是当前最现实、最紧迫的风险，优先级高于行业周期本身。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0">2</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2">经济/行业风险 — 光伏产能出清慢于预期</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    2026年上半年国内光伏新增装机同比下降66%，设备采购几乎停摆。如果产能出清持续时间超出预期（例如延续到2027年下半年），光伏设备收入的下滑幅度可能再次扩大，2026年的利润修复可能被证伪。奥特维的“类耗材”逻辑能在多大程度上对冲扩产停滞，尚未经历完整周期的检验。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0">3</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2">竞争风险 — 客户集中与技术追赶</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    公司深度绑定全球前十大组件企业，客户集中度高。当客户自身经营承压时，设备商的订单确定性和议价能力同步承压。同时，迈为股份在HJT整线、金辰股份在组件自动化产线持续投入，虽然串焊机单点份额短期内难以撼动，但整线方案竞争可能侵蚀奥特维向其他环节渗透的空间。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0">4</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2">行业颠覆 — 技术路线切换</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    串焊机是组件环节设备，如果光伏技术路线出现根本性变化（例如无主栅技术使焊接环节价值量大幅下降，或钙钛矿叠层对封装工艺提出全新要求），现有串焊机的技术积累可能部分失效。公司已在0BB、钙钛矿设备上布局，但技术颠覆的风险无法完全对冲。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0">5</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2">监管/治理风险 — 相对次要但需跟踪</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    光伏设备行业直接监管风险较低。需要关注的是实控人减持行为：2025年以来董事长等实控人曾减持股份并披露新减持计划，虽不改变控制权，但可能对短期市场情绪形成压制。此外，海外业务拓展中的贸易壁垒和出口管制是长期需要跟踪的变量。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 八、多空视角 -->
+      <section id="longshort" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="scale" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">八、多空视角：机构投资组合经理评估</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800">
+              <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>串焊机70%+市占率提供极高的竞争安全垫</strong>：只要光伏组件继续被生产，奥特维就是无法绕过的环节。技术代际领先和产线嵌入深度使份额在周期底部依然稳固。</span></li>
+                <li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>盈利底部大概率已确认</strong>：2026Q3扣非净利同比+236.8%，毛利率回升至38.9%，在手订单同比增长15.2%。如果2027年光伏改造需求接棒，利润弹性可观。</span></li>
+                <li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>估值处于周期低位</strong>：2026E PE约18–20倍，低于行业平均和自身历史中枢。券商目标价中枢58–70元，较当前股价有20–40%的理论空间。</span></li>
+                <li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>平台化提供远期期权</strong>：储能产线出货超300条，半导体铝线键合机签约超1,000台，光模块AOI批量复购。这些业务目前占比小，但增速快，一旦放量将改变估值框架。</span></li>
+              </ul>
+            </div>
+            <div class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800">
+              <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>应收账款和减值风险尚未出清</strong>：35.4亿应收账款、5.7亿年度减值、经营现金流同比-74.7%。如果下游客户信用继续恶化，利润修复可能被新一轮减值打断。</span></li>
+                <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>光伏周期可能二次探底</strong>：国内新增装机同比-66%，产能出清尚未完成。2027年光伏设备收入仍有下滑可能，“类耗材”逻辑的抗周期能力未被充分验证。</span></li>
+                <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>平台化叙事尚早</strong>：储能和半导体收入合计占比仍低，毛利率和竞争格局与光伏串焊机不可同日而语。市场给予“平台型设备”估值可能为时过早。</span></li>
+                <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>实控人减持信号</strong>：2025年以来实控人减持并披露新计划，在周期底部释放的治理信号偏负面，可能压制估值修复的节奏。</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+            <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">关键因素：需要密切跟踪的3个指标</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+                <i data-lucide="rotate-ccw" class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"></i>
+                <div class="font-semibold text-sm text-primary-700 dark:text-primary-300">串焊机新签订单结构</div>
+                <p class="text-xs text-gray-500 mt-1">改造/升级订单占比能否持续提升，是“类耗材”逻辑的试金石</p>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+                <i data-lucide="banknote" class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"></i>
+                <div class="font-semibold text-sm text-accent-700 dark:text-accent-300">经营现金流与应收账款</div>
+                <p class="text-xs text-gray-500 mt-1">在手订单转化为回款的比例，比订单金额本身更重要</p>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center">
+                <i data-lucide="cpu" class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"></i>
+                <div class="font-semibold text-sm text-gray-700 dark:text-gray-300">储能/半导体收入占比</div>
+                <p class="text-xs text-gray-500 mt-1">2027年能否突破15%的毛利占比，决定估值锚是否切换</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="target" class="inline-block w-5 h-5 mr-2 -mt-0.5"></i>
+              <strong>投资论点：</strong>奥特维是光伏设备行业中少数在细分赛道拥有<strong>“垄断级份额 + 技术代际领先 + 类耗材属性”</strong>的公司。当前它同时具备两个通常不会同时出现的东西：<strong>周期底部的低估值（2026E 18–20倍PE）和一个尚未被定价的期权（平台化第二曲线）</strong>。但这两个东西都不是免费的：低估值对应的是应收账款风险和光伏周期的不确定性，期权对应的是储能/半导体业务从“订单”到“利润”的执行风险。对于能够承受波动、并愿意以12–24个月为持有周期的投资者，当前价位提供了<strong>不对称的风险回报比</strong>——下行有70%市占率和周期底部利润提供支撑，上行则依赖改造需求接棒和平台化兑现。但对于需要短期确定性的资金，应收账款和光伏出清节奏的不明朗足以构成回避理由。<strong>这不是一只“买了就可以忘记”的股票，而是一只需要持续跟踪回款和订单结构的周期成长股。</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本报告</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告基于奥特维（688516.SH）2021–2025年年度报告、2026年三季度报告、券商研报及公开行业数据，从商业模式、护城河、财务状况、估值、风险与多空视角等八个维度进行系统分析。
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">数据来源</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>• 奥特维2025年年度报告（2026-04-23）</li>
+              <li>• 奥特维2026年三季度报告（2026-10-26）</li>
+              <li>• 长江证券、东吴证券、国泰海通、华泰证券研报</li>
+              <li>• 国联证券、中信建投行业研究报告</li>
+              <li>• 每日经济新闻、证券之星、同花顺等公开报道</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告仅供教育与信息参考，不构成投资建议或买卖推荐。数据基于公开信息整理，分析观点仅代表研究判断。光伏设备行业周期性强，投资有风险，决策需谨慎。
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+          <p>© 2026 奥特维经营分析报告 · 生成日期：2026-11-19</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (!menu) return;
+        menu.classList.toggle("mobile-menu-open");
+      }
+      window.addEventListener("scroll", () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+        AOS.init({ duration: 800, once: true });
+      });
+    </script>
+  </body>
+</html>

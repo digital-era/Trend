@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>飞荣达体系全景解析（300602）</title>
+<!-- Essential CDN Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(210, 85%, 95%)',
+100: 'hsl(210, 85%, 85%)',
+200: 'hsl(210, 85%, 75%)',
+300: 'hsl(210, 85%, 65%)',
+400: 'hsl(210, 85%, 55%)',
+500: 'hsl(210, 85%, 50%)',
+600: 'hsl(210, 85%, 45%)',
+700: 'hsl(210, 85%, 35%)',
+800: 'hsl(210, 85%, 25%)',
+900: 'hsl(210, 85%, 15%)'
+},
+accent: {
+50: 'hsl(175, 70%, 95%)',
+100: 'hsl(175, 70%, 85%)',
+200: 'hsl(175, 70%, 75%)',
+300: 'hsl(175, 70%, 65%)',
+400: 'hsl(175, 70%, 60%)',
+500: 'hsl(175, 70%, 55%)',
+600: 'hsl(175, 70%, 50%)',
+700: 'hsl(175, 70%, 40%)',
+800: 'hsl(175, 70%, 30%)',
+900: 'hsl(175, 70%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+.btn-interactive { transition: all 0.2s ease-out; }
+.btn-interactive:hover { transform: scale(1.05); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+.btn-interactive:active { transform: scale(0.95); }
+.card-interactive { transition: all 0.3s ease-out; border: 1px solid transparent; --border-lightness: 40%; }
+.dark .card-interactive { --border-lightness: 60%; }
+.card-interactive:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); filter: brightness(0.98); }
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover { border-color: hsl(210, 85%, var(--border-lightness)); }
+.card-interactive[class*="accent"]:hover { border-color: hsl(175, 70%, var(--border-lightness)); }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid hsl(0,0%,90%); }
+.dark th, .dark td { border-bottom-color: hsl(0,0%,30%); }
+#mobileMenu { display: none; }
+#mobileMenu.mobile-menu-open { display: block; }
+@media (min-width: 768px) { #mobileMenu { display: none !important; } }
+@media (max-width: 767px) {
+  header .max-w-7xl { padding-left: 1rem; padding-right: 1rem; }
+  header .flex.items-center.justify-between > h1 { font-size: 1rem; line-height: 1.25rem; white-space: nowrap; margin-right: 0.5rem; }
+  #mobileMenu { margin-top: 1rem; padding-top: 1rem; padding-bottom: 0.5rem; border-top: 1px solid rgba(20,20,20,0.12); max-height: calc(100vh - 90px); overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  .dark #mobileMenu { border-top-color: rgba(255,255,255,0.15); }
+  #mobileMenu a { display: block; width: 100%; padding: 0.7rem 0.5rem; border-radius: 0.5rem; }
+  #mobileMenu a:active { background: rgba(20,20,20,0.06); }
+  .dark #mobileMenu a:active { background: rgba(255,255,255,0.08); }
+}
+@media (min-width: 768px) {
+  header nav[aria-label="桌面端导航"] a { color: #374151; }
+  .dark header nav[aria-label="桌面端导航"] a { color: #e5e7eb; }
+  header nav[aria-label="桌面端导航"] a:hover { color: hsl(210, 85%, 45%); }
+  .dark header nav[aria-label="桌面端导航"] a:hover { color: hsl(210, 85%, 55%); }
+}
+header { overflow: visible; }
+.moat-bar { height: 8px; border-radius: 4px; background: hsl(0,0%,90%); overflow: hidden; }
+.dark .moat-bar { background: hsl(0,0%,25%); }
+.moat-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, hsl(210,85%,50%), hsl(175,70%,50%)); }
+</style>
+<script>
+function toggleDarkMode() {
+document.body.classList.toggle('dark');
+const isDark = document.body.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+
+<!-- Floating Header -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">飞荣达体系全景解析</h1>
+<nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+  <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+  <a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+  <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+  <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+  <a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">子公司</a>
+  <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">激励</a>
+  <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">研判</a>
+</nav>
+<div class="flex items-center space-x-2 flex-shrink-0">
+  <button type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all" aria-label="打开或关闭导航菜单" aria-controls="mobileMenu" aria-expanded="false" id="mobileMenuButton">
+    <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+  </button>
+  <button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all" aria-label="切换暗色模式">
+    <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+    <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+  </button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+  <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+  <a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+  <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+  <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+  <a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">子公司</a>
+  <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">激励</a>
+  <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">研判</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main class="min-h-screen">
+
+<!-- Hero -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+飞荣达体系全景解析
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+<strong>深圳市飞荣达科技股份有限公司（300602.SZ）</strong>，1993年创立于深圳，2017年1月登陆创业板，是国内电磁屏蔽与热管理材料领域的头部企业[reference:0]。公司正从消费电子基本盘向<strong>AI服务器液冷、新能源汽车、具身智能</strong>延伸，热管理业务已成为第一大收入来源[reference:1]。
+</p>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+本页系统梳理飞荣达的<strong>核心管理层、股本与股权结构、子公司与关联关系、股权激励体系</strong>，并将2025年年报与2026年三季报的最新财务信号纳入研判框架，帮助理解这家“功能材料平台型”公司在AI算力周期中的位置与约束。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+  <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+        <i data-lucide="users" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">家族控制</h3>
+    </div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">马飞家族合计持股约48%，控制权高度集中且稳定</p>
+  </div>
+  <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+        <i data-lucide="cpu" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">热管理+AI</h3>
+    </div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">2025年热管理收入24.67亿元，液冷CDU覆盖8kW—600kW</p>
+  </div>
+  <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+      <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+        <i data-lucide="trending-up" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">利润弹性</h3>
+    </div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">2026Q1—Q3归母净利+47.85%，增速显著快于营收</p>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- Section 1: 创始人/核心管理层 -->
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+创始人马飞与核心管理层：技术底色下的家族治理
+</h2>
+<div class="space-y-6">
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    飞荣达的创始人与实际控制人为<strong>马飞</strong>。公司前身飞荣达有限于1993年在深圳注册成立，由马飞、黄峥、陈乃雄、马军等作为发起人，以净资产折股整体变更设立股份有限公司[reference:2]。马飞长期担任董事长，主导公司从电子辅料向电磁屏蔽、导热散热、轻量化材料的技术升级路径。
+  </p>
+
+  <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+      <i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      治理特征：马飞与黄峥系配偶关系，马军与马飞系兄弟关系。三人合计持股约<strong>48%</strong>，形成“创始人夫妇+兄弟”的紧密控制结构，职业经理人团队（如董事相福亮、董秘马蕾）在董事会与执行层中承担运营职能[reference:3]。
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">战略演进：从消费电子到算力基础设施</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300"><strong>1993—2016：</strong>以电磁屏蔽材料切入消费电子供应链，客户覆盖苹果、三星、华为等头部品牌[reference:4]</span></li>
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300"><strong>2017—2023：</strong>创业板上市后拓展热管理材料、基站天线、轻量化功能器件，形成多品类平台</span></li>
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300"><strong>2024—至今：</strong>热管理业务全面受益于AI服务器液冷需求，同步布局具身智能整机代工[reference:5]</span></li>
+      </ul>
+    </div>
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">管理重心：客户协同与产能前置</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300">深度绑定头部消费电子客户，凭借电磁屏蔽与热管理技术积累提升单机价值量[reference:6]</span></li>
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300">液冷产品梯度覆盖8kW至600kW，已进入国内外主流服务器厂商供应链体系[reference:7][reference:8]</span></li>
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300">为具身智能整机代工提前进行产线建设、工艺验证与供应链协同准备[reference:9]</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">管理层能力评分（基于公开信息综合判断）</h3>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span class="text-gray-700 dark:text-gray-300">战略卡位与客户拓展</span><span class="font-semibold text-primary-600 dark:text-primary-400">较强</span></div>
+        <div class="moat-bar"><div class="moat-fill" style="width: 78%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span class="text-gray-700 dark:text-gray-300">技术转化与产品梯度</span><span class="font-semibold text-primary-600 dark:text-primary-400">较强</span></div>
+        <div class="moat-bar"><div class="moat-fill" style="width: 75%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span class="text-gray-700 dark:text-gray-300">资本运作与激励工具运用</span><span class="font-semibold text-accent-600 dark:text-accent-400">中等偏强</span></div>
+        <div class="moat-bar"><div class="moat-fill" style="width: 68%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span class="text-gray-700 dark:text-gray-300">财务费用与杠杆管控</span><span class="font-semibold text-gray-500 dark:text-gray-400">待改善</span></div>
+        <div class="moat-bar"><div class="moat-fill" style="width: 48%;"></div></div>
+      </div>
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">评分说明：基于战略清晰度、客户结构、研发投入方向及财务费用变化综合判断，非量化模型输出。</p>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- Section 2: 股本数量变化 -->
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+股本数量变化：激励归属驱动小幅扩容，总股本升至5.86亿股
+</h2>
+<div class="space-y-6">
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    飞荣达上市以来未进行大规模增发或转增，股本扩张主要来自<strong>股权激励限制性股票的归属</strong>。2025年限制性股票激励计划第一个归属期完成后，公司总股本由581,863,431股增加至<strong>586,443,631股</strong>，新增股份于2026年7月6日上市流通[reference:10]。
+  </p>
+
+  <div class="overflow-x-auto mt-8">
+    <table class="text-sm">
+      <thead>
+        <tr class="bg-primary-100/60 dark:bg-primary-900/30">
+          <th class="font-semibold text-primary-800 dark:text-primary-200">时间节点</th>
+          <th class="font-semibold text-primary-800 dark:text-primary-200">总股本（股）</th>
+          <th class="font-semibold text-primary-800 dark:text-primary-200">变动原因</th>
+          <th class="font-semibold text-primary-800 dark:text-primary-200">关键含义</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>2017年1月</td><td>IPO后股本</td><td>创业板首次公开发行</td><td>登陆资本市场，形成初始股本架构</td></tr>
+        <tr><td>2025年6月</td><td>581,863,431</td><td>2025年限制性股票激励计划授予</td><td>授予1,160万股，来源为定向发行[reference:11]</td></tr>
+        <tr><td>2026年7月</td><td>586,443,631</td><td>激励计划第一个归属期完成，4,580,200股归属</td><td>总股本增加约0.79%，核心团队利益绑定深化[reference:12]</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">当前市值参考（口径说明）</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between"><span class="text-sm text-gray-600 dark:text-gray-400">总股本</span><span class="font-semibold">5.86亿股</span></div>
+        <div class="flex justify-between"><span class="text-sm text-gray-600 dark:text-gray-400">2025年归母净利润</span><span class="font-semibold">3.65亿元</span></div>
+        <div class="flex justify-between"><span class="text-sm text-gray-600 dark:text-gray-400">2025年基本每股收益</span><span class="font-semibold">0.63元</span></div>
+        <div class="flex justify-between"><span class="text-sm text-gray-600 dark:text-gray-400">2025年度分红方案</span><span class="font-semibold">10派0.6元（含税）</span></div>
+      </div>
+      <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">注：市值随二级市场波动，页面不展示实时数值，以上为股本与盈利的静态基准参考。</p>
+    </div>
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">股东增减持记录</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3"><i data-lucide="arrow-up-right" class="w-4 h-4 text-accent-600 flex-shrink-0 mt-1"></i><span class="text-sm text-gray-700 dark:text-gray-300">2026年Q1，马飞增持约86.85万股，持股升至5,812.08万股[reference:13]</span></li>
+        <li class="flex items-start space-x-3"><i data-lucide="arrow-down-right" class="w-4 h-4 text-gray-500 flex-shrink-0 mt-1"></i><span class="text-sm text-gray-700 dark:text-gray-300">2025年Q4，马飞小幅减持约115.80万股，属于高管锁定股正常解禁后的持仓调整[reference:14]</span></li>
+        <li class="flex items-start space-x-3"><i data-lucide="info" class="w-4 h-4 text-primary-500 flex-shrink-0 mt-1"></i><span class="text-sm text-gray-700 dark:text-gray-300">整体来看，创始人持股比例稳定在<strong>39%—40%</strong>区间，未出现实质性控制权稀释</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- Section 3: 股权结构变化 -->
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+股权结构：家族高度集中，控制权稳固
+</h2>
+<div class="space-y-6">
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    飞荣达的股权结构呈现典型的<strong>“创始人夫妇+兄弟”集中控制</strong>特征。截至2026年三季度末，马飞直接持股<strong>39.64%</strong>，配偶黄峥持股<strong>6.34%</strong>，兄弟马军持股<strong>2.03%</strong>，三人作为一致行动人合计控制约<strong>48%</strong>的股份与投票权[reference:15]。这一结构在A股功能材料与电子元器件公司中较为常见，优势在于战略连贯性强、决策效率高，潜在约束则在于外部制衡相对有限。
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-3">
+        <i data-lucide="user" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        <h3 class="font-semibold text-primary-700 dark:text-primary-300">马飞（实际控制人）</h3>
+      </div>
+      <p class="text-2xl font-bold text-primary-600 dark:text-primary-400">39.64%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">董事长，限售股+流通A股，控制权核心</p>
+    </div>
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-3">
+        <i data-lucide="user" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+        <h3 class="font-semibold text-accent-700 dark:text-accent-300">黄峥（配偶）</h3>
+      </div>
+      <p class="text-2xl font-bold text-accent-600 dark:text-accent-400">6.34%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">流通A股，一致行动人</p>
+    </div>
+    <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-3">
+        <i data-lucide="user" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        <h3 class="font-semibold text-primary-700 dark:text-primary-300">马军（兄弟）</h3>
+      </div>
+      <p class="text-2xl font-bold text-primary-600 dark:text-primary-400">2.03%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">董事，一致行动人</p>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">前十大股东（2026Q3）与结构特征</h3>
+    <div class="overflow-x-auto">
+      <table class="text-sm">
+        <thead>
+          <tr class="bg-accent-100/60 dark:bg-accent-900/30">
+            <th class="font-semibold text-accent-800 dark:text-accent-200">股东名称</th>
+            <th class="font-semibold text-accent-800 dark:text-accent-200">持股比例</th>
+            <th class="font-semibold text-accent-800 dark:text-accent-200">性质/备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>马飞</td><td>39.64%</td><td>实际控制人，限售+流通</td></tr>
+          <tr><td>黄峥</td><td>6.34%</td><td>配偶，一致行动人</td></tr>
+          <tr><td>香港中央结算有限公司</td><td>约1.86%</td><td>北向资金通道</td></tr>
+          <tr><td>诺安先锋混合</td><td>约1.06%</td><td>公募基金</td></tr>
+          <tr><td>社保基金17022组合</td><td>约0.79%</td><td>社保基金</td></tr>
+          <tr><td>马军</td><td>2.03%</td><td>兄弟，一致行动人，董事</td></tr>
+          <tr><td>杨林</td><td>0.51%</td><td>自然人</td></tr>
+          <tr><td>汇添富科技创新混合</td><td>0.50%</td><td>公募基金</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">数据来源：2026年三季度报告[reference:16]。部分机构持股比例经四舍五入处理。</p>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+      <i data-lucide="shield" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      <strong>控制权稳定性判断：</strong>马飞家族合计约48%的持股比例，远高于通常意义上的相对控股阈值。即使考虑股权激励后续归属带来的股本小幅扩张，家族控制权在可预见期内被稀释至临界点以下的风险很低。这一结构决定了飞荣达的战略连续性较强，对外部收购的防御能力也较高。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- Section 4: 子公司/关联企业关系 -->
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+子公司与关联企业：全资制造平台为主，并购延伸材料边界
+</h2>
+<div class="space-y-6">
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    与用户模板中的“多家上市公司矩阵”不同，飞荣达的关联体系以<strong>全资/控股子公司</strong>为核心，未形成分拆上市平台。其组织结构围绕“材料—器件—模组”的制造链条展开，并通过少数联营企业覆盖通信与机电相邻领域[reference:17]。日常关联交易规模极小，公开披露中明确“报告期未发生与日常经营相关的关联交易”[reference:18]。
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="factory" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">核心制造子公司</h3>
+      </div>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• 广东飞荣达精密制造技术有限公司（100%）</li>
+        <li>• 常州市飞荣达电子材料有限公司（100%）</li>
+        <li>• 昆山市飞荣达电子材料有限公司（100%）</li>
+        <li>• 深圳市飞荣达精密模具有限公司（100%）</li>
+      </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">材料与轻量化布局</h3>
+      </div>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• 江苏格优碳素新材料有限公司（90%）</li>
+        <li>• 江苏中迪新材料技术有限公司（51%）</li>
+        <li>• 德中（珠海）轻合金材料研究院（51%）</li>
+        <li>• 润星泰（香港）有限公司（51%）</li>
+      </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="bot" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">新兴方向与联营</h3>
+      </div>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• 重庆飞荣达具身智能技术有限公司（100%）</li>
+        <li>• 广东博纬通信科技有限公司（联营，45%）</li>
+        <li>• 常州讯磁科技有限公司（孙公司，70%）</li>
+        <li>• FRD TECH (USA) INC.（100%，海外技术服务）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">关键资本运作：收购江苏中煜橡塑</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+      2025年1月，飞荣达全资子公司江苏飞荣达以现金<strong>3.80亿元</strong>收购江苏中煜橡塑科技有限公司100%股权，交易对方承诺标的公司2025年度净利润不低于5,500万元。该收购属于子公司层面的产业整合，旨在补充橡胶类功能材料能力，不涉及上市公司控制权层面的关联交易[reference:19]。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      从治理角度看，飞荣达的关联交易风险敞口显著低于“多上市平台+频繁关联购销”的企业体系。主要关注点在于<strong>并购整合效果</strong>与<strong>子公司少数股东权益</strong>的协调，而非控股股东与上市公司之间的利益输送。
+    </p>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">业务结构：热管理成为第一大收入引擎</h3>
+    <div class="overflow-x-auto">
+      <table class="text-sm">
+        <thead>
+          <tr class="bg-accent-100/60 dark:bg-accent-900/30">
+            <th class="font-semibold text-accent-800 dark:text-accent-200">业务板块</th>
+            <th class="font-semibold text-accent-800 dark:text-accent-200">2025年收入</th>
+            <th class="font-semibold text-accent-800 dark:text-accent-200">同比增速</th>
+            <th class="font-semibold text-accent-800 dark:text-accent-200">收入占比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="font-medium">热管理材料及器件</td><td>24.67亿元</td><td class="text-accent-600 dark:text-accent-400 font-semibold">+32.34%</td><td>37.80%</td></tr>
+          <tr><td class="font-medium">电磁屏蔽材料及器件</td><td>17.69亿元</td><td>+17.31%</td><td>约27.1%</td></tr>
+          <tr><td class="font-medium">轻量化等功能器件</td><td>16.93亿元</td><td>—</td><td>约25.9%</td></tr>
+          <tr><td class="font-medium">基站天线及相关器件</td><td>3.73亿元</td><td>—</td><td>5.72%（低于10%披露阈值）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">数据来源：2025年年报及券商整理[reference:20]。占比经收入数据计算，与披露口径可能存在小幅差异。</p>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- Section 5: 员工持股与激励机制 -->
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+股权激励：三期计划接续，限制性股票绑定核心骨干
+</h2>
+<div class="space-y-6">
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    飞荣达自2017年上市以来<strong>已实施三期股权激励计划</strong>，激励工具以限制性股票为主，覆盖管理人员、研发技术人员及专业领域核心骨干[reference:21]。与用户模板中的“师徒制虚拟分红”不同，飞荣达的激励逻辑更接近<strong>制造业技术型公司的标准化股权绑定</strong>：以业绩考核为解锁前提，将核心团队利益与股东回报直接对齐。
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">2025年限制性股票激励计划（最新一期）</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300"><strong>授予规模：</strong>1,160万股，占总股本2%，一次性授予不超过315名激励对象[reference:22]</span></li>
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300"><strong>授予价格：</strong>9.84元/股，来源为定向发行[reference:23]</span></li>
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300"><strong>归属节奏：</strong>40%/30%/30%分三年归属，对应2025—2027年业绩考核[reference:24]</span></li>
+        <li class="flex items-start space-x-3"><i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i><span class="text-sm text-gray-700 dark:text-gray-300"><strong>考核基准：</strong>以2024年归母净利润1.89亿元为基数，2025/2026/2027年增速分别不低于25%/35%/50%，对应净利润下限约2.36/2.55/2.84亿元[reference:25]</span></li>
+      </ul>
+    </div>
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">激励效果验证：2025年大幅超额完成</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between items-center"><span class="text-sm text-gray-600 dark:text-gray-400">2025年考核目标（下限）</span><span class="font-semibold text-gray-700 dark:text-gray-300">2.36亿元</span></div>
+        <div class="flex justify-between items-center"><span class="text-sm text-gray-600 dark:text-gray-400">2025年实际归母净利润</span><span class="font-semibold text-accent-600 dark:text-accent-400 text-lg">3.65亿元</span></div>
+        <div class="flex justify-between items-center"><span class="text-sm text-gray-600 dark:text-gray-400">超额幅度</span><span class="font-semibold text-accent-600 dark:text-accent-400">约54.7%</span></div>
+        <div class="flex justify-between items-center"><span class="text-sm text-gray-600 dark:text-gray-400">对2024年实际增速</span><span class="font-semibold text-accent-600 dark:text-accent-400">+59.97%</span></div>
+      </div>
+      <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">2025年净利润3.65亿元，同比增长59.97%，显著高于激励计划设定的25%考核底线[reference:26]。</p>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">薪酬与考核体系的补充维度</h3>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm text-primary-900 dark:text-primary-100 leading-relaxed">
+          <strong>高管锁定机制：</strong>董事及高级管理人员所持股份每年按75%进行高管锁定股管理，离职后半年内不得转让，与限制性股票归属节奏形成双重约束[reference:27]。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm text-accent-900 dark:text-accent-100 leading-relaxed">
+          <strong>覆盖逻辑：</strong>激励对象不包括持股5%以上股东、实际控制人及其亲属，也不包含独立董事，确保激励资源向执行层与核心技术骨干集中[reference:28]。
+        </p>
+      </div>
+    </div>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
+      从激励效果看，2025年的实际利润表现大幅超越了考核底线，说明限制性股票的解锁条件具有实质约束力而非“形式门槛”。但需要注意，2026年前三季度归母净利润为4.23亿元，对应全年若延续Q4正常季节性，2026年考核目标2.55亿元同样大概率超额完成；真正的观察点在于<strong>2027年2.84亿元的考核线</strong>能否在AI液冷业务放量与消费电子复苏的叠加下继续被轻松跨越。如果增速放缓导致接近考核线，激励的“留人”效果可能面临边际减弱。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- Section 6: 综合研判 -->
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+综合研判与关键结论
+</h2>
+<div class="space-y-6">
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">1. 阶段判断：从消费电子材料商向算力散热平台切换</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      飞荣达当前的核心叙事是<strong>热管理业务的角色跃迁</strong>：2025年热管理收入24.67亿元、占比37.80%，增速32.34%，已经成为第一大收入来源[reference:29]。液冷CDU产品梯度覆盖8kW至600kW，导热界面材料与风冷产品在服务器、数据中心场景持续批量交付，液冷处于送样至批量交付的不同阶段[reference:30][reference:31]。与此同时，消费电子基本盘（电磁屏蔽+轻量化）仍提供稳定的现金流与客户协同基础。公司正处于“旧引擎不弱、新引擎加速”的叠加期，而非单一业务孤军突进。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">2. 财务核心信号：利润增速快于收入，与“增收不增利”叙事形成对比</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      2026年前三季度，飞荣达营收<strong>57.75亿元</strong>，同比增长25.07%；归母净利润<strong>4.23亿元</strong>，同比增长<strong>47.85%</strong>；毛利率21.31%，同比提升1.08个百分点，净利率7.30%，同比提升0.68个百分点[reference:32]。利润增速约为收入增速的1.9倍，表明产品结构改善（高毛利热管理占比提升）与规模效应正在释放，而非依赖低毛利新业务冲收入。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      但需注意两个约束条件：其一，2025年财务费用因融资规模扩大而显著上升，对利润形成侵蚀[reference:33]；其二，消费电子业务在2026年Q3出现阶段性订单波动，受存储芯片供应与旗舰机型发布节奏影响，9月起才逐步回暖[reference:34]。这意味着<strong>利润弹性的一部分来自热管理与服务器业务的结构性改善，另一部分仍受消费电子周期的扰动</strong>。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">3. 股权激励与家族治理的“双稳定器”</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      马飞家族约48%的持股提供了战略连续性，使公司能够在消费电子之外持续投入热管理与具身智能等长周期方向；2025年限制性股票激励则以315人的覆盖面和逐年提升的考核目标，将执行层与核心技术团队的回报与利润增长绑定。2025年实际利润3.65亿元大幅超越2.36亿元的考核底线，说明激励并非“福利型”安排，而是具有实际约束力的业绩对赌[reference:35][reference:36]。这一“家族控制+市场化激励”的组合，在飞荣达当前的发展阶段是适配的。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">4. 风险提示</h3>
+    <div class="space-y-4">
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>客户集中与消费电子周期风险。</strong>公司消费电子业务与头部品牌客户深度绑定，旗舰机型发布节奏、存储芯片供应等外部变量可能造成单季度订单波动。2026年Q3消费电子收入环比下滑已经提示了这一风险的现实性[reference:37]。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>具身智能业务的早期不确定性。</strong>具身机器人整机代工已开始小批量交付，但收入占整体营收比重“较小”，从送样、测试到规模化量产仍需跨越良率、成本与客户认证的多重门槛[reference:38]。这一方向在中短期内更多是估值叙事而非利润贡献。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>财务杠杆与费用管控。</strong>2025年财务费用同比大幅上升，在产能前置投入（液冷产线、具身智能产线）与并购整合并行的阶段，若下游需求放量节奏不及预期，费用刚性可能对利润率形成压力[reference:39]。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+      <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      一句话总结：飞荣达的故事是<strong>“热管理接棒消费电子、利润弹性替代规模叙事”</strong>——家族控制提供了战略定力，股权激励验证了执行效率，而真正的考验在于液冷与具身智能能否在2027年考核线之前从“占比小”变成“利润柱”。
+    </p>
+  </div>
+
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合飞荣达（300602.SZ）2025年年度报告、2026年三季度报告、股权激励公告及公开市场研究整理，系统梳理其管理层、股本股权、子公司体系与激励机制。原始输入中的“荣飞达”经校验对应证券简称为“飞荣达”，本报告统一使用后者。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 创始人马飞与家族治理结构</li>
+<li>• 股本数量变化与激励归属</li>
+<li>• 股权集中度与控制权稳定性</li>
+<li>• 子公司体系与业务结构</li>
+<li>• 限制性股票激励与考核机制</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供教育与信息参考，不构成投资建议。数据基于公开信息整理，分析观点仅代表研究框架内的判断，不保证未来业绩与股价表现。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 飞荣达体系全景研究。保留所有权利。</p>
+</div>
+</div>
+</footer>
+
+<!-- Scripts -->
+<script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+  if (!menu) return;
+  const isOpen = menu.classList.toggle('mobile-menu-open');
+  menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  if (button) button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  if (icon) { icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu'); lucide.createIcons(); }
+}
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+  if (!menu) return;
+  menu.classList.remove('mobile-menu-open');
+  menu.setAttribute('aria-hidden', 'true');
+  if (button) button.setAttribute('aria-expanded', 'false');
+  if (icon) { icon.setAttribute('data-lucide', 'menu'); lucide.createIcons(); }
+}
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  document.getElementById('progressBar').style.width = scrolled + '%';
+});
+document.addEventListener('DOMContentLoaded', function() {
+  lucide.createIcons();
+  AOS.init({ duration: 800, once: true });
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => closeMobileMenu());
+  });
+});
+</script>
+</body>
+</html>
