@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Alphabet 谷歌 A（GOOGL）截至2026年11月22日的30日行情、业绩、市场驱动、技术分析与交易策略报告。">
+  <title>谷歌-A最新走势 | 2026-11-22</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: 'hsl(20,90%,55%)',
+              50: 'hsl(20,90%,97%)',
+              100: 'hsl(20,90%,92%)',
+              500: 'hsl(20,90%,55%)',
+              600: 'hsl(20,90%,47%)',
+              700: 'hsl(20,90%,38%)'
+            },
+            accent: {
+              DEFAULT: 'hsl(30,85%,55%)',
+              50: 'hsl(30,85%,96%)',
+              500: 'hsl(30,85%,55%)',
+              600: 'hsl(30,85%,45%)'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --page-bg: #f7f8fa;
+      --surface: #ffffff;
+      --surface-soft: #f1f3f6;
+      --text-main: #182230;
+      --text-muted: #64748b;
+      --border-color: #e5e7eb;
+      --chart-grid: #e5e7eb;
+    }
+
+    html.dark {
+      color-scheme: dark;
+      --page-bg: #0b1220;
+      --surface: #111c2e;
+      --surface-soft: #1b293d;
+      --text-main: #e5edf7;
+      --text-muted: #a3b1c5;
+      --border-color: #2b3a50;
+      --chart-grid: #334155;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      background: var(--page-bg);
+      color: var(--text-main);
+      transition: background .25s ease, color .25s ease;
+    }
+
+    .surface {
+      background: var(--surface);
+      border: 1px solid var(--border-color);
+    }
+
+    .surface-soft { background: var(--surface-soft); }
+    .muted { color: var(--text-muted); }
+    .border-theme { border-color: var(--border-color); }
+
+    .nav-link {
+      color: var(--text-muted);
+      transition: color .2s ease;
+    }
+    .nav-link:hover, .nav-link.active { color: hsl(20,90%,55%); }
+
+    .hero-gradient {
+      background:
+        radial-gradient(circle at 82% 15%, rgba(249,115,22,.20), transparent 32%),
+        radial-gradient(circle at 10% 100%, rgba(234,88,12,.13), transparent 35%),
+        linear-gradient(135deg, #111827 0%, #1e293b 55%, #31251f 100%);
+    }
+
+    .metric-card {
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .metric-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(15,23,42,.08);
+    }
+
+    .price-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .25rem .65rem;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .price-tag.down { background: rgba(220,38,38,.10); color: #dc2626; }
+    .price-tag.up { background: rgba(22,163,74,.10); color: #16a34a; }
+    .price-tag.neutral { background: rgba(100,116,139,.12); color: var(--text-muted); }
+
+    .driver-bar {
+      height: 9px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      overflow: hidden;
+    }
+    .driver-bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    table { border-collapse: collapse; width: 100%; min-width: 650px; }
+    th, td {
+      padding: .8rem .9rem;
+      text-align: right;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+    th:first-child, td:first-child { text-align: left; }
+    thead th {
+      background: var(--surface-soft);
+      color: var(--text-muted);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+    tbody tr:hover { background: rgba(148,163,184,.07); }
+
+    .section-kicker {
+      color: hsl(20,90%,55%);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 13px;
+      top: 15px;
+      bottom: 15px;
+      width: 2px;
+      background: var(--border-color);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 6px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 3px solid hsl(20,90%,55%);
+      background: var(--surface);
+      z-index: 1;
+    }
+
+    .scenario-card { border-top: 3px solid transparent; }
+    .scenario-card.bull { border-top-color: #16a34a; }
+    .scenario-card.base { border-top-color: #d97706; }
+    .scenario-card.bear { border-top-color: #dc2626; }
+
+    .chart-container { position: relative; height: 280px; width: 100%; }
+    .source-link {
+      color: hsl(20,90%,55%);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .source-link:hover { opacity: .75; }
+
+    #progressBar {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, hsl(20,90%,55%), hsl(30,85%,55%));
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 1.25rem;
+      box-shadow: 0 12px 20px rgba(0,0,0,.08);
+    }
+    .mobile-menu.open { display: block; }
+
+    .recommendation {
+      border-left: 3px solid hsl(20,90%,55%);
+      background: var(--surface-soft);
+    }
+
+    .disclaimer {
+      font-size: .78rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 767px) {
+      .desktop-nav { display: none; }
+      .chart-container { height: 240px; }
+      .hero-title { font-size: 2.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="antialiased">
+  <div id="progressBar"></div>
+
+  <!-- 导航栏 -->
+  <header class="sticky top-0 z-50 border-b border-theme backdrop-blur-xl" style="background:color-mix(in srgb,var(--surface) 92%,transparent)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-16 flex items-center justify-between relative">
+        <a href="#overview" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-black text-sm">G</div>
+          <div>
+            <div class="font-bold tracking-tight">GOOGL <span class="muted font-normal">/ Alphabet</span></div>
+            <div class="text-xs muted">市场观察 · 2026.11.22</div>
+          </div>
+        </a>
+
+        <nav class="desktop-nav flex items-center gap-7 text-sm font-semibold">
+          <a class="nav-link active" href="#overview">行情总览</a>
+          <a class="nav-link" href="#phases">走势复盘</a>
+          <a class="nav-link" href="#drivers">核心驱动</a>
+          <a class="nav-link" href="#technicals">技术分析</a>
+          <a class="nav-link" href="#strategy">交易策略</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button onclick="toggleDarkMode()" aria-label="切换深色模式" class="w-10 h-10 rounded-xl surface flex items-center justify-center hover:opacity-80">
+            <i data-lucide="moon" class="w-4 h-4 dark:hidden"></i>
+            <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+          </button>
+          <button onclick="toggleMobileMenu()" aria-label="打开导航菜单" class="md:hidden w-10 h-10 rounded-xl surface flex items-center justify-center">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <nav id="mobileMenu" class="mobile-menu rounded-b-xl md:hidden">
+          <div class="flex flex-col gap-4 text-sm font-semibold">
+            <a class="nav-link" href="#overview" onclick="closeMobileMenu()">行情总览</a>
+            <a class="nav-link" href="#phases" onclick="closeMobileMenu()">走势复盘</a>
+            <a class="nav-link" href="#drivers" onclick="closeMobileMenu()">核心驱动</a>
+            <a class="nav-link" href="#technicals" onclick="closeMobileMenu()">技术分析</a>
+            <a class="nav-link" href="#strategy" onclick="closeMobileMenu()">交易策略</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="overview" class="hero-gradient text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+        <div class="max-w-4xl" data-aos="fade-up">
+          <div class="flex flex-wrap items-center gap-3 mb-6">
+            <span class="px-3 py-1 rounded-full text-xs font-bold tracking-wider bg-white/10 border border-white/20">美股 · NASDAQ</span>
+            <span class="px-3 py-1 rounded-full text-xs font-bold tracking-wider bg-red-500/20 text-red-200 border border-red-400/30">趋势偏空</span>
+            <span class="text-sm text-slate-300">观察区间：2026.10.23 — 2026.11.20</span>
+          </div>
+
+          <h1 class="hero-title text-4xl md:text-6xl font-black tracking-tight leading-tight mb-5">
+            谷歌 A 股价走势<br>
+            <span class="text-orange-300">调整加速，等待趋势确认</span>
+          </h1>
+
+          <p class="text-slate-300 text-base md:text-lg leading-relaxed max-w-3xl">
+            过去约一个月，Alphabet 股价从 320.21 美元跌至 265.29 美元，累计回撤 17.15%。
+            Q3 业绩中的广告收入不及预期、资本开支压力，与近期 AI 板块风险偏好下降共同压制估值。
+            截至 11 月 20 日收盘，股价仍处于短中期均线下方。
+          </p>
+
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="#technicals" class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-bold text-white hover:brightness-110">
+              查看技术位 <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#strategy" class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-5 py-3 font-bold text-white hover:bg-white/10">
+              交易策略
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mt-12" data-aos="fade-up" data-aos-delay="100">
+          <div class="rounded-2xl border border-white/15 bg-white/10 p-4 md:p-5 backdrop-blur">
+            <div class="text-xs text-slate-300 mb-2">最新收盘价 · 11月20日</div>
+            <div class="text-3xl md:text-4xl font-black tabular-nums">$265.29</div>
+            <div class="text-sm text-red-300 mt-2">-2.70% 当日</div>
+          </div>
+          <div class="rounded-2xl border border-white/15 bg-white/10 p-4 md:p-5 backdrop-blur">
+            <div class="text-xs text-slate-300 mb-2">30日区间收益</div>
+            <div class="text-3xl md:text-4xl font-black text-red-300">-17.15%</div>
+            <div class="text-sm text-slate-300 mt-2">320.21 → 265.29</div>
+          </div>
+          <div class="rounded-2xl border border-white/15 bg-white/10 p-4 md:p-5 backdrop-blur">
+            <div class="text-xs text-slate-300 mb-2">区间最低价</div>
+            <div class="text-3xl md:text-4xl font-black tabular-nums">$264.22</div>
+            <div class="text-sm text-slate-300 mt-2">11月20日盘中低点</div>
+          </div>
+          <div class="rounded-2xl border border-white/15 bg-white/10 p-4 md:p-5 backdrop-blur">
+            <div class="text-xs text-slate-300 mb-2">最新成交量</div>
+            <div class="text-3xl md:text-4xl font-black tabular-nums">5,839万</div>
+            <div class="text-sm text-orange-200 mt-2">约为区间均量 1.33 倍</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 核心结论 -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid lg:grid-cols-3 gap-5">
+        <div class="surface rounded-2xl p-6 metric-card" data-aos="fade-up">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-sm font-bold muted">趋势判断</span>
+            <i data-lucide="trending-down" class="w-5 h-5 text-red-500"></i>
+          </div>
+          <div class="text-xl font-extrabold mb-2">空头结构占优</div>
+          <p class="text-sm muted leading-relaxed">收盘价低于 MA5、MA10、MA20，且均线呈空头排列。暂未出现足以确认反转的价格信号。</p>
+        </div>
+        <div class="surface rounded-2xl p-6 metric-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-sm font-bold muted">基本面判断</span>
+            <i data-lucide="layers" class="w-5 h-5 text-orange-500"></i>
+          </div>
+          <div class="text-xl font-extrabold mb-2">增长强，现金流承压</div>
+          <p class="text-sm muted leading-relaxed">Cloud 与 AI 业务增长亮眼，但广告收入不及预期、自由现金流转负，以及未来资本开支上升，令估值承压。</p>
+        </div>
+        <div class="surface rounded-2xl p-6 metric-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-sm font-bold muted">操作判断</span>
+            <i data-lucide="shield-alert" class="w-5 h-5 text-amber-500"></i>
+          </div>
+          <div class="text-xl font-extrabold mb-2">不宜盲目抄底</div>
+          <p class="text-sm muted leading-relaxed">264.22 美元是当前观察的关键低点。等待止跌结构，或重新站上 285 美元并获得成交量确认，再考虑提高仓位。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 走势复盘 -->
+    <section id="phases" class="py-16 border-y border-theme" style="background:var(--surface-soft)">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-10" data-aos="fade-up">
+          <div class="section-kicker mb-3">01 / Price Action</div>
+          <h2 class="text-3xl md:text-4xl font-black tracking-tight">过去一个月：四个阶段</h2>
+          <p class="muted mt-3 max-w-3xl leading-relaxed">以 10 月 23 日至 11 月 20 日的实际交易日收盘价划分。11 月 22 日为周日，最新完整常规交易日数据为 11 月 20 日。</p>
+        </div>
+
+        <div class="grid lg:grid-cols-5 gap-6">
+          <div class="lg:col-span-3 surface rounded-2xl p-5 md:p-6" data-aos="fade-up">
+            <div class="flex items-center justify-between gap-3 mb-5">
+              <h3 class="font-bold text-lg">收盘价走势（美元）</h3>
+              <span class="text-xs muted">实际日收盘价</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="priceChart" aria-label="GOOGL 2026年10月23日至11月20日收盘价走势图"></canvas>
+            </div>
+            <div class="flex flex-wrap gap-4 mt-5 text-xs muted">
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-orange-500"></span>GOOGL 收盘价</span>
+              <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-slate-400"></span>阶段划分参考</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 surface rounded-2xl p-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="font-bold text-lg mb-6">阶段演变</h3>
+            <div class="relative space-y-7 pl-8">
+              <div class="timeline-line"></div>
+              <div class="relative">
+                <div class="timeline-dot"></div>
+                <div class="flex justify-between gap-3">
+                  <div class="font-bold">10/23 — 10/28</div>
+                  <span class="price-tag up">+1.46%</span>
+                </div>
+                <p class="text-sm muted mt-2">高位震荡。股价从 320.21 美元上行至 324.89 美元，市场等待季度业绩。</p>
+              </div>
+              <div class="relative">
+                <div class="timeline-dot" style="border-color:#dc2626"></div>
+                <div class="flex justify-between gap-3">
+                  <div class="font-bold">10/28 — 11/05</div>
+                  <span class="price-tag down">-13.03%</span>
+                </div>
+                <p class="text-sm muted mt-2">财报冲击与 AI 交易降温。10 月 29 日单日下跌 12.64%，成交量放大至约 1.40 亿股。</p>
+              </div>
+              <div class="relative">
+                <div class="timeline-dot" style="border-color:#16a34a"></div>
+                <div class="flex justify-between gap-3">
+                  <div class="font-bold">11/05 — 11/13</div>
+                  <span class="price-tag up">+4.67%</span>
+                </div>
+                <p class="text-sm muted mt-2">出现技术性反弹，11 月 4 日上涨 3.18%，11 月 12 日收于 298.70 美元，但尚未扭转中期趋势。</p>
+              </div>
+              <div class="relative">
+                <div class="timeline-dot" style="border-color:#dc2626"></div>
+                <div class="flex justify-between gap-3">
+                  <div class="font-bold">11/13 — 11/20</div>
+                  <span class="price-tag down">-10.31%</span>
+                </div>
+                <p class="text-sm muted mt-2">反弹失败后再次下行。11 月 19 日、20 日连续大幅收跌，股价接近区间最低水平。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 surface rounded-2xl p-5 md:p-6" data-aos="fade-up">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+            <h3 class="font-bold text-lg">关键交易日行情</h3>
+            <span class="text-xs muted">价格：美元 · 成交量：股</span>
+          </div>
+          <div class="table-wrap">
+            <table class="text-sm">
+              <thead>
+                <tr>
+                  <th>日期</th>
+                  <th>开盘</th>
+                  <th>最高</th>
+                  <th>最低</th>
+                  <th>收盘</th>
+                  <th>日涨跌</th>
+                  <th>成交量</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>10/28</td><td>323.77</td><td>326.41</td><td>322.66</td><td>324.89</td><td class="text-green-600">—</td><td>63,109,029</td></tr>
+                <tr><td>10/29</td><td>286.88</td><td>288.33</td><td>280.36</td><td>283.82</td><td class="text-red-500">-12.64%</td><td>139,738,347</td></tr>
+                <tr><td>11/04</td><td>283.51</td><td>296.49</td><td>283.40</td><td>288.93</td><td class="text-green-600">+3.18%</td><td>51,550,327</td></tr>
+                <tr><td>11/12</td><td>293.77</td><td>302.56</td><td>293.69</td><td>298.70</td><td class="text-green-600">+1.79%</td><td>35,527,473</td></tr>
+                <tr><td>11/16</td><td>293.81</td><td>294.14</td><td>282.96</td><td>283.72</td><td class="text-red-500">-4.07%</td><td>34,747,238</td></tr>
+                <tr><td>11/19</td><td>294.30</td><td>295.43</td><td>272.36</td><td>272.66</td><td class="text-red-500">-3.46%</td><td>49,718,547</td></tr>
+                <tr><td>11/20</td><td>274.50</td><td>283.15</td><td>264.22</td><td>265.29</td><td class="text-red-500">-2.70%</td><td>58,385,166</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs muted mt-3">注：阶段收益按阶段起止日收盘价计算；表中日涨跌为相对前一交易日收盘价的变化。</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5 mt-8">
+          <div class="surface rounded-2xl p-6" data-aos="fade-up">
+            <div class="flex items-center gap-2 mb-3">
+              <i data-lucide="activity" class="w-5 h-5 text-orange-500"></i>
+              <h3 class="font-bold">成交量揭示什么？</h3>
+            </div>
+            <p class="text-sm muted leading-relaxed">
+              区间日均成交量约 4,397 万股。10 月 29 日成交约 1.397 亿股，是区间均量的约 3.18 倍；11 月 20 日成交约 5,839 万股，是均量的约 1.33 倍。
+              这说明关键下跌日出现明显放量，价格重估伴随较强交易参与度。
+            </p>
+          </div>
+          <div class="surface rounded-2xl p-6" data-aos="fade-up" data-aos-delay="80">
+            <div class="flex items-center gap-2 mb-3">
+              <i data-lucide="landmark" class="w-5 h-5 text-orange-500"></i>
+              <h3 class="font-bold">机构资金流向说明</h3>
+            </div>
+            <p class="text-sm muted leading-relaxed">
+              本报告没有取得可核验的统一口径机构净流入/净流出数据，因此不将成交量等同于机构资金净流向。
+              放量下跌可以支持卖压增强的判断，但不能单凭成交量确认某类机构的净卖出规模。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 相对表现 -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-8" data-aos="fade-up">
+        <div class="section-kicker mb-3">Market Comparison</div>
+        <h2 class="text-3xl font-black">相对大盘：明显跑输基准</h2>
+        <p class="muted mt-3">统一采用 2026 年 10 月 23 日至 11 月 20 日收盘价计算。</p>
+      </div>
+
+      <div class="surface rounded-2xl p-6 md:p-7" data-aos="fade-up">
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+          <div>
+            <div class="text-sm muted mb-2">Alphabet · GOOGL</div>
+            <div class="text-3xl font-black text-red-500">-17.15%</div>
+            <div class="text-xs muted mt-2">$320.21 → $265.29</div>
+          </div>
+          <div>
+            <div class="text-sm muted mb-2">标普 500 · S&P 500</div>
+            <div class="text-3xl font-black text-red-500">-9.36%</div>
+            <div class="text-xs muted mt-2">7,623.68 → 6,910.39</div>
+          </div>
+          <div>
+            <div class="text-sm muted mb-2">纳斯达克综合指数</div>
+            <div class="text-3xl font-black text-red-500">-12.86%</div>
+            <div class="text-xs muted mt-2">25,955.34 → 22,617.73</div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="comparisonChart" aria-label="GOOGL、标普500、纳斯达克区间收益对比"></canvas>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mt-8">
+          <div class="surface-soft rounded-xl p-4">
+            <div class="text-xs muted mb-1">相对标普 500 超额收益</div>
+            <div class="text-2xl font-extrabold text-red-500">-7.80 个百分点</div>
+          </div>
+          <div class="surface-soft rounded-xl p-4">
+            <div class="text-xs muted mb-1">相对纳斯达克超额收益</div>
+            <div class="text-2xl font-extrabold text-red-500">-4.29 个百分点</div>
+          </div>
+        </div>
+
+        <p class="text-sm muted leading-relaxed mt-5">
+          结论：这轮下跌并非单纯跟随大盘。GOOGL 跌幅超过标普 500 和纳斯达克综合指数，反映公司财报后的估值再定价与 AI 板块整体风险偏好下降叠加。
+        </p>
+      </div>
+    </section>
+
+    <!-- 核心驱动 -->
+    <section id="drivers" class="py-16 border-y border-theme" style="background:var(--surface-soft)">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-10" data-aos="fade-up">
+          <div class="section-kicker mb-3">02 / Fundamental Drivers</div>
+          <h2 class="text-3xl md:text-4xl font-black">核心驱动：增长与资本开支的拉扯</h2>
+          <p class="muted mt-3 max-w-3xl">Q3 2026 财报显示 Alphabet 仍有较强的业务增长，但市场更关注增长质量、广告变现、现金流和 AI 投资回报。</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+          <div class="surface rounded-2xl p-6 md:p-7" data-aos="fade-up">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-extrabold">Q3 2026 关键财务数据</h3>
+              <span class="text-xs muted">SEC 公司披露口径</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="surface-soft rounded-xl p-4">
+                <div class="text-xs muted mb-2">总营收</div>
+                <div class="text-2xl font-black">$127.6B</div>
+                <div class="text-sm text-green-600 mt-1">同比 +25%</div>
+              </div>
+              <div class="surface-soft rounded-xl p-4">
+                <div class="text-xs muted mb-2">Google Cloud</div>
+                <div class="text-2xl font-black">$30.7B</div>
+                <div class="text-sm text-green-600 mt-1">同比 +103%</div>
+              </div>
+              <div class="surface-soft rounded-xl p-4">
+                <div class="text-xs muted mb-2">Google Services</div>
+                <div class="text-2xl font-black">$96.3B</div>
+                <div class="text-sm text-green-600 mt-1">同比 +11%</div>
+              </div>
+              <div class="surface-soft rounded-xl p-4">
+                <div class="text-xs muted mb-2">Search & Other</div>
+                <div class="text-2xl font-black">$63.35B</div>
+                <div class="text-sm text-green-600 mt-1">同比约 +12%</div>
+              </div>
+              <div class="surface-soft rounded-xl p-4">
+                <div class="text-xs muted mb-2">营业利润率</div>
+                <div class="text-2xl font-black">31.8%</div>
+                <div class="text-xs muted mt-1">营业利润 $40.58B</div>
+              </div>
+              <div class="surface-soft rounded-xl p-4">
+                <div class="text-xs muted mb-2">GAAP 净利润</div>
+                <div class="text-2xl font-black">$26.17B</div>
+                <div class="text-sm text-red-500 mt-1">去年同期 $34.98B</div>
+              </div>
+            </div>
+
+            <div class="mt-5 p-4 rounded-xl border border-theme">
+              <div class="text-xs muted mb-1">GAAP 稀释每股收益</div>
+              <div class="flex items-baseline gap-3">
+                <span class="text-2xl font-black">$2.12</span>
+                <span class="text-sm text-red-500">去年同期 $2.87</span>
+              </div>
+              <p class="text-xs muted mt-2">GAAP 数据与媒体报道的调整后 EPS 口径不同，不应混用。</p>
+            </div>
+          </div>
+
+          <div class="space-y-5" data-aos="fade-up" data-aos-delay="100">
+            <div class="surface rounded-2xl p-6">
+              <div class="flex gap-3 items-start">
+                <div class="w-10 h-10 rounded-xl bg-green-500/10 text-green-600 flex items-center justify-center shrink-0">
+                  <i data-lucide="cloud" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-lg mb-2">正面因素：Cloud 与 AI 需求强劲</h3>
+                  <p class="text-sm muted leading-relaxed">
+                    Google Cloud Q3 营收约 307 亿美元，同比增长 103%，表现强于市场预期。公司披露 Gemini App 用户规模达到 10 亿，模型 API 处理量接近每分钟 320 亿 tokens，AI 产品生态仍在扩张。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="surface rounded-2xl p-6">
+              <div class="flex gap-3 items-start">
+                <div class="w-10 h-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center shrink-0">
+                  <i data-lucide="megaphone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-lg mb-2">负面因素：广告收入未达预期</h3>
+                  <p class="text-sm muted leading-relaxed">
+                    Reuters 报道，季度广告收入约 820.1 亿美元，低于市场预期的约 834 亿美元。AI Mode 等搜索体验变化可能影响广告展示与变现节奏，市场开始重新评估传统搜索广告的增长路径。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="surface rounded-2xl p-6">
+              <div class="flex gap-3 items-start">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
+                  <i data-lucide="wallet" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-lg mb-2">主要压力：资本开支与自由现金流</h3>
+                  <p class="text-sm muted leading-relaxed">
+                    Reuters 报道该季度自由现金流约为负 91 亿美元，明显弱于市场预期。管理层同时提示 2027 年资本开支将显著高于 2026 年此前预测的 1,950 亿至 2,050 亿美元区间。市场担忧 AI 基础设施投入对现金流与利润率的挤压。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="surface rounded-2xl p-6">
+              <div class="flex gap-3 items-start">
+                <div class="w-10 h-10 rounded-xl bg-orange-500/10 text-orange-600 flex items-center justify-center shrink-0">
+                  <i data-lucide="scale" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="font-extrabold text-lg mb-2">估值矛盾：增长兑现与投资回报</h3>
+                  <p class="text-sm muted leading-relaxed">
+                    Cloud 高增长证明 AI 需求存在，但巨额算力投入能否转化为持续利润和自由现金流，仍需要后续季度验证。市场并非只看营收增长，也在提高对投资回报率的要求。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 surface rounded-2xl p-6 md:p-7" data-aos="fade-up">
+          <h3 class="font-extrabold text-lg mb-5">本轮调整的分析性驱动权重</h3>
+          <p class="text-xs muted mb-6">以下为用于解释本轮价格表现的主观归因框架，不是统计回归结果，也不是可观测的资金流数据。</p>
+
+          <div class="space-y-5">
+            <div>
+              <div class="flex justify-between text-sm mb-2"><span class="font-semibold">公司业绩、广告与资本开支</span><span class="font-bold">45%</span></div>
+              <div class="driver-bar"><span style="width:45%;background:#ea580c"></span></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2"><span class="font-semibold">AI 板块估值与风险偏好</span><span class="font-bold">35%</span></div>
+              <div class="driver-bar"><span style="width:35%;background:#d97706"></span></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2"><span class="font-semibold">宏观利率与指数系统性风险</span><span class="font-bold">20%</span></div>
+              <div class="driver-bar"><span style="width:20%;background:#64748b"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 grid md:grid-cols-2 gap-5">
+          <div class="surface rounded-2xl p-6">
+            <div class="text-xs font-bold text-red-500 mb-2">事件一 · 10月29日</div>
+            <h3 class="font-extrabold text-lg mb-2">财报后的高成交量重估</h3>
+            <p class="text-sm muted leading-relaxed">
+              股价单日下跌 12.64%，成交量约 1.397 亿股。营收未达预期、广告收入缺口、调整后 EPS 低于预期、自由现金流转负和未来资本开支压力集中出现。Cloud 的强劲增长未能抵消市场对现金流与投资回报的担忧。
+            </p>
+          </div>
+          <div class="surface rounded-2xl p-6">
+            <div class="text-xs font-bold text-red-500 mb-2">事件二 · 11月5日及11月19—20日</div>
+            <h3 class="font-extrabold text-lg mb-2">AI 交易拥挤度与科技股风险收缩</h3>
+            <p class="text-sm muted leading-relaxed">
+              11 月 5 日 AI 数据中心相关股票受到政策监管和扩张不确定性冲击。11 月 19—20 日，市场继续担忧 AI 投资回报、融资和高估值风险，科技股出现更广泛的去风险化交易，纳斯达克 11 月 20 日单日下跌约 5.3%。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技术分析 -->
+    <section id="technicals" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-10" data-aos="fade-up">
+        <div class="section-kicker mb-3">03 / Technical Analysis</div>
+        <h2 class="text-3xl md:text-4xl font-black">技术分析：264 美元附近是短线观察重点</h2>
+        <p class="muted mt-3 max-w-3xl">当前价格处于明显弱势结构。支撑与阻力均为根据已发生的价格行为划定的观察区间，不代表必然反转或精确预测。</p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-6">
+        <div class="lg:col-span-3 surface rounded-2xl p-6" data-aos="fade-up">
+          <div class="flex items-center justify-between gap-3 mb-5">
+            <h3 class="font-extrabold text-lg">均线与收盘价</h3>
+            <span class="text-xs muted">美元</span>
+          </div>
+
+          <div class="chart-container">
+            <canvas id="maChart" aria-label="GOOGL 收盘价与移动平均线"></canvas>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+            <div class="surface-soft rounded-xl p-3">
+              <div class="text-xs muted">最新收盘</div>
+              <div class="font-black text-lg">$265.29</div>
+            </div>
+            <div class="surface-soft rounded-xl p-3">
+              <div class="text-xs muted">MA5</div>
+              <div class="font-black text-lg">$276.86</div>
+            </div>
+            <div class="surface-soft rounded-xl p-3">
+              <div class="text-xs muted">MA10</div>
+              <div class="font-black text-lg">$284.78</div>
+            </div>
+            <div class="surface-soft rounded-xl p-3">
+              <div class="text-xs muted">MA20</div>
+              <div class="font-black text-lg">$289.45</div>
+            </div>
+          </div>
+          <p class="text-xs muted mt-4">MA5、MA10、MA20 根据截至 11 月 20 日的实际日收盘价计算。未在本报告中计算或推测 MA60。</p>
+        </div>
+
+        <div class="lg:col-span-2 space-y-5" data-aos="fade-up" data-aos-delay="100">
+          <div class="surface rounded-2xl p-6">
+            <h3 class="font-extrabold text-lg mb-5">技术结构判断</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <i data-lucide="arrow-down" class="w-5 h-5 text-red-500 mt-0.5"></i>
+                <div>
+                  <div class="font-bold text-sm">均线空头排列</div>
+                  <p class="text-sm muted mt-1">MA5 低于 MA10，MA10 低于 MA20，短中期趋势仍偏弱。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <i data-lucide="activity" class="w-5 h-5 text-orange-500 mt-0.5"></i>
+                <div>
+                  <div class="font-bold text-sm">反弹力度不足</div>
+                  <p class="text-sm muted mt-1">11 月 4 日和 12 日的反弹未能形成持续突破，随后重新转弱。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500 mt-0.5"></i>
+                <div>
+                  <div class="font-bold text-sm">低位放量风险</div>
+                  <p class="text-sm muted mt-1">11 月 20 日收盘接近日内低点，说明当天卖压仍然较强。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="surface rounded-2xl p-6">
+            <h3 class="font-extrabold text-lg mb-4">关键价位地图</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center p-3 rounded-xl bg-red-500/10">
+                <div><div class="text-xs text-red-500 font-bold">强阻力</div><div class="font-bold">320 — 326</div></div>
+                <span class="text-xs muted">前期高点区域</span>
+              </div>
+              <div class="flex justify-between items-center p-3 rounded-xl bg-orange-500/10">
+                <div><div class="text-xs text-orange-600 font-bold">次级阻力</div><div class="font-bold">302 — 305</div></div>
+                <span class="text-xs muted">11月高点区域</span>
+              </div>
+              <div class="flex justify-between items-center p-3 rounded-xl bg-amber-500/10">
+                <div><div class="text-xs text-amber-600 font-bold">中间阻力</div><div class="font-bold">293 — 296</div></div>
+                <span class="text-xs muted">反弹受阻区域</span>
+              </div>
+              <div class="flex justify-between items-center p-3 rounded-xl bg-orange-500/10">
+                <div><div class="text-xs text-orange-600 font-bold">第一阻力</div><div class="font-bold">280 — 285</div></div>
+                <span class="text-xs muted">短线修复观察区</span>
+              </div>
+              <div class="flex justify-between items-center p-3 rounded-xl bg-green-500/10">
+                <div><div class="text-xs text-green-600 font-bold">关键支撑</div><div class="font-bold">264 — 268</div></div>
+                <span class="text-xs muted">区间低点附近</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 surface rounded-2xl p-6 md:p-7" data-aos="fade-up">
+        <h3 class="font-extrabold text-lg mb-5">重要价位的交易含义</h3>
+        <div class="table-wrap">
+          <table class="text-sm">
+            <thead>
+              <tr>
+                <th>价格区间</th>
+                <th>性质</th>
+                <th>观察依据</th>
+                <th>交易意义</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-bold text-green-600">264.22 — 268</td>
+                <td>关键支撑观察区</td>
+                <td>11月20日最低 264.22</td>
+                <td>关注能否止跌并收复 268</td>
+              </tr>
+              <tr>
+                <td class="font-bold">276.86 附近</td>
+                <td>MA5</td>
+                <td>近5个交易日收盘均值</td>
+                <td>短线修复的第一道均线</td>
+              </tr>
+              <tr>
+                <td class="font-bold text-orange-600">280 — 285</td>
+                <td>第一阻力区</td>
+                <td>11月17—18日价格及11月20日高点</td>
+                <td>反弹是否有持续性的重要检验</td>
+              </tr>
+              <tr>
+                <td class="font-bold text-orange-600">293 — 296</td>
+                <td>第二阻力区</td>
+                <td>11月13日收盘 295.77、11月19日高点 295.43</td>
+                <td>需要放量突破才有望改善结构</td>
+              </tr>
+              <tr>
+                <td class="font-bold text-red-500">302 — 305</td>
+                <td>较强阻力区</td>
+                <td>11月12—13日盘中高点</td>
+                <td>突破后才进一步挑战前期高位区域</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="recommendation rounded-xl p-4 mt-5">
+          <p class="text-sm leading-relaxed">
+            <strong>风险触发条件：</strong>若日收盘有效跌破 264.22 美元，同时成交量超过区间均量约 4,400 万股，应视为支撑失守风险显著上升。255—260 美元属于情景推演区间，并非已经验证的历史支撑位。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 策略 -->
+    <section id="strategy" class="py-16 border-y border-theme" style="background:var(--surface-soft)">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-10" data-aos="fade-up">
+          <div class="section-kicker mb-3">04 / Trading Strategy</div>
+          <h2 class="text-3xl md:text-4xl font-black">未来 2—4 周：三种情景与应对</h2>
+          <p class="muted mt-3 max-w-3xl">以下概率是基于当前价格结构、财报风险和市场环境的主观情景权重，不是统计模型输出，也不构成收益保证。</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-5">
+          <div class="surface scenario-card bull rounded-2xl p-6" data-aos="fade-up">
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-sm font-extrabold text-green-600">乐观情景</span>
+              <span class="text-2xl font-black">20%</span>
+            </div>
+            <h3 class="text-xl font-extrabold mb-3">止跌反弹，收复阻力</h3>
+            <p class="text-sm muted leading-relaxed mb-5">264—268 美元区域出现有效承接，随后重新站上 285 美元，并进一步突破 296 美元。</p>
+            <div class="surface-soft rounded-xl p-4 mb-4">
+              <div class="text-xs muted mb-1">观察目标区间</div>
+              <div class="text-xl font-black text-green-600">$302 — $310</div>
+              <div class="text-xs muted mt-1">更强势时观察 $320 — $326</div>
+            </div>
+            <ul class="text-sm space-y-2 muted">
+              <li>• 先收复 285 美元</li>
+              <li>• 突破 296 美元时成交量最好超过 5,000 万股</li>
+              <li>• 回踩不破，再考虑提高仓位</li>
+            </ul>
+          </div>
+
+          <div class="surface scenario-card base rounded-2xl p-6" data-aos="fade-up" data-aos-delay="80">
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-sm font-extrabold text-amber-600">基准情景</span>
+              <span class="text-2xl font-black">45%</span>
+            </div>
+            <h3 class="text-xl font-extrabold mb-3">低位震荡，反复修复</h3>
+            <p class="text-sm muted leading-relaxed mb-5">短期在 264—285 美元之间震荡，市场等待科技股风险偏好恢复，以及公司现金流和 AI 投资回报进一步验证。</p>
+            <div class="surface-soft rounded-xl p-4 mb-4">
+              <div class="text-xs muted mb-1">主要震荡区间</div>
+              <div class="text-xl font-black text-amber-600">$264 — $285</div>
+              <div class="text-xs muted mt-1">第一目标：修复至 $280—$285</div>
+            </div>
+            <ul class="text-sm space-y-2 muted">
+              <li>• 观察 264.22 美元能否守住</li>
+              <li>• 回撤缩量比单纯反弹更有参考价值</li>
+              <li>• 未突破 285 美元前，不宜认定趋势反转</li>
+            </ul>
+          </div>
+
+          <div class="surface scenario-card bear rounded-2xl p-6" data-aos="fade-up" data-aos-delay="160">
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-sm font-extrabold text-red-500">悲观情景</span>
+              <span class="text-2xl font-black">35%</span>
+            </div>
+            <h3 class="text-xl font-extrabold mb-3">支撑失守，继续下探</h3>
+            <p class="text-sm muted leading-relaxed mb-5">若收盘跌破 264.22 美元且成交量放大，说明低位承接不足，可能触发进一步风险释放。</p>
+            <div class="surface-soft rounded-xl p-4 mb-4">
+              <div class="text-xs muted mb-1">情景推演区域</div>
+              <div class="text-xl font-black text-red-500">$255 — $260</div>
+              <div class="text-xs muted mt-1">属于推演目标，不是已确认支撑</div>
+            </div>
+            <ul class="text-sm space-y-2 muted">
+              <li>• 关键低点失守，优先控制风险</li>
+              <li>• 不建议在放量破位时加仓摊平</li>
+              <li>• 关注纳指与 AI 板块是否继续走弱</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-9 surface rounded-2xl p-6 md:p-7" data-aos="fade-up">
+          <h3 class="text-xl font-extrabold mb-6">根据持仓状态制定行动方案</h3>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <i data-lucide="briefcase-business" class="w-5 h-5 text-orange-500"></i>
+                <h4 class="font-extrabold">已有持仓者</h4>
+              </div>
+              <div class="space-y-4 text-sm">
+                <div class="border-b border-theme pb-4">
+                  <div class="font-bold mb-1">1. 先设定风险线</div>
+                  <p class="muted leading-relaxed">若日收盘跌破 264.22 美元且成交量超过约 4,400 万股，可考虑减仓三分之一至二分之一，避免风险继续扩大。</p>
+                </div>
+                <div class="border-b border-theme pb-4">
+                  <div class="font-bold mb-1">2. 反弹时观察卖压</div>
+                  <p class="muted leading-relaxed">若反弹至 280—285 美元但成交量不足、收盘重新走弱，可考虑利用反弹降低仓位，而不是把反弹直接视为反转。</p>
+                </div>
+                <div>
+                  <div class="font-bold mb-1">3. 突破后再评估持有</div>
+                  <p class="muted leading-relaxed">若重新站稳 285 美元并进一步突破 296 美元，且成交量配合，可重新评估保留仓位的合理性。</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <i data-lucide="target" class="w-5 h-5 text-orange-500"></i>
+                <h4 class="font-extrabold">尚未持仓者</h4>
+              </div>
+              <div class="space-y-4 text-sm">
+                <div class="border-b border-theme pb-4">
+                  <div class="font-bold mb-1">1. 左侧观察：264—268 美元</div>
+                  <p class="muted leading-relaxed">只有在出现明显下影线、收盘重新站上 268 美元，且后续交易日能够守住时，才考虑小仓位试探。不要仅因价格低而买入。</p>
+                </div>
+                <div class="border-b border-theme pb-4">
+                  <div class="font-bold mb-1">2. 右侧确认：突破 285 美元</div>
+                  <p class="muted leading-relaxed">等待日收盘站上 285 美元，成交量达到或超过区间均量，再观察回踩 280—285 美元是否有效支撑。</p>
+                </div>
+                <div>
+                  <div class="font-bold mb-1">3. 趋势确认：突破 296 美元</div>
+                  <p class="muted leading-relaxed">若进一步放量突破 296 美元，才有更充分的理由讨论中短期趋势修复。避免在阻力密集区盲目追涨。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 surface rounded-2xl p-6 md:p-7" data-aos="fade-up">
+          <h3 class="text-xl font-extrabold mb-5">可执行的观察清单</h3>
+          <div class="grid sm:grid-cols-2 gap-4" id="checklist">
+            <label class="flex items-start gap-3 p-3 rounded-xl surface-soft cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-orange-500">
+              <span class="text-sm">每日收盘是否守住 264.22 美元关键低点？</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl surface-soft cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-orange-500">
+              <span class="text-sm">下跌时成交量是否持续高于约 4,400 万股？</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl surface-soft cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-orange-500">
+              <span class="text-sm">股价是否重新站上 MA5（约 276.86 美元）？</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl surface-soft cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-orange-500">
+              <span class="text-sm">突破 285 美元时是否获得成交量确认？</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl surface-soft cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-orange-500">
+              <span class="text-sm">纳斯达克与 AI 科技股是否停止同步走弱？</span>
+            </label>
+            <label class="flex items-start gap-3 p-3 rounded-xl surface-soft cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-orange-500">
+              <span class="text-sm">后续财报是否改善自由现金流与资本开支预期？</span>
+            </label>
+          </div>
+          <div class="flex justify-between items-center mt-5 text-xs muted">
+            <span id="checklistProgress">已完成 0 / 6 项</span>
+            <button onclick="resetChecklist()" class="source-link">重置清单</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 总结 -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="hero-gradient text-white rounded-3xl p-7 md:p-10" data-aos="fade-up">
+        <div class="section-kicker mb-3" style="color:#fdba74">Investment Summary</div>
+        <h2 class="text-3xl md:text-4xl font-black mb-6">核心判断：先控制风险，再等待趋势修复</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <div class="text-orange-300 font-bold mb-2">价格层面</div>
+            <p class="text-sm text-slate-300 leading-relaxed">17.15% 的区间回撤明显跑输大盘，均线空头排列尚未改变。264.22 美元是当前最重要的短线观察低点。</p>
+          </div>
+          <div>
+            <div class="text-orange-300 font-bold mb-2">基本面层面</div>
+            <p class="text-sm text-slate-300 leading-relaxed">Cloud 与 AI 需求增长强劲，但广告收入缺口、负自由现金流和更高资本开支预期，令市场要求更高的投资回报证明。</p>
+          </div>
+          <div>
+            <div class="text-orange-300 font-bold mb-2">交易层面</div>
+            <p class="text-sm text-slate-300 leading-relaxed">不把超跌等同于见底。观察 264—268 美元承接，以及 285、296 美元两道反弹确认位，按信号而非情绪调整仓位。</p>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/15 flex flex-wrap justify-between gap-4 items-center">
+          <div class="text-sm text-slate-300">报告基准：2026年11月20日常规交易收盘价 $265.29</div>
+          <a href="#overview" class="inline-flex items-center gap-2 text-sm font-bold text-orange-300 hover:text-white">返回顶部 <i data-lucide="arrow-up" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="border-t border-theme" style="background:var(--surface)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <div class="font-extrabold text-lg mb-2">GOOGL · 市场观察报告</div>
+          <p class="text-sm muted leading-relaxed max-w-lg">
+            本报告基于截至 2026 年 11 月 22 日可获得的公开资料，行情分析采用最近一个完整常规交易日（2026 年 11 月 20 日）的数据。历史表现不代表未来收益。
+          </p>
+        </div>
+        <div>
+          <h3 class="font-bold mb-3">数据来源与参考资料</h3>
+          <ul class="text-sm space-y-2 muted">
+            <li><a class="source-link" href="https://stockanalysis.com/stocks/googl/history/" target="_blank" rel="noopener noreferrer">GOOGL 历史行情与成交量 · StockAnalysis</a></li>
+            <li><a class="source-link" href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener noreferrer">S&P 500 历史数据 · Yahoo Finance</a></li>
+            <li><a class="source-link" href="https://finance.yahoo.com/quote/%5EIXIC/history/" target="_blank" rel="noopener noreferrer">纳斯达克综合指数历史数据 · Yahoo Finance</a></li>
+            <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm" target="_blank" rel="noopener noreferrer">Alphabet Q3 2026 财报 · SEC</a></li>
+            <li><a class="source-link" href="https://www.reuters.com/business/alphabets-google-cloud-unit-beats-quarterly-revenue-estimates-steady-ai-demand-2026-10-28/" target="_blank" rel="noopener noreferrer">Alphabet Q3 财报、广告与资本开支 · Reuters</a></li>
+            <li><a class="source-link" href="https://www.investing.com/news/stock-market-news/ai-data-center-stocks-slip-as-democratic-sweep-clouds-expansion-plans-5003196" target="_blank" rel="noopener noreferrer">AI 数据中心股票与政策风险 · Reuters / Investing.com</a></li>
+            <li><a class="source-link" href="https://www.reuters.com/business/view-nasdaq-plunges-5-day-after-anthropic-debut-investors-still-believe-ai-2026-11-20/" target="_blank" rel="noopener noreferrer">11月20日纳斯达克下跌与 AI 风险情绪 · Reuters</a></li>
+            <li><a class="source-link" href="https://www.schwab.com/learn/story/market-volatility" target="_blank" rel="noopener noreferrer">市场波动与风险背景 · Charles Schwab</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-theme mt-8 pt-6">
+        <p class="disclaimer">
+          <strong>风险提示：</strong>本报告仅用于市场研究、信息整理与投资教育，不构成投资建议、证券买卖邀约或收益承诺。文中情景概率、技术区间和交易方案均为分析判断，可能与实际走势存在显著差异。股票投资存在本金损失风险，请结合个人风险承受能力、持仓成本、投资期限和实时行情独立决策。行情及财务数据可能因数据源修订、时区和统计口径差异而变化。报告中的成交量不代表机构净资金流向。
+        </p>
+        <div class="flex flex-wrap justify-between gap-3 mt-5 text-xs muted">
+          <span>© 2026 · Market Research Report</span>
+          <span>分析截止日期：2026-11-22 · 最新完整交易日：2026-11-20</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 图表库 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    // 深色模式
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      try { localStorage.setItem('googl-report-theme', isDark ? 'dark' : 'light'); } catch(e) {}
+      updateChartsTheme();
+    }
+
+    (function initTheme() {
+      try {
+        if (localStorage.getItem('googl-report-theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch(e) {}
+    })();
+
+    // 移动端导航
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobileMenu');
+      const button = e.target.closest('button[aria-label="打开导航菜单"]');
+      if (menu && !menu.contains(e.target) && !button) menu.classList.remove('open');
+    });
+
+    // 阅读进度条
+    function updateProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+      document.getElementById('progressBar').style.width = progress + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // 清单交互
+    function updateChecklistProgress() {
+      const items = [...document.querySelectorAll('#checklist input[type="checkbox"]')];
+      const checked = items.filter(item => item.checked).length;
+      document.getElementById('checklistProgress').textContent = `已完成 ${checked} / ${items.length} 项`;
+    }
+    document.querySelectorAll('#checklist input').forEach(item => {
+      item.addEventListener('change', updateChecklistProgress);
+    });
+    function resetChecklist() {
+      document.querySelectorAll('#checklist input').forEach(item => item.checked = false);
+      updateChecklistProgress();
+    }
+
+    // 实际交易日收盘价数据
+    const dates = [
+      '10/23','10/26','10/27','10/28','10/29','10/30',
+      '11/02','11/03','11/04','11/05','11/06','11/09',
+      '11/10','11/11','11/12','11/13','11/16','11/17',
+      '11/18','11/19','11/20'
+    ];
+
+    const closes = [
+      320.21,316.80,320.58,324.89,283.82,279.84,
+      278.99,280.03,288.93,282.57,284.78,288.15,
+      287.38,293.45,298.70,295.77,283.72,280.20,
+      282.44,272.66,265.29
+    ];
+
+    const volumes = [
+      17569640,23991837,28633058,63109029,139738347,65695032,
+      48512348,34974461,51550327,53412839,36345938,36497918,
+      28396805,26122768,35527473,30798617,34747238,32175891,
+      27401767,49718547,58385166
+    ];
+
+    const ma5 = [
+      null,null,null,null,null,null,null,null,null,null,null,null,
+      null,null,null,null,276.862,276.862,278.518,278.516,276.862
+    ];
+
+    // 为图表呈现完整历史序列计算移动平均值
+    function movingAverage(data, period) {
+      return data.map((value, index) => {
+        if (index < period - 1) return null;
+        const slice = data.slice(index - period + 1, index + 1);
+        return slice.reduce((sum, v) => sum + v, 0) / period;
+      });
+    }
+
+    const ma5Series = movingAverage(closes, 5);
+    const ma10Series = movingAverage(closes, 10);
+    const ma20Series = movingAverage(closes, 20);
+
+    let charts = [];
+
+    function chartColors() {
+      const dark = document.documentElement.classList.contains('dark');
+      return {
+        text: dark ? '#cbd5e1' : '#64748b',
+        grid: dark ? '#334155' : '#e5e7eb',
+        tooltip: dark ? '#172337' : '#ffffff'
+      };
+    }
+
+    function commonOptions() {
+      const c = chartColors();
+      return {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: {
+            labels: { color: c.text, usePointStyle: true, boxWidth: 8, padding: 18 }
+          },
+          tooltip: {
+            backgroundColor: c.tooltip,
+            titleColor: c.text,
+            bodyColor: c.text,
+            borderColor: c.grid,
+            borderWidth: 1,
+            padding: 12
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: c.text, maxRotation: 0, autoSkip: true, maxTicksLimit: 8 },
+            grid: { color: c.grid }
+          },
+          y: {
+            ticks: { color: c.text },
+            grid: { color: c.grid }
+          }
+        }
+      };
+    }
+
+    function createCharts() {
+      if (typeof Chart === 'undefined') return;
+
+      const priceCtx = document.getElementById('priceChart');
+      const comparisonCtx = document.getElementById('comparisonChart');
+      const maCtx = document.getElementById('maChart');
+
+      charts.forEach(chart => chart.destroy());
+      charts = [];
+
+      if (priceCtx) {
+        const chart = new Chart(priceCtx, {
+          type: 'line',
+          data: {
+            labels: dates,
+            datasets: [{
+              label: '收盘价',
+              data: closes,
+              borderColor: '#f97316',
+              backgroundColor: 'rgba(249,115,22,.12)',
+              borderWidth: 2.5,
+              pointRadius: 2,
+              pointHoverRadius: 5,
+              fill: true,
+              tension: .25
+            }]
+          },
+          options: {
+            ...commonOptions(),
+            plugins: {
+              ...commonOptions().plugins,
+              legend: { display: false },
+              tooltip: {
+                ...commonOptions().plugins.tooltip,
+                callbacks: {
+                  label: context => '收盘价：$' + Number(context.raw).toFixed(2)
+                }
+              }
+            },
+            scales: {
+              ...commonOptions().scales,
+              y: {
+                ...commonOptions().scales.y,
+                min: 250,
+                max: 335,
+                ticks: {
+                  color: chartColors().text,
+                  callback: value => '$' + value
+                }
+              }
+            }
+          }
+        });
+        charts.push(chart);
+      }
+
+      if (comparisonCtx) {
+        const chart = new Chart(comparisonCtx, {
+          type: 'bar',
+          data: {
+            labels: ['GOOGL', 'S&P 500', '纳斯达克'],
+            datasets: [{
+              label: '区间收益率',
+              data: [-17.15, -9.36, -12.86],
+              backgroundColor: ['#ef4444','#94a3b8','#f97316'],
+              borderRadius: 8,
+              maxBarThickness: 60
+            }]
+          },
+          options: {
+            ...commonOptions(),
+            indexAxis: 'y',
+            plugins: {
+              ...commonOptions().plugins,
+              legend: { display: false },
+              tooltip: {
+                ...commonOptions().plugins.tooltip,
+                callbacks: {
+                  label: context => context.raw.toFixed(2) + '%'
+                }
+              }
+            },
+            scales: {
+              x: {
+                ...commonOptions().scales.x,
+                ticks: {
+                  color: chartColors().text,
+                  callback: value => value + '%'
+                }
+              },
+              y: commonOptions().scales.y
+            }
+          }
+        });
+        charts.push(chart);
+      }
+
+      if (maCtx) {
+        const chart = new Chart(maCtx, {
+          type: 'line',
+          data: {
+            labels: dates,
+            datasets: [
+              {
+                label: '收盘价',
+                data: closes,
+                borderColor: '#f97316',
+                borderWidth: 2.5,
+                pointRadius: 1.5,
+                tension: .2
+              },
+              {
+                label: 'MA5',
+                data: ma5Series,
+                borderColor: '#16a34a',
+                borderWidth: 1.8,
+                pointRadius: 0,
+                spanGaps: false,
+                tension: .2
+              },
+              {
+                label: 'MA10',
+                data: ma10Series,
+                borderColor: '#3b82f6',
+                borderWidth: 1.8,
+                pointRadius: 0,
+                spanGaps: false,
+                tension: .2
+              },
+              {
+                label: 'MA20',
+                data: ma20Series,
+                borderColor: '#a855f7',
+                borderWidth: 1.8,
+                pointRadius: 0,
+                spanGaps: false,
+                tension: .2
+              }
+            ]
+          },
+          options: {
+            ...commonOptions(),
+            plugins: {
+              ...commonOptions().plugins,
+              tooltip: {
+                ...commonOptions().plugins.tooltip,
+                callbacks: {
+                  label: context => context.dataset.label + ': $' +
+                    (context.raw == null ? '—' : Number(context.raw).toFixed(2))
+                }
+              }
+            },
+            scales: {
+              ...commonOptions().scales,
+              y: {
+                ...commonOptions().scales.y,
+                min: 250,
+                max: 335,
+                ticks: {
+                  color: chartColors().text,
+                  callback: value => '$' + value
+                }
+              }
+            }
+          }
+        });
+        charts.push(chart);
+      }
+    }
+
+    function updateChartsTheme() {
+      charts.forEach(chart => {
+        const colors = chartColors();
+        if (chart.options.plugins.legend.labels) {
+          chart.options.plugins.legend.labels.color = colors.text;
+        }
+        if (chart.options.scales) {
+          Object.values(chart.options.scales).forEach(scale => {
+            if (scale.ticks) scale.ticks.color = colors.text;
+            if (scale.grid) scale.grid.color = colors.grid;
+          });
+        }
+        if (chart.options.plugins.tooltip) {
+          chart.options.plugins.tooltip.backgroundColor = colors.tooltip;
+          chart.options.plugins.tooltip.titleColor = colors.text;
+          chart.options.plugins.tooltip.bodyColor = colors.text;
+          chart.options.plugins.tooltip.borderColor = colors.grid;
+        }
+        chart.update('none');
+      });
+    }
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.lucide) lucide.createIcons();
+
+      if (window.AOS) {
+        AOS.init({
+          duration: 650,
+          once: true,
+          offset: 50,
+          easing: 'ease-out-cubic'
+        });
+      }
+
+      createCharts();
+      updateChecklistProgress();
+
+      // 导航高亮
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              navLinks.forEach(link => {
+                link.classList.toggle(
+                  'active',
+                  link.getAttribute('href') === '#' + entry.target.id
+                );
+              });
+            }
+          });
+        }, { rootMargin: '-25% 0px -65% 0px' });
+
+        sections.forEach(section => observer.observe(section));
+      }
+    });
+  </script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

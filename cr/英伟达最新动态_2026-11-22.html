@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英伟达（NVDA）最新动态全景追踪 | 2026-11-22</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary: {
+            50: 'hsl(20, 90%, 96%)',
+            100: 'hsl(20, 90%, 90%)',
+            200: 'hsl(20, 90%, 80%)',
+            300: 'hsl(20, 90%, 70%)',
+            400: 'hsl(20, 90%, 60%)',
+            500: 'hsl(20, 90%, 50%)',
+            600: 'hsl(20, 90%, 40%)',
+            700: 'hsl(20, 90%, 30%)',
+            800: 'hsl(20, 90%, 20%)',
+            900: 'hsl(20, 90%, 12%)',
+          },
+          accent: {
+            50: 'hsl(30, 85%, 96%)',
+            100: 'hsl(30, 85%, 90%)',
+            200: 'hsl(30, 85%, 80%)',
+            300: 'hsl(30, 85%, 70%)',
+            400: 'hsl(30, 85%, 60%)',
+            500: 'hsl(30, 85%, 50%)',
+            600: 'hsl(30, 85%, 40%)',
+            700: 'hsl(30, 85%, 30%)',
+            800: 'hsl(30, 85%, 20%)',
+            900: 'hsl(30, 85%, 12%)',
+          }
+        }
+      }
+    }
+  }
+</script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  :root {
+    --progress: 0%;
+  }
+  #progressBar {
+    width: var(--progress);
+    transition: width 0.1s linear;
+  }
+  .card-interactive {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+  .dark .card-interactive:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+  }
+  .impact-bar {
+    height: 6px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, hsl(20,90%,50%), hsl(30,85%,50%));
+  }
+  .dark .impact-bar {
+    background: linear-gradient(90deg, hsl(20,90%,60%), hsl(30,85%,60%));
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+  }
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: hsl(20,90%,50%);
+    transition: width 0.3s;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .dark .nav-link::after {
+    background: hsl(20,90%,60%);
+  }
+  table {
+    border-collapse: collapse;
+  }
+  .dark table, .dark th, .dark td {
+    border-color: #4b5563;
+  }
+  .dark th {
+    background-color: #1f2937;
+  }
+  .dark td {
+    background-color: #111827;
+  }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+  <!-- Progress Bar -->
+  <div class="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200 dark:bg-gray-800">
+    <div id="progressBar" class="h-full bg-gradient-to-r from-primary-500 to-accent-500"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
+          </div>
+          <div>
+            <h1 class="text-lg font-bold tracking-tight">英伟达 · NVDA</h1>
+            <p class="text-xs text-gray-500 dark:text-gray-400">最新动态全景追踪 · 2026-11-22</p>
+          </div>
+        </div>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#overview" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">概览</a>
+          <a href="#catalysts" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">关键催化剂</a>
+          <a href="#earnings" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">财报解读</a>
+          <a href="#leadership" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">领导层变动</a>
+          <a href="#risks" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">风险与监管</a>
+          <a href="#industry" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">行业传导</a>
+          <a href="#macro" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">宏观框架</a>
+          <a href="#timeline" class="nav-link hover:text-primary-600 dark:hover:text-primary-400">时间线</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <button onclick="toggleDarkMode()" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition" aria-label="切换暗色模式">
+            <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+          </button>
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+      <div class="px-4 py-3 space-y-2 text-sm font-medium">
+        <a href="#overview" class="block py-2 hover:text-primary-600">概览</a>
+        <a href="#catalysts" class="block py-2 hover:text-primary-600">关键催化剂</a>
+        <a href="#earnings" class="block py-2 hover:text-primary-600">财报解读</a>
+        <a href="#leadership" class="block py-2 hover:text-primary-600">领导层变动</a>
+        <a href="#risks" class="block py-2 hover:text-primary-600">风险与监管</a>
+        <a href="#industry" class="block py-2 hover:text-primary-600">行业传导</a>
+        <a href="#macro" class="block py-2 hover:text-primary-600">宏观框架</a>
+        <a href="#timeline" class="block py-2 hover:text-primary-600">时间线</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <!-- Hero / Overview -->
+    <section id="overview" data-aos="fade-up">
+      <div class="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/30 dark:to-accent-900/30 rounded-2xl p-6 md:p-10 border border-primary-100 dark:border-primary-800">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-semibold mb-3">
+              <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+              时间窗口：2026-10-23 至 2026-11-22（近30自然日）
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold mb-2">英伟达（NVDA）最新动态全景追踪</h2>
+            <p class="text-gray-600 dark:text-gray-300 max-w-2xl">买方视角事件驱动分析报告。聚焦真正影响基本面与估值的关键催化剂，构建「公司—行业—宏观」三层传导框架。所有事实均基于公开新闻与公告，标注来源与日期。</p>
+          </div>
+          <div class="flex flex-col gap-3 min-w-[200px]">
+            <div class="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+              <p class="text-xs text-gray-500 dark:text-gray-400">最新收盘参考</p>
+              <p class="text-2xl font-bold text-red-600 dark:text-red-400">≈ $125.5</p>
+              <p class="text-xs text-gray-500">2026-11-20 附近 · 近七日连跌</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+              <p class="text-xs text-gray-500 dark:text-gray-400">Q3 营收（FY2027）</p>
+              <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">$115.8B</p>
+              <p class="text-xs text-gray-500">同比 +103%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Catalysts -->
+    <section id="catalysts" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+          <i data-lucide="zap" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold">关键催化剂（按影响力排序）</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Card 1 -->
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <div class="flex items-start justify-between mb-3">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300">高影响</span>
+            <span class="text-xs text-gray-500">2026-11-12</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Jensen Huang 辞任 CEO</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">创始人兼CEO因与Alice Huang（疑似中国情报相关人士）及公司内部下属的婚外情丑闻，于11月12日立即辞任。CFO Colette Kress 出任临时CEO，董事会主席 Harvey Jones 明确表示不打算恢复Huang职务。</p>
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>影响力</span><span>★★★★★</span></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5"><div class="impact-bar" style="width:95%"></div></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">来源：NVIDIA公告 / AP / Reuters / NYT · 2026-11-12</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <div class="flex items-start justify-between mb-3">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">正面</span>
+            <span class="text-xs text-gray-500">2026-11-17</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Q3 财报大超预期 + 上调指引</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">营收$115.8B（+103% YoY），数据中心$107.6B（+110%），非GAAP EPS $2.68。Q4指引$130B（±3%），FY2028增长预期由70%上调至75%。Vera Rubin NVL72 开始出货，创公司最快产品爬坡记录。</p>
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>影响力</span><span>★★★★☆</span></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5"><div class="impact-bar" style="width:88%"></div></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">来源：NVIDIA IR 官方财报 · 2026-11-17</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <div class="flex items-start justify-between mb-3">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300">高风险</span>
+            <span class="text-xs text-gray-500">2026-11-17~20</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">SEC 会计调查 + 加州AG传票</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">Reuters报道SEC执法部门正在审查潜在会计问题；加州总检察长就芯片出口与信息披露发出调查传票。叠加Huang相关国家安全担忧，股价在财报后继续大幅下跌。</p>
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>影响力</span><span>★★★★☆</span></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5"><div class="impact-bar" style="width:85%"></div></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">来源：Reuters / WSJ / 加州AG声明 · 2026-11-20</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <div class="flex items-start justify-between mb-3">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">治理</span>
+            <span class="text-xs text-gray-500">2026-11-17</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">设立国家安全与出口管制监督委员会</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">董事会新设常设委员会，由Suzanne Nora Johnson担任主席，负责国家安全政策、出口管制合规与全球贸易风险管理。现有国家安全与贸易合规团队直接向该委员会及临时CEO汇报。</p>
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>影响力</span><span>★★★☆☆</span></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5"><div class="impact-bar" style="width:70%"></div></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">来源：NVIDIA Newsroom · 2026-11-17</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <div class="flex items-start justify-between mb-3">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">供应</span>
+            <span class="text-xs text-gray-500">2026-11-17</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">基板与先进封装产能扩张协议</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">与Kinsus、Samsung Electro-Mechanics等达成新协议，支持额外基板产能与现有工厂生产能力扩展，应对AI基础设施持续高需求。</p>
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>影响力</span><span>★★★☆☆</span></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5"><div class="impact-bar" style="width:65%"></div></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">来源：NVIDIA Newsroom · 2026-11-17</p>
+        </div>
+        <!-- Card 6 -->
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <div class="flex items-start justify-between mb-3">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300">产品</span>
+            <span class="text-xs text-gray-500">2026-11-18</span>
+          </div>
+          <h3 class="font-bold text-lg mb-2">RTX Spark 紧凑型AI桌面上市</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">ASUS、Dell、MSI推出搭载NVIDIA RTX Spark的紧凑桌面，支持本地AI代理、图像/视频生成与模型微调，最高128GB统一内存。</p>
+          <div class="mb-2">
+            <div class="flex justify-between text-xs mb-1"><span>影响力</span><span>★★☆☆☆</span></div>
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5"><div class="impact-bar" style="width:45%"></div></div>
+          </div>
+          <p class="text-xs text-gray-500 mt-2">来源：NVIDIA Newsroom · 2026-11-18</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Earnings -->
+    <section id="earnings" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
+          <i data-lucide="bar-chart-3" class="w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold">Q3 FY2027 财报核心数据</h2>
+      </div>
+      <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-gray-50 dark:bg-gray-800 text-left">
+                <th class="px-4 py-3 font-semibold">指标</th>
+                <th class="px-4 py-3 font-semibold">实际</th>
+                <th class="px-4 py-3 font-semibold">同比</th>
+                <th class="px-4 py-3 font-semibold">环比</th>
+                <th class="px-4 py-3 font-semibold">市场预期</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <tr>
+                <td class="px-4 py-3 font-medium">总营收</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400 font-semibold">$115.8B</td>
+                <td class="px-4 py-3">+103%</td>
+                <td class="px-4 py-3">+20%</td>
+                <td class="px-4 py-3">~$109B</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium">数据中心营收</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400 font-semibold">$107.6B</td>
+                <td class="px-4 py-3">+110%</td>
+                <td class="px-4 py-3">+21%</td>
+                <td class="px-4 py-3">~$102B</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium">非GAAP EPS</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400 font-semibold">$2.68</td>
+                <td class="px-4 py-3">+111%</td>
+                <td class="px-4 py-3">—</td>
+                <td class="px-4 py-3">~$2.47–2.49</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium">GAAP毛利率</td>
+                <td class="px-4 py-3">74.8%</td>
+                <td class="px-4 py-3">+1.4ppt</td>
+                <td class="px-4 py-3">-0.2ppt</td>
+                <td class="px-4 py-3">—</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium">Q4营收指引</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400 font-semibold">$130B ±3%</td>
+                <td class="px-4 py-3">约+90%</td>
+                <td class="px-4 py-3">—</td>
+                <td class="px-4 py-3">~$125B</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 font-medium">FY2028增长指引</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400 font-semibold">约75%</td>
+                <td class="px-4 py-3">上调</td>
+                <td class="px-4 py-3">—</td>
+                <td class="px-4 py-3">此前70%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="p-4 bg-gray-50 dark:bg-gray-800/50 text-xs text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+          来源：NVIDIA官方新闻稿（2026-11-17）；FactSet/LSEG一致预期；数据中心业务占比约93%。Q4指引明确不假设中国数据中心计算收入。
+        </div>
+      </div>
+      <div class="mt-4 grid md:grid-cols-2 gap-4">
+        <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h4 class="font-semibold mb-2 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-primary-500"></i> Vera Rubin 进展</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">最先进、最通用的计算平台已出货，首季贡献约$20B收入，创公司历史最快产品爬坡。合作伙伴包括CoreWeave、Google Cloud、Microsoft Azure、Oracle Cloud、Nebius等。</p>
+        </div>
+        <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h4 class="font-semibold mb-2 flex items-center gap-2"><i data-lucide="refresh-cw" class="w-4 h-4 text-primary-500"></i> 股东回报</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Q3通过回购与分红向股东返还$28.1B。董事会此前新增$150B无限期回购授权，截至Q3末剩余授权约$227.3B。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership -->
+    <section id="leadership" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
+          <i data-lucide="users" class="w-5 h-5 text-orange-600 dark:text-orange-400"></i>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold">领导层与治理变动</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h3 class="font-bold mb-3">关键人事</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-2 h-2 mt-1.5 rounded-full bg-red-500"></span>
+              <div><strong>Jensen Huang</strong>：2026-11-12辞任总裁、CEO及董事，结束33年任期。董事会明确不恢复其CEO职务。</div>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-2 h-2 mt-1.5 rounded-full bg-emerald-500"></span>
+              <div><strong>Colette Kress</strong>：长期CFO出任临时CEO，同时保留财务职责。董事会对其有充分信心。</div>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-2 h-2 mt-1.5 rounded-full bg-blue-500"></span>
+              <div><strong>Harvey Jones</strong>：新任董事会主席，主持财报电话会并重申治理立场。</div>
+            </li>
+            <li class="flex gap-3">
+              <span class="flex-shrink-0 w-2 h-2 mt-1.5 rounded-full bg-purple-500"></span>
+              <div><strong>Suzanne Nora Johnson</strong>：新设国家安全与出口管制监督委员会主席。</div>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h3 class="font-bold mb-3">治理信号解读</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">董事会迅速接受辞职并设立专门委员会，显示在国家安全与出口合规上采取主动姿态。Kress在电话会上强调“业务如常”、路线图未变、需求未随Huang离职而消失。市场短期内更关注不确定性与监管风险，而非基本面数字。</p>
+          <p class="text-xs text-gray-500">来源：NVIDIA财报电话会 / CNN / CNBC · 2026-11-17~18</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Risks -->
+    <section id="risks" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-900/50 flex items-center justify-center">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold">风险与监管动态</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h3 class="font-bold mb-2 text-red-600 dark:text-red-400">SEC调查</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">2026-11-20 Reuters独家：SEC执法人员正在审查潜在会计问题。调查处于早期阶段，不必然导致执法行动。叠加此前WSJ关于信息披露的报道。</p>
+          <p class="text-xs text-gray-500 mt-2">来源：Reuters · 2026-11-20</p>
+        </div>
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h3 class="font-bold mb-2 text-red-600 dark:text-red-400">加州AG传票</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">加州总检察长就Huang与疑似中国间谍的关系、芯片是否流向中国及是否误导投资者展开调查并发出传票。</p>
+          <p class="text-xs text-gray-500 mt-2">来源：公开报道 · 2026-11-20前后</p>
+        </div>
+        <div class="card-interactive bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h3 class="font-bold mb-2 text-amber-600 dark:text-amber-400">出口与中国风险</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Q4指引明确不假设中国数据中心计算收入。新设董事会级出口管制委员会，显示公司对合规与地缘风险高度重视。</p>
+          <p class="text-xs text-gray-500 mt-2">来源：NVIDIA财报 · 2026-11-17</p>
+        </div>
+      </div>
+      <div class="mt-5 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-5">
+        <h4 class="font-semibold text-red-700 dark:text-red-300 mb-2">股价表现（事件驱动）</h4>
+        <p class="text-sm text-gray-700 dark:text-gray-300">自10月初高点（约$239–243）以来累计跌幅约46%–48%，市值蒸发约$2.6–2.7万亿。Huang辞职后约$1万亿市值蒸发。2026-11-20单日约-14%，为近年最差单日之一，创下2008年以来最长周连跌纪录之一。</p>
+      </div>
+    </section>
+
+    <!-- Industry -->
+    <section id="industry" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center">
+          <i data-lucide="network" class="w-5 h-5 text-indigo-600 dark:text-indigo-400"></i>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold">行业层传导</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h3 class="font-bold mb-3">AI基础设施需求韧性</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">尽管领导层剧变，数据中心需求仍强劲。客户（超大规模云厂商、新兴云、前沿实验室）资本支出与订单可见度支撑公司上调中期增长指引。Vera Rubin快速爬坡印证供应与需求匹配能力。</p>
+          <ul class="text-sm space-y-1 text-gray-600 dark:text-gray-300">
+            <li>• 数据中心占比持续超90%</li>
+            <li>• 毛利率短期承压（Q4指引71–72%）后有望回升</li>
+            <li>• 供应链（基板、先进封装）主动扩张</li>
+          </ul>
+        </div>
+        <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5">
+          <h3 class="font-bold mb-3">竞争与生态</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">公司仍处于AI加速计算中心位置。Microsoft全栈合作延伸、本地AI桌面产品线扩展，显示从数据中心向边缘与企业端的渗透。同时需关注客户自研芯片与地缘限制对长期份额的影响。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Macro -->
+    <section id="macro" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/50 flex items-center justify-center">
+          <i data-lucide="globe" class="w-5 h-5 text-sky-600 dark:text-sky-400"></i>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold">宏观层框架</h2>
+      </div>
+      <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 md:p-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <h4 class="font-semibold mb-2 flex items-center gap-2"><i data-lucide="shield" class="w-4 h-4"></i> 国家安全与出口管制</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-300">美国对先进AI芯片向中国出口的限制持续加码。公司主动设立董事会级监督机制，并在指引中剔除中国数据中心假设，反映政策不确定性已成为核心定价因子。</p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2 flex items-center gap-2"><i data-lucide="trending-up" class="w-4 h-4"></i> AI资本开支周期</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-300">超大规模客户与新兴云厂商的AI基础设施投资仍是主引擎。公司通过融资平台合作帮助客户动员资本，形成“需求—供应—融资”闭环，但监管对循环融资的关注升温。</p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2 flex items-center gap-2"><i data-lucide="scale" class="w-4 h-4"></i> 监管与治理溢价</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-300">Huang事件将个人治理与国家安全风险直接定价进估值。短期内市场给予“治理折扣”，长期则取决于新领导层能否重建信任并维持执行力。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" data-aos="fade-up">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+          <i data-lucide="clock" class="w-5 h-5 text-gray-600 dark:text-gray-300"></i>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold">近30日关键事件时间线</h2>
+      </div>
+      <div class="relative border-l-2 border-primary-200 dark:border-primary-800 ml-3 space-y-6 pl-6">
+        <div class="relative">
+          <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-gray-950"></div>
+          <p class="text-xs text-gray-500 mb-1">2026-11-20</p>
+          <p class="font-medium">SEC会计调查报道；股价单日约-14%；加州AG传票相关进展</p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-gray-950"></div>
+          <p class="text-xs text-gray-500 mb-1">2026-11-18~19</p>
+          <p class="font-medium">财报后股价承压；RTX Spark上市；分析师目标价与评级调整</p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-emerald-500 border-4 border-white dark:border-gray-950"></div>
+          <p class="text-xs text-gray-500 mb-1">2026-11-17</p>
+          <p class="font-medium">Q3财报发布（营收$115.8B）；设立国家安全与出口管制委员会；上调FY2028增长指引至75%</p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-red-500 border-4 border-white dark:border-gray-950"></div>
+          <p class="text-xs text-gray-500 mb-1">2026-11-12</p>
+          <p class="font-medium">Jensen Huang正式辞任；Colette Kress任临时CEO；Harvey Jones任董事会主席</p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-amber-500 border-4 border-white dark:border-gray-950"></div>
+          <p class="text-xs text-gray-500 mb-1">2026-11-08~11</p>
+          <p class="font-medium">Huang承认不忠；董事会启动调查；追加与公司内部下属关系报道</p>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-gray-400 border-4 border-white dark:border-gray-950"></div>
+          <p class="text-xs text-gray-500 mb-1">2026-10月底~11月初</p>
+          <p class="font-medium">NYT等媒体报道Huang与Alice Huang（Megaspeed前高管，疑似中国情报相关）的关系及情报机构关注</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Summary Framework -->
+    <section data-aos="fade-up" class="bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-900 dark:to-primary-900/20 rounded-2xl p-6 md:p-8 border border-gray-200 dark:border-gray-800">
+      <h2 class="text-xl font-bold mb-4 flex items-center gap-2"><i data-lucide="layers" class="w-5 h-5 text-primary-500"></i> 三层传导框架总结（买方视角）</h2>
+      <div class="grid md:grid-cols-3 gap-6 text-sm">
+        <div>
+          <h3 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">公司层</h3>
+          <p class="text-gray-600 dark:text-gray-300">基本面（收入、毛利、指引）仍极度强劲，Vera Rubin爬坡与需求韧性是核心支撑。但领导层剧变、监管调查与治理不确定性造成显著估值折扣与波动放大。</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">行业层</h3>
+          <p class="text-gray-600 dark:text-gray-300">AI加速计算基础设施投资周期未破，公司仍处中心位置。供应链扩张与客户融资支持强化中期可见度，但竞争（自研芯片）与出口限制构成结构性约束。</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-primary-600 dark:text-primary-400 mb-2">宏观层</h3>
+          <p class="text-gray-600 dark:text-gray-300">地缘政治与出口管制已成为定价核心变量。国家安全合规成本上升，治理与披露风险溢价上升。未来催化剂将高度取决于新领导层重建信任的速度与监管调查结果。</p>
+        </div>
+      </div>
+      <p class="mt-6 text-xs text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 pt-4">
+        免责声明：本报告仅供研究参考，不构成投资建议。所有数据与事件均来自公开新闻与公司公告，时间窗口严格限定在2026-10-23至2026-11-22附近。关键事实已标注来源与日期。市场瞬息万变，请以最新官方披露为准。
+      </p>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-200 dark:border-gray-800 mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500 dark:text-gray-400">
+      <p>英伟达（NVDA）最新动态全景追踪 · 生成日期 2026-11-22</p>
+      <p class="mt-1">买方金融研究 · 事件驱动策略框架</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Init
+    lucide.createIcons();
+    AOS.init({ duration: 600, once: true, offset: 40 });
+
+    // Dark mode
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    }
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+
+    // Progress bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.documentElement.style.setProperty('--progress', progress + '%');
+    });
+
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+  </script>
+</body>
+</html>

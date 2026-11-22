@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alphabet Inc.（谷歌）公司治理、股权结构、资本运作、业务矩阵与员工激励全景研究，数据截至2026年11月22日。">
+<title>Alphabet（谷歌）体系全景解析｜2026-11-22</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={darkMode:'class',theme:{extend:{colors:{
+primary:{50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',900:'hsl(20,90%,15%)'},
+accent:{50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',900:'hsl(30,85%,20%)'}
+}}}};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+.btn-interactive{transition:all .2s ease-out}.btn-interactive:hover{transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}.btn-interactive:active{transform:scale(.95)}
+.card-interactive{transition:all .3s ease-out;border:1px solid transparent;--border-lightness:40%}.dark .card-interactive{--border-lightness:60%}
+.card-interactive:hover{box-shadow:0 20px 25px -5px rgba(0,0,0,.1);filter:brightness(.985);border-color:hsl(20,90%,var(--border-lightness))}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:.8rem;border-bottom:1px solid hsl(0,0%,90%);vertical-align:top}.dark th,.dark td{border-bottom-color:hsl(0,0%,30%)}th{font-size:.82rem;color:#9a4a16;background:rgba(249,115,22,.07)}td{font-size:.88rem}
+#mobileMenu{display:none}#mobileMenu.mobile-menu-open{display:block}@media(min-width:768px){#mobileMenu{display:none!important}}@media(max-width:767px){header .max-w-7xl{padding-left:1rem;padding-right:1rem}header h1{font-size:1rem;white-space:nowrap;margin-right:.5rem}#mobileMenu{margin-top:1rem;padding:1rem 0 .5rem;border-top:1px solid rgba(20,20,20,.12);max-height:calc(100vh - 90px);overflow-y:auto}#mobileMenu a{display:block;width:100%;padding:.7rem .5rem;border-radius:.5rem}.dark #mobileMenu{border-top-color:rgba(255,255,255,.15)}}
+@media(min-width:768px){header nav[aria-label="桌面端导航"] a{color:#374151}.dark header nav[aria-label="桌面端导航"] a{color:#e5e7eb}header nav[aria-label="桌面端导航"] a:hover,.dark header nav[aria-label="桌面端导航"] a:hover{color:hsl(20,90%,50%)}}
+header{overflow:visible}.moat-track{height:9px;background:#e5e7eb;border-radius:99px;overflow:hidden}.dark .moat-track{background:#374151}.moat-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+.ref{font-size:.72rem;vertical-align:super;margin-left:3px;color:#0284c7;font-weight:700}.source-list a{color:#0284c7;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+</style>
+<script>
+function toggleDarkMode(){document.documentElement.classList.toggle('dark');const d=document.documentElement.classList.contains('dark');document.getElementById('sunIcon').style.display=d?'block':'none';document.getElementById('moonIcon').style.display=d?'none':'block';localStorage.setItem('alphabet-theme',d?'dark':'light')}
+</script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between gap-3">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">Alphabet（谷歌）体系全景解析</h1>
+<nav class="hidden md:flex space-x-5 flex-shrink-0 text-sm" aria-label="桌面端导航">
+<a href="#overview">总览</a><a href="#founder">管理层</a><a href="#capital">股本</a><a href="#equity">股权</a><a href="#companies">业务矩阵</a><a href="#employee">激励</a><a href="#summary">研判</a>
+</nav>
+<div class="flex items-center space-x-2 flex-shrink-0">
+<button type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300" aria-label="打开或关闭导航菜单" aria-controls="mobileMenu" aria-expanded="false" id="mobileMenuButton"><i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i></button>
+<button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300" aria-label="切换暗色模式"><i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i><i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i></button>
+</div></div>
+<div id="mobileMenu" aria-hidden="true"><nav class="flex flex-col space-y-1 text-sm">
+<a href="#overview">总览</a><a href="#founder">管理层</a><a href="#capital">股本</a><a href="#equity">股权</a><a href="#companies">业务矩阵</a><a href="#employee">激励</a><a href="#summary">综合研判</a>
+</nav></div></div></header>
+<main class="min-h-screen">
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up"><div class="max-w-5xl mx-auto px-6">
+<div class="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 dark:text-primary-300 mb-5"><span class="w-2 h-2 rounded-full bg-primary-500"></span>NASDAQ：GOOGL（Class A）｜研究基准日：2026年11月22日</div>
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">Alphabet（谷歌）体系全景解析</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">Alphabet Inc. 是以 Google 为核心经营主体的控股集团。其价值结构由搜索与广告现金流、YouTube与订阅生态、Google Cloud、AI全栈能力及Waymo等“Other Bets”构成。本报告从创始人影响力、三类股本、双层投票权、业务及子公司关系、股权激励与资本配置六个维度，梳理公司治理和长期价值形成机制。最新经营数据采用截至2026年9月30日的第三季度及九个月披露；股价采用2026年11月20日最近交易日数据。</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md"><div class="flex items-center gap-4 mb-4"><div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="users" class="w-6 h-6 text-primary-600"></i></div><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">创始人控制</h3></div><p class="text-sm text-gray-700 dark:text-gray-300">Larry Page与Sergey Brin通过Class B超级投票权合计掌握约52.7%投票权。</p></div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md"><div class="flex items-center gap-4 mb-4"><div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center"><i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-accent-600"></i></div><h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">增长引擎</h3></div><p class="text-sm text-gray-700 dark:text-gray-300">2026年前九个月收入3,572.69亿美元；Google Cloud收入同比增长约84.0%。</p></div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md"><div class="flex items-center gap-4 mb-4"><div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="brain-circuit" class="w-6 h-6 text-primary-600"></i></div><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">AI资本周期</h3></div><p class="text-sm text-gray-700 dark:text-gray-300">AI模型、TPU、数据中心与云业务形成全栈协同，同时显著推高资本开支。</p></div>
+</div>
+<div class="grid md:grid-cols-4 gap-4 mt-8">
+<div class="bg-primary-100/70 dark:bg-gray-800 p-4 rounded-xl"><div class="text-xs text-gray-600 dark:text-gray-400">GOOGL收盘价（11/20）</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300">$265.29</div></div>
+<div class="bg-primary-100/70 dark:bg-gray-800 p-4 rounded-xl"><div class="text-xs text-gray-600 dark:text-gray-400">Alphabet总股本（10/21）</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300">122.94亿股</div></div>
+<div class="bg-primary-100/70 dark:bg-gray-800 p-4 rounded-xl"><div class="text-xs text-gray-600 dark:text-gray-400">参考总市值</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300">约3.26万亿美元</div></div>
+<div class="bg-primary-100/70 dark:bg-gray-800 p-4 rounded-xl"><div class="text-xs text-gray-600 dark:text-gray-400">2026年前九个月营业利润</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300">$1,210.42亿</div></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-4">注：总市值为按GOOGL最近收盘价乘以三类普通股总数的近似估算；不同数据终端的股价时点、汇总口径可能造成差异。来源：[1][2][3]</p>
+</div></section>
+
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up"><div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">一、创始人及核心管理层：创始人控制与职业经理人执行</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">Google由Larry Page与Sergey Brin于斯坦福大学研究生阶段共同创立，1998年成立公司，2004年上市。2015年Alphabet重组后，Google成为Alphabet旗下核心业务主体，控股架构把搜索、广告、Android、YouTube、云计算与长期探索型项目纳入统一资本配置体系。Page担任Alphabet CEO、Brin担任总裁的阶段结束后，Sundar Pichai于2019年接任Alphabet CEO，并继续领导Google；两位创始人仍通过董事席位和超级投票权保持重大事项影响力。[4][5]</p>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/50 dark:bg-primary-900/30 rounded-r-lg"><p class="text-sm font-medium text-primary-900 dark:text-primary-100">治理结构的关键不是创始人是否日常管理，而是“创始人保留控制权、职业经理人负责经营”。Pichai掌握经营执行与组织协调，Page、Brin则通过Class B投票权对董事选举、并购及重大公司事项具有决定性影响。</p></div>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">创始人与治理层</h3><ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li><i data-lucide="check" class="inline w-4 h-4 text-primary-600"></i> Larry Page：联合创始人、董事；2026年4月6日持有约3.89亿股Class B，占该类别约46.5%，对应总投票权约27.4%。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-primary-600"></i> Sergey Brin：联合创始人、董事；持有约3.59亿股Class B，占该类别约42.9%，对应总投票权约25.3%。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-primary-600"></i> 两人合计拥有约52.7%总投票权，构成控制权核心。</li>
+</ul></div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">职业经理人团队</h3><ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li><i data-lucide="check" class="inline w-4 h-4 text-accent-600"></i> Sundar Pichai：Alphabet及Google CEO，负责集团战略、产品与经营执行。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-accent-600"></i> Anat Ashkenazi：2024年7月起任高级副总裁兼CFO，负责财务与资本纪律。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-accent-600"></i> Ruth Porat：转任总裁兼首席投资官，强化资本配置与Other Bets投资组合管理。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-accent-600"></i> Demis Hassabis领导Google DeepMind，推动基础模型与AI研究产品化。</li>
+</ul></div></div>
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">战略演进时间线</h3>
+<div class="overflow-x-auto rounded-xl shadow-sm"><table><thead><tr><th>时期</th><th>关键节点</th><th>治理与战略意义</th></tr></thead><tbody>
+<tr><td>1998—2004</td><td>Google创立、搜索广告商业化、IPO</td><td>形成技术驱动与广告变现的核心商业模式。</td></tr>
+<tr><td>2014</td><td>Class C无投票权股票拆分发行</td><td>在扩大资本工具的同时保留创始人投票权优势。[6]</td></tr>
+<tr><td>2015</td><td>Alphabet重组</td><td>Google核心业务与Other Bets分层管理，改善业务透明度及资本配置。</td></tr>
+<tr><td>2019</td><td>Pichai出任Alphabet CEO</td><td>职业经理人全面负责集团经营，创始人仍保留控制性投票权。</td></tr>
+<tr><td>2023—2025</td><td>Google DeepMind整合；AI产品全面推进</td><td>把模型研发、基础设施、搜索、Workspace和Cloud连接成全栈AI体系。</td></tr>
+<tr><td>2026</td><td>AI算力与云业务成为增长重心</td><td>管理层强调长期算力规划、ROIC纪律和AI模型跨产品复用。[7]</td></tr>
+</tbody></table></div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-3">管理哲学与近期重点</h3><p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Alphabet的管理重点正在从“互联网平台规模扩张”转向“AI全栈效率与基础设施竞争”。2026年第三季度业绩电话会上，Pichai强调模型是Search、YouTube、Cloud乃至Waymo的共同基础，集团以长期规划和投资回报框架安排算力；同时披露内部模型工具提升软件工程产出效率。其潜在变化是：资源分配权进一步向计算基础设施、模型研发和企业云集中，业务部门需证明AI投入能够转化为收入、留存或成本效率。[7]</p></div>
+</div></div></section>
+
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up"><div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">二、股本数量变化：双类别扩张、回购与员工股权并存</h2>
+<div class="space-y-6"><p class="text-gray-700 dark:text-gray-300 leading-relaxed">GOOGL并非Alphabet全部股本，而是Class A普通股（每股一票）。Alphabet另有未上市的Class B普通股（每股十票）及上市交易代码GOOG的Class C资本股（通常无投票权）。因此，分析GOOGL投资价值时，必须同时看三类股份总数及其权利差异。</p>
+<div class="grid md:grid-cols-3 gap-5">
+<div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow-md"><div class="text-sm text-gray-500">Class A｜GOOGL</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300">58.88亿股</div><p class="text-xs text-gray-500 mt-2">2026年10月21日流通股数；每股1票。</p></div>
+<div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow-md"><div class="text-sm text-gray-500">Class B｜非上市</div><div class="text-2xl font-bold text-accent-700 dark:text-accent-300">8.27亿股</div><p class="text-xs text-gray-500 mt-2">每股10票，主要由创始人持有。</p></div>
+<div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow-md"><div class="text-sm text-gray-500">Class C｜GOOG</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300">55.79亿股</div><p class="text-xs text-gray-500 mt-2">无投票权（法定例外除外）。</p></div>
+</div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">股本及资本运作关键节点</h3><div class="overflow-x-auto"><table><thead><tr><th>时间</th><th>事项</th><th>对股本/股东的影响</th></tr></thead><tbody>
+<tr><td>2004-08</td><td>Google IPO，Class A上市（GOOG）</td><td>首次公开发行，建立公开交易市场。</td></tr>
+<tr><td>2014-04</td><td>按股票股息方式发行Class C</td><td>既有A/B股东按比例获配C股；Class A代码改为GOOGL，Class C使用GOOG。[6]</td></tr>
+<tr><td>2015-10</td><td>Alphabet成为Google Inc.继任发行人</td><td>控股公司重组，股本类别延续。[4]</td></tr>
+<tr><td>2024—2025</td><td>持续股票回购、员工RSU/PSU授予</td><td>回购抵消部分稀释；股权薪酬仍带来新增股份需求。</td></tr>
+<tr><td>2025-04</td><td>董事会授权700亿美元A/C股回购计划</td><td>截至2026-09-30，尚余695亿美元可用；2026年前三季度未回购A/C股。[8]</td></tr>
+<tr><td>2026 Q3</td><td>ATM发行A股1,200万股、C股2,400万股</td><td>分别净募集43亿美元及81亿美元；ATM计划尚余276亿美元发行额度。[8]</td></tr>
+<tr><td>2026-10-21</td><td>最新10-Q披露股数</td><td>A股58.88亿、B股8.27亿、C股55.79亿，总计约122.94亿股。[2]</td></tr>
+</tbody></table></div></div>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">市场定价参考</h3><div class="space-y-3 text-sm"><div class="flex justify-between"><span>GOOGL收盘价（11月20日）</span><strong>$265.29</strong></div><div class="flex justify-between"><span>近似三类股总市值</span><strong>约$3.26万亿</strong></div><div class="flex justify-between"><span>Class A单类市值估算</span><strong>约$1.56万亿</strong></div><div class="flex justify-between"><span>三类总股数</span><strong>约122.94亿股</strong></div></div><p class="text-xs text-gray-500 mt-4">总市值为以A股价格近似估算；A/B/C股权利不同，市场价格不必完全相同。[2][3]</p></div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">资本政策观察</h3><ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300"><li>• 2026年前九个月普通股现金股息合计79亿美元。</li><li>• 2026年前九个月未执行A/C股回购，尽管仍有695亿美元授权额度。</li><li>• ATM发行增加外部融资弹性，但也可能稀释普通股每股权益。</li><li>• 2026年第三季度新发行高级无担保票据，净募集287亿美元。</li></ul></div>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/50 dark:bg-accent-900/30 rounded-r-lg"><p class="text-sm font-medium text-accent-900 dark:text-accent-100">核心判断：Alphabet的资本结构同时承担AI基础设施融资、员工股权激励和股东回报三项任务。回购授权额度不等于实际回购；2026年前三季度停止回购而继续ATM发行，显示资本开支与融资安排优先级上升，需结合后续现金流和稀释速度跟踪。</p></div>
+</div></div></section>
+
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up"><div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">三、股权结构变化：双层股权与创始人长期控制</h2>
+<div class="space-y-6"><p class="text-gray-700 dark:text-gray-300 leading-relaxed">Alphabet采用A/B/C三类股本结构。Class A每股一票，Class B每股十票，Class C通常无投票权。2026年4月6日股东名册基准日，Larry Page和Sergey Brin合计实益持有约89.4%的Class B股份，对应Alphabet约52.7%的总投票权。该比例是投票权而非经济权益比例，不能把52.7%误读为两位创始人持有公司过半经济价值。[5]</p>
+<div class="overflow-x-auto rounded-xl shadow-sm"><table><thead><tr><th>股东/类别</th><th>持股情况（2026-04-06）</th><th>对应总投票权</th><th>治理含义</th></tr></thead><tbody>
+<tr><td>Larry Page</td><td>Class B约3.8905亿股，占B股约46.5%</td><td>约27.4%</td><td>创始人核心投票权。</td></tr>
+<tr><td>Sergey Brin</td><td>Class B约3.5894亿股，占B股约42.9%</td><td>约25.3%</td><td>与Page共同构成控制权基础。</td></tr>
+<tr><td>两位创始人合计</td><td>Class B约89.4%</td><td>约52.7%</td><td>可显著影响董事选举及重大公司事项。</td></tr>
+<tr><td>BlackRock</td><td>Class A约3.569亿股，占A股约6.1%</td><td>约2.5%</td><td>机构投资者持股重要，但投票权弱于创始人。</td></tr>
+<tr><td>Class C公众及机构投资者</td><td>2026-10-21约55.79亿股</td><td>通常无投票权</td><td>提供流动性和融资/股权激励工具。</td></tr>
+</tbody></table></div>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-3">控制权链条示意</h3><div class="space-y-2 text-center text-sm">
+<div class="p-3 bg-white dark:bg-gray-800 rounded-lg font-semibold">Larry Page + Sergey Brin</div><div class="text-accent-600">↓ 主要通过Class B实益持有</div><div class="p-3 bg-white dark:bg-gray-800 rounded-lg">Alphabet Inc.（Class B：10票/股）</div><div class="text-accent-600">↓ 控股与治理</div><div class="p-3 bg-white dark:bg-gray-800 rounded-lg">Google LLC及其他集团子公司</div><p class="text-xs text-gray-500">简化治理关系图；并非完整法律持股链或信托受益人图。</p></div></div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-3">信托与控制权边界</h3><p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">创始人股份的实益所有权披露可能涉及信托、关联实体及其他持有安排；SEC代理声明以“beneficial ownership”口径披露，并非完整展示私人信托契约、受托人权限或全部经济受益人。公开文件足以确认Page与Brin的投票权集中，但不足以据此绘制每一层家族信托法律链条。本报告不将未公开的信托安排推定为确定事实。</p></div>
+</div>
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">控制权结构的优劣势</h3>
+<div class="grid md:grid-cols-2 gap-6"><div class="p-5 rounded-xl bg-primary-50/60 dark:bg-primary-900/20"><h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2">稳定性优势</h4><ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300"><li>• 创始人可抵御短期市场情绪对长期研发的干扰。</li><li>• AI、量子、自动驾驶等长周期项目更易保持战略连续性。</li><li>• Class C发行可用于激励或交易，同时避免直接稀释创始人相对投票权。</li></ul></div><div class="p-5 rounded-xl bg-accent-50/60 dark:bg-accent-900/20"><h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-2">治理风险</h4><ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300"><li>• 普通股东难以通过投票改变重大决策。</li><li>• 控制权与经济权益不完全对称，可能形成代理问题。</li><li>• 创始人退出、转让或继承安排可能成为长期治理变量。</li></ul></div></div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/50 dark:bg-primary-900/30 rounded-r-lg"><p class="text-sm font-medium text-primary-900 dark:text-primary-100">结论：Alphabet并无单一自然人持有多数经济权益的传统控股股东，但Page与Brin凭借Class B股合计持有多数投票权，构成事实上的创始人控制结构。投资者应将“经济权益比例”和“投票权比例”分开分析。</p></div>
+</div></div></section>
+
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up"><div class="max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">四、关联上市公司与企业关系：以集团分部和重要子公司为核心</h2>
+<div class="space-y-6"><p class="text-gray-700 dark:text-gray-300 leading-relaxed">Alphabet没有类似“海底捞—颐海—特海”的多家独立上市公司矩阵。其核心资产主要纳入Alphabet合并报表，以Google Services、Google Cloud、Other Bets及集团层面活动披露。Waymo、Verily、Isomorphic Labs等属于集团投资/业务生态中的重要实体，但不能把它们全部视为独立上市公司，也不能将分部收入直接等同于关联交易收入。</p>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md"><div class="flex items-center gap-3 mb-3"><i data-lucide="search" class="w-6 h-6 text-primary-600"></i><h3 class="font-semibold text-primary-700 dark:text-primary-300">Google Services</h3></div><div class="text-2xl font-bold">$2,804.79亿</div><p class="text-xs text-gray-500 mb-3">2026年前九个月收入</p><p class="text-sm text-gray-700 dark:text-gray-300">搜索广告、YouTube广告、Google Network、订阅、平台及设备。营业利润1,192.90亿美元，是集团主要利润来源。</p></div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md"><div class="flex items-center gap-3 mb-3"><i data-lucide="cloud" class="w-6 h-6 text-accent-600"></i><h3 class="font-semibold text-accent-700 dark:text-accent-300">Google Cloud</h3></div><div class="text-2xl font-bold">$755.05亿</div><p class="text-xs text-gray-500 mb-3">2026年前九个月收入</p><p class="text-sm text-gray-700 dark:text-gray-300">GCP、企业AI基础设施、AI解决方案及Workspace等。营业利润265.33亿美元，收入同比增长约84.0%。</p></div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md"><div class="flex items-center gap-3 mb-3"><i data-lucide="rocket" class="w-6 h-6 text-primary-600"></i><h3 class="font-semibold text-primary-700 dark:text-primary-300">Other Bets</h3></div><div class="text-2xl font-bold">$11.65亿</div><p class="text-xs text-gray-500 mb-3">2026年前九个月收入</p><p class="text-sm text-gray-700 dark:text-gray-300">包含Waymo等长期探索业务。同期营业亏损59.46亿美元，体现高研发和商业化投入。</p></div>
+</div>
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">主要分部财务表现（亿美元）</h3>
+<div class="overflow-x-auto rounded-xl shadow-sm"><table><thead><tr><th>业务分部</th><th>2025年前九个月收入</th><th>2026年前九个月收入</th><th>同比变化</th><th>2026年前九个月营业利润</th></tr></thead><tbody>
+<tr><td>Google Services</td><td>2,468.59</td><td>2,804.79</td><td>+13.62%</td><td>1,192.90</td></tr>
+<tr><td>Google Cloud</td><td>410.41</td><td>755.05</td><td>+84.00%</td><td>265.33</td></tr>
+<tr><td>Other Bets</td><td>11.67</td><td>11.65</td><td>-0.17%</td><td>-59.46</td></tr>
+<tr><td>集团总收入</td><td>2,890.07</td><td>3,572.69</td><td>+23.62%</td><td>集团营业利润1,210.42</td></tr>
+</tbody></table></div>
+<p class="text-xs text-gray-500">来源：Alphabet 2026年第三季度10-Q分部披露；金额由SEC原始美元百万数据换算为亿美元，四舍五入至两位。[9]</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-3">重要子公司与生态实体</h3><ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li><strong>Google LLC：</strong>核心产品、搜索、广告、Android、Chrome、YouTube等主要经营平台。</li>
+<li><strong>Google DeepMind：</strong>基础模型与前沿AI研发，支撑Gemini及集团AI能力。</li>
+<li><strong>Waymo：</strong>自动驾驶出行业务，属于Other Bets生态；资本投入与商业化速度并存。</li>
+<li><strong>Verily：</strong>生命科学与医疗技术探索，面临监管、研发周期与商业模式风险。</li>
+<li><strong>Isomorphic Labs：</strong>AI药物发现方向，处于长期研发和合作推进阶段。</li>
+</ul></div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-3">关联交易与协同风险</h3><ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li>• 搜索、YouTube与Cloud共享广告技术、身份体系、AI模型及全球数据中心能力。</li>
+<li>• TPU、服务器、数据中心和网络基础设施既是Cloud商品，也是集团内部AI研发的关键投入。</li>
+<li>• 集团内部服务、知识产权许可、员工及基础设施成本分摊，需结合合并报表和关联方附注理解；分部收入不代表内部关联销售。</li>
+<li>• Other Bets与核心Google业务在研发、算力及资本方面存在资源竞争，需观察独立商业化和资本回报。</li>
+</ul></div></div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/50 dark:bg-accent-900/30 rounded-r-lg"><p class="text-sm font-medium text-accent-900 dark:text-accent-100">特别提示：2026年第三季度Google Cloud收入同比增长103%，而Other Bets九个月收入基本持平、营业亏损扩大至59.46亿美元。集团的业务组合呈现“成熟现金牛供血、Cloud高增、Other Bets长期投入”的结构。对投资者而言，最重要的不是子公司数量，而是资本、技术与利润在集团内部如何配置。</p></div>
+</div></div></section>
+
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up"><div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">五、员工持股与激励机制：RSU/PSU驱动长期绑定</h2>
+<div class="space-y-6"><p class="text-gray-700 dark:text-gray-300 leading-relaxed">Alphabet的核心长期激励以限制性股票单位（RSU/GSU）和绩效股票单位（PSU）为主，并辅以现金薪酬、年度绩效和关键岗位留任安排。员工股权奖励通常以Class C股票结算，避免直接增加Class A公众股投票权，也不直接稀释Class B创始人每股十票的权利结构。</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">股权激励工具</h3><ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li><strong>RSU/GSU：</strong>按服务期归属，通常分四年归属；归属后以Class C股票结算。</li>
+<li><strong>PSU：</strong>根据预设绩效条件决定最终归属数量，强化长期经营结果导向。</li>
+<li><strong>Other Bets股权计划：</strong>部分探索型子公司另设股票奖励计划，以匹配人才与业务阶段。</li>
+<li><strong>现金薪酬：</strong>固定薪资与适用的绩效奖金并行，部分高管奖金结构近年向长期股权奖励调整。</li>
+</ul></div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">激励规模与稀释观察</h3><div class="space-y-3"><div><div class="flex justify-between text-sm mb-1"><span>2025年股票薪酬费用</span><strong>$271亿</strong></div><div class="moat-track"><div class="moat-fill" style="width:88%"></div></div></div><div><div class="flex justify-between text-sm mb-1"><span>2024年股票薪酬费用</span><strong>$228亿</strong></div><div class="moat-track"><div class="moat-fill" style="width:74%"></div></div></div><div><div class="flex justify-between text-sm mb-1"><span>2023年股票薪酬费用</span><strong>$221亿</strong></div><div class="moat-track"><div class="moat-fill" style="width:72%"></div></div></div></div><p class="text-xs text-gray-500 mt-3">股票薪酬费用不等于当年实际发行股数；费用确认、归属与稀释股数口径不同。[10]</p></div></div>
+<div class="overflow-x-auto rounded-xl shadow-sm"><table><thead><tr><th>激励项目/披露</th><th>关键安排</th><th>治理含义</th></tr></thead><tbody>
+<tr><td>Alphabet 2021 Stock Plan</td><td>允许授予RSU及其他股票奖励；RSU通常在四年服务期内归属。</td><td>以持续服务条件提升留任和长期导向。</td></tr>
+<tr><td>2025年股票薪酬费用</td><td>总额271亿美元，其中预计以Alphabet股票结算的部分约241亿美元。</td><td>规模大，需评估每股收益稀释及员工留任效率。</td></tr>
+<tr><td>2026年前九个月股票薪酬费用</td><td>239亿美元；其中预计以股票结算部分约224亿美元。</td><td>同比增长明显，需与人员结构、AI人才竞争和营业利润增速对照。</td></tr>
+<tr><td>CEO Sundar Pichai 2026年奖励</td><td>2026年3月披露三年期PSU两批，每批目标价值6,300万美元，并配套GSU；年薪200万美元且无年度奖金资格。</td><td>长期绩效奖励占据核心，目标在于长期价值与经营表现绑定。</td></tr>
+</tbody></table></div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md"><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-3">激励效果与潜在矛盾</h3><div class="grid md:grid-cols-2 gap-5"><div><h4 class="font-semibold text-sm mb-2 text-primary-700 dark:text-primary-300">正向作用</h4><ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300"><li>• 竞争性股权奖励帮助吸引和保留AI、芯片、云计算等稀缺人才。</li><li>• 长期归属安排降低短期离职风险，令员工与股东共享股价上涨收益。</li><li>• PSU把部分奖励与长期绩效条件连接，强化结果导向。</li></ul></div><div><h4 class="font-semibold text-sm mb-2 text-accent-700 dark:text-accent-300">需要监控</h4><ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300"><li>• 股票薪酬费用持续增长，可能压低会计利润并形成股本稀释。</li><li>• 股价下跌时奖励价值下降，可能影响人才留任与补授压力。</li><li>• AI高投入部门的绩效周期长，短期财务指标可能难以准确衡量研发贡献。</li></ul></div></div></div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/50 dark:bg-primary-900/30 rounded-r-lg"><p class="text-sm font-medium text-primary-900 dark:text-primary-100">Alphabet并非员工普遍拥有经营实体股权的合伙制组织，其激励核心是上市公司股票奖励。与海底捞师徒制等门店利润分享模式不同，Alphabet主要通过公开市场股权、归属期和绩效条件绑定专业人才。</p></div>
+</div></div></section>
+
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up"><div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">六、综合研判与关键结论</h2><div class="space-y-6">
+<div class="card-interactive p-8 bg-white dark:bg-gray-900 rounded-xl shadow-md"><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-3">1. 组织与战略：从搜索平台走向AI全栈基础设施</h3><p class="text-gray-700 dark:text-gray-300 leading-relaxed">Alphabet的竞争优势不再只是搜索入口和广告网络，而是将自研模型、TPU、数据中心、Android、Chrome、YouTube、Workspace和Google Cloud整合为一个技术栈。2026年前九个月Google Cloud收入达到755.05亿美元、同比增长约84%，并实现265.33亿美元营业利润，显示AI基础设施正在形成新的利润引擎。管理层需要在算力供给、模型能力、产品分发与投资回报之间保持平衡。</p></div>
+<div class="card-interactive p-8 bg-white dark:bg-gray-900 rounded-xl shadow-md"><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-3">2. 财务表现：高速增长背后是资本开支与成本压力</h3><p class="text-gray-700 dark:text-gray-300 leading-relaxed">2026年前九个月集团收入3,572.69亿美元，同比增长23.62%；营业利润1,210.42亿美元，同比增长约30.0%（以分部披露口径计算）。第三季度收入1,275.77亿美元，同比增长25%。但第三季度资本开支达到514亿美元，反映数据中心、服务器及网络投资快速扩张。AI收入兑现速度、基础设施折旧、能源成本和未来产能利用率，将决定高增长能否转化为持续自由现金流。[1][9]</p></div>
+<div class="card-interactive p-8 bg-white dark:bg-gray-900 rounded-xl shadow-md"><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-3">3. 控制权与员工激励：稳定但存在少数股东治理折价</h3><p class="text-gray-700 dark:text-gray-300 leading-relaxed">Page与Brin通过Class B股票掌握约52.7%投票权，确保战略连续性；RSU/PSU则为全球人才竞争提供长期激励。两种制度共同支持创新与执行，但创始人控制权集中意味着公众股东对董事会和重大事项的影响有限；股票薪酬增长也需要通过回购或盈利增长抵消稀释。</p></div>
+<div class="card-interactive p-8 bg-white dark:bg-gray-900 rounded-xl shadow-md"><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-3">4. 关键风险清单</h3><div class="space-y-4">
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/50 dark:bg-accent-900/30 rounded-r-lg"><p class="text-sm text-accent-900 dark:text-accent-100"><strong>AI资本开支回报风险：</strong>高额算力投入需以云合同、AI订阅、广告效率或新产品收入兑现，否则折旧与运维成本可能压缩利润率。</p></div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/50 dark:bg-primary-900/30 rounded-r-lg"><p class="text-sm text-primary-900 dark:text-primary-100"><strong>搜索商业模式重构：</strong>生成式AI改变用户获取答案的方式，可能改变搜索广告展示、点击与流量分配；Google必须在体验创新与广告变现之间重新平衡。</p></div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/50 dark:bg-accent-900/30 rounded-r-lg"><p class="text-sm text-accent-900 dark:text-accent-100"><strong>反垄断与监管：</strong>美国及其他司法辖区对搜索分发、广告技术、应用商店和数据使用的监管可能带来行为限制、罚款或业务结构调整。</p></div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/50 dark:bg-primary-900/30 rounded-r-lg"><p class="text-sm text-primary-900 dark:text-primary-100"><strong>资本结构与稀释：</strong>ATM发行、员工股权奖励和回购政策共同影响每股价值；2026年前九个月未执行A/C股回购，值得持续观察。</p></div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/50 dark:bg-accent-900/30 rounded-r-lg"><p class="text-sm text-accent-900 dark:text-accent-100"><strong>Other Bets商业化：</strong>Waymo等项目具有长期期权价值，但Other Bets 2026年前九个月营业亏损59.46亿美元，资本纪律和独立盈利路径仍待验证。</p></div>
+</div></div>
+<div class="card-interactive p-8 bg-white dark:bg-gray-900 rounded-xl shadow-md"><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">核心竞争力评分（研究判断，非量化财务指标）</h3><div class="space-y-4">
+<div><div class="flex justify-between text-sm mb-1"><span>全球分发与用户生态</span><strong>9.5 / 10</strong></div><div class="moat-track"><div class="moat-fill" style="width:95%"></div></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>AI模型与全栈研发</span><strong>9.0 / 10</strong></div><div class="moat-track"><div class="moat-fill" style="width:90%"></div></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>云业务增长潜力</span><strong>9.0 / 10</strong></div><div class="moat-track"><div class="moat-fill" style="width:90%"></div></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>资本配置与回报可见度</span><strong>7.5 / 10</strong></div><div class="moat-track"><div class="moat-fill" style="width:75%"></div></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>监管与治理风险控制</span><strong>6.5 / 10</strong></div><div class="moat-track"><div class="moat-fill" style="width:65%"></div></div></div>
+<p class="text-xs text-gray-500">评分为定性研究判断，反映竞争位置和风险暴露，不代表目标价或投资评级。</p></div></div>
+<div class="mt-8 pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/50 dark:bg-primary-900/30 rounded-r-lg"><p class="text-base font-semibold text-primary-900 dark:text-primary-100"><i data-lucide="trending-up" class="inline w-5 h-5 mr-1"></i>一句话总结：Alphabet是一家由创始人超级投票权稳定控制、以搜索广告现金流为底座、正通过AI模型与云基础设施重塑增长曲线的全球科技控股集团；未来估值的关键，在于AI高强度资本投入能否持续转化为高回报现金流。</p></div>
+</div></div></section>
+</main>
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12"><div class="max-w-5xl mx-auto px-6"><div class="grid md:grid-cols-3 gap-8">
+<div><h3 class="text-lg font-semibold text-primary-300 mb-4">关于本页面</h3><p class="text-sm text-gray-400 leading-relaxed">本页围绕Alphabet Inc.（Google母公司）梳理创始人治理、股本股权、业务分部、重要子公司及员工激励。GOOGL特指Class A股票，不代表Alphabet全部股本。</p></div>
+<div><h3 class="text-lg font-semibold text-primary-300 mb-4">研究范围</h3><ul class="space-y-2 text-sm text-gray-400"><li>• 创始人及核心管理层</li><li>• IPO、三类股本与资本运作</li><li>• 投票权与主要股东</li><li>• 集团分部及重要子公司</li><li>• RSU/PSU与薪酬激励</li><li>• 财务表现、战略与风险</li></ul></div>
+<div><h3 class="text-lg font-semibold text-primary-300 mb-4">免责声明</h3><p class="text-sm text-gray-400 leading-relaxed">本页面仅供教育与信息研究参考，不构成证券买卖建议、估值承诺或投资推荐。数据来自公开披露，可能存在四舍五入、口径差异及后续修订。股价采用最近可得交易日而非实时行情。</p></div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700"><h3 class="font-semibold text-primary-300 mb-3">主要资料来源</h3><ol class="source-list text-xs text-gray-400 space-y-2">
+<li>[1] Alphabet，2026年第三季度业绩公告（2026-10-28）：<a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm" target="_blank" rel="noopener">SEC Exhibit 99.1</a></li>
+<li>[2] Alphabet，2026年第三季度Form 10-Q（截至2026-09-30；2026-10-29提交）：<a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm" target="_blank" rel="noopener">SEC Form 10-Q</a></li>
+<li>[3] GOOGL市场价格与估值（2026-11-20收盘）：<a href="https://stockanalysis.com/stocks/googl/statistics/" target="_blank" rel="noopener">Stock Analysis统计页</a></li>
+<li>[4] Alphabet，2025年Form 10-K（2026年2月提交）：<a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm" target="_blank" rel="noopener">SEC Form 10-K</a></li>
+<li>[5] Alphabet，2026年Proxy Statement：<a href="https://www.sec.gov/Archives/edgar/data/1652044/000130817926000342/goog-20260424.htm" target="_blank" rel="noopener">SEC Proxy Statement</a></li>
+<li>[6] Google 2015年Form 10-K关于2014年Class C股票拆分：<a href="https://www.sec.gov/Archives/edgar/data/1288776/000165204416000012/goog10-k2015.htm" target="_blank" rel="noopener">SEC历史披露</a></li>
+<li>[7] Alphabet 2026年第三季度业绩电话会：<a href="https://abc.xyz/investor/events/event-details/2026/2026-Q3-Earnings-Call-2026-Ujou16CTw9/" target="_blank" rel="noopener">Alphabet Investor Relations</a></li>
+<li>[8] Alphabet 2026年第三季度Form 10-Q，股票回购、ATM发行及股息披露：<a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm" target="_blank" rel="noopener">SEC Form 10-Q</a></li>
+<li>[9] Alphabet 2026年第三季度Form 10-Q，收入及分部经营数据：<a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/R37.htm" target="_blank" rel="noopener">SEC分部数据表</a>；<a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/R27.htm" target="_blank" rel="noopener">SEC收入分类表</a></li>
+<li>[10] Alphabet 2025年Form 10-K股票薪酬附注及2026年Form 10-Q薪酬披露：<a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm" target="_blank" rel="noopener">2025年10-K</a>；<a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm" target="_blank" rel="noopener">2026年Q3 10-Q</a></li>
+<li>[11] Alphabet，Sundar Pichai 2026年股权奖励公告：<a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000026/goog-20260304.htm" target="_blank" rel="noopener">SEC高管薪酬披露</a></li>
+</ol></div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">© 2026 Alphabet（谷歌）体系全景研究｜数据截止：2026年11月22日</div></div></footer>
+<script>
+function toggleMobileMenu(){const m=document.getElementById('mobileMenu'),b=document.getElementById('mobileMenuButton'),i=document.getElementById('mobileMenuIcon');if(!m)return;const o=m.classList.toggle('mobile-menu-open');m.setAttribute('aria-hidden',o?'false':'true');b?.setAttribute('aria-expanded',o?'true':'false');if(i){i.setAttribute('data-lucide',o?'x':'menu');lucide.createIcons()}}
+function closeMobileMenu(){const m=document.getElementById('mobileMenu'),b=document.getElementById('mobileMenuButton'),i=document.getElementById('mobileMenuIcon');if(!m)return;m.classList.remove('mobile-menu-open');m.setAttribute('aria-hidden','true');b?.setAttribute('aria-expanded','false');if(i){i.setAttribute('data-lucide','menu');lucide.createIcons()}}
+window.addEventListener('scroll',()=>{const y=document.documentElement.scrollTop||document.body.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;document.getElementById('progressBar').style.width=(h>0?y/h*100:0)+'%'});
+document.addEventListener('DOMContentLoaded',()=>{if(localStorage.getItem('alphabet-theme')==='dark')document.documentElement.classList.add('dark');const d=document.documentElement.classList.contains('dark');document.getElementById('sunIcon').style.display=d?'block':'none';document.getElementById('moonIcon').style.display=d?'none':'block';lucide.createIcons();AOS.init({duration:800,once:true});document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',closeMobileMenu))});
+</script>
+</body></html>

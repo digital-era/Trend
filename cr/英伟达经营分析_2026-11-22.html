@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>英伟达（NVDA）经营分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "hsl(20, 90%, 95%)",
+                100: "hsl(20, 90%, 85%)",
+                200: "hsl(20, 90%, 75%)",
+                300: "hsl(20, 90%, 65%)",
+                400: "hsl(20, 90%, 55%)",
+                500: "hsl(20, 90%, 50%)",
+                600: "hsl(20, 90%, 45%)",
+                700: "hsl(20, 90%, 35%)",
+                800: "hsl(20, 90%, 25%)",
+                900: "hsl(20, 90%, 15%)",
+              },
+              accent: {
+                50: "hsl(30, 85%, 95%)",
+                100: "hsl(30, 85%, 85%)",
+                200: "hsl(30, 85%, 75%)",
+                300: "hsl(30, 85%, 65%)",
+                400: "hsl(30, 85%, 60%)",
+                500: "hsl(30, 85%, 55%)",
+                600: "hsl(30, 85%, 50%)",
+                700: "hsl(30, 85%, 40%)",
+                800: "hsl(30, 85%, 30%)",
+                900: "hsl(30, 85%, 20%)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        html { scroll-behavior: auto; }
+      }
+      .btn-interactive { transition: all 0.2s ease-out; }
+      .btn-interactive:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .btn-interactive:active { transform: scale(0.95); }
+      .card-interactive {
+        transition: all 0.3s ease-out;
+        border: 1px solid transparent;
+        --border-lightness: 40%;
+      }
+      .dark .card-interactive { --border-lightness: 60%; }
+      .card-interactive:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        filter: brightness(0.98);
+      }
+      .card-interactive[class*="primary"]:hover,
+      .card-interactive[class*="white"]:hover,
+      .card-interactive[class*="gray-"]:hover {
+        border-color: hsl(20, 90%, var(--border-lightness));
+      }
+      .card-interactive[class*="accent"]:hover {
+        border-color: hsl(30, 85%, var(--border-lightness));
+      }
+      table { width: 100%; border-collapse: collapse; }
+      th, td {
+        text-align: left;
+        padding: 0.75rem;
+        border-bottom: 1px solid hsl(0, 0%, 90%);
+      }
+      .dark th, .dark td { border-bottom-color: hsl(0, 0%, 30%); }
+      .moat-bar {
+        height: 10px;
+        border-radius: 5px;
+        background: hsl(0, 0%, 90%);
+        overflow: hidden;
+      }
+      .dark .moat-bar { background: hsl(0, 0%, 30%); }
+      .moat-fill {
+        height: 100%;
+        border-radius: 5px;
+        background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+        transition: width 1.2s ease-out;
+      }
+      .risk-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .dark body { color: #f3f4f6; }
+      .dark header nav a { color: #e5e7eb !important; }
+      .dark header nav a:hover { color: hsl(20, 90%, 65%) !important; }
+      .dark .text-gray-400, .dark .text-gray-500 { color: #9ca3af !important; }
+      .dark table th { color: #f3f4f6; }
+      .dark table td { color: #e5e7eb; }
+      .dark .text-gray-600 { color: #d1d5db !important; }
+      .dark .text-gray-700 { color: #e5e7eb !important; }
+      #mobileMenu { display: none; }
+      @media (min-width: 768px) {
+        #mobileMenu { display: none !important; }
+      }
+      @media (max-width: 767px) {
+        #mobileMenu.mobile-menu-open { display: block !important; }
+      }
+    </style>
+    <script>
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        document.getElementById("sunIcon").style.display = isDark ? "block" : "none";
+        document.getElementById("moonIcon").style.display = isDark ? "none" : "block";
+      }
+    </script>
+  <style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <!-- Progress Bar -->
+    <div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%"></div>
+
+    <!-- Floating Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+            英伟达 NVDA 经营分析
+          </h1>
+          <nav class="hidden md:flex space-x-5">
+            <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+              <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+            <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all">
+              <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+              <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+            </button>
+          </div>
+        </div>
+        <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+          <nav class="flex flex-col space-y-3">
+            <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen">
+      <!-- Hero -->
+      <section class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300">美股 · AI芯片 · 数据中心</span>
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300">NVDA</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+            英伟达公司<br /><span class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium">经营分析报告</span>
+          </h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl">
+            英伟达是全球AI加速计算与数据中心基础设施的绝对龙头。2026年11月黄仁勋突然离职后，公司进入“后创始人”过渡期，但业务动能依然强劲：Q3 FY2027营收1158亿美元（同比+103%），数据中心收入1076亿美元。本报告从商业模式、护城河、财务、估值、展望、风险与多空八个维度系统评估其投资价值。
+          </p>
+          <div class="grid md:grid-cols-4 gap-4">
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">1158亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Q3 FY2027营收（美元）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">653亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Q3净利润（美元）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">~3.03万亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">当前市值（美元）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">~13.5x</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">TTM市盈率</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 一、商业模式 -->
+      <section id="model" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="store" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">一、商业模式</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              英伟达的核心商业模式可概括为<strong>“全栈加速计算平台 + CUDA生态锁定 + 数据中心AI工厂”</strong>。公司设计并销售GPU、CPU、网络与系统软件，通过CUDA软件生态构建极高的开发者转换成本，使客户在训练与推理大模型时高度依赖其硬件与软件栈。2026年第三季度数据中心收入占比超过93%，是绝对收入与利润支柱。
+            </p>
+            <div class="grid md:grid-cols-3 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="cpu" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">硬件平台销售</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  以Hopper、Blackwell、Vera Rubin等架构为核心，向超大规模云厂商、AI云与企业客户销售GPU系统与整机。Vera Rubin首季出货近200亿美元，为史上最快产品爬坡。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="code" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+                  <h3 class="font-semibold text-accent-700 dark:text-accent-300">CUDA软件生态</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  CUDA与配套库（cuDNN、TensorRT等）形成事实上的行业标准，数百万开发者与模型权重迁移成本极高，构成最核心的竞争壁垒。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="network" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">生态投资与闭环</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  通过NVentures与直接股权投资（OpenAI、Anthropic、CoreWeave、Intel等）锁定下一代需求，形成“卖铲子+入股挖金矿”的循环。
+                </p>
+              </div>
+            </div>
+            <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6">
+              <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+                <i data-lucide="lightbulb" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+                英伟达的商业模式本质是“软件定义的硬件平台”——用CUDA生态创造不可替代性，用全栈产品与投资锁定AI基础设施支出，形成极高的客户粘性与毛利率。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 二、竞争优势（护城河） -->
+      <section id="moat" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="shield" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">二、竞争优势：护城河评估</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            护城河是公司抵御竞争、维持超额回报的结构性优势。以下从五个维度对英伟达进行打分（1–10分），并与主要竞争对手对比。
+          </p>
+          <div class="space-y-6">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">品牌实力</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9.5<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 95%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                英伟达已成为AI时代的“铲子”代名词，品牌与CUDA生态深度绑定，客户心智占位极强。黄仁勋个人品牌曾是加分项，离职后品牌仍高度依赖平台与生态而非单一人物。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">网络效应</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 90%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                CUDA开发者、模型权重、工具链与云服务形成正反馈循环：用的人越多，生态越完善，新进入者越难撼动。这是半导体行业罕见的强网络效应。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">转换成本</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 90%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                迁移现有CUDA代码、优化过的模型与训练流水线成本极高。企业客户与云厂商更换供应商意味着巨大的工程与时间成本，转换成本极高。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">成本优势</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">7.5<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 75%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                规模效应与先进制程（与台积电深度合作）带来一定成本优势，但高端芯片制造本身成本高昂，毛利率更多来自定价权与生态溢价，而非纯粹成本领先。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">专利与自有技术</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 90%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                庞大的GPU架构专利、CUDA软件栈、网络互联技术与系统级优化构成深厚技术壁垒。Vera Rubin等新产品持续验证研发能力。
+              </p>
+            </div>
+          </div>
+          <div class="mt-10">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">与主要竞争对手的护城河对比</h3>
+            <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+              <table class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+                <thead class="bg-primary-50 dark:bg-primary-900/30">
+                  <tr>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">英伟达</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">AMD</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">英特尔</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">博通/谷歌TPU等</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr>
+                    <td class="font-medium">品牌与生态</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9.5</td>
+                    <td>6</td>
+                    <td>5</td>
+                    <td>6–7</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">转换成本</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9</td>
+                    <td>5</td>
+                    <td>4</td>
+                    <td>5–6</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">技术与专利</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9</td>
+                    <td>7</td>
+                    <td>6</td>
+                    <td>7</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">数据中心份额</td>
+                    <td>绝对领先</td>
+                    <td>追赶中</td>
+                    <td>落后</td>
+                    <td>自用为主</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">毛利率水平</td>
+                    <td>~75%</td>
+                    <td>较低</td>
+                    <td>较低</td>
+                    <td>因业务而异</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="award" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              综合护城河评分：<strong>8.8/10</strong>。英伟达拥有半导体行业罕见的强网络效应与转换成本，CUDA生态是最深的护城河。黄仁勋离职带来组织风险，但技术与生态壁垒短期内难以被撼动。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三、行业趋势 -->
+      <section id="industry" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="trending-up" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">三、行业趋势</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              AI基础设施支出仍处于高速扩张期。超大规模云厂商、主权AI项目与企业级部署共同推动GPU与加速器需求。同时，出口管制、能源约束与定制ASIC（如谷歌TPU、亚马逊Trainium）带来结构性挑战。英伟达通过全栈与生态继续主导，但竞争烈度上升。
+            </p>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">需求侧：多引擎驱动</h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 超大规模云厂商持续扩容训练与推理集群</li>
+                  <li>• 主权AI与国家算力项目加速落地</li>
+                  <li>• 企业级与物理AI（机器人、自动驾驶）贡献增量</li>
+                  <li>• 推理需求随模型部署规模扩大而持续上升</li>
+                </ul>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">供给侧与竞争</h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 先进制程与先进封装产能仍是瓶颈</li>
+                  <li>• AMD、英特尔、定制ASIC加码竞争</li>
+                  <li>• 出口管制限制中国市场贡献</li>
+                  <li>• 能源与电力成为数据中心扩张新约束</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四、财务状况 -->
+      <section id="financial" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="bar-chart-3" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">四、财务状况</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            英伟达近五年财务表现从“强劲”跃升为“极端强劲”。营收、净利润与自由现金流均呈指数级增长，利润率维持在极高水平，资产负债表健康。黄仁勋离职后短期股价大幅回调，但基本面数据仍显示公司处于高速成长期。
+          </p>
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">关键财务指标（近五年）</h3>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">FY2026营收</span><span class="font-semibold">2159亿美元（+65%）</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">FY2026净利润</span><span class="font-semibold">1201亿美元</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">FY2026自由现金流</span><span class="font-semibold">967亿美元</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">TTM营收（至2026年10月）</span><span class="font-semibold">~3618亿美元</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">TTM净利润</span><span class="font-semibold">~2263亿美元</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">毛利率（近期）</span><span class="font-semibold">~75%</span></div>
+              </div>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">Q3 FY2027亮点</h3>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">营收</span><span class="font-semibold">1158亿美元（+103% YoY）</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">数据中心收入</span><span class="font-semibold">1076亿美元（+110%）</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">净利润</span><span class="font-semibold">653亿美元（+105%）</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">GAAP EPS</span><span class="font-semibold">2.70美元</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">Q4指引</span><span class="font-semibold">1300亿美元 ±3%</span></div>
+                <div class="flex justify-between"><span class="text-gray-600 dark:text-gray-400">FY2028增长指引</span><span class="font-semibold">上调至约75%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+            <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4">财务健康度总结</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-green-600">极高</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">收入增长</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-green-600">极高</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">净利润与FCF</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-green-600">~55%+</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">净利率</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-green-600">低</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">财务杠杆</div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              综合判断：财务状况<strong>极其稳健且处于高速扩张期</strong>。收入与利润持续翻倍式增长，自由现金流充裕，回购能力强劲。债务水平相对可控，ROE处于极高水平。短期股价大幅回调主要源于领导层不确定性与市场情绪，而非基本面恶化。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五、估值分析 -->
+      <section id="valuation" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="calculator" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">五、估值分析</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">市盈率对比</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">英伟达 TTM P/E</span>
+                  <span class="font-bold text-primary-600 dark:text-primary-400">~13.5x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">英伟达 Forward P/E</span>
+                  <span class="font-bold text-primary-600 dark:text-primary-400">~8–10x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">AMD Forward P/E</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">~29x</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3">
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">当前股价</span>
+                  <span class="font-semibold text-gray-700 dark:text-gray-300">~125.5美元</span>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 mt-3">股价自高点回调约46–48%，市值从峰值约5.8万亿美元降至约3.03万亿美元，估值已显著压缩。</p>
+            </div>
+            <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">DCF与合理价值参考</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                在维持高增长假设（未来数年收入仍保持较高增速、净利率维持50%以上）下，DCF模型通常给出明显高于当前股价的内在价值区间。市场当前定价隐含了对领导层过渡期风险与AI资本开支放缓的显著折价。
+              </p>
+              <div class="grid grid-cols-2 gap-3 text-center">
+                <div class="p-3 bg-white dark:bg-gray-800 rounded-lg">
+                  <div class="text-lg font-bold text-primary-600 dark:text-primary-400">~13.5x</div>
+                  <div class="text-xs text-gray-500">TTM P/E</div>
+                </div>
+                <div class="p-3 bg-white dark:bg-gray-800 rounded-lg">
+                  <div class="text-lg font-bold text-accent-600 dark:text-accent-400">~8–10x</div>
+                  <div class="text-xs text-gray-500">Forward P/E</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="search" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>估值结论：</strong>以当前约13.5倍TTM市盈率与约8–10倍远期市盈率来看，英伟达已从“高估值成长股”切换为“相对便宜的超级成长股”。市场对领导层不确定性与潜在监管/会计关注给出了明显折价。若业务连续性得到验证且新CEO顺利过渡，估值存在显著修复空间。综合判断：<strong>股票可能被低估，但低估修复取决于领导层过渡与增长持续性。</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 六、经营展望 -->
+      <section id="outlook" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="calendar" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">六、经营展望（12–24个月）</h2>
+          </div>
+          <div class="space-y-5">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">产品与需求：Vera Rubin与全栈持续发力</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                Vera Rubin首季贡献近200亿美元，爬坡速度创纪录。公司指引Q4营收约1300亿美元，并上调FY2028收入增长预期至约75%。超大规模、AI云与企业客户需求仍强，物理AI与主权AI提供额外增长极。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">领导层过渡：关键变量</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                科莱特·克雷斯作为临时CEO强调“业务如常”，董事会已启动永久CEO全球搜寻并排除恢复黄仁勋职务。过渡期内人才留存（已提前发放激励）、客户关系与研发节奏是核心观察点。新CEO人选与上任节奏将显著影响市场信心。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">资本回报与合规</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                公司已大幅增加回购授权，自由现金流支持持续股东回报。同时成立国家安全与出口管制委员会，应对地缘与合规压力。出口管制对中国市场的长期影响仍需跟踪。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 七、风险识别 -->
+      <section id="risk" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+              <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">七、风险识别</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">按危险程度从高到低排序：</p>
+          <div class="space-y-4">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0">1</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2">领导层与治理风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    黄仁勋突然离职并涉及国家安全审查，董事会明确不恢复其职务。永久CEO搜寻存在不确定性，组织文化与战略执行可能受影响。这是当前最突出的风险。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0">2</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2">监管与地缘政治风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    出口管制持续限制对中国的高端芯片销售，SEC对会计问题的关注、国家安全委员会的设立均显示合规压力上升。地缘冲突可能进一步影响供应链与市场准入。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0">3</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2">竞争与技术颠覆风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    AMD、定制ASIC（TPU等）以及潜在新架构可能侵蚀市场份额。若客户大规模转向自研或替代方案，英伟达的生态优势可能被部分稀释。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0">4</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2">经济与资本开支周期风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    AI资本开支若因经济放缓、ROI验证不及预期或能源约束而显著放缓，将直接影响收入增速与估值。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0">5</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2">债务与财务风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    当前财务杠杆低，自由现金流充裕，债务风险相对可控。主要关注点在于大规模股权激励带来的稀释与回购节奏的匹配。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 八、多空视角 -->
+      <section id="longshort" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="scale" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">八、多空视角：机构投资组合经理评估</h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800">
+              <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>估值显著压缩</strong>：TTM P/E约13.5倍、Forward约8–10倍，处于多年低位，提供安全边际。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>基本面依然极强</strong>：营收与利润继续翻倍增长，Q4指引与FY2028增长预期上调。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>CUDA生态护城河深厚</strong>：转换成本与网络效应短期内难以被替代。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>自由现金流与回购能力</strong>：支持持续股东回报与估值支撑。</span>
+                </li>
+              </ul>
+            </div>
+            <div class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800">
+              <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>领导层空窗与治理不确定性</strong>：永久CEO未定，组织与战略执行风险上升。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>监管与地缘政治压力</strong>：出口管制、SEC关注与国家安全审查持续存在。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>竞争加剧与资本开支周期</strong>：定制ASIC与潜在AI支出放缓可能压制增速。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>高波动性</strong>：近期股价大幅回调显示市场情绪极度敏感。</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+            <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">关键跟踪指标</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+                <i data-lucide="user-check" class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"></i>
+                <div class="font-semibold text-sm text-primary-700 dark:text-primary-300">永久CEO任命与过渡</div>
+                <p class="text-xs text-gray-500 mt-1">新领导层能否稳住组织与客户信心</p>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+                <i data-lucide="trending-up" class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"></i>
+                <div class="font-semibold text-sm text-accent-700 dark:text-accent-300">数据中心收入增速</div>
+                <p class="text-xs text-gray-500 mt-1">是否维持高双位数甚至更高增长</p>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center">
+                <i data-lucide="shield" class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"></i>
+                <div class="font-semibold text-sm text-gray-700 dark:text-gray-300">监管与出口进展</div>
+                <p class="text-xs text-gray-500 mt-1">合规成本与市场准入变化</p>
+              </div>
+            </div>
+          </div>
+          <div class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="target" class="inline-block w-5 h-5 mr-2 -mt-0.5"></i>
+              <strong>投资论点：</strong>英伟达仍是AI基础设施领域护城河最深、增长动能最强的公司之一。当前估值已大幅压缩，提供了较好的风险回报比。核心投资逻辑是“生态壁垒 + 高增长 + 相对便宜的估值”。最大不确定性在于领导层过渡能否平稳完成。对于能够承受短期波动、并相信CUDA生态与AI资本开支中长期趋势的投资者而言，当前价位具备吸引力；若对治理风险高度敏感，则需等待永久CEO落地与业务连续性进一步验证后再做决策。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本报告</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告基于英伟达公司公开财务报告、SEC文件、财报电话会与市场公开数据，从商业模式、护城河、财务状况、估值、风险与多空视角等八个维度进行系统分析。
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">数据来源</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>• NVIDIA Q3 FY2027 Earnings Release & 8-K</li>
+              <li>• 公司投资者关系与CFO Commentary</li>
+              <li>• SEC filings与公开市场数据</li>
+              <li>• 路透、CNBC、WSJ等权威报道</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告仅供教育与信息参考，不构成投资建议或买卖推荐。数据基于公开信息整理，分析观点仅代表研究判断。投资有风险，决策需谨慎。
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+          <p>© 2026 英伟达经营分析报告 · 生成日期：2026-11-22</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (!menu) return;
+        menu.classList.toggle("mobile-menu-open");
+      }
+      window.addEventListener("scroll", () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+        AOS.init({ duration: 800, once: true });
+      });
+    </script>
+  <script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

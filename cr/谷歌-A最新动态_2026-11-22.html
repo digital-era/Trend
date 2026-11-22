@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alphabet（GOOGL）截至2026年11月22日近30日公司、行业与宏观动态全景追踪。">
+<title>谷歌-A（GOOGL）最新动态全景追踪 · 截至 2026-11-22</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: { colors: {
+    primary: {50:'hsl(20,90%,96%)',100:'hsl(20,90%,90%)',200:'hsl(20,90%,80%)',300:'hsl(20,90%,68%)',400:'hsl(20,90%,58%)',500:'hsl(20,90%,50%)',600:'hsl(20,90%,43%)',700:'hsl(20,90%,34%)',800:'hsl(20,90%,25%)',900:'hsl(20,90%,17%)',950:'hsl(20,90%,10%)'},
+    accent: {50:'hsl(30,85%,96%)',100:'hsl(30,85%,89%)',200:'hsl(30,85%,79%)',300:'hsl(30,85%,68%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',600:'hsl(30,85%,47%)',700:'hsl(30,85%,38%)',800:'hsl(30,85%,28%)',900:'hsl(30,85%,18%)',950:'hsl(30,85%,10%)'}
+  }}}
+};
+(function initTheme(){
+  try {
+    const saved=localStorage.getItem('googl-report-theme');
+    if(saved==='dark'||(!saved&&window.matchMedia('(prefers-color-scheme: dark)').matches)||window.self!==window.top) document.documentElement.classList.add('dark');
+  } catch(e) { if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.classList.add('dark'); }
+})();
+function syncThemeIcons(){
+  const d=document.documentElement.classList.contains('dark');
+  const s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+  if(s)s.style.display=d?'block':'none'; if(m)m.style.display=d?'none':'block';
+}
+function toggleDarkMode(){
+  document.documentElement.classList.toggle('dark');
+  try{localStorage.setItem('googl-report-theme',document.documentElement.classList.contains('dark')?'dark':'light')}catch(e){}
+  syncThemeIcons();
+}
+function toggleMobileMenu(){const m=document.getElementById('mobileMenu');if(m)m.classList.toggle('mobile-menu-open')}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{font-feature-settings:"kern";-webkit-font-smoothing:antialiased}
+section[id],article[id]{scroll-margin-top:92px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.btn-interactive{transition:all .2s ease-out}.btn-interactive:hover{transform:scale(1.045)}.btn-interactive:active{transform:scale(.96)}
+.card-interactive{transition:transform .28s ease,box-shadow .28s ease}.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 30px -9px rgba(0,0,0,.16)}.dark .card-interactive:hover{box-shadow:0 18px 30px -9px rgba(0,0,0,.55)}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}.dark .impact-bar{background:rgba(255,255,255,.13)}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+table{width:100%;border-collapse:collapse;min-width:720px}th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #e5e7eb;vertical-align:top}.dark th,.dark td{border-bottom-color:rgba(255,255,255,.16)}.dark table{color:#e5e7eb}
+#mobileMenu{display:none}@media(min-width:768px){#mobileMenu{display:none!important}}@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.source-link{color:#c2410c;text-decoration:underline;text-underline-offset:3px}.dark .source-link{color:#fdba74}
+.kpi{background:rgba(249,115,22,.055);border:1px solid rgba(249,115,22,.16)}
+.dark .kpi{background:rgba(249,115,22,.09);border-color:rgba(251,146,60,.2)}
+</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0b1118] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[70] transition-all duration-150" style="width:0"></div>
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#101923]/95 border-b border-primary-500/20 dark:border-gray-700">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+  <div class="flex items-center justify-between gap-3">
+   <a href="#overview" class="flex items-center gap-2 min-w-0"><span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span><span class="font-bold text-sm sm:text-base text-primary-700 dark:text-primary-300 truncate">Alphabet · 动态全景追踪</span></a>
+   <nav class="hidden md:flex items-center gap-5 text-sm font-medium">
+    <a href="#overview" class="hover:text-primary-600">总览</a><a href="#company" class="hover:text-primary-600">公司动态</a><a href="#industry" class="hover:text-primary-600">行业动态</a><a href="#macro" class="hover:text-primary-600">宏观政策</a><a href="#matrix" class="hover:text-primary-600">催化矩阵</a>
+   </nav>
+   <div class="flex items-center gap-2">
+    <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-200" aria-label="打开菜单"><i data-lucide="menu" class="w-4 h-4"></i></button>
+    <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-200" aria-label="切换暗色模式"><i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i><i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i></button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+   <nav class="flex flex-col gap-2 text-sm font-medium text-gray-700 dark:text-gray-200">
+    <a href="#overview" onclick="toggleMobileMenu()" class="py-1">总览</a><a href="#company" onclick="toggleMobileMenu()" class="py-1">公司动态</a><a href="#industry" onclick="toggleMobileMenu()" class="py-1">行业动态</a><a href="#macro" onclick="toggleMobileMenu()" class="py-1">宏观政策</a><a href="#matrix" onclick="toggleMobileMenu()" class="py-1">催化矩阵</a>
+   </nav>
+  </div>
+ </div>
+</header>
+<main class="pt-24 sm:pt-28 pb-16">
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 sm:p-10 border border-primary-100 dark:border-gray-700 shadow-sm">
+  <div class="flex flex-wrap items-center gap-2 mb-4">
+   <span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 text-xs font-bold font-mono">NASDAQ: GOOGL / GOOG</span>
+   <span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-200 text-xs font-semibold">互联网平台 · 搜索广告 · AI · 云计算</span>
+   <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold">近30日 · 2026-10-23—2026-11-22</span>
+  </div>
+  <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4">Alphabet Inc.（谷歌-A）</h1>
+  <p class="text-sm sm:text-base leading-7 text-gray-600 dark:text-gray-300 max-w-5xl mb-7">近30日核心叙事是“AI商业化兑现加速、基础设施投入与监管成本同步抬升”：Q3搜索与云业务强劲增长，Gemini 4系列继续扩展产品边界；但高额资本开支压低自由现金流，欧盟搜索数据共享义务及美国反垄断救济仍是利润率与估值折价变量。</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+   <div class="kpi rounded-xl p-5 card-interactive"><div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2">消息面总体基调</div><div class="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">中性偏多</div><p class="text-xs text-gray-600 dark:text-gray-400 mt-2">增长动能强，但投资回报兑现和监管执行需继续验证</p></div>
+   <div class="kpi rounded-xl p-5 card-interactive"><div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2">本月最强单一催化剂</div><div class="text-lg font-bold text-primary-700 dark:text-primary-300">Q3 Google Cloud 收入同比增长 103%</div><p class="text-xs text-gray-600 dark:text-gray-400 mt-2">2026-10-28 · Alphabet Q3业绩公告</p></div>
+   <div class="kpi rounded-xl p-5 card-interactive"><div class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2">本月最需警惕信号</div><div class="text-lg font-bold text-rose-600 dark:text-rose-400">单季资本开支 $51.4B，自由现金流转负</div><p class="text-xs text-gray-600 dark:text-gray-400 mt-2">2026-10-28 · Q3业绩会；另有DMA数据共享履约节点</p></div>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5">
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/80 p-3"><div class="text-[11px] text-gray-500 dark:text-gray-400">Q3总营收</div><div class="text-xl font-bold">$127.6B</div><div class="text-xs text-emerald-600 dark:text-emerald-400">同比 +25%</div></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/80 p-3"><div class="text-[11px] text-gray-500 dark:text-gray-400">Google Cloud</div><div class="text-xl font-bold">$30.7B</div><div class="text-xs text-emerald-600 dark:text-emerald-400">同比 +103%</div></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/80 p-3"><div class="text-[11px] text-gray-500 dark:text-gray-400">Q3资本开支</div><div class="text-xl font-bold">$51.4B</div><div class="text-xs text-amber-600 dark:text-amber-400">持续扩张</div></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/80 p-3"><div class="text-[11px] text-gray-500 dark:text-gray-400">Q3自由现金流</div><div class="text-xl font-bold">-$9.1B</div><div class="text-xs text-rose-600 dark:text-rose-400">单季为负</div></div>
+  </div>
+  <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-4">口径说明：公司季度财务数据为2026年第三季度（截至2026-09-30），于2026-10-28披露；“影响力评分”为研究判断，不是市场统计指标。</p>
+ </div>
+</section>
+
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div><div><h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">按对营收、利润、现金流及估值的综合影响排序</p></div></div>
+ <article id="card-company-1" class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4"><div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span><span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-10-28</span><span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-xs font-bold">重大利好（增长端）</span></div><span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 9.7 / 10</span></div>
+  <h3 class="text-lg sm:text-xl font-bold mb-4">Q3营收增长25%，Google Cloud同比增长103%，AI已成为搜索与云业务的共同增长引擎</h3>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3"><div class="text-xs text-gray-500">总营收</div><div class="font-bold text-lg">$127.6B</div><div class="text-xs text-emerald-600">+25% YoY</div></div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3"><div class="text-xs text-gray-500">Search & other</div><div class="font-bold text-lg">$63.35B</div><div class="text-xs text-emerald-600">+12% YoY</div></div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3"><div class="text-xs text-gray-500">Google Cloud</div><div class="font-bold text-lg">$30.71B</div><div class="text-xs text-emerald-600">+103% YoY</div></div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3"><div class="text-xs text-gray-500">经营利润率</div><div class="font-bold text-lg">31.8%</div><div class="text-xs text-emerald-600">经营利润 +30%</div></div>
+  </div>
+  <p class="text-sm leading-7 text-gray-600 dark:text-gray-300 mb-4">Alphabet于2026-10-28公布Q3业绩：总营收<strong>1,275.77亿美元（127.577 billion美元）</strong>，同比增长25%；Google Services收入963.02亿美元、同比增长11%，其中Search & other收入633.50亿美元、同比增长12%，搜索查询同比增速达到近五年最高。Google Cloud收入307.09亿美元、同比增长103%，受企业AI基础设施、AI解决方案及TPU系统销售推动。经营利润405.76亿美元、同比增长30%，经营利润率31.8%。</p>
+  <p class="text-sm leading-7 text-gray-600 dark:text-gray-300 mb-4">需要同时看清利润表与现金流的两面：归属普通股股东净利润为261.70亿美元、摊薄EPS为2.12美元，低于上年同期的349.79亿美元和2.87美元，主要受到其他收入/费用净额转为-82.21亿美元影响（公司说明主要与SpaceX投资公允价值变动有关）。Q3资本开支为514亿美元，单季自由现金流为-90.65亿美元；公司维持2026全年CapEx 1,950亿—2,050亿美元指引，并预计2027年显著增加。</p>
+  <div class="rounded-xl p-4 bg-emerald-50 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-900 mb-4"><div class="font-bold text-emerald-800 dark:text-emerald-300 text-sm mb-1">影响深度 · 盈利增长已兑现，现金回报仍待验证</div><p class="text-sm text-gray-700 dark:text-gray-300 leading-6">搜索端AI体验改善暂未表现为广告业务被侵蚀，反而伴随查询量与商业查询增长；Cloud收入翻倍式增长强化第二增长曲线。估值上，市场将更关注云业务订单兑现、AI算力利用率和折旧后利润，而非仅看收入增速。若CapEx长期跑赢经营现金流，折旧、能源与融资成本可能压制自由现金流及估值倍数。</p></div>
+  <div class="flex items-center justify-between text-xs mb-2"><span class="text-gray-500">影响力评分</span><span class="font-bold">9.7 / 10</span></div><div class="impact-bar"><div class="impact-fill" style="width:97%"></div></div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">信源：<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm" target="_blank" rel="noopener">Alphabet Q3 2026业绩公告（SEC，2026-10-28）</a>；<a class="source-link" href="https://abc.xyz/investor/events/event-details/2026/2026-Q3-Earnings-Call-2026-Ujou16CTw9/default.aspx" target="_blank" rel="noopener">Q3业绩电话会实录（2026-10-28）</a>。</p>
+ </article>
+
+ <article id="card-company-2" class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4"><div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span><span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-18</span><span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-xs font-bold">温和利好（产品与订阅）</span></div><span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 8.8 / 10</span></div>
+  <h3 class="text-lg sm:text-xl font-bold mb-3">Gemini 4 Neon发布，Genie 4进入付费用户产品，模型能力开始向生产工作流和新消费场景延伸</h3>
+  <p class="text-sm leading-7 text-gray-600 dark:text-gray-300 mb-4">Google于2026-11-18发布Gemini 4 Neon，官方定位聚焦复杂软件工程、知识工作与科学工作流中的端到端任务执行；Google称其在Artificial Analysis Intelligence Index的xhigh thinking设置中得分61、排名第三。同期，Google向符合条件的Google AI Ultra订阅用户推出Genie 4 / Project Genie更新，支持自然语言实时编辑交互世界、原生音频与作品分享。以上模型排名属于Google引用的第三方评测结果，并非独立财务数据。</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold text-sm mb-1">Gemini 4 Neon</div><p class="text-xs text-gray-600 dark:text-gray-300 leading-5">提升复杂任务完成能力，潜在商业化方向包括Workspace、开发者API、企业代理与云端推理。</p></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold text-sm mb-1">Genie 4 / Project Genie</div><p class="text-xs text-gray-600 dark:text-gray-300 leading-5">将世界模型能力转为高阶订阅体验，增加Google AI Ultra的产品差异化和用户留存理由。</p></div>
+  </div>
+  <div class="rounded-xl p-4 bg-emerald-50 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-900 mb-4"><div class="font-bold text-emerald-800 dark:text-emerald-300 text-sm mb-1">影响深度 · 看商业化转化，不只看模型榜单</div><p class="text-sm text-gray-700 dark:text-gray-300 leading-6">若Neon提高Workspace企业席位、API调用和Cloud算力消费，模型升级可同时推动订阅收入与云收入；Genie则为Ultra订阅增加新场景。短期仍需验证活跃用户、付费转化、推理成本和单位经济性，单次发布本身不能直接等同于利润增量。</p></div>
+  <div class="flex items-center justify-between text-xs mb-2"><span class="text-gray-500">影响力评分</span><span class="font-bold">8.8 / 10</span></div><div class="impact-bar"><div class="impact-fill" style="width:88%"></div></div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">信源：<a class="source-link" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/" target="_blank" rel="noopener">Google：Introducing Gemini 4 Neon（2026-11-18）</a>；<a class="source-link" href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/" target="_blank" rel="noopener">Google：Genie 4 is now available（2026-11-18）</a>。</p>
+ </article>
+
+ <article id="card-company-3" class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive" data-aos="fade-up">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4"><div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span><span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-10-27</span><span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 text-xs font-bold">中性偏多（生态扩张）</span></div><span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 8.1 / 10</span></div>
+  <h3 class="text-lg sm:text-xl font-bold mb-3">Google TPU将进入Oracle Cloud：首次向Google以外的超大规模云平台开放</h3>
+  <p class="text-sm leading-7 text-gray-600 dark:text-gray-300 mb-4">Google Cloud与Oracle于2026-10-27宣布合作，将Google Tensor Processing Units（TPU）部署至Oracle Cloud Infrastructure（OCI）；双方称OCI将成为Google之外首家提供TPU的超大规模云服务商，预计自2027年起部署TPU算力。此举使Google的自研AI芯片从内部基础设施进一步成为可对外销售、可跨云部署的产品。</p>
+  <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 mb-4"><div class="font-bold text-sm mb-1">传导逻辑</div><p class="text-sm text-gray-600 dark:text-gray-300 leading-6">正面：扩大TPU潜在客户池，提升芯片、系统、软件栈的商业化规模，增强Google Cloud在AI算力市场的生态影响力。约束：实际收入要等2027年部署、客户验收与持续利用率体现；对外供货也会与自有Gemini训练/推理争夺先进芯片、机房、电力和供应链资源。</p></div>
+  <div class="flex items-center justify-between text-xs mb-2"><span class="text-gray-500">影响力评分</span><span class="font-bold">8.1 / 10</span></div><div class="impact-bar"><div class="impact-fill" style="width:81%"></div></div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">信源：<a class="source-link" href="https://cloud.google.com/blog/products/infrastructure/bringing-google-tpus-to-oracle-cloud-infrastructure" target="_blank" rel="noopener">Google Cloud / Oracle：Bringing Google TPUs to OCI（2026-10-27）</a>。</p>
+ </article>
+</section>
+
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-2"><div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i></div><h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2></div>
+ <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6">细分赛道：全球数字广告与互联网平台、生成式AI基础模型/AI代理、超大规模云计算与AI数据中心基础设施。以下横向比较以Google在搜索广告和云计算两大核心收入池的竞争地位为主。</p>
+ <article id="card-industry-1" class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 mb-5 border border-gray-200 dark:border-gray-700 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3"><span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span><span class="text-xs font-mono text-gray-500">2026-11-17</span><span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-xs font-bold">AI算力需求强劲</span></div>
+  <h3 class="font-bold text-lg mb-3">NVIDIA Q3 FY2027数据中心收入同比增长110%，新一代Vera Rubin平台开始出货</h3>
+  <p class="text-sm leading-7 text-gray-600 dark:text-gray-300 mb-3">NVIDIA于2026-11-17公布截至10月25日的Q3 FY2027业绩：总收入1,158亿美元、同比增长103%；数据中心收入1,076亿美元、同比增长110%。公司称Vera Rubin NVL72已开始出货，并列出Google Cloud、Microsoft Azure、Oracle Cloud等生态合作方。</p>
+  <div class="rounded-lg bg-accent-50 dark:bg-accent-950/30 border border-accent-200 dark:border-accent-900 p-4"><p class="text-sm text-gray-700 dark:text-gray-300 leading-6"><strong class="text-accent-800 dark:text-accent-300">对Alphabet映射：</strong>AI算力支出扩张验证Google Cloud的需求侧景气，亦说明GPU与自研TPU将长期并存；但NVIDIA平台迭代会提高云厂商持续更新资本开支的压力，若算力租赁价格下行或利用率不及预期，巨额投入的回报周期可能拉长。</p></div>
+  <p class="text-xs text-gray-500 mt-3">信源：<a class="source-link" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/" target="_blank" rel="noopener">NVIDIA Q3 FY2027财报（2026-11-17）</a>。</p>
+ </article>
+ <article id="card-industry-2" class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 mb-5 border border-gray-200 dark:border-gray-700 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3"><span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span><span class="text-xs font-mono text-gray-500">2026-10-28</span><span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 text-xs font-bold">需求扩张、竞争加剧</span></div>
+  <h3 class="font-bold text-lg mb-3">Microsoft Azure收入增长48%，企业云平台竞争进入AI代理与基础设施的规模化阶段</h3>
+  <p class="text-sm leading-7 text-gray-600 dark:text-gray-300 mb-3">Microsoft于2026-10-28公布FY2027 Q1业绩：Azure收入同比增长48%，Microsoft Cloud收入639亿美元、同比增长30%，商业剩余履约义务（RPO）6770亿美元、同比增长73%。这显示企业云需求仍强，但Google Cloud面对的竞争者在客户关系、企业软件生态和AI平台方面同步扩张。</p>
+  <div class="rounded-lg bg-accent-50 dark:bg-accent-950/30 border border-accent-200 dark:border-accent-900 p-4"><p class="text-sm text-gray-700 dark:text-gray-300 leading-6"><strong class="text-accent-800 dark:text-accent-300">对Alphabet映射：</strong>行业需求增长并非Google独享，Azure的高增速和庞大RPO意味着企业AI预算将被多家平台争夺。Google需要将Gemini模型、TPU性价比、数据分析与Workspace整合为可持续的客户迁移优势；Cloud收入增长必须进一步转化为利润率和现金流。</p></div>
+  <p class="text-xs text-gray-500 mt-3">信源：<a class="source-link" href="https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast" target="_blank" rel="noopener">Microsoft FY2027 Q1业绩公告（2026-10-28）</a>。</p>
+ </article>
+ <article id="card-industry-3" class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 mb-5 border border-gray-200 dark:border-gray-700 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3"><span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span><span class="text-xs font-mono text-gray-500">2026-10-29</span><span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 text-xs font-bold">高景气伴随资本密集化</span></div>
+  <h3 class="font-bold text-lg mb-3">AWS收入同比增长39.3%，AI投资推高行业资本开支与自由现金流压力</h3>
+  <p class="text-sm leading-7 text-gray-600 dark:text-gray-300 mb-3">Amazon于2026-10-29公布Q3业绩：AWS净销售额460亿美元、同比增长39.3%，为近五年最快增速，年化收入运行率约1,840亿美元；但过去12个月自由现金流为-424亿美元，主要受AI相关物业和设备采购增长影响。Amazon披露过去12个月物业设备净采购额同比增加948亿美元。</p>
+  <div class="rounded-lg bg-accent-50 dark:bg-accent-950/30 border border-accent-200 dark:border-accent-900 p-4"><p class="text-sm text-gray-700 dark:text-gray-300 leading-6"><strong class="text-accent-800 dark:text-accent-300">对Alphabet映射：</strong>AWS高增长确认云服务需求广泛存在，同时说明AI云竞争需要重资产投入。Alphabet Q3单季CapEx 514亿美元、自由现金流-91亿美元，处于相似行业投资周期。对标重点不是谁的CapEx最大，而是谁能以更高利用率、定价能力和更低单位推理成本获得更快现金回收。</p></div>
+  <p class="text-xs text-gray-500 mt-3">信源：<a class="source-link" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/" target="_blank" rel="noopener">Amazon Q3 2026业绩公告（2026-10-29）</a>。</p>
+ </article>
+ <div class="bg-white dark:bg-[#151f2b] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-700">
+  <h3 class="font-bold mb-4 flex items-center gap-2"><i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i>行业动态对标影响对比表</h3>
+  <div class="overflow-x-auto"><table class="text-xs sm:text-sm"><thead><tr class="bg-gray-50 dark:bg-gray-800"><th>行业事件</th><th>涉及主体</th><th>对Alphabet利弊传导</th><th>影响周期</th></tr></thead><tbody>
+   <tr><td class="font-semibold">AI数据中心需求与Vera Rubin出货</td><td>NVIDIA、Google Cloud、Azure、OCI</td><td><span class="text-emerald-600 dark:text-emerald-400 font-bold">偏利好：</span>验证AI算力需求，扩大云收入池；同时抬高持续投资门槛。</td><td>2026Q4—2027</td></tr>
+   <tr><td class="font-semibold">Azure增长48%、RPO增长73%</td><td>Microsoft / Azure</td><td><span class="text-amber-600 dark:text-amber-400 font-bold">中性偏空：</span>需求扩容利好行业，但企业AI预算竞争加剧。</td><td>中短期</td></tr>
+   <tr><td class="font-semibold">AWS增长39.3%，FCF转负</td><td>Amazon / AWS</td><td><span class="text-amber-600 dark:text-amber-400 font-bold">双向影响：</span>证明云需求强，但重资产投入回报周期和现金流风险同步上升。</td><td>2026—2027</td></tr>
+  </tbody></table></div>
+ </div>
+</section>
+
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div><h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策 / 态势 Top 3</h2></div>
+ <article id="card-macro-1" class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-rose-500 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3"><span class="px-3 py-1 rounded bg-rose-600 text-white text-xs font-bold">国际 · 欧盟数字监管</span><span class="text-xs font-mono text-gray-500">2026-11月履约节点</span><span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-800 dark:text-rose-200 text-xs font-bold">短期承压</span><span class="ml-auto text-xs font-bold text-primary-600 dark:text-primary-300">影响力 9.2 / 10</span></div>
+  <h3 class="font-bold text-lg mb-4">欧盟DMA要求Google在11月完成匿名搜索数据集等交付，竞争规则开始进入技术执行层</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold mb-2">政策要点</div><p class="text-gray-600 dark:text-gray-300 leading-6">欧盟委员会依据《数字市场法》（DMA）第6(11)条，要求Google以公平、合理、非歧视条件向合资格在线搜索引擎共享匿名搜索数据，受益方亦包括具搜索功能的AI聊天机器人。委员会最终措施于2026-07-16通过；实施时间表要求Google在2026年11月前完成匿名搜索数据集，并提交延迟和个人数据检测等技术信息。</p></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold mb-2">传导路径</div><p class="text-gray-600 dark:text-gray-300 leading-6">分子端：数据准备、匿名化、审计、接口与持续合规带来技术和法律成本；竞争对手可利用数据改善搜索产品，长期可能影响搜索流量与广告定价。分母端：持续监管不确定性可能扩大估值折价。</p></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold mb-2">业务敞口</div><p class="text-gray-600 dark:text-gray-300 leading-6">直接敞口为欧洲Google Search及AI搜索产品的数据优势。委员会说明共享数据不包括Google算法本身，但包含排名、查询、点击和浏览等数据；不应将其误读为算法开源或搜索业务立即被拆分。</p></div>
+  </div>
+  <p class="text-xs text-gray-500 mt-4">发布机构：European Commission · DMA；<a class="source-link" href="https://digital-markets-act.ec.europa.eu/businesses-portal/data-access/alphabet-specification-proceedings-sharing-google-search-data_en" target="_blank" rel="noopener">Alphabet搜索数据共享程序与实施时间表</a>（最终决定2026-07-16，11月为履约节点）。</p>
+ </article>
+ <article id="card-macro-2" class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3"><span class="px-3 py-1 rounded bg-amber-600 text-white text-xs font-bold">国际 · 美国货币与金融稳定</span><span class="text-xs font-mono text-gray-500">2026-11-18（会议纪要发布）</span><span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 text-xs font-bold">中性偏空（估值与融资）</span><span class="ml-auto text-xs font-bold text-primary-600 dark:text-primary-300">影响力 8.6 / 10</span></div>
+  <h3 class="font-bold text-lg mb-4">美联储会议纪要提示AI投资债务与资产估值风险，利率维持3.75%—4.00%</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold mb-2">政策 / 态势要点</div><p class="text-gray-600 dark:text-gray-300 leading-6">美联储2026-11-18公布10月27—28日FOMC会议纪要。10月28日会议将联邦基金利率目标区间维持在3.75%—4.00%。纪要提及AI建设相关债务快速增长、表外租赁承诺及复杂融资安排可能放大投资回报不及预期时的损失；多数与会者关注AI投资回报失望引发资产重估的风险。</p></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold mb-2">传导路径</div><p class="text-gray-600 dark:text-gray-300 leading-6">分母端：利率维持高位会提高长期现金流折现率，压制高久期科技股估值；AI资本市场若风险偏好下降，云基础设施融资成本可能上行。分子端：能源、租赁、折旧和融资成本提高，压缩数据中心项目回报。</p></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold mb-2">业务敞口</div><p class="text-gray-600 dark:text-gray-300 leading-6">Alphabet现金和市场证券规模较大，短期融资韧性较强；但其2026全年CapEx指引达1,950亿—2,050亿美元，2027年还预计显著增加，因此资本回报率、数据中心利用率和自由现金流敏感度上升。</p></div>
+  </div>
+  <p class="text-xs text-gray-500 mt-4">发布机构：Federal Reserve · <a class="source-link" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm" target="_blank" rel="noopener">FOMC 2026-10-27/28会议纪要（2026-11-18发布）</a>；<a class="source-link" href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm" target="_blank" rel="noopener">FOMC声明（2026-10-28）</a>。</p>
+ </article>
+ <article id="card-macro-3" class="bg-white dark:bg-[#151f2b] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-sky-500 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3"><span class="px-3 py-1 rounded bg-sky-600 text-white text-xs font-bold">中国 · AI产业与就业政策</span><span class="text-xs font-mono text-gray-500">2026-10-23（公开发布）</span><span class="px-2.5 py-1 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-800 dark:text-sky-200 text-xs font-bold">间接影响 / 观察项</span><span class="ml-auto text-xs font-bold text-primary-600 dark:text-primary-300">影响力 5.8 / 10</span></div>
+  <h3 class="font-bold text-lg mb-4">国务院办公厅发布AI就业友好型发展意见，强调“人工智能+”、开源生态与风险评估</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold mb-2">政策要点</div><p class="text-gray-600 dark:text-gray-300 leading-6">国务院办公厅《适应人工智能技术发展助力构建就业友好型发展方式的意见》（国办发〔2026〕29号）由中国政府网于2026-10-23公开发布，文件成文日期为2026-10-16。提出深入实施“人工智能+”行动、建设开源社区、支持中小企业低成本智能升级，并建立AI应用就业风险评估机制。</p></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold mb-2">传导路径</div><p class="text-gray-600 dark:text-gray-300 leading-6">分子端：国内AI应用、数字化转型与人才培养可能扩大企业AI服务需求，间接提高全球模型、云平台和开发者工具的需求空间；就业风险评估和稳妥应用要求也可能影响AI部署节奏。对Alphabet主要是全球AI产业需求和竞争生态的间接变量。</p></div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800 p-4"><div class="font-bold mb-2">业务敞口</div><p class="text-gray-600 dark:text-gray-300 leading-6">Google在中国大陆核心搜索、广告和云业务并非直接受益主体，不能把政策利好直接映射为Alphabet中国收入增长。影响更多体现在全球AI产业生态、开源竞争、企业AI应用普及，以及中国AI企业对国际模型和算力供给的替代竞争。</p></div>
+  </div>
+  <p class="text-xs text-gray-500 mt-4">发布机构：国务院办公厅；<a class="source-link" href="https://big5.www.gov.cn/gate/big5/www.gov.cn/zhengce/content/202610/content_7084107.htm" target="_blank" rel="noopener">中国政府网政策原文（2026-10-23发布，文件成文日期2026-10-16）</a>。</p>
+ </article>
+</section>
+
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-10" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div><h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2></div>
+ <div x-data="{filter:'all'}" class="bg-white dark:bg-[#151f2b] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-700 mb-7">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4"><h3 class="font-bold text-sm sm:text-base">九大动态催化矩阵 <span class="text-xs font-normal text-gray-500">· 点击事件可跳转详情</span></h3><div class="flex flex-wrap gap-2 text-xs">
+   <button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'" class="px-3 py-1.5 rounded-full">全部 9</button>
+   <button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'" class="px-3 py-1.5 rounded-full">公司 3</button>
+   <button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'" class="px-3 py-1.5 rounded-full">行业 3</button>
+   <button @click="filter='macro'" :class="filter==='macro'?'bg-rose-600 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'" class="px-3 py-1.5 rounded-full">宏观 3</button>
+  </div></div>
+  <div class="overflow-x-auto"><table class="text-xs sm:text-sm"><thead><tr class="bg-gray-50 dark:bg-gray-800"><th>类别</th><th>日期</th><th>核心事件</th><th>影响方向</th><th>强度</th><th>核心投资含义</th></tr></thead><tbody>
+   <tr x-show="filter==='all'||filter==='company'" onclick="location.href='#card-company-1'" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>公司</td><td class="whitespace-nowrap">2026-10-28</td><td class="font-semibold">Q3营收+25%，Cloud+103%，CapEx $51.4B</td><td class="text-emerald-600 font-bold">增长利好 / 现金流承压</td><td class="font-bold">9.7</td><td>AI增长兑现，投资回报和FCF成估值核心</td></tr>
+   <tr x-show="filter==='all'||filter==='company'" onclick="location.href='#card-company-2'" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>公司</td><td class="whitespace-nowrap">2026-11-18</td><td class="font-semibold">Gemini 4 Neon与Genie 4产品发布</td><td class="text-emerald-600 font-bold">温和利好</td><td class="font-bold">8.8</td><td>观察付费转化、API调用和推理成本</td></tr>
+   <tr x-show="filter==='all'||filter==='company'" onclick="location.href='#card-company-3'" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>公司</td><td class="whitespace-nowrap">2026-10-27</td><td class="font-semibold">Google TPU进入Oracle Cloud，2027部署</td><td class="text-emerald-600 font-bold">生态利好</td><td class="font-bold">8.1</td><td>TPU外部销售打开增量市场，兑现仍需时间</td></tr>
+   <tr x-show="filter==='all'||filter==='industry'" onclick="location.href='#card-industry-1'" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>行业</td><td class="whitespace-nowrap">2026-11-17</td><td class="font-semibold">NVIDIA数据中心收入+110%，Vera Rubin出货</td><td class="text-emerald-600 font-bold">需求利好 / 投资压力</td><td class="font-bold">8.9</td><td>AI算力需求强，但设备升级周期持续加速</td></tr>
+   <tr x-show="filter==='all'||filter==='industry'" onclick="location.href='#card-industry-2'" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>行业</td><td class="whitespace-nowrap">2026-10-28</td><td class="font-semibold">Azure收入+48%，RPO+73%</td><td class="text-amber-600 font-bold">竞争加剧</td><td class="font-bold">8.2</td><td>云需求扩容但企业AI预算争夺激烈</td></tr>
+   <tr x-show="filter==='all'||filter==='industry'" onclick="location.href='#card-industry-3'" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>行业</td><td class="whitespace-nowrap">2026-10-29</td><td class="font-semibold">AWS收入+39.3%，AI投资令FCF转负</td><td class="text-amber-600 font-bold">双向影响</td><td class="font-bold">7.8</td><td>验证云景气，同时警示重资产现金流风险</td></tr>
+   <tr x-show="filter==='all'||filter==='macro'" onclick="location.href='#card-macro-1'" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>宏观</td><td class="whitespace-nowrap">2026-11月履约节点</td><td class="font-semibold">欧盟DMA要求完成匿名搜索数据集交付</td><td class="text-rose-600 font-bold">监管利空</td><td class="font-bold">9.2</td><td>搜索数据优势被部分开放，合规成本抬升</td></tr>
+   <tr x-show="filter==='all'||filter==='macro'" onclick="location.href='#card-macro-2'" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>宏观</td><td class="whitespace-nowrap">2026-11-18</td><td class="font-semibold">FOMC纪要提示AI债务与资产重估风险</td><td class="text-amber-600 font-bold">估值承压</td><td class="font-bold">8.6</td><td>高利率与AI融资风险影响久期估值</td></tr>
+   <tr x-show="filter==='all'||filter==='macro'" onclick="location.href='#card-macro-3'" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>宏观</td><td class="whitespace-nowrap">2026-10-23</td><td class="font-semibold">中国AI就业友好型发展意见公开发布</td><td class="text-sky-600 font-bold">间接影响</td><td class="font-bold">5.8</td><td>影响全球AI生态和竞争，非Google直接收入利好</td></tr>
+  </tbody></table></div>
+ </div>
+ <div class="mb-4"><h3 class="font-bold text-lg">未来30天前瞻观察清单</h3><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">截至2026-11-22可核验的已知窗口；未公开的公司业绩日期不作推测。</p></div>
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="bg-white dark:bg-[#151f2b] rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive"><div class="flex items-center gap-2 text-primary-600 dark:text-primary-300 text-xs font-bold mb-2"><i data-lucide="calendar-days" class="w-4 h-4"></i> 2026-12-08 至 12-09</div><h4 class="font-bold mb-2">美联储年末FOMC会议</h4><p class="text-sm text-gray-600 dark:text-gray-300 leading-6">重点观察政策利率路径、通胀判断及AI投资风险表述。若利率预期上修，长久期科技股估值和数据中心融资成本可能承压。</p><p class="text-xs text-gray-500 mt-3">来源：<a class="source-link" href="https://www.federalreserve.gov/monetarypolicy.htm" target="_blank" rel="noopener">Federal Reserve FOMC日历</a></p></div>
+  <div class="bg-white dark:bg-[#151f2b] rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive"><div class="flex items-center gap-2 text-rose-600 dark:text-rose-300 text-xs font-bold mb-2"><i data-lucide="shield-check" class="w-4 h-4"></i> 2026年11月—12月持续跟踪</div><h4 class="font-bold mb-2">欧盟DMA搜索数据共享履约</h4><p class="text-sm text-gray-600 dark:text-gray-300 leading-6">核验匿名数据集、技术信息提交及委员会审查进展；观察潜在受益搜索引擎和AI聊天机器人的实际接入速度。</p><p class="text-xs text-gray-500 mt-3">来源：<a class="source-link" href="https://digital-markets-act.ec.europa.eu/businesses-portal/data-access/alphabet-specification-proceedings-sharing-google-search-data_en" target="_blank" rel="noopener">European Commission DMA时间表</a></p></div>
+  <div class="bg-white dark:bg-[#151f2b] rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive"><div class="flex items-center gap-2 text-accent-600 dark:text-accent-300 text-xs font-bold mb-2"><i data-lucide="cpu" class="w-4 h-4"></i> 未来30日持续跟踪</div><h4 class="font-bold mb-2">Gemini 4商业化与Cloud算力供给</h4><p class="text-sm text-gray-600 dark:text-gray-300 leading-6">关注Neon API和企业产品开放范围、Google AI Ultra订阅转化、TPU系统订单与云业务交付能力；重点观察增长能否覆盖折旧和能源成本。</p><p class="text-xs text-gray-500 mt-3">观察项：公司产品更新、Google Cloud公告及后续业绩披露。</p></div>
+  <div class="bg-white dark:bg-[#151f2b] rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive"><div class="flex items-center gap-2 text-sky-600 dark:text-sky-300 text-xs font-bold mb-2"><i data-lucide="file-chart-line" class="w-4 h-4"></i> 后续财报窗口（日期未确认）</div><h4 class="font-bold mb-2">Alphabet Q4 2026业绩与2027 CapEx指引</h4><p class="text-sm text-gray-600 dark:text-gray-300 leading-6">截至报告日，公司尚未在所核验材料中公布Q4财报具体日期。下一次业绩沟通应重点跟踪2027资本开支规模、Cloud利润率、TPU收入确认、折旧增速及自由现金流。</p><p class="text-xs text-gray-500 mt-3">不将预计日期当作已确认日程。</p></div>
+ </div>
+</section>
+</main>
+<footer class="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0a0f15] py-9">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-7 mb-7">
+   <div><h4 class="font-bold text-sm mb-3">主要数据来源</h4><ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-5">
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm" target="_blank" rel="noopener">Alphabet Q3 2026业绩公告（SEC，10-28）</a></li>
+    <li><a class="source-link" href="https://abc.xyz/investor/events/event-details/2026/2026-Q3-Earnings-Call-2026-Ujou16CTw9/default.aspx" target="_blank" rel="noopener">Alphabet Q3业绩电话会实录（10-28）</a></li>
+    <li><a class="source-link" href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/" target="_blank" rel="noopener">Google Gemini 4 Neon（11-18）</a>；<a class="source-link" href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/" target="_blank" rel="noopener">Genie 4（11-18）</a></li>
+    <li><a class="source-link" href="https://cloud.google.com/blog/products/infrastructure/bringing-google-tpus-to-oracle-cloud-infrastructure" target="_blank" rel="noopener">Google Cloud / Oracle TPU合作（10-27）</a></li>
+    <li><a class="source-link" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/" target="_blank" rel="noopener">NVIDIA Q3 FY2027（11-17）</a>；<a class="source-link" href="https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast" target="_blank" rel="noopener">Microsoft FY27 Q1（10-28）</a>；<a class="source-link" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/" target="_blank" rel="noopener">Amazon Q3（10-29）</a></li>
+    <li><a class="source-link" href="https://digital-markets-act.ec.europa.eu/businesses-portal/data-access/alphabet-specification-proceedings-sharing-google-search-data_en" target="_blank" rel="noopener">欧盟DMA搜索数据共享要求</a>；<a class="source-link" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm" target="_blank" rel="noopener">美联储会议纪要（11-18）</a>；<a class="source-link" href="https://big5.www.gov.cn/gate/big5/www.gov.cn/zhengce/content/202610/content_7084107.htm" target="_blank" rel="noopener">中国政府网AI就业政策（10-23）</a></li>
+   </ul></div>
+   <div><h4 class="font-bold text-sm mb-3">覆盖时间与口径</h4><p class="text-xs text-gray-500 dark:text-gray-400 leading-6">主窗口：2026-10-23至2026-11-22（含首尾日期的近30个自然日）。行业及宏观事件按公开发布日期或监管履约节点标注；政策文件如另有成文日期，会在正文说明。公司季度财务数据虽于窗口内发布，财务期间截至2026-09-30。未确认的未来事件日期不作预测。</p></div>
+   <div><h4 class="font-bold text-sm mb-3">研究说明与免责声明</h4><p class="text-xs text-gray-500 dark:text-gray-400 leading-6">本报告根据截至2026-11-22可核验的公开资料整理。影响力评分、催化方向和传导分析属于研究判断；公司公告中的前瞻性表述不代表必然实现。报告仅供信息与研究参考，不构成证券买卖建议。投资者应结合估值、风险承受能力及最新披露独立决策。</p></div>
+  </div>
+  <div class="border-t border-gray-200 dark:border-gray-700 pt-5 flex flex-col sm:flex-row justify-between gap-2"><p class="text-xs text-gray-400">Alphabet Inc.（NASDAQ: GOOGL / GOOG）· 最新动态全景追踪 · 2026-11-22</p><p class="text-xs text-gray-400">Event-driven fundamental research · Generated 2026-11-22</p></div>
+ </div>
+</footer>
+<script>
+window.addEventListener('scroll',()=>{
+ const y=document.documentElement.scrollTop||document.body.scrollTop;
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const bar=document.getElementById('progressBar');if(bar)bar.style.width=(h>0?Math.min(100,y/h*100):0)+'%';
+});
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:480,offset:35,once:true});
+});
+</script>
+</body>
+</html>
