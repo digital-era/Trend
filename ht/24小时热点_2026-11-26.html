@@ -1,50 +1,348 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>24 小时热点图谱 · 2026.11.25–11.26</title><style>  :root{    --paper:#faf8f5;    --paper-2:#ffffff;    --ink:#1c1b19;    --ink-2:#3d3b37;    --muted:#7c7873;    --line:#e6e1d9;    --line-2:#d6cfc4;    --tech:#3a5bd9;    --tech-bg:#eef1fd;    --biz:#b8792a;    --biz-bg:#fbf2e3;    --soc:#b03a3a;    --soc-bg:#fbeceb;    --radius:16px;    --shadow:0 1px 2px rgba(28,27,25,.04), 0 8px 28px -12px rgba(28,27,25,.14);    --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC",Georgia,serif;    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;    /* ===== Hero 主题色（仅作用于顶部 header.hero 区域，换色只改这三行） ===== */    --hero-1:#0a1c36;      /* 渐变起点（最深） */    --hero-2:#102c52;      /* 渐变中点 */    --hero-3:#1a477c;      /* 渐变终点（最亮） */    --hero-ink:#f2f6fc;    /* 主标题 / 统计数字 */    --hero-ink-2:#c8d8ec;  /* 导语 / kicker */    --hero-ink-3:#92a9c6;  /* 统计小字 */    --hero-accent:#e5c377; /* 强调金（h1 em） */    --hero-accent-2:#d8a13a; /* 脉冲点 */  }  *{box-sizing:border-box}  html{scroll-behavior:smooth}  body{    margin:0;    background:var(--paper);    color:var(--ink);    font-family:var(--sans);    font-size:16px;    line-height:1.75;    -webkit-font-smoothing:antialiased;    background-image:radial-gradient(circle at 1px 1px, rgba(28,27,25,.045) 1px, transparent 0);    background-size:22px 22px;  }  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}  /* ---------- Hero ---------- */  header.hero{    position:relative;overflow:hidden;    background:linear-gradient(160deg,var(--hero-1) 0%,var(--hero-2) 55%,var(--hero-3) 100%);    color:var(--hero-ink);padding:76px 0 60px;  }  header.hero::after{    content:"";position:absolute;inset:0;    background:radial-gradient(900px 320px at 78% -10%, rgba(201,162,77,.28), transparent 60%),               radial-gradient(600px 260px at 8% 110%, rgba(70,150,230,.30), transparent 60%);    pointer-events:none;  }  .hero .wrap{position:relative;z-index:2}  .kicker{    display:inline-flex;align-items:center;gap:9px;    font-size:12px;letter-spacing:.22em;text-transform:uppercase;    color:var(--hero-ink-2);border:1px solid rgba(200,216,236,.35);    padding:6px 14px;border-radius:999px;margin-bottom:26px;  }  .kicker i{width:6px;height:6px;border-radius:50%;background:var(--hero-accent-2);    box-shadow:0 0 0 4px rgba(216,161,58,.18);animation:pulse 2.4s infinite}  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}  h1{    font-family:var(--serif);font-weight:600;    font-size:clamp(34px,5.4vw,58px);line-height:1.18;    margin:0 0 18px;letter-spacing:.01em;  }  h1 em{font-style:normal;color:var(--hero-accent)}  .lede{max-width:640px;color:var(--hero-ink-2);font-size:16.5px;margin:0 0 34px}  .stats{display:flex;flex-wrap:wrap;gap:34px;border-top:1px solid rgba(255,255,255,.12);padding-top:24px}  .stat b{display:block;font-family:var(--serif);font-size:28px;color:var(--hero-ink);font-weight:600;line-height:1.2}  .stat span{font-size:12.5px;color:var(--hero-ink-3);letter-spacing:.06em}  /* ---------- Nav ---------- */  nav{    position:sticky;top:0;z-index:20;    background:rgba(250,248,245,.86);backdrop-filter:blur(12px);    border-bottom:1px solid var(--line);  }  nav .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 24px;scrollbar-width:none}  nav .wrap::-webkit-scrollbar{display:none}  nav a{    flex:none;text-decoration:none;color:var(--muted);font-size:14px;    padding:7px 15px;border-radius:999px;border:1px solid transparent;white-space:nowrap;    transition:.2s;  }  nav a:hover{color:var(--ink);background:#fff;border-color:var(--line-2)}  /* ---------- Section ---------- */  section{padding:64px 0 8px}  .sec-head{display:flex;align-items:flex-end;gap:16px;margin-bottom:8px}  .sec-num{    font-family:var(--serif);font-size:15px;letter-spacing:.3em;color:var(--muted);    padding-bottom:6px;  }  h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,34px);margin:0;font-weight:600;letter-spacing:.01em}  .sec-desc{color:var(--muted);font-size:14.5px;margin:10px 0 34px;max-width:660px}  .rule{height:1px;background:linear-gradient(90deg,var(--line-2),transparent);margin:0 0 30px}  /* ---------- Cards ---------- */  .cards{display:grid;gap:20px}  article.card{    background:var(--paper-2);border:1px solid var(--line);    border-radius:var(--radius);padding:28px 30px 26px;    box-shadow:var(--shadow);position:relative;overflow:hidden;    transition:transform .25s ease, box-shadow .25s ease;  }  article.card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(28,27,25,.05),0 18px 40px -16px rgba(28,27,25,.2)}  article.card::before{    content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c);  }  .card-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}  .rank{    font-family:var(--serif);font-size:13px;font-weight:600;color:#fff;background:var(--c);    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none;  }  .tags{display:flex;gap:7px;flex-wrap:wrap}  .tag{    font-size:11.5px;letter-spacing:.06em;padding:3px 9px;border-radius:6px;    background:var(--tbg);color:var(--c);border:1px solid color-mix(in srgb, var(--c) 22%, transparent);  }  .tag.geo{background:#f2efe9;color:var(--muted);border-color:var(--line)}  h3{font-family:var(--serif);font-size:20.5px;line-height:1.5;margin:0 0 14px;font-weight:600}  .card ul{margin:0;padding:0;list-style:none;display:grid;gap:11px}  .card li{    position:relative;padding-left:20px;font-size:15px;color:var(--ink-2);line-height:1.72;  }  .card li::before{    content:"";position:absolute;left:3px;top:.72em;width:5px;height:5px;border-radius:50%;    background:var(--c);opacity:.55;  }  .card li b{color:var(--ink);font-weight:600}  .takeaway{    margin-top:18px;padding:13px 16px;border-radius:11px;background:var(--tbg);    font-size:14.2px;color:var(--ink-2);border:1px dashed color-mix(in srgb, var(--c) 30%, transparent);  }  .takeaway strong{color:var(--c);font-weight:600}  .src{    margin-top:16px;padding-top:13px;border-top:1px solid var(--line);    font-size:12.4px;color:var(--muted);letter-spacing:.02em;  }  .src b{color:var(--ink-2);font-weight:500}  /* ---------- Aside grid ---------- */  .aside{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:22px}  .box{    background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;    box-shadow:var(--shadow);  }  .box h4{font-family:var(--serif);font-size:17px;margin:0 0 4px;font-weight:600}  .box .sub{font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:14px}  .box ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}  .box li{font-size:14.2px;color:var(--ink-2);padding-left:16px;position:relative;line-height:1.68}  .box li::before{content:"—";position:absolute;left:0;color:var(--line-2)}  /* ---------- Note ---------- */  .note{    margin:56px 0 0;padding:26px 28px;border-radius:var(--radius);    background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);  }  .note h4{font-family:var(--serif);font-size:18px;margin:0 0 12px}  .note p{margin:0 0 10px;font-size:14.4px;color:var(--ink-2)}  .note p:last-child{margin:0}  .note b{color:var(--ink)}  footer{    margin-top:64px;padding:38px 0 54px;border-top:1px solid var(--line);    color:var(--muted);font-size:13px;text-align:center;  }  footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}  @media (max-width:640px){    header.hero{padding:56px 0 44px}    article.card{padding:22px 20px}    .stats{gap:22px}  }  @media print{    body{background:#fff}    nav,header.hero::after{display:none}    article.card{break-inside:avoid;box-shadow:none}  }</style></head><body><header class="hero">  <div class="wrap">    <div class="kicker"><i></i>24 小时窗口 · 北京时间 11.25 16:00 – 11.26 16:00</div>    <h1>最新一日热点图谱<br><em>科技 · 商业 · 社会</em></h1>    <p class="lede">以影响力为唯一排序标准，从「算力首次拿到太空牌照」「贸易规则更换法律底座」「AI 融资被信用市场重定价」三条主线中，各筛出三件当日最值得记录的事。每条均标注日期与信源口径。</p>    <div class="stats">      <div class="stat"><b>2026.11.26</b><span>编报日期</span></div>      <div class="stat"><b>3 × 3</b><span>核心条目</span></div>      <div class="stat"><b>算力上天</b><span>当日主线</span></div>      <div class="stat"><b>可溯源</b><span>逐条标注信源</span></div>    </div>  </div></header><nav>  <div class="wrap">    <a href="#tech">① 科技</a>    <a href="#biz">② 商业</a>    <a href="#soc">③ 社会</a>    <a href="#space">宇宙 / 量子</a>    <a href="#macro">宏观背景</a>    <a href="#method">口径说明</a>  </div></nav><main class="wrap">  <!-- ================= 科技 ================= -->  <section id="tech" style="--c:var(--tech);--tbg:var(--tech-bg)">    <div class="sec-head">      <span class="sec-num">01</span>      <h2>科技</h2>    </div>    <p class="sec-desc">AI 产品 / 模型 / 技术、量子与宇宙。当日最显著的结构性变化：算力第一次拿到「太空许可证」；AI 数学的瓶颈从「找到证明」转向「审完证明」；通用模型开始跨进分子设计。</p>    <div class="rule"></div>    <div class="cards">      <article class="card" style="--c:var(--tech);--tbg:var(--tech-bg)">        <div class="card-top">          <span class="rank">1</span>          <div class="tags">            <span class="tag">太空算力</span>            <span class="tag">监管首例</span>            <span class="tag geo">国际</span>          </div>        </div>        <h3>FCC 首批「太空数据中心」牌照：SpaceX 获批部署至多 100 万颗算力卫星</h3>        <ul>          <li>当地时间 <b>11 月 25 日</b>，美国联邦通信委员会（FCC）附条件批准 SpaceX 的 <b>Starmind（星脑）</b>轨道数据中心星座，为美国历史上首次为太空数据中心颁发此类许可。卫星分布于约 <b>500–1002 公里</b>的多个低轨壳层，太阳能供电、星间激光互联，在轨完成 AI 数据处理后回传地球。</li>          <li>许可附带硬时间表：首颗正式运营卫星须在 <b>2033 年 11 月 25 日</b>前入轨；2035 年 11 月前部署 10 万颗；2038 年 11 月前完成 50 万颗；<b>2040 年 11 月 25 日</b>前全部部署，逾期授权自动失效。600 公里以上轨道须先提交最终碎片处置方案。</li>          <li>争议同步放大：亚马逊 Leo、Viasat 与美国天文学会反对，FCC 收到逾 1500 条公众意见；有未同行评审研究估算，百万颗星座的发射与再入污染可能达到当前水平的 <b>70–150 倍</b>。FCC 认为商业可行性属企业判断，且依据 10 月环境审查新规不触发进一步环境审查。</li>          <li>规模参照：当前在轨卫星约 1.7 万颗，获批上限接近其 60 倍；SpaceX 称首批 AI1 数据中心卫星拟 2027 年发射。国内方面，国星宇航「星算」02 组星座入轨后总算力已近 <b>50 POPS</b>。</li>        </ul>        <div class="takeaway"><strong>为什么重要 · </strong>AI 算力扩张的约束从电力、水资源转向轨道资源与发射成本；监管许可先于工程和经济性被验证，这是一场制度层面的下注。</div>        <div class="src"><b>信源 · </b>FCC 公告与许可文件（11.25）、新华社英文（11.26）、澎湃新闻 / 上海证券报 / 科技日报 / 央视财经（11.26）</div>      </article>      <article class="card" style="--c:var(--tech);--tbg:var(--tech-bg)">        <div class="card-top">          <span class="rank">2</span>          <div class="tags">            <span class="tag">AI 数学</span>            <span class="tag">研究级能力</span>            <span class="tag geo">国际</span>          </div>        </div>        <h3>AI 证明「47 年猜想」的余波：VP≠VNP 与黎曼形式化，把「谁验收」推到台前</h3>        <ul>          <li>11 月 23–24 日，Anthropic 与 OpenAI 先后在 GitHub 发布对 <b>VP≠VNP</b>（Valiant 于 1979 年提出的代数版 P/NP 问题）的证明：Anthropic 为约 70 页论文、署名 Claude，附数百个 Lean 4 文件与约 7.3 万行验证代码；OpenAI 为约 30 页论文及形式化代码，并称结果早在 11 月 6 日已得出。两家路线不同、结论一致，<b>但均声明尚无人类数学家完成审阅</b>，且不等于证明了布尔世界的 P≠NP。</li>          <li>窗口内的新进展是「验收之争」升温：11 月 25 日，普林斯顿大学教授彼得·萨纳克（Peter Sarnak）对 AI 辅助证明黎曼猜想表态，称更愿意叫<b>「验证」而非「证明」</b>——「数学不仅是发现『什么是真的』，更要理解『为什么它是真的』。」</li>          <li>Anthropic 另将黎曼猜想 / 广义黎曼猜想的 Lean 4 机器验证版本从约 30 万行压缩到 <b>7.6 万行</b>并开源（基于 Levent Alpöge 的证明，尚未同行评审）；另有智能体以 Lean 为工具三天推出 17 个结论，其中 6 个此前未解（聚合信源，宜视为待核）。</li>          <li>11 月 26 日，Anthropic CEO Dario Amodei 公开否认 Axios 将「人类应把部分自由意志交给 AI」的观点归于自己，称把社会治理权交给 AI 是「糟糕的主意」，并主张对<b>递归式自我改进</b>设限、部分端到端自动化应放慢甚至暂停。</li>        </ul>        <div class="takeaway"><strong>为什么重要 · </strong>AI 已从「答题」进入「产出候选证明」阶段，数学共同体的稀缺资源变成审阅能力；治理争论也同步从效率转向合法性与控制权。</div>        <div class="src"><b>信源 · </b>智源社区 / 36氪 / 钛媒体（11.25）、新浪科技（11.25–26）、凤凰科技 / IT之家（11.26）、AI Pulse（11.26）</div>      </article>      <article class="card" style="--c:var(--tech);--tbg:var(--tech-bg)">        <div class="card-top">          <span class="rank">3</span>          <div class="tags">            <span class="tag">AI for Science</span>            <span class="tag">模型发布</span>            <span class="tag geo">国际 / 中国</span>          </div>        </div>        <h3>通用模型跨进分子设计：GPT-6 蛋白质设计获湿实验初步验证，国内模型同步压价</h3>        <ul>          <li>OpenAI 11 月 24 日发布预印本《GPT-6 as a Universal Foundation Model for Protein Biology》，称 GPT-6 系列仅靠推理与通用代码即可设计蛋白质三维结构与氨基酸序列。与 Onava 的湿实验中，<b>322 个微型结合蛋白有 35 个（10.9%）检出结合</b>，覆盖 5 个靶点；抗体结合环重设计 182 个中 128 个（70%）保留结合。局限同样明确：候选筛选仍依赖专用模型，完整结构预测 TM-score 0.38，远低于 ESMFold2 的 0.93。</li>          <li>中国侧同步推进：Sand.ai 于 11 月 25 日发布音视频统一模型 <b>MAGI-2</b>，声称在 Artificial Analysis 图生视频榜以 1165 Elo 登顶，480B 总参数 / 约 28B 激活，支持 30 秒 1080P，API 价 0.5 元 / 秒并计划开源全量权重；蚂蚁开源 1240 亿参数多模态模型 Ling-3.2-air；高德发布 ABot-World 0.5 世界模型。</li>          <li>监管下沉到消费端：纽约州 11 月 24 日签署法案，<b>5 年内禁止制造、分销和销售内置 AI 聊天机器人的儿童玩具</b>，签署 90 天后生效，违规最高罚款 1.5 万美元 / 日；纽约成为继加州之后第二个立此类法的州。Common Sense Media 测试的五款玩具均未通过全部安全检查。</li>        </ul>        <div class="takeaway"><strong>为什么重要 · </strong>模型能力从文本、代码外溢到生物分子与视频生产；与此同时，监管对象从模型本身下沉到儿童玩具这类最贴近家庭的场景。</div>        <div class="src"><b>信源 · </b>OpenAI 官方博客（11.24）、财联社 / 凤凰科技 / IT之家（11.25）、稀土掘金 AI 日报 / AI Pulse（11.25–26）、ABC7 New York / TechCrunch（11.25）</div>      </article>    </div>    <div class="aside" id="space">      <div class="box" style="--c:var(--tech)">        <h4>量子 · 两项硬进展</h4>        <div class="sub">QUANTUM, 11.25–26</div>        <ul>          <li>清华大学孙麓岩团队联合中国科大、浙江大学，在超导电路上提出「Fock 空间量子共焦显微」方案，制备出<b>平均光子数最高 500</b> 的聚焦态，位移测量精度超越标准量子极限 <b>19.20±0.20 dB</b>（约 1/9），成果在线发表于《Nature》（DOI: 10.1038/s41586-026-11353-2）。</li>          <li>IBM 与芝加哥大学团队在 70 个受保护逻辑量子比特上运行 2415 个逻辑双比特门、468 个 T 门，约 15 分钟完成经典模拟难以企及的采样，并给出统计置信度下的保真度下限；仍属预印本与「能力资格考」。</li>          <li>国内中性原子路线企业原子芯光 11.25 宣布完成<b>超亿元天使轮</b>，由联想之星、上海未来产业基金联合领投。</li>        </ul>      </div>      <div class="box" style="--c:var(--tech)">        <h4>宇宙 / 在轨算力</h4>
-<div class="sub">ORBIT, 11.25–26</div>        <ul>          <li>国星宇航「星算」计划 02 组星座入轨后，总算力规模达近 <b>50 POPS</b>，为目前全球在轨最大算力星座；规划 2800 颗计算卫星，2030 年前千星组网。</li>          <li>中国电信宣布智传网完成星上部署及星地联调，下一步提升星上解码效率与链路适配能力。</li>          <li>光纤 / 卫星互联网之外，蓝箭朱雀二号改进型已将 8 颗「星算」计算卫星送入预定轨道；商业航天正在获得 AI 算力的第二增长曲线。</li>        </ul>
-</div>    </div>
-</section>  <!-- ================= 商业 ================= -->  <section id="biz" style="--c:var(--biz);--tbg:var(--biz-bg)">    <div class="sec-head">      <span class="sec-num">02</span>      <h2>商业</h2>    </div>    <p class="sec-desc">国际企业、中国国内企业与行业。当日主线是「规则与信用同时重定价」：美国关税换法律底座，AI 融资被债市重新标价，中国以 4600 亿元回购增持贷款稳预期。</p>    <div class="rule"></div>    <div class="cards">      <article class="card" style="--c:var(--biz);--tbg:var(--biz-bg)">        <div class="card-top">          <span class="rank">1</span>          <div class="tags">            <span class="tag">贸易政策</span>            <span class="tag">关税</span>            <span class="tag geo">国际 / 中国</span>          </div>        </div>        <h3>美国以 301 条重启关税：14 个经济体被认定「结构性产能过剩」，中国拟加征最高 20%</h3>        <ul>          <li>USTR 于 <b>11 月 25 日</b>公布历时 8 个月的 301 调查结论：16 个被调查经济体中，14 个被认定相关政策「不合理并限制美国商业」。拟议税率（多为净额口径）：<b>中国最高 20%</b>（附件 A 最高 10%、附件 B 豁免），欧盟 15%，日本 / 韩国 / 瑞士 / 台湾 15%，越南最高 35%（达成协议 20%），印度最高 25%（协议 17%），印尼 / 马来 / 泰国 / 孟加拉 18%，新加坡最高 20%（协议 10%）。</li>          <li>关键后手：若磋商不足以解决问题，美方称可考虑对中国商品征收最高 <b>40%</b>；书面意见与听证申请 2027 年 1 月 5 日截止，听证会 1 月 25 日启动。这是今年 2 月最高法院裁定 IEEPA 关税违法后，白宫重建关税体系的新法律路径。</li>          <li>各方反应：中国外交部发言人郭嘉昆称「产能过剩是伪命题」，反对借题政治操弄；欧盟坚决反对把欧洲视为过剩来源；日本官房长官木原稔表示遗憾；韩国方案保留上调至 25% 的空间。</li>          <li>同日宏观背景：美国 10 月 PCE 同比 <b>3.8%</b>、核心 PCE 同比 <b>3.3%</b>（2023 年 11 月以来最高），三季度 GDP 年化增速上修至 4.3%；市场对 12 月加息的定价升至约 99.8%。</li>        </ul>        <div class="takeaway"><strong>为什么重要 · </strong>关税从「紧急权力」换到「301」底座，短期是谈判筹码，中期把通胀与利率路径重新绑在一起。</div>        <div class="src"><b>信源 · </b>USTR 新闻稿 / 联邦公报预公开稿（11.25）、共同社 / 路透 / 中国侨网（11.25–26）、外交部 / 新华社（11.25）、新华财经（11.26）</div>      </article>      <article class="card" style="--c:var(--biz);--tbg:var(--biz-bg)">        <div class="card-top">          <span class="rank">2</span>          <div class="tags">            <span class="tag">信用市场</span>            <span class="tag">AI 基建</span>            <span class="tag geo">国际</span>          </div>        </div>        <h3>AI 融资链条被债市重定价：英伟达 AA 列入负面观察，CoreWeave 隐含违约概率超 70%</h3>        <ul>          <li>11 月 25 日，标普全球评级将英伟达发行人信用评级及高级无抵押债务评级（均为 <b>AA</b>）列入负面信用观察，理由包括黄仁勋 11 月 12 日离任、11 月 23 日复职所暴露的董事会独立性与关键人物风险；「管理与治理」调整项由正面改为中性，90 天内或降一档至 AA-。穆迪此前已将展望从正面下调至稳定。</li>          <li>ICE Data Services 数据显示，英伟达五年期 CDS 盘中扩大 6bp 至 <b>147.27bp</b>，创历史新高（6 月约 40bp）；CoreWeave 五年期 CDS 单日一度上升 209bp 至 <b>15.34%</b>，按该模型隐含五年违约概率超过 70%。甲骨文、Alphabet、SpaceX 的五年期 CDS 也创纪录，甲骨文达 316bp。</li>          <li>市场联动：英伟达 25 日收跌 3.91%，两日累跌约 9.5%，单日市值蒸发约 1468 亿美元；纳斯达克 100 指数盘中一度较上月高点回撤 20%，触及技术性熊市门槛。另有报道称贝莱德拟大幅下调一笔 250 亿美元数据中心收购报价。</li>          <li>结构性隐忧：CoreWeave 等公司靠举债买卡、出租算力还债，英伟达又向部分客户提供信用支持；截至三季度末，英伟达提供的担保总额达 1180 亿美元，其中 1050 亿美元涉及园区土地、电力与数据中心容量信用支持。</li>        </ul>        <div class="takeaway"><strong>为什么重要 · </strong>AI 叙事的定价权正从股市转向债市；一旦评级下调，依赖英伟达信用背书的算力融资将同步重新定价。</div>        <div class="src"><b>信源 · </b>标普全球评级（11.25）、ICE Data Services / 央视财经（11.26）、新华财经 / 每日经济新闻 / 华尔街见闻（11.26）</div>      </article>      <article class="card" style="--c:var(--biz);--tbg:var(--biz-bg)">        <div class="card-top">          <span class="rank">3</span>          <div class="tags">            <span class="tag">资本市场</span>            <span class="tag">产业政策</span>            <span class="tag geo">中国</span>          </div>        </div>        <h3>三大行 4600 亿元回购增持贷款提速，八部门同步推动 AI 服务出海</h3>        <ul>          <li>建设银行 11 月 25 日晚披露，已与百余家客户签订<b>超千亿元</b>股票回购增持贷款合同，制造业与民营企业占比超七成；工商银行此前披露服务超 200 家上市公司、签约近 <b>1800 亿元</b>；中国银行服务近 200 家、贷款额度承诺超 <b>1800 亿元</b>——三家合计已超 <b>4600 亿元</b>。</li>          <li>政策底座：11 月 2 日央行等部门将回购增持再贷款由阶段性安排转为长期制度性安排，再贷款利率由 1.25% 降至 <b>1%</b>，支持比例提高至贷款本金的 100%，对象扩至 21 家全国性银行与 5 家系统重要性城商行。截至 11 月 25 日，已有逾 100 家上市公司公告取得专项贷款承诺函。</li>          <li>11 月 26 日，商务部等 8 部门印发《服务贸易发展「十五五」规划》，明确<b>稳妥有序推动云计算、大模型等人工智能相关服务出海</b>，鼓励形成「技术+产品+服务」一体化方案，支持差异化产品与本地化联合运营。</li>          <li>市场侧：11 月 26 日早盘 A 股有色、化工、煤炭与 PCB 走强，恒生科技指数盘中涨超 4%（智谱一度涨逾 16%、理想汽车涨逾 13%）；险资三季度逆势加仓股票 1464 亿元，股票配置比例突破 10%。</li>        </ul>        <div class="takeaway"><strong>为什么重要 · </strong>一边用 1% 的低成本信贷托住权益市场，一边给 AI 出海开政策通道；这是中国对冲外部关税冲击与 AI 信用波动的组合拳。</div>        <div class="src"><b>信源 · </b>建行 / 工行 / 中行公开信息、财联社 / 证券时报 / 界面新闻（11.25–26）、商务部（11.26）、新华财经（11.26）</div>      </article>    </div>    <div class="aside">      <div class="box">        <h4>中国 · 企业与行业</h4>        <div class="sub">CHINA, 11.25–26</div>        <ul>          <li>小鹏：L4 级 Robotaxi 正式载客，人形机器人 IRON 登台演讲并宣布 2027 年 1 月起量产；机器人业务 8 月完成超 9 亿美元融资，投后估值超 63 亿美元。</li>          <li>理想汽车 Q3 收入 288 亿元、同比增 5.4%，车辆毛利率 15.3%，经营亏损大幅收窄，但 Q4 交付指引低于预期。</li>          <li>比亚迪与英力士汽车就收购法国汉巴赫工厂展开独家谈判，拟在当地生产面向欧洲市场的车型。</li>          <li>安永预计港股全年 IPO 集资 4300 亿港元、同比增 50%；前三季险资股票余额增加 1464 亿元。</li>        </ul>
-</div>    </div>
-</section>  <!-- ================= 社会 ================= -->  <section id="soc" style="--c:var(--soc);--tbg:var(--soc-bg)">    <div class="sec-head">      <span class="sec-num">03</span>      <h2>社会</h2>    </div>    <p class="sec-desc">国际与国内的社会、人文、政治。当日中东能源与金融目标同时遇袭，中国空间站首次迎来外籍航天员，日本战后核政策的两大支柱同时被松动。</p>    <div class="rule"></div>    <div class="cards">      <article class="card" style="--c:var(--soc);--tbg:var(--soc-bg)">        <div class="card-top">          <span class="rank">1</span>          <div class="tags">            <span class="tag">地缘冲突</span>            <span class="tag">能源安全</span>            <span class="tag geo">国际</span>          </div>        </div>        <h3>胡塞一天打击沙特四大经济目标；美方重议将伊朗高层列为打击目标</h3>        <ul>          <li>11 月 25 日，也门胡塞武装军事发言人萨雷亚称，一天内发动三次行动，打击沙特东部的<b>拉斯坦努拉炼油厂</b>、利雅得阿卜杜拉国王金融区，以及红海沿岸的吉达港和吉赞港；卫星图像显示炼厂上空烟羽覆盖约 <b>600 平方公里</b>，NASA FIRMS 监测到强火点。沙特主导联军称在拉斯坦努拉拦截 4 架无人机，并在吉赞港拦截弹药、仅造成轻微损坏，<b>未证实炼厂起火</b>。</li>          <li>拉斯坦努拉日加工原油及凝析油 <b>55 万桶</b>，约占沙特炼油能力 16%，其成品油满足沙特国内约 40% 燃油需求；该厂毗邻全球最大原油出口码头之一。</li>          <li>同日伊朗革命卫队称一艘液化天然气船在霍尔木兹海峡触雷爆炸；NBC 援引官员称特朗普政府内部重新讨论将伊朗政权高层列为打击目标，美国联邦政府也面临因伊朗战费「断供」而再度停摆的风险。</li>          <li>市场反应：11 月 25 日布伦特原油收涨 <b>3.51%</b> 至 94.61 美元 / 桶，WTI 涨 1.99% 至 83.68 美元；26 日早盘港股中海油、中石油均涨约 3.8%。</li>        </ul>        <div class="takeaway"><strong>为什么重要 · </strong>冲突从航道外溢到炼厂、金融区与港口，「能源—航运—通胀」的传导链条重新绷紧，且与美国国内政治 budget 直接挂钩。</div>        <div class="src"><b>信源 · </b>路透 / NASA Worldview / FIRMS（11.25）、CCTV 国际时讯 / 新华社（11.26）、21 财经 / 观察者网（11.26）、上海证券报（11.26）</div>      </article>      <article class="card" style="--c:var(--soc);--tbg:var(--soc-bg)">        <div class="card-top">          <span class="rank">2</span>          <div class="tags">            <span class="tag">航天</span>            <span class="tag">国际合作</span>            <span class="tag geo">中国</span>          </div>        </div>        <h3>神舟二十四号 8:18 发射、14:35 会师：天宫首次迎来外籍航天员</h3>        <ul>          <li>北京时间 <b>11 月 25 日 8:18</b>，长征二号 F 遥二十四运载火箭在酒泉点火；11:56 飞船成功对接天和核心舱前向端口，对接过程约 3.5 小时；<b>14:35</b> 神舟二十三号乘组打开「家门」，汤洪波、武毅与巴基斯坦航天员穆罕默德·齐尚·阿里入驻。</li>          <li>这是中国航天史上第 <b>9 次「太空会师」</b>，也是「天宫」首次迎来外籍航天员。任务为空间站应用与发展阶段第 8 次载人飞行、工程立项以来第 41 次发射、长征系列第 680 次飞行。</li>          <li>任务期间计划开展 <b>90 项</b>空间科学实验与技术试验；巴方航天员除参与乘组日常工作外，主要承担中巴合作空间科学实验，完成样品与实验单元安装及在轨实验，短期任务后随神舟二十三号返回。</li>          <li>截至目前，已有 31 名中国航天员、1 名外籍航天员共 50 人次进入太空执行飞行任务；今年恰逢中国航天事业创建 70 周年。</li>        </ul>        <div class="takeaway"><strong>为什么重要 · </strong>载人航天从国家级工程转为常态化的国际合作平台；外籍航天员准入、联合飞行的责任划分与长期轮换机制进入实操阶段。</div>        <div class="src"><b>信源 · </b>中国载人航天工程办公室（11.25）、新华社 / 央视新闻（11.25）、光明日报（11.26）</div>      </article>      <article class="card" style="--c:var(--soc);--tbg:var(--soc-bg)">        <div class="card-top">          <span class="rank">3</span>          <div class="tags">            <span class="tag">核政策</span>            <span class="tag">安全</span>            <span class="tag geo">国际</span>          </div>        </div>        <h3>日本撬动「无核三原则」：拟删武器出口文件表述，东京民众集会反对</h3>        <ul>          <li>据日媒 11 月 24 日报道，日本政府正研究修改「防卫装备转移三原则」，或删除前言中<b>「恪守无核三原则」</b>的表述；自民党与日本维新会计划在年底修订「安保三文件」，并讨论为「不引进核武器」设置例外情形、将核动力潜艇纳入修订内容。今年 4 月日本已原则上允许杀伤性成品武器出口。</li>          <li>11 月 25 日晚，部分日本民众在东京参议院议员会馆集会反对；本月初约 <b>1.4 万人</b>在国会议事堂前集会，大阪、京都、广岛同步举行游行；「禁止原子弹氢弹日本国民会议」25 日再次集会。</li>          <li>同日曝光的《防卫力整备计划》指导方针提出，引进可由舰艇发射的<b>新型远程反舰导弹</b>作为反击手段，并在各领域推进装备国产化。禁止化学武器组织第 31 届缔约国大会上，国际人士也敦促日本正视在华遗弃化学武器与侵略历史。</li>        </ul>        <div class="takeaway"><strong>为什么重要 · </strong>战后日本安全政策的两大支柱——无核三原则与专守防卫——同时被松动，东北亚的军备预期与安全困境被主动抬高。</div>        <div class="src"><b>信源 · </b>朝日新闻 / 东京新闻（11.24–25）、央视新闻 / 央广网 / 中国新闻网（11.25–26）、中国日报（11.25）</div>      </article>    </div>    <div class="aside">      <div class="box">        <h4>中国 · 政治与社会</h4>        <div class="sub">CHINA, 11.25–26</div>        <ul>          <li>习近平对党内法规工作作出重要指示，强调把依规治党作为管党治党基本方式；全国党内法规工作会议 11.24–25 在京召开，蔡奇出席并讲话。</li>          <li>最高法：原中央防范和处理邪教问题领导小组办公室副主任高以忱受贿、利用影响力受贿案一审获刑 <b>11 年</b>、罚金 500 万元（涉案金额合计约 6040 万元）。</li>          <li>公安部 11.25 披露：涉嫌非法吸收公众存款、涉案金额<b>超 150 亿元</b>的嫌疑人舒某某已从俄罗斯引渡回国（11 月 5 日回国）。</li>          <li>两高发布妨害兴奋剂管理刑事案件司法解释，12 月 1 日起施行；成都未成年人保护新规禁止向未成年人提供 AI 虚拟亲密关系服务，2027 年 1 月 1 日起施行。</li>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24 小时热点图谱 · 2026.11.25–11.26</title>
+<style>
+:root{
+--paper:#faf8f5;    --paper-2:#ffffff;    --ink:#1c1b19;    --ink-2:#3d3b37;
+--muted:#7c7873;    --line:#e6e1d9;      --line-2:#d6cfc4;
+--tech:#3a5bd9;     --tech-bg:#eef1fd;   --biz:#b8792a;   --biz-bg:#fbf2e3;
+--soc:#b03a3a;      --soc-bg:#fbeceb;    --radius:16px;
+--shadow:0 1px 2px rgba(28,27,25,.04), 0 8px 28px -12px rgba(28,27,25,.14);
+--serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC",Georgia,serif;
+--sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+--hero-1:#0a1c36;   --hero-2:#102c52;   --hero-3:#1a477c;
+--hero-ink:#f2f6fc; --hero-ink-2:#c8d8ec; --hero-ink-3:#92a9c6;
+--hero-accent:#e5c377; --hero-accent-2:#d8a13a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+background-image:radial-gradient(circle at 1px 1px, rgba(28,27,25,.045) 1px, transparent 0);background-size:22px 22px;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--hero-1) 0%,var(--hero-2) 55%,var(--hero-3) 100%);color:var(--hero-ink);padding:76px 0 60px;}
+header.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(900px 320px at 78% -10%, rgba(201,162,77,.28), transparent 60%),radial-gradient(600px 260px at 8% 110%, rgba(70,150,230,.30), transparent 60%);pointer-events:none;}
+.hero .wrap{position:relative;z-index:2}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--hero-ink-2);border:1px solid rgba(200,216,236,.35);padding:6px 14px;border-radius:999px;margin-bottom:26px;}
+.kicker i{width:6px;height:6px;border-radius:50%;background:var(--hero-accent-2);box-shadow:0 0 0 4px rgba(216,161,58,.18);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5.4vw,58px);line-height:1.18;margin:0 0 18px;letter-spacing:.01em}
+h1 em{font-style:normal;color:var(--hero-accent)}
+.lede{max-width:640px;color:var(--hero-ink-2);font-size:16.5px;margin:0 0 34px}
+.stats{display:flex;flex-wrap:wrap;gap:34px;border-top:1px solid rgba(255,255,255,.12);padding-top:24px}
+.stat b{display:block;font-family:var(--serif);font-size:28px;color:var(--hero-ink);font-weight:600;line-height:1.2}
+.stat span{font-size:12.5px;color:var(--hero-ink-3);letter-spacing:.06em}
+nav{position:sticky;top:0;z-index:20;background:rgba(250,248,245,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 24px;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;color:var(--muted);font-size:14px;padding:7px 15px;border-radius:999px;border:1px solid transparent;white-space:nowrap;transition:.2s}
+nav a:hover{color:var(--ink);background:#fff;border-color:var(--line-2)}
+section{padding:64px 0 8px}
+.sec-head{display:flex;align-items:flex-end;gap:16px;margin-bottom:8px}
+.sec-num{font-family:var(--serif);font-size:15px;letter-spacing:.3em;color:var(--muted);padding-bottom:6px}
+h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,34px);margin:0;font-weight:600;letter-spacing:.01em}
+.sec-desc{color:var(--muted);font-size:14.5px;margin:10px 0 34px;max-width:660px}
+.rule{height:1px;background:linear-gradient(90deg,var(--line-2),transparent);margin:0 0 30px}
+.cards{display:grid;gap:20px}
+article.card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px 26px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .25s ease, box-shadow .25s ease}
+article.card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(28,27,25,.05),0 18px 40px -16px rgba(28,27,25,.2)}
+article.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c)}
+.card-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.rank{font-family:var(--serif);font-size:13px;font-weight:600;color:#fff;background:var(--c);width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none}
+.tags{display:flex;gap:7px;flex-wrap:wrap}
+.tag{font-size:11.5px;letter-spacing:.06em;padding:3px 9px;border-radius:6px;background:var(--tbg);color:var(--c);border:1px solid color-mix(in srgb, var(--c) 22%, transparent)}
+.tag.geo{background:#f2efe9;color:var(--muted);border-color:var(--line)}
+h3{font-family:var(--serif);font-size:20.5px;line-height:1.5;margin:0 0 14px;font-weight:600}
+.card ul{margin:0;padding:0;list-style:none;display:grid;gap:11px}
+.card li{position:relative;padding-left:20px;font-size:15px;color:var(--ink-2);line-height:1.72}
+.card li::before{content:"";position:absolute;left:3px;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--c);opacity:.55}
+.card li b{color:var(--ink);font-weight:600}
+.takeaway{margin-top:18px;padding:13px 16px;border-radius:11px;background:var(--tbg);font-size:14.2px;color:var(--ink-2);border:1px dashed color-mix(in srgb, var(--c) 30%, transparent)}
+.takeaway strong{color:var(--c);font-weight:600}
+.src{margin-top:16px;padding-top:13px;border-top:1px solid var(--line);font-size:12.4px;color:var(--muted);letter-spacing:.02em}
+.src b{color:var(--ink-2);font-weight:500}
+.aside{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:22px}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+.box h4{font-family:var(--serif);font-size:17px;margin:0 0 4px;font-weight:600}
+.box .sub{font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:14px}
+.box ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.box li{font-size:14.2px;color:var(--ink-2);padding-left:16px;position:relative;line-height:1.68}
+.box li::before{content:"—";position:absolute;left:0;color:var(--line-2)}
+.note{margin:56px 0 0;padding:26px 28px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.note h4{font-family:var(--serif);font-size:18px;margin:0 0 12px}
+.note p{margin:0 0 10px;font-size:14.4px;color:var(--ink-2)}
+.note p:last-child{margin:0}
+.note b{color:var(--ink)}
+footer{margin-top:64px;padding:38px 0 54px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+@media (max-width:640px){header.hero{padding:56px 0 44px}article.card{padding:22px 20px}.stats{gap:22px}}
+@media print{body{background:#fff}nav,header.hero::after{display:none}article.card{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="wrap">
+<div class="kicker"><i></i>24 小时窗口 · 北京时间 11.25 16:00 – 11.26 16:00</div>
+<h1>最新一日热点图谱<br><em>科技 · 商业 · 社会</em></h1>
+<p class="lede">以影响力为唯一排序标准。这一天的共同底色是“验收”：数学证明交给 Lean 验收，AI 基建交给债券市场验收，海峡通航交给水雷和真实风险验收。每条均标注日期与信源口径。</p>
+<div class="stats">
+<div class="stat"><b>2026.11.26</b><span>编报日期</span></div>
+<div class="stat"><b>3 × 3</b><span>核心条目</span></div>
+<div class="stat"><b>机器验收</b><span>当日主线</span></div>
+<div class="stat"><b>可溯源</b><span>逐条标注信源</span></div>
+</div>
+</div>
+</header>
+<nav>
+<div class="wrap">
+<a href="#tech">① 科技</a>
+<a href="#biz">② 商业</a>
+<a href="#soc">③ 社会</a>
+<a href="#quantum">量子 / 安全</a>
+<a href="#macro">宏观背景</a>
+<a href="#method">口径说明</a>
+</div>
+</nav>
+<main class="wrap">
+<!-- ================= 科技 ================= -->
+<section id="tech" style="--c:var(--tech);--tbg:var(--tech-bg)">
+<div class="sec-head"><span class="sec-num">01</span><h2>科技</h2></div>
+<p class="sec-desc">AI 产品 / 模型 / 技术、量子与宇宙。当日最显著的结构性变化：数学研究的瓶颈从“找到证明”转为“审完证明”；视频模型的竞争锚点从画质转向单位镜头成本。</p>
+<div class="rule"></div>
+<div class="cards">
+<article class="card" style="--c:var(--tech);--tbg:var(--tech-bg)">
+<div class="card-top"><span class="rank">1</span><div class="tags"><span class="tag">AI 数学</span><span class="tag">形式化验证</span><span class="tag geo">国际</span></div></div>
+<h3>AI 数学「机器先验收」时代：VP≠VNP 双实验室 4 小时撞车，黎曼证明进入全球压缩战</h3>
+<ul>
+<li><b>11.24 北京时间凌晨 05:43</b>，Anthropic 在 GitHub <b>formal-math/vp-vnp</b> 发布 70 页论文《VP ≠ VNP over every field》，作者栏署名「Claude」；约 324 个文件、7.3 万行 Lean 代码。<b>3 小时 47 分后</b>，OpenAI 在 openai/math 发布约 30 页的《VP and VNP are different》，技术路线不同、结论同向，均附形式化证明。两篇均声称对所有域成立（特征 2 域改用哈密顿圈多项式）；Anthropic 明确写明<b>尚无人类数学家完整审阅</b>，OpenAI 仓库记录称结果 11 月 6 日已得出。</li>
+<li>须避免误读：<b>VP≠VNP 不等于 P≠NP</b>，只是其代数版本。剑桥大学 Tom Gur 称进展“远超此前掌握的技术手段”，牛津 Varun Kanade 指出经典 P/NP 仍需新技术；Scott Aaronson 与外部团队已就「形式化陈述是否准确表达论文命题」做语义层复核，截至 11.25 未见代数复杂性专家的端到端确认。</li>
+<li>11.26 的续集是「压缩」：<b>1737 万行黎曼猜想 Lean 4 证明</b>（11.20 由 Anthropic 数学家 Levent Alpöge 与 Claude 完成，11.21–22 获 Lean FRO / Mathlib 联合认证）在 GitHub 官方仓库涌进 <b>359 个 PR</b>；rh-shrink 按文本口径统计有效代码由约 1462 万行降至 1211 万行（−16.5%），VerifyTask 榜单完成 955 次校验运行、301 次有效突破。Gemini 4 Neon、GPT-6.2 Astra、DeepSeek V4.1 Flash 均加入「给 AI 写的证明瘦身」。</li>
+<li>学界态度分裂而清晰：丘成桐称「数学进入了一个新的纪元」；菲尔兹奖得主邓煜认为「25 万页不可能可读」；梅纳德表示有 98%–99% 把握正确。Alpöge 本人已澄清「25 万页」是玩笑。</li>
+</ul>
+<div class="takeaway"><strong>为什么重要 · </strong>证明的瓶颈正从“人能不能想出来”变成“机器能不能验完、人能不能读懂”。Lean 从辅助工具升格为科研验收层，这会重塑数学、理论计算机与 AI 研发的协作方式。</div>
+<div class="src"><b>信源 · </b>澎湃新闻 / 科技日报（11.25、11.26）、智源社区（11.25）、钛媒体（11.25）、36氪·量子位（11.24）、科普中国 / 科技日报（11.23）、新华每日电讯（11.24）</div>
+</article>
+<article class="card" style="--c:var(--tech);--tbg:var(--tech-bg)">
+<div class="card-top"><span class="rank">2</span><div class="tags"><span class="tag">视频模型</span><span class="tag">开源</span><span class="tag geo">中国</span></div></div>
+<h3>MAGI-2 把旗舰视频模型打到「一折」：480B 登顶 AA 图生视频榜，30 秒 1080P 仅 15 元</h3>
+<ul>
+<li><b>11.25</b>，Sand.ai（三呆科技）发布 MAGI-2：在 Artificial Analysis 图生视频（I2V）榜以 <b>Elo 1165</b> 位列全球第一，超过 Seedance 2.5（1161，媒体转述榜单口径）。采用自研 MagiMoE 超细粒度架构，总参数由 Preview 的 114B 扩至 <b>480B</b>，每 token 激活约 28B，训练数据约 3 倍。</li>
+<li>能力边界被明确推到生产端：原生 <b>4–30 秒、1080P 25fps 音画同步</b>，单次最多混合 10 张图 + 5 段视频 + 5 段音频，支持 2 万字符提示词与按时间点切镜；官方演示 12 个切点全中、最大偏差 0.08 秒。无提示词增强情况下自主生成 9×9 数独解题过程视频。</li>
+<li>价格是真正的变量：1080P 刊例价 <b>0.5 元/秒</b>，30 秒成片 15 元，约为 Seedance 2.5 同规格的 1/10；公司宣布「尽快」开放全量权重。已完成<b>海光、摩尔线程 MTT S5000</b> 适配，后者全功能 GPU 与 MUSA 软件栈直接承载首发商业化推理。</li>
+<li>公司侧：创始人曹越（清华博士、Swin Transformer 核心作者），11 月 5 日完成 2 亿美元 A+ 轮，10 个月累计融资约 3 亿美元、估值超 10 亿美元。</li>
+</ul>
+<div class="takeaway"><strong>为什么重要 · </strong>视频生成的竞争指标正在从单帧画质变成「一条可用镜头的全链路成本 + 权重可得性」；旗舰模型跑在国产算力上，也第一次不是演示而是商业化服务。</div>
+<div class="src"><b>信源 · </b>新京报贝壳财经、上海证券报、广州日报大洋网、新浪科技（11.25）；甲子光年（11.26）</div>
+</article>
+<article class="card" style="--c:var(--tech);--tbg:var(--tech-bg)">
+<div class="card-top"><span class="rank">3</span><div class="tags"><span class="tag">智能体</span><span class="tag">开源</span><span class="tag geo">国际</span></div></div>
+<h3>英伟达同日多线开源：「像素即代码」把生图变成可编辑的智能体工作流</h3>
+<ul>
+<li><b>11.26</b>，英伟达在 Hugging Face 放出 <b>Nemotron-Labs-Image-30B-A3B</b> 权重：自回归 MoE，总参 300 亿、激活 30 亿，基于 Nemotron-3-Nano 与 Mamba-2 + Attention 混合设计，经 GRPO 优化。厂商数据：LongTextBench 97.98（GPT Image 2 为 96.00）、GenEval 92.86（89.00）；但 GenEval2 65.43 对 81.00、Qwen-Image-Bench 52.46 对 65.23 仍落后。</li>
+<li>配套的 <b>Nemotron-Labs-VisualCreation</b> 框架主张「Pixel as Code」：图像生成、SVG/HTML 结构化生成与混合范式并行，AgentHarness 负责规划→生成→渲染→视觉检查→迭代修复，产物是可编辑的网页、幻灯片、图表与文档，而非一次性位图。</li>
+<li>同日还开源 <b>Nemotron 3.5 Parse</b> 的三套合成数据（Synthetic Charts V1 998 万例、Synthetic Tables V1 100 万例、OCR Multilingual v2 790 万例）、微调配方与 DFlash2 投机解码器；单卡 H200 上并发 1 吞吐提升 7.62×，并发 512 达 20.44 页/秒（Parse 2.0 为 2.98）。</li>
+<li>单一信源、待独立复核：英伟达 GTP 统一并行框架在 2 万亿参数 MoE 训练中报告 <b>13.0 EFLOP/s</b>（11.26 AI 技术聚合媒体）。</li>
+</ul>
+<div class="takeaway"><strong>为什么重要 · </strong>生成式视觉从「出图」转向「可编辑、可检查、可局部返工」的工程闭环；英伟达输出的不只是模型，而是数据、奖励设计、推理栈一整套可复制管线。</div>
+<div class="src"><b>信源 · </b>Hugging Face / arXiv 官方发布、AIBase、站长之家、TPS、llms.blog（11.26）</div>
+</article>
+</div>
+<div class="aside" id="quantum">
+<div class="box">
+<h4>量子 · 算法与硬件双线推进</h4>
+<div class="sub">QUANTUM, 11.23–11.26</div>
+<ul>
+<li>Google DeepMind × Quantum AI：多组 <b>Gemini 4 智能体</b>写量子电路、Lean 4 逐行证明；arcsin 态制备资源开销降 <b>290 倍</b>，惯性约束聚变模拟降 11.8 倍（纠错量子比特 5650→4338），Grover 特定实现 2.57 倍。仍超出首批纠错机可用算力。</li>
+<li>Google Quantum AI 在《Science》发表 Willow 处理器实测<b>测量情境性</b>：魔方游戏胜率 98.3%，高于经典上限 88.9%；GHZ 游戏扩展至 71 量子比特，隐藏线性函数任务达 105 量子比特。游戏本身无应用价值，价值在硬件基准。</li>
+<li>当日宇宙头条为神舟二十四号首次中外联合飞行，见社会板块 ②。</li>
 </ul>
 </div>
 <div class="box">
-<h4>国际 · 一页速览</h4>
+<h4>安全 · 智能体攻击已入在野目录</h4>
+<div class="sub">SECURITY, 11.25</div>
+<ul>
+<li>Amazon 威胁情报：攻击者在开源框架 Cairn 上仅给出「获取 Shell 权限」，AI 智能体<b>约 11 分钟</b>自主发现并利用 MONAI Label 的路径穿越 0-day（CVE-2026-133968，CVSS 9.8），植入 sitecustomize.py 反向 Shell 取得 root；CISA 已列入在野利用目录。</li>
+<li>能力边界同样清楚：对加固 Redis 服务器 16 小时 148 个动作失败，对 GPU 服务器 3 万余组凭据爆破失败。亚马逊措辞为「almost completely autonomously」。</li>
+<li>纽约州签署法案，五年内禁售内置 AI 聊天机器人的玩具，90 天后生效，违规每日罚 1.5 万美元（继加州后第二州）。</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- ================= 商业 ================= -->
+<section id="biz" style="--c:var(--biz);--tbg:var(--biz-bg)">
+<div class="sec-head"><span class="sec-num">02</span><h2>商业</h2></div>
+<p class="sec-desc">国际企业、中国国内企业与行业。当日主线是「AI 资产重新定价」：信用市场先于股市出手，贸易政策把关税变成谈判筹码，中国科技资本则向制造端下沉。</p>
+<div class="rule"></div>
+<div class="cards">
+<article class="card" style="--c:var(--biz);--tbg:var(--biz-bg)">
+<div class="card-top"><span class="rank">1</span><div class="tags"><span class="tag">信用风险</span><span class="tag">AI 基建</span><span class="tag geo">国际</span></div></div>
+<h3>AI 信用链集体重定价：英伟达 AA 被列负面观察，CoreWeave 隐含违约概率超 70%</h3>
+<ul>
+<li><b>11.25</b>，标普全球将英伟达发行人评级及高级无抵押债务评级（均为 <b>AA</b>）列入<b>负面信用观察</b>：黄仁勋 11.12 离任、11.23 复职暴露关键人物风险、董事会独立性与继任安排缺陷，「管理与治理」调整项由正面改为中性；若 90 天内缺陷仍在，预计降一档至 AA−。此前一周穆迪已将展望由正面降至稳定。</li>
+<li>信用市场先行动：ICE Data Services 显示英伟达五年期 CDS 盘中扩大 6bp 至 <b>147.27bp</b>，创历史新高（今年 6 月约 40bp）；<b>CoreWeave 五年期 CDS 单日升 209bp 至 15.34%</b>，为有记录以来最大单日涨幅，隐含五年违约概率超 70%。德银口径为升 152bp 至 1330bp（口径分歧已标注）。甲骨文 CDS 达 316bp、隐含违约率约 23%（一年前 6%），Alphabet、SpaceX 同创新高。</li>
+<li>股市同步回吐：英伟达收跌 <b>3.91%</b>，市值 3.61 万亿美元，单日蒸发约 1468 亿美元（约合人民币 9790 亿元），较 11.23 暴力反弹日累计跌约 10%；费城半导体指数盘中跌近 8%、收跌 0.65%；纳斯达克 100 盘中较上月高点回撤 20%。</li>
+<li>传导链条被公开化：英伟达三季度财报电话会披露担保总额 <b>1180 亿美元</b>，其中 1050 亿涉及 Portspike 园区土地、电力与数据中心容量；高盛预计 2027 年芯片及算力融资规模达 3200 亿美元（单一机构预测）。政治上，众院 4 个委员会民主党高层致信白宫，5 名参议员发联合声明，黄仁勋 12 月初将出席国会听证。</li>
+</ul>
+<div class="takeaway"><strong>为什么重要 · </strong>AI 交易的定价锚从股权估值转到债务偿付与公司治理。CDS 成为比股价更敏感的先行指标，且风险沿着「芯片商担保—新云厂商举债—算力租金还债」的闭环传导。</div>
+<div class="src"><b>信源 · </b>标普全球评级、ICE Data Services、央视财经、每日经济新闻、金十数据、证券时报网（11.25–26）</div>
+</article>
+<article class="card" style="--c:var(--biz);--tbg:var(--biz-bg)">
+<div class="card-top"><span class="rank">2</span><div class="tags"><span class="tag">贸易政策</span><span class="tag">关税</span><span class="tag geo">国际 / 中国</span></div></div>
+<h3>美国 301「产能过剩」调查落地：14 个经济体被提议加税，关税改作谈判筹码</h3>
+<ul>
+<li><b>11.25</b>，USTR 依据《1974 年贸易法》301 条款，结束对 16 个贸易伙伴历时 8 个月的调查，对其中 <b>14 个</b>提出关税方案：中国大陆最高 20%、越南 35%（达成协议可降至 20%）、印度/新加坡最高 25%/20%、欧盟、日本、韩国、台湾、瑞士均为 15%；墨西哥与挪威暂不列入。</li>
+<li>口径必须读细：对华 20% 已扣除今年 7 月「强迫劳动」301 调查下征收的 12.5%，<b>实际净增约 7.5 个百分点</b>；但未明确扣除特朗普第一任期 301 关税，部分商品累计税负或达 45%。若中美磋商未能解决调查发现的问题，备选方案可升至 40%，且不再保留附件豁免。</li>
+<li>程序上尚未生效：11.25 刊登《联邦公报》，2027 年 1 月 5 日前征求意见、1 月 25 日起听证，最快 2027 年 1 月实施。格里尔称新关税「有针对性」，多数不超过既有贸易协议上限，意在推动关键矿产采购与农产品出口谈判。</li>
+<li>中方 11.25 回应：外交部郭嘉昆称「产能过剩」是伪命题，反对以此为借口政治操弄；商务部 11.24 宣布继续暂停镓、锗、锑对美出口禁令至 <b>2027 年 1 月 27 日</b>。美股当日低开，材料与房地产领涨、科技与非必需消费领跌。</li>
+</ul>
+<div class="takeaway"><strong>为什么重要 · </strong>「对等关税」被最高法院否定后，白宫正以 301 条款重建关税体系；把税率上限与谈判进展挂钩，意味着关税本身成为持续施压的筹码而非一次性措施。</div>
+<div class="src"><b>信源 · </b>新华财经、USTR 公告 / 联邦公报、日经中文网、联合早报、路透社、腾讯新闻（11.25–26）</div>
+</article>
+<article class="card" style="--c:var(--biz);--tbg:var(--biz-bg)">
+<div class="card-top"><span class="rank">3</span><div class="tags"><span class="tag">具身智能</span><span class="tag">融资</span><span class="tag geo">中国</span></div></div>
+<h3>中国科技商业「从模型到产线」：小鹏 IRON 定档量产，DeepSeek 千亿融资落地</h3>
+<ul>
+<li><b>11.25</b>，小鹏第八届科技日「ORIGIN」发布图灵具身智能架构（System 2 规划 / System 1 执行 / System 0 控制），官方称 VLA 训练速度提升 10–20 倍。<b>IRON</b> 身高 170cm、体重 62kg、76 个自由度、1500+ 触觉点、3 颗图灵芯片；<b>2027 年 1 月硬件量产</b>，一季度进门店实习，二季度正式发布。自动化产线核心制程超 80%，配 600+ 项 AI 全息质检与 1000+ 项车规测试；机器人业务 8 月首轮融资超 9 亿美元、投后估值超 63 亿美元，创中国具身智能单轮纪录。何小鹏直言「造机器人难度是造车的 20 倍」，规模进家庭或需等到 2029 年后。</li>
+<li><b>DeepSeek</b> 新一轮融资随工商变更落地：注册资本由 1644.75 万元增至 1991.87 万元，新增 31 名合伙人；媒体口径融资总额 <b>1055 亿元</b>、投后估值 <b>6078 亿元</b>，为中国 AI 迄今最大单轮融资。产业资本涵盖中国移动、中国电信、宁德时代、腾讯、美团、网易、vivo、长鑫科技等，12 家直接出资上市公司合计市值约 9.5 万亿元（金额为媒体推算，公司未正式披露）。</li>
+<li>产业闭环继续外扩：中国电信开源星辰 4.1 预览版（285B 总参 / 17B 激活、100 万上下文，全程 8192 张昇腾 910C 训练）；厦门航空向波音采购 <b>50 架 B737-8</b>，目录价 74 亿美元（约 496.62 亿元），2031–2034 年交付，为波音时隔九年再获中国航司干线客机大单，尚需股东会与主管部门批准。</li>
+</ul>
+<div class="takeaway"><strong>为什么重要 · </strong>资本不再是单点押注模型，而是把发电、造芯、整机、终端、场景打包成生态；机器人则从「能不能做出来」转向「能不能稳定上岗、按工时收费」。</div>
+<div class="src"><b>信源 · </b>新华财经、经济参考报、北京商报、证券时报、21 世纪经济报道、财新、南方航空公告（11.24–26）</div>
+</article>
+</div>
+<div class="aside">
+<div class="box">
+<h4>中国资产 · 逆势走强</h4>
+<div class="sub">CHINA ASSETS, 11.25</div>
+<ul>
+<li>纳斯达克中国金龙指数<b>+1.87%</b>（盘中一度跌逾 1%）；BOSS 直聘 +12.56%、理想汽车 +11.03%、京东 +2.53%、阿里 +1.63%。</li>
+<li>中概与 A 股分化：11.25 A 股上证 +0.27% 报 3548.37 点，科创 50 +1.81%，两市成交 1.67 万亿元；港股恒指 −0.73%。</li>
+<li>韩国金融监管部门决定扩容 10.76 万亿韩元股市稳定基金，评估 25 家金融机构追加出资能力。</li>
+</ul>
+</div>
+<div class="box">
+<h4>公司快讯 · 同日</h4>
+<div class="sub">COMPANIES, 11.25–26</div>
+<ul>
+<li>戴尔 Q3 营收 549.37 亿美元、同比 +103%，新增 AI 服务器订单 602 亿美元，积压订单 1323 亿美元。</li>
+<li>Meta 与亚马逊磋商将 Muse 接入商城，或解除两个月前的访问限制；沃尔玛已与 Meta 合作黑色星期五代理购物。</li>
+<li>Anthropic 股价跌破 83 美元发行价；Neuralink 获 FDA 批准启动 Link 关键性临床试验。</li>
+<li>台积电拟在得州建设 226 亿美元 2nm 芯片厂，取决于税务豁免。</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- ================= 社会 ================= -->
+<section id="soc" style="--c:var(--soc);--tbg:var(--soc-bg)">
+<div class="sec-head"><span class="sec-num">03</span><h2>社会</h2></div>
+<p class="sec-desc">国际与国内的社会、人文、政治。中东航道风险升至冲突以来最高，中国空间站首次迎来外籍航天员，党内法规建设承接二十届五中全会部署。</p>
+<div class="rule"></div>
+<div class="cards">
+<article class="card" style="--c:var(--soc);--tbg:var(--soc-bg)">
+<div class="card-top"><span class="rank">1</span><div class="tags"><span class="tag">地缘</span><span class="tag">能源安全</span><span class="tag geo">国际</span></div></div>
+<h3>霍尔木兹海峡连续触雷，美方重启「打击伊朗高层」讨论</h3>
+<ul>
+<li><b>11.25</b>，伊朗伊斯兰革命卫队海军声明：一艘关闭定位、走未许可航道的液化天然气运输船在霍尔木兹海峡触雷爆炸起火；当天凌晨另有两艘「违规」油轮触雷爆炸起火，并警告船只勿受美军「误导」。国际海事组织秘书长多明格斯 11.24 明确不建议船舶在该海峡航行。</li>
+<li>英国海上贸易行动办公室数据：<b>10 月报告袭击超 30 起</b>，为 2 月冲突以来月度首次破 30；截至 11 月 22 日，11 月至少 22 起，实际数字可能更高。路透社称 11 月是开战以来伊朗打击「违规船只」最密集时期。</li>
+<li>美方同步升级：消息人士称政府内部近几周重启将<b>伊朗政权高层列为打击目标</b>的讨论；特朗普称对伊军事行动经费可支撑到明年 1 月底，国防部披露截至 11.13 已花费 <b>483 亿美元</b>（不含中东基地遇袭损失）；美国驻伊朗虚拟使馆发布「立即离开伊朗」警告，财政部 11.23 追加金融制裁。伊朗 10 月 CPI 同比 88.7%、食品饮料 112.6%，第一副总统称战略储备充足、计划三个月稳物价。</li>
+<li>市场回应：11.26 盘中 WTI 涨 1.80% 至 85.185 美元、布伦特涨 1.51% 至 92.008 美元；胡塞武装称以单向攻击无人机袭击沙特 Ras Tanura 炼厂，布油一度拉升 2.8%。</li>
+</ul>
+<div class="takeaway"><strong>为什么重要 · </strong>海峡已从「航道风险」变成「政策目标本身」。水雷、无人机与护航编队的近距离接触使误判成为最大尾部风险，而美方政治周期（明年 1 月新国会）正在压缩决策窗口。</div>
+<div class="src"><b>信源 · </b>新华社德黑兰电（11.25）、央视新闻（11.26）、21 财经（11.26）、新浪财经 / 凤凰卫视（11.26）</div>
+</article>
+<article class="card" style="--c:var(--soc);--tbg:var(--soc-bg)">
+<div class="card-top"><span class="rank">2</span><div class="tags"><span class="tag">航天</span><span class="tag">国际合作</span><span class="tag geo">中国 / 国际</span></div></div>
+<h3>神舟二十四号进驻「天宫」：中外航天员首次「太空握手」，首位外籍航天员进入中国空间站</h3>
+<ul>
+<li><b>11.25 08:18</b>，长征二号 F 遥二十四运载火箭在酒泉点火，约 10 分钟后船箭分离；<b>11:56</b> 成功对接天和核心舱前向端口，对接历时约 3.5 小时；<b>14:35</b> 神二十三乘组打开「家门」，两乘组 6 人合影。这是中国航天史第 9 次「太空会师」，也是天宫首次迎来外籍航天员。</li>
+<li>乘组为汤洪波（首位三次入驻中国空间站）、武毅与巴基斯坦航天员<b>穆罕默德·齐尚·阿里</b>——巴基斯坦空军中校，1986 年 8 月生，2026 年 4 月入选中国载人航天工程首批外籍航天员。依据 2025 年 2 月 28 日签署的中巴合作协议，他以载荷专家身份执行短期联合飞行，后续随神二十三飞船返回。</li>
+<li>任务期计划开展 <b>90 项</b>科学实验与技术试验；中巴合作 4 个项目覆盖生物技术与材料，包括光合微生物蓝藻实验。这是中国载人航天进入空间站应用与发展阶段第 8 次载人飞行、工程立项以来第 41 次发射、长征系列第 680 次飞行；迄今已有 31 名中国航天员与 1 名外籍航天员共 50 人次进入太空。</li>
+<li>国家主席习近平同巴基斯坦总统扎尔达里就联合飞行任务互致贺电，强调「中国空间站是和平之舟、友谊之舟、合作之舟」。焦点访谈披露任务同步启动航天员连续一年驻留验证。</li>
+</ul>
+<div class="takeaway"><strong>为什么重要 · </strong>空间站从国家级工程转为可承接国际合作伙伴的平台；中外联合飞行的训练、语言、指令标准第一次跑通，为后续更多国家参与提供了可复制模板。</div>
+<div class="src"><b>信源 · </b>央视《新闻联播》/《焦点访谈》（11.25）、中国新闻社、光明日报、人民网、科技日报（11.25–26）</div>
+</article>
+<article class="card" style="--c:var(--soc);--tbg:var(--soc-bg)">
+<div class="card-top"><span class="rank">3</span><div class="tags"><span class="tag">政治</span><span class="tag">制度建设</span><span class="tag geo">中国</span></div></div>
+<h3>习近平就党内法规工作作出重要指示，全国党内法规工作会议定调「制度执行」</h3>
+<ul>
+<li><b>11.25</b>，新华社发布：习近平近日对党内法规工作作出重要指示，强调认真贯彻<b>党的二十届五中全会精神</b>，坚持把依规治党当作管党治党基本方式，提出「更加注重制度系统集成、制度学习教育、制度执行、党内法规同国家法律法规衔接协调」四个更加注重。</li>
+<li>全国党内法规工作会议 <b>11.24–25</b> 在京召开，蔡奇出席并讲话，石泰峰主持，李干杰、李书磊出席。蔡奇要求完善党中央重大决策部署落实机制、健全全面从严治党体系、严格落实党内法规执行责任制，强调「以正确政绩观做好党内法规工作，精准务实推进建章立制」。</li>
+<li>配套动作：中央宣传部、中央军委国防动员部联合印发《全民国防教育「十五五」规划》，提出到 2030 年学校国防教育全面推进、全民国防素养明显提升；原中央防范和处理邪教问题领导小组办公室副主任高以忱受贿、利用影响力受贿案一审获刑 11 年；涉嫌非法吸收公众存款、涉案金额超 150 亿元的舒某某从俄罗斯被引渡回国。</li>
+</ul>
+<div class="takeaway"><strong>为什么重要 · </strong>二十届五中全会后，「持之以恒推进全面从严治党」正从《决定》文本转入法规清理、执行责任制与法规—法律衔接的操作层面，这是未来数月国内政治日程的主轴。</div>
+<div class="src"><b>信源 · </b>新华社（11.25）、人民网 / 中国共产党新闻网、光明日报（11.26）、央视新闻（11.26）</div>
+</article>
+</div>
+<div class="aside">
+<div class="box">
+<h4>国际 · 制裁与战事</h4>
 <div class="sub">WORLD, 11.25–26</div>
 <ul>
-<li>韩国大法院 11.26 终审维持前总统尹锡悦涉嫌作伪证案无罪判决，驳回内乱特检组上诉。</li>
-<li>埃及吉萨省车祸引发大火，烧毁 27 辆车，造成 31 人死亡、21 人受伤。</li>
-<li>印度喀拉拉邦科钦科技大学音乐会因暴雨引发踩踏，至少 4 人死亡、64 人受伤。</li>
-<li>塞拉利昂弗里敦一处军营军火库遭袭，政府宣布全国宵禁；巴西决定驻阿根廷大使不再返任。</li>
-</ul>
-</div>
-</div>
-</section>  <!-- ================= 宏观 ================= -->  <section id="macro">    <div class="sec-head">      <span class="sec-num">附</span>      <h2>宏观背景</h2>    </div>    <p class="sec-desc">理解上述商业与社会事件的共同底色：美国通胀黏性把加息重新推上桌面，而中东冲突让能源价格再次获得地缘溢价。</p>    <div class="rule"></div>    <div class="aside">      <div class="box">
-<h4>货币政策</h4>
-<div class="sub">FED, 11.25</div>
-<ul>
-<li>10 月 PCE 同比 3.8%，核心 PCE 同比 3.3%（2023 年 11 月以来最高），市场一度完全定价 12 月加息 25bp。</li>
-<li>三季度 GDP 年化增速由 3.4% 上修至 <b>4.3%</b>，为 2023 年四季度以来最快；初请失业金人数降至 18.9 万。</li>
-<li>褐皮书：12 个联储辖区中 8 个报告轻度至中度增长，家庭对价格仍敏感。</li>
-<li>10 年期美债收益率盘中降超 10bp、创两个多月新低；美元指数两日跌离 19 个月高位。</li>
+<li>欧盟理事会 11.25 将 <b>15 家俄罗斯实体</b>列入出口限制名单，收紧军民两用物项与先进技术出口。</li>
+<li>英国政府宣布制裁也门胡塞武装及其 4 名高级官员；普京称乌军持续袭击俄燃料与能源基础设施，俄方必将回应。</li>
+<li>朝鲜驱逐瑞士外交办事处代表，限 48 小时内离境；哥伦比亚西南部五省因电力设施遭袭大范围停电。</li>
+<li>美国两州起诉 SpaceX，指其放任 AI 伪造色情内容。</li>
 </ul>
 </div>
 <div class="box">
-<h4>能源与大宗</h4>
-<div class="sub">ENERGY, 11.25–26</div>
+<h4>中国 · 社会与人文</h4>
+<div class="sub">CHINA, 11.25–26</div>
 <ul>
-<li>WTI 1 月合约收涨 1.99% 至 83.68 美元；布伦特收涨 <b>3.51%</b> 至 94.61 美元，创逾一周新高。</li>
-<li>胡塞袭击后，港股石油股 11.26 早盘集体走强；机构认为地缘反复叠加上游资本开支缺口仍支撑油价底部。</li>
-<li>金银期货两连跌，期金盘中跌近 4% 后收跌不足 1%；期银再创近 15 个月新低。</li>
-<li>比特币盘中跌破 5.8 万美元后一度反弹超 5%；加密货币波动率随关税与利率预期放大。</li>
+<li>11.23–24 中美贸易理事会项下<b>农业工作组首次会议</b>在京举行，讨论农产品监管、市场准入与贸易。</li>
+<li>2026 年 6G 发展大会在上海举行；国家能源局：截至 10 月底全国发电装机 41.6 亿千瓦、同比 +10.9%。</li>
+<li>昌平实验室、北京大学谢晓亮团队发布高准确率无创胚胎植入前遗传检测技术；浙大团队发布面向难治性抑郁症的脑机接口系统。</li>
+<li>全国普速旅客列车车次变更 11.25 实施，Z / N / V 字头启用；济滨高铁联调联试结束进入试运行。</li>
 </ul>
 </div>
 </div>
-</section>  <!-- ================= 口径 ================= -->  <section id="method">
+</section>
+<!-- ================= 宏观 ================= -->
+<section id="macro">
+<div class="sec-head"><span class="sec-num">附</span><h2>宏观背景</h2></div>
+<p class="sec-desc">当日所有市场叙事的共同底色：通胀黏性把加息预期「拉满」，但债市收益率下行又给了风险资产一次盘中救援；地缘冲突则持续给能源端加价。</p>
+<div class="rule"></div>
+<div class="aside">
+<div class="box">
+<h4>货币政策与数据</h4>
+<div class="sub">FED, 11.25</div>
+<ul>
+<li>10 月核心 PCE 同比 <b>3.3%</b>（预期 3.2%、前值 3.1%），为 2023 年 11 月以来最高；整体 PCE 同比 3.8%，环比 +0.3%。</li>
+<li>三季度实际 GDP 年化增速由初值 3.4% 上修至 <b>4.3%</b>；初请失业金 18.9 万人（预期 20 万）。</li>
+<li>褐皮书：12 辖区中 8 个轻微至温和增长，薪资福利涨幅由「轻微」升至「温和」；FedWatch 12 月加息 25bp 概率 97%、1 月再加息 68%（11.25 口径）。</li>
+<li>10 年期美债收益率北京时间 11.26 06:30 报 4.856%，较 10 月 7 日阶段高点 5.362% 持续回落。</li>
+</ul>
+</div>
+<div class="box">
+<h4>市场与能源</h4>
+<div class="sub">MARKETS, 11.25–26</div>
+<ul>
+<li>道指 +0.33% 报 50182.95（盘中一度跌超 1000 点），标普 −0.25% 报 7182.78（盘中跌超 3%），纳指 −0.62% 报 23585.80（盘中跌逾 4%）。</li>
+<li>COMEX 黄金盘中跌近 4% 后收涨 0.47%，收复 3500 美元/盎司；11.26 盘中 WTI 85.185 美元、布伦特 92.008 美元（与 11.25 结算价 83.68 / 94.61 口径不同）。</li>
+<li>感恩节 11.26 美股休市，11.27 提前至美东 13:00 收盘；机构普遍判断「反弹不等于反转」。</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- ================= 口径 ================= -->
+<section id="method">
 <div class="note">
 <h4>口径与不确定性说明</h4>
-<p><b>时间窗口：</b>北京时间 2026 年 11 月 25 日 16:00 至 11 月 26 日 16:00。排序以「对后续 1–4 周的影响力」为唯一标准，不按热度或点击量。神舟二十四号任务主体发生在 11 月 25 日上午，因当日持续发酵且属跨周量级事件，作为窗口前半天回溯条目纳入社会 Top 3。</p>
-<p><b>已交叉核实：</b>FCC 对 Starmind 的附条件批准与部署时间表、USTR 301 调查结论与拟议税率、标普对英伟达的负面观察及 CDS 数据、三大行 4600 亿元回购增持贷款、神舟二十四号任务节点、胡塞对沙特目标的袭击、清华团队量子精密测量成果发表于《Nature》、纽约州 AI 玩具禁令——均有两个及以上独立信源，部分有官方原文。</p>
-<p><b>单一信源，宜视为待核：</b>「OpenAI 提交 44 万行 Lean 代码」「智能体三天推出 17 个数学结论」来自聚合类 AI 日报；MAGI-2 的 1165 Elo 与 0.5 元/秒报价来自媒体转述；贝莱德拟削减 250 亿美元数据中心收购报价来自媒体报道；Amodei 与 Axios 报道的争执细节见于凤凰科技 / IT之家。</p>
-<p><b>存在口径分歧：</b>对华关税「最高 20%」为 USTR 净额口径且含附件豁免，部分媒体写作「部分商品叠加后超 40%」，本页以 USTR 原文为准；CoreWeave 五年期 CDS 单日终值 ICE 口径为 15.34%，德意志银行口径为 13.30%，两者报价方法不同；Starmind 轨道高度有 500–1002 公里与 500–2000 公里两种报道，本页采用许可文件引述口径；拉斯坦努拉炼厂是否实际起火，胡塞称起火、沙特联军未证实；量子论文发表日期，清华官网记为 11 月 25 日、新华社记为 11 月 26 日凌晨在线。</p>
-<p><b>未入选说明：</b>量子精密测量与 IBM 可验证量子优势虽为硬核进展，但量级尚不足以挤入跨领域 Top 3，故以独立卡片如实呈现；GPT-6 蛋白质设计预印本发布于 11 月 24 日，因 11 月 25 日仍在集中发酵且代表模型能力外溢，列入科技第 3 条。</p>
+<p><b>时间窗口：</b>北京时间 2026 年 11 月 25 日 16:00 至 11 月 26 日 16:00。排序以「对后续 1–4 周的影响力」为唯一标准，不按点击量。</p>
+<p><b>已交叉核实：</b>VP≠VNP 双论文与时间点、MAGI-2 参数与定价、英伟达标普评级行动与 CDS、USTR 301 税率方案、霍尔木兹触雷事件、神舟二十四号发射与会师、习近平党内法规指示——均有两个及以上独立信源，其中多项可回溯至 GitHub、USTR、新华社、标普等原始发布。</p>
+<p><b>单一信源 / 视为待核：</b>AA 图生视频 Elo 1165 对 1161 的精确差值来自媒体转述榜单；CoreWeave CDS 存在「15.34%」与「1330bp」两种口径；英伟达担保 1180 亿美元及 2027 年算力融资 3200 亿美元预测来自单一机构；DeepSeek 1055 亿元融资额与 6078 亿元估值由工商变更+媒体推算，公司未正式披露；NVIDIA GTP 的 13.0 EFLOP/s 为聚合媒体报道。</p>
+<p><b>存在口径分歧：</b>USTR 对华「最高 20%」是上限，扣除已征 12.5% 后净增约 7.5pp，且是否叠加第一任期 301 关税表述模糊；黎曼证明「砍掉 240 万行」混用了文本统计（rh-shrink）、内核主证明行数（rh-kernel-backbone）与公开打榜压缩率三个口径；巴基斯坦人口在央媒稿中有「2 亿」与「2.5 亿」两种表述；WTI/布伦特价格区分 11.25 结算价与 11.26 盘中价。</p>
+<p><b>主动剔除：</b>检索中出现的多条「11 月 26 日」内容（六部门促消费方案、香港大埔火灾、会见李显龙等）经核对实为 2024 / 2025 年同日旧闻，未纳入本页。量子领域当日最重要的进展集中在 11.19–11.24，作为背景呈现而非强行挤入 Top 3。</p>
 </div>
-</section></main><footer>  <div class="wrap">    <span>24 小时热点图谱 · 2026.11.26 编报</span>    <span>逐条标注日期与信源 · 单一信源与口径分歧已显式提示</span>  </div></footer></body></html>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<span>24 小时热点图谱 · 2026.11.26 编报</span>
+<span>逐条标注日期与信源 · 单一信源与口径分歧已显式提示</span>
+</div>
+</footer>
+</body>
+</html>
