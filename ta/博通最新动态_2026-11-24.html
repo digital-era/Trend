@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>博通（AVGO）最新动态全景追踪 · 截至 2026-11-24</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)', 100: 'hsl(20, 90%, 85%)', 200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)', 400: 'hsl(20, 90%, 55%)', 500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)', 700: 'hsl(20, 90%, 35%)', 800: 'hsl(20, 90%, 25%)', 900: 'hsl(20, 90%, 15%)', 950: 'hsl(20, 90%, 10%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)', 100: 'hsl(30, 85%, 85%)', 200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)', 400: 'hsl(30, 85%, 60%)', 500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)', 700: 'hsl(30, 85%, 40%)', 800: 'hsl(30, 85%, 30%)', 900: 'hsl(30, 85%, 20%)', 950: 'hsl(30, 85%, 10%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+section[id], article[id], div[id^="card-"] { scroll-margin-top: 84px; }
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+html { scroll-behavior: auto; }
+}
+.btn-interactive { transition: all 0.2s ease-out; }
+.btn-interactive:hover { transform: scale(1.05); }
+.btn-interactive:active { transform: scale(0.95); }
+.card-interactive { transition: all 0.28s ease-out; }
+.card-interactive:hover {
+transform: translateY(-2px);
+box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.14);
+}
+.dark .card-interactive:hover {
+box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.48);
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 0.75rem 0.85rem; border-bottom: 1px solid hsl(0, 0%, 90%); }
+.dark th, .dark td { border-bottom-color: rgba(255, 255, 255, 0.08); }
+.impact-bar { height: 8px; border-radius: 999px; background: hsl(0, 0%, 90%); overflow: hidden; }
+.dark .impact-bar { background: rgba(255, 255, 255, 0.12); }
+.impact-fill {
+height: 100%;
+border-radius: 999px;
+background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#mobileMenu { display: none; }
+@media (min-width: 768px) { #mobileMenu { display: none !important; } }
+@media (max-width: 767px) { #mobileMenu.mobile-menu-open { display: block !important; } }
+</style>
+<script>
+// 若被嵌入暗黑看盘弹窗 iframe 中，自动默认开启暗黑模式
+(function initTheme() {
+const inIframe = window.self !== window.top;
+if (inIframe || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+document.documentElement.classList.add('dark');
+}
+})();
+function syncThemeIcons() {
+const isDark = document.documentElement.classList.contains('dark');
+const sun = document.getElementById('sunIcon');
+const moon = document.getElementById('moonIcon');
+if (sun) sun.style.display = isDark ? 'block' : 'none';
+if (moon) moon.style.display = isDark ? 'none' : 'block';
+}
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+syncThemeIcons();
+}
+function toggleMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+if (menu) menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<header class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur-md bg-white/90 dark:bg-[#111827]/90 border-b border-primary-500/20 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+<h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">博通（AVGO）· 最新动态</h1>
+</div>
+<nav class="hidden md:flex items-center space-x-6">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#company" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">公司Top3</a>
+<a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业Top3</a>
+<a href="#macro" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">宏观政策Top3</a>
+<a href="#matrix" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">催化矩阵</a>
+</nav>
+<div class="flex items-center space-x-2">
+<button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300 border border-transparent dark:border-gray-700" aria-label="菜单">
+<i data-lucide="menu" class="w-4 h-4"></i>
+</button>
+<button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300 border border-transparent dark:border-gray-700" aria-label="切换暗色模式">
+<i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-4 h-4" style="display:block"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800 max-h-[calc(100vh-80px)] overflow-y-auto">
+<nav class="flex flex-col space-y-2.5">
+<a href="#overview" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">总览</a>
+<a href="#company" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">公司Top3</a>
+<a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">行业Top3</a>
+<a href="#macro" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">宏观政策Top3</a>
+<a href="#matrix" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">催化矩阵</a>
+</nav>
+</div>
+</div>
+</header>
+<main class="pt-20 sm:pt-24 pb-16">
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+<div class="flex flex-wrap items-center gap-2.5 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-semibold font-mono">NASDAQ: AVGO</span>
+<span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300 text-xs font-semibold">AI 定制芯片(ASIC) · 以太网交换 · 基础软件</span>
+<span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-semibold flex items-center gap-1 border border-transparent dark:border-gray-700">
+<i data-lucide="calendar" class="w-3 h-3"></i> 近30日 · 截至 2026-11-24
+</span>
+</div>
+Code
+<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">博通公司（Broadcom Inc.）</h2>
+<p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 max-w-4xl">
+  近30日博通消息面呈<strong class="text-primary-600 dark:text-primary-400">“基本面与订单预期持续强化、宏观利率与地缘管制短期扰动估值”</strong>的格局。公司连续发布开放以太网 AI 集群方案与 3.5D XDSiP 先进封装突破，并获高盛、瑞穗等大行财报前集中上调目标价；但美国 BIS 11月16日收紧算力管制及近5%美债收益率抑制风险偏好，多空正聚焦12月10日 FY26 Q4 财报。
+</p>
+
+<!-- 核心业绩与交易 KPI 速览条 -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+  <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700/80">
+    <div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">FY26 Q4 营收指引（12-10发榜）</div>
+    <div class="text-lg sm:text-xl font-bold font-mono text-gray-900 dark:text-white">295亿美元 <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">+64%</span></div>
+  </div>
+  <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700/80">
+    <div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">Q4 AI 半导体预期营收</div>
+    <div class="text-lg sm:text-xl font-bold font-mono text-primary-600 dark:text-primary-400">185亿美元 <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">~+198%</span></div>
+  </div>
+  <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700/80">
+    <div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">11-20收盘 / 11-23早盘反抽</div>
+    <div class="text-lg sm:text-xl font-bold font-mono text-amber-600 dark:text-amber-400">$348.20 <span class="text-xs font-normal text-emerald-600 dark:text-emerald-400">→ ~$363</span></div>
+  </div>
+  <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700/80">
+    <div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">11月主流投行目标价</div>
+    <div class="text-lg sm:text-xl font-bold font-mono text-cyan-600 dark:text-cyan-400">$475–$600 <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">均值~$510</span></div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+    <div class="flex items-center gap-2 mb-2.5">
+      <i data-lucide="gauge" class="w-4 h-4 text-primary-500"></i>
+      <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">消息面总体基调</span>
+    </div>
+    <p class="text-xl font-bold text-emerald-600 dark:text-emerald-400">偏多（基本面强支撑）</p>
+    <p class="text-xs text-gray-600 dark:text-gray-400 mt-1.5 leading-relaxed">定制 XPU 与开放以太网集群产品迭代落地，机构共识持续上修至2027财年，仅受外围利率与板块情绪短期掣肘</p>
+  </div>
+  <div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2.5">
+      <i data-lucide="zap" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+      <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-wide">本月最强单一催化剂</span>
+    </div>
+    <p class="text-sm font-bold text-emerald-800 dark:text-emerald-200 leading-snug">财报前瑞穗/高盛/Evercore等密集上调目标价至530–600美元，确认2027年定制AI芯片向700亿–1,050亿美元迈进</p>
+    <p class="text-xs text-emerald-700/70 dark:text-emerald-400/80 mt-2">2026-11-18 ~ 11-19 华尔街投行研报 / 11-19 Anthropic IPO 映射</p>
+  </div>
+  <div class="bg-rose-50/70 dark:bg-rose-950/30 rounded-xl p-5 border border-rose-200 dark:border-rose-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2.5">
+      <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-500"></i>
+      <span class="text-xs font-semibold text-rose-700 dark:text-rose-300 uppercase tracking-wide">本月最需警惕信号</span>
+    </div>
+    <p class="text-sm font-bold text-rose-800 dark:text-rose-200 leading-snug">美 BIS 11月16日落地东南亚及远程算力出口新规，叠加10年期美债逼近5%引发纳指跌入调整区（11-20跌穿200日线附近支撑压力）</p>
+    <p class="text-xs text-rose-700/70 dark:text-rose-400/80 mt-2">2026-11-16 美国商务部 / 2026-11-20 市场宏观波动</p>
+  </div>
+</div>
+</div>
+</section>
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+</div>
+<article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-11 ~ 11-19</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大利好</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.5 / 10</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">财报前夕大行密集力挺：瑞穗目标价升至530美元，机构上调FY27 AI收入预期至700亿–1,050亿美元</h3>
+Code
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4 text-xs">
+  <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg px-3 py-2 border border-gray-100 dark:border-gray-700/70">
+    <span class="text-gray-500 dark:text-gray-400 block">瑞穗 Mizuho (11-19)</span>
+    <span class="font-bold font-mono text-sm text-emerald-600 dark:text-emerald-400">目标价 $495 → $530</span>
+  </div>
+  <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg px-3 py-2 border border-gray-100 dark:border-gray-700/70">
+    <span class="text-gray-500 dark:text-gray-400 block">高盛 Goldman (11-18)</span>
+    <span class="font-bold font-mono text-sm text-gray-900 dark:text-white">重申买入 · $475</span>
+  </div>
+  <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg px-3 py-2 border border-gray-100 dark:border-gray-700/70">
+    <span class="text-gray-500 dark:text-gray-400 block">Evercore / Rosenblatt</span>
+    <span class="font-bold font-mono text-sm text-primary-600 dark:text-primary-400">$576 / $600 (首选)</span>
+  </div>
+  <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg px-3 py-2 border border-gray-100 dark:border-gray-700/70">
+    <span class="text-gray-500 dark:text-gray-400 block">FY27 谷歌TPU预计贡献</span>
+    <span class="font-bold font-mono text-sm text-cyan-600 dark:text-cyan-400">约 280亿美元</span>
+  </div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+  在12月10日 Q4 财报发布前夕，华尔街投行接连上调博通盈利预测。2026-11-19 <strong>瑞穗（Mizuho）</strong>发布研报将目标价调高至530美元，预测博通 FY26 AI 芯片营收将达500亿–520亿美元，FY27 随 OpenAI“Titan”项目起量及谷歌 TPU 扩容进一步跃升至700亿美元以上（Evercore 乐观看高至1,050亿美元）；2026-11-18 <strong>高盛</strong>重申买入，强调其定制 XPU 与网络芯片正承接2027年核心机柜增量。信源：TipRanks、Investing.com、Benzinga。
+</p>
+
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700/60">
+  <div class="flex items-start gap-2.5">
+    <i data-lucide="trending-up" class="w-4 h-4 text-primary-500 mt-0.5 shrink-0"></i>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+      <strong>影响深度：</strong>在英伟达11月中旬CEO动荡引发芯片板块普跌的背景下，大行对博通的一致性看多直接稳定了机构持仓信心，将市场预期锚定在“FY26 Q4 营收295亿美元 + AI 营收185亿美元”的超高确定性轨道上，成为11-23股价快速反抽的核心基本面底座。
+    </p>
+  </div>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width: 95%;"></div></div>
+</article>
+<article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up" data-aos-delay="80">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-05 ~ 11-17</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">利好（技术与产品突破）</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.5 / 10</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">发布业界首款集成以太网 AI 集群方案与 Wi-Fi 8，3.5D XDSiP 先进封装加速商用</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026-11-17 在 SC26 超算大会期间，博通正式推出业界首个将 <strong>Tomahawk 6 以太网交换机与 Thor Ultra NIC</strong> 深度集成的开放式端到端以太网 AI 集群解决方案，针对 Scale-Up 与 Scale-Out 超大规模算力集群；此前11月上旬公司亦确认其 <strong>3.5D XDSiP</strong> 先进多芯片封装平台正支撑超大规模客户多千瓦级 XPU 量产导入，并于11-05推出首批商用 Wi-Fi 8 射频与无线连接芯片组合。信源：Broadcom 官方新闻稿、Fierce Network、Morningstar。
+</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+<div class="bg-emerald-50/60 dark:bg-emerald-950/25 rounded-xl p-3.5 border border-emerald-200/70 dark:border-emerald-800/40">
+<div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-1 flex items-center gap-1"><i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> 营收与毛利拉动</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">以开放以太网架构直接分流英伟达专有 NVLink/InfiniBand 份额，大幅提升单机柜网络芯片配套价值量（ASP），护航半导体板块65%+高毛利底盘。</p>
+</div>
+<div class="bg-sky-50/60 dark:bg-sky-950/25 rounded-xl p-3.5 border border-sky-200/70 dark:border-sky-800/40">
+<div class="text-xs font-bold text-sky-700 dark:text-sky-300 mb-1 flex items-center gap-1"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> 客户锁定深度升级</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">3.5D XDSiP 封装技术使博通从“IP接口外包方”跃升为多裸片系统架构主导者，进一步加深谷歌、Meta 等定制客户的技术转换壁垒。</p>
+</div>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width: 85%;"></div></div>
+</article>
+<article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 card-interactive" data-aos="fade-up" data-aos-delay="120">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-10-29 ~ 11-12</span>
+<span class="px-2.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 text-xs font-bold">中性（治理与财报定档）</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.0 / 10</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">FY26 Q4 财报正式定档12月10日，期间伴随高管计划性减持与 VMware 现金流兑现</h3>
+Code
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+  2026-11-12 博通正式公告将于 <strong>12月10日美股盘后</strong>召开 FY26 Q4 及全财年业绩电话会；此前 10-29 SEC Form 4 披露 CFO Kirsten Spears 与半导体总裁 Charlie Kawwas 等按既定交易计划合计减持约4.45万股（金额约1,500万–1,600万美元）。同时，收购整合满三年的 VMware Cloud Foundation（VCF 9）私有云订阅续约持续贡献近280亿美元高粘性软件年化营收与充沛现金流（支持约50%自由现金流分红）。信源：Broadcom IR、SEC EDGAR、MarketBeat。
+</p>
+
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700/60">
+  <div class="flex items-start gap-2.5">
+    <i data-lucide="scale" class="w-4 h-4 text-primary-500 mt-0.5 shrink-0"></i>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+      <strong>影响深度：</strong>高管常规计划性减持规模相对于博通近1.7万亿美元市值可忽略不计，未改变内部利益绑定；真正关键在于12月10日财报定档标志着博通正式进入“业绩静默窗口”，期间股价主要随外围板块 Beta 及新财年股息提息预期博弈。
+    </p>
+  </div>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width: 70%;"></div></div>
+</article>
+</section>
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+<i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+</div>
+<p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6 pl-13">细分赛道界定：<strong>定制 AI 算力芯片（ASIC/XPU）与数据中心高速以太网交换/互连芯片，兼顾企业基础软件生态</strong>。</p>
+<div class="space-y-5 mb-8">
+<div id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex flex-wrap items-center gap-2.5 mb-3">
+<span class="px-2.5 py-0.5 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-19</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">利好（定制ASIC需求里程碑）</span>
+</div>
+<h3 class="font-bold text-gray-900 dark:text-white mb-2">Anthropic 1.5万亿美元史上最大 IPO 落地，招股书证实 TPU 等定制算力核心地位</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+2026-11-19 AI 模型龙头 Anthropic 登陆纳斯达克募资813亿美元，上市估值达1.5万亿美元。其公开招股文件证实除 AWS Trainium 外，核心训练与推理算力重度采购谷歌 <strong>TPU 集群</strong>（涉及百亿美元级长期算力承诺）。信源：TechCrunch、Fortune、SemiAnalysis。
+</p>
+<div class="bg-accent-50/70 dark:bg-accent-900/30 rounded-lg p-3.5 border border-accent-200/70 dark:border-accent-700/40">
+<p class="text-xs text-accent-900 dark:text-gray-200 leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">横向映射：</strong>博通是谷歌 TPU 核心物理设计及高速 SerDes 独家/主力伙伴。Anthropic 募得813亿美元巨资后将直接加速下一代 TPU 集群扩容与推理部署，进而直接传导至博通2027财年定制 XPU 营收高增预期（投行预计谷歌 TPU 2027年单年即可贡献博通约280亿美元营收）。</p>
+</div>
+</div>
+Code
+<div id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+  <div class="flex flex-wrap items-center gap-2.5 mb-3">
+    <span class="px-2.5 py-0.5 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-12 ~ 11-23</span>
+    <span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏多（短期情绪冲击/长期分流受益）</span>
+  </div>
+  <h3 class="font-bold text-gray-900 dark:text-white mb-2">英伟达 Q3 营收飙升至1,158亿美元伴随 CEO 戏剧性动荡（11-12辞任→11-23复职）</h3>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+    2026-11-12 黄仁勋意外辞任英伟达 CEO 引发半导体板块系统性恐慌；11-17 英伟达公布 Q3 营收暴涨103%至1,158亿美元仍未能阻挡11-20股价单日暴跌14%、拖累费城半导体指数挫逾10%；<strong>2026-11-23 早盘英伟达董事会全票恢复黄仁勋职务</strong>，AI 芯片链全线强势反弹。信源：Dow Jones、AP News、Investing.com。
+  </p>
+  <div class="bg-accent-50/70 dark:bg-accent-900/30 rounded-lg p-3.5 border border-accent-200/70 dark:border-accent-700/40">
+    <p class="text-xs text-accent-900 dark:text-gray-200 leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">横向映射：</strong>短期呈现显著行业 Beta 共振（AVGO 11-20 跟跌2.83%，11-23早盘随板块弹超4%）；但基本面维度，英伟达千亿季度收入证实全行业算力需求极度真实，且超大规模云商出于分散供应商治理与75%暴利风险考量，向博通定制 ASIC 分流订单的意愿反而有增无减。</p>
+  </div>
+</div>
+
+<div id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+  <div class="flex flex-wrap items-center gap-2.5 mb-3">
+    <span class="px-2.5 py-0.5 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-10-29 ~ 11-04</span>
+    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">利好（云开支二次提速）</span>
+  </div>
+  <h3 class="font-bold text-gray-900 dark:text-white mb-2">四大云商2026年 CapEx 冲破6,300亿美元，全球云市场 Q3 同比暴增55%至1,680亿美元</h3>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+    10月底至11月初亚马逊（2026 CapEx 上调至2,200亿美元）、谷歌、Meta 与微软陆续发榜确认 2026–2027 年基础设施投入“绝不保守”，Synergy Research 同期报告显示 Q3 全球云基础设施支出同比激增55%至1,680亿美元（连续12季加速）。信源：Amazon/Alphabet Q3 财报、Synergy Research、CRN。
+  </p>
+  <div class="bg-accent-50/70 dark:bg-accent-900/30 rounded-lg p-3.5 border border-accent-200/70 dark:border-accent-700/40">
+    <p class="text-xs text-accent-900 dark:text-gray-200 leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">横向映射：</strong>作为四大云巨头共同的上游“卖水人”，无论云端最终胜出者是 AWS（39.3%增速）、Azure（+48%）还是 Google Cloud（+103%），其万亿级机柜互联、高速光通信 DSP 与定制加速器均高概率由博通直接收税，形成极强的跨客户确定性贝塔。</p>
+  </div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+<h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 text-sm sm:text-base"><i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i> 行业动态对标影响对比表</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800/80">
+<th class="font-semibold text-gray-700 dark:text-gray-300">行业事件</th>
+<th class="font-semibold text-gray-700 dark:text-gray-300">涉及主体</th>
+<th class="font-semibold text-gray-700 dark:text-gray-300">对博通 (AVGO) 利弊传导</th>
+<th class="font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">影响周期</th>
+</tr>
+</thead>
+<tbody class="text-gray-600 dark:text-gray-300">
+<tr>
+<td class="font-medium text-gray-900 dark:text-gray-100">Anthropic 1.5万亿 IPO 强化 TPU 生态</td>
+<td>Anthropic、谷歌 TPU、AWS</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">直接利好。</span>IPO 募资813亿美元加速百亿级 TPU 算力扩产，直接拉动博通定制 XPU 2027年放量。</td>
+<td class="whitespace-nowrap font-mono">2026Q4—2027</td>
+</tr>
+<tr>
+<td class="font-medium text-gray-900 dark:text-gray-100">英伟达 Q3 1,158亿营收与 CEO 动荡</td>
+<td>英伟达、AMD、博通</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-semibold">短空长多。</span>短期随芯片板块剧烈波动，长期强化云巨头向博通定制 ASIC 分流预算的动力。</td>
+<td class="whitespace-nowrap">短期—中期</td>
+</tr>
+<tr>
+<td class="font-medium text-gray-900 dark:text-gray-100">四大云商 CapEx 冲破6,300亿美元</td>
+<td>AMZN、MSFT、GOOGL、META</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">强利好。</span>博通作为高速以太网交换与定制芯片双料上游，享受跨平台刚性资本开支红利。</td>
+<td class="whitespace-nowrap font-mono">2026—2028</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+</div>
+<div class="space-y-5">
+<!-- MACRO 1 -->
+<div id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · 出口管制</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-16 / 11-19生效</span>
+<span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">偏空（合规摩擦/估值压制）</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.5 / 10</span>
+</div>
+<h3 class="font-bold text-gray-900 dark:text-white mb-3">美国商务部 BIS 落地远程算力与东南亚五国芯片转口管制新规</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+<strong class="text-gray-900 dark:text-white block mb-1.5">1. 政策要点（美国商务部 BIS）</strong>
+2026-11-16 公布、11-19 正式生效的临时最终规则将新加坡、马来西亚、泰国、印度、印尼纳入先进芯片转口许可审查范围，并严管境外云端远程访问算力，废除多项自证豁免。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+<strong class="text-gray-900 dark:text-white block mb-1.5">2. 传导路径（分子 vs 分母）</strong>
+分子端：高速网络交换芯片与光互联产品经东南亚数据中心出货的审批周期拉长；分母端：直接压制全球半导体板块风险偏好，引发外资11月下旬对芯片股的系统性避险减仓。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+<strong class="text-gray-900 dark:text-white block mb-1.5">3. 业务敞口评估</strong>
+博通核心定制 AI 芯片（XPU）高度聚焦 Google、Meta、OpenAI 等北美本土客户，受东南亚及中国管制冲击显著小于台积电与 AMD，但非定制传统网络与无线业务仍面临合规成本抬升。
+</div>
+</div>
+</div>
+Code
+<!-- MACRO 2 -->
+<div id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+    <div class="flex flex-wrap items-center gap-2.5">
+      <span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国际 · 利率与通胀</span>
+      <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-05 ~ 11-20</span>
+      <span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">偏空（分母端估值约束）</span>
+    </div>
+    <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.0 / 10</span>
+  </div>
+  <h3 class="font-bold text-gray-900 dark:text-white mb-3">地缘油价推升10年期美债逼近5%大关，美联储降息窗口冻结引发纳指技术性调整</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+    <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+      <strong class="text-gray-900 dark:text-white block mb-1.5">1. 宏观态势要点</strong>
+      11月中旬美伊局势推动布油突破92–116美元，再通胀焦虑令10年期美债收益率回升至 <strong>4.93%–5.04%</strong>，市场冻结近期美联储降息押注，纳指至11-20较10-06高点大跌入调整区（-18%）。
+    </div>
+    <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+      <strong class="text-gray-900 dark:text-white block mb-1.5">2. 传导路径（分母折现率挤压）</strong>
+      高无风险利率抬升长久期科技成长股的贴现率，直接限制博通从19倍 Forward P/E 向25倍以上扩张的空间，同时增加公司未来并购与债务再融资利率成本。
+    </div>
+    <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+      <strong class="text-gray-900 dark:text-white block mb-1.5">3. 业务敞口评估</strong>
+      对分子端超300亿美元年化自由现金流几乎无损（反而使高股息/回购属性比纯概念 AI 股更具抗跌性）；一旦美债收益率自5%回落，博通估值修复弹性最快。
+    </div>
+  </div>
+</div>
+
+<!-- MACRO 3 -->
+<div id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+    <div class="flex flex-wrap items-center gap-2.5">
+      <span class="px-3 py-1 rounded-lg bg-sky-600 text-white text-xs font-bold">国内 · 产业政策与替代</span>
+      <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-10-28 ~ 11-19</span>
+      <span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏空（局部增量受限）</span>
+    </div>
+    <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 6.5 / 10</span>
+  </div>
+  <h3 class="font-bold text-gray-900 dark:text-white mb-3">中国加码大基金三期自主算力及网络/虚拟化国产切换，压制在华长期软件与通信渗透</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+    <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+      <strong class="text-gray-900 dark:text-white block mb-1.5">1. 政策与产业态势</strong>
+      10-28起国内大基金三期加速向晶圆、设备及核心芯片注资落地；配合11月中旬美方管制反制，国内头部云厂与运营商明显加快国产高速交换芯片、AI卡与政企虚拟化平台（替代 VMware）的采购切换。
+    </div>
+    <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+      <strong class="text-gray-900 dark:text-white block mb-1.5">2. 传导路径（分子端长尾抑制）</strong>
+      削弱博通在华传统企业级存储控制器、宽带无线接入及 VMware 私有云续约的长期增长斜率，倒逼博通亚太增长进一步依赖非华地区。
+    </div>
+    <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+      <strong class="text-gray-900 dark:text-white block mb-1.5">3. 业务敞口评估</strong>
+      影响约15%–20%的在华非 AI 传统硬件及企业软件长尾市场；但鉴于博通2026–2027年新增增量几乎全部源自北美 AI 集群，整体财务拖累在可控范围内。
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-10" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来 30 天跟踪日历</h2>
+</div>
+<div x-data="{ filter: 'all' }" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-8">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-2 text-sm sm:text-base">
+<i data-lucide="list" class="w-4 h-4 text-primary-500"></i> 九大动态催化矩阵（点击行可跳转详情）
+</h3>
+<div class="flex flex-wrap gap-1.5 text-xs">
+<button @click="filter = 'all'" :class="filter === 'all' ? 'bg-primary-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold transition-colors">全部 (9)</button>
+<button @click="filter = 'company'" :class="filter === 'company' ? 'bg-primary-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold transition-colors">公司 (3)</button>
+<button @click="filter = 'industry'" :class="filter === 'industry' ? 'bg-accent-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold transition-colors">行业 (3)</button>
+<button @click="filter = 'macro'" :class="filter === 'macro' ? 'bg-rose-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold transition-colors">宏观 (3)</button>
+</div>
+</div>
+Code
+<div class="overflow-x-auto">
+  <table class="text-xs sm:text-sm">
+    <thead>
+      <tr class="bg-gray-50 dark:bg-gray-800/80">
+        <th class="font-semibold text-gray-700 dark:text-gray-300">类别</th>
+        <th class="font-semibold text-gray-700 dark:text-gray-300">日期</th>
+        <th class="font-semibold text-gray-700 dark:text-gray-300">核心事件</th>
+        <th class="font-semibold text-gray-700 dark:text-gray-300">影响方向</th>
+        <th class="font-semibold text-gray-700 dark:text-gray-300">强度</th>
+        <th class="font-semibold text-gray-700 dark:text-gray-300">核心投资含义</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-600 dark:text-gray-300">
+      <tr x-show="filter === 'all' || filter === 'company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+        <td><span class="px-2 py-0.5 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 font-semibold text-xs">公司</span></td>
+        <td class="whitespace-nowrap font-mono">2026-11-11~19</td>
+        <td class="font-medium text-gray-900 dark:text-gray-100">瑞穗/高盛/Evercore等集中上调目标价至530–600美元</td>
+        <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold whitespace-nowrap">重大利好</span></td>
+        <td class="font-bold font-mono">9.5</td>
+        <td>锚定FY27 AI 700亿+营收预期，对冲行业回调</td>
+      </tr>
+      <tr x-show="filter === 'all' || filter === 'industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+        <td><span class="px-2 py-0.5 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold text-xs">行业</span></td>
+        <td class="whitespace-nowrap font-mono">2026-11-19</td>
+        <td class="font-medium text-gray-900 dark:text-gray-100">Anthropic 1.5万亿 IPO 落地，证实百亿级 TPU 算力需求</td>
+        <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold whitespace-nowrap">利好</span></td>
+        <td class="font-bold font-mono">9.0</td>
+        <td>募资813亿美元加速谷歌 TPU 扩产，博通直接收税</td>
+      </tr>
+      <tr x-show="filter === 'all' || filter === 'company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+        <td><span class="px-2 py-0.5 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 font-semibold text-xs">公司</span></td>
+        <td class="whitespace-nowrap font-mono">2026-11-05~17</td>
+        <td class="font-medium text-gray-900 dark:text-gray-100">发布首款开放以太网 AI 集群方案、Wi-Fi 8 与 3.5D XDSiP</td>
+        <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold whitespace-nowrap">利好</span></td>
+        <td class="font-bold font-mono">8.5</td>
+        <td>切分 NVLink 份额并抬升定制 XPU 系统级 ASP</td>
+      </tr>
+      <tr x-show="filter === 'all' || filter === 'macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+        <td><span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold text-xs">宏观</span></td>
+        <td class="whitespace-nowrap font-mono">2026-11-16/19</td>
+        <td class="font-medium text-gray-900 dark:text-gray-100">美国 BIS 落地东南亚五国转口与远程算力出口新规</td>
+        <td><span class="text-rose-600 dark:text-rose-400 font-semibold whitespace-nowrap">偏空</span></td>
+        <td class="font-bold font-mono">8.5</td>
+        <td>拉长非定制网芯转口审核，短期压制板块风险偏好</td>
+      </tr>
+      <tr x-show="filter === 'all' || filter === 'industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+        <td><span class="px-2 py-0.5 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold text-xs">行业</span></td>
+        <td class="whitespace-nowrap font-mono">2026-10-29~11-04</td>
+        <td class="font-medium text-gray-900 dark:text-gray-100">四大云商 CapEx 破6,300亿，Q3全球云支出同比+55%</td>
+        <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold whitespace-nowrap">强利好</span></td>
+        <td class="font-bold font-mono">8.5</td>
+        <td>上游高速互联与定制芯片确定性贝塔全面强化</td>
+      </tr>
+      <tr x-show="filter === 'all' || filter === 'macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+        <td><span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold text-xs">宏观</span></td>
+        <td class="whitespace-nowrap font-mono">2026-11-05~20</td>
+        <td class="font-medium text-gray-900 dark:text-gray-100">布油飙升推高10年期美债逼近5%，纳指跌入调整区</td>
+        <td><span class="text-rose-600 dark:text-rose-400 font-semibold whitespace-nowrap">偏空</span></td>
+        <td class="font-bold font-mono">8.0</td>
+        <td>分母端折现率压制估值扩张，导致股价高位震荡</td>
+      </tr>
+      <tr x-show="filter === 'all' || filter === 'industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+        <td><span class="px-2 py-0.5 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold text-xs">行业</span></td>
+        <td class="whitespace-nowrap font-mono">2026-11-12~23</td>
+        <td class="font-medium text-gray-900 dark:text-gray-100">英伟达 Q3 1,158亿营收伴随 CEO 辞任与11-23火速复职</td>
+        <td><span class="text-amber-600 dark:text-amber-400 font-semibold whitespace-nowrap">中性偏多</span></td>
+        <td class="font-bold font-mono">8.0</td>
+        <td>短线随板块同跌同弹，长期利好 ASIC 去单一化分流</td>
+      </tr>
+      <tr x-show="filter === 'all' || filter === 'company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+        <td><span class="px-2 py-0.5 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 font-semibold text-xs">公司</span></td>
+        <td class="whitespace-nowrap font-mono">2026-10-29~11-12</td>
+        <td class="font-medium text-gray-900 dark:text-gray-100">FY26 Q4 财报定档12月10日，高管计划性小幅减持</td>
+        <td><span class="text-sky-600 dark:text-sky-400 font-semibold whitespace-nowrap">中性</span></td>
+        <td class="font-bold font-mono">7.0</td>
+        <td>进入财报静默博弈期，VMware 现金流与分红托底</td>
+      </tr>
+      <tr x-show="filter === 'all' || filter === 'macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+        <td><span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold text-xs">宏观</span></td>
+        <td class="whitespace-nowrap font-mono">2026-10-28~11-19</td>
+        <td class="font-medium text-gray-900 dark:text-gray-100">中国加码大基金三期自主算力及国产虚拟化切换</td>
+        <td><span class="text-amber-600 dark:text-amber-400 font-semibold whitespace-nowrap">中性偏空</span></td>
+        <td class="font-bold font-mono">6.5</td>
+        <td>压缩非美长尾硬件与 VMware 增量，强化北美集中度</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4" data-aos="fade-up" data-aos-delay="80">
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<i data-lucide="file-text" class="w-4 h-4 text-primary-500"></i>
+<span class="text-xs font-bold text-primary-600 dark:text-primary-300 font-mono">2026年12月10日（盘后）</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">FY26 Q4 暨全财年财报与指引大考</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">核心紧盯 Q4 营收是否达标295亿美元、AI 收入是否兑现185亿美元，以及 CEO 陈福阳对 FY27 定制芯片订单的最新量化指引。</p>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<i data-lucide="dollar-sign" class="w-4 h-4 text-accent-500"></i>
+<span class="text-xs font-bold text-accent-600 dark:text-accent-300 font-mono">2026年12月下旬（预计）</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">年度季度股息上调与派息窗口</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">博通历来随 Q4 财报宣布新一财年季度现金分红上调（50% FCF 派息政策），观察提息幅度是否超10%以检验现金流信心。</p>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<i data-lucide="shield-alert" class="w-4 h-4 text-rose-500"></i>
+<span class="text-xs font-bold text-rose-600 dark:text-rose-400">未来30日持续跟踪</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">美联储12月议息与 BIS 细则意见期</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">跟踪10年期美债收益率能否回落至4.6%下方，以及美 BIS 11-16新规对网芯经东南亚数据中心出货的细化豁免条款。</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">数据来源</h4>
+<ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1.5 leading-relaxed">
+<li>Broadcom Inc. 官方新闻稿（11-05 / 11-12 / 11-17）及 SEC Form 4</li>
+<li>瑞穗、高盛、Evercore ISI、Rosenblatt 研报（11-11 ~ 11-19）</li>
+<li>Anthropic 招股书（11-19）及 Synergy Research Q3 云报告</li>
+<li>美国商务部 BIS 管制新规（11-16/19）及公开美股行情数据</li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">覆盖时间区间</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">严格覆盖 2026-10-25 至 2026-11-24（30个自然日）最新披露事件与行情动态，所有发生日期及信源均已核实标注。</p>
+</div>
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">免责声明</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">本报告基于公开市场信息整理，仅供投研参考，不构成任何证券买卖建议。半导体行业受宏观利率、地缘管制与资本开支周期影响显著，请审慎决策。</p>
+</div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+<p class="text-xs text-gray-400 dark:text-gray-500">博通（AVGO）· 最新动态全景追踪 · 截至 2026-11-24</p>
+<p class="text-xs text-gray-400 dark:text-gray-500">Generated for event-driven research purposes</p>
+</div>
+</div>
+</footer>
+<script>
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+document.getElementById('progressBar').style.width = (height > 0 ? (winScroll / height) * 100 : 0) + '%';
+});
+document.addEventListener('DOMContentLoaded', () => {
+syncThemeIcons();
+if (window.lucide) lucide.createIcons();
+if (window.AOS) AOS.init({ duration: 450, offset: 30, once: true });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

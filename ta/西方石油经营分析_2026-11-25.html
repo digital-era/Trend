@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>西方石油（NYSE: OXY）经营分析报告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+primary: {
+50: "hsl(20, 90%, 95%)",
+100: "hsl(20, 90%, 85%)",
+200: "hsl(20, 90%, 75%)",
+300: "hsl(20, 90%, 65%)",
+400: "hsl(20, 90%, 55%)",
+500: "hsl(20, 90%, 50%)",
+600: "hsl(20, 90%, 45%)",
+700: "hsl(20, 90%, 35%)",
+800: "hsl(20, 90%, 25%)",
+900: "hsl(20, 90%, 15%)",
+},
+accent: {
+50: "hsl(30, 85%, 95%)",
+100: "hsl(30, 85%, 85%)",
+200: "hsl(30, 85%, 75%)",
+300: "hsl(30, 85%, 65%)",
+400: "hsl(30, 85%, 60%)",
+500: "hsl(30, 85%, 55%)",
+600: "hsl(30, 85%, 50%)",
+700: "hsl(30, 85%, 40%)",
+800: "hsl(30, 85%, 30%)",
+900: "hsl(30, 85%, 20%)",
+},
+},
+},
+},
+};
+</script>
+<script
+defer
+src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html {
+scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html {
+scroll-behavior: auto;
+}
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow:
+0 10px 15px -3px rgba(0, 0, 0, 0.1),
+0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow:
+0 20px 25px -5px rgba(0, 0, 0, 0.1),
+0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th,
+td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th,
+.dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(
+90deg,
+hsl(20, 90%, 55%),
+hsl(30, 85%, 55%)
+);
+transition: width 1.2s ease-out;
+}
+.risk-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-width: 28px;
+height: 28px;
+border-radius: 8px;
+font-weight: 700;
+font-size: 13px;
+}
+Code
+/* ===== 暗色模式全局对比度增强 ===== */
+  .dark body {
+    color: #f3f4f6;
+  }
+  .dark header nav a {
+    color: #e5e7eb !important;
+  }
+  .dark header nav a:hover {
+    color: hsl(20, 90%, 65%) !important;
+  }
+  .dark .text-gray-400,
+  .dark .text-gray-500 {
+    color: #9ca3af !important;
+  }
+  .dark table th {
+    color: #f3f4f6;
+  }
+  .dark table td {
+    color: #e5e7eb;
+  }
+  .dark .text-gray-600 {
+    color: #d1d5db !important;
+  }
+  .dark .text-gray-700 {
+    color: #e5e7eb !important;
+  }
+
+  /* ===== 移动端菜单 ===== */
+  #mobileMenu {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    #mobileMenu {
+      display: none !important;
+    }
+  }
+  @media (max-width: 767px) {
+    #mobileMenu.mobile-menu-open {
+      display: block !important;
+    }
+  }
+</style>
+<script>
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById("sunIcon").style.display = isDark
+      ? "block"
+      : "none";
+    document.getElementById("moonIcon").style.display = isDark
+      ? "none"
+      : "block";
+  }
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body
+class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen"
+>
+<!-- Progress Bar -->
+<div
+class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out"
+id="progressBar"
+style="width: 0%"
+></div>
+Code
+<!-- Floating Header -->
+<header
+  class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100"
+>
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+        西方石油 OXY 经营分析
+      </h1>
+      <!-- 桌面端导航 -->
+      <nav class="hidden md:flex space-x-5">
+        <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <!-- 移动端汉堡菜单按钮 -->
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300"
+          aria-label="菜单"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+        <!-- 暗色模式切换 -->
+        <button
+          onclick="toggleDarkMode()"
+          class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+          aria-label="切换暗色模式"
+        >
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 移动端下拉菜单 -->
+    <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+      <nav class="flex flex-col space-y-3">
+        <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="min-h-screen">
+  <!-- Hero -->
+  <section
+    class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300"
+          >美股 · 油气勘探 · 碳捕集先锋</span
+        >
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300"
+          >NYSE: OXY · 2026-11-25</span
+        >
+      </div>
+      <h2
+        class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300"
+      >
+        西方石油公司（Occidental Petroleum）<br /><span
+          class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium"
+          >深度经营与投资价值分析报告</span
+        >
+      </h2>
+      <p
+        class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl"
+      >
+        西方石油（NYSE: OXY）是美国二叠纪盆地核心开采龙头与全球直接空气碳捕集（DAC）商业化先行者，并因巴菲特旗下伯克希尔持股 26.75% 而备受瞩目。2026 年 1 月公司以 97 亿美元向伯克希尔交割出售化工板块 OxyChem 后提前压降债务至 143 亿美元；受年内油价上行催化，股价大涨逾 57% 至 64.95 美元（突破巴菲特 59.624 美元认股权证行权价）。本报告从八个维度冷静评估其“轻装重生后”的真实赔率。
+      </p>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            147万桶/日
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            Q3 2026 持续经营日产量
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            143.0亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            Q3 2026 本金债务（提前达标）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            35.9亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            TTM 归母普通股净利（Q3 18.6亿）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            64.95$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            11月24日收盘（市值 ~644.5亿$）
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一、商业模式 -->
+  <section
+    id="model"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="flame"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          一、商业模式
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          随着 2026 年 1 月正式向伯克希尔出售化工子公司 OxyChem，西方石油彻底告别了运行数十年的“油气 + 基础氯碱化工”综合模式，蜕变为一家<strong>“纯上游优质页岩/深水油气开发（~95%利润来源）+ 并表上市管道中游（WES）+ 直接空气碳捕集及三次采油闭环（STRATOS / EOR）”</strong>的高纯度能源运营商[reference:1]。
+        </p>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="droplets"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                二叠纪核心“短周期+高含油”资产
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              经 2019 年吞并阿纳达科、2024 年并购 CrownRock 后，Q3 2026 总产量达 <strong>146万–147万桶油当量/日</strong>，其中逾 55% 源自二叠纪特拉华及米德兰盆地，叠加落基山脉（DJ盆地）、墨西哥湾深水及阿曼/阿尔及利亚资产，兼具灵活性与长寿低衰减。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="leaf"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+              <h3
+                class="font-semibold text-accent-700 dark:text-accent-300"
+              >
+                “以碳捕油”闭环碳管理商业化
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              通过全资碳平台 <em>Oxy Low Carbon Ventures</em>（1PointFive）与贝莱德共建德州 <strong>STRATOS</strong> 全球最大 DAC 工厂（年产能 50 万吨 CO2）。捕集的二氧化碳既可向微软、亚马逊出售溢价 CDR 碳信用并申领美国 <strong>45Q 税收抵免（最高 $180/吨）</strong>，又可注入老油田大幅提升原油采收率（EOR）。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="link"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                中游管道基础设施协同 (WES)
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              通过持有上市合伙企业 <strong>Western Midstream（WES）</strong>约 43% 有限合伙权益及 100% 普通合伙人控制权，锁定了二叠纪及 DJ 盆地的原油集输与天然气处理瓶颈出口，同时共享稳定的管道费现金分红。
+            </p>
+          </div>
+        </div>
+        <div
+          class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6"
+        >
+          <p
+            class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+          >
+            <i
+              data-lucide="lightbulb"
+              class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+            ></i>
+            商业模式本质：剥离化工后，OXY 已变成一只“对国际油价极度敏感的高纯度北美上游原油期权 + 领先全球的负碳技术孵化器”。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、竞争优势（护城河） -->
+  <section
+    id="moat"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="shield"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          二、竞争优势：护城河评估
+        </h2>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        剥离化工后，西方石油的护城河成色更取决于油田地质成本位次与 EOR/DAC 专有技术。以下从五个维度打分（1–10分）并与康菲石油（COP）、EOG 资源及 Diamondback（FANG）横向对比。
+      </p>
+
+      <div class="space-y-6">
+        <!-- 品牌实力 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              品牌实力（碳管理 B2B 先锋 + 巴菲特背书光环）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >6<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 60%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            作为纯上游公司，OXY 在零售终端消费者中几乎没有品牌溢价（出售 OxyChem 后亦失去了基础化工工业品牌）；但在全球科技巨头购买高质量负碳信用（1PointFive）以及中东主权油气合作中具备一定声誉优势。
+          </p>
+        </div>
+
+        <!-- 网络效应 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              网络效应（天然弱，仅体现为 CO2 管网 hub）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >4<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 40%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            标准原油与天然气基本不具备网络效应；仅在二叠纪拥有的全美最大二氧化碳运输管网与地下封存库之间，未来若接纳第三方工业点源碳排放客户存在一定排他性区域管网枢纽效应。
+          </p>
+        </div>
+
+        <!-- 转换成本 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              转换成本（极低商品转换壁垒，仅长约锁定）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >5<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 50%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            下游炼厂购买 WTI 原油毫无切换成本；仅在旗下 WES 中游管道的区块绑定集输协议及 1PointFive 的十年期碳消除大单合约上具有一定合同约束力。
+          </p>
+        </div>
+
+        <!-- 成本优势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              成本优势（核心二叠纪地块与单井降本，但受累高资本底座）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >7<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 70%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            二叠纪特拉华与米德兰核心区块钻井效率极佳（2026 年单井完井成本同比降约 10%，且手握 40 美元/桶 WTI 以下仍具经济性的庞大储量池）。不过相比 EOG、Diamondback 等天然无高价历史并购包袱及零优先股利息的对手，OXY 的全口径资本盈亏平衡线仍略高约 5–8 美元/桶。
+          </p>
+        </div>
+
+        <!-- 专利或自有技术 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              专利或自有技术（50年 CO2 EOR + Carbon Engineering DAC）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            全美乃至全球最强的二氧化碳驱油（CO2 EOR）油藏工程专利群与经验积累（能够把传统页岩区 8%–10% 采收率推升至翻倍）；外加 2023 年以 11 亿美元买断 Carbon Engineering 的核心 DAC 化学吸收技术专利，构筑了行业难以短时间复制的负碳护城河。
+          </p>
+        </div>
+      </div>
+
+      <!-- 竞对对比 -->
+      <div class="mt-10">
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5"
+        >
+          美国领先上游油气生产商护城河与估值对比（2026年11月）
+        </h3>
+        <div
+          class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <table
+            class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+          >
+            <thead class="bg-primary-50 dark:bg-primary-900/30">
+              <tr>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">西方石油 (OXY)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">康菲石油 (COP)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">EOG 资源 (EOG)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">Diamondback (FANG)</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr>
+                <td class="font-medium">业务聚焦与产量</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">147万桶/日（二叠纪+EOR+DAC）</td>
+                <td>约 230万+桶/日（全球超级E&amp;P）</td>
+                <td>约 110万桶/日（顶级页岩效率）</td>
+                <td>约 80万+桶/日（纯二叠纪米德兰）</td>
+              </tr>
+              <tr>
+                <td class="font-medium">成本与资产质量</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">7 / 10（负84.9亿8%优先股）</td>
+                <td>8 / 10（低成本多样化储量）</td>
+                <td>9 / 10（零净债+超低盈亏点）</td>
+                <td>9 / 10（米德兰极低钻井成本）</td>
+              </tr>
+              <tr>
+                <td class="font-medium">TTM P/E / 远期 P/E</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">~17.3–18.0x / 11.7–12.5x</td>
+                <td>~14.1–15.2x / ~12.0x</td>
+                <td>~12.0–13.5x / ~11.0x</td>
+                <td>~12.5x / ~11.5x</td>
+              </tr>
+              <tr>
+                <td class="font-medium">股息率（2026-11）</td>
+                <td>1.60%（低，优先偿债）</td>
+                <td>约 2.7%–3.0%</td>
+                <td>约 2.8%+（外加特别分红）</td>
+                <td>约 3.2%+（含浮动股息）</td>
+              </tr>
+              <tr>
+                <td class="font-medium">最新市值 (2026-11)</td>
+                <td>约 644.5 亿美元</td>
+                <td>约 1,450 亿美元</td>
+                <td>约 780 亿美元</td>
+                <td>约 590 亿美元</td>
+              </tr>
+              <tr>
+                <td class="font-medium">综合护城河</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">6.0 / 10</td>
+                <td>7.2 / 10</td>
+                <td>7.5 / 10</td>
+                <td>7.3 / 10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+          数据来源：OXY/COP/EOG/FANG Q3 2026 季报、Yahoo Finance、Finviz 及 MarketBeat 截至 2026 年 11 月公开数据。
+        </p>
+      </div>
+
+      <div
+        class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed"
+        >
+          <i
+            data-lucide="award"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          综合护城河评分：<strong>6.0 / 10</strong>。OXY 的二叠纪地质储量与 EOR/DAC 技术在北美极具特色，但作为纯上游商品生产者，无法摆脱油价周期制约，且 84.9 亿美元优先股与历史高价并购资本成本拉低了其净资产效率，护城河略逊于零负债的 EOG 与超大规模康菲石油。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、行业趋势 -->
+  <section
+    id="industry"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="trending-up"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          三、行业趋势
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          2026 年北美上游油气行业正处于“地缘危机脉冲推高油价 + 二叠纪老油田进入 EOR 接力阶段 + AI 与科技巨头重金采购负碳指标”的交叉口。上半年至 Q3 美伊冲突与霍尔木兹海峡航运中断令原油大幅飙涨，令纯上游高杠杆标的收获暴利；然而放眼长期，美国页岩顶级甜点区正渐趋成熟。
+        </p>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="layers" class="w-5 h-5"></i>二叠纪告别狂飙，EOR 二次采油迎春风
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>单井自然衰减加快：</strong>过去十年北美依靠水力压裂实现的爆发性页岩增产正进入高原期，未钻顶级点位日益稀缺。</li>
+              <li>• <strong>CO2 EOR 商业价值重估：</strong>利用二氧化碳注入压裂后老井提升二次采收率成为延长二叠纪寿命的关键工程方案，恰恰命中西方石油核心技术长板。</li>
+            </ul>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="leaf" class="w-5 h-5"></i>AI 数据中心耗能反哺碳消除与天然气需求
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>科技巨头自愿减碳刚需：</strong>微软、亚马逊等 AI 基建扩建导致碳排放反弹，迫使其向 1PointFive 采购高确定性 DAC 碳消除信用（CDR）以维持净零承诺。</li>
+              <li>• <strong>45Q 补贴红利落地：</strong>美国联邦 45Q 法案给予封存/利用每吨 130–180 美元税收抵免，成为传统油企转型低碳现金流的重要政策支点。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、财务状况 -->
+  <section
+    id="financial"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="bar-chart-3"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          四、财务状况（2021–2025 五年财报与 2026 TTM 诊断）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        重要会计提示：因 2026 年 1 月出售 OxyChem，公司已将 OxyChem 历史业绩重分类为“非持续经营业务（Discontinued Operations）”，故下表 FY2025 及 2026 TTM 主营营收剔除了约 49 亿美元化工流水（单位：亿美元）[reference:2]。
+      </p>
+
+      <!-- 5年财务表 -->
+      <div
+        class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+      >
+        <table
+          class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+        >
+          <thead class="bg-accent-50 dark:bg-accent-900/30">
+            <tr>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">指标（亿美元）</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2021</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2022</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2023</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2024 (含化工旧口径)</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2025 (持续经营口径)</th>
+              <th class="font-semibold text-primary-700 dark:text-primary-300">TTM (至26-09)</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr>
+              <td class="font-medium">营业总收入</td>
+              <td>259.56</td>
+              <td>366.34</td>
+              <td>282.57</td>
+              <td>267.25（持续~218）</td>
+              <td>217.40</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">~234.00 (Q3 $68.3亿)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">归属于普通股股东净利润</td>
+              <td>15.22</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">125.04</td>
+              <td>37.73</td>
+              <td>23.82</td>
+              <td class="text-amber-600 dark:text-amber-400">13.70（含13亿减值）</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">35.90 (Q3 $18.6亿)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">摊薄每股收益（EPS，美元）</td>
+              <td>1.58</td>
+              <td>12.40</td>
+              <td>3.90</td>
+              <td>2.52</td>
+              <td>1.38</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">~3.60 (Q3 $1.85)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">经营性现金流 (OCF)</td>
+              <td>104.34</td>
+              <td>168.10</td>
+              <td>123.12</td>
+              <td>117.78</td>
+              <td>~102.00</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">~118.00 (Q3 $35.0亿)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">资本开支 (Capex) / 自由现金流 (FCF)</td>
+              <td>28.7 / 75.6</td>
+              <td>45.0 / 123.1</td>
+              <td>62.7 / 60.4</td>
+              <td>69.6 / 48.2</td>
+              <td>~61.0 / ~43.0</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">~65.0 / ~53.0 (Q3 $19亿)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">GAAP 营业利润率 / 普通股净利率</td>
+              <td>16.9% / 5.9%</td>
+              <td>39.3% / 34.1%</td>
+              <td>21.2% / 13.4%</td>
+              <td>17.5% / 8.9%</td>
+              <td>~14.2% / 6.3%</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">Q3 ~31.9% / TTM ~15.3%</td>
+            </tr>
+            <tr>
+              <td class="font-medium">本金债务（不含WES）/ 账面 ROE</td>
+              <td>~285亿 / ~11%</td>
+              <td>~197亿 / ~55%</td>
+              <td>~185亿 / ~17%</td>
+              <td>~250亿 / ~9.6%</td>
+              <td>~206亿 / ~5.1%</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">143.0亿 / ~12.5%–13.5%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <!-- 收入增长 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="trending-up" class="w-5 h-5"></i
+            >收入增长：出表化工缩容，2026 Q3 强力复苏
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            剔除 2022 年极值与化工出表影响后，OXY 持续经营营收由 2025 年约 217.40 亿美元稳步走高至 2026 年 Q3 单季 <strong>68.30 亿美元</strong>（同比大增逾 31%），将 TTM 营收拉回 234 亿美元左右，反映 CrownRock 产能完全融合与高油价下的强劲弹力。
+          </p>
+        </div>
+
+        <!-- 净利润趋势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="award" class="w-5 h-5"></i
+            >净利润趋势：筑底反转，纯上游高弹性尽显
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2023–2025 年间随油价温和下修加上 CrownRock 财务利息及 Q3 2025 计提 13 亿美元 OxyChem 商誉减值，普通股净利润一度跌至 13.70 亿美元谷底；但 2026 年债务利息锐减叠加 Q3 高油价，单季普通股净利暴涨近三倍至 <strong>18.60 亿美元</strong>（EPS $1.85），推动 TTM 净利回升至 35.90 亿美元。
+          </p>
+        </div>
+
+        <!-- 自由现金流 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流：每年稳产 45亿–60 亿美元以上
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            即使在低谷的 2024–2025 年，OXY 依然依靠严谨资本开支（~61亿–69 亿美元）产出 43亿–48 亿美元自由现金流；至 2026 年 Q3 单季自由现金流已跳升至约 <strong>19.00 亿美元</strong>（TTM ~53.0 亿美元），在支付普通股（~10亿/年）与优先股（6.79亿/年）分红后仍有逾 30 亿美元盈余。
+          </p>
+        </div>
+
+        <!-- 利润率与债务 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="scale" class="w-5 h-5"></i>利润率修复与“提前达标”的 143 亿债务
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2026 年 Q3 营业利润率飙回 ~31.9%、净利率达 ~27.2%。最振奋人心的是债务清理：借助 OxyChem 卖得的 97 亿美元现金及内生造血，OXY 本部本金债务已从 2024 年 8 月并购 CrownRock 后的逾 250 亿美元骤砍至 <strong>143.00 亿美元</strong>（合并 WES 含无追索债总额约 215 亿美元，合并 D/E 降至 ~0.58x–0.70x），稳稳守住投资级信用评级[reference:3]。
+          </p>
+        </div>
+      </div>
+
+      <!-- ROE 与财务稳健性判断 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+      >
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4"
+        >
+          股本回报率（ROE）与整体财务稳健性判断
+        </h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-4">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">
+              12.5%–13.5%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              Q3 2026 TTM ROE（从 FY25 5.1% 强力回升）
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">
+              143.0亿$
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              母体本金债务（低于 150 亿目标）
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-400">
+              6.79亿$/年
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              存量 84.9 亿优先股年息负担（待 2029 赎回）
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          综合近五年财报表现，西方石油的财务状况正处于<strong>“资产负债表从高危彻底转向稳健修复，而盈利仍高度依赖油价顺周期”</strong>的阶段。母体债务降至 143 亿美元标志着最艰难的债务周期已经结束，但 84.9 亿美元 8% 优先股年息以及失去 OxyChem 后的纯上游周期波动，仍制约其资本回报稳定性低于零债务的同行。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、估值分析 -->
+  <section
+    id="valuation"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calculator"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          五、估值分析（投行可比估值 + DCF 测算）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+        截至 2026 年 11 月 24 日收盘，西方石油股价报 <strong>64.93–64.95 美元</strong>（总市值约 644.5 亿美元，过去一年大涨逾 57%，最高触及 69.49 美元）[reference:4]。以下按照投行估值体系评估当前价位究竟贵还是便宜。
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <div
+          class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-primary-700 dark:text-primary-300 mb-4"
+          >
+            市盈率（P/E）与行业估值对比（2026年11月）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">西方石油 (OXY，现价 64.95$)</span>
+              <span class="font-bold text-primary-600 dark:text-primary-400">TTM 17.3–18.0x | 远期 11.7–12.5x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">康菲石油 (COP)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 14.1–15.2x | 远期 ~12.0x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">EOG 资源 (EOG) / Diamondback (FANG)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM ~12.0–13.5x | 远期 ~11.0–11.5x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">雪佛龙 (CVX) / 埃克森美孚 (XOM)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">远期 10.8x / 12.2x</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">北美 E&amp;P 板块均值 / 欧系油企均值</span>
+              <span class="font-semibold text-gray-700 dark:text-gray-300">TTM 12–14x / 8–9.5x</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">
+            注：OXY 当前无论 TTM P/E（17.3x–18.0x）还是市销率（2.75x），在独立 E&amp;P 与能源巨头阵营中均处于<strong>显著偏贵梯队</strong>（远高于 Devon、EOG 及欧洲巨头，甚至高于综合龙头雪佛龙的远期 10.8x），部分隐含了高油价弹性与 DAC 碳业务期权溢价。
+          </p>
+        </div>
+
+        <div
+          class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-accent-700 dark:text-accent-300 mb-4"
+          >
+            华尔街卖方最新目标价汇总（2026年Q4）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">最高看多目标（TD Cowen 等）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">68.00–75.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Wells Fargo（标配）/ Mizuho</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">64.00 / 63.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">RBC Capital / Piper Sandler（中性）</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">60.00 / 58.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Goldman Sachs / 偏空机构</span>
+              <span class="font-semibold text-red-600 dark:text-red-400">45.00–54.00 美元</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">华尔街一致平均目标价（21–24位分析师）</span>
+              <span class="font-bold text-red-600 dark:text-red-400">56.38–59.65 美元（低于现价 -8%~-13%）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DCF 参考 -->
+      <div
+        class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8"
+      >
+        <h3
+          class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"
+        >
+          <i data-lucide="line-chart" class="w-5 h-5"></i
+          >现金流折现（DCF）估值拆解（扣除 84.9 亿优先股与净债务后）
+        </h3>
+        <p
+          class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+        >
+          采用两阶段无杠杆自由现金流折现模型（WACC=8.0%，永续增长 g=1.5%）：假设中周期 WTI 油价回归 70 美元/桶，OXY 稳态年均 FCF 约 45亿–55 亿美元；计算得出企业总价值（EV）约 740亿–810 亿美元，减去母体净债务（~120 亿）及伯克希尔 <strong>84.90 亿美元优先股</strong>和认股权证价值后，归属普通股的基准 DCF 公允价值约为 <strong>52.00–58.00 美元/股</strong>（与 GuruFocus GF Value 及 Alpha Spread 估值中枢高度吻合）[reference:5]。
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-primary-600 dark:text-primary-400"
+            >
+              72.00–78.00$
+            </div>
+            <div class="text-xs text-gray-500">乐观情境 DCF（$85+ WTI 长牛 + DAC放量）</div>
+          </div>
+          <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-accent-600 dark:text-accent-400"
+            >
+              52.00–58.00$
+            </div>
+            <div class="text-xs text-gray-500">中周期基准 DCF（$70 WTI 常态假设）</div>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div
+              class="text-lg font-bold text-gray-700 dark:text-gray-300"
+            >
+              36.00–42.00$
+            </div>
+            <div class="text-xs text-gray-500">悲观情境 DCF（油价回跌 $55–$60）</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="search"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          <strong>估值结论：股票目前处于“温和至明显高估（Moderately Overvalued）”状态。</strong><br />
+          经过 2026 年逾 57% 的大幅补涨后，当前 64.95 美元股价不仅较中周期基准 DCF（52–58 美元）及华尔街平均目标价（56.4–59.7 美元）溢价约 <strong>10%–20%</strong>，甚至已越过伯克希尔 59.624 美元认股权证行权线触发潜在摊薄，且 1.60% 股息率显著落后于绝大部分能源同行。现价透支了较乐观的持久高油价预期。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、经营展望 -->
+  <section
+    id="outlook"
+    class="py-20 bg-accent-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calendar"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          六、经营展望（未来 12–24 个月）
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            1. 财务与产销节奏：迈入纯上游“低利息轻装时代”
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            在将本金债务稳压于 143 亿美元以下后，西方石油 2027 年利息支出将大幅下降，叠加 2026 年高油价贡献，市场一致性预期 FY2027 营收将由 FY26E 的约 245 亿美元升至 <strong>260亿–275亿美元</strong>，EPS 有望由 $3.60 攀升至 <strong>5.21–5.56 美元</strong>（若油价稳守 $75–$85）。总产量预计稳定维持在 145万–150 万桶/日高含油优质区间，资本开支严格控制在 60亿–65 亿美元。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            2. 股东回报 2.0：重拾普通股回购并冲刺 2029 赎回节点
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            过去六年被迫“一切为了还债”，2027–2028 年将成为股东回报重新加速期。管理层在守住 140 亿美元债务与 0.26 美元/季基础分红后，有望重启每年 15亿–25 亿美元普通股回购（用以对冲公众与伯克希尔权证潜在稀释），并同时攒足现金备战 <strong>2029 年 8 月</strong>无溢价赎回伯克希尔 84.9 亿美元 8% 优先股的黄金节点。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            3. STRATOS DAC 爬坡与二叠纪 EOR 降本扩效
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2027 年将是全球首座商业规模直接空气碳捕集厂 STRATOS 的完整产能检验年，市场将紧盯其实际单吨能耗成本能否按期压降以及 45Q 抵免资金回流速度；同时借助人工智能地震成像与二叠纪压裂优化，单桶运维与资本成本仍有进一步下探空间。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、风险识别 -->
+  <section
+    id="risk"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="alert-triangle"
+            class="w-5 h-5 text-red-600 dark:text-red-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">
+          七、风险识别（按危险程度从高到低排序）
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- 风险1 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0"
+            >
+              1
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2"
+              >
+                经济与周期风险（危险度：极高）— “去化工化”后纯上游油价高贝塔暴击
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                最大核心风险。出售 OxyChem 令 OXY 丧失了逆周期的化工现金缓冲与炼油对冲（不像 XOM、CVX 拥有庞大下游炼厂），成为几乎 100% 受制于油价波动的纯上游标的。在现价已高于华尔街一致目标（56–60美元）的敏感位置，一旦 2027 年全球经济增速放缓或地缘局势降温令 WTI 跌回 60–65 美元/桶，公司利润与估值面临双杀急跌风险。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险2 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0"
+            >
+              2
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2"
+              >
+                债务、优先股与稀释风险（危险度：高）— 84.9 亿优先股负担 + 8,386 万实值权证悬顶
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                虽本金债降至 143 亿美元，但合并 WES 后账面债务仍逾 215 亿，且伯克希尔 84.90 亿美元 8% 优先股（2029 年 8 月前不可按面值赎回）每年优先抽走 6.79 亿美元现金分红；同时当前股价突破 64 美元，已使巴菲特 8,386 万份 $59.624 认股权证及 2027 年到期的 $22 公众权证全部成为实值稀释源（潜在扩股 8%–11%）。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险3 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0"
+            >
+              3
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2"
+              >
+                行业颠覆风险（危险度：中高）— STRATOS 碳捕集经济性与新能源替代
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                直接空气碳捕集（DAC）目前仍属全球尚未经过十年以上大规模商业验证的高能耗新赛道，若 STRATOS 单位捕集成本难以降至 $300/吨以下，或企业 ESG 买单退潮，巨额先期研发资本投入恐拖累整体 ROCE；长期交通电动化亦渐进压缩原油需求空间。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险4 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0"
+            >
+              4
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2"
+              >
+                监管威胁（危险度：中）— 45Q 碳补贴政策变动、DJ 盆地环保及化工遗留赔付
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                1PointFive 的商业回报高度倚赖美国联邦 45Q 税收抵免政策稳定性；科罗拉多州（DJ 盆地）持续收紧油气钻井距离与排放审批；此外在出售 OxyChem 时，西方石油按合约仍保留了部分历史遗留化学场地环境诉讼的赔付兜底责任。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险5 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0"
+            >
+              5
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2"
+              >
+                竞争风险（危险度：中低）— 超级巨头与纯页岩标杆的夹击
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                在二叠纪核心战场上，西方石油正面遭遇零负债高分红的 EOG、Diamondback 以及资金成本更低、规模翻倍的 XOM 与 CVX（均坐拥一体化炼化利润）激烈竞争；受历史并购财务成本牵制，OXY 的普通股股息率（1.60%）明显落后于同业（2.7%–3.5%），对收益型机构吸引力偏弱。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、多空视角 -->
+  <section
+    id="longshort"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="scale"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          八、多空视角：机构投资组合经理评估
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- 可能买入的原因 -->
+        <div
+          class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800"
+        >
+          <h3
+            class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>去杠杆彻底成功，盈利释放进入加速段</strong>：出售 OxyChem 将债务压低至 143 亿美元，节省巨额利息支出，2027 年 EPS 预期回升至 5.20–5.56 美元，并具备全面重启股票回购的空间。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>极纯正的高油价看涨期权与顶级二叠纪区块</strong>：若看好未来地缘与供需缺口维持 WTI 80 美元以上，纯上游高油含量的 OXY 盈利爆发力将显著跑赢大盘及传统综合油企。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>伯克希尔 26.75% 铁杆基石 + DAC 稀缺概念</strong>：巴菲特与阿贝尔持仓 2.65 亿股纹丝不动提供极强信心托底，且 STRATOS 碳捕集使其享有能源股中罕见的 ESG 科技期权溢价。</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 可能回避的原因 -->
+        <div
+          class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800"
+        >
+          <h3
+            class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>暴涨 57% 后估值明显透支且低于卖方共识</strong>：64.95 美元高出华尔街平均目标价（56.4–59.7 美元）近 10%–15%，也高出中周期 DCF 公允价（52–58 美元），且股息率仅 1.60%（雪佛龙达 3.42%）。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>失去 OxyChem 缓冲 + 实值认股权证稀释</strong>：若油价回落将毫无化工/炼油利润垫；而当前高价同时把伯克希尔 8,386 万份权证（$59.624）和剩余公众权证全部置于实值状态。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>84.9 亿美元 8% 高息优先股抽血延续至 2029 年</strong>：普通股股东在 2029 年 8 月前仍须每年先向伯克希尔让渡 6.79 亿美元优先分配，限制普通股自由派息弹性。</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 关键因素 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6"
+      >
+        <h3
+          class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4"
+        >
+          关键因素：机构组合需要密切跟踪的 3 个指标
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div
+            class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="flame"
+              class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-primary-700 dark:text-primary-300"
+            >
+              WTI 油价与无缓冲 FCF 弹性
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              剥离化工后，WTI 每变动 10 美元/桶对季度自由现金流与回购力度的真实冲击幅度
+            </p>
+          </div>
+          <div
+            class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="repeat"
+              class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-accent-700 dark:text-accent-300"
+            >
+              回购启动进度 vs 权证行权节奏
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              2027 年普通股回购规模能否彻底吸收公众及伯克希尔实值权证可能带来的股本扩张
+            </p>
+          </div>
+          <div
+            class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center"
+          >
+            <i
+              data-lucide="leaf"
+              class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-gray-700 dark:text-gray-300"
+            >
+              STRATOS 商业达产与 45Q 现金兑现
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              直接空气碳捕集项目能否跑通单位经济效益，由“烧钱概念”转化为正向现金贡献
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投资论点 -->
+      <div
+        class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="target"
+            class="inline-block w-5 h-5 mr-2 -mt-0.5"
+          ></i>
+          <strong>机构投资论点：</strong
+          >站在机构投资组合经理的视角，西方石油（OXY）在基本面与资产负债表上已经打赢了最艰难的翻身仗——97 亿美元出售 OxyChem 成功把债务压至 143 亿美元，配合伯克希尔 26.75% 铁杆持仓与二叠纪+EOR+碳捕集独门生态，使它从“高危杠杆赌徒”彻底蜕变为具备长远战略价值的能源平台。<br /><br />
+          <strong>然而，“好转的公司”并不等于“当下就是好的买点”。</strong>在过去一年飙升逾 57% 站上 <strong>64.95 美元</strong>之后，OXY 现价已高出中周期 DCF 公允区间（52–58 美元）与华尔街平均目标价（56.4–59.7 美元）约 10%–20%，且面临 1.60% 超低股息率、8,386 万份实值权证稀释压顶以及失去化工缓冲的纯油价高贝塔敞口（同期雪佛龙远期 PE 仅 10.8x 且分红 3.42%）。<strong>策略上建议对 OXY 暂采取“中性观望、绝不在 64 美元以上追高”，现有盈利仓位可适当逢高兑现或轮动至更具安全边际的一体化巨头；若未来因油价回调带出 48–54 美元黄金击球区，再重启长线左侧布局。</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          关于本报告
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告基于西方石油公司（NYSE: OXY）公开 SEC 财务报告、Q3 2026 业绩材料、OxyChem 交割公告、WES 财报、伯克希尔 13F 披露及华尔街机构研报，从商业模式、护城河、行业趋势、五年财务、投行估值、未来展望、风险识别及多空视角八个维度提供系统研究。
+        </p>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          数据来源
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>• 西方石油 FY2025 10-K 年报及 Q3 2026 10-Q / 8-K 文件</li>
+          <li>• 2026 年 1 月 OxyChem 97 亿美元交割公告 &amp; 2026 DEF 14A</li>
+          <li>• TD Cowen、Wells Fargo、Mizuho、RBC、Goldman Sachs 研报</li>
+          <li>• Macrotrends、GuruFocus、StockAnalysis、MarketBeat 数据库</li>
+          <li>• ConocoPhillips (COP)、EOG Resources、Diamondback 公开对比</li>
+        </ul>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          免责声明
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告仅供教育与金融研究参考，不构成任何证券买卖或投资建议。所有财务及估值数据均基于截至 2026 年 11 月 25 日（北京时间）的公开披露信息整理，能源大宗商品波动剧烈，投资需独立审慎决策。
+        </p>
+      </div>
+    </div>
+    <div
+      class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500"
+    >
+      <p>© 2026 西方石油公司（OXY）经营分析报告 · 生成日期：2026-11-25</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    if (!menu) return;
+    menu.classList.toggle("mobile-menu-open");
+  }
+
+  window.addEventListener("scroll", () => {
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    lucide.createIcons();
+    AOS.init({ duration: 800, once: true });
+  });
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

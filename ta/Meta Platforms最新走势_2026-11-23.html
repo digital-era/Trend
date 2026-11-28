@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1220">
+  <title>Meta Platforms（META）最新走势归因与操作指引｜2026-11-23</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0b1220',
+            panel: '#111c2e',
+            accent: '#55c6b2',
+            gold: '#e6bd72'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'Microsoft YaHei', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface2: #edf2f8;
+      --text: #152238;
+      --muted: #65748a;
+      --border: #dce4ef;
+      --accent: #087f78;
+      --accent2: #bd8b3c;
+      --danger: #d64d5c;
+      --success: #159477;
+      --shadow: 0 12px 35px rgba(20, 37, 62, .07);
+    }
+    .dark {
+      --bg: #08111f;
+      --surface: #101c2d;
+      --surface2: #17263a;
+      --text: #e8eef7;
+      --muted: #9aabc1;
+      --border: #26384f;
+      --accent: #55c6b2;
+      --accent2: #e6bd72;
+      --danger: #ff7784;
+      --success: #5bd3ad;
+      --shadow: 0 12px 35px rgba(0, 0, 0, .2);
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { background: var(--bg); color: var(--text); transition: background .25s, color .25s; }
+    .surface { background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); }
+    .surface2 { background: var(--surface2); border: 1px solid var(--border); }
+    .muted { color: var(--muted); }
+    .accent { color: var(--accent); }
+    .gold { color: var(--accent2); }
+    .danger { color: var(--danger); }
+    .success { color: var(--success); }
+    .nav-link { color: var(--muted); transition: color .2s; }
+    .nav-link:hover, .nav-link.active { color: var(--accent); }
+    .progress { position: fixed; z-index: 100; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .tag { display: inline-flex; align-items: center; border-radius: 999px; padding: 4px 10px; font-size: 11px; font-weight: 700; letter-spacing: .03em; }
+    .tag-red { background: rgba(214,77,92,.12); color: var(--danger); }
+    .tag-green { background: rgba(21,148,119,.12); color: var(--success); }
+    .tag-gold { background: rgba(189,139,60,.14); color: var(--accent2); }
+    .tag-blue { background: rgba(65,130,210,.13); color: #4389d5; }
+    .metric { font-variant-numeric: tabular-nums; letter-spacing: -.04em; }
+    .bar-track { height: 7px; border-radius: 20px; background: var(--surface2); overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 20px; transition: width .8s ease; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; }
+    table { width: 100%; border-collapse: collapse; min-width: 650px; font-size: 13px; }
+    th { text-align: left; color: var(--muted); font-weight: 600; background: var(--surface2); white-space: nowrap; }
+    td, th { padding: 12px 14px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: 0; }
+    .price-chip { cursor: pointer; display: inline-flex; border: 1px solid var(--border); border-radius: 9px; padding: 5px 9px; font-size: 12px; font-weight: 700; transition: all .2s; }
+    .price-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+    .event-card { border-left: 3px solid var(--accent); }
+    .event-card.risk { border-left-color: var(--danger); }
+    .event-card.neutral { border-left-color: var(--accent2); }
+    .scenario { transition: transform .2s, border-color .2s; }
+    .scenario:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .chart-grid { background-image: linear-gradient(to bottom, var(--border) 1px, transparent 1px); background-size: 100% 25%; }
+    .sparkline { width: 100%; height: 72px; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: block; }
+    .anchor { scroll-margin-top: 90px; }
+    @media (max-width: 767px) {
+      .desktop-nav { display: none; }
+      .mobile-menu { position: absolute; top: 68px; left: 12px; right: 12px; z-index: 50; padding: 16px; border-radius: 16px; }
+    }
+  </style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="font-sans">
+  <div class="progress" id="progress"></div>
+
+  <header class="sticky top-0 z-50 backdrop-blur-xl border-b" style="background:color-mix(in srgb,var(--bg) 88%,transparent);border-color:var(--border)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[68px] flex items-center justify-between relative">
+      <a href="#top" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center font-black text-white" style="background:linear-gradient(135deg,#087f78,#4c9dbe)">M</div>
+        <div>
+          <div class="font-bold tracking-tight text-sm">MARKET INTELLIGENCE</div>
+          <div class="text-[10px] muted tracking-[.16em]">EQUITY RESEARCH · 2026</div>
+        </div>
+      </a>
+      <nav class="desktop-nav flex items-center gap-6 text-xs font-semibold">
+        <a class="nav-link" href="#overview">核心结论</a>
+        <a class="nav-link" href="#market">市场表现</a>
+        <a class="nav-link" href="#drivers">走势归因</a>
+        <a class="nav-link" href="#technical">技术结构</a>
+        <a class="nav-link" href="#strategy">操作策略</a>
+        <a class="nav-link" href="#risk">风险管理</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="themeBtn" class="w-9 h-9 rounded-xl surface2 flex items-center justify-center" aria-label="切换主题"><i data-lucide="moon" class="w-4 h-4"></i></button>
+        <button id="menuBtn" class="md:hidden w-9 h-9 rounded-xl surface2 flex items-center justify-center" aria-label="打开菜单"><i data-lucide="menu" class="w-4 h-4"></i></button>
+      </div>
+      <nav id="mobileMenu" class="mobile-menu surface">
+        <div class="grid grid-cols-2 gap-3 text-sm font-semibold">
+          <a class="nav-link" href="#overview">核心结论</a>
+          <a class="nav-link" href="#market">市场表现</a>
+          <a class="nav-link" href="#drivers">走势归因</a>
+          <a class="nav-link" href="#technical">技术结构</a>
+          <a class="nav-link" href="#strategy">操作策略</a>
+          <a class="nav-link" href="#risk">风险管理</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+    <section class="pt-10 sm:pt-14 pb-8" data-aos="fade-up">
+      <div class="flex flex-wrap gap-2 items-center mb-5">
+        <span class="tag tag-blue">BUY-SIDE RESEARCH</span>
+        <span class="tag tag-gold">走势归因与交易策略</span>
+        <span class="text-xs muted">研究日期：2026年11月23日</span>
+      </div>
+      <div class="grid lg:grid-cols-[1.4fr_.6fr] gap-8 items-end">
+        <div>
+          <div class="text-sm muted mb-2">NASDAQ · META</div>
+          <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.08]">Meta Platforms<span class="block text-2xl sm:text-3xl mt-3 font-semibold" style="color:var(--accent)">最新走势归因与操作指引</span></h1>
+          <p class="muted mt-5 max-w-2xl leading-7 text-sm sm:text-base">围绕近期股价回撤、AI资本开支、广告业务韧性与科技股风险偏好变化，拆解公司特异性因素和市场系统性冲击，构建可验证的交易情景。</p>
+        </div>
+        <div class="surface rounded-2xl p-5">
+          <div class="flex justify-between items-center">
+            <span class="text-xs muted">最新可核验收盘价</span>
+            <span class="tag tag-red">阶段承压</span>
+          </div>
+          <div class="metric text-4xl font-black mt-3">$560.84</div>
+          <div class="flex items-center gap-2 mt-2">
+            <span class="danger font-bold">−5.93%</span>
+            <span class="muted text-xs">2026-11-20 单日</span>
+          </div>
+          <div class="mt-4 pt-4 border-t text-xs muted" style="border-color:var(--border)">
+            11月23日美股常规交易尚未收盘；本报告以11月20日最近一个已完成交易日为价格基准。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="anchor py-7" data-aos="fade-up">
+      <div class="flex items-center justify-between mb-5">
+        <div>
+          <div class="text-xs accent font-bold tracking-widest">01 / INVESTMENT VIEW</div>
+          <h2 class="text-2xl font-bold mt-1">核心结论</h2>
+        </div>
+        <span class="text-xs muted">观察区间：10月23日—11月20日</span>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <article class="surface rounded-2xl p-5">
+          <div class="flex justify-between"><span class="muted text-xs">区间累计涨跌幅</span><i data-lucide="trending-down" class="w-5 h-5 danger"></i></div>
+          <div class="metric text-3xl font-black danger mt-3">−12.73%</div>
+          <p class="muted text-xs mt-3 leading-5">股价从10月23日收盘642.62美元回落至11月20日560.84美元，期间波动明显放大。</p>
+        </article>
+        <article class="surface rounded-2xl p-5">
+          <div class="flex justify-between"><span class="muted text-xs">相对纳指表现</span><i data-lucide="scale" class="w-5 h-5 accent"></i></div>
+          <div class="metric text-3xl font-black success mt-3">+0.13pp</div>
+          <p class="muted text-xs mt-3 leading-5">同期纳斯达克综合指数约下跌12.86%，META略微跑赢纳指，但显著落后标普500。</p>
+        </article>
+        <article class="surface rounded-2xl p-5">
+          <div class="flex justify-between"><span class="muted text-xs">关键矛盾</span><i data-lucide="git-branch" class="w-5 h-5 gold"></i></div>
+          <div class="text-2xl font-black mt-3">AI投入回报</div>
+          <p class="muted text-xs mt-3 leading-5">广告现金流仍是基本盘，但市场正重新评估AI基础设施投资的规模、回报周期和自由现金流压力。</p>
+        </article>
+      </div>
+
+      <div class="surface rounded-2xl p-6 mt-5">
+        <div class="flex items-center gap-2 mb-3"><i data-lucide="lightbulb" class="w-5 h-5 gold"></i><h3 class="font-bold">研究判断</h3></div>
+        <p class="leading-7 text-sm">当前更适合将META理解为“核心广告业务提供现金流底座、AI资本开支决定估值弹性”的大型平台公司。近期下跌并非单纯由广告业务恶化驱动，宏观科技股去风险、AI投资回报质疑及竞争格局变化共同压缩估值。短期不宜仅因跌幅较大而机械抄底；应等待价格企稳、市场风险偏好改善，并观察资本开支与变现效率之间的关系是否重新获得投资者认可。</p>
+      </div>
+    </section>
+
+    <section id="market" class="anchor py-8" data-aos="fade-up">
+      <div class="mb-5">
+        <div class="text-xs accent font-bold tracking-widest">02 / MARKET PERFORMANCE</div>
+        <h2 class="text-2xl font-bold mt-1">一个月市场表现：个股与指数对照</h2>
+      </div>
+      <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-5">
+        <div class="surface rounded-2xl p-5">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold">区间累计表现</h3><span class="text-xs muted">起点：2026-10-23 = 0%</span>
+          </div>
+          <div class="space-y-5">
+            <div>
+              <div class="flex justify-between text-sm mb-2"><span class="font-semibold">META</span><span class="danger font-bold">−12.73%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:85%;background:#d64d5c"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2"><span class="font-semibold">NASDAQ Composite</span><span class="danger font-bold">−12.86%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:85.8%;background:#8799b2"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2"><span class="font-semibold">S&P 500</span><span class="danger font-bold">−9.36%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:62.4%;background:#bd8b3c"></div></div>
+            </div>
+          </div>
+          <p class="text-xs muted mt-5 leading-5">注：按起止收盘价计算简单区间收益率，未计股息。指数和META使用相同观察窗口。</p>
+        </div>
+        <div class="surface rounded-2xl p-5">
+          <h3 class="font-bold mb-4">行情关键数据</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="surface2 rounded-xl p-4"><div class="text-xs muted">区间起点收盘</div><div class="metric text-xl font-bold mt-2">$642.62</div></div>
+            <div class="surface2 rounded-xl p-4"><div class="text-xs muted">区间终点收盘</div><div class="metric text-xl font-bold mt-2">$560.84</div></div>
+            <div class="surface2 rounded-xl p-4"><div class="text-xs muted">区间最高价</div><div class="metric text-xl font-bold mt-2">$648.04</div><div class="text-[11px] muted mt-1">10月23日盘中</div></div>
+            <div class="surface2 rounded-xl p-4"><div class="text-xs muted">区间最低价</div><div class="metric text-xl font-bold mt-2">$558.68</div><div class="text-[11px] muted mt-1">11月20日盘中</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap mt-5">
+        <table>
+          <thead><tr><th>资产</th><th>10月23日收盘</th><th>11月20日收盘</th><th>区间收益</th><th>相对META</th></tr></thead>
+          <tbody>
+            <tr><td class="font-bold">Meta Platforms</td><td>$642.62</td><td>$560.84</td><td class="danger font-bold">−12.73%</td><td>基准</td></tr>
+            <tr><td>S&P 500</td><td>7,623.68</td><td>6,910.39</td><td class="danger">−9.36%</td><td class="danger">META落后3.37个百分点</td></tr>
+            <tr><td>NASDAQ Composite</td><td>25,955.34</td><td>22,617.73</td><td class="danger">−12.86%</td><td class="success">META领先0.13个百分点</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="surface rounded-2xl p-5 mt-5">
+        <h3 class="font-bold mb-4">走势分段观察</h3>
+        <div class="space-y-4">
+          <div class="flex gap-4">
+            <div class="w-24 shrink-0 text-xs muted pt-1">10/23—10/30</div>
+            <div class="flex-1 border-l-2 pl-4" style="border-color:var(--accent2)">
+              <div class="flex flex-wrap items-center gap-2"><b class="text-sm">第一阶段：高位回撤</b><span class="tag tag-gold">−4.30%</span></div>
+              <p class="text-xs muted mt-1 leading-5">META收盘价由642.62美元降至614.99美元。市场开始消化AI投资规模与未来现金流的不确定性。</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-24 shrink-0 text-xs muted pt-1">11/02—11/13</div>
+            <div class="flex-1 border-l-2 pl-4" style="border-color:var(--success)">
+              <div class="flex flex-wrap items-center gap-2"><b class="text-sm">第二阶段：反弹修复</b><span class="tag tag-green">+5.76%</span></div>
+              <p class="text-xs muted mt-1 leading-5">从11月2日收盘606.73美元升至11月13日641.69美元，出现阶段性修复，但未形成持续突破。</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-24 shrink-0 text-xs muted pt-1">11/16—11/20</div>
+            <div class="flex-1 border-l-2 pl-4" style="border-color:var(--danger)">
+              <div class="flex flex-wrap items-center gap-2"><b class="text-sm">第三阶段：快速下挫</b><span class="tag tag-red">−10.47%</span></div>
+              <p class="text-xs muted mt-1 leading-5">从11月16日收盘626.41美元跌至11月20日560.84美元，科技股风险偏好快速收缩，META出现放量下跌。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="drivers" class="anchor py-8" data-aos="fade-up">
+      <div class="mb-5">
+        <div class="text-xs accent font-bold tracking-widest">03 / CAUSAL ATTRIBUTION</div>
+        <h2 class="text-2xl font-bold mt-1">走势归因：基本面、行业与宏观三层传导</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <article class="surface rounded-2xl p-5 event-card risk">
+          <div class="flex justify-between items-center"><span class="tag tag-red">主要负面因素</span><span class="text-xs muted">资本配置 / 估值</span></div>
+          <h3 class="font-bold text-lg mt-3">AI资本开支与现金流担忧</h3>
+          <p class="text-sm muted leading-6 mt-2">市场对AI基础设施投入的审视从“投入规模”转向“回报兑现”。S&P Global于10月30日将Meta评级展望由稳定调整为负面，理由涉及快速上升的AI资本开支及未来自由经营现金流不确定性。</p>
+          <div class="surface2 rounded-xl p-3 mt-4">
+            <div class="text-xs muted">报道所引用的2026年资本开支指引</div>
+            <div class="metric text-2xl font-black mt-1">$135B–$145B</div>
+            <div class="text-xs muted mt-1">属于公司当时给出的全年资本开支区间，并非实际已支出金额。</div>
+          </div>
+        </article>
+        <article class="surface rounded-2xl p-5 event-card risk">
+          <div class="flex justify-between items-center"><span class="tag tag-red">行业竞争</span><span class="text-xs muted">AI生态</span></div>
+          <h3 class="font-bold text-lg mt-3">AI平台竞争升温</h3>
+          <p class="text-sm muted leading-6 mt-2">11月20日市场报道提及Apple正在开发具备编码、浏览和应用控制能力的自主AI代理。这类产品若形成系统级入口，可能加剧对Meta AI产品生态、用户时长与商业化空间的竞争预期。</p>
+          <p class="text-xs muted mt-3">需要区分：竞争产品开发消息是估值预期变量，并不等同于Meta现有广告业务已出现可量化的收入损失。</p>
+        </article>
+        <article class="surface rounded-2xl p-5 event-card risk">
+          <div class="flex justify-between items-center"><span class="tag tag-red">宏观与市场</span><span class="text-xs muted">风险偏好</span></div>
+          <h3 class="font-bold text-lg mt-3">AI交易拥挤度下降</h3>
+          <p class="text-sm muted leading-6 mt-2">11月20日美股出现广泛AI相关资产抛售。市场担心巨额训练和数据中心支出难以在合理期限内产生匹配回报。标普500当日下跌3.70%，纳指下跌5.28%，表明冲击具有明显的系统性特征。</p>
+          <p class="text-xs muted mt-3">META当日下跌5.93%，比纳指多跌0.65个百分点，比标普500多跌2.23个百分点。</p>
+        </article>
+        <article class="surface rounded-2xl p-5 event-card">
+          <div class="flex justify-between items-center"><span class="tag tag-green">基本面支撑</span><span class="text-xs muted">核心业务</span></div>
+          <h3 class="font-bold text-lg mt-3">广告业务仍是现金流底座</h3>
+          <p class="text-sm muted leading-6 mt-2">Meta的核心广告平台、用户规模、推荐系统和广告投放工具仍构成其经营基础。AI投入若能持续提升内容推荐效率、广告转化和投放回报，资本开支有机会转化为收入与利润率优势。</p>
+          <p class="text-xs muted mt-3">但在缺乏最新财报增量验证前，不宜把AI效率提升直接视为已实现的利润增长。</p>
+        </article>
+      </div>
+
+      <div class="surface rounded-2xl p-5 mt-5">
+        <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+          <h3 class="font-bold">驱动因素重要性评估</h3>
+          <span class="text-xs muted">研究判断权重 · 非统计回归结果</span>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span>AI资本开支 / 自由现金流预期</span><b>35%</b></div>
+            <div class="bar-track"><div class="bar-fill" style="width:35%;background:#d64d5c"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span>科技股整体风险偏好与估值收缩</span><b>30%</b></div>
+            <div class="bar-track"><div class="bar-fill" style="width:30%;background:#bd8b3c"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span>AI竞争格局与产品入口担忧</span><b>20%</b></div>
+            <div class="bar-track"><div class="bar-fill" style="width:20%;background:#5688c7"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span>短期技术面、仓位与流动性</span><b>15%</b></div>
+            <div class="bar-track"><div class="bar-fill" style="width:15%;background:#8799b2"></div></div>
+          </div>
+        </div>
+        <p class="text-xs muted mt-4">权重用于表达分析框架中的相对重要性，不代表对每日跌幅的精确因果拆分。</p>
+      </div>
+    </section>
+
+    <section id="technical" class="anchor py-8" data-aos="fade-up">
+      <div class="mb-5">
+        <div class="text-xs accent font-bold tracking-widest">04 / PRICE & VOLUME</div>
+        <h2 class="text-2xl font-bold mt-1">技术结构与关键价格区域</h2>
+      </div>
+      <div class="grid lg:grid-cols-[1fr_.85fr] gap-5">
+        <div class="surface rounded-2xl p-5">
+          <h3 class="font-bold mb-1">最近交易日价格与成交量</h3>
+          <p class="text-xs muted mb-4">2026年11月20日 · 日线</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="surface2 p-3 rounded-xl"><div class="text-xs muted">开盘</div><div class="font-bold mt-1">$583.91</div></div>
+            <div class="surface2 p-3 rounded-xl"><div class="text-xs muted">最高</div><div class="font-bold mt-1">$588.69</div></div>
+            <div class="surface2 p-3 rounded-xl"><div class="text-xs muted">最低</div><div class="font-bold mt-1">$558.68</div></div>
+            <div class="surface2 p-3 rounded-xl"><div class="text-xs muted">收盘</div><div class="font-bold mt-1">$560.84</div></div>
+          </div>
+          <div class="mt-5">
+            <div class="flex justify-between text-sm"><span>11月20日成交量</span><b>25.59M股</b></div>
+            <div class="bar-track mt-2"><div class="bar-fill" style="width:50%;background:#d64d5c"></div></div>
+            <div class="flex justify-between text-xs muted mt-2"><span>11月19日：15.36M股</span><span>单日增加约66.7%</span></div>
+          </div>
+          <div class="surface2 rounded-xl p-4 mt-5">
+            <div class="flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4 danger"></i><b class="text-sm">量价信号</b></div>
+            <p class="text-xs muted leading-5 mt-2">11月20日下跌5.93%，成交量较前一交易日显著放大，说明抛压和风险重新定价较为集中。放量下跌本身不能证明机构持续派发，但在收复关键价格区间前，应避免将其简单解读为底部换手。</p>
+          </div>
+        </div>
+        <div class="surface rounded-2xl p-5">
+          <h3 class="font-bold mb-4">关键价格观察区</h3>
+          <div class="space-y-4">
+            <div class="flex gap-3">
+              <div class="w-20 shrink-0"><span class="price-chip">$620–627</span></div>
+              <div><b class="text-sm">上方反弹压力区</b><p class="text-xs muted mt-1">11月16日至19日收盘价密集区域。反弹若无法重新站稳，可能只是下跌趋势中的修复。</p></div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-20 shrink-0"><span class="price-chip">$595–600</span></div>
+              <div><b class="text-sm">第一观察压力</b><p class="text-xs muted mt-1">11月19日收盘596.22美元附近。需要观察反弹能否放量收复。</p></div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-20 shrink-0"><span class="price-chip">$558–561</span></div>
+              <div><b class="text-sm">短线支撑观察区</b><p class="text-xs muted mt-1">11月20日低点558.68美元及收盘560.84美元附近。跌破后需重新评估下行空间。</p></div>
+            </div>
+            <div class="flex gap-3">
+              <div class="w-20 shrink-0"><span class="price-chip">$540</span></div>
+              <div><b class="text-sm">下方情景观察位</b><p class="text-xs muted mt-1">仅作为风险预案观察点，不是已验证的历史强支撑或确定目标价。</p></div>
+            </div>
+          </div>
+          <p class="text-xs muted mt-5 pt-4 border-t" style="border-color:var(--border)">上述价格区间为基于近期可核验日线高低点和收盘价的交易观察区，不构成经过完整历史成交密集区、均线和指标回测确认的技术结论。</p>
+        </div>
+      </div>
+      <div class="surface rounded-2xl p-5 mt-5">
+        <div class="flex items-center gap-2 mb-3"><i data-lucide="alert-circle" class="w-5 h-5 gold"></i><h3 class="font-bold">趋势判断边界</h3></div>
+        <p class="text-sm muted leading-6">从10月23日至11月20日，股价整体下跌12.73%，11月16日至20日出现快速下行并伴随放量。现有数据足以确认短线价格结构转弱，但不足以严谨给出MA5、MA10、MA20、MA60和RSI的具体数值；本报告不以未经完整历史数据计算的指标制造精确感。交易上优先观察558.68美元附近能否守住，以及反弹是否重新收复595—600美元区域。</p>
+      </div>
+    </section>
+
+    <section id="strategy" class="anchor py-8" data-aos="fade-up">
+      <div class="mb-5">
+        <div class="text-xs accent font-bold tracking-widest">05 / ACTION PLAN</div>
+        <h2 class="text-2xl font-bold mt-1">未来交易情景与操作指引</h2>
+        <p class="text-sm muted mt-2">以11月20日收盘560.84美元为基准。以下是条件情景，不是价格预测或收益承诺。</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <article class="surface rounded-2xl p-5 scenario">
+          <span class="tag tag-green">情景 A · 修复反弹</span>
+          <div class="metric text-3xl font-black success mt-4">595–600</div>
+          <div class="text-xs muted mt-1">观察收复区域（美元）</div>
+          <p class="text-sm leading-6 mt-4">若大盘止跌，META在558—561美元区域获得承接，随后放量收复595—600美元，可视为短线修复质量改善。</p>
+          <div class="border-t mt-4 pt-4" style="border-color:var(--border)">
+            <b class="text-xs">操作思路</b>
+            <p class="text-xs muted mt-2">等待收复并确认回踩有效，再考虑分批建立试探仓位；不追逐单日急拉。</p>
+          </div>
+        </article>
+        <article class="surface rounded-2xl p-5 scenario">
+          <span class="tag tag-gold">情景 B · 区间震荡</span>
+          <div class="metric text-3xl font-black gold mt-4">558–600</div>
+          <div class="text-xs muted mt-1">震荡观察区间（美元）</div>
+          <p class="text-sm leading-6 mt-4">若AI板块情绪反复，股价在短线支撑和第一压力区之间反复波动，市场尚未完成风险重估。</p>
+          <div class="border-t mt-4 pt-4" style="border-color:var(--border)">
+            <b class="text-xs">操作思路</b>
+            <p class="text-xs muted mt-2">控制仓位，避免区间中部频繁交易；等待边界处出现明确量价信号。</p>
+          </div>
+        </article>
+        <article class="surface rounded-2xl p-5 scenario">
+          <span class="tag tag-red">情景 C · 破位下行</span>
+          <div class="metric text-3xl font-black danger mt-4">&lt;558</div>
+          <div class="text-xs muted mt-1">短线支撑失守（美元）</div>
+          <p class="text-sm leading-6 mt-4">若有效跌破558.68美元，且成交量继续放大、纳指同步走弱，可能意味着卖压延续，市场需要寻找新的均衡价格。</p>
+          <div class="border-t mt-4 pt-4" style="border-color:var(--border)">
+            <b class="text-xs">操作思路</b>
+            <p class="text-xs muted mt-2">暂停左侧加仓，重新测算组合风险；等待新的止跌结构，而不是预设必然反弹。</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-4 mt-5">
+        <div class="surface rounded-2xl p-5">
+          <div class="flex items-center gap-2 mb-4"><i data-lucide="briefcase-business" class="w-5 h-5 accent"></i><h3 class="font-bold">已有持仓者</h3></div>
+          <ul class="space-y-3 text-sm">
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 success shrink-0 mt-0.5"></i><span>先区分长期投资逻辑与短线交易仓位，避免将所有持仓统一按单一止损规则处理。</span></li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 success shrink-0 mt-0.5"></i><span>若558.68美元附近失守且大盘同步恶化，优先降低高杠杆、短线和超配部分风险。</span></li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 success shrink-0 mt-0.5"></i><span>若反弹至595—600美元但量能不足，考虑利用反弹调整风险敞口，而非默认趋势反转。</span></li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 success shrink-0 mt-0.5"></i><span>持续跟踪广告增长、经营利润率、资本开支、自由现金流和管理层对AI投资回报的解释。</span></li>
+          </ul>
+        </div>
+        <div class="surface rounded-2xl p-5">
+          <div class="flex items-center gap-2 mb-4"><i data-lucide="wallet" class="w-5 h-5 gold"></i><h3 class="font-bold">尚未持仓者</h3></div>
+          <ul class="space-y-3 text-sm">
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 success shrink-0 mt-0.5"></i><span>避免因12.73%的区间跌幅而直接判断估值已充分修复。</span></li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 success shrink-0 mt-0.5"></i><span>优先等待支撑区域止跌信号，观察收盘价、成交量及纳指是否同步改善。</span></li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 success shrink-0 mt-0.5"></i><span>若确认收复595—600美元，可考虑小仓位试探，后续根据回踩和基本面验证决定是否增加。</span></li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 success shrink-0 mt-0.5"></i><span>预留现金应对波动，单笔交易风险应由账户可承受损失反推，而不是由目标收益倒推。</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="risk" class="anchor py-8" data-aos="fade-up">
+      <div class="mb-5">
+        <div class="text-xs accent font-bold tracking-widest">06 / RISK CONTROL</div>
+        <h2 class="text-2xl font-bold mt-1">风险红线与后续跟踪清单</h2>
+      </div>
+      <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-5">
+        <div class="surface rounded-2xl p-5">
+          <h3 class="font-bold mb-4">需要重点防范的风险</h3>
+          <div class="space-y-4">
+            <div><div class="flex justify-between text-sm"><b>资本开支持续超预期</b><span class="tag tag-red">高关注</span></div><p class="text-xs muted mt-1">若投入加速而收入、利润率和现金流未同步改善，估值可能继续承压。</p></div>
+            <div><div class="flex justify-between text-sm"><b>AI变现速度不及预期</b><span class="tag tag-red">高关注</span></div><p class="text-xs muted mt-1">基础设施投入能否转化为广告效率、订阅或新业务收入，是中期核心验证点。</p></div>
+            <div><div class="flex justify-between text-sm"><b>广告景气度回落</b><span class="tag tag-gold">持续跟踪</span></div><p class="text-xs muted mt-1">宏观需求、广告价格和广告主预算变化可能影响核心现金流。</p></div>
+            <div><div class="flex justify-between text-sm"><b>监管及平台竞争</b><span class="tag tag-gold">持续跟踪</span></div><p class="text-xs muted mt-1">隐私、反垄断、内容治理与新型AI入口竞争均可能改变长期商业模式。</p></div>
+          </div>
+        </div>
+        <div class="surface rounded-2xl p-5">
+          <h3 class="font-bold mb-4">下一阶段跟踪清单</h3>
+          <div id="checklist" class="space-y-3 text-sm">
+            <label class="flex gap-3 items-start cursor-pointer"><input type="checkbox" class="mt-1 accent-checkbox"><span>公司下一次财报及管理层对资本开支指引的更新</span></label>
+            <label class="flex gap-3 items-start cursor-pointer"><input type="checkbox" class="mt-1 accent-checkbox"><span>广告收入增长、广告展示量与平均广告价格变化</span></label>
+            <label class="flex gap-3 items-start cursor-pointer"><input type="checkbox" class="mt-1 accent-checkbox"><span>经营利润率、自由现金流及资本开支兑现情况</span></label>
+            <label class="flex gap-3 items-start cursor-pointer"><input type="checkbox" class="mt-1 accent-checkbox"><span>AI产品用户采用、广告工具效率和商业化证据</span></label>
+            <label class="flex gap-3 items-start cursor-pointer"><input type="checkbox" class="mt-1 accent-checkbox"><span>纳指与大型科技股是否结束同步去风险过程</span></label>
+            <label class="flex gap-3 items-start cursor-pointer"><input type="checkbox" class="mt-1 accent-checkbox"><span>META能否守住558.68美元并重新收复595—600美元</span></label>
+          </div>
+          <div class="mt-5 pt-4 border-t" style="border-color:var(--border)">
+            <div class="flex justify-between text-xs muted"><span>已完成事项</span><span id="checkCount">0 / 6</span></div>
+            <div class="bar-track mt-2"><div id="checkProgress" class="bar-fill" style="width:0%;background:var(--accent)"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-8" data-aos="fade-up">
+      <div class="surface rounded-2xl p-6 sm:p-8">
+        <div class="text-xs accent font-bold tracking-widest">FINAL ASSESSMENT</div>
+        <h2 class="text-2xl font-bold mt-2">结论：等待风险重估完成，再判断趋势反转</h2>
+        <p class="text-sm leading-7 muted mt-4">Meta的长期投资逻辑仍取决于广告业务的现金创造能力，以及AI投入能否提升推荐、广告转化和产品生态价值。近期市场的核心争议并不是AI是否重要，而是资本开支的规模与回报时间是否匹配。短线价格已经明显走弱，11月20日放量下跌进一步提高了确认底部所需的证据门槛。</p>
+        <p class="text-sm leading-7 mt-3">策略上，558.68美元附近是短线首先需要观察的价格区域，595—600美元是反弹修复的重要观察区。只有在市场风险偏好改善、价格结构企稳、公司现金流与AI变现证据相互印证时，才有理由逐步提高对趋势性机会的判断权重。</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="tag tag-gold">短期：谨慎观察</span>
+          <span class="tag tag-blue">中期：等待现金流验证</span>
+          <span class="tag tag-green">长期：关注AI商业化兑现</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-8 border-t" style="border-color:var(--border)">
+      <div class="flex flex-col sm:flex-row justify-between gap-4">
+        <div>
+          <div class="font-bold text-sm">MARKET INTELLIGENCE · META</div>
+          <div class="text-xs muted mt-1">研究基准日：2026-11-23 · 行情截止：2026-11-20收盘</div>
+        </div>
+        <div class="text-xs muted max-w-xl leading-5">
+          本报告仅用于信息研究与投资分析，不构成证券买卖建议。价格数据及新闻信息可能存在修订或时滞；技术价格区间为情景观察，不代表确定支撑、目标价或收益承诺。投资者应结合自身风险承受能力独立决策。
+        </div>
+      </div>
+      <div class="mt-6">
+        <h3 class="text-xs font-bold mb-3">数据来源与参考报道</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+          <a class="surface2 rounded-xl p-3 hover:opacity-80" href="https://finance.yahoo.com/quote/META/history/" target="_blank" rel="noopener">Yahoo Finance · META历史行情 ↗</a>
+          <a class="surface2 rounded-xl p-3 hover:opacity-80" href="https://www.investing.com/equities/facebook-inc-historical-data" target="_blank" rel="noopener">Investing.com · META历史数据 ↗</a>
+          <a class="surface2 rounded-xl p-3 hover:opacity-80" href="https://www.investing.com/news/stock-market-news/" target="_blank" rel="noopener">Investing.com · 11月20日市场与AI板块回撤报道 ↗</a>
+          <a class="surface2 rounded-xl p-3 hover:opacity-80" href="https://www.spglobal.com/ratings/en/" target="_blank" rel="noopener">S&P Global Ratings · Meta信用展望相关信息 ↗</a>
+          <a class="surface2 rounded-xl p-3 hover:opacity-80" href="https://apnews.com/hub/stock-market" target="_blank" rel="noopener">Associated Press · 11月20日美股市场回顾 ↗</a>
+          <a class="surface2 rounded-xl p-3 hover:opacity-80" href="https://www.nasdaq.com/market-activity/index/comp/historical" target="_blank" rel="noopener">Nasdaq · 纳斯达克综合指数历史行情 ↗</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <button id="backTop" class="fixed bottom-5 right-5 z-40 w-11 h-11 rounded-full surface flex items-center justify-center opacity-0 pointer-events-none transition-all" aria-label="回到顶部"><i data-lucide="arrow-up" class="w-4 h-4"></i></button>
+
+  <script>
+    lucide.createIcons();
+    if (window.AOS) AOS.init({ duration: 650, once: true, offset: 50 });
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('meta-report-theme');
+    if (savedTheme === 'dark') root.classList.add('dark');
+    function updateThemeIcon() {
+      themeBtn.innerHTML = root.classList.contains('dark')
+        ? '<i data-lucide="sun" class="w-4 h-4"></i>'
+        : '<i data-lucide="moon" class="w-4 h-4"></i>';
+      lucide.createIcons();
+    }
+    updateThemeIcon();
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('meta-report-theme', root.classList.contains('dark') ? 'dark' : 'light');
+      updateThemeIcon();
+    });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    const progress = document.getElementById('progress');
+    const backTop = document.getElementById('backTop');
+    function onScroll() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (max > 0 ? window.scrollY / max * 100 : 0) + '%';
+      if (window.scrollY > 400) {
+        backTop.classList.remove('opacity-0', 'pointer-events-none');
+      } else {
+        backTop.classList.add('opacity-0', 'pointer-events-none');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    document.querySelectorAll('.price-chip').forEach(chip => {
+      chip.title = '点击复制价格区间';
+      chip.addEventListener('click', async () => {
+        const value = chip.textContent.trim();
+        try {
+          await navigator.clipboard.writeText(value);
+          const old = chip.textContent;
+          chip.textContent = '已复制';
+          setTimeout(() => chip.textContent = old, 1000);
+        } catch (e) {
+          window.prompt('复制价格区间：', value);
+        }
+      });
+    });
+
+    const checks = [...document.querySelectorAll('#checklist input[type="checkbox"]')];
+    function updateChecklist() {
+      const done = checks.filter(c => c.checked).length;
+      document.getElementById('checkCount').textContent = `${done} / ${checks.length}`;
+      document.getElementById('checkProgress').style.width = `${done / checks.length * 100}%`;
+    }
+    checks.forEach(c => c.addEventListener('change', updateChecklist));
+    updateChecklist();
+
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const navLinks = [...document.querySelectorAll('.nav-link')];
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    sections.forEach(section => observer.observe(section));
+  </script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

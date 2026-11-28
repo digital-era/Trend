@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国银行（BAC）体系全景解析</title>
+<!-- Essential CDN Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)',
+100: 'hsl(20, 90%, 85%)',
+200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)',
+400: 'hsl(20, 90%, 55%)',
+500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)',
+700: 'hsl(20, 90%, 35%)',
+800: 'hsl(20, 90%, 25%)',
+900: 'hsl(20, 90%, 15%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)',
+100: 'hsl(30, 85%, 85%)',
+200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)',
+400: 'hsl(30, 85%, 60%)',
+500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)',
+700: 'hsl(30, 85%, 40%)',
+800: 'hsl(30, 85%, 30%)',
+900: 'hsl(30, 85%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Micro-interactions & Custom Styles -->
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html { scroll-behavior: auto; }
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th, .dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+transition: width 1.2s ease-out;
+}
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+display: none;
+}
+#mobileMenu.mobile-menu-open {
+display: block;
+}
+@media (min-width: 768px) {
+#mobileMenu {
+display: none !important;
+}
+}
+@media (max-width: 767px) {
+header .max-w-7xl {
+padding-left: 1rem;
+padding-right: 1rem;
+}
+header .flex.items-center.justify-between > h1 {
+font-size: 1rem;
+line-height: 1.25rem;
+white-space: nowrap;
+margin-right: 0.5rem;
+}
+#mobileMenu {
+margin-top: 1rem;
+padding-top: 1rem;
+padding-bottom: 0.5rem;
+border-top: 1px solid rgba(20, 20, 20, 0.12);
+max-height: calc(100vh - 90px);
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+}
+.dark #mobileMenu {
+border-top-color: rgba(255, 255, 255, 0.15);
+}
+#mobileMenu a {
+display: block;
+width: 100%;
+padding: 0.7rem 0.5rem;
+border-radius: 0.5rem;
+}
+#mobileMenu a:active {
+background: rgba(20, 20, 20, 0.06);
+}
+.dark #mobileMenu a:active {
+background: rgba(255, 255, 255, 0.08);
+}
+}
+/* 桌面端导航 */
+@media (min-width: 768px) {
+header nav[aria-label="桌面端导航"] a {
+color: #374151;
+}
+.dark header nav[aria-label="桌面端导航"] a {
+color: #e5e7eb;
+}
+header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 45%);
+}
+.dark header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 55%);
+}
+}
+header {
+overflow: visible;
+}
+</style>
+<script>
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<!-- Floating Header -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">美国银行体系全景解析</h1>
+<!-- 桌面端导航 -->
+<nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联生态</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+Code
+<!-- 右侧按钮 -->
+<div class="flex items-center space-x-2 flex-shrink-0">
+  <!-- 移动端汉堡菜单 -->
+  <button
+    type="button"
+    onclick="toggleMobileMenu()"
+    class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="打开或关闭导航菜单"
+    aria-controls="mobileMenu"
+    aria-expanded="false"
+    id="mobileMenuButton"
+  >
+    <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+  </button>
+
+  <!-- 暗色模式 -->
+  <button
+    type="button"
+    onclick="toggleDarkMode()"
+    class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="切换暗色模式"
+  >
+    <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+    <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+  </button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联生态</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 text-xs font-semibold mb-4">
+<span>NYSE: BAC</span>
+<span>•</span>
+<span>美国第二大银行控股集团 · 截至 2026-11-25 最新披露全景</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+美国银行（BAC）体系全景解析
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+本报告基于美国银行（Bank of America Corporation，NYSE: BAC）FY2025 年报（10-K）、Q3 2026 季报（截至 2026 年 9 月 30 日）、2026 年代理声明书（DEF 14A）及近期 SEC 13G/A、Form 4 与 13F 公告，系统解构董事长兼 CEO Brian Moynihan 十六年“负责任增长”战略与“双联席总裁”接班布阵、金融危机后从百亿股本缩水至 69.00 亿股的强力回购历程、伯克希尔连续九个季度减持 56% 后的股权变局、核心全资银行/投行子公司与 Zelle 关联风险，以及覆盖 96% 非高管员工的 68 亿美元普惠持股体系。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">管理层与接班</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+Moynihan 十六年掌舵与 Athanasia、DeMare 双联席总裁接班梯队成型
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与伯克希尔减持</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+69.00 亿流通股本、3,351 亿美元市值与巴菲特/阿贝尔九连季减持至 6.6%
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">子公司与共享成功</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+BANA/美林证券/Zelle 合资体系与 96% 员工 Sharing Success 股权激励
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+源流演进与核心管理层发展：从并购拼图到“双联席总裁”接班布阵
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+现代美国银行的基因由两条美国金融史大动脉交汇而成：其一是 1904 年 <strong>A.P. Giannini</strong> 在旧金山创立的意大利银行（Bank of Italy，后更名美国银行），首创面向工薪与移民阶层的普惠零售分支网；其二是 1998 年由 <strong>Hugh McColl</strong> 领导的夏洛特国民银行（NationsBank）斥资 620 亿美元反手吞并 BankAmerica，确立“Bank of America”金字招牌与夏洛特总部。2008–2009 年金融危机期间，前 CEO Ken Lewis 接连收购美林（Merrill Lynch）与 Countrywide 令公司深陷千亿美元诉讼泥潭，直至 2010 年 <strong>Brian T. Moynihan</strong> 临危受命出任 CEO，才开启了长达十六年的“去风险 + 负责任增长（Responsible Growth）”重塑之路。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000070858|1">（来源：FY2025 10-K &amp; 2026 Proxy）</span>
+</p>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+<i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+关键治理转折（2025年9月–2026年）：2025 年 9 月 12 日，执掌帅印 16 年的 Moynihan 正式将地区银行总裁 <strong>Dean C. Athanasia</strong> 与全球市场总裁 <strong>James P. DeMare</strong> 双双提拔为<strong>联席总裁（Co-Presidents）</strong>统筹全行八大业务线，并将 CFO <strong>Alastair M. Borthwick</strong> 升任执行副总裁兼 CFO；随后于 2025 年 11 月举办近 15 年来首次投资者日，设定中期 <strong>16%–18% ROTCE</strong> 宏伟目标，标志着“后 Moynihan 时代”的内部赛马接班机制正式落子。
+</p>
+</div>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">早期整合与 Moynihan“负责任增长”时代 (2010–2024)</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>去杠杆与剥离毒资产：</strong>2010–2016 年间砍掉次级按揭与冗余海外支行，清理 Countrywide 巨额法务遗留，构建起全球最稳健的逾 2 万亿美元个人存款底盘。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>科技重仓与 Erica 率先卡位：</strong>每年砸入约 40 亿美元新建科技项目，打造出行业标杆 AI 助手 <strong>Erica</strong>，至 Q3 2026 单季交互量已达 <strong>1.91 亿次</strong>，绑定约 5,000 万–6,000 万认证数字活跃用户。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>“一个公司（Delivering One Company）”协同：</strong>打通零售银行（3,500 家网点）、美林财富与投行投研，实现跨境高净值客户交叉转化。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2025–2026年人事调整与战略重点</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>接班核心层权责划分：</strong>Athanasia 主攻零售、区域商业及本土存款扩张；DeMare 坐镇销售与交易部门（任内 3 年交易营收劲增 35%）；两人合计拥有近 60 年金融实战履历，直接向 66 岁的 Moynihan 汇报。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>AI 提效与组织精简：</strong>全行超 20 万名员工已接入 300 余项获批 AI 工具，推动 2026 年 Q3 末员工总数同比缩减近 3,500 人至 <strong>209,911 人</strong>（年报末为 21.3 万人）。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>升级 BofA Rewards 与 2027 盈利攻坚：</strong>2026年5月27日正式推出升级版 <em>BofA Rewards</em> 忠诚度体系，同时推动净利息收益率（NII Yield）在 Q3 升至 2.16% 并瞄准 2.30% 中期目标。</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+管理哲学演变与合规中台短板暴露
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+Moynihan 的管理哲学长期强调“低波动、严控信贷风险与严控费用增长（目标 55%–59% 效率比）”。然而，2026 年下半年的两项动态暴露出新老交替期的管理挑战：一方面，虽然员工数量减少，但 Q3 2026 剔除罚款后的调整后非利息支出仍同比增长 7%（高于 +3% 营收增速，打破了连续四个季度的正向经营杠杆）；另一方面，2026 年 10 月 13 日因反洗钱/制裁合规长年系统性失灵被财政部 FinCEN 与 OCC 重罚逾 <strong>12.10 亿美元</strong>，反映出“降本增效与合规内控中台建设”之间存在张力。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://home.treasury.gov|2">（来源：美国财政部 2026-10-13 公告 &amp; Q3 2026 财报）</span>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+股本数量变化过程：从危机海啸式稀释到“百亿级”连年回购缩股
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+美国银行的股本史是一部鲜明的“先极度膨胀、后持续十年填坑缩容”的资本修复史。2008–2011 年间为拯救美林、偿还 TARP 救助款及吸收巴菲特 50 亿美元救急注资，普通股股本一度由约 44 亿股暴涨至 105 亿股以上；自 2016 年重新获准大额回购以来，公司已连续十年稳步削减流通股，截至 <strong>2026 年 10 月 29 日已缩水至 69.00 亿股</strong>（较 2017 年末 102.40 亿股累计缩水 <strong>32.6%</strong>）。
+</p>
+Code
+<div class="overflow-x-auto bg-white/90 dark:bg-gray-900 rounded-xl shadow-md p-4">
+    <table>
+      <thead>
+        <tr class="text-xs uppercase text-primary-700 dark:text-primary-300">
+          <th>时间节点</th>
+          <th>股本变动关键事件</th>
+          <th>期末流通股本变动</th>
+          <th>资本运作与市场影响</th>
+        </tr>
+      </thead>
+      <tbody class="text-sm text-gray-700 dark:text-gray-300">
+        <tr>
+          <td class="font-medium whitespace-nowrap">1997 / 2004年</td>
+          <td>NationsBank 及合并后两次 2 拆 1 拆股</td>
+          <td>股本结构扩张并奠定高流动性蓝筹盘口</td>
+          <td>2004 年后未再实施拆股或合股</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2008–2017年</td>
+          <td>危机增发 + 2011 巴菲特认股权证行权</td>
+          <td>普通股一度冲上 105 亿股；2017 年末仍达 <strong>102.40 亿股</strong></td>
+          <td>2017年伯克希尔行使 7 亿股认股权证（$7.14/股），一举成为第一大股东</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2021–2024年</td>
+          <td>疫情后重启大规模股份回购计划</td>
+          <td>2021 年 80.70 亿 → 2023 年 78.70 亿 → 2024 年 <strong>76.00 亿股</strong></td>
+          <td>FY21–FY25 累计通过分红与回购返还股东高达 <strong>1,141.00 亿美元</strong></td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2025–2026年10月</td>
+          <td>持续加速回购，单季返还超盈利</td>
+          <td>2025年末 71.80 亿股（-5.6%）→ 2026-10-29 降至 <strong>69.00 亿股</strong></td>
+          <td>Q3 2026 单季返还 <strong>83.00 亿美元</strong>（60 亿回购 + 22 亿分红）；另有 Series L 可转优先股带来约 0.62 亿股稀释</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2026年11月24日</td>
+          <td>最新股价与市值快照</td>
+          <td>基础流通股 <strong>69.00 亿股</strong>（6,900,209,006 股）</td>
+          <td>收盘价 <strong>48.56 美元</strong>（52周高点 65.23 美元），最新总市值约 <strong>3,350.7 亿美元</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">大股东连续减持：伯克希尔“九连季减仓”</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>减持幅度超半数：</strong>自 2024 年年中持有峰值逾 <strong>10.33 亿股（&gt;13%）</strong> 起，伯克希尔（先由巴菲特启动，2026 年 1 月起由新任 CEO Greg Abel 延续）已连续 <strong>9 个季度</strong>减持 BAC！</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>Q3 2026 最新数据 (2026-11-16 13F/13G/A)：</strong>Q3 再抛售 <strong>2,750 万股</strong>（约套现 15.00 亿美元，减幅 5.70%），剩余持股降至 <strong>455,860,908 股（占总股本 6.60%）</strong>，持仓市值约 221亿–248 亿美元，在伯克希尔美股组合中已滑落至第五位（占比 8.16%）。</span>
+        </li>
+      </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026 年 Q3 最新股本与资本充足率</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">最新普通股股本 (2026-10-29 10-Q)</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">69.00 亿股</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">最新总市值 (2026-11-24 收盘 $48.56)</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">3,350.70 亿美元</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">每股账面价值 / 有形账面价值 (TBV)</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">39.26 美元 / 29.14 美元</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">CET1 资本充足率（标准法，Q3 2026）</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">10.90%（Q2 为 11.20%）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+      <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      资本消耗与股本对冲洞察：2026 年 Q3 美国银行向股东返还了 83.00 亿美元（60 亿回购 + 22 亿派息），不仅完全吸纳了伯克希尔抛出的 2,750 万股筹码，还因超出当季 65 亿美元普通股净利润（外加 320 亿美元风险加权资产扩张及 32 亿美元债券对冲浮亏），致使 CET1 资本率由 11.20% 微降至 <strong>10.90%</strong>（逼近 10.50% 管理层目标下沿），后续回购节奏或需匹配盈利增长有所微调。<span class="text-xs opacity-80" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000070858|3">（来源：Q3 2026 Form 10-Q &amp; 13G/A）</span>
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+股权结构演变：从“巴菲特超 13% 单极基石”回归“被动指数领衔的分散共治”
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+美国银行采用标准的单一普通股投票架构（每股 1 票，无任何超级投票权或家族控制信托）。过去两年最重要的股权格局重塑在于：随着伯克希尔持续兑现获利筹码，原本“一家独大”的股权权重已让位给被动指数巨头 <strong>The Vanguard Group（9.10%）</strong> 稳居第一大股东，伯克希尔退居第三（最新降至 <strong>6.60%</strong>），整体呈高度分散的机构共治状态。
+</p>
+Code
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026 年最新主要股东持股比例</h3>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">The Vanguard Group (2026 Proxy, 651.06M 股)</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">9.10%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 46%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">BlackRock, Inc. (2026 Proxy, 445.52M 单独表决)</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">6.90%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 35%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">Berkshire Hathaway (2026-09-30 13G/A, 455.86M 股)</span>
+            <span class="font-semibold text-primary-600 dark:text-primary-400">6.60%（3月Proxy曾为7.90%）</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 33%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">全体董事及高管（Moynihan 持 280.32 万股）</span>
+            <span class="font-semibold text-primary-600 dark:text-primary-400">&lt;1.00%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 5%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">股权与控制权演变时间线</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>1998–2009年（并购分散期）：</strong>吞并美林与 Countrywide 以及危机期增发彻底摊薄了早期地区银行家族持股。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2017–2024年年中（巴菲特 10%–13% 单极锚定）：</strong>行使 7 亿股认股权证后再加仓至 10.33 亿股，长期按 Schedule 13G 被动持仓护航管理层。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2024年7月–2026年11月（伯克希尔有序退潮）：</strong>先跌破 10% 免除 Form 4 即时披露门槛，再随 Greg Abel 上任持续压降至 <strong>6.60%</strong>（通过 National Indemnity 4.21 亿股、GEICO 2.81 亿股等保险子公司分散持有）。</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      控制权稳定性与独立董事会制衡机制
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      虽然 Brian Moynihan 兼任董事长与 CEO 长达十余年，且前三大股东均为非控制性被动申报方（Schedule 13G 持有人，均无控制权意图），但美国银行拥有强有力的制衡结构：2026 年 5 月股东大会选出的 12 名董事中绝大部分为独立董事，且由前百事公司执行副总兼 CFO <strong>Lionel L. Nowell III</strong> 担任拥有实质议程权的首席独立董事（Lead Independent Director）。此外，美联储依据《银行控股公司法》严控任何机构突破 10% 控制线，使公司控制权格局在长期内保持高度稳定且彻底去个人化。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000070858|4">（来源：2026 DEF 14A &amp; Q3 2026 13G/A）</span>
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+核心子公司矩阵、合资支付基建（Zelle）与关联交易防火墙
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+作为美国全球系统重要性银行（G-SIB），美国银行母公司控股集团（Bank of America Corporation）旗下并无分拆上市的二级市场子公司，而是通过全资银行实体、全资投行/财富管理券商及银行财团合资金融基础设施，构建出严密协同的“八大业务线一体化网络”。
+</p>
+Code
+<div class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">Bank of America, N.A. (BANA)</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">全资旗舰国民银行子公司（FDIC 承保）</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• 承载全行绝大部分 <strong>2.02万亿+ 美元存款</strong>与 <strong>1.23万亿美元贷款</strong></li>
+        <li>• 统筹约 3,500 家网点、15,000 台 ATM 及 Private Bank（300万$+ 私人银行）</li>
+        <li>• 2026年10月 FinCEN/OCC 12.10 亿美元反洗钱罚单即直接针对 BANA 主体</li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="briefcase" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">美林（Merrill）与 BofA Securities</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">全资财富管理与全球投行券商平台</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• <strong>GWIM（美林+私人银行）：</strong>Q3 2026 资管费同比飙升 <strong>17%</strong>，录得 410 亿美元客户资金净流入</li>
+        <li>• <strong>BofA Securities：</strong>全球企业投行与做市交易核心（由联席总裁 DeMare 长期深耕）</li>
+        <li>• 2026年10月全行平均流动资金储备（GLS）高达 <strong>9,140 亿美元</strong></li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">Early Warning Services (Zelle®)</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">七大行联合控股合资金融科技基建</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• BofA 与摩根大通、富国银行等 7 家大行共同持股运营即时转账网络 Zelle®</li>
+        <li>• 服务逾 1.43 亿美国消费者与中小企业，极大锁住 BofA 活期主账户（Primary Account）黏性</li>
+        <li>• 因反欺诈赔付边界曾于 2024年底遭 CFPB 提起集体监管诉讼</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      内部资金防火墙（Reg W）与外部关联交易监管审查
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      由于同时拥有吸纳联邦保险存款的商业银行（BANA）与从事高风险证券承销做市的券商子公司（BofA Securities / 美林），美联储通过极其严苛的<strong>《联邦储备法》第 23A/23B 条及 Regulation W 规则</strong>，强制在银行与非银行关联方之间筑起资金高墙——严禁银行向券商关联方提供无足额抵押的输血贷款，内部交易上限严格锁死在银行资本金的 10%/20% 以内，确保投行做市风险不会穿透传染储户资金。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      在外部大股东及高管关联交易层面，依据 2026 年代理声明书，公司与持仓超 5% 股东（Vanguard、BlackRock、Berkshire Hathaway 及其下属 BNSF、GEICO 等实体）以及独立董事关联机构之间的借贷、承销、资管代销及企业现金管理业务，均须严格遵循美联储 Regulation O 与审计委员会关联人政策，在完全公平的市场标准条款（Arm's-length）下执行，无任何利益输送安排。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000070858|5">（来源：2026 DEF 14A &amp; Regulation W 披露）</span>
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+员工持股与激励机制：96% 普惠股票“共享成功”与零现金奖金高管绑定
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+作为全美拥有近 21 万名员工的金融帝国，美国银行在激励机制上形成了全美银行业最具特色的<strong>“底层普惠派股 + 25美元时薪兜底 + 顶层零现金奖金纯绩效股权”</strong>双向架构。既把普通柜员和客服绑定为长期股东，又在金融监管约束下用长周期延期支付与追回机制锁住高管风险偏好。
+</p>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">高管层：零现金奖金 + 50% 三年硬核 PRSU</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2025年 CEO 薪酬结构（2026年2月13日 8-K）：</strong>Moynihan 总薪酬提升 17% 至 <strong>4,100.00 万美元</strong>（仍低于摩根大通 Dimon 的 4,300 万及高盛 Solomon 的 4,700 万），由 <strong>150.00 万美元固定底薪 + 3,950.00 万美元全股权激励 + 0 美元现金奖金</strong> 构成！</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>极度克制的风险延期切分：</strong>3,950 万美元股权包中，30% 为 1 年期现金结算 RSU，20% 为 4 年期股票结算 RSU，高达 <strong>50% 为三年期绩效股（PRSU）</strong>——必须根据 2026–2028 年平均总资产收益率（ROA）与有形账面价值增速（TBV）达标状况重新“挣回”。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>严苛禁止对冲与没收追回（Clawback）：</strong>严禁任何员工对未归属股权进行衍生品对冲；一旦发生重大风险失职或财报重述，所有递延未归属及已发激励均适用取消与追回条款。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">基层特色机制：连续九年“共享成功（Sharing Success）”</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2026年1月再发 10 亿美元股票：</strong>在常规薪资和奖金之上，向除高管外约 <strong>96% 的全球基层与中层员工</strong>授予总值 <strong>10.00 亿美元（约 1,900 万股 BAC 普通股）</strong>！自 2017 年创立九年来累计授股总值已达近 <strong>68.00 亿美元</strong>。<span class="text-xs text-gray-500" data-ref="https://newsroom.bankofamerica.com|6">（来源：2026-01-20 官方公告）</span></span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>全美最低时薪 25 美元兜底：</strong>2025 年如期兑现将全美员工最低时薪上调至 <strong>25 美元/小时</strong>承诺，并配备带薪学术休假（Sabbatical）及身心健康保障，连续 7 年跻身《财富》最适宜工作百家企业。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>股东投票公益配捐机制：</strong>连续十年推行“每有一个股东账户投票即捐出 1 美元”计划，累计公益捐赠逾 1,140 万美元。</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+激励效果与潜在组织矛盾
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+“Sharing Success”叠加 25 美元最低时薪显著降低了基层流动率，全行员工近 11,100 万股年均授股总量被百亿美元回购轻松消化，形成良性内循环。但潜在矛盾亦十分清晰：一方面，由于普通员工分期归属周期长达 3–4 年且以固定美元额折股，部分基层员工反馈股价上涨后实得股数缩水且“大锅饭”激励效应递减；另一方面，在 2026 年 10 月因“数年反洗钱合规系统失职”遭罚 12.1 亿美元以及管理层同时加快 AI 减员（2026 年净减近 3,500 人）的背景下，如何在业绩奖励与合规问责、员工稳岗之间拿捏平衡，将考验董事会薪酬委员会的治理尺度。
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+综合研判与关键结论
+</h2>
+<div class="space-y-6">
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+1. 组织与战略阶段：迈向 16%–18% ROTCE 的“平稳接班攻坚期”
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+美国银行已全面走出后危机时代的修复阶段，正式步入“内生接班 + 收益率重估”的中后期。随着 Dean Athanasia 与 Jim DeMare 联席总裁梯队站上台前，叠加 2026 年前 9 个月剔除罚单后的调整后 ROTCE 成功触及 <strong>16.0%</strong>（2024 年 13%、2025 年 14%），管理层正稳步靠近 2028–2030 年 <strong>16%–18% ROTCE</strong> 与 <strong>12%+ 年化 EPS 增长</strong>的中期路线图。
+</p>
+<div class="grid md:grid-cols-3 gap-4 pt-2">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">存款基盘与数字化护城河</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">92/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 92%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">净息差复苏与股东回馈力度</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">86/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 86%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">合规内控执行与费用杠杆</span>
+<span class="font-bold text-accent-600 dark:text-accent-400">62/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 62%;"></div></div>
+</div>
+</div>
+</div>
+Code
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      2. 财务核心矛盾：“核心净息差走阔” vs “合规罚单、费用黏性与资本微降”
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      基本面核心引擎正在加速转动：FY2025 实现营收 1,131.00 亿美元（+6.8%）、净利润 305.00 亿美元（+13.1%）；2026 年 Q3 净利息收入（NII）同比劲增 8% 至 166.00 亿美元（FTE），净利息收益率由去年同期的 2.01% 爬升至 <strong>2.16%</strong>，且 2027 年 NII 增速指引更上调至 <strong>8% 以上</strong>，信贷坏账净核销也下降至 13 亿美元。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      但财报同样暴露了三大短板：其一，Q3 计入 <strong>12.00 亿美元不可抵税监管和解费</strong>，拖累 GAAP 净利润同比降 17% 至 69 亿美元；其二，前 9 月调整后经营杠杆仅 185bps，Q3 成本涨幅（+7%）反超营收（+3%），距离全年 200–300bps 目标仍需 Q4 强控费用；其三，Q3 83 亿美元股东返还超越 65 亿美元普通股利润，叠加利率走高带来 32 亿美元债券对冲浮亏，使 CET1 资本率小幅降至 <strong>10.90%</strong>。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      3. 普惠持股与子公司协同构成稳健底盘
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      通过 BANA（2.02 万亿低息存款）、美林（资管费 +17%）与 Zelle 支付网络的一体化交叉赋能，叠加 96% 非高管员工持股及 50% PRSU 高管三年长效考核，美国银行在系统层面具备极强的客户与组织稳定性，支撑其股价在回撤 25% 至 48.56 美元（仅约 11.5x PE）后仍获机构买盘承接。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      4. 体系与治理风险提示
+    </h3>
+    <div class="space-y-4">
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>系统性反洗钱合规缺陷与监管升级风险。</strong>2026年10月 FinCEN 12 亿美元及 OCC 史上最大单笔 7.5 亿美元罚单（源于未有效落实 2024 年旧整改承诺、漏报逾 50 亿美元可疑交易），警示银行内控体系依然存在盲区；若后续整改不力，可能面临类似富国银行当年式的资产增长限制或更高合规成本拖累。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>伯克希尔持续抛压与宏观“滞胀/降息”双面利率风险。</strong>格雷格·阿贝尔治下的伯克希尔仍握有 4.56 亿股（6.6%）且连续九季减仓，短期筹码供应压制仍未彻底出清；同时，若美联储被迫大幅降息 100bps 将削减未来 12 个月 NII 约 <strong>19 亿美元</strong>，而若通胀反弹引发美债收益率飙升则会再度扩大长久期债券持仓浮亏、侵蚀有形净资产（TBV）。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>费用控制失速与后 Moynihan 接班不确定性。</strong>2026 年 Q3 非利息费用增速反超营收显示 AI 降本尚未真正体现为绝对费用下滑；未来两到三年内，两位联席总裁的内部竞合能否平滑过渡，亦是治理层面的必考题。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+      <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      一句话总结：美国银行用十六年把资产负债表与普惠激励体系锻造得固若金汤，调整后 ROTCE 也已跃上 16% 门槛，但唯有彻底根治 12 亿美元级合规内控顽疾、在双联席总裁框架下兑现真实 AI 费用杠杆，方能接棒伯克希尔减持后的新一轮估值重估。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合美国银行（NYSE: BAC）FY2025 10-K、Q3 2026 10-Q/8-K、2026 年代理声明书（DEF 14A）、伯克希尔 13F/13G/A 及美国财政部执法公告，系统梳理其管理层接班、股本回购、股权演变、子公司架构与全员激励机制。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 历史整合与双联席总裁接班</li>
+<li>• 十年缩股 32% 与股本变动</li>
+<li>• 伯克希尔减持与分散股权共治</li>
+<li>• BANA/美林/Zelle 体系与 Reg W 防火墙</li>
+<li>• Sharing Success 普惠股与零奖金 PRSU</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供教育与金融研究参考，不构成任何证券买卖或投资建议。所有数据均基于截至 2026 年 11 月 25 日（北京时间）的公开披露信息整理，具体以公司官方 SEC 文件为准。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 美国银行（BAC）体系全景研究（2026-11-25）。保留所有权利。</p>
+</div>
+</div>
+</footer>
+<script>
+function toggleMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+const isOpen = menu.classList.toggle('mobile-menu-open');
+menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+if (button) {
+button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+lucide.createIcons();
+}
+}
+
+function closeMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+menu.classList.remove('mobile-menu-open');
+menu.setAttribute('aria-hidden', 'true');
+if (button) {
+button.setAttribute('aria-expanded', 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', 'menu');
+lucide.createIcons();
+}
+}
+
+// Progress Bar
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+});
+
+// Initialize AOS & Lucide
+document.addEventListener('DOMContentLoaded', function() {
+lucide.createIcons();
+AOS.init({ duration: 800, once: true });
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+link.addEventListener('click', () => {
+closeMobileMenu();
+});
+});
+
+// Citation System
+let i = 1, map = new Map();
+document.querySelectorAll('[data-ref]').forEach(el => {
+if (el.dataset.citationProcessed) return;
+const raw = (el.getAttribute('data-ref')||'').trim();
+if (!raw) return;
+const parts = raw.split('|');
+const url = parts[0].trim();
+const idx = (parts[1]||'').trim() || map.get(raw) || (map.set(raw, String(i)), String(i++));
+if (!el.textContent || !el.textContent.trim()) { el.dataset.citationProcessed = 'true'; return; }
+const btn = document.createElement('sup'); btn.textContent = String(idx);
+Object.assign(btn.style, { fontSize:'8px', color:'#fff', cursor:'pointer', top: '1px', fontWeight:'bold', backgroundColor:'#0284c7', borderRadius:'50%', transition:'all .15s', userSelect:'none', minWidth:'19px', height:'19px', marginLeft:'6px', display:'inline-flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 3px rgba(0,0,0,.2)', lineHeight:'1'});
+btn.addEventListener('mouseenter', ()=> Object.assign(btn.style, { backgroundColor:'#0369a1', transform:'scale(1.12)' }));
+btn.addEventListener('mouseleave', ()=> Object.assign(btn.style, { backgroundColor:'#0284c7', transform:'scale(1)' }));
+btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(url, '_blank'); });
+el.appendChild(btn); el.dataset.citationProcessed = 'true';
+});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Palantir Technologies (PLTR) 最新动态全景追踪，涵盖公司业绩、AI行业竞争、国际政策、催化矩阵及未来30天投资观察。">
+<title>Palantir最新动态全景追踪_2026-11-25</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+          300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+          300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+          900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:90px}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+ html{scroll-behavior:auto}
+}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05)}
+.btn-interactive:active{transform:scale(.95)}
+.card-interactive{transition:all .28s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.48)}
+table{width:100%;border-collapse:collapse;min-width:680px}
+th,td{text-align:left;padding:.85rem .9rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#394454}
+.dark th{color:#f3f4f6!important}
+.dark td{color:#d1d5db}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.dark .text-gray-500{color:#aab4c2}
+.dark .text-gray-600{color:#c2cbd6}
+.dark .text-gray-700{color:#d8e0ea}
+.dark .border-gray-200{border-color:#374151}
+.dark .bg-white{background-color:#161f2c}
+.dark .bg-gray-50{background-color:#202b3a}
+.dark .bg-gray-100{background-color:#283446}
+.dark .bg-gray-800{background-color:#202b3a}
+.dark .bg-gray-800\/60{background-color:rgba(40,52,70,.65)}
+.dark .bg-gray-800\/80{background-color:rgba(40,52,70,.85)}
+.dark input,.dark select{background:#202b3a;color:#fff}
+.source-link{color:#ea7836;text-decoration:underline;text-underline-offset:3px}
+.source-link:hover{color:#f59e0b}
+.section-label{letter-spacing:.12em}
+</style>
+
+<script>
+(function initTheme(){
+  try{
+    if(window.self!==window.top||localStorage.getItem('pltr-theme')==='dark'||
+       (!localStorage.getItem('pltr-theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches)){
+      document.documentElement.classList.add('dark');
+    }
+  }catch(e){}
+})();
+
+function syncThemeIcons(){
+ const dark=document.documentElement.classList.contains('dark');
+ const sun=document.getElementById('sunIcon');
+ const moon=document.getElementById('moonIcon');
+ if(sun)sun.style.display=dark?'block':'none';
+ if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ try{localStorage.setItem('pltr-theme',document.documentElement.classList.contains('dark')?'dark':'light')}catch(e){}
+ syncThemeIcons();
+}
+function toggleMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ if(menu)menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60]" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+  <div class="flex items-center justify-between">
+   <div class="flex items-center gap-2.5 min-w-0">
+    <span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+    <h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">PALANTIR · 最新动态</h1>
+   </div>
+   <nav class="hidden md:flex items-center space-x-5">
+    <a href="#overview" class="text-sm font-medium hover:text-primary-500">总览</a>
+    <a href="#company" class="text-sm font-medium hover:text-primary-500">公司动态</a>
+    <a href="#industry" class="text-sm font-medium hover:text-primary-500">行业动态</a>
+    <a href="#macro" class="text-sm font-medium hover:text-primary-500">宏观政策</a>
+    <a href="#matrix" class="text-sm font-medium hover:text-primary-500">催化矩阵</a>
+   </nav>
+   <div class="flex items-center gap-2">
+    <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+     <i data-lucide="menu" class="w-4 h-4"></i>
+    </button>
+    <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800 max-h-[calc(100vh-80px)] overflow-y-auto">
+   <nav class="flex flex-col space-y-3">
+    <a href="#overview" onclick="toggleMobileMenu()" class="text-sm py-1">总览</a>
+    <a href="#company" onclick="toggleMobileMenu()" class="text-sm py-1">公司动态</a>
+    <a href="#industry" onclick="toggleMobileMenu()" class="text-sm py-1">行业动态</a>
+    <a href="#macro" onclick="toggleMobileMenu()" class="text-sm py-1">宏观政策</a>
+    <a href="#matrix" onclick="toggleMobileMenu()" class="text-sm py-1">催化矩阵</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-16">
+
+<!-- HERO -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+  <div class="flex flex-wrap items-center gap-2.5 mb-5">
+   <span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-semibold">NASDAQ: PLTR</span>
+   <span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300 text-xs font-semibold">企业AI · 数据分析 · 国防软件</span>
+   <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-semibold">近30日 · 截至2026-11-25</span>
+  </div>
+
+  <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+   <div>
+    <p class="text-xs font-semibold section-label text-primary-600 dark:text-primary-400 mb-2">PALANTIR TECHNOLOGIES INC.</p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">Palantir Technologies</h2>
+    <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
+     近30日核心逻辑是<strong class="text-primary-600 dark:text-primary-400">商业AI高速增长与政府业务治理风险并存</strong>：Q3营收同比增长96%，商业收入首次超过美国政府收入；但合同总价值增速明显放缓，军事AI伦理争议又增加政策与声誉折价，估值对增长兑现的要求依然极高。
+    </p>
+   </div>
+   <div class="text-left lg:text-right shrink-0">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">最新完整财报 · 2026 Q3</div>
+    <div class="text-3xl font-bold font-mono text-primary-600 dark:text-primary-400">$2.313B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Revenue YoY +96%</div>
+   </div>
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-7 mb-6">
+   <div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Q3美国商业收入</div>
+    <div class="text-xl font-bold font-mono text-gray-900 dark:text-white">$984M</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">同比 +148%</div>
+   </div>
+   <div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Q3调整后经营利润率</div>
+    <div class="text-xl font-bold font-mono text-gray-900 dark:text-white">62%</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">经营杠杆强劲</div>
+   </div>
+   <div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">FY2026营收指引</div>
+    <div class="text-xl font-bold font-mono text-gray-900 dark:text-white">$8.53B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">同比增长约91%</div>
+   </div>
+   <div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">调整后自由现金流</div>
+    <div class="text-xl font-bold font-mono text-gray-900 dark:text-white">$1.216B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">Q3 · 利润率53%</div>
+   </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+   <div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2">
+     <i data-lucide="trending-up" class="w-4 h-4 text-emerald-600"></i>
+     <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">消息面总体基调</span>
+    </div>
+    <p class="text-xl font-bold text-emerald-700 dark:text-emerald-300">中性偏多</p>
+    <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">商业AI需求、订单扩张和高利润率形成基本面支撑，但估值与订单质量风险限制上行确定性。</p>
+   </div>
+   <div class="bg-primary-50/70 dark:bg-primary-950/30 rounded-xl p-5 border border-primary-200 dark:border-primary-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2">
+     <i data-lucide="zap" class="w-4 h-4 text-primary-600"></i>
+     <span class="text-xs font-semibold text-primary-700 dark:text-primary-300">本月最强单一催化剂</span>
+    </div>
+    <p class="text-sm font-bold text-primary-800 dark:text-primary-200 leading-relaxed">11月2日Q3业绩：美国商业收入同比+148%，全年营收指引上调至91%增长。</p>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">SEC · 2026-11-02</p>
+   </div>
+   <div class="bg-rose-50/70 dark:bg-rose-950/30 rounded-xl p-5 border border-rose-200 dark:border-rose-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2">
+     <i data-lucide="shield-alert" class="w-4 h-4 text-rose-600"></i>
+     <span class="text-xs font-semibold text-rose-700 dark:text-rose-300">本月最需警惕信号</span>
+    </div>
+    <p class="text-sm font-bold text-rose-800 dark:text-rose-200 leading-relaxed">军事AI平民伤害争议叠加美国国会监管审查预期，可能影响政府业务声誉及长期合同风险溢价。</p>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">TIME · 2026-11-18</p>
+   </div>
+  </div>
+
+  <div class="mt-6 p-4 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700">
+   <div class="flex items-start gap-3">
+    <i data-lucide="target" class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"></i>
+    <div>
+     <h3 class="font-bold text-sm mb-1">核心投资判断</h3>
+     <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+      PLTR已经从传统政府数据分析供应商，转变为商业AI平台的重要参与者。真正决定下一阶段股价的，不只是收入增速，而是美国商业合同总价值能否重新加速、客户能否从试点转为多年期大合同，以及高利润率能否持续。军事AI争议是不可忽视的尾部风险。
+     </p>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- COMPANY -->
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">按对Palantir基本面、估值及市场预期的综合影响排序</p>
+  </div>
+ </div>
+
+ <!-- COMPANY 1 -->
+ <article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-02</span>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大利好</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.8 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">Q3营收同比暴增96%，美国商业收入首次超过政府收入，全年增长指引上调至91%</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-5">
+   <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+    <span class="text-xs text-gray-500 dark:text-gray-400 block">Q3总营收</span>
+    <strong class="text-lg font-mono text-gray-900 dark:text-white">$2.313B</strong>
+    <span class="block text-xs text-emerald-600">YoY +96%</span>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+    <span class="text-xs text-gray-500 dark:text-gray-400 block">美国商业收入</span>
+    <strong class="text-lg font-mono text-gray-900 dark:text-white">$984M</strong>
+    <span class="block text-xs text-emerald-600">YoY +148%</span>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+    <span class="text-xs text-gray-500 dark:text-gray-400 block">美国政府收入</span>
+    <strong class="text-lg font-mono text-gray-900 dark:text-white">$953M</strong>
+    <span class="block text-xs text-emerald-600">YoY +96%</span>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+    <span class="text-xs text-gray-500 dark:text-gray-400 block">Q3调整后经营利润率</span>
+    <strong class="text-lg font-mono text-gray-900 dark:text-white">62%</strong>
+    <span class="block text-xs text-emerald-600">GAAP 47%</span>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Palantir于11月2日公布截至9月30日的2026年第三季度财报。总营收达到<strong>$2.313 billion</strong>，同比增长96%、环比增长20%，季度营收首次超过20亿美元。美国市场营收达到19.37亿美元，同比增长119%；其中美国商业收入9.84亿美元，同比增长148%、环比增长29%，首次超过美国政府收入9.53亿美元。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   公司本季度签订212笔至少100万美元的合同、107笔至少500万美元的合同及64笔至少1000万美元的合同。总合同价值TCV为29.18亿美元，同比增长6%；美国商业TCV为14.63亿美元，同比增长11%。美国商业剩余交易价值RDV达到65.17亿美元，同比增长79%。
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50">
+    <h4 class="font-bold text-sm text-emerald-700 dark:text-emerald-300 mb-2">正面传导：商业化拐点进一步确认</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     商业收入首次超过美国政府收入，意味着Palantir的增长不再完全依赖国防及政府预算。AIP在保险、金融、制造业等高价值业务流程中的应用，有望扩大客户数量、续约收入及平台渗透率。
+    </p>
+   </div>
+   <div class="rounded-xl p-4 bg-amber-50/70 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50">
+    <h4 class="font-bold text-sm text-amber-700 dark:text-amber-300 mb-2">需要警惕：订单质量与收入确认</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     TCV仅同比增长6%，美国商业TCV增长11%，远低于148%的美国商业收入增幅。部分大型合同期限短于以往，意味着收入高速增长与长期合同积累之间存在差距，不能直接将收入增速外推为未来多年增长速度。
+    </p>
+   </div>
+  </div>
+
+  <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+   <h4 class="text-sm font-bold mb-2">全年业绩指引上调</h4>
+   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div>
+     <p class="text-xs text-gray-500 dark:text-gray-400">2026全年营收指引</p>
+     <p class="text-xl font-bold font-mono text-primary-600 dark:text-primary-400">$8.530B–$8.534B</p>
+     <p class="text-xs text-gray-500">同比增长约91%</p>
+    </div>
+    <div>
+     <p class="text-xs text-gray-500 dark:text-gray-400">Q4营收指引</p>
+     <p class="text-xl font-bold font-mono text-primary-600 dark:text-primary-400">$2.649B–$2.653B</p>
+     <p class="text-xs text-gray-500">高于市场此前约24.6亿美元预期</p>
+    </div>
+   </div>
+   <p class="text-xs text-gray-600 dark:text-gray-300 mt-3">
+    全年美国商业收入指引上调至至少35.59亿美元，同比增长至少143%；全年调整后自由现金流指引为48亿至50亿美元。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+   信源：
+   <a class="source-link" target="_blank" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/a2026q3ex991pressrelease.htm">SEC · 2026-11-02 Q3正式财报</a>；
+   <a class="source-link" target="_blank" href="https://www.reuters.com/technology/palantir-tops-third-quarter-revenue-estimates-strong-ai-software-demand-2026-11-02/">Reuters · 2026-11-02</a>。
+  </p>
+  <div class="impact-bar"><div class="impact-fill" style="width:98%"></div></div>
+ </article>
+
+ <!-- COMPANY 2 -->
+ <article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive" data-aos="fade-up" data-aos-delay="80">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-18</span>
+    <span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">短期承压 / 长期不确定</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.0 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">军事AI平民伤害争议升级：Palantir发布Civilian Harm Mitigation白皮书，政府业务面临更高政治与伦理审查</h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+   <div class="bg-gray-50 dark:bg-gray-800/80 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">事件披露</div>
+    <div class="font-bold text-gray-900 dark:text-white">2026-11-18</div>
+    <div class="text-xs text-gray-500 mt-1">TIME深度报道</div>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/80 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">涉及系统</div>
+    <div class="font-bold text-gray-900 dark:text-white">Maven / Gaia</div>
+    <div class="text-xs text-gray-500 mt-1">军事地理空间决策系统</div>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/80 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">潜在影响领域</div>
+    <div class="font-bold text-gray-900 dark:text-white">国防 / 政府采购</div>
+    <div class="text-xs text-gray-500 mt-1">合同审查及声誉风险</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   TIME于11月18日报道，一份由Palantir准备、标题为《Palantir Civilian Harm Mitigation Technical Whitepaper》的技术文件开始在美国政府官员及军事专家之间流传。该文件提出扩展Gaia地理空间界面能力，使其能够接入民用基础设施公开情报、评估数据准确性和时效性、维护学校和医院等禁止打击目标清单，并记录军事行动中的决策过程。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   该方案还提出将法律审查流程纳入军事目标决策工作流。其背景涉及2026年2月伊朗Minab学校遭袭事件。TIME报道援引联合国调查结果称，调查认为有合理理由相信美国违反国际人道法，且学校是预定打击目标。Palantir否认对袭击负有直接责任，并强调政府承担最终军事决策责任。
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="bg-rose-50/70 dark:bg-rose-950/25 rounded-xl p-4 border border-rose-200 dark:border-rose-800/50">
+    <h4 class="font-bold text-sm text-rose-700 dark:text-rose-300 mb-2">负面传导路径</h4>
+    <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+     <li>• 美国国会及监管机构可能提高军事AI系统透明度要求。</li>
+     <li>• 军事采购可能增加人权、数据准确性与法律责任审查程序。</li>
+     <li>• 合同履行和产品部署可能增加合规成本。</li>
+     <li>• 企业及政府客户可能重新评估品牌、法律及声誉风险。</li>
+    </ul>
+   </div>
+   <div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+    <h4 class="font-bold text-sm text-emerald-700 dark:text-emerald-300 mb-2">潜在正面传导</h4>
+    <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+     <li>• 公司主动建设数据时效验证及民用保护机制。</li>
+     <li>• 若新功能真正落地，可形成更完整的军事AI合规产品能力。</li>
+     <li>• 复杂政府场景的系统整合壁垒可能进一步提高。</li>
+     <li>• 有机会将合规治理能力转化为政府采购竞争优势。</li>
+    </ul>
+   </div>
+  </div>
+
+  <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+   <h4 class="font-bold text-sm mb-2">关键投资判断</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    这不是已确认的政府合同取消事件，而是潜在监管和政治风险上升。真正需要跟踪的是白皮书是否转化为正式产品功能、国会是否启动实质性听证、国防部是否改变采购及责任认定标准。政府业务仍然具有战略重要性，但其估值贡献可能受到更严格的风险折价。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+   信源：
+   <a class="source-link" target="_blank" href="https://time.com/article/2026/11/18/palantir-military-targeting/">TIME · 2026-11-18 · Palantir's New Pitch</a>。
+  </p>
+  <div class="impact-bar"><div class="impact-fill" style="width:90%"></div></div>
+ </article>
+
+ <!-- COMPANY 3 -->
+ <article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 card-interactive" data-aos="fade-up" data-aos-delay="120">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-04 ~ 11-05</span>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">温和利好</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.2 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">AmeriLife与Changshin连续宣布企业级合作，AIP加速进入保险分销与全球制造业核心流程</h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+   <div class="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+    <div class="p-4 bg-primary-50 dark:bg-gray-800/80">
+     <span class="text-xs font-bold text-primary-700 dark:text-primary-300">2026-11-05 · 保险与金融分销</span>
+     <h4 class="font-bold text-gray-900 dark:text-white mt-2">AmeriLife × Palantir</h4>
+    </div>
+    <div class="p-4">
+     <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+      双方宣布企业级合作，将Foundry与AIP引入AmeriLife健康及财富管理分销业务，首先覆盖Crump Life Insurance Services。
+     </p>
+     <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-3 font-semibold">已有生产工作流投入使用</p>
+     <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">来源：AmeriLife官方公告</p>
+     <a class="source-link text-xs" target="_blank" href="https://www.amerilife.com/newsroom/technology/amerilife-and-palantir-announce-enterprise-partnership-to-bring-ai-driven-transformation-to-insurance-and-retirement-distribution">查看官方公告 →</a>
+    </div>
+   </div>
+   <div class="rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+    <div class="p-4 bg-accent-50 dark:bg-gray-800/80">
+     <span class="text-xs font-bold text-accent-700 dark:text-accent-300">2026-11-04 / 11-05 · 全球制造业</span>
+     <h4 class="font-bold text-gray-900 dark:text-white mt-2">Changshin × Palantir</h4>
+    </div>
+    <div class="p-4">
+     <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+      韩国全球鞋类制造商Changshin将Foundry与AIP用于鞋类研发、样品规划及工厂生产，连接产品开发决策与生产现场反馈。
+     </p>
+     <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-3 font-semibold">从研发到制造建立统一数据流程</p>
+     <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">来源：Changshin官方公告</p>
+     <a class="source-link text-xs" target="_blank" href="https://www.changshininc.com/en/pr/news/changshin-partners-with-palantir-sets-out-to-innovate-footwear-manufacturing-with-ai/">查看官方公告 →</a>
+    </div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   AmeriLife合作的重要性在于Foundry与AIP进入保险和退休金融产品分销的业务链条。Crump Life Insurance Services的ACE平台已经有Palantir驱动的功能投入生产，意味着合作并非完全停留在概念验证阶段。后续扩展至健康、财富及保险代理网络，有望增加平台使用深度。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Changshin合作则进一步验证Palantir的制造业横向复制能力。其目标是将产品开发、样品制作、生产计划和工厂执行连接起来，通过生产反馈优化前端决策。相比单一聊天机器人，Palantir强调的是企业数据底座、业务流程与AI协同。
+  </p>
+
+  <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+   <h4 class="font-bold text-sm mb-2">对收入和利润的实际意义</h4>
+   <ul class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed space-y-2">
+    <li>• <strong>收入端：</strong>扩大商业客户行业覆盖，提升从试点到企业级部署的转化机会。</li>
+    <li>• <strong>利润端：</strong>如果形成跨部门、长期运行的平台工作流，客户迁移成本和续约粘性可能提高。</li>
+    <li>• <strong>现金流端：</strong>目前公告没有披露合作合同金额、付款结构和预期收入，因此不能将合作直接折算成确定的新增营收。</li>
+    <li>• <strong>战略端：</strong>保险和制造业是企业数据复杂、业务流程长、AI落地价值可衡量的典型市场。</li>
+   </ul>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+   信源：
+   <a class="source-link" target="_blank" href="https://www.amerilife.com/newsroom/technology/amerilife-and-palantir-announce-enterprise-partnership-to-bring-ai-driven-transformation-to-insurance-and-retirement-distribution">AmeriLife · 2026-11-05</a>；
+   <a class="source-link" target="_blank" href="https://www.changshininc.com/en/pr/news/changshin-partners-with-palantir-sets-out-to-innovate-footwear-manufacturing-with-ai/">Changshin · 2026-11-05</a>。
+  </p>
+  <div class="impact-bar"><div class="impact-fill" style="width:82%"></div></div>
+ </article>
+</section>
+
+<!-- INDUSTRY -->
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-2">
+  <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+   <i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">细分赛道：企业级AI软件平台、数据整合与决策智能、AI Agent及国防政府软件</p>
+  </div>
+ </div>
+
+ <div class="bg-accent-50/60 dark:bg-accent-950/20 border border-accent-200 dark:border-accent-800/50 rounded-xl p-4 mb-6">
+  <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+   <strong class="text-accent-700 dark:text-accent-300">行业界定：</strong>
+   Palantir并非传统基础模型厂商，也不只是普通SaaS软件公司。其核心竞争领域是将企业数据、业务Ontology、AI模型及工作流整合为可执行的企业级决策平台。竞争者包括Microsoft、AWS、Google、Salesforce、ServiceNow、Snowflake、Databricks及专业AI平台供应商。
+  </p>
+ </div>
+
+ <!-- INDUSTRY 1 -->
+ <article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-7 mb-5 border border-gray-200 dark:border-gray-800 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+   <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-03</span>
+   <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大行业利好</span>
+  </div>
+  <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">企业AI部署支出达到1768亿美元，同比扩大5.4倍，Agent推动AI从工具采购转向工作成果付费</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800/80 p-3">
+    <span class="text-xs text-gray-500 dark:text-gray-400">2026年9月企业AI支出</span>
+    <p class="text-xl font-bold font-mono text-primary-600 dark:text-primary-400">$176.8B</p>
+   </div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800/80 p-3">
+    <span class="text-xs text-gray-500 dark:text-gray-400">同比增长倍数</span>
+    <p class="text-xl font-bold font-mono text-emerald-600">5.4x</p>
+   </div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800/80 p-3">
+    <span class="text-xs text-gray-500 dark:text-gray-400">AI应用市场</span>
+    <p class="text-xl font-bold font-mono">$77.3B</p>
+   </div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800/80 p-3">
+    <span class="text-xs text-gray-500 dark:text-gray-400">新增预算占比</span>
+    <p class="text-xl font-bold font-mono text-emerald-600">55%</p>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Menlo Ventures于11月3日发布《2026: The State of Enterprise AI》报告。研究显示，2026年9月企业AI部署支出达到1768亿美元，较2025年的330亿美元增长5.4倍。AI应用支出达到约773亿美元，企业Agent正在从辅助问答转向执行真实工作任务。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   报告指出，OpenRouter平台的Agent流量自2026年2月超过人类流量后增长37倍。新增预算贡献了企业AI增量支出的55%，表明AI支出并非完全来自传统软件预算替换，而是在创造新的技术投入需求。
+  </p>
+
+  <div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+   <h4 class="font-bold text-sm text-emerald-700 dark:text-emerald-300 mb-2">对Palantir的横向映射：行业贝塔显著扩张</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    Palantir的AIP与Foundry定位于企业Agent执行所需的数据、权限、业务逻辑及流程整合层。企业AI预算快速增长有助于扩大潜在客户市场。更重要的是，当Agent开始实际执行采购、生产、保险理赔及国防分析任务时，企业需要更可靠的数据治理与执行平台。但行业支出增长并不意味着所有预算都会流向Palantir，商业转化率仍是核心变量。
+   </p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+   信源：<a class="source-link" target="_blank" href="https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/">Menlo Ventures · 2026-11-03</a>。
+  </p>
+ </article>
+
+ <!-- INDUSTRY 2 -->
+ <article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-7 mb-5 border border-gray-200 dark:border-gray-800 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+   <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11（报告月份）</span>
+   <span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">竞争加剧</span>
+  </div>
+  <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">IDC发布全球Agentic AI平台评估，云厂商与企业软件巨头全面进入企业智能体平台竞争</h3>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   IDC于2026年11月发布《IDC MarketScape: Worldwide Agentic AI Platforms 2026 Vendor Assessment》。报告评估全球Agentic AI平台厂商的战略与能力。所公开的SAS报告摘录展示了AWS、Salesforce、Google、ServiceNow、IBM、Oracle、Microsoft、Snowflake、Databricks等多个参与者的竞争位置。
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">大型平台与生态竞争者</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">AWS、Google、Microsoft、Salesforce、ServiceNow、Oracle等，拥有云资源、企业客户关系及既有软件生态。</p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">数据与智能化平台竞争者</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">Snowflake、Databricks、Dataiku、SAS等，围绕数据基础设施、分析、模型开发及Agent能力展开竞争。</p>
+   </div>
+  </div>
+
+  <div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800/50">
+   <h4 class="font-bold text-sm text-amber-700 dark:text-amber-300 mb-2">对Palantir的横向映射：竞争壁垒与客户争夺同步增强</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    Microsoft等厂商可以利用既有云平台、办公软件和开发者生态快速分发Agent功能；Snowflake与Databricks能够从数据层向AI工作流延伸。Palantir的差异化在于Ontology、权限治理、业务流程建模及前线部署团队的结合。竞争最终将从模型能力转向谁能更快把AI真正嵌入企业运营。若平台能力趋于同质化，Palantir需要证明其客户ROI与部署效率能够支撑溢价。
+   </p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+   信源：<a class="source-link" target="_blank" href="https://www.sas.com/content/dam/sasdam/documents/2026-11/idc-marketscape-worldwide-agentic-ai-platforms-2026-vendor-assessment.pdf">IDC MarketScape · 2026年11月公开报告摘录</a>。
+  </p>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">注：该公开摘录并非IDC完整报告，不能据此推断未披露厂商的完整排名。</p>
+ </article>
+
+ <!-- INDUSTRY 3 -->
+ <article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-7 mb-5 border border-gray-200 dark:border-gray-800 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+   <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-10-19 · 延伸窗口37天</span>
+   <span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">中性偏空</span>
+  </div>
+  <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">企业软件预算竞争加剧：传统应用软件与内部AI项目争夺同一笔IT预算</h3>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Futurum Research于2026年10月19日发布《Enterprise Software Spending Lags Behind Stated Platform Consolidation Goals》。报告指出，企业软件平台整合的实际支出并未完全跟上管理层预期，企业内部开发AI应用正在与外部软件采购争夺预算。
+  </p>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800/80 p-3">
+    <span class="text-xs text-gray-500 dark:text-gray-400">跟踪产品数量</span>
+    <p class="text-xl font-bold font-mono">53</p>
+   </div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800/80 p-3">
+    <span class="text-xs text-gray-500 dark:text-gray-400">两年Net Score下降产品</span>
+    <p class="text-xl font-bold font-mono text-rose-600">45</p>
+   </div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800/80 p-3">
+    <span class="text-xs text-gray-500 dark:text-gray-400">负Net Score产品</span>
+    <p class="text-xl font-bold font-mono text-rose-600">20</p>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   该报告还指出，企业应用软件领域Net Score从两年前的16.4降至9.6，而机器学习和人工智能领域为47.8。企业正在重新审视软件采购优先级，AI相关投入与传统应用软件投入之间的预算竞争逐渐明显。
+  </p>
+
+  <div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800/50">
+   <h4 class="font-bold text-sm text-amber-700 dark:text-amber-300 mb-2">对Palantir的横向映射：产品价值必须证明可量化ROI</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    该趋势具有双重影响。一方面，企业可能削减低价值、重复的软件支出，将预算转向能够直接提升生产效率的AI平台；另一方面，客户也可能选择内部开发、既有云平台AI功能或低成本模型，延缓采购Palantir等高价值企业平台。Palantir的优势是复杂业务场景整合，风险是项目部署成本、决策周期和ROI证明要求。
+   </p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+   信源：<a class="source-link" target="_blank" href="https://futurumgroup.com/wp-content/uploads/2026/10/Enterprise-Software-Spending-Lags-Behind-Stated-Platform-Consolidation-Goals_AIOKK202610.pdf">Futurum Research · 2026-10-19</a>。
+  </p>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">注：该事件发生于主窗口起点2026-10-26之前7天，为满足行业竞争动态第三条的完整性，按45天延伸窗口纳入。</p>
+ </article>
+
+ <!-- INDUSTRY COMPARISON -->
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+  <h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+   <i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i> 行业动态对标影响对比表
+  </h3>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead>
+     <tr class="bg-gray-50 dark:bg-gray-800/80">
+      <th>行业事件</th>
+      <th>涉及主体</th>
+      <th>对PLTR的利弊传导</th>
+      <th>影响周期</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td class="font-semibold">企业AI支出达到1768亿美元</td>
+      <td>企业AI市场、Agent平台</td>
+      <td><span class="text-emerald-600 font-semibold">利好。</span>扩大企业AI预算池，增加AIP及Foundry部署机会。</td>
+      <td>2026Q4—2028</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">Agent平台竞争全面升级</td>
+      <td>AWS、Microsoft、Google、Salesforce、Snowflake等</td>
+      <td><span class="text-amber-600 font-semibold">双向影响。</span>加速市场教育，但增加价格、客户及生态竞争。</td>
+      <td>中长期</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">企业软件预算重新分配</td>
+      <td>传统SaaS、内部AI团队、企业平台</td>
+      <td><span class="text-rose-600 font-semibold">偏空。</span>采购周期延长，项目ROI与部署成本要求提高。</td>
+      <td>短期—中期</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">聚焦AI监管、企业数字化需求、美元利率与资本市场估值</p>
+  </div>
+ </div>
+
+ <!-- MACRO 1 -->
+ <article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国际 · 货币政策</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-10-28 / 11-18</span>
+    <span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">估值中性偏空</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.5 / 10</span>
+  </div>
+
+  <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">美联储维持利率3.75%—4.00%，会议纪要明确讨论AI投资热潮的通胀与回报风险</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">1. 政策要点</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     美联储2026年10月27—28日FOMC会议维持联邦基金利率目标区间3.75%—4.00%。会议纪要于11月18日发布，两名委员倾向加息25个基点，显示内部政策分歧仍然存在。
+    </p>
+   </div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">2. 传导路径</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     高利率提高长期成长股未来现金流折现率，压缩高估值科技股的估值空间。会议纪要还指出，AI基础设施建设可能加大需求相对供给的压力，并引发成本传导；若投资回报受到更严格审视，AI资本开支也可能放缓。
+    </p>
+   </div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">3. PLTR业务敞口</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     Palantir目前拥有较高经营利润率和自由现金流，但估值高度依赖未来多年增长。利率持续偏高时，市场可能提高对合同期限、现金流兑现及增长持续性的要求。
+    </p>
+   </div>
+  </div>
+
+  <div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800/50">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+    <strong class="text-amber-700 dark:text-amber-300">投资含义：</strong>
+    对PLTR而言，利率变化的影响不只是融资成本，更重要的是估值分母。即使经营基本面持续增长，若市场要求更高风险补偿，股价仍可能出现盈利增长与估值收缩并存的情况。
+   </p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+   信源：<a class="source-link" target="_blank" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm">Federal Reserve · 2026-11-18会议纪要</a>；
+   <a class="source-link" target="_blank" href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm">FOMC官方日历</a>。
+  </p>
+ </article>
+
+ <!-- MACRO 2 -->
+ <article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">中国 · AI产业政策</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-17</span>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">中长期利好</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.5 / 10</span>
+  </div>
+
+  <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">国务院发布AI就业友好型发展意见，推动人工智能向传统产业和中小企业渗透</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">1. 政策要点</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     国务院办公厅于2026年11月17日发布《国务院办公厅关于适应人工智能技术发展助力构建就业友好型发展方式的意见》，文号国办发〔2026〕29号。
+    </p>
+   </div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">2. 传导路径</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     政策鼓励AI赋能传统岗位、发展智能原生企业、建设开源生态，并降低中小微企业智能化应用门槛。这将推动更多组织从单一AI工具使用走向业务流程改造，扩大企业AI潜在需求。
+    </p>
+   </div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">3. PLTR业务敞口</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     对Palantir的影响主要来自全球企业AI采用率提升这一行业需求端，而非直接财政补贴。中国市场还涉及数据跨境、网络安全、采购准入和本地化部署等条件，不能将国内AI产业政策直接视为PLTR订单利好。
+    </p>
+   </div>
+  </div>
+
+  <div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+    <strong class="text-emerald-700 dark:text-emerald-300">投资含义：</strong>
+    AI应用从大型科技公司向传统制造、服务业和中小企业扩散，有利于全球企业AI软件市场扩容。对PLTR而言，关键是能否把成熟市场的客户成功案例复制到更多国际市场。
+   </p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+   信源：<a class="source-link" target="_blank" href="https://xxgk.jcgov.gov.cn/szfgzbm/jcsdsjyyj/fdzdgknr_31650/fgwj/202611/t20261117_2412964.shtml">国务院办公厅政策原文 · 2026-11-17</a>。
+  </p>
+ </article>
+
+ <!-- MACRO 3 -->
+ <article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-sky-600 text-white text-xs font-bold">中国 · AI监管与数据治理</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-20</span>
+    <span class="px-2.5 py-1 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 text-xs font-bold">结构性利好 / 合规约束</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.0 / 10</span>
+  </div>
+
+  <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">国家网信办公布新增133款生成式AI备案，企业AI服务合规与模型透明度持续强化</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">1. 政策要点</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     国家互联网信息办公室于2026年11月20日发布2026年9月至10月生成式人工智能服务备案信息。新增133款生成式AI服务完成备案，新增224款直接调用已备案模型能力的应用或功能完成登记。
+    </p>
+   </div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">2. 传导路径</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     备案与登记制度提高模型来源透明度、应用合规管理及数据治理要求。长期看，企业级AI项目将更加重视权限控制、数据溯源、模型审计和安全部署能力。
+    </p>
+   </div>
+   <div class="rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+    <h4 class="font-bold text-sm mb-2">3. PLTR业务敞口</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     Palantir的Ontology、权限管理及企业数据治理能力在产品理念上与合规需求具有契合性，但中国市场仍有独立的准入和数据跨境限制，政策不会自动转化为其本地市场收入。
+    </p>
+   </div>
+  </div>
+
+  <div class="bg-sky-50/70 dark:bg-sky-950/25 rounded-xl p-4 border border-sky-200 dark:border-sky-800/50">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+    <strong class="text-sky-700 dark:text-sky-300">投资含义：</strong>
+    企业AI竞争将从单纯模型能力竞争转向数据治理、模型合规、业务安全与持续运营能力竞争。这一方向有利于成熟企业级平台，但也意味着产品部署和合规成本增加。
+   </p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+   信源：<a class="source-link" target="_blank" href="https://www.cac.gov.cn/2026-11/20/c_1796918603542950.htm">中央网信办 · 2026-11-20</a>。
+  </p>
+ </article>
+</section>
+
+<!-- MATRIX -->
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-10" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">将公司、行业及宏观事件统一映射到PLTR投资逻辑</p>
+  </div>
+ </div>
+
+ <div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-8">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-2 text-sm sm:text-base">
+    <i data-lucide="list" class="w-4 h-4 text-primary-500"></i> 九大动态催化矩阵
+   </h3>
+   <div class="flex flex-wrap gap-1.5 text-xs">
+    <button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">全部(9)</button>
+    <button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">公司(3)</button>
+    <button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">行业(3)</button>
+    <button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">宏观(3)</button>
+   </div>
+  </div>
+
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead>
+     <tr class="bg-gray-50 dark:bg-gray-800/80">
+      <th>类别</th>
+      <th>日期</th>
+      <th>核心事件</th>
+      <th>影响方向</th>
+      <th>强度</th>
+      <th>核心投资含义</th>
+     </tr>
+    </thead>
+    <tbody class="text-gray-600 dark:text-gray-300">
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+      <td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 font-semibold">公司</span></td>
+      <td class="font-mono whitespace-nowrap">11-02</td>
+      <td class="font-medium">Q3营收增长96%，美国商业收入增长148%</td>
+      <td class="text-emerald-600 font-semibold">重大利好</td>
+      <td class="font-bold font-mono">9.8</td>
+      <td>商业化拐点与盈利增长获得财报验证</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+      <td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 font-semibold">公司</span></td>
+      <td class="font-mono whitespace-nowrap">11-18</td>
+      <td class="font-medium">军事AI平民伤害争议与治理白皮书</td>
+      <td class="text-rose-600 font-semibold">短期承压</td>
+      <td class="font-bold font-mono">9.0</td>
+      <td>政府合同面临政治、法律及声誉风险</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+      <td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 font-semibold">公司</span></td>
+      <td class="font-mono whitespace-nowrap">11-04~05</td>
+      <td class="font-medium">AmeriLife与Changshin企业级合作</td>
+      <td class="text-emerald-600 font-semibold">温和利好</td>
+      <td class="font-bold font-mono">8.2</td>
+      <td>保险和制造业客户拓展，验证平台横向复制能力</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+      <td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold">行业</span></td>
+      <td class="font-mono whitespace-nowrap">11-03</td>
+      <td class="font-medium">全球企业AI支出达1768亿美元</td>
+      <td class="text-emerald-600 font-semibold">重大利好</td>
+      <td class="font-bold font-mono">9.0</td>
+      <td>扩大AIP和Foundry可服务市场空间</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+      <td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold">行业</span></td>
+      <td class="font-mono whitespace-nowrap">11月</td>
+      <td class="font-medium">IDC全球Agentic AI平台竞争评估</td>
+      <td class="text-amber-600 font-semibold">竞争加剧</td>
+      <td class="font-bold font-mono">8.0</td>
+      <td>平台差异化与客户ROI成为关键竞争因素</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+      <td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold">行业</span></td>
+      <td class="font-mono whitespace-nowrap">10-19*</td>
+      <td class="font-medium">企业软件采购预算与内部AI项目竞争</td>
+      <td class="text-rose-600 font-semibold">偏空</td>
+      <td class="font-bold font-mono">7.0</td>
+      <td>项目采购周期与AI投入ROI承压</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+      <td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">10-28 / 11-18</td>
+      <td class="font-medium">美联储维持利率，会议纪要讨论AI投资风险</td>
+      <td class="text-amber-600 font-semibold">估值承压</td>
+      <td class="font-bold font-mono">8.5</td>
+      <td>高估值科技股对贴现率及风险偏好敏感</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+      <td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">11-17</td>
+      <td class="font-medium">国务院发布AI就业友好型发展意见</td>
+      <td class="text-emerald-600 font-semibold">中长期利好</td>
+      <td class="font-bold font-mono">7.5</td>
+      <td>AI应用渗透扩大，全球企业软件市场受益</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+      <td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">11-20</td>
+      <td class="font-medium">网信办新增133款生成式AI服务备案</td>
+      <td class="text-sky-600 font-semibold">结构性利好</td>
+      <td class="font-bold font-mono">7.0</td>
+      <td>企业AI治理及合规平台需求长期增长</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">* 2026-10-19事件超出30日主窗口，按45日延伸窗口纳入。IDC报告仅能确认2026年11月公开报告月份。</p>
+ </div>
+
+ <!-- FORWARD CALENDAR -->
+ <div class="mb-6">
+  <div class="flex items-center gap-2 mb-4">
+   <i data-lucide="calendar-days" class="w-5 h-5 text-primary-500"></i>
+   <h3 class="font-bold text-lg">未来30天前瞻观察清单</h3>
+   <span class="text-xs text-gray-500 dark:text-gray-400">2026-11-25 至 2026-12-25</span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+   <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+    <div class="flex items-center justify-between mb-3">
+     <span class="text-xs font-bold text-primary-600 dark:text-primary-300">2026-12-08 ~ 12-09</span>
+     <span class="px-2 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-semibold">高优先级</span>
+    </div>
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2">美联储12月FOMC议息会议</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     关注利率决策、经济预测摘要及新闻发布会。若利率路径偏鹰，高估值成长股可能面临估值压缩；若政策预期转宽松，则可能改善科技股风险偏好。
+    </p>
+    <a class="source-link text-xs mt-3 inline-block" target="_blank" href="https://www.federalreserve.gov/newsevents/2026-december.htm">美联储官方日历 →</a>
+   </div>
+
+   <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+    <div class="flex items-center justify-between mb-3">
+     <span class="text-xs font-bold text-primary-600 dark:text-primary-300">2026-11-28 ~ 12-10</span>
+     <span class="px-2 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-semibold">高优先级</span>
+    </div>
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2">美国军事AI监管与政策窗口</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     11月4日美国国防部首席技术官Emil Michael曾表示，政府计划发布适用于美国AI实验室的法律法规概览。继续跟踪正式文件是否发布，以及军事AI责任、数据治理和国会监督是否出现实质进展。
+    </p>
+    <a class="source-link text-xs mt-3 inline-block" target="_blank" href="https://www.reuters.com/legal/litigation/pentagon-chief-tech-officer-says-government-will-detail-laws-that-apply-ai-labs-2026-11-04/">Reuters · 2026-11-04报道 →</a>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">注：正式发布日尚未确认，不代表已经确定的政策实施日期。</p>
+   </div>
+
+   <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+    <div class="flex items-center justify-between mb-3">
+     <span class="text-xs font-bold text-accent-600 dark:text-accent-300">2026-12-01 ~ 12-25</span>
+     <span class="px-2 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-semibold">持续跟踪</span>
+    </div>
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2">Q4商业合同转化及年末客户部署</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     关注AmeriLife、Changshin等新合作是否出现生产部署扩展，以及企业客户是否从试点进入大规模使用。重点监测新的八位数合同、美国商业TCV及客户数量变化。
+    </p>
+    <a class="source-link text-xs mt-3 inline-block" target="_blank" href="https://investors.palantir.com/events">Palantir投资者关系活动页面 →</a>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">公司尚未在官方活动页面公布未来30日内新的财报日期。</p>
+   </div>
+
+   <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+    <div class="flex items-center justify-between mb-3">
+     <span class="text-xs font-bold text-accent-600 dark:text-accent-300">2026-12-01 ~ 12-25</span>
+     <span class="px-2 py-1 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 text-xs font-semibold">持续跟踪</span>
+    </div>
+    <h4 class="font-bold text-gray-900 dark:text-white mb-2">企业AI竞争格局与平台商业化</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     跟踪AWS、Microsoft、Google、Salesforce、ServiceNow等平台的Agent产品部署、企业合同和价格变化。重点观察Palantir能否维持差异化定价，以及商业合同总价值能否加速。
+    </p>
+    <a class="source-link text-xs mt-3 inline-block" target="_blank" href="https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/">Menlo Ventures企业AI报告 →</a>
+   </div>
+  </div>
+ </div>
+
+ <!-- KEY OBSERVATION -->
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 border border-primary-200 dark:border-primary-900/50">
+  <h3 class="font-bold text-lg mb-5 flex items-center gap-2">
+   <i data-lucide="crosshair" class="w-5 h-5 text-primary-500"></i>
+   下一阶段最值得跟踪的五个核心指标
+  </h3>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead>
+     <tr class="bg-gray-50 dark:bg-gray-800/80">
+      <th>指标</th>
+      <th>最新基准</th>
+      <th>下一阶段重点</th>
+      <th>信号意义</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td class="font-semibold">美国商业收入</td>
+      <td class="font-mono">$984M</td>
+      <td>是否持续高增长</td>
+      <td class="text-emerald-600">增长发动机</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">美国商业TCV</td>
+      <td class="font-mono">$1.463B</td>
+      <td>同比增长能否重新加速</td>
+      <td class="text-rose-600">订单领先指标</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">美国商业RDV</td>
+      <td class="font-mono">$6.517B</td>
+      <td>积压合同能否持续转化</td>
+      <td class="text-emerald-600">收入可见度</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">调整后经营利润率</td>
+      <td class="font-mono">62%</td>
+      <td>规模扩张下能否保持</td>
+      <td class="text-emerald-600">利润质量</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">军事AI治理风险</td>
+      <td>白皮书已披露</td>
+      <td>国会、国防部及司法审查</td>
+      <td class="text-rose-600">尾部风险</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+   <div>
+    <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">核心数据来源</h4>
+    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+     <li><a class="source-link" target="_blank" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/a2026q3ex991pressrelease.htm">Palantir / SEC · 2026-11-02 Q3财报</a></li>
+     <li><a class="source-link" target="_blank" href="https://www.reuters.com/technology/palantir-tops-third-quarter-revenue-estimates-strong-ai-software-demand-2026-11-02/">Reuters · 2026-11-02 财报报道</a></li>
+     <li><a class="source-link" target="_blank" href="https://time.com/article/2026/11/18/palantir-military-targeting/">TIME · 2026-11-18 军事AI报道</a></li>
+     <li><a class="source-link" target="_blank" href="https://www.amerilife.com/newsroom/technology/amerilife-and-palantir-announce-enterprise-partnership-to-bring-ai-driven-transformation-to-insurance-and-retirement-distribution">AmeriLife · 2026-11-05 合作公告</a></li>
+     <li><a class="source-link" target="_blank" href="https://www.changshininc.com/en/pr/news/changshin-partners-with-palantir-sets-out-to-innovate-footwear-manufacturing-with-ai/">Changshin · 2026-11-05 合作公告</a></li>
+     <li><a class="source-link" target="_blank" href="https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/">Menlo Ventures · 2026-11-03 AI研究报告</a></li>
+     <li><a class="source-link" target="_blank" href="https://www.sas.com/content/dam/sasdam/documents/2026-11/idc-marketscape-worldwide-agentic-ai-platforms-2026-vendor-assessment.pdf">IDC MarketScape · 2026年11月</a></li>
+     <li><a class="source-link" target="_blank" href="https://futurumgroup.com/wp-content/uploads/2026/10/Enterprise-Software-Spending-Lags-Behind-Stated-Platform-Consolidation-Goals_AIOKK202610.pdf">Futurum Research · 2026-10-19</a></li>
+    </ul>
+   </div>
+
+   <div>
+    <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">宏观政策与官方来源</h4>
+    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+     <li><a class="source-link" target="_blank" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm">Federal Reserve · 2026-11-18会议纪要</a></li>
+     <li><a class="source-link" target="_blank" href="https://www.federalreserve.gov/newsevents/2026-december.htm">Federal Reserve · 2026年12月日历</a></li>
+     <li><a class="source-link" target="_blank" href="https://xxgk.jcgov.gov.cn/szfgzbm/jcsdsjyyj/fdzdgknr_31650/fgwj/202611/t20261117_2412964.shtml">国务院办公厅 · 2026-11-17 AI政策</a></li>
+     <li><a class="source-link" target="_blank" href="https://www.cac.gov.cn/2026-11/20/c_1796918603542950.htm">国家网信办 · 2026-11-20备案公告</a></li>
+     <li><a class="source-link" target="_blank" href="https://www.reuters.com/legal/litigation/pentagon-chief-tech-officer-says-government-will-detail-laws-that-apply-ai-labs-2026-11-04/">Reuters · 2026-11-04 AI监管动态</a></li>
+     <li><a class="source-link" target="_blank" href="https://investors.palantir.com/events">Palantir Investor Relations · 财报及活动日历</a></li>
+    </ul>
+   </div>
+
+   <div>
+    <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">覆盖区间与研究方法</h4>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
+     主窗口：2026-10-26 至 2026-11-25，共30个自然日。
+    </p>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
+     行业补充窗口：2026-10-19至2026-11-25，共37天。因部分行业竞争研究的公开发布日期和可获取资料存在限制，明确标注延伸日期。
+    </p>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
+     影响力评分为研究判断，不代表股价实际涨跌幅或统计模型概率。财报数字以公司及SEC披露为准；政策与媒体报道按原始发布日期引用。
+    </p>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+     本报告不将尚未公布的订单金额、合作收入、政策落地日期或财报发布日期作为已确认事实。
+    </p>
+   </div>
+  </div>
+
+  <div class="border-t border-gray-100 dark:border-gray-800 pt-6">
+   <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-2">免责声明</h4>
+   <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
+    本报告基于截至2026年11月25日可检索的公开信息、公司公告、监管机构文件及行业研究资料编制，仅用于金融市场研究与信息交流，不构成证券买卖建议、投资咨询或收益保证。企业AI市场变化迅速，历史增长不代表未来业绩，新闻事件的影响亦可能随监管、商业合同和市场预期变化而改变。Palantir股票存在高估值波动、合同兑现、政府采购、军事伦理、数据安全及宏观利率等风险。投资者应独立核实资料，并结合自身风险承受能力作出判断。
+   </p>
+   <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+    <p class="text-xs text-gray-400 dark:text-gray-500">Palantir Technologies (NASDAQ: PLTR) · 最新动态全景追踪 · 2026-11-25</p>
+    <p class="text-xs text-gray-400 dark:text-gray-500">AIPE Investment Research · Event-Driven Intelligence</p>
+   </div>
+  </div>
+ </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const y=document.body.scrollTop||document.documentElement.scrollTop;
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const bar=document.getElementById('progressBar');
+ if(bar)bar.style.width=(h>0?y/h*100:0)+'%';
+},{passive:true});
+
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:450,offset:30,once:true});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

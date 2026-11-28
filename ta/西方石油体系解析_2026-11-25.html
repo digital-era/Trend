@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西方石油（OXY）体系全景解析</title>
+<!-- Essential CDN Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)',
+100: 'hsl(20, 90%, 85%)',
+200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)',
+400: 'hsl(20, 90%, 55%)',
+500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)',
+700: 'hsl(20, 90%, 35%)',
+800: 'hsl(20, 90%, 25%)',
+900: 'hsl(20, 90%, 15%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)',
+100: 'hsl(30, 85%, 85%)',
+200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)',
+400: 'hsl(30, 85%, 60%)',
+500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)',
+700: 'hsl(30, 85%, 40%)',
+800: 'hsl(30, 85%, 30%)',
+900: 'hsl(30, 85%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Micro-interactions & Custom Styles -->
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html { scroll-behavior: auto; }
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th, .dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+transition: width 1.2s ease-out;
+}
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+display: none;
+}
+#mobileMenu.mobile-menu-open {
+display: block;
+}
+@media (min-width: 768px) {
+#mobileMenu {
+display: none !important;
+}
+}
+@media (max-width: 767px) {
+header .max-w-7xl {
+padding-left: 1rem;
+padding-right: 1rem;
+}
+header .flex.items-center.justify-between > h1 {
+font-size: 1rem;
+line-height: 1.25rem;
+white-space: nowrap;
+margin-right: 0.5rem;
+}
+#mobileMenu {
+margin-top: 1rem;
+padding-top: 1rem;
+padding-bottom: 0.5rem;
+border-top: 1px solid rgba(20, 20, 20, 0.12);
+max-height: calc(100vh - 90px);
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+}
+.dark #mobileMenu {
+border-top-color: rgba(255, 255, 255, 0.15);
+}
+#mobileMenu a {
+display: block;
+width: 100%;
+padding: 0.7rem 0.5rem;
+border-radius: 0.5rem;
+}
+#mobileMenu a:active {
+background: rgba(20, 20, 20, 0.06);
+}
+.dark #mobileMenu a:active {
+background: rgba(255, 255, 255, 0.08);
+}
+}
+/* 桌面端导航 */
+@media (min-width: 768px) {
+header nav[aria-label="桌面端导航"] a {
+color: #374151;
+}
+.dark header nav[aria-label="桌面端导航"] a {
+color: #e5e7eb;
+}
+header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 45%);
+}
+.dark header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 55%);
+}
+}
+header {
+overflow: visible;
+}
+</style>
+<script>
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<!-- Floating Header -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">西方石油体系全景解析</h1>
+<!-- 桌面端导航 -->
+<nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+Code
+<!-- 右侧按钮 -->
+<div class="flex items-center space-x-2 flex-shrink-0">
+  <!-- 移动端汉堡菜单 -->
+  <button
+    type="button"
+    onclick="toggleMobileMenu()"
+    class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="打开或关闭导航菜单"
+    aria-controls="mobileMenu"
+    aria-expanded="false"
+    id="mobileMenuButton"
+  >
+    <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+  </button>
+
+  <!-- 暗色模式 -->
+  <button
+    type="button"
+    onclick="toggleDarkMode()"
+    class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="切换暗色模式"
+  >
+    <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+    <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+  </button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 text-xs font-semibold mb-4">
+<span>NYSE: OXY</span>
+<span>•</span>
+<span>纯上游与碳捕集转型元年 · 截至 2026-11-25 最新披露全景</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+西方石油公司（OXY）体系全景解析
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+2026 年是西方石油（Occidental Petroleum Corporation，NYSE: OXY）脱胎换骨的一年：1 月 2 日公司以 <strong>97.00 亿美元现金</strong>正式将全资化工皇冠 OxyChem 出售给第一大股东伯克希尔·哈撒韦，一口气清偿逾 65 亿美元本金债务，提前实现 <strong>143 亿美元净/本金债务达标</strong>；同时凭借二叠纪盆地与碳捕集（STRATOS）放量，在年内股价飙升逾 50% 至 64.93 美元（正式迈过伯克希尔 59.624 美元认股权证行权线）。本报告基于 FY2025 10-K、Q3 2026 10-Q 与 2026 年代理声明书，全景解构其治理演进、股本权证、伯克希尔超级绑定、WES 上市管道矩阵与激励机制。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">战略蜕变</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+Vicki Hollub 从高杠杆吞并阿纳达科、CrownRock 到剥离化工聚焦纯粹上游与碳管理
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与权证</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+9.91亿流通股、伯克希尔 26.75% 普通股 + 84.9亿优先股 + 8,386万份实值权证
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">关联与激励</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+97亿美元关联售卖 OxyChem、并表上市平台 WES 与强债务考核型激励体系
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+发展脉络与核心管理层演进：Vicki Hollub 的“大并购—极限去杠杆—纯上游重生”之路
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+西方石油创立于 1920 年加州，真正使其跻身世界能源版图的是传奇实业家 <strong>Armand Hammer</strong>（1957–1990 年掌舵，开创利比亚、北海与 OxyChem 化工帝国）。进入当代，公司历史上最具决定性的舵手是 2016 年 5 月出任 CEO 的 <strong>Vicki Hollub</strong>——美国大型石油巨头史上首位女性 CEO（1981 年起在体系内深耕逾四十年）。她的十年任期走出了一道极具戏剧性的“V 型战略曲线”：从 2019 年举债 550 亿美元险些破产的豪赌，到借助巴菲特资本后盾与出售 OxyChem 完成华丽上岸。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000797468|1">（来源：FY2025 10-K &amp; 官网高管履历）</span>
+</p>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+<i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+关键转折点（2026年1月2日）：公司正式完成向第一大股东伯克希尔出售全资子公司 OxyChem 的交割（对价 97.00 亿美元现金），一举卸下历史包袱，将本金债务压低至 143 亿美元，彻底转型为聚焦美国本土二叠纪/落基山脉油气与 STRATOS 直接空气碳捕集的轻化专业能源商。
+</p>
+</div>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">早中期：豪赌并购与危机求生 (2016–2024)</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2019年抢亲阿纳达科（Anadarko）：</strong>联合巴菲特 100 亿美元 8% 优先股火线援手，以 550 亿美元压倒雪佛龙赢得二叠纪特拉华核心区与阿尔及利亚/墨西哥湾深水储量，但净债飙逾 400 亿美元。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2020年断臂求生：</strong>疫情暴跌冲击下果断将季度股息削减至象征性 $0.01/股，全力出售非洲及落基山脉非核心资产保命。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2024年8月再吞 CrownRock（120亿美元）：</strong>逆势补强二叠纪米德兰核心区（新增约 17 万桶/日高含油资产），随即开启全行“债转股与卖产降债”总动员。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">近年核心班底与 2026 年战略重心</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>铁三角核心管理层：</strong>CEO <strong>Vicki Hollub</strong> 统揽全局及大股东沟通；SVP 兼 CFO <strong>Sunil Mathew</strong>（2023 年履新）操盘精密债务清理；运营及碳管理总裁 <strong>Richard Jackson</strong> 主抓降本增效与碳捕集落地。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>卖掉化工、守住 143 亿债务安全线：</strong>2026 年初交割 OxyChem 后将净资金优先偿还 65 亿+ 美元高级债，全面告别高息负担并重建投资级资产负债表弹性。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>STRATOS DAC 商业化与 EOR 协同：</strong>德州 Ector 县全球最大直接空气碳捕集厂 STRATOS 启动运转，将捕集到的 CO2 注入老油田三次采油（EOR），同步赚取美国 45Q 税收抵免（最高 $180/吨）与零碳原油溢价。</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+管理哲学变化：从“规模扩张优先”到“去杠杆 + 股东回报与碳业务双轮”
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+经历 2020 年濒临破产的深刻教训后，Vicki Hollub 的管理哲学完成了彻底蜕变：过去强调靠杠杆抢占地盘，如今全行考核中枢死死锚定在<strong>“净本金债务红线（&lt;150亿美元）、单井钻完井成本降低（2025–2026 年二叠纪单井成本降约 10%）以及现金流优先偿债再恢复分红/回购”</strong>。2026年2月公司顺利将季度股息上调 8% 至 <strong>0.26 美元/股</strong>，且在实现 143 亿美元债务达标后重新夺回资本配置主动权。
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+股本数量变化过程：并购发股、优先股赎回与“实值认股权证”悬顶
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+西方石油的股本数量是理解其股权博弈的核心钥匙。过去七年间，流通普通股从 2018 年底的 7.48 亿股一路因并购与发股代息扩增至 2026 年的 <strong>9.91 亿股</strong>；更值得注意的是，2026 年股价飙升至 64.93 美元后，伯克希尔手里握有的 <strong>8,386 万份 $59.624 行权价认股权证</strong>已正式转为“价内实值期权（In-the-money）”，构成了中长期潜在股本稀释源。
+</p>
+Code
+<div class="overflow-x-auto bg-white/90 dark:bg-gray-900 rounded-xl shadow-md p-4">
+    <table>
+      <thead>
+        <tr class="text-xs uppercase text-primary-700 dark:text-primary-300">
+          <th>时间节点</th>
+          <th>股本 / 权证变动事件</th>
+          <th>普通股 / 衍生股本变动</th>
+          <th>对公司控制与摊薄影响</th>
+        </tr>
+      </thead>
+      <tbody class="text-sm text-gray-700 dark:text-gray-300">
+        <tr>
+          <td class="font-medium whitespace-nowrap">2019年8月</td>
+          <td>并购阿纳达科发股 + 伯克希尔注入优先股</td>
+          <td>普通股由 7.48 亿增至 8.95 亿股；另授伯克希尔 <strong>8,000 万份</strong>权证（后经调整为 <strong>8,386 万份</strong> @ $59.624）</td>
+          <td>引入 100 亿美元 8% 高息 A 类优先股，股本与潜在稀释双升</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2020年</td>
+          <td>以股代息支付优先股红利 + 派发公众权证</td>
+          <td>普通股再增至 9.33 亿股；向老股东免费派发 1 亿+ 份公众权证（<code>OXY.WS</code>，行权价 $22.00，2027年8月到期）</td>
+          <td>保住疫情期现金流，但埋下长期权证稀释包袱</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2023–2024年8月</td>
+          <td>部分赎回伯克希尔优先股 + CrownRock 发股</td>
+          <td>按 110% 面值赎回约 15.1 亿美元优先股（余 <strong>84.90 亿美元</strong>）；2024年8月向 CrownRock 增发 <strong>2,956 万股</strong></td>
+          <td>期末流通普通股由 8.80 亿升至 9.38 亿股以上</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2025年3月–年底</td>
+          <td>折价交换削减公众认股权证 + 稳步消债</td>
+          <td>3月以 $21.30 激励价换股注销 4,740 万份公众权证（新发 1,390 万股普通股）</td>
+          <td>大幅压低 <code>OXY.WS</code> 存量权证压制，2025年末普通股约 9.85 亿股</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2026年11月24日</td>
+          <td>最新流通股本、权证与市值快照</td>
+          <td>基础普通股 <strong>9.91 亿股</strong>（990.51M；Q3 摊薄加权 10.01 亿股）</td>
+          <td>收盘价 <strong>64.93 美元</strong>（年内涨逾 50%），总市值约 <strong>643.1亿–651.0亿美元</strong>；伯克希尔 8,386 万份权证正式处于实值状态</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">大股东伯克希尔持仓：26.75% 铁盘一动不动</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2.65 亿股普通股稳如泰山：</strong>在 2022–2024 年间持续扫货并最后一次于 2025 年 2 月微幅加仓后，伯克希尔（包括 2026 年接任 CEO 的格雷格·阿贝尔治下）截至 2026 年 9 月 30 日始终精准持有 <strong>264,941,431 股普通股</strong>（占总股本 <strong>26.75%</strong>，按 64.93 美元计持仓市值 <strong>172.03 亿美元</strong>），一股未减！</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>三重立体持仓结构：</strong>除 26.75% 普通股外，伯克希尔还握有 <strong>84.90 亿美元 8% 优先股</strong>（每年收取 6.79 亿美元优先股息）以及 <strong>8,386 万份 $59.624 行权价认股权证</strong>（完全行权后可推高总持股至 32% 以上）。</span>
+        </li>
+      </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">最新股本与资本结构快照 (2026 Q3 / 11-24)</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">最新流通普通股本</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">9.91 亿股 (990.51M)</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">最新市值 (2026-11-24 收盘 $64.93)</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约 643.10亿–651.00亿美元</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">存量未赎回 8% 优先股（伯克希尔持有）</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">84.90 亿美元（2029年8月后可按面值赎回）</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">Q3 2026 本金债务余额（提前达标）</span>
+          <span class="text-base font-semibold text-green-600 dark:text-green-400">143.00 亿美元（较150亿目标低7亿）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+      <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      股本稀释机制提示：依据 2019 年融资协议，只有当过去 12 个月普通股分红与回购总额超过每股 4.00 美元触发门槛时，OXY 才会被强制按 110% 价格（+10% 溢价）加速赎回伯克希尔的 8% 优先股；此外由于当前股价已越过 $59.624，伯克希尔认股权证与剩余 $22 公众权证在会计计算摊薄 EPS 时已产生实质稀释影响。<span class="text-xs opacity-80" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000797468|2">（来源：Q3 2026 Form 10-Q &amp; 2026 Proxy）</span>
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+股权结构演变：伯克希尔“获批50%却只做盟友”的独特单极锚定格局
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+西方石油仅设单一类别普通股（每股 1 票），无任何家族信托或超级投票权安排，但其股权结构在标普 500 能源板块中堪称独一无二：<strong>Berkshire Hathaway 持有高达 26.75% 的普通股及近 85 亿美元优先股，并且早在 2022 年 8 月便获得美国联邦能源监管委员会（FERC）批准可增持至 50% 上限</strong>；然而，无论巴菲特还是接班人阿贝尔均严守“不入驻董事会、不谋求控股权”的承诺，形成了高度稳健的“单一超大战略基石 + 独立董事会”共治架构。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000797468|3">（来源：2026 DEF 14A &amp; Q3 2026 13F）</span>
+</p>
+Code
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026 年核心股东持股分布</h3>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">Berkshire Hathaway（2.649亿股普通股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">26.75%（含权证可达 ~32.4%）</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 72%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">The Vanguard Group（~8,000万股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">~8.10%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 32%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">Dodge &amp; Cox（~6,036万–6,800万股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">~6.10%–6.90%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 26%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">BlackRock, Inc.（~4,500万–5,000万股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">~4.50%–5.10%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">全体在任董事及高管个人实益持股</span>
+            <span class="font-semibold text-primary-600 dark:text-primary-400">&lt;0.50%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 5%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">股权与治理演变时间线</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2019–2020年（激进投资者卡尔·伊坎冲击）：</strong>阿纳达科并购引发股价暴跌后，维权投资者伊坎一度抢筹并安插两名董事迫使公司承诺降债；后于 2022 年全面清仓退出。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2022–2024年（伯克希尔接棒成为超级铁锚）：</strong>巴菲特趁低吸纳普通股至 26%–28%，不仅化解了外部恶意并购风险，也彻底稳住了银行与债券评级机构信心。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2025–2026年（阿贝尔时代稳固延续）：</strong>尽管巴菲特卸任伯克希尔 CEO，但继任者阿贝尔（能源出身）非但一股未卖，反而主导了 97 亿美元全现金收购 OxyChem，双方信任绑定达到历史顶点。</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      控制权稳定性与独立董事会制衡机制
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      西方石油坚持“董事长与 CEO 职务分设”的高标准治理结构——由前 Cameron International CEO <strong>Jack B. Moore</strong> 担任独立董事长（Independent Chair），与 CEO Vicki Hollub 形成严谨制衡；全体 10–11 名董事每年经多数票重选，除 Hollub 外全数符合独立性标准。虽然伯克希尔持股 26.75% 在法律投票中具有举足轻重的影响力，但因其未派驻董事且主要充当长期战略盟友，公司治理运行依然保持了高度的公共股东独立性。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+关联上市公司（WES）、OxyChem 关联交易剥离与碳捕集生态
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+2026 年西方石油的关联企业关系发生了载入教科书的重大重组：一方面它至今控股并表纽约上市的中游管道伙伴 <strong>Western Midstream Partners（NYSE: WES）</strong>，另一方面又刚刚在 2026 年 1 月把全资现金牛子公司 <strong>OxyChem</strong> 以 97 亿美元关联交易出售给第一大股东伯克希尔，并携手贝莱德构建全球碳捕集合资平台。
+</p>
+Code
+<div class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">Western Midstream (NYSE: WES)</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">控股并表上市中游能源管道伙伴</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• OXY 持有 <strong>~41%–43% LP 权益</strong>（约1.65亿份，市价约 65亿–68 亿美元）及 <strong>100% 普通合伙人（GP）控制权</strong></li>
+        <li>• FY25 调整后 EBITDA 约 <strong>24.80 亿美元</strong>，2026 年指引 25.00亿–27.00 亿美元</li>
+        <li>• WES 逾半数集输处理费源自 OXY 长期服务合约，且 WES ~70 亿美元非追索债务并表计入 OXY 报表</li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="arrow-left-right" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">OxyChem → 伯克希尔交割</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">2026年1月2日完成的 97 亿美元关联出售</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• 全球氯碱与 PVC 巨头（FY24 营收约 49 亿美元、EBITDA 约 14 亿美元）</li>
+        <li>• 以 <strong>97.00 亿美元现金</strong>售予持有 OXY 26.75% 股权的大股东伯克希尔（税后净收约 80 亿美元）</li>
+        <li>• OXY 于 Q3 2025 计提 13 亿美元商誉减值，并按协议保留部分历史环境治理责任</li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="leaf" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">Oxy Low Carbon / 1PointFive</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">与贝莱德、ADNOC 共建的碳捕集平台</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• <strong>BlackRock 合资：</strong>贝莱德向德州 STRATOS 巨型 DAC 工厂注资 5.50 亿美元组建合资实体</li>
+        <li>• <strong>微软/亚马逊/AT&amp;T/空客：</strong>签署超大规模碳去除信用额（CDR）多年期预购合约</li>
+        <li>• 将捕获 CO2 注入二叠纪油田提升采收率（EOR），打通技术与减排闭环</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      97 亿美元“OxyChem 关联出售案”治理剖析与 WES 协同
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      <strong>1. 向第一大股东卖掉核心资产的公允定价考卷：</strong>将年赚十余亿美元稳定现金流的 OxyChem 出售给同时握有 26.75% 普通股与 84.9 亿美元优先股的伯克希尔，毫无疑问属于 SEC 严格审视的重大关联交易。由于伯克希尔在 OXY 董事会不占一席，OXY 独立董事会（由 Jack Moore 主持）全权委托外部独立投行出具公允估值意见（约 7 倍周期底部 EBITDA），借此在无需动用高溢价赎回优先股条款的前提下拿回 80 亿美元净现金瞬间解决高息债务危机，实现了大股东（买下优质稳定化工现金牛）与中小股东（债务降到安全区释放权益价值）的双赢。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000797468|4">（来源：2025-10-02 8-K &amp; Q1 2026 10-Q）</span>
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      <strong>2. WES 并表会计错觉与未来套现期权：</strong>尽管 OXY 通过 GP 控制权把 WES 全部资产与 ~70 亿美元债务并入资产负债表，但法律上 WES 债务对 OXY 母公司<strong>无追索权</strong>（Non-recourse），扣除 WES 债务后 OXY 本部核心债务低至 143 亿美元；此外，手头这批市价近 65 亿–68 亿美元的 WES 股票随时可作为 OXY 未来进一步减债或赎回 2029 年优先股的潜在流动性储备。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+员工持股与激励机制：高比例退休储蓄匹配与“债务+ROCE”强约束考核
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+随着 2026 年初约 3,000 余名 OxyChem 化工员工随业务转入伯克希尔体系，西方石油母体保留约 1 万名聚焦油气开采与碳管理的精干技术队伍。公司的激励逻辑紧紧围绕<strong>“把高管业绩从盲目产量拉回到降债、自由现金流与相对股东回报”</strong>以及<strong>“高达 17% 级员工退休养老供款保障”</strong>。
+</p>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">高管层与 CEO 绩效锁定机制</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>Vicki Hollub 薪酬与风控结构：</strong>FY2025 总薪酬约 <strong>1,550 万–1,680 万美元</strong>（基薪约 145 万–150 万美元），逾 85% 为变动与长期股权，远低于两家万亿级超级油企同行，体现了降债期的薪酬克制。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>长期激励（LTIP）60%–70% 硬核挂钩 PSU：</strong>3 年期绩效股直接锚定 <strong>相对总股东回报（rTSR 对比能源同行及 XOP）</strong> 与 <strong>已动用资本回报率（ROCE）</strong>，且设“若三年绝对 TSR 为负则奖励严格封顶上限”熔断条款。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-primary-400 flex-shrink-0 mt-0.5" style="display:none"></span>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>年度奖金（ACI）直击债务与安全指标：</strong>把现金流减债进度（如 150 亿美元红线达标）、单桶运维成本与碳安全/零泄漏纳入年度计分卡。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">基层福利、全员持股与权益保障</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>全行超高配比储蓄与养老计划（PSA + PRA）：</strong>员工 401(k) 储蓄计划享最高 7% 等额公司匹配（支持配置 OXY 股票基金），叠加基于工龄和年龄的额外退休账户供款（5%–10%），合计最高可获公司相当于工资 <strong>17%</strong> 的养老与股权储蓄投入！</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>持股红线与严格追回政策：</strong>要求 CEO 持有不少于 <strong>6 倍基本年薪</strong>的公司股票（高管层 3–4 倍），全面落实 SEC Rule 10D-1 财务重述追回与禁止对冲质押政策。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>OxyChem 员工平稳移交与潜力张力：</strong>2026年1月资产剥离过程实现了员工权益完整承接，但母体在持续削减单井成本与重组后，如何在高强度降本周期保留 STRATOS 新一代碳工程技术人才仍具一定挑战。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+综合研判与关键结论
+</h2>
+<div class="space-y-6">
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+1. 组织与战略阶段：“轻化重生 + 去杠杆达标”的新起点
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+通过 2026 年 1 月将 OxyChem 以 97 亿美元现金出售给伯克希尔，西方石油终于走出了长达七年的“阿纳达科+CrownRock 重债泥潭”，在 2026 年三季度末提前将本金债务压至 <strong>143 亿美元</strong>（低于 150 亿美元中期目标）。如今的 OXY 成为一家纯度极高的北美页岩/中东上游 + 碳管理先锋，并于年内涨逾五成。
+</p>
+<div class="grid md:grid-cols-3 gap-4 pt-2">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">去杠杆执行力与大股东协同</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">94/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 94%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">核心二叠纪资产与碳捕集卡位</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">86/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 86%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">抗逆周期缓冲与无权证稀释净度</span>
+<span class="font-bold text-accent-600 dark:text-accent-400">58/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 58%;"></div></div>
+</div>
+</div>
+</div>
+Code
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      2. 财务核心矛盾：“高债务包袱解除” vs “失去化工缓冲与实值权证悬顶”
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      在 2026 年 Q3 高油价（布油 ~$97/bbl）护航下，OXY 持续经营业绩大幅反弹（Q3 调整后盈利逾 14.5 亿–18 亿美元、EPS 较上年同期翻倍以上），年内股息提升 8% 至 1.04 美元/年，且未来每年可节省逾 3 亿–4 亿美元利息支出。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      但硬币的另一面在于：第一，出售 OxyChem 后公司永久失去了约 10 亿–14 亿美元/年的逆周期化工现金流，如今变成逾 95% 暴露在油气波动下的纯上游品种；第二，账上依然躺着伯克希尔 <strong>84.90 亿美元 8% 优先股</strong>（每年抽血 6.79 亿美元），且股价突破 64.93 美元已把伯克希尔 8,386 万份 $59.624 认股权证及剩余公众权证全部激活为“实值稀释筹码”。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      3. 伯克希尔 26.75% 铁盘与 WES 管道构成“双保险”
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      格雷格·阿贝尔治下的伯克希尔一股未卖 2.65 亿股普通股，甚至直接花 97 亿买下 OxyChem 替 OXY 消债，这种“深度背书”彻底消除了 OXY 在油价下行周期的信用流动性恐慌；而价值逾 65 亿美元的 WES 并表管道权益则是随时可调节流动性的隐藏压舱石。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      4. 体系与治理风险提示
+    </h3>
+    <div class="space-y-4">
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>“去化工化”后的纯上游高油价周期风险。</strong>失去 OxyChem 利润垫后，若 2027 年全球经济走软或中东局势降温带动油价重回 60–65 美元/桶，OXY 盈利弹性向下波动将显著大于雪佛龙与埃克森美孚等综合巨头。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>8,386 万份实值权证 + 84.9 亿美元优先股赎回路径掣肘。</strong>按现价 64.93 美元，若未来伯克希尔行使权证（将向公司注资约 50 亿美元但增发 8,386 万股），将带来约 8%–11% 的总股本稀释；同时 8% 优先股在 2029 年 8 月前若要提前赎回仍受制于高额触发与溢价条款。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>STRATOS 碳捕集商业化及环保责任遗留风险。</strong>直接空气捕集（DAC）仍高度依赖美国 45Q 联邦税收补贴连续性与大企业自愿碳信用买单意愿；此外售卖 OxyChem 时 OXY 保留的历史遗留环境治理赔偿责任亦需长期跟踪。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+      <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      一句话总结：西方石油以 97 亿美元向伯克希尔交割 OxyChem 的果断壮举，成功化解了长达七年的债务阴霾并重获轻装进攻资格，但站在 64.93 美元、认股权证已进入实值且失去化工缓冲的今天，油价中枢与 2029 年优先股大限前的现金流分配效率将成为下一程最大考验。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合西方石油（NYSE: OXY）FY2025 10-K、Q3 2026 10-Q、2026 年代理声明书（DEF 14A）、OxyChem 交割公告、WES 财报及伯克希尔 13F 披露，系统梳理其管理层演进、股本与权证机制、26.75% 股权结构、关联交易及激励体系。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• Vicki Hollub 战略蜕变与去杠杆</li>
+<li>• 股本演变、优先股与实值权证</li>
+<li>• 伯克希尔 26.75% 铁盘与 FERC 50% 批文</li>
+<li>• WES 并表与 OxyChem 97亿关联出售</li>
+<li>• 17% 养老配比与 rTSR/ROCE 考核</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供教育与金融研究参考，不构成任何证券买卖或投资建议。所有数据均基于截至 2026 年 11 月 25 日（北京时间）的公开披露信息整理，具体以公司官方 SEC 文件为准。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 西方石油（OXY）体系全景研究（2026-11-25）。保留所有权利。</p>
+</div>
+</div>
+</footer>
+<script>
+function toggleMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+const isOpen = menu.classList.toggle('mobile-menu-open');
+menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+if (button) {
+button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+lucide.createIcons();
+}
+}
+
+function closeMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+menu.classList.remove('mobile-menu-open');
+menu.setAttribute('aria-hidden', 'true');
+if (button) {
+button.setAttribute('aria-expanded', 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', 'menu');
+lucide.createIcons();
+}
+}
+
+// Progress Bar
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+});
+
+// Initialize AOS & Lucide
+document.addEventListener('DOMContentLoaded', function() {
+lucide.createIcons();
+AOS.init({ duration: 800, once: true });
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+link.addEventListener('click', () => {
+closeMobileMenu();
+});
+});
+
+// Citation System
+let i = 1, map = new Map();
+document.querySelectorAll('[data-ref]').forEach(el => {
+if (el.dataset.citationProcessed) return;
+const raw = (el.getAttribute('data-ref')||'').trim();
+if (!raw) return;
+const parts = raw.split('|');
+const url = parts[0].trim();
+const idx = (parts[1]||'').trim() || map.get(raw) || (map.set(raw, String(i)), String(i++));
+if (!el.textContent || !el.textContent.trim()) { el.dataset.citationProcessed = 'true'; return; }
+const btn = document.createElement('sup'); btn.textContent = String(idx);
+Object.assign(btn.style, { fontSize:'8px', color:'#fff', cursor:'pointer', top: '1px', fontWeight:'bold', backgroundColor:'#0284c7', borderRadius:'50%', transition:'all .15s', userSelect:'none', minWidth:'19px', height:'19px', marginLeft:'6px', display:'inline-flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 3px rgba(0,0,0,.2)', lineHeight:'1'});
+btn.addEventListener('mouseenter', ()=> Object.assign(btn.style, { backgroundColor:'#0369a1', transform:'scale(1.12)' }));
+btn.addEventListener('mouseleave', ()=> Object.assign(btn.style, { backgroundColor:'#0284c7', transform:'scale(1)' }));
+btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(url, '_blank'); });
+el.appendChild(btn); el.dataset.citationProcessed = 'true';
+});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

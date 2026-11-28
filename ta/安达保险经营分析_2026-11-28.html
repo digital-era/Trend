@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>安达保险（CB）经营分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "hsl(20, 90%, 95%)",
+                100: "hsl(20, 90%, 85%)",
+                200: "hsl(20, 90%, 75%)",
+                300: "hsl(20, 90%, 65%)",
+                400: "hsl(20, 90%, 55%)",
+                500: "hsl(20, 90%, 50%)",
+                600: "hsl(20, 90%, 45%)",
+                700: "hsl(20, 90%, 35%)",
+                800: "hsl(20, 90%, 25%)",
+                900: "hsl(20, 90%, 15%)",
+              },
+              accent: {
+                50: "hsl(30, 85%, 95%)",
+                100: "hsl(30, 85%, 85%)",
+                200: "hsl(30, 85%, 75%)",
+                300: "hsl(30, 85%, 65%)",
+                400: "hsl(30, 85%, 60%)",
+                500: "hsl(30, 85%, 55%)",
+                600: "hsl(30, 85%, 50%)",
+                700: "hsl(30, 85%, 40%)",
+                800: "hsl(30, 85%, 30%)",
+                900: "hsl(30, 85%, 20%)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        html { scroll-behavior: auto; }
+      }
+      .btn-interactive { transition: all 0.2s ease-out; }
+      .btn-interactive:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .btn-interactive:active { transform: scale(0.95); }
+      .card-interactive {
+        transition: all 0.3s ease-out;
+        border: 1px solid transparent;
+        --border-lightness: 40%;
+      }
+      .dark .card-interactive { --border-lightness: 60%; }
+      .card-interactive:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        filter: brightness(0.98);
+      }
+      .card-interactive[class*="primary"]:hover,
+      .card-interactive[class*="white"]:hover,
+      .card-interactive[class*="gray-"]:hover {
+        border-color: hsl(20, 90%, var(--border-lightness));
+      }
+      .card-interactive[class*="accent"]:hover {
+        border-color: hsl(30, 85%, var(--border-lightness));
+      }
+      table { width: 100%; border-collapse: collapse; }
+      th, td {
+        text-align: left;
+        padding: 0.75rem;
+        border-bottom: 1px solid hsl(0, 0%, 90%);
+      }
+      .dark th, .dark td { border-bottom-color: hsl(0, 0%, 30%); }
+      .moat-bar {
+        height: 10px;
+        border-radius: 5px;
+        background: hsl(0, 0%, 90%);
+        overflow: hidden;
+      }
+      .dark .moat-bar { background: hsl(0, 0%, 30%); }
+      .moat-fill {
+        height: 100%;
+        border-radius: 5px;
+        background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+        transition: width 1.2s ease-out;
+      }
+      .risk-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .dark body { color: #f3f4f6; }
+      .dark header nav a { color: #e5e7eb !important; }
+      .dark header nav a:hover { color: hsl(20, 90%, 65%) !important; }
+      .dark .text-gray-400, .dark .text-gray-500 { color: #9ca3af !important; }
+      .dark table th { color: #f3f4f6; }
+      .dark table td { color: #e5e7eb; }
+      .dark .text-gray-600 { color: #d1d5db !important; }
+      .dark .text-gray-700 { color: #e5e7eb !important; }
+      #mobileMenu { display: none; }
+      @media (min-width: 768px) {
+        #mobileMenu { display: none !important; }
+      }
+      @media (max-width: 767px) {
+        #mobileMenu.mobile-menu-open { display: block !important; }
+      }
+    </style>
+    <script>
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        document.getElementById("sunIcon").style.display = isDark ? "block" : "none";
+        document.getElementById("moonIcon").style.display = isDark ? "none" : "block";
+      }
+    </script>
+  <style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+            安达保险 CB 经营分析
+          </h1>
+          <nav class="hidden md:flex space-x-5">
+            <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+              <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+            <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all">
+              <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+              <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+            </button>
+          </div>
+        </div>
+        <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+          <nav class="flex flex-col space-y-3">
+            <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen">
+      <!-- Hero -->
+      <section class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300">美股 · 财产意外险</span>
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300">NYSE: CB</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+            安达保险 Chubb Limited<br /><span class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium">经营分析报告</span>
+          </h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl">
+            安达保险（Chubb Limited）是全球领先的财产与意外险（P&C）保险公司，以严格的承保纪律、全球网络与高净值及商业客户服务见长。公司通过承保利润与投资收入双轮驱动，2025年实现核心经营收入约100亿美元、净收入约103–106亿美元。本报告从八个维度系统评估其投资价值。
+          </p>
+          <div class="grid md:grid-cols-4 gap-4">
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">594亿美元</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2025年营收</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">约103–106亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2025年净收入（美元）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">~1456亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">市值（美元，2026年11月）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">~14%</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">ROE（近期水平）</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 一、商业模式 -->
+      <section id="model" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="store" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">一、商业模式</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              安达保险的核心商业模式可概括为<strong>“全球多元化承保 + 纪律性定价 + 投资收益”</strong>。公司通过六大分部运营：北美商业P&C、北美个人P&C、北美农业保险、海外一般保险、全球再保险与寿险，为商业客户、高净值个人与再保客户提供风险转移与风险管理服务。收入主要来自净保费收入与净投资收入，利润来自承保利润（综合成本率低于100%）与投资组合收益。
+            </p>
+            <div class="grid md:grid-cols-3 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="shield" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">承保驱动</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  强调风险选择与定价纪律，追求综合成本率优势。复杂商业险、高净值个人险与专业险种贡献较高利润率。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="globe" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+                  <h3 class="font-semibold text-accent-700 dark:text-accent-300">全球网络</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  在54个国家与地区运营，具备本地持牌与跨境服务能力，可服务跨国企业与高净值客户的全球风险。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="trending-up" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">投资收益</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  庞大投资资产（超1700亿美元）产生稳定净投资收入，与承保利润共同支撑核心经营收入与ROE。
+                </p>
+              </div>
+            </div>
+            <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6">
+              <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+                <i data-lucide="lightbulb" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+                安达的商业模式本质是“以承保纪律换取长期超额回报”——在周期中优先利润而非规模，用全球网络与品牌支撑定价权，用投资收益平滑承保波动。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 二、竞争优势（护城河） -->
+      <section id="moat" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="shield" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">二、竞争优势：护城河评估</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            护城河是公司抵御竞争、维持超额回报的结构性优势。以下从五个维度对安达保险进行打分（1–10分），并与主要竞争对手对比。
+          </p>
+
+          <div class="space-y-6">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">品牌实力</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 90%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                安达在商业险与高净值个人险领域品牌认知极高，客户愿意为“可靠理赔与专业服务”支付溢价。J.D. Power等研究多次认可其理赔满意度。品牌与承保声誉构成核心无形资产。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">网络效应</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">3<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 30%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                保险业传统网络效应较弱。数据规模有助于定价与风险选择，但并非典型双边网络。全球本地持牌网络带来一定服务协同，但整体评分较低。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">转换成本</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">7<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 70%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                复杂商业险、跨国项目与高净值客户存在较高转换成本：定制保单条款、风险工程服务、理赔历史与合规摩擦使切换成本上升。个人简单险种转换成本较低。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">成本优势</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">8<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 80%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                规模带来再保采购优势、风险分散与费用率竞争力。严格承保文化使综合成本率长期优于行业平均，形成可持续的成本与利润优势。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">专利或自有技术</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">6<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 60%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                核心优势在于承保知识、风险模型与组织能力，而非专利壁垒。数字化与数据驱动承保投入持续增加，但技术本身可被模仿，真正壁垒在于长期数据与文化沉淀。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">与主要竞争对手的护城河对比</h3>
+            <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+              <table class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+                <thead class="bg-primary-50 dark:bg-primary-900/30">
+                  <tr>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">安达 (CB)</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">Progressive (PGR)</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">Travelers (TRV)</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">Allstate (ALL)</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr>
+                    <td class="font-medium">品牌/承保声誉</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>7</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">规模与成本</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">8</td>
+                    <td>8</td>
+                    <td>7</td>
+                    <td>7</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">转换成本</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">7</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">数据/技术</td>
+                    <td>6</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9</td>
+                    <td>6</td>
+                    <td>6</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">综合成本率优势</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">强</td>
+                    <td>强（个人车险）</td>
+                    <td>中等偏强</td>
+                    <td>中等</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">数据来源：公司财报、公开研究整理。评分为主观综合判断。</p>
+          </div>
+
+          <div class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="award" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              综合护城河评分：<strong>7.5/10</strong>（窄而稳固）。核心来自品牌与承保声誉、复杂业务转换成本与规模带来的成本与再保优势。网络效应弱，技术壁垒中等。护城河在商业与高净值领域更强，在简单个人险种相对较弱。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三、行业趋势 -->
+      <section id="industry" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="trending-up" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">三、行业趋势</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              全球P&C保险行业处于“硬市场后半段向软市场过渡”的阶段。定价竞争在部分商业责任险与特殊险种中加剧，同时社会通胀（诉讼成本上升）、气候变化带来的巨灾频率与严重程度上升，以及数字化与数据驱动承保成为长期主题。投资收益率环境相对有利，支撑保险公司整体盈利。
+            </p>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                  <i data-lucide="arrow-down-circle" class="w-5 h-5"></i>挑战与压力
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 部分商业险与责任险定价竞争加剧，损失成本上升</li>
+                  <li>• 社会通胀与诉讼环境推高长尾责任险成本</li>
+                  <li>• 气候变化增加巨灾赔付波动</li>
+                  <li>• 数字化与Insurtech/MGA模式对传统分销与定价形成挑战</li>
+                </ul>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2">
+                  <i data-lucide="zap" class="w-5 h-5"></i>结构性机会
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 投资收益率回升提升投资收入贡献</li>
+                  <li>• 网络风险、专业责任与高净值需求持续增长</li>
+                  <li>• 全球多元化与新兴市场（含亚洲）提供增长空间</li>
+                  <li>• 数据与数字化能力成为承保与费用效率的关键差异化点</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-4 p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <strong class="text-gray-800 dark:text-gray-200">对安达的影响：</strong>安达的纪律性承保与全球分散使其在软市场中更能坚持定价，牺牲部分保费增长以保护利润率。投资收入成为重要缓冲。数字化与中小企业数字化事业部布局有助于应对技术竞争。行业趋势整体有利于具备资本实力、品牌与承保文化的龙头。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四、财务状况 -->
+      <section id="financial" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="bar-chart-3" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">四、财务状况</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            以下分析安达保险近年财务表现，数据来源于公司年报、中期报告及公开财务数据库（单位：亿美元，约数）。
+          </p>
+
+          <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8">
+            <table class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+              <thead class="bg-accent-50 dark:bg-accent-900/30">
+                <tr>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">指标（约）</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2021</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2022</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2023</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2024</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2025</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr>
+                  <td class="font-medium">营业收入</td>
+                  <td>409</td>
+                  <td>431</td>
+                  <td>497</td>
+                  <td>558</td>
+                  <td class="font-semibold text-primary-600 dark:text-primary-400">594</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">营收同比</td>
+                  <td>—</td>
+                  <td class="text-green-600 dark:text-green-400">+5–6%</td>
+                  <td class="text-green-600 dark:text-green-400">+15%</td>
+                  <td class="text-green-600 dark:text-green-400">+12%</td>
+                  <td class="text-green-600 dark:text-green-400">+6.5%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">净收入</td>
+                  <td>85</td>
+                  <td>52</td>
+                  <td>90</td>
+                  <td>96</td>
+                  <td class="font-semibold text-primary-600 dark:text-primary-400">103–106</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">核心经营收入</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td class="font-semibold">~100</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">自由现金流（约）</td>
+                  <td>112</td>
+                  <td>113</td>
+                  <td>126</td>
+                  <td>162</td>
+                  <td>128</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">净利率（约）</td>
+                  <td>~21%</td>
+                  <td>~12%</td>
+                  <td>~18%</td>
+                  <td>~17%</td>
+                  <td>~17%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>收入增长：稳健扩张
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2021–2025年营收从约410亿美元增长至594亿美元，复合增速稳健。2025年净保费收入约548亿美元，核心经营收入近100亿美元。增长来自保费提价、业务量与投资收入提升，而非激进扩张。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>净利润趋势：创纪录水平
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2022年受市场波动影响净收入回落，此后连续回升，2025年达到约103–106亿美元，创历史高位。TTM净收入进一步升至约111亿美元。核心经营收入与ROE保持在行业领先水平。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流与资本回报
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                经营现金流与自由现金流充裕，2025年自由现金流约128亿美元。公司持续回购股份并支付股息，股份数量逐年下降，支撑每股指标与股东回报。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="scale" class="w-5 h-5"></i>利润率与债务水平
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                净利率维持在17%左右的高水平。资产负债结构稳健，总资产约2720亿美元，股东权益约740亿美元。债务相对可控，资本充足率为承保与投资提供缓冲。
+              </p>
+            </div>
+          </div>
+
+          <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">股本回报率（ROE）与整体判断</h3>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4">
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">~14%</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">ROE（近期）</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">~9%</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">ROIC（约）</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-green-600">稳健</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">财务健康度</div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              ROE维持在14%左右，显著高于多数P&C同业平均。综合来看，安达保险的财务状况<strong>非常稳健且处于上升通道</strong>——收入与利润创纪录、现金流充裕、资本充足、持续回购与分红。问题不是“财务是否安全”，而是“在软市场与竞争加剧环境下，能否继续维持承保利润与ROE水平”。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五、估值分析 -->
+      <section id="valuation" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="calculator" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">五、估值分析</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">市盈率（P/E）对比</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">安达（TTM约）</span>
+                  <span class="font-bold text-primary-600 dark:text-primary-400">13.0–13.3x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">Progressive</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">约12x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">Travelers</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">约10–11x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">Allstate</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">约6x</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3">
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">P&C同业中位数约</span>
+                  <span class="font-semibold text-gray-700 dark:text-gray-300">11–12x</span>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 mt-3">安达P/E略高于部分同业，反映其更高的承保质量、全球平台与ROE溢价。</p>
+            </div>
+
+            <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">其他估值指标</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">市净率（P/B约）</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">1.9–2.0x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">市销率（P/S约）</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">2.3–2.4x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">股息率约</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">1.0–1.1%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">市值</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">~1456亿美元</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8">
+            <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2">
+              <i data-lucide="line-chart" class="w-5 h-5"></i>现金流折现（DCF）与内在价值参考
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+              基于稳定的核心经营收入、高ROE与持续回购，第三方与内部模型通常给予安达一定质量溢价。当前约13倍TTM P/E对应合理至略偏高的区间，取决于对未来承保利润与投资收入的假设。若核心经营收入保持中高个位数增长且ROE维持14%左右，当前估值具备支撑；若软市场导致承保利润显著下滑，则存在回调压力。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+                <div class="text-lg font-bold text-primary-600 dark:text-primary-400">~13x</div>
+                <div class="text-xs text-gray-500">当前TTM P/E</div>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+                <div class="text-lg font-bold text-accent-600 dark:text-accent-400">11–14x</div>
+                <div class="text-xs text-gray-500">合理区间参考</div>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div class="text-lg font-bold text-gray-700 dark:text-gray-300">质量溢价</div>
+                <div class="text-xs text-gray-500">相对部分同业</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="search" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>估值结论：</strong>安达当前以约13倍TTM市盈率、约2倍市净率交易，略高于部分同业中位数，但与其更高的ROE、全球平台与承保质量相匹配。综合判断：<strong>估值大致合理，略偏贵于纯周期股，但未明显高估</strong>。若承保利润与投资收入继续稳健，仍有支撑；若定价竞争加剧导致综合成本率显著恶化，则估值承压。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 六、经营展望 -->
+      <section id="outlook" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="calendar" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">六、经营展望（12–24个月）</h2>
+          </div>
+
+          <div class="space-y-5">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">承保：坚持纪律，利润优先</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                在软市场环境下，安达预计继续优先保护综合成本率与承保利润，而非追求保费规模最大化。北美商业与个人P&C、海外一般保险仍是核心。数字化与中小企业数字化事业部有望提升效率与新业务获取能力。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">投资收入：重要支撑</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                投资资产规模持续扩大，新资金收益率提升有助于净投资收入增长，平滑承保周期波动。投资组合以高等级固收为主，风险可控。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">资本回报与股份回购</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                强劲自由现金流支撑持续回购与股息。股份数量下降将继续提升每股收益与账面价值增速，对长期股东回报形成正面贡献。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">关键观察点</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                未来12–24个月需重点跟踪：综合成本率走势、商业责任险定价与损失成本、投资收入增速、华泰等新兴市场贡献，以及数字化投入的效率转化。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 七、风险识别 -->
+      <section id="risk" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+              <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">七、风险识别</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">按危险程度从高到低排序：</p>
+
+          <div class="space-y-4">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0">1</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2">竞争与定价风险（行业与竞争）</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    软市场与责任险竞争加剧可能导致定价不足，综合成本率上升，侵蚀承保利润。若公司为保份额而放松纪律，长期ROE与估值将承压。这是当前最需关注的风险。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0">2</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2">经济与巨灾风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    宏观经济放缓可能抑制保费增长与投资收入。气候变化与巨灾频率上升增加赔付波动。虽然安达通过再保与地域分散管理，但极端事件仍可能冲击季度利润与资本。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0">3</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2">监管与社会通胀</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    各司法管辖区监管变化、资本要求与诉讼环境（社会通胀）可能推高损失成本与合规费用。对中国华泰等高比例持股实体的监管与地缘风险亦需关注。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0">4</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2">行业颠覆与技术竞争</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    数字化、数据驱动承保与Insurtech/MGA模式可能在部分细分市场削弱传统优势。安达已加大数字化投入，但执行节奏与效果仍需观察。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0">5</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2">债务或财务风险 — 低风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    资本充足、现金流强劲、债务相对可控，财务风险在当前阶段并非主要威胁。极端巨灾或长期承保亏损才可能冲击资本结构。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 八、多空视角 -->
+      <section id="longshort" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="scale" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">八、多空视角：机构投资组合经理评估</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800">
+              <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>高质量承保与ROE</strong>：长期综合成本率优势与约14% ROE，体现穿越周期的盈利能力。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>全球平台与品牌</strong>：在商业与高净值领域具备定价权与转换成本，护城河稳固。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>强劲现金流与资本回报</strong>：持续回购与股息，股份缩减提升每股价值。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>投资收入支撑</strong>：利率环境有利于净投资收入，平滑承保波动。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>机构持股与治理</strong>：伯克希尔等长期机构持股，专业管理层与治理稳健。</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800">
+              <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>估值已反映质量溢价</strong>：P/E约13倍高于部分同业，上行空间依赖业绩持续超预期。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>软市场与竞争风险</strong>：定价压力可能导致综合成本率上升，利润增速放缓。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>巨灾与社会通胀</strong>：极端天气与诉讼成本上升带来波动与不确定性。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>增长非爆发式</strong>：公司以质量优先，保费增速可能低于更激进的同业。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>地缘与监管暴露</strong>：全球运营与华泰等高比例持股带来额外监管与地缘风险。</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+            <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">关键因素：需要密切跟踪的3个指标</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+                <i data-lucide="percent" class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"></i>
+                <div class="font-semibold text-sm text-primary-700 dark:text-primary-300">综合成本率</div>
+                <p class="text-xs text-gray-500 mt-1">能否维持在行业领先水平，是承保纪律的核心验证</p>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+                <i data-lucide="trending-up" class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"></i>
+                <div class="font-semibold text-sm text-accent-700 dark:text-accent-300">核心经营收入与ROE</div>
+                <p class="text-xs text-gray-500 mt-1">能否保持中高个位数增长与约14% ROE</p>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center">
+                <i data-lucide="dollar-sign" class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"></i>
+                <div class="font-semibold text-sm text-gray-700 dark:text-gray-300">净投资收入</div>
+                <p class="text-xs text-gray-500 mt-1">投资收益率与资产规模能否持续支撑利润</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="target" class="inline-block w-5 h-5 mr-2 -mt-0.5"></i>
+              <strong>投资论点：</strong>安达保险是一家具备窄而稳固护城河、高ROE与强劲现金流的全球P&C龙头。当前约13倍TTM市盈率反映了其质量溢价，既非明显低估也非泡沫。适合作为“核心配置型”保险股持有：在软市场中依靠承保纪律与投资收入穿越周期，通过持续回购与股息回报股东。投资前提是：<strong>管理层继续坚持定价纪律，综合成本率不显著恶化，投资收入保持稳健</strong>。若这一前提被打破，估值与ROE均将面临压力。对于追求穿越周期稳健回报的长期投资者，安达仍具备吸引力；对于寻求高弹性或深度价值的投资者，当前性价比一般。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本报告</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告基于安达保险（Chubb Limited，NYSE: CB）公开财务报告、机构持股数据及行业研究，从商业模式、护城河、财务状况、估值、风险与多空视角等八个维度进行系统分析。
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">数据来源</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>• 公司2025年报与2026年中期/季度报告</li>
+              <li>• 公开财务数据库与机构持股披露</li>
+              <li>• 行业研究报告与同行对比数据</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告仅供教育与信息参考，不构成投资建议或买卖推荐。数据基于公开信息整理，分析观点仅代表研究判断。投资有风险，决策需谨慎。
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+          <p>© 2026 安达保险经营分析报告 · 生成日期：2026-11-28</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (!menu) return;
+        menu.classList.toggle("mobile-menu-open");
+      }
+      window.addEventListener("scroll", () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+        AOS.init({ duration: 800, once: true });
+      });
+    </script>
+  <script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>可口可乐公司（KO）体系全景解析</title>
+<!-- Essential CDN Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)',
+100: 'hsl(20, 90%, 85%)',
+200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)',
+400: 'hsl(20, 90%, 55%)',
+500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)',
+700: 'hsl(20, 90%, 35%)',
+800: 'hsl(20, 90%, 25%)',
+900: 'hsl(20, 90%, 15%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)',
+100: 'hsl(30, 85%, 85%)',
+200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)',
+400: 'hsl(30, 85%, 60%)',
+500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)',
+700: 'hsl(30, 85%, 40%)',
+800: 'hsl(30, 85%, 30%)',
+900: 'hsl(30, 85%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Micro-interactions & Custom Styles -->
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html { scroll-behavior: auto; }
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th, .dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+transition: width 1.2s ease-out;
+}
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+display: none;
+}
+#mobileMenu.mobile-menu-open {
+display: block;
+}
+@media (min-width: 768px) {
+#mobileMenu {
+display: none !important;
+}
+}
+@media (max-width: 767px) {
+header .max-w-7xl {
+padding-left: 1rem;
+padding-right: 1rem;
+}
+header .flex.items-center.justify-between > h1 {
+font-size: 1rem;
+line-height: 1.25rem;
+white-space: nowrap;
+margin-right: 0.5rem;
+}
+#mobileMenu {
+margin-top: 1rem;
+padding-top: 1rem;
+padding-bottom: 0.5rem;
+border-top: 1px solid rgba(20, 20, 20, 0.12);
+max-height: calc(100vh - 90px);
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+}
+.dark #mobileMenu {
+border-top-color: rgba(255, 255, 255, 0.15);
+}
+#mobileMenu a {
+display: block;
+width: 100%;
+padding: 0.7rem 0.5rem;
+border-radius: 0.5rem;
+}
+#mobileMenu a:active {
+background: rgba(20, 20, 20, 0.06);
+}
+.dark #mobileMenu a:active {
+background: rgba(255, 255, 255, 0.08);
+}
+}
+/* 桌面端导航 */
+@media (min-width: 768px) {
+header nav[aria-label="桌面端导航"] a {
+color: #374151;
+}
+.dark header nav[aria-label="桌面端导航"] a {
+color: #e5e7eb;
+}
+header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 45%);
+}
+.dark header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 55%);
+}
+}
+header {
+overflow: visible;
+}
+</style>
+<script>
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<!-- Floating Header -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">可口可乐体系全景解析</h1>
+<!-- 桌面端导航 -->
+<nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+Code
+<!-- 右侧按钮 -->
+<div class="flex items-center space-x-2 flex-shrink-0">
+  <!-- 移动端汉堡菜单 -->
+  <button
+    type="button"
+    onclick="toggleMobileMenu()"
+    class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="打开或关闭导航菜单"
+    aria-controls="mobileMenu"
+    aria-expanded="false"
+    id="mobileMenuButton"
+  >
+    <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+  </button>
+
+  <!-- 暗色模式 -->
+  <button
+    type="button"
+    onclick="toggleDarkMode()"
+    class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="切换暗色模式"
+  >
+    <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+    <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+  </button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 text-xs font-semibold mb-4">
+<span>NYSE: KO</span>
+<span>•</span>
+<span>创立 140 周年 · 截至 2026-11-25 最新公开全景</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+可口可乐公司（KO）体系全景解析
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+2026年正值可口可乐（The Coca-Cola Company）在美创立 140 周年及全球饮料体系彻底轻资产化的收官之年。本报告综合 FY2025 年报（10-K）、Q3 2026 季报（截至 2026年10月2日）、2026年代理声明书（DEF 14A）及近期 SEC 8-K 公告，全面梳理了 2026 年 3 月新帅 Henrique Braun 接棒 James Quincey 的历史性交班、1919 年上市至今的十一次拆股与 43.00 亿股稳态股本、伯克希尔 9.29% 基石共治、横跨全球五大洲的上市装瓶商与魔爪饮料资本矩阵，以及围绕“200 亿美元 IRS 转让定价上诉案”的系统性财务与治理博弈。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">管理层接力</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+从 Pemberton、Woodruff 到 2026 年 3 月 Henrique Braun 接棒 Quincey 出任 CEO
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与股权</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+43.00亿股稳态股本、4,125亿+ 美元市值与伯克希尔 4 亿股永恒基石
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">装瓶矩阵与激励</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+CCEP/KOF/CCH/COKE/MNST 生态帝国与纯业绩导向高管激励
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+创始人脉络与核心管理层演进：从“全品类饮料转型”到“消费者贴近与数字化”
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+1886 年 5 月 8 日，亚特兰大药剂师 <strong>Dr. John Pemberton</strong> 调制出第一杯可口可乐糖浆；随后实业家 <strong>Asa Candler</strong> 买断配方并确立全国特许装瓶制度；1919 年 <strong>Ernest Woodruff</strong> 财团以 2,500 万美元收购公司并推动上市，其子 <strong>Robert W. Woodruff</strong> 更用逾半个世纪的掌舵将其塑造成横跨五大洲的文化图腾。历经 1980 年代传奇 CEO Roberto Goizueta 推进轻资产装瓶分拆与全球化后，现代可口可乐形成了极度纯粹的<strong>“30年内部资深老兵接棒传承制”</strong>。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000021344|1">（来源：2026 DEF 14A 代理声明书 &amp; 官网公告）</span>
+</p>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+<i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+2026年关键历史交班：2026年3月31日，服务公司整整 30 年、历任大中华及韩国区总裁、巴西区总裁、拉美区总裁兼首席运营官（COO）的巴西裔美国籍高管 <strong>Henrique Braun（58岁）</strong>正式接替执掌九年的 <strong>James Quincey</strong> 出任 CEO，后者转任董事会执行主席（Executive Chairman）。这标志着公司由“品牌瘦身与全品类重构期”正式步入“数字赋能与新兴市场深度掘金期”。
+</p>
+</div>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">Quincey 时代九年重构 (2017–2026)</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>“全品类饮料公司”战略：</strong>砍掉半数僵尸小品牌（精简至约 200 个），自 2017 年来累计孵化及并购新增 <strong>12 个十亿美元级超级品牌</strong>（总计达 32 个，覆盖 fairlife、BodyArmor、Costa、Topo Chico 等）。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>轻资产终局再造：</strong>坚定推动装瓶厂再特许经营化（Refranchising），将低毛利重资产装瓶业务营收占比由十年前的逾 30% 压低至 2026 年的 <strong>约 5%</strong>，营业利润率强势站上 30% 以上。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>网状组织改革（Networked Organization）：</strong>打破区域诸侯割据，构建“营销中台 + 平台服务中台 + 前线运营单元”敏捷协同架构。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">Braun 新政与 2026 年三大突破</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>新设首席数字官（CDO）中台枢纽：</strong>2026 年 1 月提拔原欧亚及中东区总裁 <strong>Sedef Salingan Sahin</strong> 出任公司史上首位 CDO，直接向 Braun 汇报，统筹 AI 营销、全球供应链数据与装瓶商数字化接入。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>世纪挖角 KFC 美国全渠道 (2026年10月)：</strong>成功撬动肯德基（KFC）终止与百事可乐近 40 年独家供货合作，自 2027 年 1 月起全美逾 3,600 家门店全面换装可口可乐现调设备！</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>深耕健康无糖与国际引擎：</strong>借 2026 美加墨世界杯引爆运动补水与无糖可乐（Zero Sugar）放量，并推动中国及东南亚市场在 2026 Q3 成为全球销量增长核心引擎。</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+管理哲学演变：由“并购扩品类”转向“精细化供需匹配与数字赋能”
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+拥有农业工程与国际运营双重履历的 Henrique Braun，曾亲自领导过可口可乐大中华、巴西与拉美三大战略核心区，深谙高通胀、汇率剧烈震荡及复杂装瓶博弈下的本地化生存法则。在他领导下，可口可乐减少大型高溢价跨界收购，将重心转回<strong>“与独立装瓶商共享收益增长管理（RGM）数据 + AI 实时动态定价 + 健康低糖及真实蔗糖配方（回应美国市场诉求）并行”</strong>，进一步榨取现有 32 个十亿美元级品牌的单点盈利上限。
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+股本数量变化过程：百年十一次拆股与 43 亿股极度稳态盘口
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+可口可乐的股本演化史是美股“长牛复利”的活化石。公司于 <strong>1919 年 9 月 5 日</strong>以 40.00 美元/股完成 IPO 后，在超过百年的上市历程中累计实施了 <strong>1 次股票红利与 10 次正向拆股（合计 11 次）</strong>：如果当年买入 1 股原始股持有至今，已裂变为惊人的 <strong>9,216 股</strong>。而自 2012 年最后一次 2 拆 1 之后，公司总股本通过“温和回购精准抵消员工期权释放”长期锁死在 <strong>43.00 亿股</strong>上下，十年复合增速仅 -0.1%。
+</p>
+Code
+<div class="overflow-x-auto bg-white/90 dark:bg-gray-900 rounded-xl shadow-md p-4">
+    <table>
+      <thead>
+        <tr class="text-xs uppercase text-primary-700 dark:text-primary-300">
+          <th>时间节点</th>
+          <th>股本变动事件</th>
+          <th>拆股比例 / 股数变化</th>
+          <th>长期资本意义</th>
+        </tr>
+      </thead>
+      <tbody class="text-sm text-gray-700 dark:text-gray-300">
+        <tr>
+          <td class="font-medium whitespace-nowrap">1919年9月5日</td>
+          <td>首次公开募股 (NYSE: KO)</td>
+          <td>发行价 40.00 美元/股</td>
+          <td>奠定单一普通股结构（面值现为 $0.25/股）</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">1927–1996年</td>
+          <td>10 轮历史性股票红利与正向拆股</td>
+          <td>1927(1:1红股)、1935(4:1)、1960(3:1)、1965–77(三次2:1)、1986(3:1)、1990–96(三次2:1)</td>
+          <td>1 股 IPO 股票累计扩增至 4,608 股，极大提升散户流动性</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2012年7–8月</td>
+          <td>迄今最近一次 2 拆 1 拆股</td>
+          <td>1 股变 2 股（IPO 1 股最终等于 <strong>9,216 股</strong>）</td>
+          <td>同步授权 5 亿股长期股票回购计划；总股本约为 44.6 亿股</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2016–2025年</td>
+          <td>高派息优先下的适度回购抵消稀释</td>
+          <td>2021 年 43.40 亿股 → 2024 年 43.00 亿股 → 2025 年 43.00 亿股</td>
+          <td>FY2025 派息 <strong>87.80 亿美元</strong>，股票回购 <strong>7.46 亿美元</strong>（精准覆盖激励增发）</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2026年1月–11月</td>
+          <td>股价暴涨 37%+ 与 64 年连增股息</td>
+          <td>流通股稳定于 <strong>43.00 亿股</strong>（Q3 加权稀释股 43.13 亿股）</td>
+          <td>2026-11-24 收盘报 <strong>97.62 美元</strong>（年内高见 100.56 美元），市值约 <strong>4,125亿–4,204亿美元</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">大股东持仓零波动与拆股再议</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>伯克希尔 38 年“一股不动”：</strong>巴菲特自 1988–1994 年斥资约 13.00 亿美元建仓并经拆股形成 <strong>400,000,000 股</strong>后，迄今从未增持亦从未减持哪怕 1 股。2026 年该笔持仓市值已突破 <strong>390.00 亿美元</strong>，仅当年就为伯克希尔贡献 <strong>8.48 亿美元</strong>现金股息！</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>百元关口的潜在拆股预期：</strong>2026 年 KO 股价自 67 美元一路飙升并触及 <strong>100.56 美元</strong>历史峰值（时隔 14 年未拆股），市场正密切关注新任 CEO 会在 2027 年是否再度开启拆股以优化散户购股门槛。</span>
+        </li>
+      </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">最新股本、股息与资本快照 (2026-11-24)</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">当前总流通股本</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">43.00 亿股</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">最新收盘价 / 52周最高价</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">97.62 美元 / 100.56 美元</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">最新总市值体量</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">4,124.7亿–4,204.2亿美元</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">年度股息（连续 64 年上调）</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">2.12 美元/股（季度 $0.53）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+股权结构演变：彻底同股同权与机构共治的现代公司治理样本
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+与依赖“创始人家族控股或双层 AB 投票权”的新兴企业不同，可口可乐在长达一个多世纪的公众化洗礼中，已彻底剥离了早期 Woodruff 家族的个人控制痕迹，全面实行<strong>“每股一票（One-Share-One-Vote）、董事会年度全员重选、无实际控制人”</strong>的极致透明股权结构。三大基石机构股东——伯克希尔（9.29%）、先锋领航（8.61%）与贝莱德（7.28%）合计握有逾四分之一投票权。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000021344|2">（来源：2026 DEF 14A 主要股东披露）</span>
+</p>
+Code
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026 年核心股东持股分布（DEF 14A）</h3>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">Berkshire Hathaway Inc.（4.00亿股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">9.29%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 46%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">The Vanguard Group</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">8.61%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 43%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">BlackRock, Inc.</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">7.28%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 36%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">全体董事及高级管理人员合计</span>
+            <span class="font-semibold text-primary-600 dark:text-primary-400">&lt;1.00%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 5%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">控制权与治理演进时间线</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>1919–1984年（家族财团时代）：</strong>Woodruff 家族及亚特兰大本土信托控股主导决策，1984 年“老老板”Robert Woodruff 逝世后家族影响力逐渐沉淀至慈善基金会。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>1988–1994年（巴菲特锚定时代）：</strong>伯克希尔大举建仓成为第一大股东，并在长达 30 余年里充当管理层与华尔街之间的超级精神定海神针。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2026年3月（高管两权事实分立）：</strong>尽管股东大会此前曾 16 次否决“强制拆分董事长与 CEO”提案，但随 Henrique Braun 接任 CEO、James Quincey 留任执行主席，事实上完成了平稳分权与独立制衡升级（由首席独立董事 David Weinberg 统筹）。</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      控制权稳定性与董事会质量分析
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      虽然无任何单一实体控股，但由伯克希尔及价值型董事（如 Markel Group CEO Thomas Gayner、Davis Selected Advisers 主席 Christopher Davis 等“小伯克希尔系”投资大师级独立董事）组成的董事会极度注重长期资本配置纪律（ROIC 与 FCF 转化）。这种高度机构化、无个人或家族私利的治理模式，保证公司战略不会因短期股价波动而变形。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+全球上市装瓶商矩阵、参股关联巨头与转让定价风波
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+“母公司只生产高毛利浓缩液与掌控品牌，下游重资产灌装与卡车配送交由区域独立上市装瓶伙伴”——这正是可口可乐系统驰骋全球 200 余个国家（日均消费 <strong>22 亿杯</strong>）的独门密码。随着 2025–2026 年剥离非洲 CCBA 与印度子公司控股权，可口可乐自有装瓶营收占比已压缩至约 <strong>5%</strong>，形成了市值总和逾 2,000 亿美元的全球上市关联伙伴矩阵（FY2025 权益法投资收益达 <strong>20.31 亿美元</strong>）。
+</p>
+Code
+<div class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">欧美亚太装瓶双雄 (CCEP / CCH)</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">欧洲与非洲扩张主干</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• <strong>Coca-Cola Europacific (CCEP)：</strong>营收规模最大装瓶商，FY25 营收 <strong>209.00 亿欧元</strong>（ROIC 10.9%），市值约 450–536 亿美元；2025年3月 KO 适度减持套现优化资产。</li>
+        <li>• <strong>Coca-Cola HBC (CCH.L)：</strong>FY25 营收 <strong>116.05 亿欧元</strong>（EBIT 率 11.7%），2026 年底正式完成收购 KO 所持非洲 <strong>CCBA 75% 控股权</strong>。</li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="building-2" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">美洲核心上市伙伴 (KOF / COKE)</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">销量第一与美国本土主力</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• <strong>Coca-Cola FEMSA (KOF)：</strong>全球销量第一大特许装瓶商，Q3 2026 营收 +10.9%、营业利润 +15.4%，市值约 230 亿美元（ADR）。</li>
+        <li>• <strong>Coca-Cola Consolidated (COKE)：</strong>全美最大装瓶商，Q3 2026 营收 <strong>19.90 亿美元</strong>；2025年11月斥资 <strong>24.00 亿美元</strong>现金全额回购 KO 所持全部股份！</li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="zap" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">魔爪饮料 (MNST) 与印度/乳品布局</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">战略参股与高成长品类盟友</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• <strong>Monster Beverage (MNST)：</strong>KO 持有约 19%–20% 战略股权（市值约 840–860 亿美元），由 KO 全球装瓶网代为分销能量饮料。</li>
+        <li>• <strong>印度 HCCH 与 fairlife：</strong>2025年向 Jubilant Bhartia 出售印度装瓶业务 40% 股权，筹划 <strong>2027 年印度 IPO</strong>；2025 年初付清 fairlife 61.00 亿美元最终对赌款。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      关联交易深度解剖：装瓶商连带信用绑定与“200亿美元 IRS 内部定价官司”
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      <strong>1. 系统内部浓缩液供货与连带信用风险：</strong>KO 向上述关联上市装瓶商销售浓缩液并收取营销协同费与分装特许费（如 COKE 账面即背负 7.51 亿美元向 KO 支付的未来子装瓶对价负债）。尽管 KO 在法律上不担保独立装瓶商的债务，但三大评级机构均在评估 KO 主体信用评级时“实质性计入核心装瓶商财务状况”，因为装瓶体系的停摆等同于母公司血管堵塞。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000021344|3">（来源：FY2025 10-K Note 6 &amp; 风险因素）</span>
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      <strong>2. 史上最贵跨境关联交易案（KO vs. IRS）：</strong>可口可乐母公司与爱尔兰、巴西、哥斯达黎加等低税率海外全资浓缩液生产子公司之间，长期沿用 1996 年达成的“10-50-50”内部特许权使用费转移定价公式，被美国国税局（IRS）指控违规向海外转移利润。2020及2023年税务法院一审判决 IRS 胜诉，迫使 KO 先行缴存 <strong>60.00 亿美元</strong>税款及利息押金，并就 2010–2025 财年面对额外约 <strong>140.00 亿美元</strong>补税敞口（合计高达 <strong>200.00 亿美元</strong>！）。2026年6月25日第十一巡回上诉法院开庭听证期间，主审法官对 IRS 追溯推翻旧规则提出了明显质疑，最终终审判决将成为左右公司资产负债表的特大事件。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+员工持股与激励机制：拒绝躺平型 RSU，主打高杠杆 PSU 与期权绑定
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+伴随自有装瓶厂大幅出表，可口可乐全球母体员工总数精简至约 <strong>65,900 人</strong>。在薪酬与股权激励设计上，公司高度听从机构股东与伯克希尔理念：对高管层坚决不发“只要熬年头就能白拿”的时间型限制性股票（RSU），而是全部采用<strong>“三年期业绩股（PSU）+ 四年期股票期权”</strong>的硬核绩效组合，确保没有内生增长就没有超额回报。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000021344|4">（来源：2026 Proxy CD&amp;A &amp; 2026-02-20 8-K）</span>
+</p>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">高管层与 2026 交班激励机制</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>PSU 三维等权重严苛考核：</strong>3 年期绩效股（PSU）均等锚定 <strong>净营业收入增长（1/3）、每股收益 EPS 增长（1/3）及自由现金流 FCF（1/3）</strong>，达标区间为 50%–200%，并叠加相对总股东回报（Relative TSR）修正系数！</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2026 接班薪酬平滑契约：</strong>2026年3月31日交班后，新任 CEO Henrique Braun 基本年薪定为 <strong>145.00 万美元</strong>（2025任 COO 总包 1,116万–1,164 万美元），执行主席 James Quincey 年薪由 168 万微调至 <strong>120.00 万美元</strong>（2025任 CEO 总包 3,121 万美元），两者年度绩效奖金目标均为基本薪资的 <strong>200%</strong>。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>长期持股红线：</strong>严格约束 CEO 与执行主席持续遵循高倍率股份所有权指引，防止高管在任期末段提前套现离场。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">全员福利、退休养老与潜在矛盾</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>双轨养老与递延计划：</strong>涵盖 TCCC 传统固定收益养老金计划（如 Quincey 与 Braun 均须按年金形式领取补充养老金）、401(k) 及补充 401(k) 对等配比与高管递延薪酬计划。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>低 SBC 稀释纪律：</strong>与科技企业动辄年耗百亿发股不同，KO 每年股权激励成本仅约数亿美元级（占营收不足 1%），真正做到高管激励而不伤害小股东股权厚度。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>潜在劳资落差与争议：</strong>由于保留了部分海外及非洲/印度尚未完全交割的灌装生产线下游用工，公司 CEO 与全球中位数员工薪酬比曾高达约 <strong>1,799 : 1</strong>，在通胀周期下基层福利与高管巨额股权收益的落差时常成为股东大会 ESG 提案焦点。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+综合研判与关键结论
+</h2>
+<div class="space-y-6">
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+1. 组织与战略阶段：轻资产终局收官与“百年老店”丝滑换帅
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+2026 年的可口可乐完成了两件影响未来十年的大事：业务上通过出售非洲 CCBA 控股权与减持印度及部分 CCEP 权益，把装瓶营收占比降至 <strong>5%</strong>，彻底转型为轻资产品牌与浓缩液现金牛；治理上由 30 年老兵 Henrique Braun 接棒 James Quincey 并增设 CDO 职位，实现了既稳住全球装瓶商军心、又加速数字化敏捷迭代的无缝过渡。
+</p>
+<div class="grid md:grid-cols-3 gap-4 pt-2">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">品牌壁垒与装瓶生态协同</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">96/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 96%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">治理透明与低稀释分红纪律</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">93/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 93%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">税务诉讼敞口与估值安全边际</span>
+<span class="font-bold text-accent-600 dark:text-accent-400">55/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 55%;"></div></div>
+</div>
+</div>
+</div>
+Code
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      2. 财务核心张力：“超高盈利质量与百亿自由现金流” vs “高企的 IRS 税务大考”
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      在纯粹经营维度，可口可乐 2026 年交出了堪称教科书级别的成绩单：Q3 2026 营收同比增长 7.4% 至 <strong>133.80 亿美元</strong>（全球箱销量大增 5%），营业利润率进一步扩至 <strong>33.40%</strong>，前 9 个月自由现金流摆脱去年 61 亿美元 fairlife 尾款拖累后飙升至 <strong>114.00 亿美元</strong>（全年 FCF 指引上调至不低于 <strong>130.00 亿美元</strong>），ROE 稳定站上 40% 高位。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      但隐含于表外附注的最大暗礁则是总额高达 <strong>200.00 亿美元的 IRS 转让定价纠纷</strong>（已交 60 亿押金 + 潜在 140 亿补税，而公司账面仅计提了 4.93 亿美元拨备），对比其 134.54 亿美元现金及约 164 亿美元流动性，若最终败诉恐需借债偿税并短暂压制回购与提息节奏。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      3. 装瓶盟友与高管业绩锁定构筑系统“稳定器”
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      通过将 CCBA 交由实力雄厚的 Coca-Cola HBC 整合、赋能 CCEP 与 FEMSA 持续做强区域资本效率，可口可乐不仅拿回巨额变现资金，更保证了每年逾 20 亿美元的权益法利润回流；再叠加伯克希尔 4 亿股基石与纯业绩导向的 PSU 考核，系统利益高度一致，为跨周期稳健分红（64 年连涨）提供刚性护航。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      4. 体系与治理风险提示
+    </h3>
+    <div class="space-y-4">
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>第十一巡回法院 IRS 终审裁决风险（最高 200 亿美元敞口）。</strong>尽管 2026 年 6 月听证会氛围对公司略显有利，但若败诉，一次性 140 亿美元现金流失叠加未来海外低税率浓缩液转移定价红利永久终止，将直接抬高长期有效税率（目前基准仅 19.7%）。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>年内暴涨 37% 后的估值回调与“蔗糖/健康”政策摩擦。</strong>股价冲上 97.62 美元、市盈率飙至 ~28.3x（股息率被压低至 2.19%）已充分透支了避险安全港溢价；同时美区推进真蔗糖配方替换、SNAP 食品券含糖饮料限制豁免及 GLP-1 减重药普及，长期测试着核心碳酸品类的销量弹性。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>新帅整合与亚洲/印度资产证券化执行考验。</strong>Henrique Braun 上任后能否顺利完成新加坡/马来西亚/缅甸装瓶厂剥离（预计 2027 年中交割）及印度 HCCH 潜在 2027 年 IPO，同时遏制亚太区 price/mix 下行趋势，将是检验新管理层成色的关键。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+      <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      一句话总结：走过 140 年风雨的可口可乐，在 2026 年完成了“95% 轻资产浓缩液终局 + 内部老将和平交班 + 64 年股息王现金流爆发”的三重蜕变，但悬而未决的 200 亿美元 IRS 税务终裁与接近 28 倍的高估倍数，正检验着“永远不卖可乐”背后的安全边际底线。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合可口可乐公司（NYSE: KO）FY2025 10-K、Q3 2026 10-Q、2026 年代理声明书（DEF 14A）及装瓶商财报公告，系统梳理其管理层交接、百年股本演变、机构股权共治、装瓶生态关联与激励体系。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 创始人脉络与 2026 CEO 交班</li>
+<li>• 11 次拆股与 43 亿股本结构</li>
+<li>• 伯克希尔 9.29% 基石与股权治理</li>
+<li>• 上市装瓶商矩阵与 IRS 税务关联</li>
+<li>• PSU 纯业绩考核与低稀释机制</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供教育与金融研究参考，不构成任何证券买卖或投资建议。所有数据基于截至 2026 年 11 月 25 日（北京时间）的公开披露信息整理，具体以公司官方 SEC 文件为准。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 可口可乐公司体系全景研究（2026-11-25）。保留所有权利。</p>
+</div>
+</div>
+</footer>
+<script>
+function toggleMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+const isOpen = menu.classList.toggle('mobile-menu-open');
+menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+if (button) {
+button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+lucide.createIcons();
+}
+}
+
+function closeMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+menu.classList.remove('mobile-menu-open');
+menu.setAttribute('aria-hidden', 'true');
+if (button) {
+button.setAttribute('aria-expanded', 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', 'menu');
+lucide.createIcons();
+}
+}
+
+// Progress Bar
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+});
+
+// Initialize AOS & Lucide
+document.addEventListener('DOMContentLoaded', function() {
+lucide.createIcons();
+AOS.init({ duration: 800, once: true });
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+link.addEventListener('click', () => {
+closeMobileMenu();
+});
+});
+
+// Citation System
+let i = 1, map = new Map();
+document.querySelectorAll('[data-ref]').forEach(el => {
+if (el.dataset.citationProcessed) return;
+const raw = (el.getAttribute('data-ref')||'').trim();
+if (!raw) return;
+const parts = raw.split('|');
+const url = parts[0].trim();
+const idx = (parts[1]||'').trim() || map.get(raw) || (map.set(raw, String(i)), String(i++));
+if (!el.textContent || !el.textContent.trim()) { el.dataset.citationProcessed = 'true'; return; }
+const btn = document.createElement('sup'); btn.textContent = String(idx);
+Object.assign(btn.style, { fontSize:'8px', color:'#fff', cursor:'pointer', top: '1px', fontWeight:'bold', backgroundColor:'#0284c7', borderRadius:'50%', transition:'all .15s', userSelect:'none', minWidth:'19px', height:'19px', marginLeft:'6px', display:'inline-flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 3px rgba(0,0,0,.2)', lineHeight:'1'});
+btn.addEventListener('mouseenter', ()=> Object.assign(btn.style, { backgroundColor:'#0369a1', transform:'scale(1.12)' }));
+btn.addEventListener('mouseleave', ()=> Object.assign(btn.style, { backgroundColor:'#0284c7', transform:'scale(1)' }));
+btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(url, '_blank'); });
+el.appendChild(btn); el.dataset.citationProcessed = 'true';
+});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

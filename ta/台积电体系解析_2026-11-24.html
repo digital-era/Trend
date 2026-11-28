@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="台积电TSMC体系全景解析：创始人与管理层、股本变化、股权结构、关联企业、员工持股激励及公司治理研究。">
+<title>台积电体系全景解析_2026-11-24</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',
+          200:'hsl(20,90%,75%)',300:'hsl(20,90%,65%)',
+          400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',
+          800:'hsl(20,90%,25%)',900:'hsl(20,90%,15%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',
+          200:'hsl(30,85%,75%)',300:'hsl(30,85%,65%)',
+          400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',
+          800:'hsl(30,85%,30%)',900:'hsl(30,85%,20%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.btn-interactive:active{transform:scale(.95)}
+.card-interactive{transition:all .3s ease-out;border:1px solid transparent;--border-lightness:40%}
+.dark .card-interactive{--border-lightness:60%}
+.card-interactive:hover{box-shadow:0 20px 25px -5px rgba(0,0,0,.1);filter:brightness(.98);transform:translateY(-3px)}
+.card-interactive[class*="primary"]:hover,.card-interactive[class*="white"]:hover,.card-interactive[class*="gray-"]:hover{border-color:hsl(20,90%,var(--border-lightness))}
+.card-interactive[class*="accent"]:hover{border-color:hsl(30,85%,var(--border-lightness))}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{text-align:left;padding:.85rem;border-bottom:1px solid hsl(0,0%,90%);font-size:.875rem;vertical-align:top}
+th{font-weight:700;background:rgba(249,115,22,.07);color:#9a3412}
+.dark th{background:rgba(249,115,22,.12);color:#fdba74}
+.dark th,.dark td{border-bottom-color:hsl(0,0%,30%)}
+.table-wrap{overflow-x:auto;border-radius:.75rem}
+.moat-bar{height:9px;background:#e5e7eb;border-radius:10px;overflow:hidden}
+.dark .moat-bar{background:#374151}
+.moat-bar>span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#ea580c,#f59e0b)}
+.timeline{position:relative;border-left:2px solid #f97316;margin-left:8px;padding-left:25px}
+.timeline-item{position:relative;padding-bottom:22px}
+.timeline-item:before{content:"";position:absolute;left:-33px;top:5px;width:13px;height:13px;border-radius:50%;background:#f97316;border:3px solid white;box-shadow:0 0 0 2px #f97316}
+.dark .timeline-item:before{border-color:#111827}
+#mobileMenu{display:none}
+#mobileMenu.mobile-menu-open{display:block}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){
+header .max-w-7xl{padding-left:1rem;padding-right:1rem}
+header .flex.items-center.justify-between>h1{font-size:1rem;white-space:nowrap;margin-right:.5rem}
+#mobileMenu{margin-top:1rem;padding-top:1rem;padding-bottom:.5rem;border-top:1px solid rgba(20,20,20,.12);max-height:calc(100vh - 90px);overflow-y:auto}
+.dark #mobileMenu{border-top-color:rgba(255,255,255,.15)}
+#mobileMenu a{display:block;width:100%;padding:.7rem .5rem;border-radius:.5rem}
+#mobileMenu a:active{background:rgba(20,20,20,.06)}
+}
+@media(min-width:768px){
+header nav[aria-label="桌面端导航"] a{color:#374151}
+.dark header nav[aria-label="桌面端导航"] a{color:#e5e7eb}
+header nav[aria-label="桌面端导航"] a:hover{color:hsl(20,90%,45%)}
+.dark header nav[aria-label="桌面端导航"] a:hover{color:hsl(20,90%,55%)}
+}
+header{overflow:visible}
+.source-link{color:#ea580c;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#fdba74}
+.source-link:hover{opacity:.7}
+.section-label{letter-spacing:.16em}
+</style>
+<script>
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ const d=document.documentElement.classList.contains('dark');
+ document.getElementById('sunIcon').style.display=d?'block':'none';
+ document.getElementById('moonIcon').style.display=d?'none':'block';
+ localStorage.setItem('tsmc-theme',d?'dark':'light');
+}
+function toggleMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ const button=document.getElementById('mobileMenuButton');
+ const icon=document.getElementById('mobileMenuIcon');
+ const open=menu.classList.toggle('mobile-menu-open');
+ menu.setAttribute('aria-hidden',open?'false':'true');
+ button.setAttribute('aria-expanded',open?'true':'false');
+ icon.setAttribute('data-lucide',open?'x':'menu');
+ lucide.createIcons();
+}
+function closeMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ if(!menu)return;
+ menu.classList.remove('mobile-menu-open');
+ menu.setAttribute('aria-hidden','true');
+ document.getElementById('mobileMenuButton').setAttribute('aria-expanded','false');
+ document.getElementById('mobileMenuIcon').setAttribute('data-lucide','menu');
+ lucide.createIcons();
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between gap-3">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">台积电体系全景解析</h1>
+<nav class="hidden md:flex space-x-5 flex-shrink-0" aria-label="桌面端导航">
+<a href="#overview" class="text-sm font-medium transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium transition-colors">关联企业</a>
+<a href="#employee" class="text-sm font-medium transition-colors">员工激励</a>
+<a href="#summary" class="text-sm font-medium transition-colors">综合研判</a>
+</nav>
+<div class="flex items-center space-x-2 flex-shrink-0">
+<button type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="打开导航菜单" aria-controls="mobileMenu" aria-expanded="false" id="mobileMenuButton">
+<i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+</button>
+<button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+<i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+<a href="#overview" class="text-sm font-medium">总览</a>
+<a href="#founder" class="text-sm font-medium">核心管理层</a>
+<a href="#capital" class="text-sm font-medium">股本变化</a>
+<a href="#equity" class="text-sm font-medium">股权结构</a>
+<a href="#companies" class="text-sm font-medium">关联企业</a>
+<a href="#employee" class="text-sm font-medium">员工激励</a>
+<a href="#summary" class="text-sm font-medium">综合研判</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex flex-wrap gap-2 mb-5">
+<span class="text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-200">CORPORATE GOVERNANCE RESEARCH</span>
+<span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200">研究基准日：2026.11.24</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">台积电体系全景解析</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-5 leading-relaxed">
+台湾积体电路制造股份有限公司（Taiwan Semiconductor Manufacturing Company Limited，NYSE：TSM；TWSE：2330）是全球领先的专业晶圆代工企业，也是先进半导体制造产业链中最具战略地位的核心企业之一。本报告从创始人及职业经理人治理、股本演变、股权控制、关联企业网络、员工激励和资本配置六个维度，拆解台积电的组织与资本体系。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+与传统创始人家族控股型企业不同，台积电是由政府发展基金、产业资本及全球机构投资者共同构成股东基础的公众公司。其治理核心并非创始人家族控制，而是以专业经营团队、独立董事会、技术组织和长期资本投入为基础的制度化治理体系。
+</p>
+
+<div class="grid md:grid-cols-3 gap-6 mt-10">
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="users" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i></div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">专业经理人治理</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">从张忠谋创业奠基到魏哲家兼任董事长与CEO，形成技术导向、长期主义和职业经理人接班体系。</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center"><i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i></div>
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股权高度分散</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">政府发展基金持股约6.38%，不存在创始人家族绝对控股，全球机构资本共同构成股东基础。</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="cpu" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i></div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">先进制程与AI驱动</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">2026年第三季度营收1.49万亿新台币，先进制程收入占比持续提升，AI成为资本开支与增长的重要驱动力。</p>
+</div>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+<div class="p-4 bg-white/70 dark:bg-gray-800 rounded-xl"><p class="text-xs text-gray-500 dark:text-gray-400 mb-1">2025全年营收</p><p class="text-xl font-bold text-primary-700 dark:text-primary-300">38,090.54亿</p><p class="text-xs text-gray-500">新台币，同比增长32%</p></div>
+<div class="p-4 bg-white/70 dark:bg-gray-800 rounded-xl"><p class="text-xs text-gray-500 dark:text-gray-400 mb-1">2025归母净利润</p><p class="text-xl font-bold text-primary-700 dark:text-primary-300">17,178.83亿</p><p class="text-xs text-gray-500">新台币</p></div>
+<div class="p-4 bg-white/70 dark:bg-gray-800 rounded-xl"><p class="text-xs text-gray-500 dark:text-gray-400 mb-1">2026 Q3营收</p><p class="text-xl font-bold text-accent-700 dark:text-accent-300">14,942.40亿</p><p class="text-xs text-gray-500">新台币，同比增长50.9%</p></div>
+<div class="p-4 bg-white/70 dark:bg-gray-800 rounded-xl"><p class="text-xs text-gray-500 dark:text-gray-400 mb-1">2026 Q3毛利率</p><p class="text-xl font-bold text-accent-700 dark:text-accent-300">66.40%</p><p class="text-xs text-gray-500">营业利润率58.70%</p></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-4">数据来源：台积电2025年年报、2026年第三季度业绩公告。金额均为新台币亿元。[1][2]</p>
+</div>
+</section>
+
+<!-- SECTION 1 -->
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="section-label text-xs font-bold text-primary-600 dark:text-primary-400 mb-3">01 / LEADERSHIP & GOVERNANCE</div>
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">创始人及核心管理层：从张忠谋创业到魏哲家时代</h2>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+台积电的组织演进，核心不是创始人家族的代际传承，而是创始人推动商业模式创新、专业经营团队接班、技术组织持续迭代的过程。张忠谋于1987年创立台积电，开创纯晶圆代工模式（Pure-play Foundry），将芯片设计与制造分离，使无晶圆厂设计公司能够专注于研发和产品创新，而不必承担自建晶圆厂的巨额资本支出。
+</p>
+
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mb-8">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+<i data-lucide="info" class="inline-block w-4 h-4 mr-1.5"></i>
+核心判断：台积电最重要的治理资产不是某一位创始人，而是将创始人的商业理念沉淀为制度、技术平台、客户信任和资本配置纪律的组织能力。
+</p>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-5">一、创业历程与战略演进</h3>
+<div class="timeline space-y-2">
+<div class="timeline-item">
+<h4 class="font-bold text-primary-700 dark:text-primary-300">1987年：张忠谋创立台积电</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-1">在台湾政府发展基金、飞利浦及其他投资者参与下成立，确立专业晶圆代工商业模式，避免与客户在芯片设计产品市场直接竞争。</p>
+</div>
+<div class="timeline-item">
+<h4 class="font-bold text-primary-700 dark:text-primary-300">1994—1997年：资本市场国际化</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-1">1994年9月5日在台湾证券交易所上市；1997年10月8日以美国存托股份形式登陆纽约证券交易所，建立全球资本市场融资和投资者基础。</p>
+</div>
+<div class="timeline-item">
+<h4 class="font-bold text-primary-700 dark:text-primary-300">2000—2010年：工艺平台与规模经济</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-1">持续投入先进制程、制造良率和客户协同体系，强化全球客户对台积电的依赖，推动晶圆代工行业的专业化发展。</p>
+</div>
+<div class="timeline-item">
+<h4 class="font-bold text-primary-700 dark:text-primary-300">2013—2018年：职业经理人接班</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-1">魏哲家于2013年担任总裁及共同CEO，2018年6月正式接任CEO。张忠谋退休，标志着创始人主导经营阶段结束。</p>
+</div>
+<div class="timeline-item">
+<h4 class="font-bold text-primary-700 dark:text-primary-300">2024年6月：魏哲家兼任董事长与CEO</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-1">刘德音于2024年股东常会后退休，董事会选举魏哲家担任董事长兼CEO，进一步强化经营战略与董事会领导之间的协调。</p>
+</div>
+<div class="timeline-item">
+<h4 class="font-bold text-primary-700 dark:text-primary-300">2025—2026年：AI基础设施与全球制造体系</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-1">围绕AI加速器、高性能计算、先进封装及2纳米制程扩大投资；同步推进美国、日本、欧洲制造布局，并强化海外工厂的技术转移与运营管理。</p>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-8 mb-5">二、核心管理层及董事会结构</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 bg-primary-100 dark:bg-primary-800 rounded-lg flex items-center justify-center"><i data-lucide="user-round" class="w-6 h-6 text-primary-600 dark:text-primary-300"></i></div>
+<div><h4 class="font-bold text-primary-700 dark:text-primary-300">魏哲家 C.C. Wei</h4><p class="text-xs text-gray-500 dark:text-gray-400">董事长兼首席执行官</p></div>
+</div>
+<ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+<li>• 1998年加入台积电，长期从事技术、业务开发与运营管理。</li>
+<li>• 2013年出任总裁及共同CEO。</li>
+<li>• 2018年6月接任CEO。</li>
+<li>• 2024年6月起兼任董事长及CEO。</li>
+<li>• 2027年届满的董事任期，为公司当前战略与经营的核心负责人。</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h4 class="font-bold text-accent-700 dark:text-accent-300 mb-4">董事会制度结构</h4>
+<div class="space-y-3">
+<div class="flex justify-between"><span class="text-sm text-gray-600 dark:text-gray-300">董事会总人数</span><strong>10人</strong></div>
+<div class="flex justify-between"><span class="text-sm text-gray-600 dark:text-gray-300">独立董事</span><strong>7人</strong></div>
+<div class="flex justify-between"><span class="text-sm text-gray-600 dark:text-gray-300">独立董事比例</span><strong class="text-accent-600">70%</strong></div>
+<div class="flex justify-between"><span class="text-sm text-gray-600 dark:text-gray-300">任期</span><strong>至2027年</strong></div>
+<div class="border-t border-accent-200 dark:border-gray-700 pt-3 text-sm text-gray-600 dark:text-gray-300">董事会包含产业技术、国际企业管理、财务及风险管理等背景，设有审计及风险委员会、薪酬与人才发展委员会等治理机制。</div>
+</div>
+</div>
+</div>
+
+<div class="table-wrap mt-8">
+<table>
+<thead><tr><th>管理层/董事</th><th>职位</th><th>治理意义</th></tr></thead>
+<tbody>
+<tr><td>魏哲家 C.C. Wei</td><td>董事长兼CEO</td><td>经营战略与董事会领导核心</td></tr>
+<tr><td>曾繁城 F.C. Tseng</td><td>董事</td><td>资深产业技术与管理经验</td></tr>
+<tr><td>叶俊显 Chun-Hsien Yeh</td><td>董事（政府发展基金代表）</td><td>政府股东代表</td></tr>
+<tr><td>Peter Bonfield</td><td>独立董事</td><td>国际科技企业管理经验</td></tr>
+<tr><td>Michael Splinter</td><td>独立董事</td><td>半导体产业与运营经验</td></tr>
+<tr><td>Moshe Gavrielov</td><td>独立董事</td><td>科技企业经营经验</td></tr>
+<tr><td>L. Rafael Reif</td><td>独立董事</td><td>科研与技术教育背景</td></tr>
+<tr><td>Ursula Burns、Lynn Elsenhans、林全</td><td>独立董事</td><td>国际企业管理、财务及治理经验</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">董事名单及任职情况依据2025年年报截至2026年2月28日的披露。[3]</p>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">三、管理哲学与近期战略重心</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">客户优先与专业分工</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">坚持不与客户争夺芯片终端产品市场，通过制造、工艺研发、良率和先进封装能力为客户创造价值。客户信任与商业中立性构成长期战略基础。</p>
+</div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">技术驱动而非短期利润驱动</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">研发、制程节点、先进封装和制造能力必须持续领先。管理层需要在资本回报与长期技术投资之间进行动态平衡。</p>
+</div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">全球化制造与区域韧性</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">美国、日本、欧洲与台湾多地布局，提高供应链韧性，同时维持台湾核心研发和先进制程生态的集聚优势。</p>
+</div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">资本纪律与盈利能力</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">通过客户需求预测、资本预算与产能利用率管理，避免单纯追求产能规模；在高额资本支出下仍强调长期盈利增长。</p>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">四、2026年战略重点</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>战略方向</th><th>具体措施</th><th>对公司价值的影响</th><th>关键风险</th></tr></thead>
+<tbody>
+<tr><td>2纳米先进制程</td><td>加速量产爬坡，扩大先进节点产能</td><td>提高产品附加值和先进制程收入占比</td><td>初期良率、成本及设备投资压力</td></tr>
+<tr><td>AI与HPC</td><td>满足AI加速器、数据中心和高性能计算需求</td><td>强化长期订单和客户黏性</td><td>AI资本开支周期波动</td></tr>
+<tr><td>先进封装</td><td>CoWoS、SoIC及3D集成技术扩产</td><td>提升系统级解决方案能力</td><td>产能建设、供应链瓶颈</td></tr>
+<tr><td>全球制造</td><td>亚利桑那、日本及欧洲项目推进</td><td>扩大客户覆盖及供应链韧性</td><td>海外制造成本较高</td></tr>
+<tr><td>研发投入</td><td>持续推进下一代工艺及材料技术</td><td>保持技术领先和转换成本优势</td><td>研发失败及资本回收周期延长</td></tr>
+</tbody>
+</table>
+</div>
+<div class="pl-4 pr-3 py-3 mt-6 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-accent-900 dark:text-accent-100">2026年10月15日，管理层重申全年资本支出预算为600亿—640亿美元，并指出2026—2028年资本投资将显著高于过去三年，AI及新兴Agentic AI需求是重要驱动力。[4]</p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="section-label text-xs font-bold text-primary-600 dark:text-primary-400 mb-3">02 / SHARE CAPITAL</div>
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">股本数量变化：长期稳定与员工限制性股票注销</h2>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+台积电的股本发展经历了早期创立、台湾上市、美国存托股份发行以及后续员工股权激励等阶段。与依赖频繁融资的成长型企业不同，台积电拥有较强的内部现金流和盈利能力，近年来股本整体保持高度稳定。需要特别区分：美国ADR发行是存托股份的发行和流通安排，并不等同于公司在每次ADR交易时增发普通股。
+</p>
+
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">2026年第三季度股本概览</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center"><span class="text-sm text-gray-600 dark:text-gray-300">授权股份</span><strong>280.50亿股</strong></div>
+<div class="flex justify-between items-center"><span class="text-sm text-gray-600 dark:text-gray-300">已发行及缴足股份</span><strong>259.32亿股</strong></div>
+<div class="flex justify-between items-center"><span class="text-sm text-gray-600 dark:text-gray-300">待注销股份</span><strong>0.05百万股</strong></div>
+<div class="flex justify-between items-center"><span class="text-sm text-gray-600 dark:text-gray-300">每股面值</span><strong>10新台币</strong></div>
+<div class="flex justify-between items-center"><span class="text-sm text-gray-600 dark:text-gray-300">普通股每股投票权</span><strong>1票</strong></div>
+</div>
+</div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">ADR与普通股换算</h3>
+<div class="text-center py-4">
+<p class="text-sm text-gray-500 dark:text-gray-400">1份美国存托股份（ADS）</p>
+<p class="text-4xl font-bold text-accent-600 dark:text-accent-400 my-3">5股</p>
+<p class="text-sm text-gray-600 dark:text-gray-300">台积电普通股</p>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 pt-3 text-sm text-gray-600 dark:text-gray-300">截至2026年9月30日，流通ADS约10.63亿份，对应普通股约53.13亿股。</div>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">一、股本演变时间线</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>时间</th><th>资本市场事件</th><th>股本影响</th><th>研究意义</th></tr></thead>
+<tbody>
+<tr><td>1987年2月21日</td><td>公司正式成立</td><td>设立初始股本</td><td>政府、飞利浦及私人投资者共同参与创立</td></tr>
+<tr><td>1994年9月5日</td><td>台湾证券交易所上市（2330）</td><td>公开发行及股权流通</td><td>建立本土资本市场融资基础</td></tr>
+<tr><td>1997年10月8日</td><td>纽约证券交易所上市（TSM）</td><td>ADR发行及国际化交易</td><td>扩大国际机构投资者基础</td></tr>
+<tr><td>2022年10月</td><td>员工持股计划正式实施</td><td>员工认购股份及雇主补贴</td><td>建立员工股东文化</td></tr>
+<tr><td>2025年全年</td><td>员工限制性股票回收与注销</td><td>少量股本减少</td><td>未归属股份回收注销</td></tr>
+<tr><td>2026年第一季度</td><td>注销此前回收的员工限制性股票</td><td>约15.4万股回收股份完成注销</td><td>员工激励计划的正常股本管理</td></tr>
+<tr><td>2026年第三季度</td><td>回收5,000股未归属限制性股票</td><td>待注销股份约5,000股</td><td>2026年11月10日董事会批准注销</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">来源：台积电2026年第三季度合并财务报表及公司历史公告。[5][6]</p>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">二、最新股本变化：2025—2026年</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>统计时点</th><th>已发行股份（百万股）</th><th>股本（新台币亿元）</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>2025年9月30日</td><td>25,932.615</td><td>2,593.26</td><td>包括待注销股份口径差异</td></tr>
+<tr><td>2025年12月31日</td><td>25,932.524</td><td>2,593.25</td><td>年度末股本</td></tr>
+<tr><td>2026年9月30日</td><td>25,932.370</td><td>2,593.24</td><td>当季已发行及缴足股份</td></tr>
+<tr><td>2026年9月30日资本股数</td><td>25,932.365</td><td>2,593.24</td><td>扣除待注销股份</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mt-7">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">股本变化的核心解释</h3>
+<ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-primary-600 flex-shrink-0"></i><span><strong>没有大规模融资摊薄：</strong>当前股本变化主要与员工限制性股票回收及注销有关。</span></li>
+<li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-primary-600 flex-shrink-0"></i><span><strong>员工激励股份并非全部新增股份：</strong>计划可能使用已发行股份或授权发行股份，需区分具体来源。</span></li>
+<li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-primary-600 flex-shrink-0"></i><span><strong>回收股份影响有限：</strong>近年注销数量相对于约259.32亿股总股本极小，不构成实质性资本结构变化。</span></li>
+</ul>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">三、当前市值及股东交易观察</h3>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><p class="text-xs text-gray-500 mb-2">参考ADR价格</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">370.50美元</p><p class="text-xs text-gray-500">2026年11月23日盘中报价</p></div>
+<div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><p class="text-xs text-gray-500 mb-2">参考市值</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">约1.86万亿美元</p><p class="text-xs text-gray-500">同日市场数据快照</p></div>
+<div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><p class="text-xs text-gray-500 mb-2">流通普通股</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">259.32亿股</p><p class="text-xs text-gray-500">2026年9月30日</p></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">市值与股价属于市场动态数据，370.50美元为11月23日盘中报价，不是11月24日收盘价。市值数据参考市场行情页面，具体交易日价格及汇率变化可能导致数值不同。[7]</p>
+
+<div class="pl-4 pr-3 py-3 mt-6 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-accent-900 dark:text-accent-100">重要区分：台积电不存在典型创始人减持、家族套现与控股股东退出的股权故事。其主要股本变动集中在员工激励股份的归属、回收与注销，判断股本变化时应避免将ADR交易量、机构持仓变化误认为公司增发或回购。</p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3 -->
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="section-label text-xs font-bold text-accent-600 dark:text-accent-400 mb-3">03 / OWNERSHIP STRUCTURE</div>
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">股权结构：无家族控股的公众公司与制度化控制权</h2>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+台积电的股权结构具有明显的公众公司特征。虽然公司最初由台湾政府发展基金、飞利浦等机构参与创立，但经过多年资本市场发展，股权已形成全球机构投资者、存托股份持有人、政府基金和本地投资者共同持有的格局。当前不存在类似传统民营企业的创始人家族绝对控股结构，也不存在通过家族信托实现控制权集中的安排。
+</p>
+
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-accent-900 dark:text-accent-100"><i data-lucide="shield-check" class="inline-block w-4 h-4 mr-1.5"></i>治理关键：台积电的控制权主要通过董事会选举、普通股投票权、公司章程及专业经理人制度实现，而非依靠单一股东的绝对持股。</p>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-8 mb-5">一、主要股东持股情况</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>主要股东</th><th>持股数量</th><th>持股比例</th><th>性质及说明</th></tr></thead>
+<tbody>
+<tr><td>美国存托股份对应的普通股</td><td>约53.14亿股</td><td>约20.49%</td><td>ADR存托体系对应股份，并非单一受益股东</td></tr>
+<tr><td>台湾行政院国家发展基金</td><td>16.54亿股</td><td>6.38%</td><td>政府长期战略投资者</td></tr>
+<tr><td>新加坡政府</td><td>5.39亿股</td><td>2.08%</td><td>主权投资者</td></tr>
+<tr><td>Norges Bank</td><td>约4.70亿股</td><td>约1.81%</td><td>挪威主权财富基金管理机构</td></tr>
+<tr><td>元大台湾50 ETF</td><td>约4.17亿股</td><td>约1.61%</td><td>指数基金持股</td></tr>
+<tr><td>Vanguard相关基金</td><td>约3.55亿股</td><td>约1.37%</td><td>国际被动投资资金</td></tr>
+<tr><td>Vanguard新兴市场基金</td><td>约3.29亿股</td><td>约1.27%</td><td>国际被动投资资金</td></tr>
+<tr><td>台湾新劳动基金</td><td>约3.10亿股</td><td>约1.20%</td><td>养老及劳动保障投资资金</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">上述可比持股比例依据2025年年报截至2025年12月17日及2026年2月28日披露的股东资料整理。ADR为存托股份对应的普通股，不应将其与底层机构受益所有人重复相加。[8]</p>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-5">二、股权结构及控制权关系</h3>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h4 class="text-center font-bold text-accent-700 dark:text-accent-300 mb-5">台积电股权与治理关系示意</h4>
+<div class="grid md:grid-cols-3 gap-3">
+<div class="p-4 bg-white dark:bg-gray-900 rounded-lg text-center">
+<i data-lucide="landmark" class="w-7 h-7 mx-auto mb-2 text-accent-600"></i>
+<p class="font-semibold text-sm">台湾政府发展基金</p><p class="text-xs text-gray-500 mt-1">持股约6.38%</p>
+</div>
+<div class="p-4 bg-white dark:bg-gray-900 rounded-lg text-center">
+<i data-lucide="globe" class="w-7 h-7 mx-auto mb-2 text-accent-600"></i>
+<p class="font-semibold text-sm">国际机构及主权基金</p><p class="text-xs text-gray-500 mt-1">多元化持股</p>
+</div>
+<div class="p-4 bg-white dark:bg-gray-900 rounded-lg text-center">
+<i data-lucide="users" class="w-7 h-7 mx-auto mb-2 text-accent-600"></i>
+<p class="font-semibold text-sm">ADR及公众投资者</p><p class="text-xs text-gray-500 mt-1">全球分散持股</p>
+</div>
+</div>
+<div class="flex justify-center my-3"><i data-lucide="arrow-down" class="text-accent-600 w-6 h-6"></i></div>
+<div class="p-4 bg-white dark:bg-gray-900 rounded-lg text-center border border-accent-300 dark:border-accent-700">
+<p class="font-bold text-accent-700 dark:text-accent-300">股东大会</p><p class="text-xs text-gray-500 mt-1">普通股每股一票，依法选举董事</p>
+</div>
+<div class="flex justify-center my-3"><i data-lucide="arrow-down" class="text-accent-600 w-6 h-6"></i></div>
+<div class="p-4 bg-white dark:bg-gray-900 rounded-lg text-center border border-accent-300 dark:border-accent-700">
+<p class="font-bold text-accent-700 dark:text-accent-300">董事会（10人，70%独立董事）</p><p class="text-xs text-gray-500 mt-1">战略监督、重大投资、治理与高管任命</p>
+</div>
+<div class="flex justify-center my-3"><i data-lucide="arrow-down" class="text-accent-600 w-6 h-6"></i></div>
+<div class="p-4 bg-primary-100 dark:bg-primary-900/50 rounded-lg text-center border border-primary-300">
+<p class="font-bold text-primary-700 dark:text-primary-300">魏哲家：董事长兼CEO</p><p class="text-xs text-gray-600 dark:text-gray-300 mt-1">负责经营战略与执行</p>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-5">三、创始人与家族控制权分析</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+<h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">创始人张忠谋</h4>
+<ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+<li>• 1987年创立台积电。</li>
+<li>• 2018年6月正式退休。</li>
+<li>• 不再担任公司董事长及CEO。</li>
+<li>• 公司没有以张氏家族为中心的控股平台。</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+<h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">魏哲家及管理层</h4>
+<ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+<li>• 通过职业经理人体系获得经营权。</li>
+<li>• 魏哲家持股比例极低，2026年2月披露约0.03%。</li>
+<li>• 管理层整体持股约0.23%。</li>
+<li>• 经营权与所有权并非集中在同一主体。</li>
+</ul>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-5">四、股权结构演变时间线</h3>
+<div class="timeline">
+<div class="timeline-item"><h4 class="font-bold text-accent-700 dark:text-accent-300">1987年：政府与产业资本共同创立</h4><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">台湾政府发展基金、飞利浦及其他私人投资者共同参与初始资本形成。</p></div>
+<div class="timeline-item"><h4 class="font-bold text-accent-700 dark:text-accent-300">1994年：台湾上市</h4><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">股权开始广泛进入本地资本市场，政府和产业资本逐步成为多元化公众股东的一部分。</p></div>
+<div class="timeline-item"><h4 class="font-bold text-accent-700 dark:text-accent-300">1997年：纽约ADR上市</h4><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">扩大海外投资者基础，增强国际资本市场参与度。</p></div>
+<div class="timeline-item"><h4 class="font-bold text-accent-700 dark:text-accent-300">2018年：创始人退休</h4><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">张忠谋退休，经营权交接给专业管理团队，治理机制进一步制度化。</p></div>
+<div class="timeline-item"><h4 class="font-bold text-accent-700 dark:text-accent-300">2024—2026年：专业经理人持续主导</h4><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">魏哲家兼任董事长与CEO，政府基金仍为重要股东，但没有形成单一控股股东结构。</p></div>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-5">五、控制权稳定性评价</h3>
+<div class="space-y-5">
+<div><div class="flex justify-between mb-2"><span class="text-sm font-medium">股权分散与治理透明度</span><strong class="text-accent-600">95/100</strong></div><div class="moat-bar"><span style="width:95%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm font-medium">职业经理人接班制度</span><strong class="text-accent-600">92/100</strong></div><div class="moat-bar"><span style="width:92%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm font-medium">董事会独立性</span><strong class="text-accent-600">90/100</strong></div><div class="moat-bar"><span style="width:90%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm font-medium">创始人个人控制权依赖程度</span><strong class="text-accent-600">低依赖</strong></div><div class="moat-bar"><span style="width:15%"></span></div></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">上述为研究者定性评分，不是公司官方评级或第三方ESG评级。</p>
+
+<div class="pl-4 pr-3 py-3 mt-7 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100">核心结论：台积电的股权结构不是典型的家族控制型结构，而是政府战略持股、全球机构投资者和公众股东共同参与的分散持股体系。其真正的组织控制力来自董事会制度、专业管理团队、技术积累及客户关系。</p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 4 -->
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<div class="section-label text-xs font-bold text-accent-600 dark:text-accent-400 mb-3">04 / AFFILIATES & SUBSIDIARIES</div>
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">关联上市公司与企业关系：制造生态及产业链协同</h2>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+台积电没有海底捞式的多个消费品牌上市矩阵，其关联企业网络主要围绕半导体制造、芯片设计服务、特殊制程、封装测试、海外制造及技术研发展开。部分子公司由台积电100%持有，部分参股企业独立上市或在台湾证券市场交易。需要区分合并子公司、权益法参股公司与单纯供应商，不能将所有关联企业视为台积电的全资业务。
+</p>
+
+<div class="grid md:grid-cols-3 gap-6">
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="cpu" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i></div>
+<h3 class="font-semibold text-primary-700 dark:text-primary-300">创意电子 GUC</h3>
+</div>
+<p class="text-xs text-gray-500 mb-2">3443.TW / Global Unichip</p>
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">ASIC设计服务、SoC实现、先进封装与高速芯片设计支持。</p>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>• 台积电持股约34.84%</li>
+<li>• 2025年仍为重要参股企业</li>
+<li>• 与先进制程客户设计生态密切相关</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center"><i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i></div>
+<h3 class="font-semibold text-accent-700 dark:text-accent-300">世界先进 VIS</h3>
+</div>
+<p class="text-xs text-gray-500 mb-2">5347.TWO / Vanguard International Semiconductor</p>
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">成熟制程晶圆代工、功率管理及特色半导体制造。</p>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>• 台积电集团合计持股约43.91%</li>
+<li>• 其中直接持股约27.55%</li>
+<li>• 通过成熟制程业务补充集团制造生态</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="scan" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i></div>
+<h3 class="font-semibold text-primary-700 dark:text-primary-300">采钰科技 VisEra</h3>
+</div>
+<p class="text-xs text-gray-500 mb-2">影像传感器相关制造企业</p>
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">CMOS图像传感器相关制造及光学技术服务。</p>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>• 台积电持股约67.25%</li>
+<li>• 属于控股子公司体系</li>
+<li>• 服务影像传感器制造生态</li>
+</ul>
+</div>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6 mt-6">
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">欣铨科技 Xintec</h3>
+<p class="text-xs text-gray-500 mb-2">6510.TWO</p>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">从事晶圆级封装相关业务，台积电持股约41.01%。其业务与影像传感器、先进封装及制造生态存在协同。</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">台积电全球制造子公司</h3>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">包括台积电亚利桑那、南京、日本JASM、欧洲ESMC及各地客户服务与研发实体。其主要作用是扩大制造网络、贴近客户、满足地区供应链要求。</p>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-10 mb-5">一、关联企业股权与业务矩阵</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>企业名称</th><th>主要业务</th><th>台积电集团持股</th><th>企业关系</th><th>战略定位</th></tr></thead>
+<tbody>
+<tr><td>TSMC Arizona</td><td>美国晶圆制造</td><td>100%</td><td>全资子公司</td><td>美国本土制造布局</td></tr>
+<tr><td>TSMC Nanjing</td><td>中国大陆晶圆制造</td><td>100%</td><td>全资子公司</td><td>区域制造及客户服务</td></tr>
+<tr><td>JASM</td><td>日本晶圆制造</td><td>多数股权</td><td>控股子公司</td><td>日本供应链生态</td></tr>
+<tr><td>ESMC</td><td>欧洲晶圆制造</td><td>与合作方共同投资</td><td>合资企业</td><td>欧洲汽车及工业芯片供应</td></tr>
+<tr><td>GUC</td><td>ASIC设计服务</td><td>34.84%</td><td>参股公司</td><td>芯片设计与制造协同</td></tr>
+<tr><td>VIS</td><td>成熟制程代工</td><td>43.91%</td><td>参股/控制关系</td><td>成熟制程生态</td></tr>
+<tr><td>VisEra</td><td>图像传感器制造</td><td>67.25%</td><td>控股子公司</td><td>影像传感器制造协同</td></tr>
+<tr><td>Xintec</td><td>晶圆级封装</td><td>41.01%</td><td>参股公司</td><td>封装及后段技术协同</td></tr>
+<tr><td>SSMC</td><td>新加坡晶圆制造</td><td>38.79%</td><td>合资参股</td><td>区域制造能力</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">持股比例主要依据2025年年报股权投资附注，部分项目采用集团直接及间接持股口径；JASM、ESMC等合资实体股权结构与持股比例可能随资本注入和股权安排变化。[9]</p>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-5">二、关联交易与财务影响</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+台积电关联交易的核心特点是以内部制造协同、海外销售服务和集团资金配置为主，而非创始人家族通过关联企业进行利益输送。分析时应特别注意：合并财务报表会抵销集团内部交易，不能把子公司之间的内部销售直接视为集团新增收入。
+</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>关联对象</th><th>2025年相关交易</th><th>金额/比例</th><th>分析</th></tr></thead>
+<tbody>
+<tr><td>台积电北美公司</td><td>销售收入</td><td>29.32亿美元</td><td>集团内部销售与北美客户服务、销售结算有关</td></tr>
+<tr><td>GUC</td><td>相关销售交易</td><td>约310.94亿新台币（年报披露口径）</td><td>设计服务与晶圆制造协同，需关注交易定价及业务性质</td></tr>
+<tr><td>Xintec</td><td>制造费用</td><td>约54.48亿新台币</td><td>后段制造与封装服务协同</td></tr>
+<tr><td>TSMC Arizona</td><td>集团内部销售</td><td>约155.84万美元</td><td>海外制造基地内部业务往来</td></tr>
+<tr><td>JASM</td><td>集团内部销售</td><td>约10.27亿美元? </td><td>需以财务报表原币种及关联方明细复核，不宜与集团外部收入重复计算</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">说明：关联方交易以母公司单体及20-F附注口径披露，部分交易为内部结算，不代表合并收入贡献。相关原始披露可参阅2025年年报及SEC年度申报文件。[10]</p>
+
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mt-7">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">关联交易治理关注点</h3>
+<div class="grid md:grid-cols-2 gap-5">
+<div><h4 class="text-sm font-semibold text-primary-700 dark:text-primary-300 mb-2">正面因素</h4><ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2"><li>• 内部供应链协同有助于提升制造效率。</li><li>• 参股企业可补充专业化设计和封装能力。</li><li>• 海外子公司支持区域客户服务与制造布局。</li><li>• 独立董事和审计委员会提供监督框架。</li></ul></div>
+<div><h4 class="text-sm font-semibold text-accent-700 dark:text-accent-300 mb-2">潜在风险</h4><ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2"><li>• 关联交易定价与独立性审查。</li><li>• 海外合资公司少数股东利益协调。</li><li>• 内部交易及转移定价的跨境税务风险。</li><li>• 参股公司经营波动及投资减值风险。</li></ul></div>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-5">三、全球制造体系的战略价值</h3>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><i data-lucide="map-pin" class="w-6 h-6 text-primary-600 mb-3"></i><h4 class="font-semibold mb-2">台湾核心基地</h4><p class="text-sm text-gray-600 dark:text-gray-300">先进制程研发、主要制造能力与产业集群，维持技术领先优势。</p></div>
+<div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><i data-lucide="globe" class="w-6 h-6 text-primary-600 mb-3"></i><h4 class="font-semibold mb-2">美国制造基地</h4><p class="text-sm text-gray-600 dark:text-gray-300">贴近美国大型科技客户，强化供应链安全和地缘政治适应能力。</p></div>
+<div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><i data-lucide="network" class="w-6 h-6 text-primary-600 mb-3"></i><h4 class="font-semibold mb-2">日本及欧洲布局</h4><p class="text-sm text-gray-600 dark:text-gray-300">通过合资企业和地方产业伙伴拓展成熟制程及汽车、工业市场。</p></div>
+</div>
+
+<div class="pl-4 pr-3 py-3 mt-7 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100">核心结论：台积电的关联企业体系本质上是一张制造、设计、封装和区域服务网络，而不是多品牌控股集团。其价值在于提升技术协同与供应链完整性，风险则集中在海外资本回报、合资治理及关联交易透明度。</p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 5 -->
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="section-label text-xs font-bold text-primary-600 dark:text-primary-400 mb-3">05 / EMPLOYEE OWNERSHIP & INCENTIVES</div>
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">员工持股与激励机制：利润分享、员工购股与技术人才长期绑定</h2>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+台积电的员工激励机制与海底捞师徒制存在根本差异。其激励核心是以现金薪酬、季度经营绩效奖金、年度利润分享、员工持股计划及限制性股票等工具，将技术人才和管理人才的长期利益与企业经营成果绑定。公司不以创始人家族股权传承为激励基础，而是通过制度化薪酬委员会和董事会审批机制进行管理。
+</p>
+
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">核心管理及技术骨干</h3>
+<ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li class="flex gap-3"><i data-lucide="award" class="w-5 h-5 text-primary-600 flex-shrink-0"></i><span>限制性股票奖励（RSA）及符合条件的长期股权激励。</span></li>
+<li class="flex gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-primary-600 flex-shrink-0"></i><span>季度经营绩效奖金与年度利润分享。</span></li>
+<li class="flex gap-3"><i data-lucide="target" class="w-5 h-5 text-primary-600 flex-shrink-0"></i><span>依据岗位职责、个人贡献及绩效确定奖励。</span></li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">普通员工与全体参与者</h3>
+<ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li class="flex gap-3"><i data-lucide="wallet" class="w-5 h-5 text-accent-600 flex-shrink-0"></i><span>固定薪酬及业务绩效奖金。</span></li>
+<li class="flex gap-3"><i data-lucide="pie-chart" class="w-5 h-5 text-accent-600 flex-shrink-0"></i><span>年度利润分享奖金。</span></li>
+<li class="flex gap-3"><i data-lucide="coins" class="w-5 h-5 text-accent-600 flex-shrink-0"></i><span>员工购股计划及雇主补贴。</span></li>
+</ul>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">一、员工利润分享机制</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+根据台积电公司章程，在弥补以往亏损后，至少1%的年度利润应分配为员工利润分享奖金；董事酬劳不得超过年度利润的0.3%。员工利润分享包括高管在内，具体分配由薪酬与人才发展委员会建议并提交董事会批准。
+</p>
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">2025年员工利润分享数据</h4>
+<div class="grid md:grid-cols-3 gap-4">
+<div><p class="text-xs text-gray-500">2025年员工利润分享</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">约10.31亿美元</p><p class="text-xs text-gray-500">原始金额约新台币1030.73亿元</p></div>
+<div><p class="text-xs text-gray-500">2024年员工利润分享</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">约7.03亿美元</p><p class="text-xs text-gray-500">原始金额约新台币702.96亿元</p></div>
+<div><p class="text-xs text-gray-500">同比变化</p><p class="text-2xl font-bold text-accent-600">+46.62%</p><p class="text-xs text-gray-500">反映利润增长与激励规模扩大</p></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-4">金额依据财务报表披露的新台币103,072,958千元及70,296,283千元换算，美元仅为示意性换算，不作为实际发放币种。[11]</p>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">二、员工购股计划（ESPP）</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+台积电于2022年5月10日正式建立员工股票购买计划（Employee Stock Purchase Plan，ESPP），自2022年10月1日起实施。员工可通过自愿工资扣款购买台积电普通股或ADS，公司提供相当于每位参与者购股价格15%的雇主补贴。
+</p>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+<div class="grid md:grid-cols-3 gap-5">
+<div class="text-center"><i data-lucide="calendar-check" class="w-7 h-7 mx-auto text-primary-600 mb-2"></i><p class="text-sm text-gray-500">计划实施时间</p><p class="text-xl font-bold text-primary-700 dark:text-primary-300">2022年10月</p></div>
+<div class="text-center"><i data-lucide="percent" class="w-7 h-7 mx-auto text-primary-600 mb-2"></i><p class="text-sm text-gray-500">雇主购股补贴</p><p class="text-3xl font-bold text-primary-700 dark:text-primary-300">15%</p></div>
+<div class="text-center"><i data-lucide="users" class="w-7 h-7 mx-auto text-primary-600 mb-2"></i><p class="text-sm text-gray-500">参与方式</p><p class="text-xl font-bold text-primary-700 dark:text-primary-300">自愿工资扣款</p></div>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 mt-5 pt-4">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2">机制示例</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300">员工以100元购股，雇主额外提供15元补贴，计划账户合计投入115元。实际股份取得、扣款、持有及出售安排以ESPP正式规则为准。</p>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">三、限制性股票与长期股权激励</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+台积电通过限制性股票奖励（Restricted Stock Awards，RSA）等机制向符合资格的员工提供长期激励。股份通常附带归属条件，员工需要满足服务期限或其他计划条件。未归属股份在员工离职或不符合相关条件时可能被回收并注销。
+</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>激励工具</th><th>主要对象</th><th>激励逻辑</th><th>潜在影响</th></tr></thead>
+<tbody>
+<tr><td>员工利润分享</td><td>员工及高管</td><td>分享公司年度经营成果</td><td>增强经营成果与薪酬联动</td></tr>
+<tr><td>季度绩效奖金</td><td>全体员工</td><td>依据季度经营结果及个人绩效</td><td>强化短期执行力</td></tr>
+<tr><td>ESPP员工购股</td><td>符合资格员工</td><td>工资扣款购股，雇主提供15%补贴</td><td>推动员工成为公司股东</td></tr>
+<tr><td>RSA限制性股票</td><td>符合资格员工及核心人才</td><td>附条件归属与长期服务绑定</td><td>降低关键人才流失风险</td></tr>
+<tr><td>高管长期奖励</td><td>高级管理人员</td><td>现金、股票、期权或组合方式</td><td>将管理层与长期绩效结合</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">四、薪酬与绩效管理体系</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">经营绩效维度</h4>
+<ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+<li>• 公司经营业绩及利润增长。</li>
+<li>• 产品质量、制造良率和交付能力。</li>
+<li>• 个人岗位职责及工作贡献。</li>
+<li>• 技术创新与研发成果。</li>
+<li>• 组织管理和人才培养。</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl">
+<h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">薪酬治理流程</h4>
+<ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+<li>• 管理层制定薪酬及激励建议。</li>
+<li>• 薪酬与人才发展委员会审查。</li>
+<li>• 董事会批准相关薪酬政策。</li>
+<li>• 根据绩效和贡献确定个人奖励。</li>
+<li>• 定期审查竞争力与长期激励效果。</li>
+</ul>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">五、员工权益保障与人才战略</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+台积电的员工权益保障重点包括竞争力薪酬、员工福利、职业安全、培训发展、人才留任及多元包容。与餐饮业通过师徒制、门店分红实现员工激励不同，台积电更加依赖技术专业能力、项目经验积累和全球研发协作形成职业发展通道。
+</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>权益与人才机制</th><th>具体内容</th><th>战略意义</th></tr></thead>
+<tbody>
+<tr><td>竞争力薪酬</td><td>月薪、季度绩效奖金、年度利润分享</td><td>吸引高端半导体人才</td></tr>
+<tr><td>员工持股</td><td>ESPP购股及雇主补贴</td><td>培养长期股东意识</td></tr>
+<tr><td>长期激励</td><td>限制性股票及相关奖励</td><td>稳定核心技术人才</td></tr>
+<tr><td>教育培训</td><td>技术、制造、研发及管理培训</td><td>保持技术组织能力</td></tr>
+<tr><td>职业安全</td><td>制造环境安全、健康及风险控制</td><td>降低高技术制造运营风险</td></tr>
+<tr><td>人才发展</td><td>内部晋升及国际研发协作</td><td>形成长期技术积累</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-5">六、激励机制效果与潜在矛盾</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">正面作用</h4>
+<ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+<li>• 高利润分享提升员工与企业利益一致性。</li>
+<li>• 15%购股补贴增强员工持股吸引力。</li>
+<li>• 长期限制性股票有助于人才稳定。</li>
+<li>• 技术人才薪酬与企业竞争力形成正反馈。</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl">
+<h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">潜在矛盾</h4>
+<ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+<li>• 高额利润分享增加经营成本。</li>
+<li>• 全球人才竞争推高长期薪酬水平。</li>
+<li>• 股价波动会影响员工持股的实际激励价值。</li>
+<li>• 高强度研发和生产节奏可能增加员工工作压力。</li>
+</ul>
+</div>
+</div>
+
+<div class="pl-4 pr-3 py-3 mt-7 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100">核心结论：台积电员工激励的本质是以技术人才为核心的长期利益共同体。员工购股、利润分享和限制性股票共同形成激励体系，但真正的竞争优势仍来自先进制程研发能力、人才密度和长期组织经验。</p>
+</div>
+</div>
+</section>
+
+<!-- SECTION 6 -->
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="section-label text-xs font-bold text-accent-600 dark:text-accent-400 mb-3">06 / STRATEGIC CONCLUSION</div>
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">综合研判与关键结论：技术护城河、资本纪律与全球化治理</h2>
+
+<div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">1. 组织与战略：进入AI驱动的全球资本密集型扩张阶段</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+台积电已经从张忠谋创立时的专业晶圆代工企业，发展成为全球半导体产业链的重要基础设施。魏哲家接任董事长兼CEO后，公司的战略重点不再是单纯扩大晶圆制造规模，而是通过先进制程、先进封装、全球制造及客户生态协同，扩大技术领先优势。
+</p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+2026年全年资本开支预算达到600亿—640亿美元，显示管理层判断AI和高性能计算需求具有较强的中长期支撑。但资本开支扩张也意味着更高的折旧、设备采购、厂房建设及产能利用率管理压力。公司未来需要证明投资增长能够持续转化为自由现金流和股东回报。
+</p>
+</div>
+
+<div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">2. 财务表现：高增长与高利润率并存，但资本支出正在抬升</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+2025年台积电实现营收3.81万亿新台币，归母净利润1.72万亿新台币，营收同比增长32%，归母净利润同比增长46%。2026年第三季度营收进一步达到1.49万亿新台币，同比增长50.9%，净利润7630.60亿新台币，同比增长68.7%，毛利率达到66.4%。
+</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>财务指标</th><th>2025全年</th><th>2026年第三季度</th><th>同比变化</th></tr></thead>
+<tbody>
+<tr><td>营业收入</td><td>38,090.54亿新台币</td><td>14,942.40亿新台币</td><td>+50.9%（Q3）</td></tr>
+<tr><td>归母净利润</td><td>17,178.83亿新台币</td><td>约7,630.60亿新台币</td><td>+68.7%（Q3）</td></tr>
+<tr><td>毛利率</td><td>约59.9%</td><td>66.40%</td><td>持续提升</td></tr>
+<tr><td>营业利润率</td><td>约50.8%</td><td>58.70%</td><td>持续提升</td></tr>
+<tr><td>净利率</td><td>约45.1%</td><td>51.10%</td><td>持续提升</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">2025年利润率根据年度财务报表计算，2026年第三季度采用公司公告数据。[1][2]</p>
+<div class="grid md:grid-cols-2 gap-5 mt-6">
+<div class="p-5 rounded-xl bg-primary-50 dark:bg-primary-900/30">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2">增长驱动因素</h4>
+<ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2"><li>• AI加速器及数据中心芯片需求增长。</li><li>• 先进制程产品组合持续优化。</li><li>• 2纳米技术进入量产爬坡阶段。</li><li>• 先进封装产能与高端客户需求同步扩张。</li></ul>
+</div>
+<div class="p-5 rounded-xl bg-accent-50 dark:bg-accent-900/30">
+<h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-2">财务压力来源</h4>
+<ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2"><li>• 资本开支达到历史高位。</li><li>• 海外制造基地成本高于台湾成熟产能。</li><li>• 新制程前期折旧和研发支出较大。</li><li>• 设备交付和供应链瓶颈可能影响产能释放。</li></ul>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">3. 技术护城河：制造工艺、规模经济与客户信任形成复合壁垒</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
+台积电的护城河并非仅仅来自某一代制程节点，而是先进工艺、制造良率、客户协同、专利技术、供应商网络、资本投入及工程师经验的组合。先进制程研发投入巨大，且需要长期积累；客户从一家代工厂转移至另一家代工厂，涉及重新设计、验证、量产爬坡及供应链适配，迁移成本极高。
+</p>
+<div class="space-y-5">
+<div><div class="flex justify-between mb-2"><span class="text-sm font-medium">先进制程技术领先</span><strong class="text-primary-600">98/100</strong></div><div class="moat-bar"><span style="width:98%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm font-medium">规模经济与制造良率</span><strong class="text-primary-600">96/100</strong></div><div class="moat-bar"><span style="width:96%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm font-medium">客户信任与转换成本</span><strong class="text-primary-600">97/100</strong></div><div class="moat-bar"><span style="width:97%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm font-medium">先进封装及系统整合</span><strong class="text-primary-600">94/100</strong></div><div class="moat-bar"><span style="width:94%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm font-medium">全球制造与供应链韧性</span><strong class="text-primary-600">85/100</strong></div><div class="moat-bar"><span style="width:85%"></span></div></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">研究者定性评分，不代表公司官方数据或量化市场份额。</p>
+</div>
+
+<div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">4. 关联企业与员工激励：组织生态的稳定器</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+GUC提供芯片设计服务，VIS及其他参股公司补充成熟制程能力，VisEra和Xintec支持影像传感器及封装生态，海外制造子公司则为区域供应链提供保障。台积电并不依靠关联企业之间的资本循环创造增长，而是通过产业链协同强化主业竞争力。
+</p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+员工利润分享、ESPP和限制性股票计划将技术人才的收益与公司长期发展联系起来。对先进制程企业而言，技术团队的稳定性、经验传承和研发效率，往往比短期人员成本控制更重要。
+</p>
+</div>
+
+<div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">5. 主要风险：高增长环境下的结构性挑战</h3>
+<div class="space-y-5">
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<h4 class="font-semibold text-accent-800 dark:text-accent-200 mb-2"><i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1"></i>地缘政治与供应链集中风险</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300">台湾仍是台积电最重要的先进制造和研发基地。地缘政治、贸易限制、出口管制及区域安全局势可能对制造连续性、客户订单和估值产生重大影响。海外建厂有助于缓释风险，但不能立即替代台湾成熟的供应链生态。</p>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<h4 class="font-semibold text-primary-800 dark:text-primary-200 mb-2"><i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1"></i>资本开支与折旧风险</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300">2026年资本预算达到600亿—640亿美元，未来数年资本投入继续提高。如果AI需求增速低于预期、客户削减订单或新产能利用率不足，可能导致折旧费用增加、自由现金流承压和投资回报率下降。</p>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<h4 class="font-semibold text-accent-800 dark:text-accent-200 mb-2"><i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1"></i>技术迭代和良率风险</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300">2纳米及后续制程研发和量产需要持续投入。如果良率爬坡、设备交付、材料供应或技术节点转换出现问题，将影响产品成本、客户交付和竞争优势。</p>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<h4 class="font-semibold text-primary-800 dark:text-primary-200 mb-2"><i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1"></i>客户集中与AI周期风险</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300">高性能计算与智能手机仍是重要终端需求来源。AI相关资本开支如果进入调整周期，可能通过芯片设计公司、云计算企业及服务器供应链传导至晶圆订单。</p>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<h4 class="font-semibold text-accent-800 dark:text-accent-200 mb-2"><i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1"></i>海外扩张与组织管理风险</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300">美国、日本和欧洲制造基地面临不同的劳动力成本、管理文化、政府政策和供应商体系。跨区域运营可能增加管理复杂度和成本，并对集团整体利润率形成压力。</p>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<h4 class="font-semibold text-primary-800 dark:text-primary-200 mb-2"><i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1"></i>职业经理人接班风险</h4>
+<p class="text-sm text-gray-700 dark:text-gray-300">创始人退休后，台积电已经建立专业经理人治理结构，但先进制程、资本预算、客户关系和技术路线需要高度协同。未来管理层接班质量仍是长期治理的重要观察点。</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">6. 未来12—24个月重点跟踪指标</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>观察指标</th><th>重要性</th><th>重点跟踪内容</th><th>积极信号</th><th>负面信号</th></tr></thead>
+<tbody>
+<tr><td>2纳米量产</td><td>极高</td><td>产能爬坡、良率、客户采用情况</td><td>订单和良率同步提升</td><td>良率不达预期、延期</td></tr>
+<tr><td>先进封装</td><td>极高</td><td>CoWoS及SoIC产能与订单</td><td>产能利用率高、需求持续</td><td>客户需求下修</td></tr>
+<tr><td>AI相关收入</td><td>极高</td><td>HPC营收占比和订单增长</td><td>AI收入增长持续超预期</td><td>客户资本支出收缩</td></tr>
+<tr><td>毛利率</td><td>高</td><td>海外厂成本及先进制程折旧</td><td>维持高位并改善</td><td>扩产后利润率持续下降</td></tr>
+<tr><td>资本开支回报</td><td>高</td><td>投资回收周期、自由现金流</td><td>现金流与利润同步增长</td><td>投资增加但现金流恶化</td></tr>
+<tr><td>全球化运营</td><td>高</td><td>美国、日本、欧洲工厂进展</td><td>成本改善、良率稳定</td><td>建设延期、成本超支</td></tr>
+<tr><td>管理层接班</td><td>中高</td><td>高管梯队及研发团队稳定性</td><td>核心人才持续留任</td><td>关键人员集中离职</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="card-interactive p-8 bg-primary-50/70 dark:bg-primary-900/30 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-5">综合研究评分</h3>
+<div class="space-y-5">
+<div><div class="flex justify-between mb-2"><span class="text-sm">公司治理与制度化程度</span><strong class="text-primary-600">94/100</strong></div><div class="moat-bar"><span style="width:94%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm">技术竞争壁垒</span><strong class="text-primary-600">98/100</strong></div><div class="moat-bar"><span style="width:98%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm">资本配置与盈利能力</span><strong class="text-primary-600">93/100</strong></div><div class="moat-bar"><span style="width:93%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm">员工激励与人才体系</span><strong class="text-primary-600">91/100</strong></div><div class="moat-bar"><span style="width:91%"></span></div></div>
+<div><div class="flex justify-between mb-2"><span class="text-sm">供应链及地缘政治韧性</span><strong class="text-primary-600">78/100</strong></div><div class="moat-bar"><span style="width:78%"></span></div></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-4">研究者综合评价，仅用于公司治理与经营体系比较，不是股票投资评级。</p>
+</div>
+
+<div class="mt-8 pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<h3 class="font-bold text-primary-800 dark:text-primary-200 mb-3"><i data-lucide="lightbulb" class="inline-block w-5 h-5 mr-1"></i>一句话总结</h3>
+<p class="text-base font-semibold text-primary-900 dark:text-primary-100 leading-relaxed">
+台积电的真正护城河，不是某位创始人的控制权，也不是单一制程节点，而是将技术研发、先进制造、客户信任、全球资本和专业人才组织成一套难以复制的产业基础设施；未来能否在AI超级周期中保持高资本回报，并控制全球化扩张的成本与地缘政治风险，将决定其下一个十年的竞争优势。
+</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">本页面为台积电公司治理与资本体系专题研究，结合公司年报、季度财务报告、SEC申报文件、公司公告及公开市场数据，分析创始人及管理层、股本、股权结构、关联企业及员工激励机制。</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 mb-4">研究范围与数据口径</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 研究基准日：2026年11月24日</li>
+<li>• 最新完整财年：2025年度</li>
+<li>• 最新季度财报：2026年第三季度</li>
+<li>• 股权数据：年报及第三方公开持仓资料</li>
+<li>• 资本市场数据：2026年11月23日市场快照</li>
+<li>• 金额单位：新台币亿元，另有说明除外</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">本页面仅供教育、研究及信息参考，不构成证券投资建议、买卖要约或收益保证。公司治理分析及评分包含研究者判断。股价、市值、股东持仓及企业财务数据可能发生变化，应以公司最新公告、法定申报文件和交易所披露为准。</p>
+</div>
+</div>
+
+<div class="mt-9 pt-7 border-t border-gray-700">
+<h3 class="text-sm font-semibold text-primary-300 mb-4">主要资料来源与原始文件</h3>
+<div class="grid md:grid-cols-2 gap-x-8 gap-y-3 text-xs text-gray-400">
+<div><a class="source-link" href="https://investor.tsmc.com/static/annualReports/2025/english/index.html" target="_blank" rel="noopener">[1] 台积电2025年年度报告（官方）</a></div>
+<div><a class="source-link" href="https://pr.tsmc.com/english/news/3346" target="_blank" rel="noopener">[2] 台积电2026年第三季度业绩公告（2026-10-15）</a></div>
+<div><a class="source-link" href="https://investor.tsmc.com/english/board-of-directors" target="_blank" rel="noopener">[3] 台积电董事会及管理层官方资料</a></div>
+<div><a class="source-link" href="https://investor.tsmc.com/english/quarterly-results/2026/q3" target="_blank" rel="noopener">[4] 台积电2026年第三季度业绩及经营指引</a></div>
+<div><a class="source-link" href="https://investor.tsmc.com/sites/ir/financial-report/2026/TSMC%202026Q3%20Consolidated%20Financial%20Statements_E_0_0.pdf" target="_blank" rel="noopener">[5] 2026年第三季度合并财务报表</a></div>
+<div><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1046179/000104617926000801/a2026q3consolidatedreport-.htm" target="_blank" rel="noopener">[6] SEC 2026年第三季度财务申报文件</a></div>
+<div><a class="source-link" href="https://stockanalysis.com/stocks/tsm/" target="_blank" rel="noopener">[7] TSM市场行情及市值参考</a></div>
+<div><a class="source-link" href="https://investor.tsmc.com/english/faq" target="_blank" rel="noopener">[8] 台积电投资者关系：主要股东及上市信息</a></div>
+<div><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm" target="_blank" rel="noopener">[9] 台积电2025年Form 20-F：股权投资及子公司</a></div>
+<div><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1046179/000104617926000024/a2025q4consolidatedreport-.htm" target="_blank" rel="noopener">[10] 台积电2025年关联交易披露</a></div>
+<div><a class="source-link" href="https://investor.tsmc.com/sites/ir/financial-report/2025/TSMC%202025Q4%20Consolidated%20Financial%20Statements_E.pdf" target="_blank" rel="noopener">[11] 台积电2025年员工利润分享及财务报表</a></div>
+<div><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm" target="_blank" rel="noopener">[12] 台积电2025年Form 20-F：ESPP与薪酬政策</a></div>
+<div><a class="source-link" href="https://www.tsmc.com/english/aboutTSMC" target="_blank" rel="noopener">[13] 台积电公司历史及业务介绍</a></div>
+<div><a class="source-link" href="https://investor.tsmc.com/english/quarterly-results/2026/q3" target="_blank" rel="noopener">[14] 台积电2026年第三季度管理层报告及业绩资料</a></div>
+</div>
+<p class="text-xs text-gray-500 mt-6">注：部分股东比例、关联企业持股和交易金额采用不同报告时点或母公司单体披露口径，不能直接与合并财务数据相加。涉及关联交易的原币种和金额应以原始财务报表附注为最终依据。</p>
+</div>
+
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 台积电体系全景研究。保留所有权利。</p>
+<p class="mt-2">TSMC Corporate Governance · Capital Structure · Strategic Research</p>
+</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const winScroll=document.body.scrollTop||document.documentElement.scrollTop;
+ const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const scrolled=height>0?(winScroll/height)*100:0;
+ document.getElementById('progressBar').style.width=scrolled+'%';
+});
+document.addEventListener('DOMContentLoaded',function(){
+ if(localStorage.getItem('tsmc-theme')==='dark'){
+  document.documentElement.classList.add('dark');
+  document.getElementById('sunIcon').style.display='block';
+  document.getElementById('moonIcon').style.display='none';
+ }
+ lucide.createIcons();
+ AOS.init({duration:800,once:true,offset:60});
+ document.querySelectorAll('#mobileMenu a').forEach(link=>{
+  link.addEventListener('click',closeMobileMenu);
+ });
+ document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click',function(){
+   const target=document.querySelector(this.getAttribute('href'));
+   if(target){target.setAttribute('tabindex','-1');}
+  });
+ });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

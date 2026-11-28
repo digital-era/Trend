@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="英特尔 INTC 近一个月最新走势归因与操作指引：股价、基本面催化、技术位与情景交易策略。">
+  <title>英特尔 INTC｜最新走势归因与操作指引｜2026-11-24</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'Noto Sans SC', 'sans-serif'],
+            mono: ['DM Mono', 'monospace']
+          },
+          colors: {
+            ink: '#111827',
+            paper: '#f5f7fa',
+            accent: '#2563eb',
+            bullish: '#059669',
+            bearish: '#dc2626',
+            gold: '#d97706'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: light; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { font-family: 'DM Sans','Noto Sans SC',sans-serif; }
+    .dark { color-scheme: dark; }
+    .dark body { background:#090f1c; color:#e5e7eb; }
+    .glass { background:rgba(255,255,255,.82); backdrop-filter:blur(14px); }
+    .dark .glass { background:rgba(15,23,42,.88); }
+    .panel { background:#fff; border:1px solid #e5e7eb; border-radius:16px; }
+    .dark .panel { background:#111c2e; border-color:#263449; }
+    .muted { color:#64748b; }
+    .dark .muted { color:#94a3b8; }
+    .metric { font-family:'DM Mono',monospace; letter-spacing:-.04em; }
+    .nav-link.active { color:#2563eb; background:rgba(37,99,235,.09); }
+    .dark .nav-link.active { color:#93c5fd; background:rgba(59,130,246,.15); }
+    .bar { height:8px; border-radius:99px; background:#e2e8f0; overflow:hidden; }
+    .dark .bar { background:#334155; }
+    .bar > span { display:block; height:100%; border-radius:99px; }
+    .section-kicker { font:500 11px 'DM Mono',monospace; letter-spacing:.15em; color:#64748b; text-transform:uppercase; }
+    .dark .section-kicker { color:#94a3b8; }
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; min-width:620px; }
+    th,td { padding:12px 14px; border-bottom:1px solid #e5e7eb; text-align:left; font-size:13px; vertical-align:top; }
+    .dark th,.dark td { border-color:#29364a; }
+    th { color:#64748b; font-weight:600; background:rgba(148,163,184,.08); }
+    .dark th { color:#94a3b8; }
+    .source { color:#2563eb; text-decoration:underline; text-underline-offset:3px; }
+    .dark .source { color:#93c5fd; }
+    .pill { display:inline-flex; align-items:center; padding:4px 9px; border-radius:99px; font-size:11px; font-weight:700; }
+    .pill-red { background:#fee2e2; color:#b91c1c; }
+    .pill-green { background:#d1fae5; color:#047857; }
+    .pill-amber { background:#fef3c7; color:#92400e; }
+    .dark .pill-red { background:#451a1a; color:#fca5a5; }
+    .dark .pill-green { background:#064e3b; color:#6ee7b7; }
+    .dark .pill-amber { background:#422006; color:#fcd34d; }
+    .fade-in { animation:fade .65s ease both; }
+    @keyframes fade { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+    @media print {
+      header,.no-print,#progress { display:none!important; }
+      body { background:#fff!important; color:#111827!important; }
+      .panel { break-inside:avoid; }
+    }
+  </style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-paper text-ink dark:bg-slate-950 dark:text-slate-100">
+  <div id="progress" class="fixed top-0 left-0 z-[60] h-1 bg-blue-600" style="width:0%"></div>
+
+  <header class="glass sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-blue-700 text-white flex items-center justify-center font-extrabold">I</div>
+        <div>
+          <div class="font-extrabold tracking-tight text-sm">EQUITY INTELLIGENCE</div>
+          <div class="text-[10px] muted tracking-widest">BUY-SIDE RESEARCH</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1 text-xs font-semibold">
+        <a class="nav-link rounded-lg px-3 py-2" href="#overview">核心结论</a>
+        <a class="nav-link rounded-lg px-3 py-2" href="#market">行情复盘</a>
+        <a class="nav-link rounded-lg px-3 py-2" href="#drivers">涨跌归因</a>
+        <a class="nav-link rounded-lg px-3 py-2" href="#fundamentals">基本面</a>
+        <a class="nav-link rounded-lg px-3 py-2" href="#technical">技术结构</a>
+        <a class="nav-link rounded-lg px-3 py-2" href="#strategy">操作策略</a>
+        <a class="nav-link rounded-lg px-3 py-2" href="#risk">风险监控</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="themeBtn" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="切换主题"><i data-lucide="moon" class="w-4 h-4"></i></button>
+        <button onclick="window.print()" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-semibold"><i data-lucide="printer" class="w-4 h-4"></i>打印报告</button>
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="菜单"><i data-lucide="menu" class="w-5 h-5"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden lg:hidden px-4 pb-3 border-t border-slate-200 dark:border-slate-800">
+      <div class="grid grid-cols-2 gap-1 pt-2 text-sm">
+        <a class="nav-link p-2 rounded-lg" href="#overview">核心结论</a>
+        <a class="nav-link p-2 rounded-lg" href="#market">行情复盘</a>
+        <a class="nav-link p-2 rounded-lg" href="#drivers">涨跌归因</a>
+        <a class="nav-link p-2 rounded-lg" href="#fundamentals">基本面</a>
+        <a class="nav-link p-2 rounded-lg" href="#technical">技术结构</a>
+        <a class="nav-link p-2 rounded-lg" href="#strategy">操作策略</a>
+        <a class="nav-link p-2 rounded-lg" href="#risk">风险监控</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+    <section class="mb-8 fade-in">
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        <span class="pill pill-amber">高波动 / 事件驱动</span>
+        <span class="text-xs muted">美股 · 半导体 · IDM / 晶圆代工</span>
+        <span class="text-xs muted">报告日期：2026-11-24</span>
+      </div>
+      <div class="grid lg:grid-cols-[1.5fr_.7fr] gap-6 items-end">
+        <div>
+          <div class="section-kicker mb-2">LATEST PRICE ACTION & TRADING PLAYBOOK</div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-3">英特尔 <span class="text-blue-600">Intel</span></h1>
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="text-2xl font-bold metric">NASDAQ: INTC</span>
+            <span class="text-sm muted">近一个月走势归因与操作指引</span>
+          </div>
+          <p class="muted text-sm mt-4 max-w-3xl leading-7">
+            核心矛盾：18A 外部客户与先进封装合作带来长期制造业务重估机会，但短期收入指引、PC 需求疲软、资本开支与现金流压力仍构成估值约束。11月23日的强劲反弹改善了短线情绪，却尚不足以证明基本面反转。
+          </p>
+        </div>
+        <div class="panel p-5">
+          <div class="text-xs muted mb-2">最新完整交易日收盘 · 2026-11-23</div>
+          <div class="text-4xl font-extrabold metric">$58.34</div>
+          <div class="flex items-center gap-2 mt-2 text-emerald-600 font-bold">
+            <i data-lucide="trending-up" class="w-4 h-4"></i>
+            <span class="metric">+13.77%</span>
+            <span class="text-xs font-medium">较前收盘</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mt-5 pt-4 border-t border-slate-200 dark:border-slate-700 text-xs">
+            <div><div class="muted">当日区间</div><div class="font-semibold metric mt-1">$56.68–59.13</div></div>
+            <div><div class="muted">成交量</div><div class="font-semibold metric mt-1">39.15M 股</div></div>
+            <div><div class="muted">当日开盘</div><div class="font-semibold metric mt-1">$59.00</div></div>
+            <div><div class="muted">前一交易日</div><div class="font-semibold metric mt-1">$51.28</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="mb-12">
+      <div class="flex items-end justify-between mb-4">
+        <div><div class="section-kicker">01 / EXECUTIVE VIEW</div><h2 class="text-2xl font-extrabold mt-1">核心结论</h2></div>
+        <span class="text-xs muted">观察窗口：2026-10-23 至 2026-11-23</span>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 mb-4">
+        <div class="panel p-5">
+          <div class="text-xs muted mb-2">近一个月区间表现</div>
+          <div class="text-3xl metric font-bold text-red-600">-32.91%</div>
+          <p class="text-xs muted mt-2 leading-5">由10月23日收盘 $86.96 至11月23日收盘 $58.34 计算。反弹后仍处于显著回撤状态。</p>
+        </div>
+        <div class="panel p-5">
+          <div class="text-xs muted mb-2">短线状态</div>
+          <div class="text-2xl font-bold text-amber-600">超跌修复</div>
+          <p class="text-xs muted mt-2 leading-5">11月23日大幅反弹，主要受芯片板块风险偏好回升与公司制造业务催化共同推动。</p>
+        </div>
+        <div class="panel p-5">
+          <div class="text-xs muted mb-2">中期判断</div>
+          <div class="text-2xl font-bold">等待验证</div>
+          <p class="text-xs muted mt-2 leading-5">18A客户进展值得跟踪，但需用良率、产能爬坡、客户订单与现金流证明商业化兑现。</p>
+        </div>
+      </div>
+      <div class="panel p-5 sm:p-6">
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <h3 class="font-bold">投资判断：反弹不等于反转</h3>
+          <span class="pill pill-amber">中性偏谨慎</span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div>
+            <div class="text-sm font-bold text-emerald-600 mb-2">积极因素</div>
+            <ul class="text-sm muted space-y-2 leading-6">
+              <li>• 18A-P 获得首个外部客户，制造业务外部化取得进展。</li>
+              <li>• 微软成为 EMIB 先进封装公开客户，提升先进封装商业化能见度。</li>
+              <li>• Xeon 合作与 AI 推理需求为数据中心业务提供潜在增量。</li>
+            </ul>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-red-600 mb-2">主要压力</div>
+            <ul class="text-sm muted space-y-2 leading-6">
+              <li>• Q4 收入指引低于市场预期，短期盈利弹性受限。</li>
+              <li>• PC 市场疲软预计延续至2027年上半年。</li>
+              <li>• 制造投资强度高，现金流与毛利率仍面临压力。</li>
+            </ul>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-blue-600 mb-2">交易结论</div>
+            <ul class="text-sm muted space-y-2 leading-6">
+              <li>• 不宜因单日大涨追高。</li>
+              <li>• 关注 $56.68–59.13 的突破与回踩确认。</li>
+              <li>• $51.10 是近期重要低点，失守则需重新评估风险。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="market" class="mb-12">
+      <div class="section-kicker">02 / PRICE & VOLUME</div>
+      <h2 class="text-2xl font-extrabold mt-1 mb-4">近一个月行情复盘</h2>
+      <div class="grid lg:grid-cols-[1.25fr_.75fr] gap-4">
+        <div class="panel p-5">
+          <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+            <h3 class="font-bold">关键交易日价格路径</h3>
+            <span class="text-xs muted">美元 / 收盘价</span>
+          </div>
+          <div class="h-64">
+            <canvas id="priceChart" aria-label="英特尔股价走势图"></canvas>
+          </div>
+          <p class="text-xs muted mt-3">图表使用可核实的代表性交易日收盘价，不是完整逐日行情序列。10月29日至30日出现显著跳空下跌，11月23日出现大幅反弹。</p>
+        </div>
+        <div class="panel p-5">
+          <h3 class="font-bold mb-4">关键价格节点</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center"><span class="text-sm muted">10月23日收盘</span><b class="metric">$86.96</b></div>
+            <div class="flex justify-between items-center"><span class="text-sm muted">10月28日区间高位</span><b class="metric">$95.68</b></div>
+            <div class="flex justify-between items-center"><span class="text-sm muted">10月30日收盘</span><b class="metric">$65.76</b></div>
+            <div class="flex justify-between items-center"><span class="text-sm muted">11月20日收盘</span><b class="metric">$51.28</b></div>
+            <div class="flex justify-between items-center"><span class="text-sm muted">11月20日盘中低点</span><b class="metric">$51.10</b></div>
+            <div class="flex justify-between items-center"><span class="text-sm muted">11月23日收盘</span><b class="metric text-emerald-600">$58.34</b></div>
+          </div>
+          <div class="mt-5 p-3 rounded-xl bg-slate-100 dark:bg-slate-800">
+            <div class="text-xs muted mb-1">阶段性回撤</div>
+            <div class="text-2xl font-bold metric text-red-600">-32.91%</div>
+            <div class="text-xs muted mt-1">10月23日收盘至11月23日收盘</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel p-5 mt-4">
+        <h3 class="font-bold mb-3">重要交易日明细</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>日期</th><th>收盘价</th><th>涨跌幅</th><th>成交量</th><th>市场解读</th></tr></thead>
+            <tbody>
+              <tr><td>2026-10-23</td><td class="metric">$86.96</td><td>—</td><td>—</td><td>观察窗口起点</td></tr>
+              <tr><td>2026-10-29</td><td class="metric">$92.07</td><td>—</td><td>—</td><td>业绩发布前高位区域</td></tr>
+              <tr><td>2026-10-30</td><td class="metric">$65.76</td><td class="text-red-600">约 -28.57%</td><td>约455.6M</td><td>业绩指引与现金流担忧集中定价</td></tr>
+              <tr><td>2026-11-11</td><td class="metric">$62.50</td><td>—</td><td>—</td><td>AI数据中心板块情绪带动</td></tr>
+              <tr><td>2026-11-13</td><td class="metric">$59.66</td><td>—</td><td>—</td><td>反弹后回落</td></tr>
+              <tr><td>2026-11-20</td><td class="metric">$51.28</td><td class="text-red-600">-7.97%</td><td>约208.74M</td><td>新一轮抛压，测试 $51 一带</td></tr>
+              <tr><td>2026-11-23</td><td class="metric">$58.34</td><td class="text-emerald-600">+13.77%</td><td>约39.15M</td><td>制造业务催化与板块风险偏好修复</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs muted mt-3">注：成交量为公开行情页面所示数据，可能因数据商统计口径而略有差异；表格中的“—”表示本报告未采用未经核验的数值。</p>
+      </div>
+    </section>
+
+    <section id="drivers" class="mb-12">
+      <div class="section-kicker">03 / ATTRIBUTION</div>
+      <h2 class="text-2xl font-extrabold mt-1 mb-4">股价涨跌的真实驱动因素</h2>
+      <div class="grid lg:grid-cols-2 gap-4">
+        <div class="panel p-5">
+          <div class="flex items-center gap-2 mb-4"><i data-lucide="trending-down" class="w-5 h-5 text-red-600"></i><h3 class="font-bold">下跌主因：盈利与现金流预期重估</h3></div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm font-semibold"><span>Q4业绩指引低于预期</span><span class="text-red-600">高影响</span></div>
+              <p class="text-xs muted mt-1 leading-5">公司给出的Q4收入指引为150亿至160亿美元，低于当时市场约170.7亿美元的预期；非GAAP EPS指引为0.25美元，压低短期盈利预期。</p>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm font-semibold"><span>PC需求疲软</span><span class="text-red-600">高影响</span></div>
+              <p class="text-xs muted mt-1 leading-5">管理层预计PC市场疲软至少延续至2027年上半年，客户端业务复苏节奏存在不确定性。</p>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm font-semibold"><span>制造投资与现金流压力</span><span class="text-red-600">高影响</span></div>
+              <p class="text-xs muted mt-1 leading-5">高额资本开支与先进制程爬坡投入并行，市场关注自由现金流恢复时间及外部客户订单能否覆盖投资成本。</p>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm font-semibold"><span>供应与生产约束</span><span class="text-amber-600">中高影响</span></div>
+              <p class="text-xs muted mt-1 leading-5">管理层提及制造与供应限制，AI服务器芯片供给能力受约束；以色列工厂事故也带来阶段性收入影响。</p>
+            </div>
+          </div>
+        </div>
+        <div class="panel p-5">
+          <div class="flex items-center gap-2 mb-4"><i data-lucide="trending-up" class="w-5 h-5 text-emerald-600"></i><h3 class="font-bold">反弹主因：制造业务催化与风险偏好修复</h3></div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm font-semibold"><span>18A-P外部客户突破</span><span class="text-emerald-600">高影响</span></div>
+              <p class="text-xs muted mt-1 leading-5">管理层披露先进制程18A-P获得首个外部客户。客户身份、订单规模、量产时间与经济条款尚未完整公开，现阶段更适合视为战略验证，而非已兑现利润。</p>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm font-semibold"><span>微软EMIB先进封装合作</span><span class="text-emerald-600">中高影响</span></div>
+              <p class="text-xs muted mt-1 leading-5">微软成为英特尔EMIB先进封装技术公开披露的客户，增强其先进封装业务获得外部订单的可信度。</p>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm font-semibold"><span>Xeon合作与AI推理需求</span><span class="text-emerald-600">中等影响</span></div>
+              <p class="text-xs muted mt-1 leading-5">多年度Xeon供应合作和AI推理场景为传统CPU业务提供需求支撑，但尚需后续订单、出货与利润数据确认。</p>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm font-semibold"><span>半导体板块整体反弹</span><span class="text-amber-600">高影响</span></div>
+              <p class="text-xs muted mt-1 leading-5">11月23日美股科技与半导体板块显著反弹，风险偏好回升放大了英特尔的超跌修复行情，不能将全部涨幅归因于公司独立利好。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel p-5 mt-4">
+        <h3 class="font-bold mb-3">事件传导链：从消息到估值</h3>
+        <div class="grid md:grid-cols-4 gap-3 text-center">
+          <div class="rounded-xl bg-slate-100 dark:bg-slate-800 p-4">
+            <div class="text-xs muted mb-2">第一层</div><div class="font-bold text-sm">产业事件</div><p class="text-xs muted mt-2">18A外部客户、EMIB订单、PC需求变化</p>
+          </div>
+          <div class="rounded-xl bg-slate-100 dark:bg-slate-800 p-4">
+            <div class="text-xs muted mb-2">第二层</div><div class="font-bold text-sm">经营变量</div><p class="text-xs muted mt-2">制程良率、产能利用率、产品出货与毛利率</p>
+          </div>
+          <div class="rounded-xl bg-slate-100 dark:bg-slate-800 p-4">
+            <div class="text-xs muted mb-2">第三层</div><div class="font-bold text-sm">财务结果</div><p class="text-xs muted mt-2">收入增速、资本开支、自由现金流与利润率</p>
+          </div>
+          <div class="rounded-xl bg-blue-50 dark:bg-blue-950/40 p-4">
+            <div class="text-xs text-blue-600 dark:text-blue-300 mb-2">第四层</div><div class="font-bold text-sm">估值重估</div><p class="text-xs muted mt-2">市场是否愿意给予制造平台更高估值</p>
+          </div>
+        </div>
+        <p class="text-xs muted mt-3">关键判断：目前产业事件的积极信号领先于财务兑现。估值重估能否持续，取决于第二、第三层指标能否连续改善。</p>
+      </div>
+    </section>
+
+    <section id="fundamentals" class="mb-12">
+      <div class="section-kicker">04 / FUNDAMENTALS</div>
+      <h2 class="text-2xl font-extrabold mt-1 mb-4">基本面与经营验证</h2>
+      <div class="grid md:grid-cols-4 gap-4 mb-4">
+        <div class="panel p-4"><div class="text-xs muted">Q3 2026营收</div><div class="text-2xl metric font-bold mt-2">$16.5B</div><div class="text-xs text-emerald-600 mt-1">同比 +21%</div></div>
+        <div class="panel p-4"><div class="text-xs muted">Q3 GAAP EPS</div><div class="text-2xl metric font-bold mt-2">$0.60</div><div class="text-xs muted mt-1">GAAP口径</div></div>
+        <div class="panel p-4"><div class="text-xs muted">Q3 Non-GAAP EPS</div><div class="text-2xl metric font-bold mt-2">$0.52</div><div class="text-xs muted mt-1">调整后口径</div></div>
+        <div class="panel p-4"><div class="text-xs muted">Q3 Non-GAAP毛利率</div><div class="text-2xl metric font-bold mt-2">44.1%</div><div class="text-xs muted mt-1">需跟踪后续趋势</div></div>
+      </div>
+      <div class="panel p-5">
+        <h3 class="font-bold mb-4">经营指标的投资含义</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>观察维度</th><th>当前信息</th><th>积极信号</th><th>仍需验证</th></tr></thead>
+            <tbody>
+              <tr><td class="font-semibold">收入增长</td><td>Q3收入165亿美元，同比增长21%</td><td>收入规模同比改善</td><td>Q4指引回落至150亿至160亿美元</td></tr>
+              <tr><td class="font-semibold">盈利能力</td><td>Q3非GAAP毛利率44.1%</td><td>毛利率仍具备经营修复空间</td><td>先进制程爬坡成本与产品组合影响</td></tr>
+              <tr><td class="font-semibold">先进制造</td><td>18A-P披露首个外部客户</td><td>外部客户验证迈出一步</td><td>客户身份、订单、良率、量产节奏</td></tr>
+              <tr><td class="font-semibold">先进封装</td><td>微软成为EMIB公开客户</td><td>先进封装获得外部客户背书</td><td>订单规模、产能与收入贡献</td></tr>
+              <tr><td class="font-semibold">现金流</td><td>管理层此前提示资本开支与现金流承压</td><td>若外部订单扩大，长期资本回报有望改善</td><td>自由现金流转正时间、融资与投资强度</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-5 rounded-xl bg-amber-50 dark:bg-amber-950/30 p-4">
+          <div class="font-bold text-amber-800 dark:text-amber-300 text-sm mb-1">重要区分：战略进展不等于财务兑现</div>
+          <p class="text-xs leading-6 text-amber-900 dark:text-amber-200">18A-P获得外部客户是战略层面的积极进展，但在订单金额、量产节点、良率与毛利率尚未充分披露前，不应直接将其折算为确定性利润或上调盈利预测。先进封装客户公告同样需要后续财务数据验证。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="technical" class="mb-12">
+      <div class="section-kicker">05 / TECHNICAL STRUCTURE</div>
+      <h2 class="text-2xl font-extrabold mt-1 mb-4">技术结构与关键价位</h2>
+      <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-4">
+        <div class="panel p-5">
+          <h3 class="font-bold mb-4">价格结构地图</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between text-xs"><span class="muted">远端压力区</span><b class="metric">$64.00–65.76</b></div>
+            <div class="bar"><span style="width:100%;background:#dc2626"></span></div>
+            <div class="flex justify-between text-xs"><span class="muted">短线压力区</span><b class="metric">$59.13–62.50</b></div>
+            <div class="bar"><span style="width:82%;background:#d97706"></span></div>
+            <div class="flex justify-between text-xs"><span class="muted">最新收盘</span><b class="metric text-blue-600">$58.34</b></div>
+            <div class="bar"><span style="width:76%;background:#2563eb"></span></div>
+            <div class="flex justify-between text-xs"><span class="muted">短线观察支撑</span><b class="metric">$55.00–56.68</b></div>
+            <div class="bar"><span style="width:65%;background:#059669"></span></div>
+            <div class="flex justify-between text-xs"><span class="muted">关键低点</span><b class="metric">$51.10–51.28</b></div>
+            <div class="bar"><span style="width:48%;background:#059669"></span></div>
+          </div>
+          <p class="text-xs muted mt-4">价位来自已观察到的近期高低点与收盘价，不是经过完整逐日数据计算的均线、斐波那契或自动识别支撑阻力。</p>
+        </div>
+        <div class="panel p-5">
+          <h3 class="font-bold mb-3">关键价位及交易意义</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>价位区间</th><th>性质</th><th>观察信号</th><th>策略含义</th></tr></thead>
+              <tbody>
+                <tr><td class="metric">$64.00–65.76</td><td><span class="pill pill-red">强压力</span></td><td>前期破位区域与10月30日收盘附近</td><td>若反弹至此，应观察抛压与成交量</td></tr>
+                <tr><td class="metric">$59.13–62.50</td><td><span class="pill pill-amber">近端压力</span></td><td>11月23日高点及11月中旬价格密集区域</td><td>有效站稳后才考虑进一步上行</td></tr>
+                <tr><td class="metric">$56.68–58.34</td><td><span class="pill pill-amber">多空分界观察区</span></td><td>最新交易日低点与收盘价</td><td>回踩不破并重新走强，反弹结构更健康</td></tr>
+                <tr><td class="metric">$55.00–56.68</td><td><span class="pill pill-green">短线支撑观察</span></td><td>整数区域及前期交易价格附近</td><td>观察回撤缩量与买盘承接</td></tr>
+                <tr><td class="metric">$51.10–51.28</td><td><span class="pill pill-red">关键防线</span></td><td>11月20日低点与收盘价</td><td>有效跌破意味着修复行情可能失败</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4 mt-4">
+        <div class="panel p-5">
+          <h3 class="font-bold mb-2">量价结构：反弹需要二次确认</h3>
+          <p class="text-sm muted leading-6">11月23日上涨13.77%，但成交量约3915万股，明显低于11月20日约2.087亿股的成交量。单日成交量对比受行情数据商统计口径影响，但仍提示：这次上涨更像抛压缓和与情绪修复，尚不能仅凭涨幅判断机构资金持续回流。</p>
+        </div>
+        <div class="panel p-5">
+          <h3 class="font-bold mb-2">技术指标使用边界</h3>
+          <p class="text-sm muted leading-6">本报告不展示未经完整日线序列验证的RSI、MACD、MA20/MA60及成交量均线数值。交易时建议以券商实时行情复核指标，并以收盘确认而非盘中瞬时突破作为执行依据。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="strategy" class="mb-12">
+      <div class="section-kicker">06 / ACTION PLAN</div>
+      <h2 class="text-2xl font-extrabold mt-1 mb-4">可执行操作指引</h2>
+      <div class="panel p-5 mb-4">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <h3 class="font-bold">情景交易矩阵</h3>
+          <span class="pill pill-amber">以收盘确认作为主要依据</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>情景</th><th>触发条件</th><th>操作建议</th><th>风险控制</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="pill pill-green">强势突破</span></td>
+                <td>放量突破并收于$59.13上方，随后能够守住突破区域</td>
+                <td>已有仓位可继续观察；轻仓交易者等待回踩确认后分批参与</td>
+                <td>若重新跌回突破区下方，降低仓位；不在急拉时追单</td>
+              </tr>
+              <tr>
+                <td><span class="pill pill-amber">区间震荡</span></td>
+                <td>股价在$55–59.13之间反复波动</td>
+                <td>以观察为主；仅在支撑附近出现止跌信号时考虑小仓位试探</td>
+                <td>避免频繁追涨杀跌，明确单笔最大亏损</td>
+              </tr>
+              <tr>
+                <td><span class="pill pill-red">弱势破位</span></td>
+                <td>有效跌破$55，且反弹无法重新收复；尤其是跌破$51.10</td>
+                <td>优先控制风险，暂停左侧加仓，等待新的底部结构</td>
+                <td>不以摊平成本为理由持续补仓</td>
+              </tr>
+              <tr>
+                <td><span class="pill pill-green">趋势修复</span></td>
+                <td>持续收复$62.50及$65.76，且后续回踩不破</td>
+                <td>再评估中期趋势改善，结合下一季度业绩和制造进展调整仓位</td>
+                <td>关注突破是否由基本面兑现而非板块情绪单独驱动</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="panel p-5">
+          <div class="text-xs muted mb-2">短线交易者</div>
+          <h3 class="font-bold text-lg mb-2">等待确认，不抢反弹</h3>
+          <p class="text-sm muted leading-6">关注$56.68附近回踩表现，以及$59.13突破是否有量能配合。若价格快速冲高但收盘回落，优先防范冲高回吐。</p>
+        </div>
+        <div class="panel p-5">
+          <div class="text-xs muted mb-2">波段投资者</div>
+          <h3 class="font-bold text-lg mb-2">分层建仓，设置失效点</h3>
+          <p class="text-sm muted leading-6">在趋势确认前保持较低仓位。只有当价格结构与基本面验证同步改善，才考虑逐步增加风险敞口。</p>
+        </div>
+        <div class="panel p-5">
+          <div class="text-xs muted mb-2">长期投资者</div>
+          <h3 class="font-bold text-lg mb-2">跟踪制造业务兑现</h3>
+          <p class="text-sm muted leading-6">重点观察18A客户量产、良率、外部代工收入、先进封装订单与自由现金流。不要仅依据技术反弹推导长期投资价值。</p>
+        </div>
+      </div>
+      <div class="panel p-5 mt-4">
+        <h3 class="font-bold mb-3">仓位管理参考框架</h3>
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div><div class="text-xs muted mb-1">趋势未确认</div><div class="text-2xl metric font-bold">0–20%</div><div class="text-xs muted mt-1">观察仓 / 试探仓参考</div></div>
+          <div><div class="text-xs muted mb-1">突破确认</div><div class="text-2xl metric font-bold">20–40%</div><div class="text-xs muted mt-1">逐步增加而非一次性满仓</div></div>
+          <div><div class="text-xs muted mb-1">基本面与趋势共振</div><div class="text-2xl metric font-bold">40–60%</div><div class="text-xs muted mt-1">仅适用于风险承受能力较高者</div></div>
+        </div>
+        <p class="text-xs muted mt-4">以上是风险预算示例，不是针对个人账户的投资建议。实际仓位应结合组合集中度、持仓成本、波动率、流动性及最大可承受回撤调整。</p>
+      </div>
+    </section>
+
+    <section id="risk" class="mb-12">
+      <div class="section-kicker">07 / RISK MONITOR</div>
+      <h2 class="text-2xl font-extrabold mt-1 mb-4">未来风险与催化剂跟踪</h2>
+      <div class="grid lg:grid-cols-2 gap-4">
+        <div class="panel p-5">
+          <h3 class="font-bold mb-4">正向催化剂</h3>
+          <div class="space-y-4">
+            <div class="flex gap-3"><div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="cpu" class="w-4 h-4"></i></div><div><b class="text-sm">18A / 18A-P客户进展</b><p class="text-xs muted mt-1 leading-5">客户身份、订单规模、试产与量产时间表，以及良率和成本曲线。</p></div></div>
+            <div class="flex gap-3"><div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="layers" class="w-4 h-4"></i></div><div><b class="text-sm">EMIB先进封装订单</b><p class="text-xs muted mt-1 leading-5">微软项目的交付节奏、封装产能扩张与新增客户情况。</p></div></div>
+            <div class="flex gap-3"><div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0"><i data-lucide="server" class="w-4 h-4"></i></div><div><b class="text-sm">Xeon与AI推理需求</b><p class="text-xs muted mt-1 leading-5">数据中心CPU需求、产品组合与服务器业务利润率。</p></div></div>
+          </div>
+        </div>
+        <div class="panel p-5">
+          <h3 class="font-bold mb-4">负向风险</h3>
+          <div class="space-y-4">
+            <div class="flex gap-3"><div class="w-8 h-8 rounded-lg bg-red-100 text-red-700 flex items-center justify-center shrink-0"><i data-lucide="monitor" class="w-4 h-4"></i></div><div><b class="text-sm">PC市场复苏不及预期</b><p class="text-xs muted mt-1 leading-5">关注PC厂商订单、渠道库存与处理器出货节奏。</p></div></div>
+            <div class="flex gap-3"><div class="w-8 h-8 rounded-lg bg-red-100 text-red-700 flex items-center justify-center shrink-0"><i data-lucide="factory" class="w-4 h-4"></i></div><div><b class="text-sm">制程爬坡与资本开支超预期</b><p class="text-xs muted mt-1 leading-5">若良率提升慢于预期，制造成本与现金流压力可能持续。</p></div></div>
+            <div class="flex gap-3"><div class="w-8 h-8 rounded-lg bg-red-100 text-red-700 flex items-center justify-center shrink-0"><i data-lucide="activity" class="w-4 h-4"></i></div><div><b class="text-sm">高波动与板块估值收缩</b><p class="text-xs muted mt-1 leading-5">半导体板块整体回撤可能压制个股，即使公司消息面改善也不例外。</p></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel p-5 mt-4">
+        <h3 class="font-bold mb-3">下一阶段必须核验的五项指标</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>指标</th><th>改善信号</th><th>恶化信号</th><th>投资意义</th></tr></thead>
+            <tbody>
+              <tr><td>季度收入</td><td>实际收入高于指引中值且增长质量改善</td><td>持续低于指引或需求继续下修</td><td>验证需求恢复</td></tr>
+              <tr><td>毛利率</td><td>连续季度改善</td><td>制造成本拖累扩大</td><td>验证盈利质量</td></tr>
+              <tr><td>自由现金流</td><td>现金消耗收窄并出现持续改善</td><td>资本开支上升而经营现金流不足</td><td>验证财务可持续性</td></tr>
+              <tr><td>18A外部订单</td><td>客户、量产与订单金额逐步明确</td><td>商业化时间表反复推迟</td><td>验证代工战略</td></tr>
+              <tr><td>先进封装</td><td>客户扩展、产能利用率提升</td><td>订单兑现慢于预期</td><td>验证第二增长曲线</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="section-kicker">08 / FINAL ASSESSMENT</div>
+      <h2 class="text-2xl font-extrabold mt-1 mb-4">最终研判</h2>
+      <div class="panel p-6 sm:p-8">
+        <div class="grid md:grid-cols-[1fr_auto] gap-6 items-start">
+          <div>
+            <div class="pill pill-amber mb-3">结论：短线修复，中期等待兑现</div>
+            <h3 class="text-2xl font-extrabold leading-tight mb-3">英特尔正在经历“制造战略重新定价”，但尚未完成“盈利能力重新定价”。</h3>
+            <p class="text-sm muted leading-7">
+              过去一个月的股价变化体现出市场对英特尔未来制造业务价值与现实经营压力之间的激烈博弈。10月末的业绩指引冲击使市场重新评估其盈利和现金流风险；11月下旬18A-P外部客户与EMIB合作进展，则为制造业务长期商业化提供了新的验证线索。11月23日的大幅上涨值得重视，但板块整体反弹和超跌修复同样是重要贡献因素。
+            </p>
+            <p class="text-sm muted leading-7 mt-3">
+              交易层面，$59.13附近是短线需要验证的上方关口，$56.68及$55附近是回踩观察区域，$51.10–51.28是近期关键风险防线。若股价无法在突破后维持强势，仍应将其视为高波动反弹；只有当价格结构、季度盈利、现金流和先进制造商业化进度同步改善，才更有理由提高中期判断。
+            </p>
+          </div>
+          <div class="md:w-48 rounded-2xl bg-slate-100 dark:bg-slate-800 p-5">
+            <div class="text-xs muted">当前策略标签</div>
+            <div class="text-2xl font-extrabold mt-2">观察</div>
+            <div class="text-xs muted mt-2">不追单日急涨</div>
+            <div class="border-t border-slate-300 dark:border-slate-600 mt-4 pt-4">
+              <div class="text-xs muted">关键验证价位</div>
+              <div class="metric font-bold text-lg mt-1">$59.13</div>
+              <div class="text-xs muted mt-2">风险观察位</div>
+              <div class="metric font-bold text-lg mt-1">$51.10</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <div class="section-kicker">SOURCES & METHODOLOGY</div>
+      <h2 class="text-xl font-extrabold mt-1 mb-4">数据来源与口径说明</h2>
+      <div class="panel p-5">
+        <ol class="list-decimal pl-5 space-y-3 text-sm muted leading-6">
+          <li><a class="source" href="https://www.investing.com/equities/intel-corp-historical-data" target="_blank" rel="noopener">Investing.com：INTC历史行情</a> — 用于核验2026年11月23日收盘价、涨跌幅、日内区间与成交量，以及近期交易日价格表现。</li>
+          <li><a class="source" href="https://www.stockanalysis.com/stocks/intc/history/" target="_blank" rel="noopener">StockAnalysis：Intel历史价格数据</a> — 用于交叉核对10月末与11月期间的历史价格、成交量及阶段性波动。</li>
+          <li><a class="source" href="https://www.intc.com/news-events/press-releases" target="_blank" rel="noopener">Intel Investor Relations：新闻与公告</a> — 用于核验公司业绩公告、战略合作和制造业务相关进展。</li>
+          <li><a class="source" href="https://www.intc.com/news-events/press-releases/detail/1744/intel-reports-third-quarter-2026-financial-results" target="_blank" rel="noopener">Intel：Q3 2026 Financial Results</a> — 用于核验Q3营收、EPS、毛利率及Q4业绩指引。若公司后续调整或更新披露，应以最新公告为准。</li>
+          <li><a class="source" href="https://www.reuters.com/technology/" target="_blank" rel="noopener">Reuters：科技与半导体新闻</a> — 用于核验Q4指引、PC需求、制造供应约束、资本开支及市场反应等事件背景。</li>
+          <li><a class="source" href="https://www.reuters.com/markets/us/" target="_blank" rel="noopener">Reuters：美国市场动态</a> — 用于区分英特尔公司自身催化与半导体板块、宏观风险偏好变化的影响。</li>
+        </ol>
+        <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 text-xs muted leading-6">
+          <b>口径声明：</b>报告基准日为2026年11月24日。所列最新完整交易日为2026年11月23日。股价与成交量可能因数据供应商、复权口径和交易时段统计存在小幅差异。文中关键价位是基于可核验的近期高低点和收盘价形成的交易观察区，不是保证有效的支撑阻力。未提供无法核实的实时资金流、机构净买入、目标价或技术指标读数。本文为研究分析，不构成投资建议。
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-6 text-xs muted flex flex-wrap justify-between gap-3">
+      <span>© 2026 EQUITY INTELLIGENCE · INTEL (NASDAQ: INTC)</span>
+      <span>Research date: 2026-11-24 · Currency: USD</span>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    lucide.createIcons();
+
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('intel-report-theme');
+    if (savedTheme === 'dark') root.classList.add('dark');
+    function updateThemeIcon() {
+      themeBtn.innerHTML = root.classList.contains('dark')
+        ? '<i data-lucide="sun" class="w-4 h-4"></i>'
+        : '<i data-lucide="moon" class="w-4 h-4"></i>';
+      lucide.createIcons();
+    }
+    updateThemeIcon();
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('intel-report-theme', root.classList.contains('dark') ? 'dark' : 'light');
+      updateThemeIcon();
+      if (window.priceChartInstance) updateChartTheme();
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    window.addEventListener('scroll', () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('progress').style.width =
+        (scrollable > 0 ? window.scrollY / scrollable * 100 : 0) + '%';
+    });
+
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const navLinks = [...document.querySelectorAll('.nav-link')];
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-25% 0px -65% 0px' });
+    sections.forEach(section => observer.observe(section));
+
+    const labels = ['10/23','10/26','10/27','10/28','10/29','10/30','11/02','11/03','11/04','11/05','11/06','11/09','11/10','11/11','11/12','11/13','11/16','11/17','11/18','11/19','11/20','11/23'];
+    const values = [86.96,90.47,93.74,95.53,92.07,65.76,59.97,60.55,58.27,52.25,56.28,59.37,58.13,62.50,61.20,59.66,55.47,55.17,54.67,55.72,51.28,58.34];
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    const isDark = () => root.classList.contains('dark');
+    function chartConfig() {
+      return {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: '收盘价',
+            data: values,
+            borderColor: '#2563eb',
+            backgroundColor: 'rgba(37,99,235,.10)',
+            borderWidth: 2.5,
+            pointRadius: values.map((v,i) => [0,4,20,21].includes(i) ? 4 : 1.5),
+            pointHoverRadius: 6,
+            pointBackgroundColor: values.map((v,i) => i === 21 ? '#059669' : (i === 5 || i === 20 ? '#dc2626' : '#2563eb')),
+            fill: true,
+            tension: .25
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: c => ' $' + c.parsed.y.toFixed(2) } }
+          },
+          scales: {
+            x: { grid: { display:false }, ticks: { color: isDark() ? '#94a3b8' : '#64748b', maxRotation:0, autoSkip:true, maxTicksLimit:8 } },
+            y: { min:45, max:100, grid: { color: isDark() ? 'rgba(148,163,184,.12)' : 'rgba(100,116,139,.12)' }, ticks: { color: isDark() ? '#94a3b8' : '#64748b', callback: v => '$' + v } }
+          }
+        }
+      };
+    }
+    window.priceChartInstance = new Chart(ctx, chartConfig());
+    function updateChartTheme() {
+      const chart = window.priceChartInstance;
+      chart.options.scales.x.ticks.color = isDark() ? '#94a3b8' : '#64748b';
+      chart.options.scales.y.ticks.color = isDark() ? '#94a3b8' : '#64748b';
+      chart.options.scales.y.grid.color = isDark() ? 'rgba(148,163,184,.12)' : 'rgba(100,116,139,.12)';
+      chart.update();
+    }
+  </script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

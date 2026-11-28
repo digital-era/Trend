@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="特斯拉 TSLA 近一个月走势归因、量价资金分析与交易操作指引，截至2026年11月24日">
+<title>特斯拉最新走势归因与操作指引｜TSLA｜2026-11-24</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: { colors: {
+    primary: {
+      50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+      300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+      600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+      900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+    },
+    accent: {
+      50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+      300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+      600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+      900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+    }
+  }}}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:88px}
+body{font-feature-settings:"tnum"}
+.btn-interactive{transition:all .2s ease}
+.btn-interactive:hover{transform:scale(1.04)}
+.card-interactive{transition:all .25s ease}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 16px 30px -12px rgba(0,0,0,.2)}
+.dark .card-interactive:hover{box-shadow:0 16px 30px -12px rgba(0,0,0,.65)}
+.driver-bar{height:9px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .driver-bar{background:#374151}
+.driver-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+table{width:100%;border-collapse:collapse}
+th,td{padding:.75rem;text-align:left;vertical-align:top;border-bottom:1px solid #e5e7eb}
+th{white-space:nowrap;font-size:.75rem}
+.dark th,.dark td{border-color:#374151}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.price-tag{font-variant-numeric:tabular-nums}
+.bg-grid{background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,.055) 1px,transparent 0);background-size:24px 24px}
+.dark .bg-grid{background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.055) 1px,transparent 0)}
+.ref-tag{font-size:10px;opacity:.65;margin-left:3px;font-family:monospace}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:3px 9px;font-size:11px;font-weight:700}
+.price-level{border-radius:10px;padding:11px 12px;border:1px solid}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+<script>
+(function initTheme(){
+ try{
+  if(window.self!==window.top||window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.classList.add('dark');
+ }catch(e){document.documentElement.classList.add('dark')}
+})();
+function syncThemeIcons(){
+ const dark=document.documentElement.classList.contains('dark');
+ const s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+ if(s)s.style.display=dark?'block':'none';
+ if(m)m.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){document.documentElement.classList.toggle('dark');syncThemeIcons()}
+function toggleMobileMenu(){document.getElementById('mobileMenu')?.classList.toggle('mobile-menu-open')}
+function filterEvents(type){
+ document.querySelectorAll('.event-card').forEach(el=>{
+  el.style.display=(type==='all'||el.dataset.type===type)?'block':'none';
+ });
+ document.querySelectorAll('[data-filter]').forEach(b=>{
+  b.classList.toggle('bg-primary-500',b.dataset.filter===type);
+  b.classList.toggle('text-white',b.dataset.filter===type);
+ });
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0d1219] text-gray-900 dark:text-gray-100 min-h-screen bg-grid transition-colors duration-200">
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[70]" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-white/90 dark:bg-[#111827]/90 border-b border-primary-500/20 dark:border-gray-800">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+  <div class="flex items-center justify-between gap-3">
+   <div class="flex items-center gap-2.5">
+    <span class="w-2.5 h-2.5 rounded-full bg-primary-500"></span>
+    <div>
+     <div class="text-sm sm:text-lg font-black text-primary-700 dark:text-primary-300">特斯拉 <span class="font-mono text-xs sm:text-sm text-gray-500">TSLA · NASDAQ</span></div>
+     <div class="text-[10px] text-gray-400 tracking-widest">PRICE ACTION · BUY-SIDE RESEARCH</div>
+    </div>
+   </div>
+   <nav class="hidden md:flex items-center gap-5">
+    <a href="#overview" class="text-sm hover:text-primary-500">走势总览</a>
+    <a href="#phases" class="text-sm hover:text-primary-500">阶段复盘</a>
+    <a href="#drivers" class="text-sm hover:text-primary-500">涨跌归因</a>
+    <a href="#technicals" class="text-sm hover:text-primary-500">量价技术</a>
+    <a href="#strategy" class="text-sm hover:text-primary-500">操作策略</a>
+   </nav>
+   <div class="flex items-center gap-2">
+    <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-gray-100 dark:bg-gray-800" aria-label="菜单"><i data-lucide="menu" class="w-4 h-4"></i></button>
+    <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+   <nav class="flex flex-col gap-3 text-sm">
+    <a href="#overview" onclick="toggleMobileMenu()">走势总览</a>
+    <a href="#phases" onclick="toggleMobileMenu()">阶段复盘</a>
+    <a href="#drivers" onclick="toggleMobileMenu()">涨跌归因</a>
+    <a href="#technicals" onclick="toggleMobileMenu()">量价技术</a>
+    <a href="#strategy" onclick="toggleMobileMenu()">操作策略</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main class="pt-24 pb-16 max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+
+<section id="overview" data-aos="fade-up">
+ <div class="rounded-2xl overflow-hidden bg-white dark:bg-[#161f2c] border border-gray-200 dark:border-gray-800 shadow-sm">
+  <div class="p-6 sm:p-8 relative">
+   <div class="absolute right-0 top-0 w-64 h-64 rounded-full bg-primary-500/5 blur-3xl pointer-events-none"></div>
+   <div class="flex flex-wrap justify-between gap-4 relative">
+    <div>
+     <div class="flex flex-wrap gap-2 items-center mb-3">
+      <span class="tag bg-primary-100 dark:bg-primary-950 text-primary-700 dark:text-primary-300">量价归因 · 买方策略</span>
+      <span class="tag bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">NASDAQ · USD</span>
+      <span class="tag bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">2026-10-24 — 2026-11-24</span>
+     </div>
+     <h1 class="text-3xl sm:text-4xl font-black tracking-tight">特斯拉 <span class="text-primary-600 dark:text-primary-400">TSLA</span></h1>
+     <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">最新可核验完整交易日：2026-11-23（美东收盘）</p>
+    </div>
+    <div class="flex flex-col sm:items-end gap-2">
+     <span class="tag bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300"><i data-lucide="activity" class="w-3 h-3 mr-1"></i>急跌后强力反抽 · 高波动分歧</span>
+     <span class="text-xs text-gray-500 dark:text-gray-400">趋势判断：反弹修复，不等于中期下跌结构已反转</span>
+    </div>
+   </div>
+
+   <div class="mt-6 max-w-5xl">
+    <p class="text-sm sm:text-base leading-7 text-gray-600 dark:text-gray-300">
+     过去一个月，TSLA经历了<strong class="text-gray-900 dark:text-white">10月底冲高、11月初快速杀估值、11月上旬反弹、11月中下旬再度急跌</strong>的剧烈震荡。11月20日收盘跌至 <strong class="text-rose-600 dark:text-rose-400">$345.82</strong>，单日下跌约7.64%；11月23日受FSD v15发布与美股整体反弹推动，股价大幅回升至约 <strong class="text-emerald-600 dark:text-emerald-400">$390.45</strong>。这一反弹有明确催化，但仍需观察后续交易日能否守住突破区域、成交量能否持续，而非单日脉冲。
+    </p>
+   </div>
+
+   <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-7">
+    <div class="card-interactive rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+     <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">最新收盘价</p>
+     <p class="text-2xl font-black price-tag">$390.45</p>
+     <p class="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1">2026-11-23 · USD</p>
+    </div>
+    <div class="card-interactive rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+     <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">近一月区间涨跌幅</p>
+     <p class="text-2xl font-black text-rose-600 dark:text-rose-400">约 -0.30%</p>
+     <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">相对标普500：区间Alpha待完整核算</p>
+    </div>
+    <div class="card-interactive rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+     <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">区间最高 / 最低</p>
+     <p class="text-xl sm:text-2xl font-black price-tag">$414.23 <span class="text-gray-400">/</span> $338.15</p>
+     <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">区间振幅约 22.5%</p>
+    </div>
+    <div class="card-interactive rounded-xl bg-gray-50 dark:bg-gray-800/70 p-4 border border-gray-200 dark:border-gray-700">
+     <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">趋势定性</p>
+     <p class="text-lg sm:text-xl font-black text-amber-600 dark:text-amber-400">高波动反抽</p>
+     <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">短线修复，中期仍待确认</p>
+    </div>
+   </div>
+   <div class="mt-5 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/70 text-xs text-amber-900 dark:text-amber-200 leading-relaxed">
+    <strong>数据口径提示：</strong>截至2026-11-24，已检索到的最新完整美股日线为11月23日；11月24日盘中或收盘数据未作为已确认收盘价使用。区间收益以首个交易日10月26日收盘$391.62至11月23日收盘$390.45计算。由于不同行情供应商对11月23日数据存在盘中快照与收盘值混杂，本文以历史日线表中的$390.45作为暂定收盘参考，技术位仅作条件化交易区间，不冒充精确实时指标。
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="phases" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-5">
+  <span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center"><i data-lucide="layers" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i></span>
+  <h2 class="text-xl font-bold">一、近一月量价全景与阶段拆解</h2>
+ </div>
+
+ <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-800 mb-5">
+  <div class="flex flex-wrap justify-between gap-2 mb-3">
+   <h3 class="font-bold text-sm flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-4 h-4 text-primary-500"></i>TSLA 与美股基准表现</h3>
+   <span class="text-[11px] text-gray-400">可核验历史日线 · USD / 指数点位</span>
+  </div>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm min-w-[720px]">
+    <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-500 dark:text-gray-300">
+     <tr><th>标的</th><th>区间起点</th><th>最新完整收盘</th><th>区间涨跌幅</th><th>区间极值</th><th>量能观察</th></tr>
+    </thead>
+    <tbody class="text-gray-700 dark:text-gray-300">
+     <tr>
+      <td class="font-bold text-primary-700 dark:text-primary-300">Tesla TSLA</td>
+      <td>$391.62<br><span class="text-gray-400">10-26</span></td>
+      <td>$390.45<br><span class="text-gray-400">11-23</span></td>
+      <td class="font-bold text-rose-600 dark:text-rose-400">约 -0.30%</td>
+      <td>高 $414.23<br>低 $338.15</td>
+      <td>11-05放量急跌，11-23大幅反弹</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">S&amp;P 500</td>
+      <td>待统一口径复核</td>
+      <td>7,212.48<br><span class="text-gray-400">11-23历史表记录</span></td>
+      <td class="text-gray-500">不填未经核算值</td>
+      <td>11-20低点 6,882.66</td>
+      <td>11-20成交量显著放大，11-23指数强反弹</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">NASDAQ Composite</td>
+      <td>待统一口径复核</td>
+      <td>24,179.79<br><span class="text-gray-400">11-23历史表记录</span></td>
+      <td class="text-gray-500">不填未经核算值</td>
+      <td>11-20低点 22,513.01</td>
+      <td>11-20风险资产集中抛售，11-23大幅修复</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-[11px] text-gray-400 mt-3 leading-relaxed">
+   注：TSLA 10月26日收盘$391.62、11月23日收盘$390.45；区间最高$414.23（11月2日）、最低$338.15（11月5日）。11月23日指数数据来自历史行情页面，部分页面仍显示盘中刷新值，故不强行计算指数区间收益与Alpha。<a class="text-primary-600 underline" href="https://finance.yahoo.com/quote/TSLA/history/" target="_blank" rel="noopener">TSLA历史行情</a> · <a class="text-primary-600 underline" href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener">S&amp;P 500历史行情</a> · <a class="text-primary-600 underline" href="https://finance.yahoo.com/quote/%5EIXIC/history/" target="_blank" rel="noopener">NASDAQ历史行情</a>。
+  </p>
+ </div>
+
+ <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+  <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-t-4 border-t-amber-400">
+   <div class="flex justify-between items-center mb-3"><span class="tag bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300">波段 1 · 高位震荡</span><span class="text-[11px] text-gray-400">10-26 — 11-04</span></div>
+   <p class="text-2xl font-black price-tag text-amber-600 dark:text-amber-400">$391.62 → $385.19</p>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">阶段收盘变化约 -1.64%</p>
+   <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300 mt-3">10月底股价一度冲至$414.23，随后回落。11月2日收$403.82，11月3日回落至$398.50，11月4日收$385.19。高位换手与波动扩大，短线多头未能维持突破。</p>
+  </div>
+  <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-t-4 border-t-rose-500">
+   <div class="flex justify-between items-center mb-3"><span class="tag bg-rose-100 dark:bg-rose-950 text-rose-800 dark:text-rose-300">波段 2 · 恐慌杀跌</span><span class="text-[11px] text-gray-400">11-05 — 11-06</span></div>
+   <p class="text-2xl font-black price-tag text-rose-600 dark:text-rose-400">-10.77%</p>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">11-05单日涨跌幅口径</p>
+   <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300 mt-3">11月5日最低触及$338.15，收盘$343.69，成交量约7,967.6万股，明显高于此前常态。大幅放量下跌说明抛售并非普通缩量回调，市场风险偏好与高估值成长股仓位同时承压。</p>
+  </div>
+  <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-t-4 border-t-emerald-500">
+   <div class="flex justify-between items-center mb-3"><span class="tag bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">波段 3 · 超跌修复</span><span class="text-[11px] text-gray-400">11-06 — 11-12</span></div>
+   <p class="text-2xl font-black price-tag text-emerald-600 dark:text-emerald-400">$358.22 → $397.45</p>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">阶段收盘变化约 +10.95%</p>
+   <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300 mt-3">11月6日至12日股价连续修复，11月9日收$378.05，11月12日收$397.45。反弹期间成交量由恐慌峰值回落，反映空头回补与超跌资金回流，但尚不足以证明中期趋势重新转强。</p>
+  </div>
+  <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-t-4 border-t-primary-500">
+   <div class="flex justify-between items-center mb-3"><span class="tag bg-primary-100 dark:bg-primary-950 text-primary-800 dark:text-primary-300">波段 4 · 二次下探与急弹</span><span class="text-[11px] text-gray-400">11-13 — 11-23</span></div>
+   <p class="text-2xl font-black price-tag text-rose-600 dark:text-rose-400">$390.22 → $390.45</p>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">阶段收盘基本持平，内部振幅巨大</p>
+   <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300 mt-3">11月13日收$390.22，随后回落；11月20日单日下跌约7.64%至$345.82。11月23日因FSD v15 rollout与大盘反弹，股价回升至约$390.45，显示事件催化与系统性反弹叠加。</p>
+  </div>
+ </div>
+ <div class="mt-4 rounded-xl p-4 bg-gray-100 dark:bg-gray-800/70 text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+  <strong>行情读法：</strong>一个月首尾收盘几乎持平，并不意味着交易风险低。区间高低价差超过$76，且11月5日与11月20日出现异常放量下跌。TSLA的核心特征是高波动、高Beta与事件驱动交织，单看月度涨跌幅会掩盖中途的大幅回撤。
+ </div>
+</section>
+
+<section id="drivers" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-5">
+  <span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-950 flex items-center justify-center"><i data-lucide="git-branch" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i></span>
+  <h2 class="text-xl font-bold">二、上涨与下跌的深层根因剖析</h2>
+ </div>
+
+ <div class="grid lg:grid-cols-2 gap-5">
+  <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+   <h3 class="font-bold text-sm text-emerald-700 dark:text-emerald-300 flex items-center gap-2 mb-4"><i data-lucide="trending-up" class="w-4 h-4"></i>多头驱动：为什么能反弹</h3>
+   <div class="space-y-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+    <div class="border-l-2 border-emerald-500 pl-3">
+     <p class="font-bold text-gray-900 dark:text-white mb-1">① 11月23日：FSD v15成为直接事件催化</p>
+     <p class="leading-relaxed">特斯拉开始推送FSD Supervised v15，更新包含Reality View实时道路可视化、驾驶决策与导航体验优化、驾驶员监测及泊车能力改进。市场将其视为自动驾驶软件能力升级的信号，强化了软件订阅、Robotaxi及长期AI估值叙事。公司声称安全关键场景处理能力提升25倍，但该数字属于公司口径，缺少独立验证，不能直接等同事故率下降25倍。<span class="ref-tag">[1][2]</span></p>
+    </div>
+    <div class="border-l-2 border-emerald-500 pl-3">
+     <p class="font-bold text-gray-900 dark:text-white mb-1">② 11月23日：美股风险偏好同步修复</p>
+     <p class="leading-relaxed">当日标普500与纳斯达克均显著反弹，Tesla并非独立上涨。市场报道显示，科技股从前一周抛售中反弹，纳指涨幅显著；TSLA盘中一度上涨约12%—13%。因此，当日涨幅应拆分为“FSD事件溢价 + 高Beta市场反弹”，不能全部归因于公司基本面改善。<span class="ref-tag">[2][3]</span></p>
+    </div>
+    <div class="border-l-2 border-emerald-500 pl-3">
+     <p class="font-bold text-gray-900 dark:text-white mb-1">③ 自动驾驶商业化预期仍是估值核心变量</p>
+     <p class="leading-relaxed">市场对FSD迭代、Robotaxi扩张与Cybercab量产的关注，意味着TSLA估值不再只由汽车交付量决定。若软件渗透率、付费订阅、无人驾驶运营里程和单位经济模型持续改善，估值有机会从汽车制造商向AI/出行平台重新定价；但目前需要用收入和运营数据验证，而非仅凭发布版本号。<span class="ref-tag">[4]</span></p>
+    </div>
+   </div>
+  </div>
+
+  <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+   <h3 class="font-bold text-sm text-rose-700 dark:text-rose-300 flex items-center gap-2 mb-4"><i data-lucide="trending-down" class="w-4 h-4"></i>空头压制：为什么反弹反复受挫</h3>
+   <div class="space-y-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+    <div class="border-l-2 border-rose-500 pl-3">
+     <p class="font-bold text-gray-900 dark:text-white mb-1">① 11月5日：异常放量下跌，体现集中去风险</p>
+     <p class="leading-relaxed">11月5日收盘$343.69，成交量约7,967.6万股，约为11月4日成交量的1.67倍。日内最低$338.15。如此规模的成交与跌幅，表明高估值成长股出现集中抛售与流动性冲击；在缺少可靠单一公司公告解释的情况下，不应把这一天武断归因于某一条特斯拉新闻。<span class="ref-tag">[5]</span></p>
+    </div>
+    <div class="border-l-2 border-rose-500 pl-3">
+     <p class="font-bold text-gray-900 dark:text-white mb-1">② 11月19—20日：风险资产同步下挫，TSLA跌幅放大</p>
+     <p class="leading-relaxed">11月20日TSLA收跌约7.64%至$345.82，成交约4,599万股；同日标普500下跌约3.70%，纳斯达克下跌约5.28%。Tesla跌幅显著大于宽基指数，说明系统性风险冲击之外，还存在高Beta、估值弹性和个股仓位拥挤所造成的放大效应。<span class="ref-tag">[6][7]</span></p>
+    </div>
+    <div class="border-l-2 border-rose-500 pl-3">
+     <p class="font-bold text-gray-900 dark:text-white mb-1">③ 自动驾驶监管与安全责任仍是折价项</p>
+     <p class="leading-relaxed">FSD v15升级并不意味着监管风险消失。美国监管机构此前针对FSD相关车辆安全问题开展调查；FSD Supervised仍需驾驶员持续监督。若事故、召回、功能限制或监管审查加剧，软件商业化节奏及估值溢价可能受到压制。<span class="ref-tag">[1][8]</span></p>
+    </div>
+    <div class="border-l-2 border-rose-500 pl-3">
+     <p class="font-bold text-gray-900 dark:text-white mb-1">④ 高估值对远期兑现要求高</p>
+     <p class="leading-relaxed">市场给予Tesla的估值包含大量自动驾驶、Robotaxi和AI远期预期。若汽车毛利率、交付增长或软件付费渗透未能跟上预期，市场容易在风险偏好转弱时压缩估值倍数。11月23日强反弹仍无法单独证明盈利预期已经上修。</p>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 mt-5">
+  <h3 class="font-bold text-sm mb-5 flex items-center gap-2"><i data-lucide="pie-chart" class="w-4 h-4 text-accent-500"></i>本月走势归因权重矩阵（研究判断，合计100%）</h3>
+  <div class="space-y-4">
+   <div>
+    <div class="flex justify-between text-xs mb-1.5"><span class="font-semibold">个股基本面与公司事件驱动</span><b class="text-primary-600 dark:text-primary-400">35%</b></div>
+    <div class="driver-bar"><div class="driver-fill" style="width:35%"></div></div>
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">FSD v15与自动驾驶商业化叙事支撑反弹，但经营数据兑现仍需验证。</p>
+   </div>
+   <div>
+    <div class="flex justify-between text-xs mb-1.5"><span class="font-semibold">行业景气度与板块情绪轮动</span><b class="text-primary-600 dark:text-primary-400">25%</b></div>
+    <div class="driver-bar"><div class="driver-fill" style="width:25%"></div></div>
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">AI与自动驾驶主题提供估值弹性，科技成长股风险偏好变化影响资金方向。</p>
+   </div>
+   <div>
+    <div class="flex justify-between text-xs mb-1.5"><span class="font-semibold">宏观利率、汇率与大盘Beta冲击</span><b class="text-primary-600 dark:text-primary-400">40%</b></div>
+    <div class="driver-bar"><div class="driver-fill" style="width:40%"></div></div>
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">11月中下旬美股科技股波动与指数大幅回撤，对TSLA造成显著放大影响；11月23日市场反弹又反向放大涨幅。</p>
+   </div>
+  </div>
+  <p class="text-[11px] text-gray-400 mt-4">权重为对本月价格波动解释力的主观拆分，不是回归模型结果，也不是对未来收益的概率预测。</p>
+ </div>
+
+ <div class="mt-5 grid md:grid-cols-3 gap-3">
+  <div class="rounded-xl bg-gray-100 dark:bg-gray-800/70 p-4">
+   <p class="text-xs font-bold mb-1">基本面趋势</p>
+   <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">自动驾驶软件迭代持续推进，长期商业化空间存在；但不能用技术发布替代收入、利润率和现金流验证。</p>
+  </div>
+  <div class="rounded-xl bg-gray-100 dark:bg-gray-800/70 p-4">
+   <p class="text-xs font-bold mb-1">短期交易情绪</p>
+   <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">11月5日与11月20日两次放量下跌，11月23日强势反抽，说明筹码博弈激烈、波动率处于高位。</p>
+  </div>
+  <div class="rounded-xl bg-gray-100 dark:bg-gray-800/70 p-4">
+   <p class="text-xs font-bold mb-1">策略结论</p>
+   <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">不把单日大涨等同趋势反转。等待关键价位回踩确认或放量突破，再决定是否增加风险敞口。</p>
+  </div>
+ </div>
+</section>
+
+<section id="technicals" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-5">
+  <span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center"><i data-lucide="activity" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i></span>
+  <h2 class="text-xl font-bold">三、资金行为与技术面关键位诊断</h2>
+ </div>
+
+ <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+   <p class="text-[11px] text-gray-500">11-05 成交量</p>
+   <p class="text-xl font-black price-tag text-rose-600 dark:text-rose-400">79.68M</p>
+   <p class="text-[11px] text-gray-400">股 · 恐慌放量</p>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+   <p class="text-[11px] text-gray-500">11-20 成交量</p>
+   <p class="text-xl font-black price-tag text-rose-600 dark:text-rose-400">45.99M</p>
+   <p class="text-[11px] text-gray-400">股 · 再度放量下跌</p>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+   <p class="text-[11px] text-gray-500">11-23 成交量</p>
+   <p class="text-xl font-black price-tag text-emerald-600 dark:text-emerald-400">约21.45M</p>
+   <p class="text-[11px] text-gray-400">股 · 数据源日线记录</p>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+   <p class="text-[11px] text-gray-500">短线结构</p>
+   <p class="text-xl font-black text-amber-600 dark:text-amber-400">反弹待确认</p>
+   <p class="text-[11px] text-gray-400">尚未确认中期反转</p>
+  </div>
+ </div>
+
+ <div class="grid lg:grid-cols-2 gap-4 mb-5">
+  <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+   <h3 class="font-bold text-sm mb-3 flex items-center gap-2"><i data-lucide="candlestick-chart" class="w-4 h-4 text-primary-500"></i>量价结构：恐慌释放后的反抽</h3>
+   <div class="space-y-3 text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+    <div><b class="text-rose-600 dark:text-rose-400">放量下跌：</b>11月5日约7,968万股成交，显著高于11月4日约4,781万股，且收盘大跌。属于主动卖盘集中释放，不宜简单定义为“缩量洗盘”。</div>
+    <div><b class="text-amber-600 dark:text-amber-400">反弹修复：</b>11月6日至12日连续回升，成交量从恐慌峰值下降，价格却持续修复，可能包含空头回补与短线资金回流。</div>
+    <div><b class="text-rose-600 dark:text-rose-400">二次风险释放：</b>11月20日成交约4,599万股，收盘跌约7.64%，表明11月中旬的修复并未形成稳定的承接平台。</div>
+    <div><b class="text-emerald-600 dark:text-emerald-400">11月23日反弹：</b>FSD v15与大盘反弹叠加，但若后续成交量不能持续扩大、价格不能守住反弹起点，可能只是事件驱动的空头回补。</div>
+   </div>
+   <div class="mt-4 p-3 rounded-lg bg-gray-50 dark:bg-gray-800/70 text-xs">
+    <strong>筹码判断：</strong>恐慌换手后出现快速修复，当前更接近“高波动换手 + 事件性反抽”，尚不能确认机构持续吸筹或筹码重新锁定。
+   </div>
+  </div>
+
+  <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+   <h3 class="font-bold text-sm mb-3 flex items-center gap-2"><i data-lucide="chart-no-axes-combined" class="w-4 h-4 text-primary-500"></i>均线与趋势结构</h3>
+   <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
+    当前可核验数据不足以可靠重建11月24日完整MA5/MA10/MA20/MA60与RSI、MACD数值，因此不展示未经计算的指标点位。根据已核验收盘序列，股价先从$414.23附近回落至$338.15，再急速反抽至约$390.45，短期均线预计处于快速拐头阶段，但是否形成多头排列仍须以完整日线计算确认。
+   </p>
+   <div class="space-y-2 text-xs">
+    <div class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span>短期 MA5 / MA10</span><b class="text-amber-600 dark:text-amber-400">反弹中，待确认</b></div>
+    <div class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span>中期 MA20</span><b>需重新站稳验证</b></div>
+    <div class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span>中期 MA60</span><b>不以单日反弹判断</b></div>
+    <div class="flex justify-between pb-1"><span>趋势状态</span><b class="text-amber-600 dark:text-amber-400">宽幅震荡，反转未确认</b></div>
+   </div>
+   <div class="mt-4 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/60 text-xs text-amber-900 dark:text-amber-200">
+    不使用盘中实时价计算收盘均线，也不将行情网站的延迟报价拼接为同一条日线序列。均线方向应在后续完整收盘数据到齐后复核。
+   </div>
+  </div>
+ </div>
+
+ <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+   <h3 class="font-bold text-sm flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary-500"></i>关键价格锚点与交易区间</h3>
+   <span class="tag bg-primary-100 dark:bg-primary-950 text-primary-700 dark:text-primary-300">参考锚点 · USD</span>
+  </div>
+  <div class="space-y-2 mb-5">
+   <div class="price-level bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-900 flex flex-wrap justify-between gap-2">
+    <span class="font-bold text-rose-700 dark:text-rose-300">强阻力区 · $405—$414</span><span class="text-xs text-rose-600 dark:text-rose-300">10月底至11月初高位供给区</span>
+   </div>
+   <div class="price-level bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-900 flex flex-wrap justify-between gap-2">
+    <span class="font-bold text-amber-700 dark:text-amber-300">第一压力区 · $393—$400</span><span class="text-xs text-amber-600 dark:text-amber-300">11月23日反弹附近与前期成交区域</span>
+   </div>
+   <div class="price-level bg-primary-50 dark:bg-primary-950/40 border-primary-300 dark:border-primary-800 flex flex-wrap justify-between gap-2">
+    <span class="font-black text-primary-800 dark:text-primary-200">最新参考收盘 · $390.45</span><span class="text-xs text-primary-700 dark:text-primary-300">2026-11-23 · 非11月24日实时价</span>
+   </div>
+   <div class="price-level bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900 flex flex-wrap justify-between gap-2">
+    <span class="font-bold text-emerald-700 dark:text-emerald-300">第一支撑区 · $375—$380</span><span class="text-xs text-emerald-600 dark:text-emerald-300">反弹后回踩观察区，需看量价确认</span>
+   </div>
+   <div class="price-level bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 flex flex-wrap justify-between gap-2">
+    <span class="font-bold text-gray-800 dark:text-gray-200">强支撑 / 防守底线 · $338—$345</span><span class="text-xs text-gray-600 dark:text-gray-400">11月5日、11月20日低位交易区域</span>
+   </div>
+  </div>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm min-w-[650px]">
+    <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-500 dark:text-gray-300">
+     <tr><th>层级</th><th>价格区间</th><th>依据</th><th>交易含义</th></tr>
+    </thead>
+    <tbody class="text-gray-700 dark:text-gray-300">
+     <tr><td class="font-bold text-rose-600 dark:text-rose-400">强阻力</td><td class="font-mono font-bold">$405—$414</td><td>11月2日高点$414.23附近及前期震荡区</td><td>放量突破才有望打开上行空间</td></tr>
+     <tr><td class="font-bold text-amber-600 dark:text-amber-400">第一压力</td><td class="font-mono font-bold">$393—$400</td><td>11月23日反弹后上方压力带</td><td>冲高缩量或长上影，防止假突破</td></tr>
+     <tr><td class="font-bold text-primary-600 dark:text-primary-400">最新参考价</td><td class="font-mono font-bold">$390.45</td><td>11月23日收盘参考</td><td>不视作11月24日实时行情</td></tr>
+     <tr><td class="font-bold text-emerald-600 dark:text-emerald-400">第一支撑</td><td class="font-mono font-bold">$375—$380</td><td>前期交易区间与反弹回踩观察位</td><td>缩量企稳可观察承接</td></tr>
+     <tr><td class="font-bold">强支撑</td><td class="font-mono font-bold">$338—$345</td><td>11月5日低点$338.15及11月20日低点$344.33附近</td><td>有效跌破意味着本轮反抽失败</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-[11px] text-gray-400 mt-3">上述区间是根据已核验日线高低点与收盘区域划定的交易观察带，并非逐笔成交量分布或专业订单簿计算所得。支撑阻力需要随新交易日更新。</p>
+ </div>
+</section>
+
+<section id="strategy" x-data="{role:'all'}" data-aos="fade-up">
+ <div class="flex flex-wrap justify-between items-center gap-3 mb-5">
+  <div class="flex items-center gap-3">
+   <span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-950 flex items-center justify-center"><i data-lucide="target" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i></span>
+   <h2 class="text-xl font-bold">四、未来情景推演与实战操作指引</h2>
+  </div>
+  <div class="flex gap-1.5 text-xs">
+   <button @click="role='all'" :class="role==='all'?'bg-primary-500 text-white':'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'" class="px-3 py-2 rounded-full">全部</button>
+   <button @click="role='hold'" :class="role==='hold'?'bg-emerald-600 text-white':'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'" class="px-3 py-2 rounded-full">持仓者</button>
+   <button @click="role='wait'" :class="role==='wait'?'bg-primary-500 text-white':'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'" class="px-3 py-2 rounded-full">观望者</button>
+  </div>
+ </div>
+
+ <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-800 mb-5">
+  <h3 class="font-bold text-sm mb-3 flex items-center gap-2"><i data-lucide="git-merge" class="w-4 h-4 text-accent-500"></i>未来2—4周三情景推演</h3>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm min-w-[850px]">
+    <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-500 dark:text-gray-300">
+     <tr><th>情景</th><th>触发条件（价格 + 量能）</th><th>主观概率</th><th>潜在目标区间</th><th>仓位动作</th></tr>
+    </thead>
+    <tbody class="text-gray-700 dark:text-gray-300">
+     <tr>
+      <td class="font-bold text-emerald-600 dark:text-emerald-400">乐观突破</td>
+      <td>日收盘有效站上$400，随后放量突破$414；成交量高于近20日均量并连续两日守住突破位</td>
+      <td class="font-mono font-bold">25%</td>
+      <td class="font-mono">$425—$445</td>
+      <td>持仓者保留核心仓；观望者仅在突破确认后小仓跟随，分批止损</td>
+     </tr>
+     <tr>
+      <td class="font-bold text-amber-600 dark:text-amber-400">中性震荡</td>
+      <td>$375—$400区间运行；回踩缩量、反弹量能温和，未有效跌破$375</td>
+      <td class="font-mono font-bold">50%</td>
+      <td class="font-mono">$375—$405</td>
+      <td>控制仓位，区间下沿观察承接，上沿分批降低短线仓位</td>
+     </tr>
+     <tr>
+      <td class="font-bold text-rose-600 dark:text-rose-400">悲观破位</td>
+      <td>放量收盘跌破$375；若进一步跌破$345且无法快速收回，视为弱势延续</td>
+      <td class="font-mono font-bold">25%</td>
+      <td class="font-mono">$320—$345</td>
+      <td>降低风险敞口；不在放量破位日盲目摊平，等待止跌结构重建</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-[11px] text-gray-400 mt-3">概率为策略研究中的主观情景权重，不是统计模型输出；目标区间为情景观察带，不是确定性预测或券商目标价。</p>
+ </div>
+
+ <div class="grid md:grid-cols-2 gap-4 mb-5">
+  <div x-show="role==='all'||role==='hold'" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-emerald-200 dark:border-emerald-900/70">
+   <h3 class="font-bold text-sm text-emerald-700 dark:text-emerald-300 mb-4 flex items-center gap-2"><i data-lucide="briefcase-business" class="w-4 h-4"></i>已持仓投资者：先控回撤，再博反转</h3>
+   <ul class="space-y-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+    <li><b class="text-emerald-600 dark:text-emerald-400">反弹持有条件：</b>收盘守住$375—$380，且回踩成交量较反弹日收缩，可保留核心仓，观察能否重新挑战$400。</li>
+    <li><b class="text-amber-600 dark:text-amber-400">分批止盈：</b>若股价冲至$393—$400但成交量萎缩、出现长上影或收盘跌回$390下方，可先减持短线仓的20%—30%。</li>
+    <li><b class="text-amber-600 dark:text-amber-400">突破持有：</b>若放量站上$400并继续突破$414，且随后回踩不破，可将剩余仓位止盈线逐步上移至突破确认位下方。</li>
+    <li><b class="text-rose-600 dark:text-rose-400">破位纪律：</b>日收盘跌破$375且成交量明显放大，优先减掉交易仓；若进一步跌破$345，重新评估核心仓而非机械补仓。</li>
+   </ul>
+  </div>
+  <div x-show="role==='all'||role==='wait'" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-primary-200 dark:border-primary-900/70">
+   <h3 class="font-bold text-sm text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"><i data-lucide="eye" class="w-4 h-4"></i>未持仓观望者：等待赔率改善</h3>
+   <ul class="space-y-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+    <li><b class="text-emerald-600 dark:text-emerald-400">左侧观察区：</b>$375—$380。仅当回踩缩量、盘中抛压收敛并重新收复关键价位时，才考虑分批试仓；不要仅因触及价格就买入。</li>
+    <li><b class="text-primary-600 dark:text-primary-400">右侧确认点：</b>收盘站稳$400，成交量高于近20日均量，后续再突破$414，可考虑以小仓位跟随，避免一次性追满。</li>
+    <li><b class="text-rose-600 dark:text-rose-400">不宜追高区：</b>$393—$400压力带内若放量冲高回落，不追涨；若价格直接跳空远离$400，等待回踩确认，不追开盘脉冲。</li>
+    <li><b class="text-rose-600 dark:text-rose-400">风险回避：</b>若收盘跌破$375且放量，取消左侧买入计划，等待$345附近是否形成新的止跌结构。</li>
+   </ul>
+  </div>
+ </div>
+
+ <div class="rounded-xl p-5 sm:p-6 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/70">
+  <h3 class="font-bold text-sm text-rose-800 dark:text-rose-300 mb-3 flex items-center gap-2"><i data-lucide="shield-alert" class="w-4 h-4"></i>核心证伪与风控红线</h3>
+  <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm text-rose-900 dark:text-rose-200 leading-relaxed">
+   <div>
+    <p class="font-bold mb-1">1. 价格结构证伪</p>
+    <p>收盘有效跌破$375并放量，说明11月23日反弹未能建立新的短线支撑；若进一步跌破$345，且无法在1—2个交易日内收回，反抽结构基本失效，需降低风险敞口。</p>
+   </div>
+   <div>
+    <p class="font-bold mb-1">2. 量价与基本面证伪</p>
+    <p>反弹期间出现连续放量滞涨、主力资金持续净流出（需以可靠资金流数据验证），或FSD/Robotaxi商业化推进受监管、事故或用户付费数据拖累，均意味着估值催化可能无法兑现。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="watchlist" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-4">
+  <span class="w-9 h-9 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center"><i data-lucide="radar" class="w-4 h-4 text-primary-500"></i></span>
+  <h2 class="text-xl font-bold">五、未来交易日跟踪清单</h2>
+ </div>
+ <div class="grid md:grid-cols-3 gap-3">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+   <p class="font-bold text-sm mb-2">价格与成交量</p>
+   <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2">
+    <li>□ 是否站稳$390—$400</li>
+    <li>□ 是否放量突破$414</li>
+    <li>□ 回踩$375—$380是否缩量</li>
+    <li>□ $345是否继续构成关键防线</li>
+   </ul>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+   <p class="font-bold text-sm mb-2">公司经营兑现</p>
+   <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2">
+    <li>□ FSD v15实际推送范围与用户反馈</li>
+    <li>□ FSD付费渗透率、订阅收入变化</li>
+    <li>□ Robotaxi运营规模与单位经济性</li>
+    <li>□ 汽车业务毛利率与交付增长</li>
+   </ul>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+   <p class="font-bold text-sm mb-2">市场与监管风险</p>
+   <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2">
+    <li>□ 纳指与大型科技股风险偏好</li>
+    <li>□ 美债收益率及成长股估值压力</li>
+    <li>□ FSD安全调查与监管进展</li>
+    <li>□ 自动驾驶商业化许可进度</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section id="events" data-aos="fade-up">
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+  <div class="flex items-center gap-3">
+   <span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center"><i data-lucide="calendar-days" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i></span>
+   <h2 class="text-xl font-bold">关键异动日事件过滤</h2>
+  </div>
+  <div class="flex flex-wrap gap-1.5 text-xs">
+   <button data-filter="all" onclick="filterEvents('all')" class="px-3 py-1.5 rounded-full bg-primary-500 text-white">全部</button>
+   <button data-filter="positive" onclick="filterEvents('positive')" class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800">正向催化</button>
+   <button data-filter="negative" onclick="filterEvents('negative')" class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800">负向压力</button>
+   <button data-filter="neutral" onclick="filterEvents('neutral')" class="px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-800">混合因素</button>
+  </div>
+ </div>
+ <div class="space-y-3">
+  <article class="event-card" data-type="positive">
+   <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800 flex gap-4">
+    <div class="text-center min-w-[52px]"><p class="text-xs text-gray-400">NOV</p><p class="text-2xl font-black text-emerald-600">23</p></div>
+    <div class="flex-1">
+     <div class="flex flex-wrap gap-2 items-center"><b class="text-sm">FSD v15开始推送，美股大盘同步强反弹</b><span class="tag bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">正向催化</span></div>
+     <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">Tesla股价盘中上涨约12%—13%，报道将FSD v15 rollout与市场整体反弹列为重要推动因素。需区分盘中报价与收盘数据；公司“25倍安全改善”说法未经独立验证。</p>
+    </div>
+   </div>
+  </article>
+  <article class="event-card" data-type="negative">
+   <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800 flex gap-4">
+    <div class="text-center min-w-[52px]"><p class="text-xs text-gray-400">NOV</p><p class="text-2xl font-black text-rose-600">20</p></div>
+    <div class="flex-1">
+     <div class="flex flex-wrap gap-2 items-center"><b class="text-sm">TSLA单日大跌约7.64%，科技股风险资产承压</b><span class="tag bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300">负向压力</span></div>
+     <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">TSLA收盘$345.82，成交约4,599万股；标普500同日下跌约3.70%，纳斯达克下跌约5.28%。个股跌幅明显放大，显示高Beta和成长估值风险。</p>
+    </div>
+   </div>
+  </article>
+  <article class="event-card" data-type="negative">
+   <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800 flex gap-4">
+    <div class="text-center min-w-[52px]"><p class="text-xs text-gray-400">NOV</p><p class="text-2xl font-black text-rose-600">05</p></div>
+    <div class="flex-1">
+     <div class="flex flex-wrap gap-2 items-center"><b class="text-sm">恐慌性放量下跌，盘中触及区间低点</b><span class="tag bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300">负向压力</span></div>
+     <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">最低$338.15，收盘$343.69，成交约7,968万股。属于本区间最突出的放量下跌日之一；在没有可靠证据锁定单一公司新闻前，将其视作市场去风险与高估值股票抛售共同作用更审慎。</p>
+    </div>
+   </div>
+  </article>
+  <article class="event-card" data-type="neutral">
+   <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800 flex gap-4">
+    <div class="text-center min-w-[52px]"><p class="text-xs text-gray-400">NOV</p><p class="text-2xl font-black text-amber-600">06—12</p></div>
+    <div class="flex-1">
+     <div class="flex flex-wrap gap-2 items-center"><b class="text-sm">急跌后反弹修复，空头回补与超跌买盘交织</b><span class="tag bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">混合因素</span></div>
+     <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">股价由11月6日收盘$358.22反弹至11月12日收盘$397.45。反弹强度可观，但后续再度回落，说明当时尚未完成趋势反转确认。</p>
+    </div>
+   </div>
+  </article>
+ </div>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#090d13]">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-3 text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+  <div class="flex flex-wrap justify-between gap-3">
+   <div><b class="text-gray-800 dark:text-gray-200">特斯拉 TSLA｜最新走势归因与操作指引</b><p class="mt-1">报告日期：2026-11-24 · 统计区间：2026-10-24至2026-11-24</p></div>
+   <button onclick="window.print()" class="btn-interactive px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 flex items-center gap-2"><i data-lucide="printer" class="w-3.5 h-3.5"></i>打印 / 保存PDF</button>
+  </div>
+  <div class="border-t border-gray-200 dark:border-gray-800 pt-4">
+   <p><b class="text-gray-700 dark:text-gray-300">主要行情数据来源：</b><a class="text-primary-600 underline" href="https://finance.yahoo.com/quote/TSLA/history/" target="_blank" rel="noopener">Yahoo Finance TSLA历史行情</a>、<a class="text-primary-600 underline" href="https://app.quantstrategy.io/historical-data/stocks/TSLA" target="_blank" rel="noopener">QuantStrategy TSLA历史数据</a>、<a class="text-primary-600 underline" href="https://stockscan.io/stocks/TSLA/price-history" target="_blank" rel="noopener">StockScan历史价格</a>、<a class="text-primary-600 underline" href="https://www.quiverquant.com/stock/TSLA/historical-prices/" target="_blank" rel="noopener">Quiver Quant</a>。</p>
+   <p><b class="text-gray-700 dark:text-gray-300">事件与归因来源：</b><a class="text-primary-600 underline" href="https://www.barrons.com/articles/tesla-stock-price-fsd-version-15-full-self-driving-d6a8e538" target="_blank" rel="noopener">Barron's：FSD v15与TSLA走势</a> [1]；<a class="text-primary-600 underline" href="https://www.businessinsider.com/elon-musk-tesla-robotaxi-autonomous-model-y-more-seats-cybercab-2026-11" target="_blank" rel="noopener">Business Insider：Robotaxi与自动驾驶车型</a> [4]；<a class="text-primary-600 underline" href="https://finance.yahoo.com/markets/stocks/articles/tesla-soars-13-fsd-v15-rolls-out-151250039.html" target="_blank" rel="noopener">Yahoo Finance转载报道：FSD v15与11月23日反弹</a> [2]；<a class="text-primary-600 underline" href="https://ca.investing.com/news/stock-market-news/why-is-tesla-stock-surging-today-93CH-4976322" target="_blank" rel="noopener">Investing.com：11月23日上涨归因</a> [3]；<a class="text-primary-600 underline" href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener">S&amp;P 500历史数据</a> [6]；<a class="text-primary-600 underline" href="https://finance.yahoo.com/quote/%5EIXIC/history/" target="_blank" rel="noopener">NASDAQ Composite历史数据</a> [7]；<a class="text-primary-600 underline" href="https://www.nhtsa.gov/" target="_blank" rel="noopener">NHTSA监管信息</a> [8]。</p>
+  </div>
+  <p><b class="text-gray-700 dark:text-gray-300">数据口径与限制：</b>最新完整交易日采用2026-11-23；11月24日未将盘中报价冒充收盘价。TSLA区间起点采用10月26日首个交易日收盘$391.62，终点采用11月23日历史日线参考收盘$390.45。不同供应商对11月23日盘中与收盘数据存在刷新差异；指数页面亦存在盘中快照差异，因此不展示未经统一口径核算的指数月度Alpha。技术支撑阻力为历史高低点及成交区域推导的观察区，不等于逐笔成交密集区；均线与指标因缺少完整、统一的日线计算输入而不伪造数值。</p>
+  <p><b class="text-gray-700 dark:text-gray-300">免责声明：</b>本报告基于公开行情与新闻资料进行研究分析，内容仅供信息参考，不构成证券投资建议、买卖邀约或收益承诺。文中情景概率、价格区间和仓位建议属于策略假设，应结合个人风险承受能力、交易成本、实时行情与最新公告独立判断。股票价格可能剧烈波动，历史表现不代表未来结果。</p>
+  <p class="text-center pt-3 text-[10px] tracking-widest">END OF REPORT · TSLA · 2026-11-24</p>
+ </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const y=document.documentElement.scrollTop||document.body.scrollTop;
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const bar=document.getElementById('progressBar');
+ if(bar)bar.style.width=(h>0?y/h*100:0)+'%';
+});
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:450,once:true,offset:30});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

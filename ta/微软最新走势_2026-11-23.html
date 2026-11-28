@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微软最新走势归因与操作指引（MSFT）｜截至 2026-11-23</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+          300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+          300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+          900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:90px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+.btn-interactive{transition:all .2s ease}
+.btn-interactive:hover{transform:scale(1.04)}
+.card-interactive{transition:all .28s ease}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.5)}
+table{width:100%;border-collapse:collapse}
+th{padding:.75rem;text-align:left;white-space:nowrap;border-bottom:1px solid #d1d5db}
+td{padding:.8rem;vertical-align:top;line-height:1.6;border-bottom:1px solid #e5e7eb}
+.dark th,.dark td{border-bottom-color:#374151}
+.driver-bar{height:9px;border-radius:99px;background:#e5e7eb;overflow:hidden}
+.dark .driver-bar{background:#374151}
+.driver-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.price-tag{font-variant-numeric:tabular-nums}
+.bg-grid{background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,.045) 1px,transparent 0);background-size:24px 24px}
+.dark .bg-grid{background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.045) 1px,transparent 0)}
+.ref-tag{font-size:10px;opacity:.65;margin-left:3px}
+.source-link{color:#ea580c;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#fdba74}
+.source-link:hover{opacity:.7}
+.price-level{font-variant-numeric:tabular-nums}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+}
+</style>
+<script>
+(function initTheme(){
+try{
+if(window.self!==window.top||localStorage.getItem('msft-theme')==='dark'||
+(!localStorage.getItem('msft-theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches)){
+document.documentElement.classList.add('dark');
+}
+}catch(e){}
+})();
+function syncThemeIcons(){
+const dark=document.documentElement.classList.contains('dark');
+const sun=document.getElementById('sunIcon');
+const moon=document.getElementById('moonIcon');
+if(sun)sun.style.display=dark?'block':'none';
+if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+document.documentElement.classList.toggle('dark');
+try{localStorage.setItem('msft-theme',document.documentElement.classList.contains('dark')?'dark':'light')}catch(e){}
+syncThemeIcons();
+}
+function toggleMobileMenu(){
+const menu=document.getElementById('mobileMenu');
+if(menu)menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen bg-grid transition-colors duration-200">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60]" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+<h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+微软 <span class="text-xs sm:text-sm font-mono text-gray-400">MSFT · NASDAQ</span>
+</h1>
+</div>
+<nav class="hidden md:flex space-x-5">
+<a href="#overview" class="text-sm hover:text-primary-500">走势总览</a>
+<a href="#phases" class="text-sm hover:text-primary-500">阶段复盘</a>
+<a href="#drivers" class="text-sm hover:text-primary-500">涨跌根因</a>
+<a href="#technicals" class="text-sm hover:text-primary-500">量价技术</a>
+<a href="#strategy" class="text-sm hover:text-primary-500">交易策略</a>
+</nav>
+<div class="flex items-center gap-2">
+<button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+<i data-lucide="menu" class="w-4 h-4"></i>
+</button>
+<button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+<i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+<nav class="flex flex-col space-y-3 pb-2">
+<a href="#overview" onclick="toggleMobileMenu()" class="text-sm">走势总览</a>
+<a href="#phases" onclick="toggleMobileMenu()" class="text-sm">阶段复盘</a>
+<a href="#drivers" onclick="toggleMobileMenu()" class="text-sm">涨跌根因</a>
+<a href="#technicals" onclick="toggleMobileMenu()" class="text-sm">量价技术</a>
+<a href="#strategy" onclick="toggleMobileMenu()" class="text-sm">交易策略</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main class="pt-24 pb-16 max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+
+<!-- HERO -->
+<section id="overview" data-aos="fade-up">
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800">
+<div class="flex flex-wrap items-start justify-between gap-4">
+<div>
+<div class="flex flex-wrap gap-2 mb-3">
+<span class="text-xs font-semibold tracking-wider uppercase text-primary-600 dark:text-primary-400">BUY-SIDE · PRICE ACTION ANALYSIS</span>
+<span class="text-[11px] px-2 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">USD · NASDAQ</span>
+<span class="text-[11px] px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">2026-10-23 → 2026-11-23</span>
+</div>
+<h2 class="text-2xl sm:text-4xl font-black tracking-tight">微软 Microsoft Corporation</h2>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-2">NASDAQ: MSFT · 软件、云计算、企业AI基础设施</p>
+</div>
+<div class="sm:text-right">
+<span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-rose-50 dark:bg-rose-950/50 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
+<i data-lucide="trending-down" class="w-4 h-4"></i> 弱势下行 · 放量加速
+</span>
+<p class="text-[11px] text-gray-400 mt-2">最新完整交易日：2026-11-20</p>
+</div>
+</div>
+
+<div class="mt-6 p-4 rounded-xl bg-primary-50/70 dark:bg-primary-950/30 border border-primary-200/70 dark:border-primary-900/70">
+<p class="text-sm leading-relaxed text-gray-700 dark:text-gray-200">
+<strong class="text-primary-700 dark:text-primary-300">核心走势判断：</strong>
+微软近一个月经历财报后短暂反弹、AI基础设施投资回报担忧升温、科技板块风险偏好骤降三个阶段。股价从10月23日收盘的524.51美元跌至11月20日的484.52美元，区间下跌7.62%。11月20日单日放量下跌2.77%，成交量达到20日观察窗口平均水平的1.62倍。值得注意的是，微软跌幅仍小于纳斯达克综合指数及标普500指数，说明此次回撤具有明显的行业系统性冲击特征，但个股本身也尚未展现独立反转信号。
+</p>
+</div>
+
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
+<div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">最新正式收盘价</p>
+<p class="text-xl sm:text-2xl font-black price-tag">$484.52</p>
+<p class="text-[11px] text-rose-600 dark:text-rose-400 mt-1">11-20 · -2.77%</p>
+<p class="text-[10px] text-gray-400 mt-1">美元 USD</p>
+</div>
+<div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">近一月区间涨跌幅</p>
+<p class="text-xl sm:text-2xl font-black text-rose-600 dark:text-rose-400">-7.62%</p>
+<p class="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1">跑赢标普500约1.73pct</p>
+<p class="text-[10px] text-gray-400 mt-1">跑赢纳指约5.24pct</p>
+</div>
+<div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">区间最高 / 最低</p>
+<p class="text-lg sm:text-2xl font-black price-tag">$559.15 <span class="text-gray-400">/</span> $481.03</p>
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">振幅约16.24%（相对低点）</p>
+</div>
+<div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">当前趋势定性</p>
+<p class="text-base sm:text-xl font-black text-rose-600 dark:text-rose-400">弱势下行</p>
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">价格低于MA5/10/20</p>
+</div>
+</div>
+
+<div class="grid sm:grid-cols-3 gap-3 mt-5">
+<div class="rounded-lg bg-gray-50 dark:bg-gray-800/70 p-3">
+<p class="text-[10px] text-gray-500">区间起点</p>
+<p class="font-bold price-tag">$524.51</p>
+<p class="text-[10px] text-gray-400">2026-10-23 收盘</p>
+</div>
+<div class="rounded-lg bg-gray-50 dark:bg-gray-800/70 p-3">
+<p class="text-[10px] text-gray-500">最新交易日成交量</p>
+<p class="font-bold price-tag">47.26M 股</p>
+<p class="text-[10px] text-rose-500">约为观察期日均量1.62倍</p>
+</div>
+<div class="rounded-lg bg-gray-50 dark:bg-gray-800/70 p-3">
+<p class="text-[10px] text-gray-500">观察窗口</p>
+<p class="font-bold">21个交易日</p>
+<p class="text-[10px] text-gray-400">10月23日至11月20日</p>
+</div>
+</div>
+<p class="text-[10px] text-gray-400 mt-4 leading-relaxed">
+口径说明：截至11月23日，北京时间当天美股尚未形成完整的正式收盘数据。本报告采用已核验的11月20日美股常规交易时段收盘价，不使用盘后价格替代正式收盘价。区间收益按未复权收盘价计算。
+</p>
+</div>
+</section>
+
+<!-- PHASES -->
+<section id="phases" data-aos="fade-up">
+<div class="flex items-center gap-2.5 mb-5">
+<span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="layers" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i>
+</span>
+<h2 class="text-lg sm:text-xl font-bold">一、近一月量价全景与阶段拆解</h2>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-5">
+<h3 class="text-sm font-bold mb-3 flex items-center gap-2">
+<i data-lucide="bar-chart-3" class="w-4 h-4 text-primary-500"></i>
+微软 vs 美股主要基准指数
+</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-500 dark:text-gray-300">
+<tr><th>标的 / 指数</th><th>区间起点</th><th>最新收盘</th><th>区间涨跌幅</th><th>相对MSFT</th><th>走势特征</th></tr>
+</thead>
+<tbody class="text-gray-700 dark:text-gray-300">
+<tr>
+<td class="font-bold text-primary-700 dark:text-primary-300">微软 MSFT</td>
+<td>$524.51</td><td>$484.52</td>
+<td class="font-bold text-rose-600">-7.62%</td>
+<td>基准</td>
+<td>财报后震荡，随后放量下跌</td>
+</tr>
+<tr>
+<td class="font-semibold">标普500</td>
+<td>7,623.68</td><td>6,910.39</td>
+<td class="font-bold text-rose-600">-9.36%</td>
+<td class="text-emerald-600">+1.73pct</td>
+<td>大盘进入技术性调整区间</td>
+</tr>
+<tr>
+<td class="font-semibold">纳斯达克综合指数</td>
+<td>25,955.34</td><td>22,617.73</td>
+<td class="font-bold text-rose-600">-12.86%</td>
+<td class="text-emerald-600">+5.24pct</td>
+<td>AI与科技股集中抛售</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-[11px] text-gray-400 mt-3 leading-relaxed">
+基准收益计算：标普500（6,910.39 / 7,623.68 - 1）；纳斯达克（22,617.73 / 25,955.34 - 1）。Alpha为微软价格收益与指数价格收益的算术差值，不代表风险调整后的超额收益。数据来源：Yahoo Finance、YCharts。
+</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-4">
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-gray-400">
+<div class="flex justify-between items-center mb-3">
+<span class="text-[11px] font-bold px-2 py-1 rounded bg-gray-100 dark:bg-gray-800">波段一 · 财报后消化</span>
+<span class="text-xs font-mono text-gray-400">10-23 → 10-30</span>
+</div>
+<p class="text-2xl font-black text-rose-500">-0.50%</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">524.51 → 521.91美元</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mt-3">
+10月28日微软公布FY2027第一季度业绩，收入达到923亿美元，同比增长19%；营业利润增长21%。但股价并未持续放量突破，10月29日、30日分别收跌，表明强劲业绩在发布前已经包含一定预期，市场开始重新评估AI投入与利润兑现的匹配程度。
+</p>
+<div class="mt-3 text-[11px] text-gray-500">量能：成交量从10月23日的1,368万股逐渐升至10月29日的3,933万股。</div>
+</div>
+
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-primary-500">
+<div class="flex justify-between items-center mb-3">
+<span class="text-[11px] font-bold px-2 py-1 rounded bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-300">波段二 · 财报预期与政策交易</span>
+<span class="text-xs font-mono text-gray-400">11-02 → 11-05</span>
+</div>
+<p class="text-2xl font-black text-emerald-600">+2.69%</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">521.91 → 535.93美元</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mt-3">
+11月4日微软上涨6.68%，收于555.80美元，成交量达到5,081万股，是观察窗口内的重要放量上涨日。市场对大型云平台的AI基础设施优势重新定价，但11月5日迅速回落3.58%，说明反弹并未形成稳定趋势。美国中期选举后的数据中心建设监管预期及AI资本开支争议，使行情快速转为高波动。
+</p>
+<div class="mt-3 text-[11px] text-gray-500">量能：11月4日约5,081万股，11月5日约4,251万股。</div>
+</div>
+
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500">
+<div class="flex justify-between items-center mb-3">
+<span class="text-[11px] font-bold px-2 py-1 rounded bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300">波段三 · 反弹失败与重心下移</span>
+<span class="text-xs font-mono text-gray-400">11-06 → 11-13</span>
+</div>
+<p class="text-2xl font-black text-rose-500">-1.27%</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">530.61 → 523.88美元</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mt-3">
+11月9日股价反弹2.75%，但545.18美元收盘并未延续成为趋势突破。随后11月10日至11日连续下跌，11月12日至13日仅出现弱修复。股价无法有效收复530—540美元区域，说明前期反弹更偏向超跌修复，而非新的机构趋势性买入。
+</p>
+<div class="mt-3 text-[11px] text-gray-500">量能：11月9日至13日成交量大致在1,864万至2,908万股。</div>
+</div>
+
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500">
+<div class="flex justify-between items-center mb-3">
+<span class="text-[11px] font-bold px-2 py-1 rounded bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300">波段四 · 系统性风险释放</span>
+<span class="text-xs font-mono text-gray-400">11-16 → 11-20</span>
+</div>
+<p class="text-2xl font-black text-rose-600">-6.45%</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">517.99 → 484.52美元</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mt-3">
+11月16日至20日股价连续走弱，11月19日收跌1.78%，11月20日进一步下跌2.77%。最后一个交易日盘中最高503.80美元、最低481.03美元，收盘接近日内低位，成交量扩大至4,725.6万股。市场从个股估值消化升级为AI科技资产整体去风险。
+</p>
+<div class="mt-3 text-[11px] text-rose-600 dark:text-rose-400">重要信号：放量长阴、收盘接近日内低点，短期抛压尚未得到充分消化。</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 mt-5">
+<h3 class="text-sm font-bold mb-4">关键异动交易日核验</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead class="bg-gray-50 dark:bg-gray-800/80">
+<tr><th>日期</th><th>收盘价</th><th>日涨跌幅</th><th>成交量</th><th>市场行为解释</th></tr>
+</thead>
+<tbody class="text-gray-700 dark:text-gray-300">
+<tr><td>11-04</td><td>$555.80</td><td class="text-emerald-600 font-bold">+6.68%</td><td>50.81M</td><td>大型科技股反弹，云计算平台相对优势交易</td></tr>
+<tr><td>11-05</td><td>$535.93</td><td class="text-rose-600 font-bold">-3.58%</td><td>42.51M</td><td>AI板块风险重估，数据中心政策不确定性上升</td></tr>
+<tr><td>11-09</td><td>$545.18</td><td class="text-emerald-600 font-bold">+2.75%</td><td>25.34M</td><td>阶段性反弹，但没有形成持续突破</td></tr>
+<tr><td>11-17</td><td>$506.24</td><td class="text-rose-600 font-bold">-2.27%</td><td>27.99M</td><td>科技板块风险偏好进一步收缩</td></tr>
+<tr><td>11-19</td><td>$498.30</td><td class="text-rose-600 font-bold">-1.78%</td><td>29.35M</td><td>AI交易拥挤与市场避险情绪延续</td></tr>
+<tr><td>11-20</td><td>$484.52</td><td class="text-rose-600 font-bold">-2.77%</td><td>47.26M</td><td>AI相关资产全球性抛售，放量下破500美元</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-[10px] text-gray-400 mt-3">成交量单位：百万股（M）。微软日线数据采用StockAnalysis历史行情，部分数据由Yahoo Finance交叉核验。</p>
+</div>
+</section>
+
+<!-- DRIVERS -->
+<section id="drivers" data-aos="fade-up">
+<div class="flex items-center gap-2.5 mb-5">
+<span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+<i data-lucide="git-branch" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i>
+</span>
+<h2 class="text-lg sm:text-xl font-bold">二、上涨与下跌的深层根因剖析</h2>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-5">
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
+<i data-lucide="arrow-up-circle" class="w-4 h-4"></i>多头根因：基本面韧性与云平台竞争优势
+</h3>
+<div class="space-y-5 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+<div class="pl-3 border-l-2 border-emerald-500">
+<p class="font-bold text-gray-900 dark:text-white mb-1">① FY2027 Q1业绩增长保持强劲</p>
+<p class="leading-relaxed">
+10月28日公司公布截至9月30日的第一季度业绩：营收923亿美元，同比增长19%；营业利润459亿美元，同比增长21%；GAAP净利润366亿美元，同比增长32%；GAAP稀释每股收益4.92美元，同比增长32%。这些数据说明微软核心经营增长并未在本轮股价调整中同步恶化。
+</p>
+<p class="text-[10px] text-emerald-600 mt-2">基本面判断：业绩增长是真实支撑，而非股价反转的充分条件。</p>
+</div>
+<div class="pl-3 border-l-2 border-emerald-500">
+<p class="font-bold text-gray-900 dark:text-white mb-1">② Azure与AI需求提供长期成长底座</p>
+<p class="leading-relaxed">
+微软云业务增长保持强劲，管理层在业绩会议中强调企业AI采用率和Azure需求。财报会议摘要显示，Microsoft Cloud增长约30%，下一季度Azure固定汇率增长指引约49%—50%。企业客户在数据、模型、开发工具和云基础设施上的综合采购能力，仍构成微软长期竞争优势。
+</p>
+<p class="text-[10px] text-emerald-600 mt-2">关键观察：AI需求增长是否真正转化为可持续的云收入和经营利润。</p>
+</div>
+<div class="pl-3 border-l-2 border-emerald-500">
+<p class="font-bold text-gray-900 dark:text-white mb-1">③ 11月4日放量反弹体现资金对大型云平台的再定价</p>
+<p class="leading-relaxed">
+11月4日股价上涨6.68%，成交量超过5,080万股。市场在选举结果后重新评估大型科技平台在数据中心建设、AI基础设施和企业软件领域的竞争地位。微软作为具有既有客户、云基础设施及现金流能力的平台型企业，获得阶段性资金回补。
+</p>
+<p class="text-[10px] text-emerald-600 mt-2">但随后11月5日下跌3.58%，证明该反弹未形成持续的趋势性资金确认。</p>
+</div>
+<div class="pl-3 border-l-2 border-emerald-500">
+<p class="font-bold text-gray-900 dark:text-white mb-1">④ 系统性抛售中的相对抗跌性</p>
+<p class="leading-relaxed">
+10月23日至11月20日，微软跌7.62%，标普500跌9.36%，纳斯达克跌12.86%。微软相对纳指保留约5.24个百分点的收益优势，显示大型企业软件、订阅收入及云平台业务对股价有一定防御作用。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-rose-600 dark:text-rose-400">
+<i data-lucide="arrow-down-circle" class="w-4 h-4"></i>空头根因：AI资本开支与估值体系重新定价
+</h3>
+<div class="space-y-5 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+<div class="pl-3 border-l-2 border-rose-500">
+<p class="font-bold text-gray-900 dark:text-white mb-1">① AI资本开支增长引发自由现金流担忧</p>
+<p class="leading-relaxed">
+FY2027 Q1业绩会议及市场摘要显示，微软下一季度资本开支预期超过500亿美元，且数据中心供应约束仍然存在。资本开支扩大并非坏事，但当投资规模持续攀升，市场就会提高对AI收入兑现速度、折旧成本和投资回报率的要求。股价开始从单纯定价AI需求转向审视AI资本效率。
+</p>
+</div>
+<div class="pl-3 border-l-2 border-rose-500">
+<p class="font-bold text-gray-900 dark:text-white mb-1">② 11月5日：AI基础设施监管与政策不确定性</p>
+<p class="leading-relaxed">
+路透社11月5日报道指出，美国中期选举后市场重新评估数据中心建设政策、AI基础设施投资环境及相关监管风险。科技和半导体股票受到集中抛售，微软当日下跌3.58%，成交量达到4,250.8万股。该事件属于行业估值折价，而非微软自身业绩突然恶化。
+</p>
+</div>
+<div class="pl-3 border-l-2 border-rose-500">
+<p class="font-bold text-gray-900 dark:text-white mb-1">③ 11月20日：AI交易逻辑遭遇系统性去风险</p>
+<p class="leading-relaxed">
+路透社11月20日报道显示，科技股遭遇全球性抛售，投资者集中担忧AI估值、融资成本与企业盈利前景。半导体股票当日整体大幅下挫，纳斯达克跌5.28%，标普500跌3.70%。微软下跌2.77%，成交量扩大至4,725.6万股。SEC对英伟达会计处理展开审查的市场消息，也加剧了AI投资链条的不确定性。
+</p>
+</div>
+<div class="pl-3 border-l-2 border-rose-500">
+<p class="font-bold text-gray-900 dark:text-white mb-1">④ 技术性破位引发趋势资金进一步撤退</p>
+<p class="leading-relaxed">
+股价从11月4日555.80美元收盘高位逐步回落，先后失守530、520和500美元。11月20日最低481.03美元，收盘484.52美元，明显低于MA5、MA10及MA20。跌破关键整数位后，量化趋势策略、风险预算约束及止损订单可能进一步放大波动。
+</p>
+</div>
+<div class="pl-3 border-l-2 border-rose-500">
+<p class="font-bold text-gray-900 dark:text-white mb-1">⑤ 估值与机会成本重新成为交易核心</p>
+<p class="leading-relaxed">
+当市场不再愿意仅凭AI收入增长给予更高估值，投资者将重新比较资本投入、折旧、现金流与利润增速。微软的基本面尚有韧性，但高资本投入和AI商业化周期之间的时间差，可能成为估值折价持续存在的原因。
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 mt-5">
+<h3 class="text-sm font-bold mb-5 flex items-center gap-2">
+<i data-lucide="pie-chart" class="w-4 h-4 text-accent-500"></i>
+归因权重矩阵：近一月走势解释力
+</h3>
+<div class="space-y-5">
+<div>
+<div class="flex justify-between text-xs mb-1.5">
+<span class="font-semibold">个股基本面与公司事件驱动</span>
+<span class="font-bold text-primary-600">25%</span>
+</div>
+<div class="driver-bar"><div class="driver-fill" style="width:25%"></div></div>
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">财报增长提供底层支撑，但资本开支规模、AI变现效率和自由现金流预期影响估值。</p>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1.5">
+<span class="font-semibold">行业景气度与板块情绪轮动</span>
+<span class="font-bold text-primary-600">40%</span>
+</div>
+<div class="driver-bar"><div class="driver-fill" style="width:40%"></div></div>
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">AI产业链去风险、数据中心政策不确定性及科技股估值收缩，是11月调整的重要力量。</p>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1.5">
+<span class="font-semibold">宏观利率、汇率与大盘Beta冲击</span>
+<span class="font-bold text-primary-600">35%</span>
+</div>
+<div class="driver-bar"><div class="driver-fill" style="width:35%"></div></div>
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">11月20日美股三大指数大跌，全球风险偏好下降，资金从高波动科技资产撤出。</p>
+</div>
+</div>
+<p class="text-[10px] text-gray-400 mt-4">权重是基于本月价格行为、事件时间匹配及相对指数表现的主观解释模型，不是统计回归结果，也不代表对未来收益的预测。</p>
+</div>
+
+<div class="bg-primary-50/70 dark:bg-primary-950/30 border border-primary-200 dark:border-primary-900 rounded-xl p-5 mt-5">
+<h3 class="text-sm font-bold text-primary-800 dark:text-primary-200 mb-2">买方核心判断：经营逻辑与交易逻辑出现分离</h3>
+<p class="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+目前更准确的判断不是微软核心业务突然进入衰退，而是资本市场正在重新定价AI基础设施投入的回报周期。Azure增长、企业订阅和AI产品生态仍是基本面支撑；但如果资本开支增速持续超过云业务收入和自由现金流的改善速度，市场可能继续压缩估值倍数。因此，基本面长期看点不能直接转换成短期股价买入信号。
+</p>
+</div>
+</section>
+
+<!-- TECHNICALS -->
+<section id="technicals" data-aos="fade-up">
+<div class="flex items-center gap-2.5 mb-5">
+<span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="activity" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i>
+</span>
+<h2 class="text-lg sm:text-xl font-bold">三、资金行为与技术面关键位诊断</h2>
+</div>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+<p class="text-[11px] text-gray-500">MA5</p>
+<p class="text-xl font-black price-tag">$503.07</p>
+<p class="text-[10px] text-rose-500">现价低于均线</p>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+<p class="text-[11px] text-gray-500">MA10</p>
+<p class="text-xl font-black price-tag">$516.17</p>
+<p class="text-[10px] text-rose-500">现价低于均线</p>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+<p class="text-[11px] text-gray-500">MA20</p>
+<p class="text-xl font-black price-tag">$522.96</p>
+<p class="text-[10px] text-rose-500">现价低于均线</p>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800">
+<p class="text-[11px] text-gray-500">现价 / MA20</p>
+<p class="text-xl font-black text-rose-600">-7.35%</p>
+<p class="text-[10px] text-gray-500">短期弱势明显</p>
+</div>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 mb-5">
+<h3 class="text-sm font-bold mb-3">均线结构与趋势判断</h3>
+<div class="space-y-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+<p><strong class="text-gray-900 dark:text-white">MA5：503.07美元。</strong>最新收盘484.52美元，低于短期均线约3.69%，表明短线下跌动能尚未结束。</p>
+<p><strong class="text-gray-900 dark:text-white">MA10：516.17美元。</strong>股价距离MA10约-6.13%，反弹过程中该区域可能形成第一层动态压力。</p>
+<p><strong class="text-gray-900 dark:text-white">MA20：522.96美元。</strong>股价距离MA20约-7.35%，中短期趋势已经转弱。收复MA20之前，不宜仅凭单日反弹认定趋势反转。</p>
+<p><strong class="text-gray-900 dark:text-white">MA60：</strong>本报告不以仅有的21个交易日数据推算MA60，避免把不完整样本冒充60日均线。需取得完整60个交易日数据后再确认中长期排列。</p>
+</div>
+<div class="mt-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+<p class="text-xs font-bold text-rose-600 dark:text-rose-400">趋势结论：短期空头排列特征明显，反弹优先视为超跌修复。中长期基本面趋势尚未被单月价格下跌证伪。</p>
+</div>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-4 mb-5">
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+<h3 class="text-sm font-bold mb-3">量价行为与筹码交换</h3>
+<div class="space-y-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+<div>
+<p class="font-bold text-gray-900 dark:text-white">11月4日：放量上涨</p>
+<p>上涨6.68%，成交50.81M股，显示资金集中回补，但次日反转说明高位筹码分歧较大。</p>
+</div>
+<div>
+<p class="font-bold text-gray-900 dark:text-white">11月5日：高位放量回撤</p>
+<p>下跌3.58%，成交42.51M股，表明前一交易日的突破缺乏后续资金持续承接。</p>
+</div>
+<div>
+<p class="font-bold text-gray-900 dark:text-white">11月20日：放量下跌</p>
+<p>成交47.26M股，约为观察期日均量29.23M股的1.62倍，最低481.03美元，收盘484.52美元，属于主动卖盘明显增强的交易结构。</p>
+</div>
+</div>
+<div class="mt-4 p-3 rounded-lg bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900">
+<p class="text-xs font-bold text-rose-700 dark:text-rose-300">筹码判断：高位换手后转向发散派发，尚未出现充分的惜售筑底证据。</p>
+</div>
+</div>
+
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+<h3 class="text-sm font-bold mb-3">当前价格水位阶梯图</h3>
+<p class="text-[11px] text-gray-400 mb-4">以下区间以真实日线高低点、收盘密集区和均线计算值推导，不是未经验证的历史成交量分布数据。</p>
+<div class="space-y-2 text-xs">
+<div class="flex justify-between items-center p-3 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800">
+<span class="font-bold text-rose-700 dark:text-rose-300">强阻力区 $520–526</span>
+<span class="text-rose-600">+7.3%～+8.6%</span>
+</div>
+<div class="flex justify-between items-center p-3 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800">
+<span class="font-bold text-amber-700 dark:text-amber-300">第一压力区 $498–503</span>
+<span class="text-amber-600">+2.8%～+3.8%</span>
+</div>
+<div class="flex justify-between items-center p-3 rounded-lg bg-primary-100 dark:bg-primary-900/50 border-2 border-primary-500">
+<span class="font-black text-primary-800 dark:text-primary-200">● 现价 $484.52</span>
+<span class="font-bold text-primary-700 dark:text-primary-300">11-20收盘</span>
+</div>
+<div class="flex justify-between items-center p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800">
+<span class="font-bold text-emerald-700 dark:text-emerald-300">第一支撑区 $478–482</span>
+<span class="text-emerald-600">下方观察区</span>
+</div>
+<div class="flex justify-between items-center p-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+<span class="font-bold text-gray-700 dark:text-gray-300">强支撑 $460–470</span>
+<span class="text-gray-500">条件性防守区</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-800">
+<h3 class="text-sm font-bold mb-3 flex items-center gap-2">
+<i data-lucide="map-pin" class="w-4 h-4 text-primary-500"></i>
+关键价格锚点明细表
+</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-500 dark:text-gray-300">
+<tr><th>层级</th><th>价格（USD）</th><th>技术与筹码依据</th><th>距现价</th><th>交易含义</th></tr>
+</thead>
+<tbody class="text-gray-700 dark:text-gray-300">
+<tr>
+<td class="font-bold text-rose-600">强阻力位</td>
+<td class="font-bold price-level">$520–526</td>
+<td>10月23日收盘524.51、11月16日收盘517.99及MA20附近延伸区域</td>
+<td class="text-rose-500">+7.3%～+8.6%</td>
+<td>趋势修复的重要验证区域</td>
+</tr>
+<tr>
+<td class="font-bold text-amber-600">第一压力位</td>
+<td class="font-bold price-level">$498–503</td>
+<td>11月19日收盘498.30、11月20日开盘493.74及MA5 503.07</td>
+<td class="text-amber-500">+2.8%～+3.8%</td>
+<td>反弹首先需要收复的区域</td>
+</tr>
+<tr class="bg-primary-50 dark:bg-primary-950/50">
+<td class="font-bold text-primary-700 dark:text-primary-300">最新收盘价</td>
+<td class="font-black price-level text-primary-700 dark:text-primary-300">$484.52</td>
+<td>2026-11-20正式收盘</td>
+<td>—</td>
+<td>短期弱势</td>
+</tr>
+<tr>
+<td class="font-bold text-emerald-600">第一支撑位</td>
+<td class="font-bold price-level">$478–482</td>
+<td>11月20日最低481.03美元附近的短线价格观察带</td>
+<td class="text-emerald-600">-1.35%～-0.52%</td>
+<td>观察是否出现缩量止跌</td>
+</tr>
+<tr>
+<td class="font-bold text-emerald-700 dark:text-emerald-300">强支撑 / 防守区</td>
+<td class="font-bold price-level">$460–470</td>
+<td>低于本观察窗口最低价的条件性风险推演区域，并非已确认历史平台</td>
+<td class="text-emerald-600">-5.05%～-3.00%</td>
+<td>若触及，必须重新评估基本面与风险偏好</td>
+</tr>
+<tr>
+<td class="font-bold text-gray-600 dark:text-gray-300">上方极限参考</td>
+<td class="font-bold price-level">$555–559</td>
+<td>11月4日收盘555.80及11月5日区间高点557.62，观察窗口最高559.15</td>
+<td class="text-rose-500">+14.5%～+15.4%</td>
+<td>中期反转前的强套牢压力区域</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-[10px] text-gray-400 mt-3">注意：支撑和阻力属于交易观察区间，并非保证有效的价格预测。特别是460–470美元尚未在本报告观察窗口内获得实际低点验证。</p>
+</div>
+</section>
+
+<!-- STRATEGY -->
+<section id="strategy" x-data="{role:'all'}" data-aos="fade-up">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+<i data-lucide="target" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i>
+</span>
+<h2 class="text-lg sm:text-xl font-bold">四、未来情景推演与实战操作指引</h2>
+</div>
+<div class="flex flex-wrap gap-1.5 text-xs">
+<button @click="role='all'" :class="role==='all'?'bg-primary-500 text-white':'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'" class="px-3 py-2 rounded-full">全部指引</button>
+<button @click="role='hold'" :class="role==='hold'?'bg-emerald-600 text-white':'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'" class="px-3 py-2 rounded-full">我是持仓者</button>
+<button @click="role='wait'" :class="role==='wait'?'bg-primary-500 text-white':'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'" class="px-3 py-2 rounded-full">我是观望者</button>
+</div>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-800 mb-5">
+<h3 class="text-sm font-bold mb-3">未来2–4周三情景推演矩阵</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead class="bg-gray-50 dark:bg-gray-800/80">
+<tr><th>情景</th><th>主观概率</th><th>价格触发条件</th><th>量能确认</th><th>潜在目标区间</th><th>仓位动作</th></tr>
+</thead>
+<tbody class="text-gray-700 dark:text-gray-300">
+<tr>
+<td class="font-bold text-emerald-600 whitespace-nowrap">乐观反转</td>
+<td class="font-bold">20%</td>
+<td class="min-w-[150px]">有效收复503美元，进一步站上516–523美元</td>
+<td class="min-w-[130px]">日成交量超过35M股，突破时放量</td>
+<td class="font-mono">$520–540</td>
+<td class="min-w-[170px]">持仓者保留底仓；观望者等待确认后分批建仓</td>
+</tr>
+<tr>
+<td class="font-bold text-amber-600 whitespace-nowrap">中性震荡</td>
+<td class="font-bold">45%</td>
+<td class="min-w-[150px]">478–503美元之间反复震荡，不连续收盘破位</td>
+<td class="min-w-[130px]">回落缩量至20M股以下，反弹量能逐步恢复</td>
+<td class="font-mono">$478–503</td>
+<td class="min-w-[170px]">持仓者控制仓位；观望者等待底部结构确认</td>
+</tr>
+<tr>
+<td class="font-bold text-rose-600 whitespace-nowrap">悲观破位</td>
+<td class="font-bold">35%</td>
+<td class="min-w-[150px]">收盘有效跌破478美元，进一步跌破470美元</td>
+<td class="min-w-[130px]">下跌日成交量超过35M股</td>
+<td class="font-mono">$460–470</td>
+<td class="min-w-[170px]">减仓或退出交易性仓位，不进行无条件摊平</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-[10px] text-gray-400 mt-3">概率为交易研究中的主观情景权重，三项合计100%，不是统计模型输出。目标区间为条件性推演，并非价格承诺。</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-4 mb-5">
+<div x-show="role==='all'||role==='hold'" :class="role==='hold'?'md:col-span-2':''" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-emerald-200 dark:border-emerald-900/60">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
+<i data-lucide="briefcase" class="w-4 h-4"></i>已持仓投资者：以风险预算优先
+</h3>
+<div class="space-y-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<div>
+<p class="font-bold text-emerald-600">① 第一层风险控制：478美元</p>
+<p>如果股价反弹失败，再次收盘跌破478美元，且成交量明显超过35M股，应优先削减交易性仓位至少30%–50%，不将其简单理解为正常回调。</p>
+</div>
+<div>
+<p class="font-bold text-emerald-600">② 反弹至498–503美元：分批降低风险</p>
+<p>如果反弹到MA5及近期成交密集区域，但成交量不足25M股，或者出现长上影、冲高回落，建议先兑现20%–30%的交易性仓位。</p>
+</div>
+<div>
+<p class="font-bold text-emerald-600">③ 收复516–523美元：重新评估持仓</p>
+<p>若连续两个交易日收盘站稳516美元以上，且向上突破MA20区域时成交量超过35M股，可停止机械性减仓，保留核心仓位，观察趋势能否转强。</p>
+</div>
+<div>
+<p class="font-bold text-rose-600">④ 硬性风控：470美元</p>
+<p>若收盘有效跌破470美元，且公司基本面或AI行业预期同步恶化，建议将交易性仓位大幅降至低水平，重新进行基本面估值和风险收益评估。</p>
+</div>
+</div>
+</div>
+
+<div x-show="role==='all'||role==='wait'" :class="role==='wait'?'md:col-span-2':''" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-primary-200 dark:border-primary-900/60">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-primary-700 dark:text-primary-300">
+<i data-lucide="eye" class="w-4 h-4"></i>未持仓投资者：不急于接飞刀
+</h3>
+<div class="space-y-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<div>
+<p class="font-bold text-primary-600">① 左侧观察区域：478–482美元</p>
+<p>股价回踩该区域后，必须观察是否出现缩量、下影线、连续收盘不再创新低等止跌信号。若日成交量低于20M股，且收盘重新回到482美元上方，可考虑建立不超过计划仓位10%–15%的试探性仓位。</p>
+</div>
+<div>
+<p class="font-bold text-primary-600">② 右侧第一确认点：503美元</p>
+<p>日收盘重新站上503美元，成交量达到35M股左右或更高，且次日没有立即跌回500美元下方，才考虑小仓位跟进。</p>
+</div>
+<div>
+<p class="font-bold text-primary-600">③ 中期趋势确认：516–523美元</p>
+<p>收复MA10及MA20，并至少连续两个交易日维持在523美元上方，成交量配合，才意味着本轮下行结构有望转变。届时可以重新评估中期配置比例。</p>
+</div>
+<div>
+<p class="font-bold text-rose-600">④ 不宜追高区域：500–523美元的无量反弹</p>
+<p>如果价格只是快速反弹，却没有成交量确认和均线收复，不应因为跌幅较大而认为已经便宜。尤其不建议在放量冲高后立即重仓追涨。</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-rose-50/80 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 rounded-xl p-5 sm:p-6">
+<h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-rose-700 dark:text-rose-300">
+<i data-lucide="shield-alert" class="w-4 h-4"></i>核心证伪与风控红线
+</h3>
+<div class="grid sm:grid-cols-2 gap-5 text-xs sm:text-sm text-rose-900 dark:text-rose-200 leading-relaxed">
+<div>
+<p class="font-bold mb-2">1. 价格结构证伪</p>
+<p>① 收盘有效跌破478美元并放量：短期下跌趋势延续。</p>
+<p class="mt-2">② 进一步跌破470美元：本报告的短期防守结构失效，需防范向460美元附近寻找新支撑。</p>
+<p class="mt-2">③ 若反弹始终无法收复503美元，弱势状态不能认定已经扭转。</p>
+</div>
+<div>
+<p class="font-bold mb-2">2. 基本面与行业逻辑证伪</p>
+<p>① Azure增长明显低于管理层指引，或者企业AI商业化转化速度下降。</p>
+<p class="mt-2">② 资本开支继续扩大，但云业务增速、经营利润率和自由现金流同步恶化。</p>
+<p class="mt-2">③ AI基础设施投资回报周期进一步拉长，主要客户削减AI预算或推迟数据中心建设。</p>
+</div>
+</div>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 mt-5">
+<h3 class="text-sm font-bold mb-3">下一阶段必须跟踪的五个先行指标</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead class="bg-gray-50 dark:bg-gray-800">
+<tr><th>跟踪指标</th><th>观察重点</th><th>偏多信号</th><th>偏空信号</th></tr>
+</thead>
+<tbody class="text-gray-700 dark:text-gray-300">
+<tr><td class="font-semibold">Azure增长</td><td>收入增速与市场预期</td><td>增长加速或维持指引</td><td>明显低于指引</td></tr>
+<tr><td class="font-semibold">资本开支</td><td>AI数据中心投资规模</td><td>投入增长伴随收入兑现</td><td>投入扩大而回报恶化</td></tr>
+<tr><td class="font-semibold">自由现金流</td><td>经营现金流扣除资本开支</td><td>现金流改善</td><td>持续承压</td></tr>
+<tr><td class="font-semibold">美债收益率</td><td>长期利率及估值折现率</td><td>利率稳定或下降</td><td>利率持续上行</td></tr>
+<tr><td class="font-semibold">纳斯达克走势</td><td>AI与大型科技股风险偏好</td><td>指数止跌、科技股扩散反弹</td><td>持续放量下跌</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- CONCLUSION -->
+<section data-aos="fade-up">
+<div class="bg-gradient-to-br from-gray-900 to-[#263449] dark:from-[#1b2636] dark:to-[#101722] rounded-2xl p-6 sm:p-8 text-white">
+<div class="flex items-center gap-2 mb-4">
+<i data-lucide="compass" class="w-5 h-5 text-orange-300"></i>
+<h2 class="text-lg font-bold">买方策略师最终判断</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-5">
+<div>
+<p class="text-xs text-orange-300 font-bold mb-2">基本面层面</p>
+<p class="text-sm leading-relaxed text-gray-200">微软云业务和AI商业化基础仍然强劲。现阶段不能仅凭股价回落认定公司经营趋势反转，但必须持续审视资本开支回报。</p>
+</div>
+<div>
+<p class="text-xs text-orange-300 font-bold mb-2">交易结构层面</p>
+<p class="text-sm leading-relaxed text-gray-200">价格低于MA5、MA10、MA20，11月20日放量长阴且跌破500美元，短期空头占优。尚未形成可靠的底部反转结构。</p>
+</div>
+<div>
+<p class="text-xs text-orange-300 font-bold mb-2">执行层面</p>
+<p class="text-sm leading-relaxed text-gray-200">优先观察478–482美元的止跌表现。反弹先看503美元，再看516–523美元。没有成交量确认和均线收复之前，避免重仓抄底。</p>
+</div>
+</div>
+<div class="mt-6 pt-5 border-t border-white/15">
+<p class="text-sm font-bold text-orange-300">当前策略定位：谨慎观望，等待价格企稳与资金重新确认。</p>
+<p class="text-xs text-gray-300 mt-2 leading-relaxed">微软长期竞争优势与短期股价走势必须分开评估。对于中长期投资者，重点是未来季度Azure增长、AI资本开支效率与自由现金流；对于短线交易者，重点是478美元附近是否止跌，以及503美元、523美元两道趋势修复关口能否被有效收复。</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 text-xs text-gray-500 dark:text-gray-400 leading-relaxed space-y-4">
+<div>
+<p class="font-bold text-gray-700 dark:text-gray-300 mb-2">一、行情与指数数据来源</p>
+<ul class="space-y-2">
+<li>微软历史日线：<a class="source-link" href="https://stockanalysis.com/stocks/msft/history/" target="_blank" rel="noopener">StockAnalysis — Microsoft Historical Prices</a></li>
+<li>微软历史行情交叉核验：<a class="source-link" href="https://finance.yahoo.com/quote/MSFT/history/" target="_blank" rel="noopener">Yahoo Finance — MSFT Historical Data</a></li>
+<li>标普500历史数据：<a class="source-link" href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener">Yahoo Finance — S&P 500 Historical Data</a></li>
+<li>纳斯达克综合指数：<a class="source-link" href="https://ycharts.com/indices/%5EIXIC/level" target="_blank" rel="noopener">YCharts — Nasdaq Composite Historical Level</a></li>
+</ul>
+</div>
+
+<div>
+<p class="font-bold text-gray-700 dark:text-gray-300 mb-2">二、公司基本面与市场事件来源</p>
+<ul class="space-y-2">
+<li>微软FY2027第一季度官方财报（2026-10-28）：<a class="source-link" href="https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast/" target="_blank" rel="noopener">Microsoft Investor Relations — Q1 Results</a></li>
+<li>微软FY2027第一季度业绩会议：<a class="source-link" href="https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1" target="_blank" rel="noopener">Microsoft Earnings Conference Call</a></li>
+<li>2026-11-05科技股抛售与政策因素：<a class="source-link" href="https://www.investing.com/news/economy-news/trading-day-a-november-5-market-bonfire-5005919" target="_blank" rel="noopener">Reuters — November 5 Market Selloff</a></li>
+<li>2026-11-20全球科技股抛售：<a class="source-link" href="https://www.reuters.com/world/china/global-markets-global-markets-2026-11-20/" target="_blank" rel="noopener">Reuters — Global Markets, November 20</a></li>
+<li>2026-11-20美股AI交易风险：<a class="source-link" href="https://www.schwab.com/learn/story/market-volatility" target="_blank" rel="noopener">Charles Schwab — AI Trade Cracks</a></li>
+</ul>
+</div>
+
+<div>
+<p class="font-bold text-gray-700 dark:text-gray-300 mb-2">三、数据口径与计算说明</p>
+<p>分析基准：2026-10-23至2026-11-20，共21个交易日。最新正式收盘数据截至2026-11-20。微软区间价格收益采用524.51美元至484.52美元计算，结果为-7.62%。标普500及纳斯达克指数均采用同期收盘点位计算。</p>
+<p class="mt-2">成交量单位为股，M代表百万股。MA5、MA10、MA20为截至11月20日的收盘价简单移动平均，其中MA20采用最近20个交易日数据。MA60未提供，避免使用不足样本估算。均线和关键价格位属于基于已核验历史日线数据的计算与交易推演。</p>
+<p class="mt-2">微软2026-11-19除息日涉及每股0.98美元现金股息。本报告区间涨跌幅采用未复权收盘价，因此属于价格收益口径，不等同于包含股息再投资的总回报。</p>
+</div>
+
+<div class="pt-4 border-t border-gray-200 dark:border-gray-800">
+<p class="font-bold text-gray-700 dark:text-gray-300 mb-2">免责声明</p>
+<p>本报告基于公开历史行情、公司披露及媒体报道进行独立研究分析。归因权重、情景概率、支撑阻力和交易策略均为研究判断，不是确定性预测。价格区间并非实时交易报价，实际成交可能受到盘前盘后波动、流动性、市场跳空及交易成本影响。报告不构成投资、证券买卖或资产配置建议。投资者应结合自身风险承受能力独立决策。</p>
+<p class="mt-3">报告生成日期：2026-11-23（北京时间） · 标的：Microsoft Corporation（NASDAQ: MSFT）</p>
+<p class="mt-2 text-gray-400">© 2026 · BUY-SIDE EQUITY RESEARCH · PRICE ACTION &amp; STRATEGY</p>
+</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+const y=document.documentElement.scrollTop||document.body.scrollTop;
+const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+const bar=document.getElementById('progressBar');
+if(bar)bar.style.width=(h>0?Math.min(100,y/h*100):0)+'%';
+});
+document.addEventListener('DOMContentLoaded',()=>{
+syncThemeIcons();
+if(window.lucide)lucide.createIcons();
+if(window.AOS)AOS.init({duration:450,once:true,offset:30});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪佛龙公司（CVX）体系全景解析</title>
+<!-- Essential CDN Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)',
+100: 'hsl(20, 90%, 85%)',
+200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)',
+400: 'hsl(20, 90%, 55%)',
+500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)',
+700: 'hsl(20, 90%, 35%)',
+800: 'hsl(20, 90%, 25%)',
+900: 'hsl(20, 90%, 15%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)',
+100: 'hsl(30, 85%, 85%)',
+200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)',
+400: 'hsl(30, 85%, 60%)',
+500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)',
+700: 'hsl(30, 85%, 40%)',
+800: 'hsl(30, 85%, 30%)',
+900: 'hsl(30, 85%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Micro-interactions & Custom Styles -->
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html { scroll-behavior: auto; }
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th, .dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+transition: width 1.2s ease-out;
+}
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+display: none;
+}
+#mobileMenu.mobile-menu-open {
+display: block;
+}
+@media (min-width: 768px) {
+#mobileMenu {
+display: none !important;
+}
+}
+@media (max-width: 767px) {
+header .max-w-7xl {
+padding-left: 1rem;
+padding-right: 1rem;
+}
+header .flex.items-center.justify-between > h1 {
+font-size: 1rem;
+line-height: 1.25rem;
+white-space: nowrap;
+margin-right: 0.5rem;
+}
+#mobileMenu {
+margin-top: 1rem;
+padding-top: 1rem;
+padding-bottom: 0.5rem;
+border-top: 1px solid rgba(20, 20, 20, 0.12);
+max-height: calc(100vh - 90px);
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+}
+.dark #mobileMenu {
+border-top-color: rgba(255, 255, 255, 0.15);
+}
+#mobileMenu a {
+display: block;
+width: 100%;
+padding: 0.7rem 0.5rem;
+border-radius: 0.5rem;
+}
+#mobileMenu a:active {
+background: rgba(20, 20, 20, 0.06);
+}
+.dark #mobileMenu a:active {
+background: rgba(255, 255, 255, 0.08);
+}
+}
+/* 桌面端导航 */
+@media (min-width: 768px) {
+header nav[aria-label="桌面端导航"] a {
+color: #374151;
+}
+.dark header nav[aria-label="桌面端导航"] a {
+color: #e5e7eb;
+}
+header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 45%);
+}
+.dark header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 55%);
+}
+}
+header {
+overflow: visible;
+}
+</style>
+<script>
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<!-- Floating Header -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">雪佛龙体系全景解析</h1>
+<!-- 桌面端导航 -->
+<nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联生态</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+Code
+<!-- 右侧按钮 -->
+<div class="flex items-center space-x-2 flex-shrink-0">
+  <!-- 移动端汉堡菜单 -->
+  <button
+    type="button"
+    onclick="toggleMobileMenu()"
+    class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="打开或关闭导航菜单"
+    aria-controls="mobileMenu"
+    aria-expanded="false"
+    id="mobileMenuButton"
+  >
+    <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+  </button>
+
+  <!-- 暗色模式 -->
+  <button
+    type="button"
+    onclick="toggleDarkMode()"
+    class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="切换暗色模式"
+  >
+    <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+    <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+  </button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联生态</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 text-xs font-semibold mb-4">
+<span>NYSE: CVX</span>
+<span>•</span>
+<span>全球超级能源巨头 · 截至 2026-11-25 最新披露全景</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+雪佛龙公司（CVX）体系全景解析
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+本报告基于雪佛龙公司（Chevron Corporation，NYSE: CVX）FY2025 10-K 年报、Q3 2026 业绩报告（2026年10月30日发布）、2026年代理声明书（DEF 14A）以及 2026年10月发布的赫斯中游剥离及高管大轮岗公告，系统解析 CEO Mike Wirth 掌舵下的 2027 接班梯队演进、2025 年 7 月吞并赫斯公司（Hess）发股 3.01 亿股与高强度回购对冲的股本变动、伯克希尔减持稳仓后的分散机构共治、TCO / CPChem / 委内瑞拉 PDVSA 及 HESM 关联生态重构，以及全员 ESIP 持股与 50% PSU 激励机制。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">战略与轮岗</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+迁都休斯顿、并购赫斯与 2027年1月高管核心大轮岗布局
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与股权</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+19.80亿流通股、4,095亿$+市值与伯克希尔 8,438万股稳仓
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">合资生态与激励</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+剥离 HESM、TCO/CPChem/委内瑞拉合资及 State Street ESIP 员工持股
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+百年传承与管理层演进：从“标准石油分支”到“休斯顿新中枢与2027轮岗”
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+雪佛龙的历史可追溯至 1879 年创立的太平洋海岸石油公司，1911 年随标准石油拆分独立为加州标准石油（Socal），并于 1984 年吞并海湾石油后正式启用“Chevron”名称。此后公司通过一系列精密并购完成跃迁：2001 年合并德士古（Texaco）、2005 年收购优尼科（Unocal）、2020 年逆势收购 Noble Energy、2023 年收购 PDC Energy，直至 <strong>2025 年 7 月 18 日</strong>在国际仲裁胜诉后正式完成对 <strong>赫斯公司（Hess Corporation）约 480 亿美元股权（含债约 600 亿美元）</strong>的世纪并购，一举拿下标杆资产圭亚那 Stabroek 深水油田 30% 权益。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000093410|1">（来源：FY2025 10-K &amp; 公司公告）</span>
+</p>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+<i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+关键组织变革（2026年10月5日重磅官宣，2027年1月1日生效）：自 2018 年起出任董事长兼 CEO 的资深内部老兵 <strong>Michael K. ("Mike") Wirth</strong> 宣布启动高管核心大轮岗——现任 CFO <strong>Eimear P. Bonner</strong> 将接掌全行最核心的“油气与炼化业务总裁（President, Oil, Products &amp; Gas）”实权岗位（被普遍视为下任 CEO 接班热身），新能源总裁 <strong>Jeff Gustavson</strong> 转任 <strong>CFO</strong>，副董事长 <strong>Mark Nelson</strong> 专司战略与业务拓展，而海上业务总裁 <strong>Brent Gros</strong> 出任新能源总裁并兼管<strong>全公司 AI 战略</strong>！
+</p>
+</div>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">Wirth 早期至中期：资本纪律与迁都休斯顿</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>“股东回报优先于盲目扩产”：</strong>2018 年接班后摒弃过去大型油企砸重金赌超大型绿地项目习惯，主打短周期二叠纪页岩与高回报褐地扩建。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>告别加州、迁都休斯顿 (2024)：</strong>因加州监管与税收摩擦不断，2024 年果断把驻扎逾百年的全球总部从加州圣拉蒙（San Ramon）迁至德州休斯顿，拉近高管层与页岩/墨西哥湾一线距。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>30亿–40亿美元结构降本：</strong>2025 年已兑现 15 亿美元结构性成本削减，朝 2026 年底实现 30亿–40 亿美元年度永久节支稳步推进。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026 年战略重心：赫斯整合、委内瑞拉与 AI 电力</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>美国产量站稳 200 万桶以上：</strong>吞并赫斯（圭亚那 + 巴肯）后，Q3 2026 美国本土油气产量连续第五季站稳 204 万桶油当量/日，全美炼厂利用率为创纪录的 98%。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>委内瑞拉超低成本扩张 (2026年9月)：</strong>凭借百年深耕优势与 PDVSA 更新合资条款，拟通过 5 年 70 亿美元自筹投资将当地三家合资厂产量翻倍至 <strong>60 万桶/日</strong>，全成本低于 <strong>20 美元/桶</strong>！</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>拥抱 AI 电力与低碳商业化：</strong>推进与微软合作的 <em>Project Kilby</em> AI 数据中心天然气直供供电方案，并于 2026 年 11 月重启爱荷华州生物柴油厂。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+股本数量变化过程：2025 年赫斯全股收购扩容与百亿级回购对冲
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+雪佛龙的股本演变呈现典型的“通过全股票并购换取核心储量，再用强劲自由现金流回购填平股本扩张”的周期节奏。继 1994 年与 2004 年两次 2 拆 1 拆股后，公司在 2022–2024 年通过大规模回购将流通股持续压低至约 17.6 亿–18.0 亿股；而 <strong>2025 年 7 月 18 日</strong>完成赫斯并购时一次性新发了 <strong>3.0125 亿股普通股</strong>（占交易后总股本约 15%），随后公司立即以年均 100亿–120 亿美元回购消化新增筹码，截至 2026 年 11 月流通股本稳于约 <strong>19.80 亿股</strong>。
+</p>
+Code
+<div class="overflow-x-auto bg-white/90 dark:bg-gray-900 rounded-xl shadow-md p-4">
+    <table>
+      <thead>
+        <tr class="text-xs uppercase text-primary-700 dark:text-primary-300">
+          <th>时间节点</th>
+          <th>股本变动关键事件</th>
+          <th>股本增减规模</th>
+          <th>财务与股东回报意义</th>
+        </tr>
+      </thead>
+      <tbody class="text-sm text-gray-700 dark:text-gray-300">
+        <tr>
+          <td class="font-medium whitespace-nowrap">1994 / 2004年</td>
+          <td>两次 2 拆 1 拆股 &amp; 德士古换股合并</td>
+          <td>每股面值定为 $0.75，2004 年后未再拆股</td>
+          <td>形成高流动性蓝筹股本框架</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2020–2024年</td>
+          <td>全股收购 Noble / PDC + 高能回购周期</td>
+          <td>2024 年斥资 152.00 亿美元大举回购</td>
+          <td>在吸收小型并购发股同时持续压缩净股本</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2025年7月18日</td>
+          <td>全股票完成收购赫斯公司（Hess Corp.）</td>
+          <td>新发 <strong>3.0125 亿股</strong>（另有 Q1 公开市场先购入 1,538 万股 Hess 股）</td>
+          <td>交易权益对价约 480.00 亿美元（含承担 88 亿债务约 600 亿）；发股占交割后股本 ~15%</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2025全年–2026年11月</td>
+          <td>强力回购对冲稀释 + 连续 38 年上调股息</td>
+          <td>FY2025 回购 <strong>121.00 亿美元</strong>；2026 Q3 单季回购 <strong>25.00 亿美元</strong></td>
+          <td>2026 年初将季度股息上调 4% 至 <strong>1.78 美元/股</strong>（年化 $7.12）；FY25 总返还股东创纪录 271.00 亿美元</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2026年11月24日</td>
+          <td>最新总股本与市值快照</td>
+          <td>流通股本约 <strong>19.80 亿股</strong>（Q3 摊薄加权 ~19.62 亿股）</td>
+          <td>收盘价 <strong>208.73 美元</strong>（52周峰值 236.48 美元），总市值约 <strong>4,066亿–4,154亿美元</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">大股东持仓动向：伯克希尔“减仓后连续两季稳仓”</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>伯克希尔 2026 年最新持仓轨迹：</strong>在 2025 年下半年至 2026 年一季度陆续减持逾 30%（同比减幅 30.88%）后，格雷格·阿贝尔执掌下的伯克希尔于 2026 年 Q2 与 Q3 连续两个季度保持 <strong>84,375,856 股（约占 CVX 总股本 4.26%）</strong>纹丝不动，截至 9 月 30 日市值 172.30 亿美元，稳居伯克希尔美股第六大重仓股[reference:2]！</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>内部人交易：</strong>核心高管如 CEO Mike Wirth 持仓与年度期权/PSU 归属挂钩，日常仅作常规税务与行权计划交易，整体保持高比例持股约束。</span>
+        </li>
+      </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">最新股本、回购与杠杆指标 (2026 Q3 / 11-24)</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">最新流通普通股本</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约 19.80 亿股</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">最新总市值 (2026-11-24 收盘 $208.73)</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约 4,066亿–4,154亿美元</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">Q3 2026 净债务（大幅下降）</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">207.00 亿美元（FY25 末为 345 亿）</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">净债务 / 经营性现金流 (Q3 2026)</span>
+          <span class="text-base font-semibold text-green-600 dark:text-green-400">仅 0.40x（超强资产负债表）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+股权结构演变：彻底去中心化共治与 State Street ESIP 员工托盘力量
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+雪佛龙实行标准的单一普通股投票架构（面值 $0.75/股，每股 1 票），不存在任何实际控制人、一致行动人或家族信托架构。伴随 2025 年赫斯股东换股融入及伯克希尔持股自然降至 5% 以下，公司股权进一步由全球顶级被动指数与养老受托机构分散持有；值得注意的是，依据 2026 年代理声明书，<strong>State Street Corporation</strong> 同时充当雪佛龙员工储蓄投资计划（ESIP）受托人，代表员工及外部基金合计控制逾 <strong>1.526 亿股</strong>（约 7.7%–8.6%），而 <strong>The Vanguard Group</strong> 在 2026 年宣布内部合规分拆各业务单元单独申报持股。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000093410|3">（来源：2026 DEF 14A 主要股东披露）</span>
+</p>
+Code
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026 年主要机构股东分布（2026 Proxy &amp; Q3 13F）</h3>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">The Vanguard Group（含分拆前合计口径 ~1.615亿股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">~8.2%–8.7%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 44%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">State Street Corp.（1.526亿股，含员工 ESIP 信托）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">~7.7%–8.6%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 41%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">BlackRock, Inc.（~1.315亿+股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">~6.6%–7.2%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 35%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">Berkshire Hathaway（8,437.59万股，2026-09-30 13F）</span>
+            <span class="font-semibold text-primary-600 dark:text-primary-400">~4.26%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 22%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">全体董事及高管个人实益持股</span>
+            <span class="font-semibold text-primary-600 dark:text-primary-400">&lt;0.20%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 4%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">股权与治理结构演变时间线</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>1911–2005年（洛克菲勒分拆至三强合一）：</strong>彻底走出早期家族持股控制，通过与德士古、优尼科股权合并演化为纯公众蓝筹股。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2020–2024年（巴菲特进场重仓）：</strong>疫情油价暴跌后伯克希尔大举扫货并一度持有逾 1.6 亿股（接近 8%–9%），成为最大主动价值锚。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2025年7月–2026年11月（赫斯稀释与高度机构化）：</strong>新发 3.01 亿股吸纳原赫斯机构及 John Hess 家族权益；伯克希尔减至 8,438 万股后持平，Vanguard 转为旗下实体分散披露，彻底呈机构平衡共治格局。</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      控制权稳定性与董事会制衡机制
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      因前三大机构持股方均为被动指数基金或长线受托人，加上《特拉华州公司法》及董事全员年度多数票改选制度，雪佛龙不存在任何单边操控风险。董事会由独立领先董事（Lead Independent Director）率领一众能源、化工、财务及科技界资深独立董事监督 CEO Mike Wirth，并在 2026 年 5 月 27 日股东大会上获得了高达 <strong>94.0%</strong> 的高管薪酬赞成率（Say-on-Pay），体现了极高的机构治理公信力。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+关联上市公司剥离（HESM）、超级合资帝国（TCO/CPChem）与 PDVSA 换股
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+超级石油巨头的业务版图并非全部装在全资子公司内，而是高度依赖<strong>“参股上市中游平台 + 跨国 50/50 超级合资巨头 + 产油国国家石油公司（NOC）非控股合资体”</strong>共同运转。2026年10月，雪佛龙刚刚宣布了一项震撼华尔街的关联平台退出大交易——彻底剥离随赫斯并购而来的上市子公司 <strong>Hess Midstream LP（NYSE: HESM）</strong>。
+</p>
+Code
+<div class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="arrow-left-right" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">Hess Midstream LP (NYSE: HESM)</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">关联上市管道平台（2026年底彻底出表）</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• 2025年7月随赫斯继承 <strong>37.8% 权益 + 100% 普通合伙人控制权</strong>（2026目标 Adj EBITDA 12.3亿–12.8亿$）</li>
+        <li>• <strong>2026年10月6日退出置换协议：</strong>交出全数 HESM 持股（注销其近 40% 股本）及 DJ 盆地中游资产，换回 2.00 亿美元现金 + <strong>巴肯管输费率猛砍 50%</strong> 并延约至 2045 年！</li>
+        <li>• 出表 <strong>37.00 亿美元</strong> HESM 债务，绝对提升 ROCE 0.50%，年底将确认 30亿–40 亿美元一次性税后账面亏损</li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="factory" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">Tengizchevroil (TCO) &amp; CPChem</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">两大权益法超级现金牛合资公司</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• <strong>TCO（哈萨克斯坦，持股 50%）：</strong>与埃克森美孚(25%)等合营，2025年建成未来增长项目（FGP），2026年推进特许权延期谈判。</li>
+        <li>• <strong>Chevron Phillips Chemical（持股 50%，与 PSX 合营）：</strong>FY25 营收 <strong>124.70 亿美元</strong>、净利 5.93 亿；2026年前9月化工景气大幅复苏，营收达 <strong>100.58 亿美元</strong>、净利飙升至 <strong>16.56 亿美元</strong>（Q2 $8.06亿 / Q3 $6.22亿），资产负债比仅 16%！</li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">委内瑞拉 PDVSA 合资与圭亚那</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">非权益法现收现付 vs 深水核心区块</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• <strong>委内瑞拉（PDVSA 关联合作）：</strong>2020 年起转为非权益法核算（仅收现时入账）；2026年4月完成资产置换将 Petroindependencia 持股增至 <strong>49%</strong>，9月宣布 5 年 70 亿自筹投资冲击 60 万桶/日。</li>
+        <li>• <strong>圭亚那 Stabroek（持股 30%）：</strong>埃克森美孚（45%）任作业者、中海油（25%），贡献世界级低桶油成本增长。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      关联交易定价机制、利益冲突防火墙与协同风险
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      <strong>1. HESM 关联费率重构典范：</strong>此前雪佛龙既是 HESM 的控股普通合伙人（GP），又是其巴肯油田唯一核心付费托运客户，存在天然“左手倒右手”关联定价审视压力。通过 2026年10月交易，雪佛龙宁愿在会计上吞下 30亿–40 亿美元账面减值，也要用股权与资产换取独立第三方费率砍半（延约至 2045 年）及 37 亿美元并表债务出清，是一次极其果断的资本结构手术，但也直接导致 HESM 独立后股价单日暴跌逾 14%。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000093410|4">（来源：2026年10月6日 8-K &amp; HESM 公告）</span>
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      <strong>2. 合资化工与海外国企合作风险：</strong>CPChem 董事会明确规定任何重大资本决议须同时获得雪佛龙与 Phillips 66 至少一名投票代表批准，形成严格双向制衡；而委内瑞拉与哈萨克斯坦 TCO 关联合作则高度受制于美国 OFAC 制裁许可政策及当地资源民族主义税改变动。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+员工持股与激励机制：15.3万美元高薪基盘、ESIP 员工信托与“零奖金”绩效股权
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+雪佛龙拥有约 4 万余名高度专业化的工程与运营员工，员工中位数年薪高达 <strong>152,970 美元</strong>（FY2025），在标普 500 传统产业中名列前茅。公司在激励结构上兼顾“基层长期储蓄持股共享”与“高管业绩刚性绑定”，CEO 总薪酬同比随利润周期敏感联动下滑 18%。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000093410|5">（来源：2026 DEF 14A &amp; 2026-01-28 8-K）</span>
+</p>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">高管层薪酬与 2026 LTIP 硬核考核</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>CEO 薪酬与周期强联动：</strong>2025 年受油价及净利下滑 30% 影响，Mike Wirth 总薪酬由 3,270 万美元下降 18% 至 <strong>2,683.00 万美元</strong>（含 190 万底薪、0 元酌情奖金、356 万 CIP 绩效现金及 1,790 万股权激励，占 67%），CEO 与中位数员工薪酬比仅 <strong>175 : 1</strong>。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2026 年长期激励计划（2022 LTIP）：</strong>2026年1月批准 Wirth 基本年薪调至 197.5 万美元（CIP 目标 165%），年度股权授予 <strong>2,300.00 万美元</strong>，精准按 <strong>50% 绩效股（Performance Shares）+ 50% 限制性股票（RSUs）</strong>拆分；其他三大核心高管 Bonner（$509万）、Nelson（$853万）、Pate（$764万）均按同比例受限。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>三年相对回报 + ROCE 考核：</strong>绩效股须经三年期考核，直接挂钩相对同业总股东回报（TSR）与已动用资本回报率（ROCE），防止管理层盲目举债扩产。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">全员 ESIP 持股池与独立董事薪酬</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>ESIP 员工储蓄投资计划（含 ESOP）：</strong>极具特色的全员股权绑定——员工仅需拿出 2% 工资供款，公司即给予高达 <strong>8%</strong> 优厚匹配供款（可投向雪佛龙股票基金），且由 State Street 托管行使独立投票指令权（2026年股东大会员工投票权高度活跃）。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>非执行董事全包制（NED Plan）：</strong>每位独立董事年薪固定 <strong>39.00 万美元</strong>（40% 现金 15.5 万 + 60% 限制性股票 23.5 万），不设会议出席费亦不享受退休金计划。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>保障与潜在张力：</strong>建有高标准 SEC 合规追回（Clawback）政策；潜在组织矛盾在于公司 2025–2026 年强推 30亿–40 亿美元结构裁员降本（含巴肯钻机由 3 台减至 2 台及总部迁徙德州），部分资深工程师面临转岗或精简压力。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+综合研判与关键结论
+</h2>
+<div class="space-y-6">
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+1. 组织与战略阶段：后赫斯“轻装提效”与接班人落位期
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+2025年7月艰难拿下赫斯公司（圭亚那）后，雪佛龙在 2026 年迅速完成了第二步高阶整顿：通过 10 月剥离 HESM 卸下 37 亿美元中游包袱、9 月拓展委内瑞拉超低成本储量，并同步发布 2027 年 1 月生效的四大核心高管大轮岗（原 CFO Bonner 挂帅核心油气大盘、Gustavson 接棒 CFO、Gros 兼管新能源与 AI）。整个组织正从“并购扩张期”切换为“高 ROCE 现金收割 + 新梯队实战期”。
+</p>
+<div class="grid md:grid-cols-3 gap-4 pt-2">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">资产组合质量与资本纪律</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">93/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 93%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">2026 Q3 现金流与降杠杆效率</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">95/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 95%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">油价波动敏感度与地缘风险免疫</span>
+<span class="font-bold text-accent-600 dark:text-accent-400">60/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 60%;"></div></div>
+</div>
+</div>
+</div>
+Code
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      2. 财务表现核心反转：由 2025 “增产不增利”到 2026 Q3 “现金流猛虎出笼”
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      FY2025 雪佛龙虽产量创 3.7M boe/d 新高，但受低油价及赫斯并购整合折旧影响，净利润同比骤降 30% 至 <strong>123.00 亿美元</strong>（营收 1,844.00 亿）。而进入 2026 年伴随布伦特原油反弹至 Q2 $104 / Q3 $97 美元高位，Q3 单季爆发式跃升：营收大增 35.4% 至 <strong>652.40 亿美元</strong>，调整后净利润飙至 <strong>103.61 亿美元</strong>（+186%，EPS 5.28 美元），下游炼油厂创 98% 利用率单季赚 49.31 亿！
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      更惊人的是资产负债表修复速度：Q3 单季录得 160.00 亿美元经营现金流与 142.00 亿美元调整后自由现金流，使净债务仅一个季度便由 345 亿骤砍至 <strong>207.00 亿美元</strong>（净债务/CFFO 仅 <strong>0.40x</strong>），ROCE 冲上 <strong>18.0%</strong>！唯一需提前打预防针的是 Q4 2026 将因 HESM 剥离计入 30亿–40 亿美元一次性税后账面亏损（属非现金优化成本）。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      3. 合资平台与员工 ESIP 是抵御周期波动的“压舱石”
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      CPChem（2026前9月净利同比大翻身至 16.56 亿美元）与下游炼化高稼动率形成完美的逆周期利润对冲；而 State Street 托管下的庞大员工 ESIP 股权池与连续 38 年增长的股息（$7.12/年），把全公司 4 万多名员工及长线价值机构紧紧焊在一条船上。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      4. 体系与治理风险提示
+    </h3>
+    <div class="space-y-4">
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>原油高杠杆与地缘局势降温回调风险。</strong>2026 年雪佛龙股价大涨近四成至 208–236 美元，高度受益于中东冲突推动的 97–104 美元高油价。由于雪佛龙的原油产量占比高于部分偏重天然气/化工的同业，一旦地缘停火或 OPEC+ 大幅增产令布油回落至 65–70 美元，其盈利与股价弹性回撤风险显著。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>委内瑞拉与哈萨克斯坦资源主权及制裁反复风险。</strong>把委内瑞拉（PDVSA）打造为未来五年 60 万桶/日增长极高度依赖美国白宫/财政部 OFAC 许可证的持续有效；同时哈萨克斯坦 TCO 特许权延期谈判亦涉及繁复的东道国财税博弈。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>2027年高管大换防磨合与伯克希尔后续去留。</strong>2027年1月起四位顶层高管跨界履新（尤其是 CFO 转任核心运营总裁），能否平稳接力考验公司制度厚度；此外伯克希尔当前仍持 8,438 万股（172亿美元），虽连续两季停卖，未来若因能源价格见顶而重启减持仍将造成筹码压力。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+      <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      一句话总结：雪佛龙在 2026 年交出了一张“吃下圭亚那、剥离中游债务包袱、激活委内瑞拉低成本油田并启动 2027 接班轮岗”的满分答卷，净杠杆仅 0.4 倍且年化自由现金流破 400 亿美元大关，但其高度顺周期的油价暴露亦决定了估值重估的可持续性仍系于国际油价中枢。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合雪佛龙公司（NYSE: CVX）FY2025 10-K、Q3 2026 业绩报告（2026-10-30）、2026 年代理声明书（DEF 14A）、10 月 HESM 剥离及高管轮岗 8-K 公告与伯克希尔 13F 披露，系统梳理其管理层接班、股本扩张与回购、机构股权共治、合资关联生态及激励体系。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 历史整合与 2027 核心高管轮岗</li>
+<li>• 赫斯发股扩容与百亿回购缩股</li>
+<li>• State Street ESIP 与伯克希尔持股</li>
+<li>• HESM 退出与 TCO/CPChem/PDVSA 关联</li>
+<li>• 全员 ESIP 8% 配比与 50% PSU 考核</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供教育与金融研究参考，不构成任何证券买卖或投资建议。所有数据均基于截至 2026 年 11 月 25 日（北京时间）的公开披露信息整理，具体以公司官方 SEC 文件为准。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 雪佛龙公司（CVX）体系全景研究（2026-11-25）。保留所有权利。</p>
+</div>
+</div>
+</footer>
+<script>
+function toggleMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+const isOpen = menu.classList.toggle('mobile-menu-open');
+menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+if (button) {
+button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+lucide.createIcons();
+}
+}
+
+function closeMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+menu.classList.remove('mobile-menu-open');
+menu.setAttribute('aria-hidden', 'true');
+if (button) {
+button.setAttribute('aria-expanded', 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', 'menu');
+lucide.createIcons();
+}
+}
+
+// Progress Bar
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+});
+
+// Initialize AOS & Lucide
+document.addEventListener('DOMContentLoaded', function() {
+lucide.createIcons();
+AOS.init({ duration: 800, once: true });
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+link.addEventListener('click', () => {
+closeMobileMenu();
+});
+});
+
+// Citation System
+let i = 1, map = new Map();
+document.querySelectorAll('[data-ref]').forEach(el => {
+if (el.dataset.citationProcessed) return;
+const raw = (el.getAttribute('data-ref')||'').trim();
+if (!raw) return;
+const parts = raw.split('|');
+const url = parts[0].trim();
+const idx = (parts[1]||'').trim() || map.get(raw) || (map.set(raw, String(i)), String(i++));
+if (!el.textContent || !el.textContent.trim()) { el.dataset.citationProcessed = 'true'; return; }
+const btn = document.createElement('sup'); btn.textContent = String(idx);
+Object.assign(btn.style, { fontSize:'8px', color:'#fff', cursor:'pointer', top: '1px', fontWeight:'bold', backgroundColor:'#0284c7', borderRadius:'50%', transition:'all .15s', userSelect:'none', minWidth:'19px', height:'19px', marginLeft:'6px', display:'inline-flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 3px rgba(0,0,0,.2)', lineHeight:'1'});
+btn.addEventListener('mouseenter', ()=> Object.assign(btn.style, { backgroundColor:'#0369a1', transform:'scale(1.12)' }));
+btn.addEventListener('mouseleave', ()=> Object.assign(btn.style, { backgroundColor:'#0284c7', transform:'scale(1)' }));
+btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(url, '_blank'); });
+el.appendChild(btn); el.dataset.citationProcessed = 'true';
+});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

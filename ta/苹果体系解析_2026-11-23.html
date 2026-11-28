@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苹果体系全景解析</title>
+<!-- Essential CDN Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)',
+100: 'hsl(20, 90%, 85%)',
+200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)',
+400: 'hsl(20, 90%, 55%)',
+500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)',
+700: 'hsl(20, 90%, 35%)',
+800: 'hsl(20, 90%, 25%)',
+900: 'hsl(20, 90%, 15%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)',
+100: 'hsl(30, 85%, 85%)',
+200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)',
+400: 'hsl(30, 85%, 60%)',
+500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)',
+700: 'hsl(30, 85%, 40%)',
+800: 'hsl(30, 85%, 30%)',
+900: 'hsl(30, 85%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Micro-interactions & Custom Styles -->
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+.btn-interactive {
+  transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+  transform: scale(0.95);
+}
+.card-interactive {
+  transition: all 0.3s ease-out;
+  border: 1px solid transparent;
+  --border-lightness: 40%;
+}
+.dark .card-interactive {
+  --border-lightness: 60%;
+}
+.card-interactive:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+  border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+  border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th, .dark td {
+  border-bottom-color: hsl(0, 0%, 30%);
+}
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+  display: none;
+}
+
+#mobileMenu.mobile-menu-open {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  #mobileMenu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  header .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  header .flex.items-center.justify-between > h1 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    margin-right: 0.5rem;
+  }
+
+  #mobileMenu {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid rgba(20, 20, 20, 0.12);
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dark #mobileMenu {
+    border-top-color: rgba(255, 255, 255, 0.15);
+  }
+
+  #mobileMenu a {
+    display: block;
+    width: 100%;
+    padding: 0.7rem 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  #mobileMenu a:active {
+    background: rgba(20, 20, 20, 0.06);
+  }
+
+  .dark #mobileMenu a:active {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* 桌面端导航：明确指定亮色/暗色文字，避免 dark 模式下依赖继承导致不可见 */
+@media (min-width: 768px) {
+  header nav[aria-label="桌面端导航"] a {
+    color: #374151;
+  }
+
+  .dark header nav[aria-label="桌面端导航"] a {
+    color: #e5e7eb;
+  }
+
+  header nav[aria-label="桌面端导航"] a:hover {
+    color: hsl(20, 90%, 45%);
+  }
+
+  .dark header nav[aria-label="桌面端导航"] a:hover {
+    color: hsl(20, 90%, 55%);
+  }
+}
+
+/* 防止固定 Header 在展开移动菜单时被内容裁剪 */
+header {
+  overflow: visible;
+}
+</style>
+<script>
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<!-- Floating Header -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">苹果体系全景解析</h1>
+    <!-- 桌面端导航 -->
+    <nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+      <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+      <a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+      <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+      <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+      <a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">业务矩阵</a>
+      <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
+      <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+    </nav>
+
+    <!-- 右侧按钮 -->
+    <div class="flex items-center space-x-2 flex-shrink-0">
+      <!-- 移动端汉堡菜单 -->
+      <button
+        type="button"
+        onclick="toggleMobileMenu()"
+        class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        aria-label="打开或关闭导航菜单"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+        id="mobileMenuButton"
+      >
+        <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+      </button>
+
+      <!-- 暗色模式 -->
+      <button
+        type="button"
+        onclick="toggleDarkMode()"
+        class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        aria-label="切换暗色模式"
+      >
+        <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+        <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 移动端导航菜单 -->
+  <div id="mobileMenu" aria-hidden="true">
+    <nav class="flex flex-col space-y-1">
+      <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+      <a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+      <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+      <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+      <a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">业务矩阵</a>
+      <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
+      <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+    </nav>
+  </div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+苹果体系全景解析
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+本页系统梳理了围绕苹果（Apple Inc.，AAPL）的核心议题：从乔布斯到库克再到特纳斯的管理层演进、大规模股票回购驱动的股本变化、高度分散的股权结构、产品与服务业务矩阵，以及以RSU为核心的员工激励机制。通过把公司治理、资本运作、经营表现与组织文化放在同一框架内，帮助你快速理解这家全球市值最高的科技公司全貌。
+</p>
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+            <i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">管理层演进</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">
+          从乔布斯到库克，再到2026年特纳斯接棒
+        </p>
+      </div>
+      <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+            <i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与回购</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">
+          持续回购驱动的股本收缩与市值管理
+        </p>
+      </div>
+      <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+            <i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">激励与生态</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">
+          RSU体系与硬件+服务双轮驱动
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 1: 创始人/核心管理层发展 -->
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+      核心管理层演进：从乔布斯到库克再到特纳斯
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        苹果的管理层叙事并非单一创始人故事，而是一场跨越三代的权力与战略交接。史蒂夫·乔布斯以产品直觉与现实扭曲力场重塑公司；蒂姆·库克以供应链极致与服务转型将苹果推向万亿市值；2026年9月，硬件工程负责人约翰·特纳斯（John Ternus）正式接任CEO，库克转任执行董事长，标志着公司进入“后库克时代”。
+      </p>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          关键转折：2026年4月宣布交接、9月正式生效。特纳斯获约5800万美元薪酬包（含5500万美元股权），库克转为执行董事长，年薪200万美元并获4500万美元目标股权。交接平稳，体现苹果对内部人才培养的高度自信。
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">库克时代（2011-2026）</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">供应链与运营效率极致化，毛利率持续提升</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">服务业务从边缘成长为第二增长曲线（FY2026达1233亿美元）</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">累计回购超9000亿美元，市值从约3500亿美元跃升至近5万亿美元</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">特纳斯接棒与新阶段</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">25年苹果老将，长期负责硬件工程，深度参与M系列芯片与产品设计</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">股权激励以相对TSR（对标标普500）为核心，75%绩效RSU</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">市场关注其如何在AI、空间计算与中国市场间平衡增长与风险</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+          管理哲学与近期战略重点
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          库克时代的核心是“效率+生态+资本回报”：通过垂直整合与规模效应维持高毛利，服务业务提升经常性收入占比，大规模回购支撑EPS增长。特纳斯上任后，市场预期其将延续硬件创新基因，同时加速AI能力在端侧的落地，并应对地缘政治与监管压力。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          FY2026公司实现营收4788.34亿美元（同比+15.1%），净利润1321.75亿美元（同比+18.0%），毛利率约48.8%，净利率27.6%。iPhone收入2540.98亿美元，服务业务1233.01亿美元，均创历史新高。大中华区收入显著回暖，成为增长亮点之一。
+        </p>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md mt-6">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">交接后的组织信号</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>内部提拔优先。</strong>特纳斯与CFO Kevan Parekh等均长期在苹果体系成长，降低文化摩擦风险。</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>股权绑定强化。</strong>新CEO薪酬高度股权化，绩效RSU与相对股东回报挂钩，与股东利益深度对齐。</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>资本回报延续。</strong>FY2026回购约858亿美元，并宣布新的1000亿美元回购授权，显示董事会对自由现金流信心。</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 2: 股本数量变化 -->
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+      股本数量变化：回购驱动的持续收缩
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        苹果的股本变化几乎完全由股票回购驱动。公司自2012年启动大规模资本回报计划以来，累计回购金额已超过9000亿美元。FY2026总股本进一步降至约145.3亿股（期末），较FY2025的约147.8亿股继续下降约1.7%。稀释后加权平均股数约147.2亿股。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">股本关键节点</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2020年4:1拆股后，股本基数大幅调整</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">FY2024-FY2026持续净回购，股数年均下降约2%</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">FY2026回购约2.97亿股，耗资858亿美元</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">FY2026资本回报概览</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">回购金额</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">858亿美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">股息支出</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约157亿美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">期末总股本</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约145.3亿股</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">市值（约）</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">4.98-5.07万亿美元</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">历年回购与股本变化</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-primary-100 dark:bg-primary-900/40">
+                <th class="p-3">财年</th>
+                <th class="p-3">回购金额（亿美元）</th>
+                <th class="p-3">期末股本（约，亿股）</th>
+                <th class="p-3">同比变化</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-3">FY2026</td>
+                <td class="p-3">858</td>
+                <td class="p-3">145.3</td>
+                <td class="p-3">-1.7%</td>
+              </tr>
+              <tr>
+                <td class="p-3">FY2025</td>
+                <td class="p-3">907</td>
+                <td class="p-3">147.8</td>
+                <td class="p-3">-2.2%</td>
+              </tr>
+              <tr>
+                <td class="p-3">FY2024</td>
+                <td class="p-3">950</td>
+                <td class="p-3">151.2</td>
+                <td class="p-3">-2.8%</td>
+              </tr>
+              <tr>
+                <td class="p-3">FY2023</td>
+                <td class="p-3">776</td>
+                <td class="p-3">155.5</td>
+                <td class="p-3">-2.2%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          市场观察：苹果在高估值环境下继续回购，引发“回购收益率是否低于无风险利率”的讨论。FY2026仍宣布新的1000亿美元授权，显示董事会优先将自由现金流返还股东，而非大规模并购或现金囤积。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 3: 股权结构变化 -->
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+      股权结构：高度分散，无实际控制人
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        苹果采用单一普通股结构，一股一票，无双层股权。机构投资者合计持有约64%-66%股份，内部人（董事与高管）持股比例极低，约0.06%。公司不存在实际控制人或控股股东，控制权高度分散，董事会与管理层通过专业治理与激励机制维持战略稳定性。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">主要机构股东（约）</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">BlackRock：约7.9%-8.0%</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Vanguard相关：约6.5%-9.6%（不同实体合计）</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">State Street：约4.3%</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Berkshire Hathaway：约1.57%（约2.28亿股）</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">内部人持股（约）</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Arthur D. Levinson（董事）：约356万股</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Timothy D. Cook（执行董事长）：约324万股</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">全体内部人合计：约0.06%（约930万股）</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          控制权稳定性分析
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          由于股权极度分散，苹果的控制权主要依赖董事会独立性、管理层专业能力与长期激励机制，而非股权集中。机构投资者以被动指数基金为主，倾向于支持现有管理层，降低了恶意收购风险。回购进一步稀释了潜在激进股东的影响力。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          历史上苹果从未出现“创始人家族控制”或“双层股权锁定控制权”的结构。乔布斯时代也主要通过董事会与个人影响力而非绝对持股实现领导。这种结构使公司更贴近公共公司标准治理，但也意味着战略转向需要更广泛的内部共识与外部股东支持。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 4: 业务矩阵与关联关系 -->
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+      业务矩阵：产品与服务双轮驱动
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        苹果没有像海底捞那样的分拆上市关联公司矩阵，而是通过内部业务板块形成“硬件产品+服务”的闭环生态。核心关联更多体现在供应链协同、软件服务与硬件的深度绑定，以及全球运营实体之间的内部交易。
+      </p>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="smartphone" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">iPhone 与硬件</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">核心硬件收入来源</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>FY2026 iPhone收入2540.98亿美元</li>
+            <li>Mac 379.29亿美元，iPad 279.29亿美元</li>
+            <li>可穿戴/家居/配件355.77亿美元</li>
+            <li>产品合计约3555亿美元</li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="cloud" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">服务业务</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">高毛利经常性收入</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>FY2026服务收入1233.01亿美元</li>
+            <li>同比增长约13%</li>
+            <li>包含App Store、iCloud、Apple Music、广告等</li>
+            <li>毛利率显著高于硬件</li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">区域表现</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">全球化与本地化并重</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>美洲区约1981亿美元</li>
+            <li>大中华区显著回暖（同比高增）</li>
+            <li>欧洲、日本、亚太其他区域稳健</li>
+            <li>安装基数持续创历史新高</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          业务协同与风险
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          苹果的核心协同在于“硬件锁定用户 → 服务变现 → 硬件再升级”的飞轮。服务业务不仅贡献高利润，还提升用户粘性与换机意愿。供应链方面，苹果通过深度参与芯片设计（自研M系列与A系列）、代工伙伴管理与长期采购协议，构建了极高的进入壁垒。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          主要风险包括：中国市场监管与竞争加剧、App Store反垄断诉讼、AI能力相对滞后的市场担忧，以及高估值下回购效率下降的质疑。公司通过持续产品创新与服务扩展来对冲硬件周期波动。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 5: 员工持股与激励 -->
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+      员工持股与激励机制：RSU为核心的长期绑定
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        苹果以限制性股票单位（RSU）作为核心长期激励工具，覆盖从高管到普通员工的广泛群体。高管薪酬高度股权化，且绩效RSU与相对股东总回报（Relative TSR）挂钩；普通员工通过年度授予与ESPP（员工股票购买计划）参与公司成长。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">高管层激励</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">新CEO特纳斯目标股权约5500万美元（75%绩效RSU）</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">绩效RSU对标标普500相对TSR，最高可获200%目标</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">时间型RSU按四年分期归属，强化留任</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">全员与中层</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">RSU覆盖范围较广，含零售与AppleCare员工</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">ESPP允许员工以折扣价购买公司股票</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">年度刷新授予与绩效挂钩，形成持续激励</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+          激励效果与潜在矛盾
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          RSU机制有效将员工利益与股价及长期业绩绑定，降低了核心人才流失率，并支持苹果在激烈科技人才竞争中保持吸引力。同时，每年因股权激励产生的股票发行需要通过回购对冲，形成“发行-回购”循环，推高了资本回报计划的必要性。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          潜在矛盾在于：高估值下RSU价值波动放大，可能影响员工心理预期；高管与普通员工股权差距显著；以及回购优先于内部再投资的长期讨论。整体而言，苹果的激励体系被认为是科技行业标杆之一，支撑了其组织稳定性与执行力。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 6: 综合研判 -->
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+      综合研判与关键结论
+    </h2>
+    <div class="space-y-6">
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          1. 组织与战略进入“后库克时代”
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          特纳斯接任CEO标志着苹果从“供应链+服务”主导的库克时代，向更强调硬件创新与AI落地的新阶段过渡。交接平稳且内部提拔，显示公司文化与人才梯队成熟。战略重心仍围绕iPhone生态、服务高毛利与资本回报，但市场对AI进度与中国市场表现的关注度显著上升。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          2. 财务表现：高质量增长与高估值并存
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          FY2026营收4788亿美元（+15.1%），净利润1322亿美元（+18.0%），毛利率与净利率均处历史高位。增长主要由iPhone与服务双轮驱动，大中华区回暖贡献显著。同时市值约5万亿美元，估值处于历史较高分位，回购效率成为讨论焦点。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          3. 股权分散与激励是“稳定器”
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          无实际控制人的结构降低了创始人风险，但也要求管理层持续证明价值。RSU与相对TSR挂钩的激励体系，以及持续回购，共同构建了股东与管理层利益的深度对齐。机构投资者高度被动化，进一步强化了现有治理的稳定性。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          4. 风险提示
+        </h3>
+        <div class="space-y-4">
+          <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>管理层过渡风险。</strong>特纳斯虽为内部人，但其领导风格与战略优先级仍需市场验证，尤其在AI竞争与硬件创新节奏上。
+            </p>
+          </div>
+          <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>高估值与回购效率。</strong>当前估值下回购的即期收益可能低于无风险利率，市场对资本配置优先级的质疑可能上升。
+            </p>
+          </div>
+          <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>地缘与监管。</strong>中国市场、App Store反垄断、全球供应链安全仍是长期变量，可能影响增长弹性与利润率。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          一句话总结：苹果已从“产品公司”进化为“生态+资本回报机器”，特纳斯时代的核心考验是在保持极致运营效率的同时，重新点燃硬件与AI创新的增长引擎。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合公司公告、SEC文件、市场公开数据与本研究分析，系统梳理苹果的管理层演进、股本与股权变化、业务矩阵与员工激励机制。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 核心管理层战略演进</li>
+<li>• 股本数量与回购变化</li>
+<li>• 股权结构与控制权</li>
+<li>• 业务矩阵与协同</li>
+<li>• 员工持股与激励</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供教育与信息参考，不构成投资建议。数据基于公开信息整理（截至2026年11月），分析观点仅供参考。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 苹果体系全景研究。保留所有权利。</p>
+</div>
+</div>
+</footer>
+<!-- Scripts -->
+<script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+
+  if (!menu) return;
+
+  const isOpen = menu.classList.toggle('mobile-menu-open');
+
+  menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+
+  if (button) {
+    button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  if (icon) {
+    icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+    lucide.createIcons();
+  }
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+
+  if (!menu) return;
+
+  menu.classList.remove('mobile-menu-open');
+  menu.setAttribute('aria-hidden', 'true');
+
+  if (button) {
+    button.setAttribute('aria-expanded', 'false');
+  }
+
+  if (icon) {
+    icon.setAttribute('data-lucide', 'menu');
+    lucide.createIcons();
+  }
+}
+
+// Progress Bar
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+});
+// Initialize AOS & Lucide
+document.addEventListener('DOMContentLoaded', function() {
+  lucide.createIcons();
+  AOS.init({ duration: 800, once: true });
+
+  // 点击移动端导航后自动收起菜单
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  });
+
+  // Citation System
+  let i = 1, map = new Map();
+  document.querySelectorAll('[data-ref]').forEach(el => {
+    if (el.dataset.citationProcessed) return;
+    const raw = (el.getAttribute('data-ref')||'').trim();
+    if (!raw) return;
+    const parts = raw.split('|');
+    const url = parts[0].trim();
+    const idx = (parts[1]||'').trim() || map.get(raw) || (map.set(raw, String(i)), String(i++));
+    if (!el.textContent || !el.textContent.trim()) { el.dataset.citationProcessed = 'true'; return; }
+    const btn = document.createElement('sup'); btn.textContent = String(idx);
+    Object.assign(btn.style, { fontSize:'8px', color:'#fff', cursor:'pointer', top: '1px', fontWeight:'bold', backgroundColor:'#0284c7', borderRadius:'50%', transition:'all .15s', userSelect:'none', minWidth:'19px', height:'19px', marginLeft:'6px', display:'inline-flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 3px rgba(0,0,0,.2)', lineHeight:'1'});
+    btn.addEventListener('mouseenter', ()=> Object.assign(btn.style, { backgroundColor:'#0369a1', transform:'scale(1.12)' }));
+    btn.addEventListener('mouseleave', ()=> Object.assign(btn.style, { backgroundColor:'#0284c7', transform:'scale(1)' }));
+    btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(url, '_blank'); });
+    el.appendChild(btn); el.dataset.citationProcessed = 'true';
+  });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

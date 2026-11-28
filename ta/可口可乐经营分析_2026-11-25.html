@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>可口可乐公司（NYSE: KO）经营分析报告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+primary: {
+50: "hsl(20, 90%, 95%)",
+100: "hsl(20, 90%, 85%)",
+200: "hsl(20, 90%, 75%)",
+300: "hsl(20, 90%, 65%)",
+400: "hsl(20, 90%, 55%)",
+500: "hsl(20, 90%, 50%)",
+600: "hsl(20, 90%, 45%)",
+700: "hsl(20, 90%, 35%)",
+800: "hsl(20, 90%, 25%)",
+900: "hsl(20, 90%, 15%)",
+},
+accent: {
+50: "hsl(30, 85%, 95%)",
+100: "hsl(30, 85%, 85%)",
+200: "hsl(30, 85%, 75%)",
+300: "hsl(30, 85%, 65%)",
+400: "hsl(30, 85%, 60%)",
+500: "hsl(30, 85%, 55%)",
+600: "hsl(30, 85%, 50%)",
+700: "hsl(30, 85%, 40%)",
+800: "hsl(30, 85%, 30%)",
+900: "hsl(30, 85%, 20%)",
+},
+},
+},
+},
+};
+</script>
+<script
+defer
+src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html {
+scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html {
+scroll-behavior: auto;
+}
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow:
+0 10px 15px -3px rgba(0, 0, 0, 0.1),
+0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow:
+0 20px 25px -5px rgba(0, 0, 0, 0.1),
+0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th,
+td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th,
+.dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(
+90deg,
+hsl(20, 90%, 55%),
+hsl(30, 85%, 55%)
+);
+transition: width 1.2s ease-out;
+}
+.risk-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-width: 28px;
+height: 28px;
+border-radius: 8px;
+font-weight: 700;
+font-size: 13px;
+}
+Code
+/* ===== 暗色模式全局对比度增强 ===== */
+  .dark body {
+    color: #f3f4f6;
+  }
+  .dark header nav a {
+    color: #e5e7eb !important;
+  }
+  .dark header nav a:hover {
+    color: hsl(20, 90%, 65%) !important;
+  }
+  .dark .text-gray-400,
+  .dark .text-gray-500 {
+    color: #9ca3af !important;
+  }
+  .dark table th {
+    color: #f3f4f6;
+  }
+  .dark table td {
+    color: #e5e7eb;
+  }
+  .dark .text-gray-600 {
+    color: #d1d5db !important;
+  }
+  .dark .text-gray-700 {
+    color: #e5e7eb !important;
+  }
+
+  /* ===== 移动端菜单 ===== */
+  #mobileMenu {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    #mobileMenu {
+      display: none !important;
+    }
+  }
+  @media (max-width: 767px) {
+    #mobileMenu.mobile-menu-open {
+      display: block !important;
+    }
+  }
+</style>
+<script>
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById("sunIcon").style.display = isDark
+      ? "block"
+      : "none";
+    document.getElementById("moonIcon").style.display = isDark
+      ? "none"
+      : "block";
+  }
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body
+class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen"
+>
+<!-- Progress Bar -->
+<div
+class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out"
+id="progressBar"
+style="width: 0%"
+></div>
+Code
+<!-- Floating Header -->
+<header
+  class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100"
+>
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+        可口可乐 KO 经营分析
+      </h1>
+      <!-- 桌面端导航 -->
+      <nav class="hidden md:flex space-x-5">
+        <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <!-- 移动端汉堡菜单按钮 -->
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300"
+          aria-label="菜单"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+        <!-- 暗色模式切换 -->
+        <button
+          onclick="toggleDarkMode()"
+          class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+          aria-label="切换暗色模式"
+        >
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 移动端下拉菜单 -->
+    <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+      <nav class="flex flex-col space-y-3">
+        <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="min-h-screen">
+  <!-- Hero -->
+  <section
+    class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300"
+          >美股 · 必需消费品 · 全球非酒精饮料霸主</span
+        >
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300"
+          >NYSE: KO · 2026-11-25</span
+        >
+      </div>
+      <h2
+        class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300"
+      >
+        可口可乐公司（The Coca-Cola Co.）<br /><span
+          class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium"
+          >深度经营与投资价值分析报告</span
+        >
+      </h2>
+      <p
+        class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl"
+      >
+        2026 年正值可口可乐创立 140 周年与全球轻资产装瓶转型收官之年。在新任 CEO Henrique Braun 掌舵及刚刚宣布的跨界 CFO 人事变阵（前 BMS 首席财务官 David Elkins 将于 2027 年 4 月接替退休的 John Murphy）推动下，公司连续 22 个季度抢占市场份额，Q3 2026 全球单位箱销量大增 5%、营业利润率扩至 33.4%，股价年内大涨逾 35% 站上 97.62 美元、市值突破 4,125 亿美元并创下 25 年来最高估值倍数。本报告从八大维度客观评估其配置价值与高估隐忧。
+      </p>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            479.41亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            FY2025 营收（Q3 26 达133.8亿$）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            131.37亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            FY2025 合并净利润（+23.4%）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            46.0%
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            FY2025 股本回报率 ROE
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            28.2x–28.7x
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            TTM 市盈率（25年来估值高位）
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一、商业模式 -->
+  <section
+    id="model"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="store"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          一、商业模式
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          可口可乐的核心商业模式被商学院奉为全球经典：<strong>“浓缩液轻资产特许经营（Asset-Light Concentrate Model）+ 全品类十亿美元品牌帝国”</strong>。母公司掌控核心糖浆配方、品牌心智研发与全球营销，而把毛利较低、需重资产投入的瓶装灌装、仓储冷链和卡车配送交给全球独立上市装瓶伙伴。经过十年剥离重资产再特许经营（Refranchising），自有装瓶收入占比已由 2015 年的 <strong>52%</strong> 锐减至 2025 年的 <strong>12%</strong> 及 2026 年的 <strong>约 5%</strong>，彻底实现暴利轻装上阵[reference:1.2.6]。
+        </p>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="droplets"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                高毛利浓缩液 + 现调渠道
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              向装瓶商销售浓缩液与向餐饮连锁（麦当劳及 2026年10月新拿下的全美 3,600+ 家肯德基）供应现调糖浆，撑起高达 <strong>61.6%–62.2%</strong> 的毛利率及 <strong>33.4%</strong> 的单季营业利润率。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="layers"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+              <h3
+                class="font-semibold text-accent-700 dark:text-accent-300"
+              >
+                32个十亿美元级全品类矩阵
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              横跨碳酸（Coca-Cola、Sprite、Zero Sugar）、乳品（fairlife）、运动补水（BodyArmor、Powerade）、气泡水（Topo Chico）、咖啡茶饮（Costa、Ayataka）与果汁（Simply），满足全时段补水需求。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="globe"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                日均 22 亿杯数字化网络
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              遍及全球逾 200 个国家和地区，体系总市值超 4,500 亿美元；目前体系内三分之二终端零售网点已实现数字化订货，依托收益增长管理（RGM）在包装尺寸与提价间精准套利。
+            </p>
+          </div>
+        </div>
+        <div
+          class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6"
+        >
+          <p
+            class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+          >
+            <i
+              data-lucide="lightbulb"
+              class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+            ></i>
+            商业模式本质：可口可乐只拥有“配方、商标与印钞权”，把厂房折旧与运输重担剥离给装瓶伙伴，自己稳稳坐在产业链顶端收取全球 22 亿次每日饮用行为的特许品牌税。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、竞争优势（护城河） -->
+  <section
+    id="moat"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="shield"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          二、竞争优势：护城河评估
+        </h2>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        Morningstar 于 2026 年 11 月重申可口可乐“宽护城河（Wide Moat）”评级。以下从五个核心维度打分（1–10分），并与百事可乐（PEP）、Keurig Dr Pepper（KDP）及魔爪饮料（MNST）横向对标[reference:1.1.7]。
+      </p>
+
+      <div class="space-y-6">
+        <!-- 品牌实力 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              品牌实力（全球快消品天花板）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >10<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 100%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            全球认知度最高的消费品牌之一，旗下坐拥 32 个十亿美元级品牌。在过去五年诸多必需消费品巨头被迫降价换量的环境下，可口可乐凭借极强的品牌心智实现平均近双位数内生营收增长，并已连续 <strong>22 个季度</strong>在全球非酒精即饮市场（NARTD）扩大价值份额[reference:1.1.7][reference:1.2.9]。
+          </p>
+        </div>
+
+        <!-- 网络效应 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              网络效应（全球冷柜与特许装瓶网）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >9<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 90%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            可口可乐在全球街头巷尾拥有无可匹敌的“货架与冰柜覆盖网络”。一旦新孵化或并购一个新兴爆款（如 fairlife、BodyArmor 或参股分销的 Monster），瞬间就能接入覆盖 200 余国的装瓶配送网，完成对手十年才能搭建的铺货扩张。
+          </p>
+        </div>
+
+        <!-- 转换成本 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              转换成本（餐饮现调绑定与味觉习惯）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >7<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 70%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            零售货架端消费者换购成本较低，但在餐饮渠道（Away-from-Home，占营收极高比重）具备高B端转换成本——独家现调机设备（Freestyle）、联合广告补贴以及食客对“麦当劳/肯德基配可口可乐”的味觉绑定，使其在 2026年10月成功把 KFC 美国门店从百事手中夺回。
+          </p>
+        </div>
+
+        <!-- 成本优势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              成本优势（规模采购 + 浓缩液轻资产结构）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            全系统联合采购甜味剂、铝罐与树脂包材享有全球顶级议价权；更关键的是轻资产浓缩液结构使母公司资本开支极低（仅约营收 4%），营业利润率高达 <strong>28.7%–33.4%</strong>，远超重资产兼营零食与自营装瓶的百事可乐（约 14%–15%）。
+          </p>
+        </div>
+
+        <!-- 专利或自有技术 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              专利或自有技术（商业秘密配方 + 超滤乳品与 AI RGM）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            “7X 神秘原浆配方”属于比定期到期专利更长寿的商业机密；在无糖口感复刻技术（助推 Zero Sugar 在 Q3 2026 狂飙 +16%）、fairlife 高蛋白超滤乳品工艺以及新设 CDO 主导的 AI 营销和动态收益管理技术上保持领先[reference:1.2.7]。
+          </p>
+        </div>
+      </div>
+
+      <!-- 竞对对比 -->
+      <div class="mt-10">
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5"
+        >
+          与主要竞争对手的护城河与估值对比（2026年11月）
+        </h3>
+        <div
+          class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <table
+            class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+          >
+            <thead class="bg-primary-50 dark:bg-primary-900/30">
+              <tr>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">可口可乐 (KO)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">百事可乐 (PEP)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">Keurig Dr Pepper (KDP)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">魔爪饮料 (MNST)</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr>
+                <td class="font-medium">业务模式</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">轻资产纯饮浓缩液霸主</td>
+                <td>零食（菲多利）+ 自营重装瓶饮料</td>
+                <td>北美汽水 + 咖啡机胶囊生态</td>
+                <td>轻资产能量饮料（KO 分销盟友）</td>
+              </tr>
+              <tr>
+                <td class="font-medium">品牌与全球分销</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">10 / 10</td>
+                <td>9 / 10</td>
+                <td>7 / 10（偏重北美）</td>
+                <td>8 / 10</td>
+              </tr>
+              <tr>
+                <td class="font-medium">GAAP 毛利率 / 营业利润率</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">61.6% / 28.7%–33.4%</td>
+                <td>~54% / ~14%–16%</td>
+                <td>~55% / ~22.4%（净利率6.7%）</td>
+                <td>~54% / ~28%–30%</td>
+              </tr>
+              <tr>
+                <td class="font-medium">远期 / TTM P/E（2026-11）</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">25.3–27.8x / 28.2–28.7x</td>
+                <td>~16.5x / ~17.9–23.0x</td>
+                <td>~13.0–13.8x / ~31.9–32.6x</td>
+                <td>~38.9x / ~46.0x</td>
+              </tr>
+              <tr>
+                <td class="font-medium">最新市值 / 股息率</td>
+                <td>~4,125–4,204亿$ / 2.15%</td>
+                <td>~1,911–1,960亿$ / 4.13%</td>
+                <td>~436–482亿$ / 2.87%</td>
+                <td>~831–940亿$ / 0%</td>
+              </tr>
+              <tr>
+                <td class="font-medium">综合护城河</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">8.4 / 10</td>
+                <td>8.0 / 10</td>
+                <td>6.8 / 10</td>
+                <td>7.8 / 10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+          数据来源：KO Q3 2026 业绩、Macrotrends、FinanceCharts、GuruFocus 及 Alex Healy / KoalaGains 2026 年 10–11 月数据。
+        </p>
+      </div>
+
+      <div
+        class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed"
+        >
+          <i
+            data-lucide="award"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          综合护城河评分：<strong>8.4 / 10</strong>。可口可乐拥有消费品界罕见的跨世纪品牌图腾与全球冷柜垄断触角，使其比纯做零售的百事拥有近两倍的营业利润率与逾 40% 的 ROE；唯独在现代零售消费者端转换成本并不绝对锁死，仍需持续巨额营销投入维持心智热度。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、行业趋势 -->
+  <section
+    id="industry"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="trending-up"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          三、行业趋势
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          2026 年全球非酒精即饮（NARTD）行业正处于“传统含糖碳酸萎缩与减糖/功能化爆发并存 + 新兴市场量增对冲欧美通胀精算”的结构性分水岭。据行业研究机构跟踪，欧美消费者钱包持续紧缩并推动商超自有品牌（Private Label）渗透率走高，而新兴中产阶层与功能健康饮品正在重塑整个行业的增长坐标[reference:1.1.7]。
+        </p>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="heart-pulse" class="w-5 h-5"></i>无糖化、高蛋白与 GLP-1 时代挑战
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>减糖替代成绝对主线：</strong>Q3 2026 标准可口可乐家族销量增长 5%，而 <strong>Coca-Cola Zero Sugar</strong> 同比飙升 <strong>16%</strong>，成为抵消含糖碳酸萎缩的头号发动机。</li>
+              <li>• <strong>GLP-1 减重药长期扰动：</strong>随着减肥针剂在欧美加速大众化，消费者对高热量零食与传统高糖饮料的摄入欲望下降，倒逼巨头加码无糖补水、气泡水与高蛋白乳饮（fairlife）。</li>
+            </ul>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="globe-2" class="w-5 h-5"></i>新兴市场量增与小包装性价比策略
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>量增引擎全面东移南下：</strong>Q3 2026 全球单位箱销量大增 5%，核心由<strong>印度、中国、墨西哥与巴西</strong>带动[reference:1.2.7]。</li>
+              <li>• <strong>价格阶梯与可负担性（Affordability）：</strong>面对高通胀后的挑剔消费者，可口可乐放弃单纯“涨价提利润”，转向扩大迷你罐、可回收玻璃瓶等低总价入门装与大包装分层策略，以量补价。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、财务状况 -->
+  <section
+    id="financial"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="bar-chart-3"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          四、财务状况（近五年财报与 2026 年现金流复苏拆解）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        以下汇整可口可乐 FY2021–FY2025 五个完整财年（SEC Form 10-K）及截至 2026 年 10 月 2 日（Q3 2026）最新年度指引与累计现金流表现（单位：亿美元）[reference:1.2.2][reference:1.3.4][reference:2.2.1][reference:2.2.6]。
+      </p>
+
+      <!-- 5年财务表 -->
+      <div
+        class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+      >
+        <table
+          class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+        >
+          <thead class="bg-accent-50 dark:bg-accent-900/30">
+            <tr>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">指标（亿美元）</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2021</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2022</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2023</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2024</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2025</th>
+              <th class="font-semibold text-primary-700 dark:text-primary-300">2026 前9月 / TTM</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr>
+              <td class="font-medium">营业总收入</td>
+              <td>386.55</td>
+              <td>430.04</td>
+              <td>457.54</td>
+              <td>470.61</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">479.41</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">Q3单季 133.80 (+7%)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">营收同比增速（名义）</td>
+              <td class="text-green-600 dark:text-green-400">+17.1%</td>
+              <td class="text-green-600 dark:text-green-400">+11.3%</td>
+              <td class="text-green-600 dark:text-green-400">+6.4%</td>
+              <td class="text-green-600 dark:text-green-400">+2.9%</td>
+              <td>+1.9%（受再特许剥离影响）</td>
+              <td class="text-green-600 dark:text-green-400">内生增速 +7% (Q3)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">毛利率 / 营业利润率</td>
+              <td>60.3% / 26.7%</td>
+              <td>58.1% / 25.4%</td>
+              <td>59.5% / 24.7%</td>
+              <td>61.1% / 21.2%</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">61.6% / 28.7%</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">62.2% TTM / Q3 33.4%</td>
+            </tr>
+            <tr>
+              <td class="font-medium">归母净利润</td>
+              <td>97.71</td>
+              <td>95.42</td>
+              <td>107.14</td>
+              <td>106.31</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">131.07 (+23.3%)</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">Q3单季 40.60 (+10.3%)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">净利率</td>
+              <td>25.3%</td>
+              <td>22.2%</td>
+              <td>23.4%</td>
+              <td>22.6%</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">27.3%</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">约 28%+</td>
+            </tr>
+            <tr>
+              <td class="font-medium">经营活动现金流 (OCF)</td>
+              <td>126.25</td>
+              <td>110.18</td>
+              <td>115.99</td>
+              <td class="text-amber-600 dark:text-amber-400">68.05 (含60亿IRS押金)</td>
+              <td class="text-amber-600 dark:text-amber-400">74.08 (含61亿fairlife尾款)</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">9M 124.70 / TTM 162.00</td>
+            </tr>
+            <tr>
+              <td class="font-medium">自由现金流 (FCF)</td>
+              <td>~112.60</td>
+              <td>~95.30</td>
+              <td>~97.50</td>
+              <td>~47.40 (表观)</td>
+              <td>53.09 (剔除一次性为114亿)</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">9M 114.00 (26E ≥130亿$)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <!-- 收入增长 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="trending-up" class="w-5 h-5"></i
+            >收入增长：名义增速放缓掩盖了内生高质增长
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            初看报表，KO 名义营收从 FY2021 的 386.55 亿美元升至 FY2025 的 479.41 亿美元，2024–2025 年名义增速看似放缓至 +2.9% 和 +1.9%。但这主要是剥离重资产装瓶厂并表收入造成的“会计口径缩表效应”；按可比内生口径（Organic Revenue），2017 年来平均每年增长高达 <strong>7%</strong>，且 2026 年 Q3 再度实现 <strong>7% 内生营收增长</strong>（其中真实销量 +5%，而非纯靠涨价）。
+          </p>
+        </div>
+
+        <!-- 净利润趋势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="award" class="w-5 h-5"></i
+            >净利润与利润率：2025–2026 年强势阶梯跃升
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            随着装瓶剥离与成本杠杆释放，可口可乐归母净利润于 FY2025 一举跃升 23.3% 至 <strong>131.07 亿美元</strong>（净利率飙升近 5 个百分点至 27.3%，营业利润率 28.7% 创十年新高）；2026 年更上层楼，Q3 单季营业利润率冲上 <strong>33.4%</strong>（同比扩增 140bps），可比 EPS 大增 11% 至 0.91 美元，盈利质量处于历史巅峰！
+          </p>
+        </div>
+
+        <!-- 自由现金流 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流：摆脱两大巨额一次性支付后全面井喷
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            很多量化筛选器会误判 KO 的 FY24–FY25 现金流（仅 47–53 亿美元）出现暴跌——事实上，2024 年公司一次性向 IRS 缴存了 <strong>60.00 亿美元</strong>税案押金，2025 年一季度又一次性结清了收购 fairlife 乳品的 <strong>61.00 亿美元</strong>最终对赌尾款！剔除上述非经常性大单，底层自由现金流稳超 114 亿美元；2026 年前 9 个月 FCF 已达 <strong>114.00 亿美元</strong>，全年指引上看 <strong>≥130.00 亿美元</strong>！
+          </p>
+        </div>
+
+        <!-- 债务水平 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="scale" class="w-5 h-5"></i>债务水平：远低于目标带的超强资产负债表
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            截至 2026 年 Q3 末，公司账面持有现金及短期投资高达 <strong>165.95 亿美元</strong>，长期债务约 366.23 亿美元，净债务 <strong>271.85 亿美元</strong>，净债务权益比仅 <strong>0.73x</strong>、流动比率 <strong>1.38x</strong>。尤为关键的是，CFO 披露当前 <strong>净债务 / EBITDA 仅 1.3x</strong>，显著低于公司长期设定的 2.0x–2.5x 安全目标带，留足了充沛的防冲击空间[reference:1.2.4][reference:1.3.2]。
+          </p>
+        </div>
+      </div>
+
+      <!-- ROE 与财务稳健性判断 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+      >
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4"
+        >
+          股本回报率（ROE / ROIC）与整体财务稳健性判断
+        </h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-4">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">
+              46.0%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              FY2025 ROE（五年均值 43.5%）
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">
+              23.0%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              2025 年投入资本回报率 ROIC（较2015升6pct）
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-400">
+              1.3x
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              Q3 2026 净债务 / EBITDA（极低杠杆）
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          近五年可口可乐 ROE 始终牢牢盘踞在 <strong>40.5%–46.2%</strong> 的顶级区间，且不同于某些靠巨额举债回购把权益分母压薄的“虚胖 ROE”，KO 的 ROIC 也同步跃升至 23.0%。综合来看，可口可乐的财务状况不仅不是下滑，反而是<strong>近十年来最稳健、最轻盈、造血能力最澎湃的黄金状态</strong>——唯一尚未落地的财务不确定性在于表外的 200 亿美元 IRS 税务上诉案。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、估值分析 -->
+  <section
+    id="valuation"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calculator"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          五、估值分析（投行可比估值 + DCF 测算）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+        截至 2026 年 11 月 24 日美股收盘，可口可乐股价报 <strong>97.62 美元</strong>（年内大涨约 35%–39%，并刚刚摸高至 100.56 美元，创下 25 年来最贵估值水平），总市值约 <strong>4,125亿–4,204亿美元</strong>[reference:1.1.5][reference:1.1.6][reference:1.1.8]。以下按照标准投行估值框架拆解其性价比。
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <div
+          class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-primary-700 dark:text-primary-300 mb-4"
+          >
+            市盈率（P/E）与饮料行业横向对比
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">可口可乐 (KO，现价 97.62$)</span>
+              <span class="font-bold text-primary-600 dark:text-primary-400">TTM 28.2–28.7x | 远期 25.3–27.8x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">百事可乐 (PEP)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 17.9–23.0x | 远期 ~16.5x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Keurig Dr Pepper (KDP)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 31.9–32.6x | 远期 13.0–13.8x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">魔爪饮料 (MNST)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM ~46.0x | 远期 ~38.9x</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">KO 自身 10 年远期 P/E 中位数 / 行业中位</span>
+              <span class="font-semibold text-gray-700 dark:text-gray-300">23.21x / ~16.5x</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">
+            注：KO 当前远期 P/E（25.3x–27.8x）高出其自身 10 年中位数约 20%，且较百事（16.5x）溢价高达 <strong>50%–68%</strong>，在 GuruFocus 追踪的 64 家非酒精饮料公司中估值高于 77.6% 的同行[reference:1.4.5]。
+          </p>
+        </div>
+
+        <div
+          class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-accent-700 dark:text-accent-300 mb-4"
+          >
+            华尔街卖方最新目标价汇总（2026年10–11月）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">TD Cowen（11月17日上调，买入）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">112.00 美元（最高）</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">UBS / Jefferies（买入）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">106.00 / 104.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Morgan Stanley / Citi / Piper Sandler</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">103.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Wells Fargo（超配） / Barclays / JPMorgan</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">100.00 / 98.00 / 98.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">RBC Capital / Freedom Broker（中性）</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">96.00 / 89.00 美元</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">华尔街一致平均目标价（Benzinga / BTI）</span>
+              <span class="font-bold text-primary-600 dark:text-primary-400">94.62–97.75 美元（已触及现价）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DCF 参考 -->
+      <div
+        class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8"
+      >
+        <h3
+          class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"
+        >
+          <i data-lucide="line-chart" class="w-5 h-5"></i
+          >现金流折现（DCF）与第三方公允价值测算
+        </h3>
+        <p
+          class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+        >
+          由于必需消费品自由现金流高度可预测，DCF 是检验 KO 是否透支未来涨幅的最客观尺子。按照基准假设（未来 5 年 FCF 由 130 亿美元稳健复合增长 5%–6%，WACC 取 7.5%–8.0%，永续增长率 2.5%–3.0%），多家独立估值模型与投行买方测算均指向现价偏贵：GuruFocus GF Value 仅给 <strong>75.77 美元</strong>（现价高估 29%）；Moschovakis Capital 10 月研报基准 DCF 为 <strong>83.20 美元</strong>；PriceToWorth 测算为 <strong>84.79 美元</strong>；Alex Healy 基准情境亦指出略低于 90 美元[reference:1.4.1][reference:1.4.2][reference:1.4.5][reference:1.4.8]。
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-primary-600 dark:text-primary-400"
+            >
+              83.20–88.00$
+            </div>
+            <div class="text-xs text-gray-500">基准 DCF 模型合理公允价值</div>
+          </div>
+          <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-accent-600 dark:text-accent-400"
+            >
+              75.77$
+            </div>
+            <div class="text-xs text-gray-500">GuruFocus GF Value（历史均值锚）</div>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div
+              class="text-lg font-bold text-gray-700 dark:text-gray-300"
+            >
+              70.07$
+            </div>
+            <div class="text-xs text-gray-500">悲观情景（若 GLP-1 冲击叠加 IRS 败诉）</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="search"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          <strong>估值结论：股票明显处于“温和至显著高估 / 完美定价（Priced to Perfection）”区间。</strong><br />
+          尽管 2026 年基本面表现无懈可击，但股价一年狂飙近四成至 97.62 美元后，28.2x–28.7x 的 TTM P/E（远期 25.3x–27.8x）不仅创下 25 年最高水平、远超自身历史均值（23.2x）及行业均值（16.5x），还将股息率压缩至 2.15%，更比主流 DCF 公允区间（76–88 美元）溢价约 <strong>11%–28%</strong>，且已经追平华尔街 94.6–97.8 美元的一致目标价。除非出现极罕见的业绩连续超预期，否则短期安全边际已十分单薄。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、经营展望 -->
+  <section
+    id="outlook"
+    class="py-20 bg-accent-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calendar"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          六、经营展望（未来 12–24 个月）
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            1. 2026 年强收官与 2027 年增速常态化过渡
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            管理层在 Q3 业绩会及 11 月 23 日公告中重申上调后的 FY2026 指引：内生营收增长 <strong>≥5%</strong>、可比 EPS 增长 <strong>≥11%</strong>（相对 FY25 的 $3.00 跃至 ~$3.34–$3.40），自由现金流不低于 <strong>130 亿美元</strong>（Q4 含 6 个少计日历日及适度去库存影响）。步入 2027–2028 年，受装瓶资产继续出表带来约 2% 名义营收减项影响，市场预期总营收约 504 亿–530 亿美元，EPS 稳步向 <strong>3.60 美元（27E）和 3.90 美元（28E）</strong>迈进[reference:1.2.4][reference:2.3.4]。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            2. 外聘医药背景新 CFO 履新（2027年4月）重塑资本配置
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2026 年 11 月 23 日重磅官宣：前百时美施贵宝（BMS）CFO <strong>David Elkins（58岁）</strong>将于 2027 年 4 月 2 日正式出任 CFO 接棒退休的 John Murphy。晨星等机构解读称，打破百年“只用内部 CFO”惯例引入医药巨头并购财务老兵，预示着新 CEO Braun 欲在后装瓶时代进一步强化精细化资本配置与高回报并购纪律[reference:2.1.3]。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            3. KFC 美国 3,600+ 门店上线与印度资产 IPO 催化
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2027 年 1 月起全美逾 3,600 家 KFC 餐厅将全面切换可口可乐系列饮品，为北美现调糖浆与无糖产品带来立竿见影的增量；在海外，CCBA 75% 股权正式移交 Coca-Cola HBC、新加坡/马来西亚/缅甸装瓶厂预计 2027 年中完成剥离，且印度子公司 HCCH 正筹备潜在 <strong>2027 年印度上市（IPO）</strong>，持续释放资本回收红利。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            4. 成本通胀预警与消费审慎基调
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            管理层在 2026 年 11 月下旬公开提示，当前正面临美国物流运输成本走高及部分西方/发展中市场消费者支出疲软延续至 2027 年的压力，因此必须依靠 CDO 主导的数字精细化营销与包装分级维持 32%+ 的营业利润率底线[reference:1.2.4][reference:2.1.9]。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、风险识别 -->
+  <section
+    id="risk"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="alert-triangle"
+            class="w-5 h-5 text-red-600 dark:text-red-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">
+          七、风险识别（按危险程度从高到低排序）
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- 风险1 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0"
+            >
+              1
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2"
+              >
+                监管威胁（危险度：极高）— 200 亿美元 IRS 税务终审利剑与健康政策围剿
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                当前悬在可口可乐头顶最大的单体黑天鹅。公司与美国国税局（IRS）围绕海外浓缩液转移定价的十年宿怨目前正在第十一巡回上诉法院等待终审判决（已于 2026 年 6 月听证）。若终审败诉，除已缴 60 亿美元押金打水漂外，公司还面临 2010–2025 年高达约 <strong>140 亿美元</strong>额外补税账单（合共 200 亿美元，相当于超过 1.5 年的自由现金流）以及未来长期有效税率的永久上移！此外，各国糖税、SNAP 食品券含糖饮料禁令及塑料包装 EPR 税亦构成长期逆风。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险2 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0"
+            >
+              2
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2"
+              >
+                行业颠覆风险（危险度：中高）— GLP-1 减重药普及与碳酸品类长期萎缩
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                欧美发达市场传统含糖碳酸饮料销量已呈长期结构性停滞。随着口服与注射型 GLP-1 减重药物在 2027–2028 年渗透率进一步走高，医学研究显示服药人群的含糖碳酸饮品消费出现明显削减，这对以碳酸为核心利润源的可口可乐形成缓慢但深远的品类颠覆压力，要求无糖与蛋白饮品必须跑赢传统基盘萎缩速度[reference:1.1.7]。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险3 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0"
+            >
+              3
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2"
+              >
+                经济与汇率风险（危险度：中）— 弱消费降级、商超自有品牌与汇率侵蚀
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                虽然软饮属于抗衰退必需品，但 2026 年 Q3 price/mix 增速已收窄至仅 +1%（此前通胀期一度达 9%–12%），管理层亦警示 2027 年消费者仍偏谨慎。若拉美及亚太新兴市场通胀反弹或本币兑美元大幅贬值，叠加物流运输成本居高不下，将压缩利润弹性；同时超市自有品牌（Private Label）低价平替正在欧洲及北美货架持续分流中低端需求。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险4 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0"
+            >
+              4
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2"
+              >
+                竞争风险（危险度：中）— 能量/功能饮赛道混战与百事国际端卡位
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                百事可乐虽失去 KFC 美国合约，但于 2026年11月迅速续签了 KFC 国际市场独家供应权；与此同时，Keurig Dr Pepper（2026 年 4 月吞并 JDE Peet's 及整合 GHOST 能量饮）、Red Bull、Celsius 以及现制茶饮咖啡连锁都在凶猛瓜分消费者每日的“胃份额（Share of Stomach）”，迫使可口可乐必须持续保持高额广告营销投入。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险5 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0"
+            >
+              5
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2"
+              >
+                债务、财务与高估值回调风险（危险度：中低）— 25年高位估值易触发均值回归
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                正常经营下财务极为稳健（净债务仅 1.3x EBITDA，且大额债务票息多为 0.125%–3.5% 的超低固定利率欧元/美元长债）。真正的财务与投资损益风险来自高企的 <strong>28x 市盈率</strong>——若 2027 年如一致预期 EPS 增速回落至 6%–7% 常态，市场一旦把资金从高估值防御股撤回科技股，估值回撤至 22x–23x 均值即对应 15%–20% 股价回调空间。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、多空视角 -->
+  <section
+    id="longshort"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="scale"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          八、多空视角：机构投资组合经理评估
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- 可能买入的原因 -->
+        <div
+          class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800"
+        >
+          <h3
+            class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>罕见的“量价齐升 + 轻资产终局”兑现</strong>：Q3 2026 销量逆势大增 5%、营业利润率 33.4%、自由现金流重回 130 亿美元以上，完美证明其比绝大多数消费同行更能抗住宏观波动。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>64 年股息之王 + 46% ROE 复利底座</strong>：现金流转化率高达 93%，年度分红已连续增长 64 年，是组合中对抗衰退与地缘震荡的顶级终极压舱石。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>2027 年新催化剂充足</strong>：KFC 美国逾 3,600 门店切入、印度装瓶业务筹划 IPO、新任跨界资本配置高手 David Elkins 入局，均有望继续推高 ROIC。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>华尔街机构看多情绪浓厚</strong>：2026 年 10–11 月获 TD Cowen（112美元）、UBS（106美元）及新覆盖 Wolfe Research 等一致看多（零卖出评级）。</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 可能回避的原因 -->
+        <div
+          class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800"
+        >
+          <h3
+            class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>估值达 25 年巅峰，安全边际严重透支</strong>：97.62 美元对应 28.2x–28.7x TTM P/E（远期 ~25–28x），比同行（16.5x）贵 60% 以上，且明显高于 76–88 美元的基准 DCF 估值，几乎毫无上行空间（已触及 94.6–97.8 美元平均目标价）。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>股息率被挤压至 2.15% 失去高息吸引力</strong>：远低于百事可乐（4.13%）及长期美债无风险利率，纯吃息买方性价比大降。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>200 亿美元 IRS 税案未决隐患</strong>：如果第十一巡回法院裁定不利，不仅消耗现金且导致 2027–2030 年有效税率上调，直接撞击高估值溢价。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>2027 年预期增速回落与管理磨合期</strong>：2027E 一致预期 EPS 增速仅约 5.6%–7.5%（3.40 -> 3.60 美元），且新 CEO 叠加空降医药背景新 CFO 处于初期配合阶段。</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 关键因素 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6"
+      >
+        <h3
+          class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4"
+        >
+          关键因素：机构组合经理须密切跟踪的 3 个指标
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div
+            class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="gavel"
+              class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-primary-700 dark:text-primary-300"
+            >
+              IRS 税务案终审判决
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              第十一巡回法院裁决将直接决定 140 亿美元潜在现金流出及未来长期税率中枢
+            </p>
+          </div>
+          <div
+            class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="package"
+              class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-accent-700 dark:text-accent-300"
+            >
+              单位箱销量与 Zero Sugar 增速
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              在价格贡献回归 1%–2% 常态后，真实销量能否稳守 2%–4% 增长以消化近 28x 高估值
+            </p>
+          </div>
+          <div
+            class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center"
+          >
+            <i
+              data-lucide="briefcase"
+              class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-gray-700 dark:text-gray-300"
+            >
+              2027 年新 CFO 资本配置动向
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              David Elkins 上任后如何统筹印度装瓶 IPO、大额回购节奏与潜在健康饮品并购
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投资论点 -->
+      <div
+        class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="target"
+            class="inline-block w-5 h-5 mr-2 -mt-0.5"
+          ></i>
+          <strong>机构投资论点：</strong
+          >站在机构投资组合经理的视角，可口可乐（KO）无疑是一家具备 10 分品牌护城河、46% ROE 与 130 亿美元自由现金流的殿堂级“永续复利机器”，但它当前的市场定价却完美演绎了什么叫<strong>“极佳的资产，但并非极佳的买入价格（Great Business, Stretched Valuation）”</strong>。经过 2026 年逾 35% 的大幅重估，97.62 美元的股价（28.2x–28.7x TTM P/E、仅 2.15% 股息率）已经跑在基本面前面，且头顶仍悬有 200 亿美元 IRS 税务上诉决断的尾部风险。<br /><br />
+          因此，策略上我们给出<strong>“核心底仓继续持有、新资金暂不追高、耐心等待估值消化”</strong>的专业配置建议：对于早已低位持仓的长线收息资金，完全可以随巴菲特继续不动享 64 年分红复利（亦可适量卖出 105 美元虚值备兑看涨期权增厚收益）；而对于新增配置仓位，建议将目标建仓区间锚定在 <strong>78–85 美元（对应 21x–23x 远期市盈率及基准 DCF 合理区间）</strong>，一旦市场风格轮动或 IRS 诉讼扰动带来回调窗口，便是不容错过的跨周期建仓良机。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          关于本报告
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告基于可口可乐公司（NYSE: KO）公开 SEC 财务报告、Q3 2026 业绩发布、2026年11月最新高管变动公告及华尔街机构研究，从商业模式、护城河、行业趋势、五年财务、投行估值、未来展望、风险识别及多空视角八个维度提供系统分析。
+        </p>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          数据来源
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>• 可口可乐 FY2025 10-K 年报及 Q3 2026 业绩公告 / 8-K 文件</li>
+          <li>• 2026年11月23日 David Elkins 任命及 John Murphy 退休公告</li>
+          <li>• Morningstar、TD Cowen、UBS、Morgan Stanley、Wells Fargo 研报</li>
+          <li>• GuruFocus、Macrotrends、FinanceCharts、StockAnalysis 数据库</li>
+          <li>• 百事可乐（PEP）、Keurig Dr Pepper（KDP）、魔爪（MNST）公开财务</li>
+        </ul>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          免责声明
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告仅供教育与金融研究参考，不构成任何证券买入、卖出或持有建议。数据基于截至 2026 年 11 月 25 日（北京时间）的公开信息整理，分析观点仅代表研究判断。投资有风险，决策需独立审慎。
+        </p>
+      </div>
+    </div>
+    <div
+      class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500"
+    >
+      <p>© 2026 可口可乐公司（KO）经营分析报告 · 生成日期：2026-11-25</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    if (!menu) return;
+    menu.classList.toggle("mobile-menu-open");
+  }
+
+  window.addEventListener("scroll", () => {
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    lucide.createIcons();
+    AOS.init({ duration: 800, once: true });
+  });
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

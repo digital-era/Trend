@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111827">
+<title>台积电最新动态全景追踪_2026-11-23</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+          300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+          300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+          900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:90px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05)}
+.btn-interactive:active{transform:scale(.96)}
+.card-interactive{transition:all .28s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.48)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#374151}
+.dark th{color:#f3f4f6}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%));transition:width .8s ease}
+.source-link{color:#c45b20;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#fbad79}
+.source-link:hover{opacity:.75}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.dark .bg-white{color:#f3f4f6}
+.dark .text-gray-900{color:#f9fafb}
+.dark .text-gray-800{color:#f3f4f6}
+.dark .text-gray-700{color:#e5e7eb}
+.dark .text-gray-600{color:#d1d5db}
+.dark .text-gray-500{color:#9ca3af}
+.dark .border-gray-200{border-color:#374151}
+.dark .border-gray-100{border-color:#374151}
+.dark .bg-gray-50{background-color:#1f2937}
+.dark .bg-gray-100{background-color:#273449}
+.dark .bg-gray-800{background-color:#1f2937}
+.dark .bg-gray-900{background-color:#111827}
+.dark .bg-primary-50{background-color:#2b211e}
+.dark .bg-accent-50{background-color:#30261c}
+.dark .bg-emerald-50{background-color:#102b25}
+.dark .bg-rose-50{background-color:#351c25}
+.dark .bg-amber-50{background-color:#332719}
+.dark .bg-sky-50{background-color:#152b40}
+.dark .text-emerald-700{color:#6ee7b7}
+.dark .text-emerald-800{color:#a7f3d0}
+.dark .text-rose-700{color:#fda4af}
+.dark .text-rose-800{color:#fecdd3}
+.dark .text-amber-700{color:#fcd34d}
+.dark .text-amber-800{color:#fde68a}
+.dark .text-sky-700{color:#7dd3fc}
+.dark .text-primary-700{color:#fdba9a}
+.dark .text-accent-700{color:#fdc78a}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+}
+</style>
+<script>
+(function initTheme(){
+ const inIframe=window.self!==window.top;
+ if(inIframe||window.matchMedia('(prefers-color-scheme: dark)').matches){
+ document.documentElement.classList.add('dark');
+ }
+})();
+function syncThemeIcons(){
+ const dark=document.documentElement.classList.contains('dark');
+ const sun=document.getElementById('sunIcon');
+ const moon=document.getElementById('moonIcon');
+ if(sun)sun.style.display=dark?'block':'none';
+ if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ syncThemeIcons();
+}
+function toggleMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ if(menu)menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+
+<div class="fixed top-0 left-0 h-1 bg-primary-500 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+<h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">台积电 · 最新动态</h1>
+</div>
+<nav class="hidden md:flex items-center space-x-6">
+<a href="#overview" class="text-sm font-medium hover:text-primary-500">总览</a>
+<a href="#company" class="text-sm font-medium hover:text-primary-500">公司Top3</a>
+<a href="#industry" class="text-sm font-medium hover:text-primary-500">行业Top3</a>
+<a href="#macro" class="text-sm font-medium hover:text-primary-500">宏观政策Top3</a>
+<a href="#matrix" class="text-sm font-medium hover:text-primary-500">催化矩阵</a>
+</nav>
+<div class="flex items-center gap-2">
+<button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+<i data-lucide="menu" class="w-4 h-4"></i>
+</button>
+<button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+<i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+<nav class="flex flex-col space-y-2.5">
+<a href="#overview" onclick="toggleMobileMenu()" class="text-sm py-1">总览</a>
+<a href="#company" onclick="toggleMobileMenu()" class="text-sm py-1">公司Top3</a>
+<a href="#industry" onclick="toggleMobileMenu()" class="text-sm py-1">行业Top3</a>
+<a href="#macro" onclick="toggleMobileMenu()" class="text-sm py-1">宏观政策Top3</a>
+<a href="#matrix" onclick="toggleMobileMenu()" class="text-sm py-1">催化矩阵</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-16">
+
+<!-- HERO -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+
+<div class="flex flex-wrap items-center gap-2.5 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-semibold font-mono">NYSE: TSM / TWSE: 2330</span>
+<span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300 text-xs font-semibold">先进制程 · 晶圆代工 · AI/HPC</span>
+<span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-semibold">近30日 · 截至 2026-11-23</span>
+</div>
+
+<h2 class="text-2xl sm:text-3xl font-bold mb-3">台湾积体电路制造股份有限公司（台积电）</h2>
+
+<p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 max-w-5xl">
+近30日台积电消息面呈现<strong class="text-primary-600 dark:text-primary-400">“AI需求强劲、营收加速增长，但出口管制与全球产能扩张成本上升”</strong>的格局。10月营收同比增长59.7%，11月美国新规进一步改变先进芯片跨境制造合规边界，市场焦点由单纯需求增长转向订单质量、客户审查及全球化产能兑现。
+</p>
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+<div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">10月合并营收</div>
+<div class="text-2xl font-bold font-mono text-primary-600 dark:text-primary-400">NT$5,868.9亿</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">同比 +59.7%</div>
+</div>
+<div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">2026年1—10月累计营收</div>
+<div class="text-2xl font-bold font-mono text-gray-900 dark:text-white">NT$4.486万亿</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">同比 +43.3%</div>
+</div>
+<div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">2026年第三季度每股收益</div>
+<div class="text-2xl font-bold font-mono text-gray-900 dark:text-white">NT$29.43</div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-1">10月15日发布的季度业绩</div>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<i data-lucide="gauge" class="w-4 h-4 text-primary-500"></i>
+<span class="text-xs font-semibold text-gray-500 dark:text-gray-400">消息面总体基调</span>
+</div>
+<p class="text-xl font-bold text-emerald-600 dark:text-emerald-400">中性偏多</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">AI需求和营收增长构成强支撑，但先进芯片出口合规、海外扩产成本及估值敏感度上升。</p>
+</div>
+
+<div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<i data-lucide="zap" class="w-4 h-4 text-emerald-600"></i>
+<span class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">本月最强单一催化剂</span>
+</div>
+<p class="text-sm font-bold text-emerald-800 dark:text-emerald-200">10月营收同比增长59.7%，AI/HPC需求继续向晶圆制造端兑现。</p>
+<p class="text-xs text-emerald-700 dark:text-emerald-400 mt-2">2026-11-10 · 台积电官方营收公告</p>
+</div>
+
+<div class="bg-rose-50/70 dark:bg-rose-950/30 rounded-xl p-5 border border-rose-200 dark:border-rose-800/60 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<i data-lucide="shield-alert" class="w-4 h-4 text-rose-500"></i>
+<span class="text-xs font-semibold text-rose-700 dark:text-rose-300">本月最需警惕信号</span>
+</div>
+<p class="text-sm font-bold text-rose-800 dark:text-rose-200">美国BIS新规生效，台积电对部分中国设计商16nm及以下订单加强限制。</p>
+<p class="text-xs text-rose-700 dark:text-rose-400 mt-2">2026-11-19 · Federal Register / Reuters</p>
+</div>
+</div>
+
+<div class="mt-5 text-xs text-gray-400 dark:text-gray-500 leading-relaxed">
+数据口径：营收采用台积电新台币合并口径；季度EPS为公司披露数据。不同币种及ADR价格未进行汇率换算。季度财报日期为10月15日，超出本报告严格30日新闻窗口，仅作为最新季度财务背景。
+</div>
+</div>
+</section>
+
+<!-- COMPANY -->
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+</div>
+
+<!-- Company 1 -->
+<article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-10</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大利好</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.7 / 10</span>
+</div>
+
+<h3 class="text-lg font-bold mb-4">10月营收达到5,868.9亿新台币，同比大增59.7%，累计营收增长43.3%</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4 text-xs">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg px-3 py-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">10月营收</span>
+<span class="font-bold text-sm text-gray-900 dark:text-white">NT$5,868.9亿</span>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg px-3 py-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">环比增长</span>
+<span class="font-bold text-sm text-emerald-600 dark:text-emerald-400">+14.7%</span>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg px-3 py-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">同比增长</span>
+<span class="font-bold text-sm text-emerald-600 dark:text-emerald-400">+59.7%</span>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg px-3 py-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">1—10月累计同比</span>
+<span class="font-bold text-sm text-emerald-600 dark:text-emerald-400">+43.3%</span>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+台积电于2026年11月10日公布10月合并营收。10月营收为<strong>新台币5,868.90亿元</strong>，较9月的5,118.57亿元增长14.7%，较2025年10月的3,674.73亿元增长59.7%。2026年1—10月累计营收达到<strong>新台币4.485617万亿元</strong>，同比增长43.3%。数据来自台积电官方公告及向美国SEC提交的公司披露文件。
+</p>
+
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700">
+<div class="flex items-start gap-2.5">
+<i data-lucide="trending-up" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+<div class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<strong>影响深度：</strong>
+营收高增长表明先进制程与高性能计算相关订单的制造需求仍处于强势区间。收入增长通过产能利用率、先进制程产品组合和固定成本摊薄影响营业利润率。若增长主要来自高附加值先进节点，利润弹性通常优于低端成熟制程。不过，单月营收无法直接等同于利润增长，也不能单独证明毛利率同步提升，仍需结合后续季度财报验证。
+</div>
+</div>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+信源：
+<a class="source-link" target="_blank" rel="noopener" href="https://www.sec.gov/Archives/edgar/data/1046179/000104617926000796/tsm-revenue20261110.htm">SEC：TSMC October 2026 Revenue Report（2026-11-10）</a>；
+<a class="source-link" target="_blank" rel="noopener" href="https://pr.tsmc.com/english/latest-news">台积电官方新闻中心</a>。
+</p>
+<div class="impact-bar"><div class="impact-fill" style="width:97%"></div></div>
+</article>
+
+<!-- Company 2 -->
+<article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive" data-aos="fade-up" data-aos-delay="80">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-19</span>
+<span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">短期承压</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.3 / 10</span>
+</div>
+
+<h3 class="text-lg font-bold mb-4">美国新出口管制规则落地，台积电收紧部分中国芯片设计商先进制程订单</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4 text-xs">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">规则生效日期</span>
+<span class="font-bold font-mono text-sm">11月19日</span>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">重点制程范围</span>
+<span class="font-bold text-sm">16nm及以下</span>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">一般限制范围</span>
+<span class="font-bold text-sm">28nm / 40nm</span>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">政策主管机构</span>
+<span class="font-bold text-sm">美国商务部BIS</span>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月19日，美国商务部工业与安全局（BIS）在《Federal Register》公布《Addressing Remote Access to Advanced Semiconductors》临时最终规则。规则强化对先进计算芯片、海外数据中心远程算力使用，以及部分先进逻辑芯片制造和封装环节的出口许可与尽职调查要求。
+</p>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+11月19日，Reuters援引知情人士报道称，台积电已要求部分受影响的中国芯片设计客户暂停16nm及以下制程订单，除非取得美国许可。相关客户通常只能使用28nm、40nm等较成熟工艺，且需满足不涉及HBM和先进封装等条件。Reuters同时指出，部分此前能够使用7nm工艺的中国设计商可能受到影响，但相关具体安排无法独立核实。台积电表示将遵守适用法规。
+</p>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+<div class="bg-rose-50/70 dark:bg-rose-950/30 rounded-xl p-4 border border-rose-200 dark:border-rose-800/50">
+<div class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-2">负面传导</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">客户审查范围扩大，可能导致部分中国先进制程订单延后、取消或转移，增加合规审核成本，并影响产能排程及客户结构。</p>
+</div>
+<div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+<div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">潜在正面传导</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">合规门槛强化可能进一步提高全球先进制程供应链的进入壁垒，巩固台积电与主要合规客户之间的长期合作关系。</p>
+</div>
+</div>
+
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700">
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<strong>投资判断：</strong>关键不是简单估算中国订单减少多少，而是判断受限制订单占先进制程产能的比例、替代客户导入速度，以及美国后续许可口径是否进一步扩展。台积电的客户集中度、跨境制造合规成本和全球化生产布局将成为估值折价的重要观察项。目前没有可靠公开数据能够量化该新规对台积电整体营收的直接损失。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+信源：
+<a class="source-link" target="_blank" rel="noopener" href="https://www.reuters.com/world/china/tsmc-tightens-china-ai-chip-curbs-new-us-rules-close-manufacturing-loophole-2026-11-19/">Reuters（2026-11-19）</a>；
+<a class="source-link" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/FR-2026-11-19/html/2026-23529.htm">美国Federal Register（2026-11-19）</a>。
+</p>
+<div class="impact-bar"><div class="impact-fill" style="width:93%"></div></div>
+</article>
+
+<!-- Company 3 -->
+<article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up" data-aos-delay="120">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-10</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">温和利好</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.5 / 10</span>
+</div>
+
+<h3 class="text-lg font-bold mb-4">董事会批准第三季度财报及每股9新台币现金股利，延续股东回报政策</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4 text-xs">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">Q3合并营收</span>
+<span class="font-bold text-sm">NT$1.494万亿</span>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">Q3净利润</span>
+<span class="font-bold text-sm">NT$7,630.6亿</span>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">稀释后EPS</span>
+<span class="font-bold text-sm">NT$29.43</span>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<span class="text-gray-500 dark:text-gray-400 block">每股现金股利</span>
+<span class="font-bold text-sm text-emerald-600 dark:text-emerald-400">NT$9.00</span>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月10日，台积电董事会通过2026年第三季度营业报告及财务报表。公司披露第三季度合并营收新台币1.49424万亿元、净利润7,630.6亿元、稀释后每股收益29.43元。同时批准每股新台币9元现金股利。
+</p>
+
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700">
+<div class="text-xs font-bold text-gray-700 dark:text-gray-200 mb-2">股利时间安排</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+<div>
+<span class="text-gray-500 dark:text-gray-400 block">除息日</span>
+<strong class="text-gray-900 dark:text-white">2027-03-11</strong>
+</div>
+<div>
+<span class="text-gray-500 dark:text-gray-400 block">股权登记日</span>
+<strong class="text-gray-900 dark:text-white">2027-03-17</strong>
+</div>
+<div>
+<span class="text-gray-500 dark:text-gray-400 block">股利支付日</span>
+<strong class="text-gray-900 dark:text-white">2027-04-08</strong>
+</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+<strong>影响深度：</strong>现金股利有助于稳定长期股东回报预期，体现公司在大规模资本投资背景下仍保持现金分配能力。但股利本身并不创造额外经营利润，真正决定估值中枢的仍是先进制程竞争力、资本开支回报率以及AI客户需求的持续性。2027年3月除息安排不属于未来30日内的交易事件。
+</p>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+信源：
+<a class="source-link" target="_blank" rel="noopener" href="https://pr.tsmc.com/english/news/3352">台积电董事会决议公告（2026-11-10）</a>；
+<a class="source-link" target="_blank" rel="noopener" href="https://www.sec.gov/Archives/edgar/data/1046179/000104617926000797/tsm-boardx202611xx.htm">SEC公司披露</a>。
+</p>
+<div class="impact-bar"><div class="impact-fill" style="width:75%"></div></div>
+</article>
+
+<div class="bg-primary-50/70 dark:bg-gray-800/80 rounded-xl p-5 border border-primary-100 dark:border-gray-700">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="lightbulb" class="w-4 h-4 text-primary-500"></i>
+<strong class="text-sm">公司层面核心结论</strong>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+营收增长是目前最强的基本面证据；出口管制是最值得重视的新增风险；股东回报则提供辅助支撑。投资者应重点观察11月营收、12月月度销售以及先进制程客户订单合规变化，而非仅凭单月营收外推全年利润。
+</p>
+</div>
+</section>
+
+<!-- INDUSTRY -->
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+<i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+</div>
+<p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6">
+细分赛道：全球纯晶圆代工与先进逻辑芯片制造，重点覆盖3nm、2nm先进制程、EUV设备、AI/HPC晶圆制造及CoWoS等先进封装生态。
+</p>
+
+<!-- Industry 1 -->
+<article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-5 card-interactive">
+<div class="flex flex-wrap items-center gap-2.5 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-12</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">强需求利好</span>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400 ml-auto">影响力 9.2 / 10</span>
+</div>
+<h3 class="font-bold text-lg mb-3">应用材料公司预测季度收入高于市场预期，AI芯片设备需求推动晶圆制造投资</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月12日，Reuters报道应用材料公司（Applied Materials）预计下一财季收入约111亿美元，上下浮动5亿美元，高于当时分析师平均预期约108.9亿美元。其第四财季调整后每股收益为4.16美元，高于市场预期的4.05美元；半导体系统业务收入同比增长64%至80亿美元。公司管理层表示，AI芯片制造设备需求保持强劲，并预计2027年晶圆制造设备市场需求有望增长超过30%。
+</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+<div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+<strong class="text-xs text-emerald-700 dark:text-emerald-300 block mb-2">对台积电的正向映射</strong>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">设备市场需求增长反映全球先进晶圆厂持续投资AI产能。台积电作为先进制程核心制造平台，有望受益于AI加速器、网络芯片和高性能计算芯片的长期制造需求。</p>
+</div>
+<div class="bg-amber-50/70 dark:bg-amber-950/30 rounded-xl p-4 border border-amber-200 dark:border-amber-800/50">
+<strong class="text-xs text-amber-700 dark:text-amber-300 block mb-2">潜在负面映射</strong>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">设备需求快速增长也意味着设备供应链可能出现产能紧张、采购成本上升和交货周期延长，增加台积电新建晶圆厂的资本支出及投产不确定性。</p>
+</div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">
+信源：
+<a class="source-link" target="_blank" rel="noopener" href="https://www.reuters.com/business/applied-materials-forecasts-quarterly-revenue-above-estimates-strong-ai-chip-2026-11-12/">Reuters（2026-11-12）</a>。
+</p>
+</article>
+
+<!-- Industry 2 -->
+<article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-5 card-interactive">
+<div class="flex flex-wrap items-center gap-2.5 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-04</span>
+<span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏多：需求强、供给受限</span>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400 ml-auto">影响力 8.6 / 10</span>
+</div>
+<h3 class="font-bold text-lg mb-3">全球半导体设备订单提前锁定至2028—2029年，AI扩产竞争加剧</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月4日，韩国电子行业媒体ETNews报道，全球主要半导体设备厂商包括Applied Materials、ASML、Lam Research、Tokyo Electron和KLA，正与客户推进2028年设备供应合同，部分企业已开始讨论2029年交付安排。报道援引产业人士称，设备采购周期较传统安排提前约一至两年，反映AI基础设施扩张带来的设备需求快速增长及供应能力约束。
+</p>
+<div class="bg-accent-50/70 dark:bg-accent-900/30 rounded-xl p-4 mb-4 border border-accent-200 dark:border-accent-700/40">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed">
+<strong class="text-accent-700 dark:text-accent-300">对台积电的横向映射：</strong>
+台积电拥有规模化先进制程采购能力，长期供应关系有利于保障核心设备资源。但设备交付周期提前锁定，意味着新产能建设需要更早进行资金安排、供应商协调和产线规划。设备供应紧张既可能巩固成熟产能的稀缺性，也可能限制未来先进节点产能扩张速度。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">
+信源：
+<a class="source-link" target="_blank" rel="noopener" href="https://en.etnews.com/20261104200007">ETNews（2026-11-04）</a>。
+</p>
+</article>
+
+<!-- Industry 3 -->
+<article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-5 card-interactive">
+<div class="flex flex-wrap items-center gap-2.5 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-23</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">产业链结构性利好</span>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400 ml-auto">影响力 8.2 / 10</span>
+</div>
+<h3 class="font-bold text-lg mb-3">HBM4先进封装扩产继续推进，SK海力士与美光加快2027年产能准备</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月23日，DigiTimes周度行业报道指出，SK海力士正寻求增加HBM4封装与测试所需的键合、切割及检测设备，部分设备希望于2027年第一季度交付。报道还提到，美光已将首批工艺设备运入其新加坡HBM先进封装工厂，目标是在2027年初启动初期生产。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+DigiTimes援引的行业信息显示，SK海力士相关项目可能增加超过每月2万片晶圆等效产能，但这一规模尚未得到公司正式确认，因此不应作为已实现产能计入估值模型。美光新加坡项目约70亿美元的投资规模为报道所述项目规划口径。
+</p>
+<div class="bg-accent-50/70 dark:bg-accent-900/30 rounded-xl p-4 mb-4 border border-accent-200 dark:border-accent-700/40">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed">
+<strong class="text-accent-700 dark:text-accent-300">对台积电的横向映射：</strong>
+HBM4与先进封装扩产意味着AI加速器产业链仍在增加系统级制造投入。台积电的先进逻辑制程与先进封装平台处于该生态的重要环节，能够分享AI服务器和高性能计算需求扩张。不过，存储厂自身扩大封装能力也可能改变产业链分工，台积电的实际受益程度仍取决于其客户订单、封装产能和技术竞争力，而不是HBM产能增长本身。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">
+信源：
+<a class="source-link" target="_blank" rel="noopener" href="https://www.digitimes.com/news/a20261123VL200/weekly-news-roundup-tsmc-sk-hynix-chips-equipment-investment.html">DigiTimes（2026-11-23）</a>。
+</p>
+</article>
+
+<!-- Industry comparison -->
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+<h3 class="font-bold mb-4 flex items-center gap-2">
+<i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i>
+行业动态对标影响对比表
+</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm min-w-[760px]">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800">
+<th>行业事件</th>
+<th>涉及主体</th>
+<th>对台积电利弊传导</th>
+<th>影响周期</th>
+</tr>
+</thead>
+<tbody class="text-gray-600 dark:text-gray-300">
+<tr>
+<td class="font-medium text-gray-900 dark:text-gray-100">AI设备市场需求增长，应用材料收入指引上调</td>
+<td>Applied Materials、全球晶圆厂</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">利好。</span>AI扩产需求验证先进制程投资合理性，但设备成本和交付能力成为约束。</td>
+<td class="whitespace-nowrap">2026Q4—2027</td>
+</tr>
+<tr>
+<td class="font-medium text-gray-900 dark:text-gray-100">设备采购提前锁定至2028—2029年</td>
+<td>ASML、Lam、TEL、KLA、台积电等</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-semibold">双向影响。</span>规模采购能力构成优势，但交期与资本开支压力提高。</td>
+<td class="whitespace-nowrap">2027—2029</td>
+</tr>
+<tr>
+<td class="font-medium text-gray-900 dark:text-gray-100">HBM4封装与测试设备投资提速</td>
+<td>SK海力士、美光、HBM供应链</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">偏利好。</span>AI算力系统需求持续扩张，带动先进逻辑与封装生态。</td>
+<td class="whitespace-nowrap">2027—2028</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+</div>
+
+<!-- Macro 1 -->
+<article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 mb-5 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · 美国出口管制</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-19</span>
+<span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">短期利空 / 中长期结构调整</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.8 / 10</span>
+</div>
+
+<h3 class="font-bold text-lg mb-4">美国BIS出台远程访问先进半导体规则，扩大先进芯片跨境使用和制造审查</h3>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">1. 政策要点</strong>
+2026年11月19日，美国商务部BIS在Federal Register发布临时最终规则，涉及海外数据中心远程提供先进算力、部分国家先进芯片出口许可、先进逻辑芯片制造和封装的客户审查，并正式撤销此前从未实施的AI Diffusion Rule。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">2. 传导路径</strong>
+<strong>分子端：</strong>受限客户订单减少、合规审核与客户识别成本增加，部分产能需要重新配置。<br><br>
+<strong>分母端：</strong>地缘政策风险溢价上升，可能压制市场给予全球半导体制造企业的估值倍数。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">3. 业务敞口评估</strong>
+直接影响主要集中于先进逻辑芯片及相关封装客户、海外数据中心算力链条和特定跨境交易。台积电需重点管理客户最终受益人、产品用途、生产节点及出口路径。不能将所有中国客户或全部先进制程订单简单视为被禁止。
+</div>
+</div>
+
+<div class="mt-4 p-4 rounded-xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/50">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed">
+<strong>政策关键细节：</strong>规则涉及中国及澳门相关主体的远程算力访问，同时对印度尼西亚、马来西亚、新加坡、泰国和巴西等目的地的特定先进半导体交易增加许可要求。对台积电而言，关键在于海外代工与封装客户的总部、最终控制权及最终用途审查。该规则并不意味着台积电所有非美国客户均需要许可证。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+发布机构：美国商务部BIS。信源：
+<a class="source-link" target="_blank" rel="noopener" href="https://www.govinfo.gov/content/pkg/FR-2026-11-19/html/2026-23529.htm">Federal Register（2026-11-19）</a>；
+<a class="source-link" target="_blank" rel="noopener" href="https://www.reuters.com/world/china/tsmc-tightens-china-ai-chip-curbs-new-us-rules-close-manufacturing-loophole-2026-11-19/">Reuters（2026-11-19）</a>。
+</p>
+</article>
+
+<!-- Macro 2 -->
+<article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 mb-5 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国际 · 中美科技政策</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-17</span>
+<span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏空：地缘风险上升</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.5 / 10</span>
+</div>
+
+<h3 class="font-bold text-lg mb-4">中国商务部反对美国进一步收紧AI芯片管制，并警告可能采取反制措施</h3>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">1. 政策与态势要点</strong>
+2026年11月17日，Reuters报道中国商务部针对美国进一步限制中国获得先进AI芯片的政策提议表达反对，称如美方继续推进相关措施，中国将采取反制措施。该表态反映先进芯片及AI算力已成为中美科技政策博弈的重要议题。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">2. 传导路径</strong>
+<strong>分子端：</strong>中美技术摩擦可能影响中国客户的先进芯片设计、流片、封装及最终销售安排。<br><br>
+<strong>分母端：</strong>地缘风险上升可能抬高台积电风险折价，并增加跨境供应链重新配置成本。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">3. 业务敞口评估</strong>
+中国大陆客户及相关设计服务链条面临更高政策不确定性。台积电的全球客户组合能够分散单一区域风险，但中国客户订单、海外代工渠道和设备供应链仍可能受到政策传导影响。
+</div>
+</div>
+
+<div class="mt-4 p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed">
+<strong>投资判断：</strong>目前应区分已经生效的美国BIS规则与中国方面的反制表态。后者不等同于已经出台针对台积电的具体制裁措施。未来需观察是否出现实际反制、设备或材料供应限制，以及中国客户订单调整。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+信源：
+<a class="source-link" target="_blank" rel="noopener" href="https://www.reuters.com/world/china/china-says-it-will-take-countermeasures-if-us-imposes-new-chip-curbs-2026-11-17/">Reuters（2026-11-17）</a>。
+</p>
+</article>
+
+<!-- Macro 3 -->
+<article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 mb-5 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-sky-600 text-white text-xs font-bold">国际 · 美联储货币政策</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-10-28</span>
+<span class="px-2.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 text-xs font-bold">中性：利率与估值双重影响</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.5 / 10</span>
+</div>
+
+<h3 class="font-bold text-lg mb-4">美联储维持联邦基金利率目标区间3.75%—4%，通胀仍高于政策目标</h3>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">1. 政策要点</strong>
+2026年10月28日，美联储FOMC决定维持联邦基金利率目标区间在3.75%—4%。会议声明指出经济活动保持较强增长，国内消费韧性较强，但通胀仍高于2%的长期目标。两名委员倾向于加息25个基点。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">2. 传导路径</strong>
+<strong>分子端：</strong>利率影响企业融资成本、AI数据中心投资回报及客户资本开支决策。<br><br>
+<strong>分母端：</strong>实际利率和美元变化影响成长股估值折现率、美元计价ADR资产及国际资金配置。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">3. 业务敞口评估</strong>
+台积电的直接客户需求主要来自全球科技企业。若融资条件持续偏紧，可能影响数据中心建设与AI资本开支节奏；若利率下行且美元走弱，则可能改善成长股估值环境，但仍取决于通胀和经济增长。
+</div>
+</div>
+
+<div class="mt-4 p-4 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/50">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed">
+<strong>后续观察：</strong>下一次FOMC会议安排在2026年12月8—9日。该次会议的政策声明、点阵图及利率路径信号，将影响全球AI成长股的估值环境。当前不能提前将未来降息作为确定性假设。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+信源：
+<a class="source-link" target="_blank" rel="noopener" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm">Federal Reserve · FOMC会议纪要</a>；
+<a class="source-link" target="_blank" rel="noopener" href="https://www.federalreserve.gov/monetarypolicy/files/monetary20261028a1.pdf">2026-10-28货币政策执行文件</a>。
+</p>
+</article>
+
+<div class="bg-primary-50/70 dark:bg-gray-800/80 rounded-xl p-5 border border-primary-100 dark:border-gray-700">
+<strong class="text-sm flex items-center gap-2 mb-2">
+<i data-lucide="network" class="w-4 h-4 text-primary-500"></i>
+三层传导框架：公司—行业—宏观
+</strong>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-gray-600 dark:text-gray-300">
+<div>
+<strong class="text-primary-600 dark:text-primary-300">公司层</strong>
+<p class="mt-1">营收增长、先进制程订单、客户结构与股东回报决定盈利基础。</p>
+</div>
+<div>
+<strong class="text-primary-600 dark:text-primary-300">行业层</strong>
+<p class="mt-1">AI设备投资、HBM与先进封装扩张决定需求持续性和产能瓶颈。</p>
+</div>
+<div>
+<strong class="text-primary-600 dark:text-primary-300">宏观层</strong>
+<p class="mt-1">出口管制决定客户可服务边界，利率与美元决定估值折现和全球资本流向。</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- MATRIX -->
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-10" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+</div>
+
+<div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-8">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<h3 class="font-bold flex items-center gap-2 text-sm sm:text-base">
+<i data-lucide="list" class="w-4 h-4 text-primary-500"></i>
+九大动态催化矩阵（点击事件跳转详情）
+</h3>
+<div class="flex flex-wrap gap-1.5 text-xs">
+<button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">全部 (9)</button>
+<button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">公司 (3)</button>
+<button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">行业 (3)</button>
+<button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">宏观 (3)</button>
+</div>
+</div>
+
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm min-w-[900px]">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800">
+<th>类别</th>
+<th>日期</th>
+<th>核心事件</th>
+<th>影响方向</th>
+<th>强度</th>
+<th>核心投资含义</th>
+</tr>
+</thead>
+<tbody class="text-gray-600 dark:text-gray-300">
+
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+<td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300">公司</span></td>
+<td class="whitespace-nowrap font-mono">11-10</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">10月营收5,868.9亿新台币，同比+59.7%</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-semibold">重大利好</td>
+<td class="font-bold font-mono">9.7</td>
+<td>AI需求持续兑现，收入增长强劲</td>
+</tr>
+
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+<td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300">公司</span></td>
+<td class="whitespace-nowrap font-mono">11-19</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">中国客户先进制程订单加强许可审查</td>
+<td class="text-rose-600 dark:text-rose-400 font-semibold">短期承压</td>
+<td class="font-bold font-mono">9.3</td>
+<td>客户结构与合规成本成为估值变量</td>
+</tr>
+
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+<td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300">公司</span></td>
+<td class="whitespace-nowrap font-mono">11-10</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">董事会通过Q3财报及每股9元现金股利</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-semibold">温和利好</td>
+<td class="font-bold font-mono">7.5</td>
+<td>强化股东回报预期，提供辅助估值支撑</td>
+</tr>
+
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+<td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/60 text-accent-700 dark:text-accent-300">行业</span></td>
+<td class="whitespace-nowrap font-mono">11-12</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">应用材料AI设备需求强劲，2027设备市场预期增长</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-semibold">利好</td>
+<td class="font-bold font-mono">9.2</td>
+<td>先进制程投资需求得到设备端验证</td>
+</tr>
+
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+<td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/60 text-accent-700 dark:text-accent-300">行业</span></td>
+<td class="whitespace-nowrap font-mono">11-04</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">设备订单提前锁定至2028—2029年</td>
+<td class="text-amber-600 dark:text-amber-400 font-semibold">双向影响</td>
+<td class="font-bold font-mono">8.6</td>
+<td>需求强，但设备供应和资本开支承压</td>
+</tr>
+
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+<td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/60 text-accent-700 dark:text-accent-300">行业</span></td>
+<td class="whitespace-nowrap font-mono">11-23</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">SK海力士、美光加快HBM4封装扩产</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-semibold">结构性利好</td>
+<td class="font-bold font-mono">8.2</td>
+<td>AI计算系统需求扩散至先进封装生态</td>
+</tr>
+
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+<td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/60 text-rose-700 dark:text-rose-300">宏观</span></td>
+<td class="whitespace-nowrap font-mono">11-19</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">美国BIS扩大先进芯片与远程算力管制</td>
+<td class="text-rose-600 dark:text-rose-400 font-semibold">利空</td>
+<td class="font-bold font-mono">9.8</td>
+<td>改变先进制程客户服务边界与风险溢价</td>
+</tr>
+
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+<td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/60 text-rose-700 dark:text-rose-300">宏观</span></td>
+<td class="whitespace-nowrap font-mono">11-17</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">中国商务部警告可能对美国新芯片限制采取反制</td>
+<td class="text-amber-600 dark:text-amber-400 font-semibold">风险上升</td>
+<td class="font-bold font-mono">8.5</td>
+<td>增加跨境供应链与地缘政策不确定性</td>
+</tr>
+
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+<td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/60 text-rose-700 dark:text-rose-300">宏观</span></td>
+<td class="whitespace-nowrap font-mono">10-28</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">美联储维持3.75%—4%利率区间</td>
+<td class="text-sky-600 dark:text-sky-400 font-semibold">中性</td>
+<td class="font-bold font-mono">7.5</td>
+<td>影响AI资本开支及成长股折现率</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-400 dark:text-gray-500 mt-3">说明：影响强度为研究员对台积电股价及基本面传导程度的主观评分，并非市场实际涨跌幅或统计模型输出。所有九项事件均有对应详情卡片及信源。</p>
+</div>
+
+<!-- Forward Calendar -->
+<div class="mb-6">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<i data-lucide="calendar-days" class="w-5 h-5 text-primary-500"></i>
+未来30天重点跟踪清单（2026-11-24 至 2026-12-23）
+</h3>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<span class="text-xs font-bold text-primary-600 dark:text-primary-300 font-mono">2026-11-24</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs">公司活动</span>
+</div>
+<h4 class="font-bold text-sm mb-2">台积电欧洲OIP生态系统研讨会</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">台积电官方活动日历列明11月24日在德国慕尼黑举办2026 Europe OIP Ecosystem Workshop。重点观察生态伙伴合作、IP及设计服务生态、先进制程客户导入与欧洲业务拓展信息。</p>
+<p class="text-xs mt-3"><a class="source-link" target="_blank" rel="noopener" href="https://pr.tsmc.com/english/events">台积电官方活动日历</a></p>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<span class="text-xs font-bold text-primary-600 dark:text-primary-300 font-mono">2026-12-08 至 12-09</span>
+<span class="px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 text-xs">宏观事件</span>
+</div>
+<h4 class="font-bold text-sm mb-2">美联储FOMC议息会议</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">关注利率决议、经济预测、通胀路径及政策措辞。对于台积电，重点在于美元流动性、AI基础设施融资成本和全球科技成长股估值变化。</p>
+<p class="text-xs mt-3"><a class="source-link" target="_blank" rel="noopener" href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm">美联储会议日历</a></p>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<span class="text-xs font-bold text-primary-600 dark:text-primary-300 font-mono">2026-12-10</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 text-xs">公司财务数据</span>
+</div>
+<h4 class="font-bold text-sm mb-2">台积电11月营收公告</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">公司官方财务日历已列出11月月度营收发布安排。重点检验10月高增长是否延续，观察月度环比变化及累计营收增长速度，避免仅凭单月同比高增长推断全年利润。</p>
+<p class="text-xs mt-3"><a class="source-link" target="_blank" rel="noopener" href="https://investor.tsmc.com/english/financial-calendar">台积电官方财务日历</a></p>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center gap-2 mb-2.5">
+<span class="text-xs font-bold text-primary-600 dark:text-primary-300 font-mono">未来30日持续跟踪</span>
+<span class="px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 text-xs">政策风险</span>
+</div>
+<h4 class="font-bold text-sm mb-2">美国BIS新规执行与中国客户订单调整</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">重点观察台积电是否进一步披露客户审查和订单调整，是否出现新的许可解释、实体清单变动、反制措施及海外代工客户合规要求。</p>
+<p class="text-xs mt-3"><a class="source-link" target="_blank" rel="noopener" href="https://www.bis.gov/news-updates">BIS官方新闻及规则更新</a></p>
+</div>
+
+</div>
+</div>
+
+<!-- Investment framework -->
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-800 shadow-sm mb-8">
+<h3 class="font-bold text-lg mb-5 flex items-center gap-2">
+<i data-lucide="target" class="w-5 h-5 text-primary-500"></i>
+买方研究：未来30天关键观察指标
+</h3>
+
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm min-w-[680px]">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800">
+<th>观察维度</th>
+<th>关键跟踪指标</th>
+<th>偏多信号</th>
+<th>偏空信号</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody class="text-gray-600 dark:text-gray-300">
+<tr>
+<td class="font-semibold text-gray-900 dark:text-gray-100">经营增长</td>
+<td>11月月度营收</td>
+<td>同比和环比增长保持韧性</td>
+<td>环比明显转弱且无法由季节性解释</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-bold">极高</td>
+</tr>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-gray-100">AI需求</td>
+<td>先进制程订单及客户资本开支</td>
+<td>主要客户继续上修AI基础设施投入</td>
+<td>客户推迟订单或削减资本开支</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-bold">极高</td>
+</tr>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-gray-100">政策风险</td>
+<td>BIS许可证、客户审查及新规执行</td>
+<td>许可边界清晰、订单顺利转移</td>
+<td>审查范围扩展或出现供应链反制</td>
+<td class="text-rose-600 dark:text-rose-400 font-bold">极高</td>
+</tr>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-gray-100">资本开支</td>
+<td>设备交付及新产能建设</td>
+<td>关键设备按期交付、产线爬坡顺利</td>
+<td>设备延期、成本超支或建设延后</td>
+<td class="text-amber-600 dark:text-amber-400 font-bold">高</td>
+</tr>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-gray-100">估值环境</td>
+<td>FOMC决议、美元和美债收益率</td>
+<td>实际利率回落、成长股风险偏好改善</td>
+<td>通胀黏性导致利率预期上行</td>
+<td class="text-amber-600 dark:text-amber-400 font-bold">高</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- Final assessment -->
+<div class="bg-gray-900 dark:bg-[#080d14] text-white rounded-2xl p-6 sm:p-8 shadow-lg">
+<div class="flex items-center gap-2 mb-4">
+<i data-lucide="brain-circuit" class="w-5 h-5 text-primary-400"></i>
+<h3 class="font-bold text-lg">最终投资判断：台积电当前最重要的矛盾</h3>
+</div>
+<p class="text-sm text-gray-300 leading-relaxed mb-5">
+台积电当前并非需求不足，而是强劲AI需求与全球化制造约束之间的博弈。10月营收同比增长59.7%，说明收入端景气度仍然强劲；美国出口管制则使先进制程的客户可服务范围、订单合规和全球生产配置更加复杂。
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+<div class="rounded-xl p-4 bg-white/5 border border-white/10">
+<span class="text-xs text-emerald-300 font-semibold">基本面主线</span>
+<p class="font-bold mt-2 text-sm">AI/HPC订单增长</p>
+<p class="text-xs text-gray-400 mt-2">关注先进制程收入占比、利用率、毛利率及先进封装兑现能力。</p>
+</div>
+<div class="rounded-xl p-4 bg-white/5 border border-white/10">
+<span class="text-xs text-rose-300 font-semibold">最大风险变量</span>
+<p class="font-bold mt-2 text-sm">美国出口管制升级</p>
+<p class="text-xs text-gray-400 mt-2">关注受影响客户数量、订单迁移成本和新增合规限制。</p>
+</div>
+<div class="rounded-xl p-4 bg-white/5 border border-white/10">
+<span class="text-xs text-amber-300 font-semibold">估值核心变量</span>
+<p class="font-bold mt-2 text-sm">资本回报与全球化成本</p>
+<p class="text-xs text-gray-400 mt-2">关注设备投资、海外工厂折旧、自由现金流和长期资本回报率。</p>
+</div>
+</div>
+
+<div class="border-t border-white/10 pt-5">
+<p class="text-xs text-gray-400 leading-relaxed">
+<strong class="text-white">买方策略结论：</strong>
+在AI订单和营收增速尚未出现明确拐点前，不宜仅凭出口管制新闻否定台积电的长期竞争力；但也不应将AI行业高景气直接等同于股价持续上涨。未来股价方向的关键验证顺序是：11月营收延续性 → 先进制程与封装订单可见度 → BIS新规实际影响 → 海外资本开支回报 → 美联储利率及市场估值环境。
+</p>
+<p class="text-xs text-primary-300 font-semibold mt-3">综合定性：中性偏多，基本面强于政策面，短期关注风险溢价变化。</p>
+</div>
+</div>
+
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div>
+<h4 class="font-bold text-sm mb-3">核心数据来源</h4>
+<ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+<li>台积电2026年10月营收公告（2026-11-10）</li>
+<li>台积电董事会决议（2026-11-10）</li>
+<li>台积电2026年供应链管理论坛（2026-11-17）</li>
+<li>美国商务部BIS / Federal Register（2026-11-19）</li>
+<li>Reuters：台积电中国客户先进制程限制（2026-11-19）</li>
+<li>Reuters：应用材料AI设备需求（2026-11-12）</li>
+<li>ETNews：半导体设备长期订单（2026-11-04）</li>
+<li>DigiTimes：HBM4及设备供应链动态（2026-11-23）</li>
+<li>中国商务部相关表态（Reuters，2026-11-17）</li>
+<li>美联储FOMC会议声明及会议纪要（2026-10-28）</li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-bold text-sm mb-3">覆盖时间区间</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+严格30日主窗口：2026-10-24 至 2026-11-23（含首尾日期）。本报告九项核心动态均取自主窗口内公开披露的信息。对于10月15日第三季度财报，仅作为最新季度财务背景引用，不作为本月新发生的事件。
+</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3">
+前瞻窗口：2026-11-24 至 2026-12-23。未来活动与财务公告日期以公司官方日历及美联储公开会议日程为依据，尚未发生的事件不预设其结果。
+</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3">
+金额采用公司原始披露币种。行业报道中尚未获得企业正式确认的数据已明确标注为市场报道或预估，不作为已实现经营数据。
+</p>
+</div>
+
+<div>
+<h4 class="font-bold text-sm mb-3">免责声明与研究方法</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+本报告基于截至2026年11月23日可检索的公开公告、监管文件、公司新闻、行业媒体及主流财经媒体信息整理。所有事件日期尽量采用原始披露日期，并区分正式规则、公司公告、媒体报道和行业预测。
+</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3">
+影响力评分为研究分析判断，不代表市场一致预期、实际股价涨跌幅或量化回测结果。部分新闻所涉及的订单规模、客户影响和未来设备产能尚未得到公司正式确认。
+</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3">
+本报告仅供投资研究与信息参考，不构成证券买卖建议、投资承诺或收益保证。半导体行业面临技术迭代、资本开支、汇率、地缘政治及周期波动等风险，投资者应独立判断并承担投资风险。
+</p>
+</div>
+</div>
+
+<div class="border-t border-gray-100 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+<p class="text-xs text-gray-400 dark:text-gray-500">台积电（NYSE: TSM / TWSE: 2330）· 最新动态全景追踪 · 截至 2026-11-23</p>
+<p class="text-xs text-gray-400 dark:text-gray-500">Buy-side Research · Event-driven Analysis · 2026</p>
+</div>
+</div>
+</footer>
+
+<script>
+function updateProgress(){
+ const scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+ const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const bar=document.getElementById('progressBar');
+ if(bar)bar.style.width=(height>0?scrollTop/height*100:0)+'%';
+}
+window.addEventListener('scroll',updateProgress,{passive:true});
+
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({
+  duration:450,
+  offset:30,
+  once:true,
+  disable:'mobile'
+ });
+ updateProgress();
+});
+
+document.addEventListener('keydown',(e)=>{
+ if(e.key==='Escape'){
+ const menu=document.getElementById('mobileMenu');
+ if(menu)menu.classList.remove('mobile-menu-open');
+ }
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

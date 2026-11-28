@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Salesforce（NYSE: CRM）公司治理、股权结构、资本运作、关联交易及员工激励体系全景解析。">
+<title>赛富时体系全景解析_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(207, 90%, 96%)',100:'hsl(207, 90%, 88%)',
+          200:'hsl(207, 90%, 78%)',300:'hsl(207, 90%, 68%)',
+          400:'hsl(207, 90%, 58%)',500:'hsl(207, 90%, 48%)',
+          600:'hsl(207, 90%, 40%)',700:'hsl(207, 90%, 32%)',
+          800:'hsl(207, 90%, 23%)',900:'hsl(207, 90%, 15%)'
+        },
+        accent: {
+          50:'hsl(177, 65%, 95%)',100:'hsl(177, 65%, 86%)',
+          200:'hsl(177, 65%, 76%)',300:'hsl(177, 65%, 66%)',
+          400:'hsl(177, 65%, 54%)',500:'hsl(177, 65%, 44%)',
+          600:'hsl(177, 65%, 36%)',700:'hsl(177, 65%, 28%)',
+          800:'hsl(177, 65%, 20%)',900:'hsl(177, 65%, 13%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.btn-interactive:active{transform:scale(.96)}
+.card-interactive{transition:all .3s ease-out;border:1px solid transparent}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 20px 25px -5px rgba(0,0,0,.12);border-color:hsl(207,90%,55%)}
+.dark .card-interactive:hover{border-color:hsl(177,65%,48%)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.8rem .75rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#374151}
+th{font-weight:650;color:#075985;background:rgba(224,242,254,.55)}
+.dark th{color:#bae6fd;background:rgba(12,74,110,.25)}
+.table-wrap{overflow-x:auto;border-radius:.8rem}
+.table-wrap table{min-width:650px}
+#mobileMenu{display:none}
+#mobileMenu.mobile-menu-open{display:block}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){
+ header .max-w-7xl{padding-left:1rem;padding-right:1rem}
+ header .brand-title{font-size:.95rem;white-space:nowrap}
+ #mobileMenu{margin-top:1rem;padding:1rem 0 .5rem;border-top:1px solid rgba(0,0,0,.12);max-height:calc(100vh - 90px);overflow-y:auto}
+ .dark #mobileMenu{border-top-color:rgba(255,255,255,.15)}
+ #mobileMenu a{display:block;width:100%;padding:.7rem .5rem;border-radius:.5rem}
+}
+@media(min-width:768px){
+ header nav[aria-label="桌面端导航"] a{color:#374151}
+ .dark header nav[aria-label="桌面端导航"] a{color:#e5e7eb}
+ header nav[aria-label="桌面端导航"] a:hover,.dark header nav[aria-label="桌面端导航"] a:hover{color:hsl(207,90%,48%)}
+}
+header{overflow:visible}
+.section-kicker{letter-spacing:.14em;font-size:.72rem;font-weight:700;text-transform:uppercase;color:#0284c7}
+.dark .section-kicker{color:#67e8f9}
+.metric{font-variant-numeric:tabular-nums}
+.moat-bar{height:9px;background:#e5e7eb;border-radius:99px;overflow:hidden}
+.dark .moat-bar{background:#374151}
+.moat-bar>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#0284c7,#14b8a6)}
+.timeline{border-left:2px solid #bae6fd;margin-left:.45rem;padding-left:1.4rem}
+.timeline-item{position:relative;padding-bottom:1.5rem}
+.timeline-item:before{content:"";position:absolute;width:11px;height:11px;border-radius:50%;background:#0284c7;left:-1.83rem;top:.3rem;border:2px solid white}
+.dark .timeline-item:before{border-color:#111827}
+a.source-link{color:#0284c7;text-decoration:underline;text-underline-offset:3px}
+.dark a.source-link{color:#67e8f9}
+</style>
+<script>
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ const d=document.documentElement.classList.contains('dark');
+ document.getElementById('sunIcon').style.display=d?'block':'none';
+ document.getElementById('moonIcon').style.display=d?'none':'block';
+ try{localStorage.setItem('crm-report-theme',d?'dark':'light')}catch(e){}
+}
+function toggleMobileMenu(){
+ const m=document.getElementById('mobileMenu'),b=document.getElementById('mobileMenuButton'),i=document.getElementById('mobileMenuIcon');
+ if(!m)return;
+ const open=m.classList.toggle('mobile-menu-open');
+ m.setAttribute('aria-hidden',open?'false':'true');
+ b.setAttribute('aria-expanded',open?'true':'false');
+ i.setAttribute('data-lucide',open?'x':'menu');
+ lucide.createIcons();
+}
+function closeMobileMenu(){
+ const m=document.getElementById('mobileMenu'),b=document.getElementById('mobileMenuButton'),i=document.getElementById('mobileMenuIcon');
+ if(!m)return;
+ m.classList.remove('mobile-menu-open');m.setAttribute('aria-hidden','true');
+ b.setAttribute('aria-expanded','false');i.setAttribute('data-lucide','menu');lucide.createIcons();
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-accent-400 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/95 dark:bg-gray-900/95 border-b border-primary-500/20">
+ <div class="max-w-7xl mx-auto px-6 py-4">
+  <div class="flex items-center justify-between gap-3">
+   <h1 class="brand-title text-xl font-bold text-primary-700 dark:text-primary-300">赛富时体系全景解析</h1>
+   <nav class="hidden md:flex space-x-5 flex-shrink-0" aria-label="桌面端导航">
+    <a href="#overview" class="text-sm font-medium">总览</a>
+    <a href="#founder" class="text-sm font-medium">管理层</a>
+    <a href="#capital" class="text-sm font-medium">股本</a>
+    <a href="#equity" class="text-sm font-medium">股权</a>
+    <a href="#companies" class="text-sm font-medium">关联企业</a>
+    <a href="#employee" class="text-sm font-medium">员工激励</a>
+    <a href="#summary" class="text-sm font-medium">综合研判</a>
+   </nav>
+   <div class="flex items-center space-x-2 flex-shrink-0">
+    <button type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-200" aria-label="打开或关闭导航菜单" aria-controls="mobileMenu" aria-expanded="false" id="mobileMenuButton">
+     <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+    </button>
+    <button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-200" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" aria-hidden="true">
+   <nav class="flex flex-col space-y-1">
+    <a href="#overview" class="text-sm font-medium">总览</a>
+    <a href="#founder" class="text-sm font-medium">管理层</a>
+    <a href="#capital" class="text-sm font-medium">股本</a>
+    <a href="#equity" class="text-sm font-medium">股权</a>
+    <a href="#companies" class="text-sm font-medium">关联企业</a>
+    <a href="#employee" class="text-sm font-medium">员工激励</a>
+    <a href="#summary" class="text-sm font-medium">综合研判</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main>
+<section id="overview" class="pt-36 pb-20 bg-primary-50/60 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-4">CORPORATE GOVERNANCE & OWNERSHIP MAP · 2026</div>
+  <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-800 dark:text-primary-300">赛富时体系全景解析</h2>
+  <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+   本报告以 Salesforce, Inc.（NYSE: CRM）为研究对象，从创始人及核心管理层、股本变化、主要股东与控制权、子公司和并购版图、关联交易、员工股权激励六个维度，拆解这家企业软件巨头的资本与治理结构。研究重点不只是“谁持有股票”，更在于理解创始人影响力、机构股东制衡、资本回报政策与 AI 转型之间的关系。
+  </p>
+  <div class="flex flex-wrap gap-2 mb-8">
+   <span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 text-xs font-semibold">NYSE: CRM</span>
+   <span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-200 text-xs font-semibold">研究基准日：2026-11-25</span>
+   <span class="px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold">美元口径</span>
+   <span class="px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-xs font-semibold">FY2026 年报 / FY2027 Q2</span>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6 mt-10">
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/40 rounded-lg flex items-center justify-center"><i data-lucide="user-round" class="w-6 h-6 text-primary-600 dark:text-primary-300"></i></div>
+     <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">创始人主导</h3>
+    </div>
+    <div class="text-3xl font-bold metric text-primary-700 dark:text-primary-300">2001</div>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Marc Benioff 自 2001 年起担任 CEO；联合创始人 Parker Harris 继续负责技术与产品体系。</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+     <div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/40 rounded-lg flex items-center justify-center"><i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-300"></i></div>
+     <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与回购</h3>
+    </div>
+    <div class="text-3xl font-bold metric text-accent-700 dark:text-accent-300">250亿美元</div>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">2026 年启动大型加速股票回购（ASR），并获批总额 500 亿美元的回购授权。</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/40 rounded-lg flex items-center justify-center"><i data-lucide="brain-circuit" class="w-6 h-6 text-primary-600 dark:text-primary-300"></i></div>
+     <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">AI 转型引擎</h3>
+    </div>
+    <div class="text-3xl font-bold metric text-primary-700 dark:text-primary-300">39亿美元</div>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">FY2027 Q2 Agentforce 与 Data 360 ARR 接近 39 亿美元，同比增长超过 210%。</p>
+   </div>
+  </div>
+  <div class="mt-8 p-5 rounded-xl border border-primary-200 dark:border-primary-800 bg-white/60 dark:bg-gray-800/60">
+   <div class="flex items-start gap-3">
+    <i data-lucide="info" class="w-5 h-5 text-primary-600 dark:text-primary-300 mt-0.5 flex-shrink-0"></i>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+     <strong>口径提示：</strong>Salesforce 财年截至次年 1 月 31 日。FY2026 指截至 2026 年 1 月 31 日的财年；FY2027 Q2 截至 2026 年 7 月 31 日。股东比例采用 2026 年 Proxy Statement 截至 2026 年 3 月 25 日的披露口径；市场股价与市值为 2026 年 11 月 24 日盘中快照，非当日最终收盘数据。
+    </p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">01 / LEADERSHIP</div>
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">创始人及核心管理层：从云软件先驱到 Agentic Enterprise</h2>
+  <div class="space-y-6">
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    Salesforce 于 1999 年由 Marc Benioff、Parker Harris、Dave Moellenhoff 与 Frank Dominguez 创立，2004 年在纽约证券交易所上市。其早期战略以“软件即服务”（SaaS）挑战传统企业软件部署模式，逐步扩展至销售、服务、营销、商务、数据集成与协作平台。公司治理长期呈现创始人影响力较强、职业经理人负责专业经营、董事会承担监督的结构。
+   </p>
+   <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/50 dark:bg-primary-900/25 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+     <i data-lucide="lightbulb" class="inline-block w-4 h-4 mr-1 -mt-0.5"></i>
+     核心判断：Salesforce 并非传统意义上的家族控制公司。Benioff 的影响力主要来自创始人身份、CEO 与董事长双重角色、品牌与战略领导力，以及一定规模的个人持股，而不是绝对多数股权。
+    </p>
+   </div>
+   <div class="grid md:grid-cols-2 gap-6">
+    <div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow-md">
+     <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">Marc Benioff｜联合创始人、董事长兼 CEO</h3>
+     <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+      <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-600 mt-0.5"></i><span>自 2001 年起担任 CEO，持续主导公司战略与文化。</span></li>
+      <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-600 mt-0.5"></i><span>推动 SaaS、移动云、Customer 360、Slack 与生成式 AI 的平台化演进。</span></li>
+      <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-600 mt-0.5"></i><span>2026 年继续以“Agentic Enterprise”为战略叙事核心，强调数据、工作流、业务逻辑与 AI Agent 的统一。</span></li>
+      <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-600 mt-0.5"></i><span>2026 年 Proxy 披露其受益所有权约 2.8%，并非多数股权控制人。</span></li>
+     </ul>
+    </div>
+    <div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow-md">
+     <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">Parker Harris｜联合创始人、技术领导者</h3>
+     <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+      <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-600 mt-0.5"></i><span>联合创始人，长期参与产品、工程与技术方向建设。</span></li>
+      <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-600 mt-0.5"></i><span>担任董事及 Slack 技术负责人，连接平台工程与协作产品。</span></li>
+      <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-600 mt-0.5"></i><span>2026 年 Proxy 披露其持股约 233 万股，低于 Benioff，但仍具有创始团队象征意义。</span></li>
+      <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-600 mt-0.5"></i><span>在 AI 时代，技术治理重点转向数据安全、平台开放性、Agent 可靠性与企业级权限管理。</span></li>
+     </ul>
+    </div>
+   </div>
+   <div class="mt-8">
+    <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">关键管理层与职责分工</h3>
+    <div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+     <table>
+      <thead><tr><th>管理人员</th><th>2026 年披露职务</th><th>治理与经营职责</th></tr></thead>
+      <tbody>
+       <tr><td><strong>Marc Benioff</strong></td><td>董事长、CEO、联合创始人</td><td>公司战略、资本配置、企业文化、重大并购与外部沟通。</td></tr>
+       <tr><td><strong>Robin Washington</strong></td><td>董事、总裁兼首席运营与财务官</td><td>财务管理、运营效率、资本回报与经营执行。</td></tr>
+       <tr><td><strong>Parker Harris</strong></td><td>董事、CTO、Slack 联合创始人</td><td>技术路线、产品平台与工程能力。</td></tr>
+       <tr><td><strong>Miguel Milano</strong></td><td>总裁兼首席营收官</td><td>全球销售、客户关系、商业化与渠道。</td></tr>
+       <tr><td><strong>Sabastian Niles</strong></td><td>总裁兼首席法务官</td><td>法律合规、公司治理、监管与交易风险。</td></tr>
+       <tr><td><strong>Srinivas Tallapragada</strong></td><td>总裁兼首席工程官、客户成功官</td><td>工程交付、产品可靠性与客户成功。</td></tr>
+      </tbody>
+     </table>
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">职务依据 FY2026 Form 10-K 截至 2026 年 2 月 28 日的高管披露；组织职务可能随公司后续公告调整。[1]</p>
+   </div>
+   <div class="mt-8">
+    <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">战略演进时间线</h3>
+    <div class="timeline">
+     <div class="timeline-item"><div class="font-semibold text-primary-700 dark:text-primary-300">1999—2004｜SaaS 模式建立</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">创立 Salesforce，以浏览器访问的订阅式 CRM 挑战传统本地部署软件，并于 2004 年上市。</p></div>
+     <div class="timeline-item"><div class="font-semibold text-primary-700 dark:text-primary-300">2013—2019｜平台化与生态扩张</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">通过收购 ExactTarget、MuleSoft、Tableau 等资产，向营销自动化、数据集成与分析平台延伸。</p></div>
+     <div class="timeline-item"><div class="font-semibold text-primary-700 dark:text-primary-300">2020—2022｜协作与数字化工作流</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">收购 Slack，强化企业协作入口；疫情后企业数字化需求推动云软件规模扩张，同时公司开始面对增长与成本效率的再平衡。</p></div>
+     <div class="timeline-item"><div class="font-semibold text-primary-700 dark:text-primary-300">2023—2024｜利润纪律与生成式 AI</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">加强成本控制、利润率管理和资本回报；推出 Einstein 与 Agentforce，尝试将 AI 从辅助功能升级为企业工作流执行层。</p></div>
+     <div class="timeline-item"><div class="font-semibold text-primary-700 dark:text-primary-300">2025—2026｜Agentic Enterprise 与数据底座</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">围绕 Agentforce、Data 360、Slack 与 Informatica 构建 AI Agent 所需的数据、权限和流程体系；同步推进 Contentful、Fin 等交易，扩展内容与服务 Agent 能力。[2][3]</p></div>
+    </div>
+   </div>
+   <div class="mt-8">
+    <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">管理哲学变化：从增长优先到增长、利润与 AI 变现并重</h3>
+    <div class="grid md:grid-cols-3 gap-4">
+     <div class="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm"><div class="font-semibold mb-2 text-primary-700 dark:text-primary-300">早期：市场份额</div><p class="text-sm text-gray-600 dark:text-gray-300">以订阅收入增长、客户扩张和产品品类拓展为主要经营导向。</p></div>
+     <div class="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm"><div class="font-semibold mb-2 text-primary-700 dark:text-primary-300">调整期：效率与现金流</div><p class="text-sm text-gray-600 dark:text-gray-300">更加重视费用纪律、经营利润率、自由现金流和股东回报。</p></div>
+     <div class="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm"><div class="font-semibold mb-2 text-primary-700 dark:text-primary-300">当前：AI 商业化</div><p class="text-sm text-gray-600 dark:text-gray-300">以 Agentforce ARR、Data 360 数据使用量、AI 工作单元及新订单增长衡量战略落地。</p></div>
+    </div>
+   </div>
+   <div class="mt-8 p-6 rounded-xl bg-accent-50/60 dark:bg-accent-900/20">
+    <h3 class="font-semibold text-accent-800 dark:text-accent-200 mb-3">管理层能力观察（研究判断）</h3>
+    <div class="space-y-4">
+     <div><div class="flex justify-between text-sm mb-1"><span>战略方向与品牌号召力</span><strong>9/10</strong></div><div class="moat-bar"><span style="width:90%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-1"><span>平台整合与产品生态</span><strong>8.5/10</strong></div><div class="moat-bar"><span style="width:85%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-1"><span>资本纪律与股东回报</span><strong>8/10</strong></div><div class="moat-bar"><span style="width:80%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-1"><span>AI 商业化兑现确定性</span><strong>7/10</strong></div><div class="moat-bar"><span style="width:70%"></span></div></div>
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">以上为定性研究评分，不是公司披露指标或外部评级。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">02 / CAPITAL STRUCTURE</div>
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">股本数量变化：上市扩张、股权激励与大规模回购</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   Salesforce 于 2004 年 6 月在 NYSE 上市，股票代码 CRM。上市后公司通过股权激励、并购支付、员工股票计划及公开市场回购持续调整流通股数量。与传统家族企业不同，Salesforce 的股本管理核心不是创始人增持控股，而是通过回购抵消员工股权激励稀释、优化每股指标，并将充沛现金流返还股东。
+  </p>
+  <div class="grid md:grid-cols-3 gap-5">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="text-sm text-gray-500 dark:text-gray-400">2026-03-25 已发行普通股</div>
+    <div class="text-3xl font-bold metric text-primary-700 dark:text-primary-300 mt-2">8.18亿股</div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Proxy Statement 所采用的基准股数。</p>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="text-sm text-gray-500 dark:text-gray-400">FY2026 股票回购</div>
+    <div class="text-3xl font-bold metric text-accent-700 dark:text-accent-300 mt-2">127亿美元</div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">FY2026 现金返还约 143 亿美元中的回购部分。</p>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="text-sm text-gray-500 dark:text-gray-400">2026 年 ASR 协议</div>
+    <div class="text-3xl font-bold metric text-primary-700 dark:text-primary-300 mt-2">250亿美元</div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">初始交付约 1.03 亿股，最终股数以结算结果为准。</p>
+   </div>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">股本与资本运作关键节点</h3>
+   <div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+    <table>
+     <thead><tr><th>时间</th><th>事项</th><th>披露数据 / 影响</th><th>资本含义</th></tr></thead>
+     <tbody>
+      <tr><td>2004 年 6 月</td><td>首次公开发行</td><td>NYSE 上市，股票代码 CRM。</td><td>由私人创业公司转为公众公司，建立公开市场股权融资渠道。</td></tr>
+      <tr><td>2013—2021 年</td><td>股权激励与并购</td><td>通过员工股票奖励及部分并购相关股份发行扩大股权激励覆盖。</td><td>增强人才吸引力，同时形成持续的股份稀释压力。</td></tr>
+      <tr><td>2022 年 8 月</td><td>启动回购计划</td><td>董事会授权股票回购计划，后续多次调整未使用额度。</td><td>回购逐渐成为资本配置的重要工具。</td></tr>
+      <tr><td>FY2026</td><td>年度回购与分红</td><td>回购约 127 亿美元，分红约 16 亿美元；股东现金回报约 143 亿美元。</td><td>体现成熟软件平台较强的现金创造能力。</td></tr>
+      <tr><td>2026 年 2 月</td><td>回购授权更新</td><td>董事会批准累计 500 亿美元回购授权，替代此前剩余授权额度。</td><td>为未来回购保留较大资本配置空间，并非承诺全部立即执行。</td></tr>
+      <tr><td>2026 年 3 月</td><td>加速股票回购（ASR）</td><td>签署 250 亿美元 ASR，初始交付约 1.03 亿股，初始平均价格约 198.34 美元/股。</td><td>快速减少股数；最终交付股数随协议约定的价格机制结算。</td></tr>
+      <tr><td>2026 年 7 月 31 日</td><td>FY2027 Q2 10-Q</td><td>披露 ASR 最终结算预计在 FY2027 第三季度完成；另披露季度普通市场回购情况。</td><td>应关注最终股数、回购均价与实际流通股变化。</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">资料来源：FY2026 Proxy、FY2026 财务披露、2026 年 3 月 ASR 公告及 FY2027 Q2 Form 10-Q。[2][4][5]</p>
+  </div>
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">FY2026 股东回报结构</h3>
+    <div class="space-y-4">
+     <div><div class="flex justify-between text-sm mb-1"><span>股票回购</span><strong>127亿美元</strong></div><div class="moat-bar"><span style="width:89%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-1"><span>现金分红</span><strong>16亿美元</strong></div><div class="moat-bar"><span style="width:11%"></span></div></div>
+    </div>
+    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex justify-between"><span class="text-sm">合计现金回报</span><strong class="text-xl text-primary-700 dark:text-primary-300">143亿美元</strong></div>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">ASR 的关键机制</h3>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-600 mt-0.5"></i><span>公司向银行财团预付约 250 亿美元。</span></li>
+     <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-600 mt-0.5"></i><span>银行初始交付约 1.03 亿股，约为预计回购总股数的 80%。</span></li>
+     <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-accent-600 mt-0.5"></i><span>最终股数根据协议期间的成交量加权平均价格及合同调整确定。</span></li>
+     <li class="flex gap-2"><i data-lucide="alert-circle" class="w-4 h-4 text-amber-500 mt-0.5"></i><span>回购可以提升每股收益，但若回购价格高于内在价值，也可能损害长期股东回报。</span></li>
+    </ul>
+   </div>
+  </div>
+  <div class="mt-8 p-5 border-l-4 border-accent-500 bg-accent-50/60 dark:bg-accent-900/20 rounded-r-lg">
+   <p class="text-sm text-accent-900 dark:text-accent-100 leading-relaxed">
+    <strong>股本观察重点：</strong>截至 2026 年 3 月 25 日，Proxy 披露的普通股基准为 818,219,088 股；部分行情数据库在 2026 年 11 月显示约 8.23 亿股。由于不同来源的统计时点、库存股处理、ASR 最终结算与员工股权发行口径可能不同，不宜将两组数字视为同一时点的精确股数。投资者应以最新 10-Q/10-K 的期末流通股及后续 10-Q 封面股数为准。
+   </p>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">2026 年 11 月 24 日市场快照</h3>
+   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="p-4 rounded-xl bg-white dark:bg-gray-900"><div class="text-xs text-gray-500">盘中报价</div><div class="text-2xl font-bold metric mt-1">$193.76</div></div>
+    <div class="p-4 rounded-xl bg-white dark:bg-gray-900"><div class="text-xs text-gray-500">市值（行情源）</div><div class="text-2xl font-bold metric mt-1">$152.60B</div></div>
+    <div class="p-4 rounded-xl bg-white dark:bg-gray-900"><div class="text-xs text-gray-500">行情股数估算</div><div class="text-2xl font-bold metric mt-1">823M</div></div>
+    <div class="p-4 rounded-xl bg-white dark:bg-gray-900"><div class="text-xs text-gray-500">52 周区间</div><div class="text-lg font-bold metric mt-1">$146.32–269.11</div></div>
+   </div>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">以上为 2026-11-24 盘中行情快照，并非最终收盘报价；不同行情商的实时市值与股数可能存在差异。[6]</p>
+  </div>
+ </div>
+</section>
+
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">03 / OWNERSHIP & CONTROL</div>
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">股权结构：机构持股分散，创始人影响力与董事会制衡并存</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   Salesforce 是美国上市公司，采用单一类别普通股结构。公司不存在类似双重股权架构下的创始人超级投票权安排；创始人没有凭借多数股权或家族信托取得绝对控制。其治理结构更接近美国大型科技公司常见模式：创始人兼任董事长与 CEO，机构投资者持有大量股份，董事会及股东大会通过董事选举、薪酬投票和重大议案形成制衡。
+  </p>
+  <div class="grid md:grid-cols-2 gap-6">
+   <div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow-md">
+    <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">控制权判断</h3>
+    <div class="text-4xl font-bold metric text-accent-700 dark:text-accent-300 mb-2">非绝对控股</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Marc Benioff 受益持股约 2.8%，具有创始人和 CEO 的显著影响力，但不构成多数股权控制。其权力来源更多是管理职位、董事会席位、公司战略领导力与长期品牌影响。</p>
+   </div>
+   <div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow-md">
+    <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">机构股东特征</h3>
+    <div class="text-4xl font-bold metric text-primary-700 dark:text-primary-300 mb-2">高度机构化</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Vanguard、BlackRock、State Street 等大型资管机构位列主要股东。机构持股分散但投票权集中度较高，对董事选举、薪酬和资本配置拥有重要影响。</p>
+   </div>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">主要股东持股情况</h3>
+   <div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+    <table>
+     <thead><tr><th>股东</th><th>受益持股数</th><th>披露比例</th><th>性质与影响</th></tr></thead>
+     <tbody>
+      <tr><td><strong>The Vanguard Group</strong></td><td>83,624,885 股</td><td>10.2%</td><td>大型指数及主动资产管理机构；Proxy 注明其相关持股披露存在内部实体拆分及后续单独申报情况。</td></tr>
+      <tr><td><strong>BlackRock, Inc.</strong></td><td>72,882,619 股</td><td>8.9%</td><td>全球大型资管机构，指数基金及主动投资组合持股。</td></tr>
+      <tr><td><strong>State Street Corporation</strong></td><td>49,018,644 股</td><td>6.0%</td><td>机构托管及资产管理体系的重要持股方。</td></tr>
+      <tr><td><strong>Marc Benioff</strong></td><td>22,791,882 股</td><td>2.8%</td><td>创始人、董事长兼 CEO，受益所有权包括相关披露口径下的股份及权益。</td></tr>
+      <tr><td><strong>Parker Harris</strong></td><td>2,332,259 股</td><td>低于 1%</td><td>联合创始人、技术负责人及董事。</td></tr>
+      <tr><td><strong>董事与高管合计（17 人）</strong></td><td>28,451,477 股</td><td>3.5%</td><td>管理层与董事整体持股比例较低，经济利益绑定主要通过长期股权激励实现。</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">来源：Salesforce 2026 Proxy Statement，基准日 2026 年 3 月 25 日，普通股总数 818,219,088 股。表中百分比按 Proxy 原文披露，不能简单相加为“控制集团”比例。[7]</p>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">股权结构与治理关系示意</h3>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+    <div class="grid md:grid-cols-3 gap-4 text-center">
+     <div class="p-4 rounded-lg bg-white dark:bg-gray-900 border border-primary-200 dark:border-primary-800">
+      <i data-lucide="user-round" class="w-7 h-7 mx-auto text-primary-600 dark:text-primary-300 mb-2"></i>
+      <div class="font-semibold">创始人及管理层</div><div class="text-sm text-gray-500 mt-1">合计约 3.5%</div><div class="text-xs text-gray-500 mt-1">经营影响力与激励绑定</div>
+     </div>
+     <div class="p-4 rounded-lg bg-white dark:bg-gray-900 border border-accent-200 dark:border-accent-800">
+      <i data-lucide="landmark" class="w-7 h-7 mx-auto text-accent-600 dark:text-accent-300 mb-2"></i>
+      <div class="font-semibold">大型机构投资者</div><div class="text-sm text-gray-500 mt-1">多家机构分别持股</div><div class="text-xs text-gray-500 mt-1">投票、监督与资本纪律</div>
+     </div>
+     <div class="p-4 rounded-lg bg-white dark:bg-gray-900 border border-primary-200 dark:border-primary-800">
+      <i data-lucide="users" class="w-7 h-7 mx-auto text-primary-600 dark:text-primary-300 mb-2"></i>
+      <div class="font-semibold">公众及其他投资者</div><div class="text-sm text-gray-500 mt-1">广泛分散持股</div><div class="text-xs text-gray-500 mt-1">通过股东大会参与治理</div>
+     </div>
+    </div>
+    <div class="text-center py-3 text-primary-500"><i data-lucide="arrow-down" class="w-6 h-6 mx-auto"></i><span class="text-xs">共同通过股东大会选举董事、表决股东议案</span></div>
+    <div class="max-w-xl mx-auto p-5 rounded-xl bg-primary-100 dark:bg-primary-900/40 text-center border border-primary-300 dark:border-primary-700">
+     <i data-lucide="building-2" class="w-7 h-7 mx-auto text-primary-700 dark:text-primary-300 mb-2"></i>
+     <div class="font-bold text-primary-800 dark:text-primary-200">Salesforce, Inc. 董事会</div>
+     <p class="text-xs text-primary-700 dark:text-primary-300 mt-1">董事会监督、审计委员会、薪酬委员会与提名治理机制</p>
+    </div>
+    <div class="text-center py-3 text-accent-600"><i data-lucide="arrow-down" class="w-6 h-6 mx-auto"></i><span class="text-xs">监督与授权管理层执行经营战略</span></div>
+    <div class="max-w-xl mx-auto p-5 rounded-xl bg-accent-100 dark:bg-accent-900/40 text-center border border-accent-300 dark:border-accent-700">
+     <div class="font-bold text-accent-800 dark:text-accent-200">CEO 与执行管理团队</div>
+     <p class="text-xs text-accent-700 dark:text-accent-300 mt-1">经营管理、资本配置、产品战略与业务执行</p>
+    </div>
+   </div>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">示意图表达治理关系，并非法律意义上的股权穿透图。Salesforce 不存在可据此推定的创始人家族信托控股链条。</p>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">股权与控制权演变时间线</h3>
+   <div class="timeline">
+    <div class="timeline-item"><strong class="text-accent-700 dark:text-accent-300">2004｜公开上市</strong><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">股权由创始团队和早期投资者持有逐步转向公开市场广泛持有。</p></div>
+    <div class="timeline-item"><strong class="text-accent-700 dark:text-accent-300">2010—2020｜机构投资者成为重要股东</strong><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">随着市值扩大，指数基金与大型资产管理机构持股影响力上升。</p></div>
+    <div class="timeline-item"><strong class="text-accent-700 dark:text-accent-300">2021—2025｜创始人继续主导战略</strong><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">Benioff 持续担任董事长兼 CEO；管理层股权激励与机构股东治理并行。</p></div>
+    <div class="timeline-item"><strong class="text-accent-700 dark:text-accent-300">2026｜回购重塑股本结构</strong><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">大规模 ASR 及长期股权激励共同影响股份数量，控制权仍不存在多数股东单独掌控的情形。</p></div>
+   </div>
+  </div>
+  <div class="mt-8 p-5 rounded-xl bg-accent-50/60 dark:bg-accent-900/20">
+   <h3 class="font-semibold text-accent-800 dark:text-accent-200 mb-2">控制权稳定性分析</h3>
+   <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+    Salesforce 的控制权稳定性主要来自董事会治理、创始人持续任职、机构投资者分散持股及管理层长期激励，而非某个股东的绝对投票权。潜在风险在于董事长与 CEO 由同一人担任，可能强化战略一致性，但也提高了对独立董事、审计委员会及股东监督有效性的要求。2026 年股东大会董事选举中，Marc Benioff 获得 588,577,059 张赞成票、20,946,190 张反对票，显示其仍获得多数参与投票股东支持，但部分董事候选人反对票较高，机构股东并非无条件支持管理层。[8]
+   </p>
+  </div>
+ </div>
+</section>
+
+<section id="companies" class="py-20 bg-accent-50/40 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="section-kicker mb-3">04 / SUBSIDIARIES & RELATED PARTIES</div>
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">关联企业与并购版图：以平台生态整合为核心</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   Salesforce 不存在海底捞—颐海国际—特海国际式的独立上市公司矩阵。其企业关系更适合从全资或控股业务平台、并购资产、产品品牌与供应商/客户关联交易四个层次理解。公司通过收购扩展 CRM 之外的数据集成、分析、协作、营销和 AI 能力，再以 Customer 360 与 Agentforce 将产品重新整合为企业级平台。
+  </p>
+  <div class="grid md:grid-cols-3 gap-6">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/40 flex items-center justify-center"><i data-lucide="database" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div><h3 class="font-semibold text-primary-700 dark:text-primary-300">Informatica</h3></div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">企业数据管理、数据集成、数据质量、主数据管理与治理。</p>
+    <div class="text-xs text-gray-500 dark:text-gray-400">战略价值：为 Agent 提供可信数据、元数据、权限与数据治理底座。</div>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="message-square" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i></div><h3 class="font-semibold text-accent-700 dark:text-accent-300">Slack</h3></div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">企业协作、沟通、工作流与组织知识入口。</p>
+    <div class="text-xs text-gray-500 dark:text-gray-400">战略价值：将 Agent 嵌入员工日常工作与企业协作流程。</div>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/40 flex items-center justify-center"><i data-lucide="workflow" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div><h3 class="font-semibold text-primary-700 dark:text-primary-300">MuleSoft / Tableau</h3></div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mb-3">MuleSoft 负责 API 与系统集成；Tableau 提供数据可视化和商业智能。</p>
+    <div class="text-xs text-gray-500 dark:text-gray-400">战略价值：连接企业异构系统，并将数据转化为决策洞察。</div>
+   </div>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">重要并购与产品生态关系</h3>
+   <div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+    <table>
+     <thead><tr><th>资产 / 公司</th><th>交易或整合节点</th><th>业务定位</th><th>对 Salesforce 的战略意义</th></tr></thead>
+     <tbody>
+      <tr><td><strong>ExactTarget</strong></td><td>2013 年收购</td><td>数字营销与营销自动化</td><td>扩展营销云能力，建立跨渠道客户互动基础。</td></tr>
+      <tr><td><strong>MuleSoft</strong></td><td>2018 年收购</td><td>API 管理与企业系统集成</td><td>连接分散企业应用，为统一客户数据与业务流程提供接口。</td></tr>
+      <tr><td><strong>Tableau</strong></td><td>2019 年收购</td><td>数据分析与可视化</td><td>强化商业智能、数据分析与企业决策能力。</td></tr>
+      <tr><td><strong>Slack</strong></td><td>2021 年完成收购</td><td>企业协作与沟通</td><td>将 CRM、客户服务与员工协作入口结合，形成工作流平台。</td></tr>
+      <tr><td><strong>Informatica</strong></td><td>2025—2026 年交易与整合</td><td>企业数据管理与治理</td><td>增强数据可信度、跨系统数据整合与 AI Agent 的企业级治理能力。</td></tr>
+      <tr><td><strong>Contentful</strong></td><td>2026 年 5 月签署收购协议</td><td>可组合内容平台</td><td>补充内容管理和数字体验能力；交易仍须满足交割条件。</td></tr>
+      <tr><td><strong>Fin / Intercom</strong></td><td>2026 年 6 月签署收购协议</td><td>自主 AI 客服 Agent 平台</td><td>强化端到端 AI 服务 Agent 能力；截至 FY2027 Q2 披露仍属待完成交易。</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Contentful 交易对价约 15 亿美元现金（扣除 Salesforce 已持有股份价值后）；Fin/Intercom 交易对价约 36 亿美元现金。FY2027 Q2 10-Q 披露两项交易预计在 FY2027 Q3 完成，不能将签约等同于已交割。[9]</p>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">FY2027 Q2 经营数据：平台协同开始体现</h3>
+   <div class="grid md:grid-cols-4 gap-4">
+    <div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><div class="text-xs text-gray-500">季度收入</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300 mt-2">$113亿美元</div><div class="text-xs text-gray-500 mt-1">同比增长 11%</div></div>
+    <div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><div class="text-xs text-gray-500">订阅与支持收入</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300 mt-2">$108亿美元</div><div class="text-xs text-gray-500 mt-1">同比增长 12%</div></div>
+    <div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><div class="text-xs text-gray-500">Agentforce + Data 360 ARR</div><div class="text-2xl font-bold text-accent-700 dark:text-accent-300 mt-2">$39亿美元</div><div class="text-xs text-gray-500 mt-1">同比增长超过 210%</div></div>
+    <div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm"><div class="text-xs text-gray-500">cRPO</div><div class="text-2xl font-bold text-accent-700 dark:text-accent-300 mt-2">$335亿美元</div><div class="text-xs text-gray-500 mt-1">同比增长 14%（固定汇率）</div></div>
+   </div>
+   <div class="mt-5 p-5 bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+    <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">AI 业务运营指标</h4>
+    <div class="grid md:grid-cols-3 gap-4">
+     <div><div class="text-2xl font-bold metric">15亿美元+</div><div class="text-sm text-gray-500">Agentforce ARR，同比增长超过 240%</div></div>
+     <div><div class="text-2xl font-bold metric">70亿次</div><div class="text-sm text-gray-500">Agentforce 与 Slack 累计 Agentic Work Units</div></div>
+     <div><div class="text-2xl font-bold metric">104万亿条</div><div class="text-sm text-gray-500">Data 360 Q2 摄取记录，同比增长 355%</div></div>
+    </div>
+   </div>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">来源：Salesforce FY2027 Q2 业绩公告，季度截至 2026 年 7 月 31 日。[3]</p>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">关联交易与利益冲突审视</h3>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-start gap-3">
+     <i data-lucide="scale" class="w-6 h-6 text-accent-600 dark:text-accent-300 mt-1"></i>
+     <div>
+      <h4 class="font-semibold text-accent-700 dark:text-accent-300">FY2026 Proxy 对关联方交易的披露</h4>
+      <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-2">
+       公司披露，除已列示的高管薪酬及特定事项外，自 FY2026 年初以来，没有其他达到公司披露门槛、且董事、高管、持股超过 5% 的股东或其近亲属拥有重大直接或间接利益的交易。Proxy 特别列示：Marc Benioff 持有的 TIME 相关出版实体在 FY2026 向 Salesforce 支付约 45 万美元购买云服务，交易条件与非关联第三方客户一致；另披露 Benioff 与公司之间存在私人飞机公务使用的费用报销安排。[10]
+      </p>
+     </div>
+    </div>
+   </div>
+   <div class="grid md:grid-cols-2 gap-5 mt-5">
+    <div class="p-5 rounded-xl bg-primary-50/60 dark:bg-primary-900/20">
+     <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2">协同价值</h4>
+     <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+      <li>• CRM 数据、协作软件与数据治理形成平台闭环。</li>
+      <li>• 并购补齐企业级 AI 所需的内容、数据、服务与集成能力。</li>
+      <li>• 统一订阅、权限和工作流，有望提高客户留存与交叉销售。</li>
+     </ul>
+    </div>
+    <div class="p-5 rounded-xl bg-accent-50/60 dark:bg-accent-900/20">
+     <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-2">潜在风险</h4>
+     <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+      <li>• 并购整合成本、组织复杂度和产品重叠增加。</li>
+      <li>• AI Agent 的推理成本、数据安全及责任边界仍需验证。</li>
+      <li>• 收购带来的收入贡献可能掩盖有机增长真实速度。</li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">05 / EMPLOYEE EQUITY & INCENTIVES</div>
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">员工持股与激励机制：以长期股权奖励绑定人才与股东回报</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   Salesforce 的员工激励体系以现金薪酬、年度绩效奖金、限制性股票单位（RSU）、绩效股票单位（PRSU）、绩效期权和员工股票购买计划（ESPP）为主要组成。与海底捞式师徒分红或门店合伙人机制不同，Salesforce 主要通过公开市场股票和长期绩效目标，将核心员工与管理层的财富变化同公司股价、利润率、收入增长和股东总回报挂钩。
+  </p>
+  <div class="grid md:grid-cols-2 gap-6">
+   <div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow-md">
+    <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">高管长期激励</h3>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-600 mt-0.5"></i><span><strong>PRSU：</strong>与三年相对股东总回报（TSR）及年度利润率、增长表现挂钩。</span></li>
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-600 mt-0.5"></i><span><strong>绩效期权：</strong>CEO 绩效期权奖励与 Agentforce、Data 360 一年期 ARR 目标挂钩，已赚取部分仍受四年服务归属安排约束。</span></li>
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-600 mt-0.5"></i><span><strong>RSU：</strong>与股价表现挂钩，通常按四年服务期归属。</span></li>
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-primary-600 mt-0.5"></i><span><strong>年度奖金：</strong>以财务指标与战略目标为基础，强化经营结果导向。</span></li>
+    </ul>
+   </div>
+   <div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow-md">
+    <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">员工与全员激励</h3>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-600 mt-0.5"></i><span><strong>员工股票购买计划（ESPP）：</strong>符合资格的员工可按计划规则购买公司股票。</span></li>
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-600 mt-0.5"></i><span><strong>RSU 与期权：</strong>用于关键技术、产品、销售和管理人才的吸引与留任。</span></li>
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-600 mt-0.5"></i><span><strong>现金薪酬与福利：</strong>结合岗位级别、地区市场水平和个人绩效。</span></li>
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-600 mt-0.5"></i><span><strong>职业发展：</strong>通过技术、产品、销售及管理岗位序列提供内部发展机会。</span></li>
+    </ul>
+   </div>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">FY2026 高管薪酬结构：以长期股权为重要组成</h3>
+   <div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+    <table>
+     <thead><tr><th>薪酬项目</th><th>FY2026 设计</th><th>激励目的</th></tr></thead>
+     <tbody>
+      <tr><td>基本工资</td><td>固定现金薪酬</td><td>提供与职责相匹配的基础保障。</td></tr>
+      <tr><td>年度现金奖金</td><td>基于年度经营指标与战略目标</td><td>强化财务表现、经营执行和年度重点任务。</td></tr>
+      <tr><td>PRSU</td><td>三年相对 TSR 与年度利润率、增长表现</td><td>让高管关注中长期股东回报与可持续经营表现。</td></tr>
+      <tr><td>绩效期权</td><td>CEO 与 Agentforce / Data 360 ARR 目标挂钩；其他高管按计划规则执行</td><td>激励 AI 新业务收入增长，并让期权价值与股价上涨相关。</td></tr>
+      <tr><td>RSU</td><td>通常按四年服务期归属</td><td>留住核心人才，减少关键岗位人员流失。</td></tr>
+      <tr><td>员工股票购买计划</td><td>依据 2004 Employee Stock Purchase Plan 及其修订条款</td><td>为符合条件员工提供参与公司股权的渠道。</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">来源：2026 Proxy Statement 的 Compensation Discussion and Analysis；2026 年股东大会亦审议修订 2013 Equity Incentive Plan 与 2004 Employee Stock Purchase Plan。[11]</p>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">CEO 薪酬披露案例</h3>
+   <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+    <div class="grid md:grid-cols-3 gap-5">
+     <div><div class="text-xs text-gray-500 dark:text-gray-400">FY2026 总薪酬</div><div class="text-3xl font-bold metric text-primary-700 dark:text-primary-300 mt-2">$49.38M</div></div>
+     <div><div class="text-xs text-gray-500 dark:text-gray-400">基本工资</div><div class="text-3xl font-bold metric mt-2">$1.55M</div></div>
+     <div><div class="text-xs text-gray-500 dark:text-gray-400">股票奖励与期权奖励合计</div><div class="text-3xl font-bold metric mt-2">$38.01M</div></div>
+    </div>
+    <div class="mt-5 table-wrap">
+     <table>
+      <thead><tr><th>薪酬项目</th><th>FY2026 金额</th></tr></thead>
+      <tbody>
+       <tr><td>基本工资</td><td>1,550,000 美元</td></tr>
+       <tr><td>股票奖励</td><td>27,265,360 美元</td></tr>
+       <tr><td>期权奖励</td><td>10,743,097 美元</td></tr>
+       <tr><td>非股权激励计划薪酬</td><td>3,602,588 美元</td></tr>
+       <tr><td>其他薪酬</td><td>6,217,374 美元</td></tr>
+       <tr><td><strong>总计</strong></td><td><strong>49,379,252 美元</strong></td></tr>
+      </tbody>
+     </table>
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">以上为 SEC 规则下 Proxy Summary Compensation Table 的披露金额，包含按会计规则计量的股权奖励公允价值，不等同于当年实际现金收入。[12]</p>
+   </div>
+  </div>
+  <div class="mt-8">
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">FY2026 高管薪酬的绩效约束</h3>
+   <div class="grid md:grid-cols-3 gap-4">
+    <div class="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm"><i data-lucide="trending-up" class="w-6 h-6 text-primary-600 mb-3"></i><h4 class="font-semibold">增长约束</h4><p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Agentforce 与 Data 360 ARR 目标推动 AI 产品商业化，而非只看产品发布或用户试用。</p></div>
+    <div class="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm"><i data-lucide="gauge" class="w-6 h-6 text-accent-600 mb-3"></i><h4 class="font-semibold">利润约束</h4><p class="text-sm text-gray-600 dark:text-gray-300 mt-2">PRSU 结合年度利润率与增长表现，降低管理层单纯追求收入规模的动机。</p></div>
+    <div class="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm"><i data-lucide="shield-check" class="w-6 h-6 text-primary-600 mb-3"></i><h4 class="font-semibold">股东回报约束</h4><p class="text-sm text-gray-600 dark:text-gray-300 mt-2">相对 TSR 与股价相关奖励将管理层长期收益与股东表现绑定。</p></div>
+   </div>
+  </div>
+  <div class="mt-8 p-5 rounded-xl border-l-4 border-accent-500 bg-accent-50/50 dark:bg-accent-900/20">
+   <h3 class="font-semibold text-accent-800 dark:text-accent-200 mb-2">激励机制的潜在矛盾</h3>
+   <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+    <li>• <strong>稀释与回购的博弈：</strong>股权激励有助于留才，但持续发行股票会稀释原股东权益；大额回购能抵消稀释，却可能在估值偏高时降低资本使用效率。</li>
+    <li>• <strong>短期 ARR 与长期价值：</strong>以 AI ARR 作为奖励指标有利于推动商业化，但仍需防止折扣销售、产品打包或收入确认节奏影响指标质量。</li>
+    <li>• <strong>利润率与创新投入：</strong>过度强调成本效率可能压缩研发、客户成功和安全投入，削弱长期平台竞争力。</li>
+    <li>• <strong>员工与股东的利益并非完全一致：</strong>员工更重视薪酬稳定和岗位安全，股东更重视利润、现金流与资本回报；裁员和组织调整可能形成短期冲突。</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">06 / INVESTMENT CONCLUSION</div>
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">综合研判与关键结论</h2>
+  <div class="space-y-6">
+   <div class="card-interactive p-7 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-3">1. 组织与战略：从 SaaS 龙头向企业 Agent 平台转型</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+     Salesforce 的战略重心已经从传统 CRM 订阅扩张，转向将 CRM、数据治理、协作、自动化与 AI Agent 融合为企业级执行平台。Agentforce 与 Data 360 的 ARR 在 FY2027 Q2 接近 39 亿美元、同比增长超过 210%，显示 AI 产品正在形成可观的商业规模。与此同时，公司通过 Informatica、Contentful 和 Fin 等交易补齐数据、内容与服务能力。真正的战略考验是 AI 能否带来持续新增订单、净收入留存改善与客户付费升级，而不是仅依赖并购并表或产品打包。[3][9]
+    </p>
+   </div>
+   <div class="card-interactive p-7 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-3">2. 财务表现：收入增长与利润质量需要同时观察</h3>
+    <div class="grid md:grid-cols-3 gap-4 mb-4">
+     <div class="p-4 rounded-lg bg-primary-50 dark:bg-primary-900/20"><div class="text-xs text-gray-500">FY2026 营收</div><div class="text-2xl font-bold metric text-primary-700 dark:text-primary-300">$415亿美元</div><div class="text-xs text-gray-500">同比增长 10%</div></div>
+     <div class="p-4 rounded-lg bg-primary-50 dark:bg-primary-900/20"><div class="text-xs text-gray-500">FY2026 GAAP 营业利润率</div><div class="text-2xl font-bold metric text-primary-700 dark:text-primary-300">20.1%</div><div class="text-xs text-gray-500">同比提升约 110 个基点</div></div>
+     <div class="p-4 rounded-lg bg-primary-50 dark:bg-primary-900/20"><div class="text-xs text-gray-500">FY2026 自由现金流</div><div class="text-2xl font-bold metric text-primary-700 dark:text-primary-300">$144亿美元</div><div class="text-xs text-gray-500">同比增长 16%</div></div>
+    </div>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+     FY2026 营收约 415 亿美元，同比增长 10%；GAAP 营业利润率 20.1%，非 GAAP 营业利润率 34.1%；经营现金流约 150 亿美元，自由现金流约 144 亿美元。FY2027 Q2 营收 113 亿美元，同比增长 11%，GAAP 营业利润率 20.5%，非 GAAP 营业利润率 34.1%。公司 FY2027 全年收入指引上调至 461 亿—464 亿美元，但其中包含 Informatica 已并表贡献以及待完成的 Contentful、Fin 收购预期贡献；因此应区分有机增长和并购增长。[2][3]
+    </p>
+   </div>
+   <div class="card-interactive p-7 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-3">3. 股权结构：创始人影响力强，但不存在家族绝对控制</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+     Benioff 约 2.8% 的受益持股与董事长兼 CEO 职务构成重要影响力，但公司并非家族控股结构。机构投资者分别持有较大比例股份，董事会独立性、薪酬委员会和股东投票对治理质量至关重要。对投资者而言，需持续关注董事会监督强度、CEO 权力集中度、关联交易审批与高管薪酬绩效指标是否真正匹配长期股东回报。
+    </p>
+   </div>
+   <div class="card-interactive p-7 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-3">4. 并购与关联企业：生态协同潜力大，整合风险也在累积</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+     Slack、MuleSoft、Tableau 与 Informatica 分别补足协作、系统集成、分析与数据治理能力，构成 Agentforce 的平台基础。Contentful 与 Fin 若顺利交割，可扩展内容与客户服务 Agent 场景。但多产品整合会带来技术栈复杂化、产品重叠、客户迁移与组织成本。FY2027 指引中并购贡献已成为增长的一部分，未来需拆分有机增长、并购收入和汇率因素。
+    </p>
+   </div>
+   <div class="card-interactive p-7 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-3">5. 员工激励：股权绑定强化留才，但需要关注稀释与组织稳定</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+     高管薪酬中长期股权奖励占据重要比重，PRSU、绩效期权和 RSU 将管理层收益与 AI ARR、利润率、相对 TSR 及股价表现联系起来。FY2026 CEO 总薪酬约 4,937.93 万美元，其中股票与期权奖励约 3,800.85 万美元。大规模回购能够抵消股权激励稀释，但需要评估回购价格与内在价值的匹配程度。AI 转型期间的岗位调整、组织重构和技能更新也可能影响员工士气与人才留存。
+    </p>
+   </div>
+   <div class="card-interactive p-7 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">6. 主要风险清单</h3>
+    <div class="space-y-4">
+     <div class="pl-4 pr-3 py-3 border-l-4 border-amber-500 bg-amber-50/70 dark:bg-amber-900/20 rounded-r-lg">
+      <p class="text-sm font-semibold text-amber-900 dark:text-amber-200">AI 商业化与客户付费风险</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">Agentforce ARR 增长迅速，但需检验客户续费、净新增订单、实际使用量和推理成本，避免高增长指标与长期利润贡献脱节。</p>
+     </div>
+     <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/60 dark:bg-primary-900/20 rounded-r-lg">
+      <p class="text-sm font-semibold text-primary-900 dark:text-primary-200">并购整合与资本配置风险</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">Informatica、Contentful、Fin 等资产增加战略覆盖范围，但并购溢价、整合费用、产品重叠与人才留存可能影响回报。</p>
+     </div>
+     <div class="pl-4 pr-3 py-3 border-l-4 border-amber-500 bg-amber-50/70 dark:bg-amber-900/20 rounded-r-lg">
+      <p class="text-sm font-semibold text-amber-900 dark:text-amber-200">大额回购与估值风险</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">250 亿美元 ASR 与 500 亿美元回购授权规模庞大。若股价高于长期内在价值，回购可能降低资本配置效率；若现金用于回购过多，也会减少未来投资弹性。</p>
+     </div>
+     <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/60 dark:bg-primary-900/20 rounded-r-lg">
+      <p class="text-sm font-semibold text-primary-900 dark:text-primary-200">公司治理与创始人依赖</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">董事长兼 CEO 的权力集中有利于战略执行，但也要求独立董事、审计和薪酬委员会保持实质性监督。</p>
+     </div>
+     <div class="pl-4 pr-3 py-3 border-l-4 border-amber-500 bg-amber-50/70 dark:bg-amber-900/20 rounded-r-lg">
+      <p class="text-sm font-semibold text-amber-900 dark:text-amber-200">员工激励与组织调整风险</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">AI 自动化提升效率的同时可能改变岗位结构；裁员、技能转型和激励稀释可能影响组织稳定与创新文化。</p>
+     </div>
+    </div>
+   </div>
+   <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">关键跟踪指标</h3>
+    <div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+     <table>
+      <thead><tr><th>观察维度</th><th>核心指标</th><th>积极信号</th><th>风险信号</th></tr></thead>
+      <tbody>
+       <tr><td>AI 商业化</td><td>Agentforce ARR、Data 360 ARR、Agentic Work Units</td><td>ARR 增长转化为续费、扩容与高质量新增订单。</td><td>使用量上升但客户付费、毛利或留存没有同步改善。</td></tr>
+       <tr><td>核心业务</td><td>订阅与支持收入、cRPO、NNAOV</td><td>有机增长持续改善，订单增长领先收入确认。</td><td>增长主要由并购、汇率或一次性合同推动。</td></tr>
+       <tr><td>经营质量</td><td>GAAP 营业利润率、自由现金流</td><td>利润率提升同时保持研发与客户成功投入。</td><td>利润率改善主要来自裁员或压缩长期投资。</td></tr>
+       <tr><td>股本效率</td><td>稀释后股数、回购均价、股权薪酬费用</td><td>回购有效抵消稀释且资本回报率合理。</td><td>回购估值过高或股权薪酬稀释持续扩大。</td></tr>
+       <tr><td>治理质量</td><td>董事会独立性、薪酬绩效挂钩、关联交易披露</td><td>监督机制透明，长期绩效指标权重合理。</td><td>权力过度集中或绩效指标与股东回报脱节。</td></tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="mt-8 p-6 border-l-4 border-primary-500 bg-primary-50/60 dark:bg-primary-900/25 rounded-r-lg">
+    <p class="text-base font-semibold text-primary-900 dark:text-primary-100 leading-relaxed">
+     一句话总结：Salesforce 正从以 CRM 订阅为核心的 SaaS 龙头，转型为以可信企业数据、协作工作流和 AI Agent 为核心的企业智能平台；其长期价值取决于 AI 商业化能否兑现为持续有机增长、利润率与自由现金流，而不是仅靠并购扩张和大规模股票回购支撑每股指标。
+    </p>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="grid md:grid-cols-3 gap-8">
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">关于本页面</h3>
+    <p class="text-sm text-gray-400 leading-relaxed">本页围绕 Salesforce, Inc.（NYSE: CRM）展开，整理公司创始人及核心管理层、股本变化、股东结构、子公司与并购版图、关联交易及员工股权激励，重点分析资本结构与 AI 战略之间的联系。</p>
+   </div>
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">研究范围与主要来源</h3>
+    <ul class="space-y-2 text-sm text-gray-400">
+     <li><a class="source-link" href="https://www.sec.gov/edgar/browse/?CIK=1108524&owner=exclude" target="_blank" rel="noopener">SEC：Salesforce 公司申报文件</a></li>
+     <li><a class="source-link" href="https://investor.salesforce.com/financials/quarterly-results/default.aspx" target="_blank" rel="noopener">FY2026 / FY2027 季度业绩</a></li>
+     <li><a class="source-link" href="https://s205.q4cdn.com/626266368/files/doc_financials/2026/ar/Salesforce-FY26-Proxy-Statement.pdf" target="_blank" rel="noopener">2026 Proxy Statement</a></li>
+     <li><a class="source-link" href="https://investor.salesforce.com/news/news-details/2026/Salesforce-Commences-Largest-Ever-25-Billion-Accelerated-Share-Repurchase/default.aspx" target="_blank" rel="noopener">250 亿美元 ASR 公告</a></li>
+     <li><a class="source-link" href="https://finance.yahoo.com/quote/CRM/" target="_blank" rel="noopener">CRM 市场行情</a></li>
+    </ul>
+   </div>
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">免责声明</h3>
+    <p class="text-sm text-gray-400 leading-relaxed">本页面仅供教育、研究与信息参考，不构成任何证券买卖、投资、法律或税务建议。数据依据公开披露及第三方行情资料整理，可能存在时点差异、统计口径差异或后续修订。并购事项、股本数量及市场行情应以公司最新公告、SEC 文件及交易所数据为准。投资者应独立判断并自行承担投资风险。</p>
+   </div>
+  </div>
+  <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+   <p>© 2026 Salesforce 体系全景研究 · 研究基准日 2026-11-25</p>
+   <p class="mt-2">资料整理与分析：公开信息研究 · NYSE: CRM</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+function updateProgress(){
+ const top=document.documentElement.scrollTop||document.body.scrollTop;
+ const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const pct=height>0?(top/height)*100:0;
+ document.getElementById('progressBar').style.width=pct+'%';
+}
+window.addEventListener('scroll',updateProgress,{passive:true});
+document.addEventListener('DOMContentLoaded',function(){
+ try{
+  if(localStorage.getItem('crm-report-theme')==='dark'){
+   document.documentElement.classList.add('dark');
+   document.getElementById('sunIcon').style.display='block';
+   document.getElementById('moonIcon').style.display='none';
+  }
+ }catch(e){}
+ lucide.createIcons();
+ AOS.init({duration:800,once:true,offset:70});
+ document.querySelectorAll('#mobileMenu a').forEach(function(link){link.addEventListener('click',closeMobileMenu)});
+ updateProgress();
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

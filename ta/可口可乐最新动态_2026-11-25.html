@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>可口可乐 KO｜最新动态全景追踪报告_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+tailwind.config={darkMode:'class',theme:{extend:{
+colors:{accent:'#E84B4B',navy:'#101827',panel:'#192538',muted:'#8FA0B7'},
+fontFamily:{sans:['Inter','Microsoft YaHei','sans-serif']}
+}}}
+</script>
+<style>
+:root{--bg:#f3f5f9;--card:#fff;--text:#182335;--muted:#738198;--line:#e5eaf1;--accent:#d92735;--green:#15966b;--red:#d64a55;--blue:#4169a8}
+.dark{--bg:#0d1522;--card:#162235;--text:#e8edf5;--muted:#9aabc0;--line:#28374b;--accent:#ff626c;--green:#42c99a;--red:#ff747b;--blue:#82a9ed}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Microsoft YaHei",sans-serif;transition:.2s}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.header{background:linear-gradient(120deg,#102033,#192d48 65%,#651f2d);color:white;padding:35px max(calc((100% - 1400px)/2),24px) 30px}
+.container{max-width:1400px;margin:auto;padding:25px 24px 70px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px}
+.nav button,.btn{border:1px solid var(--line);background:var(--card);color:var(--text);padding:9px 14px;border-radius:9px;cursor:pointer;font-size:13px}
+.nav button.active{background:#c72c3c;color:white;border-color:#c72c3c}
+.grid{display:grid;gap:17px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 3px 14px rgba(20,35,55,.035);min-width:0}
+.metric{font-size:29px;font-weight:750;letter-spacing:-1px;margin:10px 0 5px}
+.label{font-size:12px;color:var(--muted)}
+.positive{color:var(--green)}.negative{color:var(--red)}
+.section{margin-top:35px;scroll-margin-top:20px}
+.section-title{font-size:21px;font-weight:750;margin:0 0 7px}
+.section-desc{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.7}
+.tag{display:inline-block;border-radius:5px;padding:4px 8px;font-size:11px;font-weight:650;background:rgba(65,105,168,.12);color:var(--blue)}
+.tag.red{background:rgba(214,74,85,.12);color:var(--red)}
+.tag.green{background:rgba(21,150,107,.12);color:var(--green)}
+.tag.gold{background:rgba(190,145,55,.14);color:#b58b38}
+h3{font-size:15px;margin:0 0 12px}
+p{font-size:13px;line-height:1.85;color:var(--muted)}
+ul{padding-left:19px}
+li{font-size:13px;line-height:1.9;color:var(--muted);margin-bottom:4px}
+.big-number{font-size:34px;font-weight:800}
+.event{position:relative;padding:0 0 24px 23px;border-left:2px solid var(--line)}
+.event:last-child{padding-bottom:0}
+.event:before{content:"";position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.event-date{font-size:11px;color:var(--muted);margin-bottom:6px}
+.event-title{font-size:15px;font-weight:700;margin-bottom:7px}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;background:rgba(120,140,170,.06)}
+td{color:var(--text)}
+.chartbox{height:280px;position:relative}
+.barline{height:8px;border-radius:10px;background:var(--line);overflow:hidden;margin:9px 0}
+.barline span{display:block;height:100%;border-radius:10px;background:var(--accent)}
+.risk{border-left:3px solid var(--red);padding:12px 14px;background:rgba(214,74,85,.055);border-radius:5px;margin-bottom:10px}
+.bull{border-left:3px solid var(--green);padding:12px 14px;background:rgba(21,150,107,.055);border-radius:5px;margin-bottom:10px}
+.source{font-size:11px;color:var(--muted);line-height:1.9;word-break:break-word}
+.footer{border-top:1px solid var(--line);margin-top:45px;padding-top:20px;color:var(--muted);font-size:11px;line-height:2}
+.tab-content{display:none}.tab-content.active{display:block}
+.pill{display:inline-flex;padding:5px 10px;border-radius:20px;font-size:11px;background:rgba(130,145,165,.12);margin:3px;color:var(--muted)}
+button:hover{filter:brightness(.96)}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.container{padding:18px 13px 50px}.header{padding:27px 18px}.g4,.g3,.g2{grid-template-columns:1fr}.metric{font-size:26px}.card{padding:16px}.chartbox{height:240px}table{font-size:11px}th,td{padding:9px 6px}}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body>
+
+<header class="header">
+ <div style="max-width:1400px;margin:auto">
+  <div class="flex items-center justify-between flex-wrap gap-3">
+   <div class="text-xs tracking-widest opacity-70">AIPE INVESTMENT RESEARCH · EVENT-DRIVEN INTELLIGENCE</div>
+   <button onclick="toggleTheme()" class="btn" style="background:#ffffff18;color:white;border-color:#ffffff44">☼ / ☾ 外观切换</button>
+  </div>
+  <div class="mt-8">
+   <div class="text-sm tracking-widest text-red-200 mb-3">GLOBAL CONSUMER STAPLES · NYSE: KO</div>
+   <h1 class="text-3xl md:text-5xl font-bold tracking-tight">可口可乐</h1>
+   <div class="text-xl mt-2 text-gray-300">The Coca-Cola Company</div>
+   <p class="mt-5 text-gray-300 max-w-3xl">
+    最新动态全景追踪 · 公司—行业—宏观三层传导分析
+   </p>
+   <div class="flex gap-2 flex-wrap mt-5">
+    <span class="tag red">事件驱动研究</span>
+    <span class="tag">消费必需品</span>
+    <span class="tag">全球饮料龙头</span>
+    <span class="tag green">第三季度业绩超预期</span>
+   </div>
+   <div class="mt-7 flex flex-wrap gap-8">
+    <div><div class="text-xs text-gray-400">报告日期</div><div class="font-semibold mt-1">2026.11.25</div></div>
+    <div><div class="text-xs text-gray-400">追踪区间</div><div class="font-semibold mt-1">10.25 — 11.25</div></div>
+    <div><div class="text-xs text-gray-400">股票代码</div><div class="font-semibold mt-1">NYSE: KO</div></div>
+    <div><div class="text-xs text-gray-400">研究框架</div><div class="font-semibold mt-1">事件 × 基本面 × 估值</div></div>
+   </div>
+  </div>
+ </div>
+</header>
+
+<main class="container">
+
+<nav class="nav" id="nav">
+ <button class="active" onclick="go('overview',this)">核心摘要</button>
+ <button onclick="go('events',this)">重大事件</button>
+ <button onclick="go('fundamentals',this)">经营基本面</button>
+ <button onclick="go('industry',this)">行业与宏观</button>
+ <button onclick="go('valuation',this)">估值分析</button>
+ <button onclick="go('catalysts',this)">催化剂与风险</button>
+ <button onclick="go('strategy',this)">投资判断</button>
+ <button onclick="go('sources',this)">信息来源</button>
+</nav>
+
+<section id="overview">
+ <div class="flex justify-between items-end flex-wrap gap-3 mb-4">
+  <div><div class="section-title">01 / 投资核心摘要</div>
+   <div class="section-desc mb-0">从近期事件中识别影响长期盈利能力与估值中枢的关键变量</div></div>
+  <span class="tag">数据截至 2026-11-25</span>
+ </div>
+
+ <div class="grid g4">
+  <div class="card">
+   <div class="label">最近交易日收盘价 · 11/24</div>
+   <div class="metric">$97.62</div>
+   <div class="positive text-xs font-semibold">+1.81% · 单日涨幅</div>
+  </div>
+  <div class="card">
+   <div class="label">总市值</div>
+   <div class="metric">$419.95B</div>
+   <div class="label">约 4,199.5 亿美元</div>
+  </div>
+  <div class="card">
+   <div class="label">市盈率 TTM</div>
+   <div class="metric">28.8x</div>
+   <div class="label">防御型消费资产溢价</div>
+  </div>
+  <div class="card">
+   <div class="label">股息率</div>
+   <div class="metric">2.17%</div>
+   <div class="positive text-xs">季度股息约 $0.53</div>
+  </div>
+ </div>
+
+ <div class="grid g2 section">
+  <div class="card">
+   <h3>核心投资结论</h3>
+   <div class="text-lg font-bold mb-3">基本面稳健，估值不便宜，等待增长兑现</div>
+   <p>
+    可口可乐第三季度呈现销量与收入同步增长、利润率改善、全年指引上调的积极组合。公司全球品牌、浓缩液商业模式和装瓶伙伴体系提供较强的经营韧性。
+   </p>
+   <p>
+    近期最重要的新事件是 CFO 接班安排。David Elkins 将于2027年4月2日接任 CFO，John Murphy 将继续担任公司总裁。这是有序管理层交接，而非突发经营危机。
+   </p>
+   <p>
+    当前约28.8倍 TTM 市盈率，意味着市场已为品牌护城河和稳定现金流支付明显溢价。后续股价进一步上涨，需要盈利增长、销量改善或估值扩张提供支持。
+   </p>
+  </div>
+  <div class="card">
+   <h3>研究判断矩阵</h3>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">经营质量</span><span class="tag green">强</span>
+   </div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">收入增长动力</span><span class="tag green">良好</span>
+   </div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">利润率趋势</span><span class="tag green">改善</span>
+   </div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">估值吸引力</span><span class="tag gold">一般</span>
+   </div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">管理层变化</span><span class="tag">有序交接</span>
+   </div>
+   <div class="flex justify-between py-3">
+    <span class="text-sm">综合判断</span><span class="tag green">优质公司，价格敏感</span>
+   </div>
+  </div>
+ </div>
+
+ <div class="card section">
+  <h3>近期股价及交易指标</h3>
+  <div class="grid g4 mt-4">
+   <div><div class="label">11月24日开盘</div><div class="text-xl font-bold mt-2">$96.24</div></div>
+   <div><div class="label">当日最高</div><div class="text-xl font-bold mt-2">$98.30</div></div>
+   <div><div class="label">当日最低</div><div class="text-xl font-bold mt-2">$95.65</div></div>
+   <div><div class="label">52周最高</div><div class="text-xl font-bold mt-2">$100.56</div></div>
+  </div>
+  <div class="mt-5">
+   <div class="flex justify-between text-xs mb-2"><span>52周价格区间</span><span>$67.27 — $100.56</span></div>
+   <div class="barline"><span style="width:91.3%"></span></div>
+   <div class="flex justify-between label"><span>$67.27</span><span>$97.62</span><span>$100.56</span></div>
+  </div>
+  <p class="mt-4">
+   11月24日收盘上涨1.81%，成交量约2,000万股，高于约1,790万股的50日均量。股价距52周高点约2.9%，处于年内高位区域。短期不宜将单日反弹直接解释为趋势反转或新一轮上涨确认。
+  </p>
+ </div>
+</section>
+
+<section id="events" class="section">
+ <div class="section-title">02 / 近一个月重大事件追踪</div>
+ <div class="section-desc">重点识别事件性质、财务传导路径与持续影响，而非简单罗列新闻</div>
+
+ <div class="card mb-4">
+  <div class="flex justify-between flex-wrap gap-2">
+   <span class="tag red">最高关注度 · 管理层</span>
+   <span class="label">2026年11月23日</span>
+  </div>
+  <h3 class="text-lg mt-4">事件一：David Elkins 被任命为下一任首席财务官</h3>
+  <p>
+   可口可乐宣布 David Elkins 将于2027年4月2日出任执行副总裁兼 CFO，接替 John Murphy。Murphy 计划于2027年退休，但将继续担任公司总裁，参与企业重点事项及交接工作。
+  </p>
+  <div class="grid g3 mt-4">
+   <div class="p-3 rounded-lg" style="background:var(--bg)">
+    <div class="label">新任 CFO</div><div class="font-bold mt-2">David Elkins</div><div class="label mt-1">现任百时美施贵宝 CFO</div>
+   </div>
+   <div class="p-3 rounded-lg" style="background:var(--bg)">
+    <div class="label">正式接任日期</div><div class="font-bold mt-2">2027.04.02</div><div class="label mt-1">预留交接时间</div>
+   </div>
+   <div class="p-3 rounded-lg" style="background:var(--bg)">
+    <div class="label">现任 CFO</div><div class="font-bold mt-2">John Murphy</div><div class="label mt-1">继续担任公司总裁</div>
+   </div>
+  </div>
+  <h3 class="mt-5">对投资者的影响</h3>
+  <ul>
+   <li><b>积极方面：</b>接班计划提前公布，减少突发人事变化带来的治理不确定性。</li>
+   <li><b>能力匹配：</b>Elkins 曾在 Bristol Myers Squibb、Celgene、Johnson & Johnson 等企业担任财务管理职位，拥有全球企业财务管理经验。</li>
+   <li><b>需要观察：</b>新任 CFO 是否延续现有资本配置纪律、股东回报政策和利润率管理策略。</li>
+   <li><b>判断：</b>目前属于中性偏正面的治理事件，尚无证据表明其会立即改变盈利预测。</li>
+  </ul>
+  <a href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1178/the-coca-cola-company-names-david-elkins-as-incoming-chief-financial-officer" target="_blank">官方公告：CFO 任命详情 →</a>
+ </div>
+
+ <div class="card mb-4">
+  <div class="flex justify-between flex-wrap gap-2">
+   <span class="tag green">经营层面 · 正面</span>
+   <span class="label">2026年10月27日</span>
+  </div>
+  <h3 class="text-lg mt-4">事件二：第三季度业绩稳健，全年增长指引上调</h3>
+  <p>第三季度是本轮追踪期内最重要的基本面依据。公司不仅实现收入增长，也取得销量增长和可比经营利润率扩张。</p>
+  <div class="grid g4 mt-4">
+   <div><div class="label">净收入</div><div class="big-number">$13.4B</div><span class="positive text-xs">同比 +7%</span></div>
+   <div><div class="label">有机收入</div><div class="big-number">+7%</div><span class="positive text-xs">同比增长</span></div>
+   <div><div class="label">全球销量</div><div class="big-number">+5%</div><span class="positive text-xs">Unit Case Volume</span></div>
+   <div><div class="label">可比 EPS</div><div class="big-number">$0.91</div><span class="positive text-xs">同比 +11%</span></div>
+  </div>
+  <div class="mt-5">
+   <h3>利润率改善</h3>
+   <div class="flex justify-between text-sm"><span>报告经营利润率</span><b>33.4%</b></div>
+   <div class="barline"><span style="width:83.5%"></span></div>
+   <div class="flex justify-between text-sm mt-3"><span>上年同期</span><b>32.0%</b></div>
+   <div class="barline"><span style="width:80%"></span></div>
+   <div class="flex justify-between text-sm mt-3"><span>可比经营利润率</span><b>32.9%</b></div>
+   <div class="barline"><span style="width:82.25%"></span></div>
+  </div>
+  <p class="mt-4">
+   经营利润同比增长12%，剔除汇率和可比项目影响后的可比汇率中性经营利润增长8%。EPS同比增长8%至0.93美元，可比 EPS 增长11%至0.91美元。
+  </p>
+  <div class="bull mt-4">
+   <b>关键解读：</b>销量增长5%，有机收入增长7%，意味着本季度增长不只是依赖提价。可比经营利润率扩张也说明品牌、规模及经营效率仍有支撑。
+  </div>
+  <a href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1176/coca-cola-reports-third-quarter-2026-results-and-raises-full-year-guidance" target="_blank">官方第三季度业绩公告 →</a>
+ </div>
+
+ <div class="card mb-4">
+  <div class="flex justify-between flex-wrap gap-2">
+   <span class="tag">战略层面 · 中长期</span>
+   <span class="label">2026年10月22日</span>
+  </div>
+  <h3 class="text-lg mt-4">事件三：调整营销代理合作体系，加速营销战略升级</h3>
+  <p>
+   公司宣布选择新的代理合作伙伴，以加速未来营销。对于拥有全球品牌资产的饮料公司，营销资源的配置效率直接影响品牌渗透率、消费者参与度以及长期定价能力。
+  </p>
+  <ul>
+   <li>更加注重全球品牌与本地市场文化之间的连接。</li>
+   <li>强化数字化营销、消费者互动及品牌体验。</li>
+   <li>营销资源配置需要进一步提高投入产出效率。</li>
+   <li>短期可能增加组织调整和营销投入成本，中长期效果取决于市场份额及销量兑现。</li>
+  </ul>
+  <p>分析判断：这是战略执行信号，而不是已经被财务报表验证的盈利催化剂。未来应关注营销费用率与增量销量之间的关系。</p>
+  <a href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1175/the-coca-cola-company-selects-agency-partners-to-accelerate-the-future-of-marketing" target="_blank">官方营销战略公告 →</a>
+ </div>
+
+ <div class="card">
+  <h3>事件时间轴</h3>
+  <div class="mt-5">
+   <div class="event">
+    <div class="event-date">2026.10.27</div>
+    <div class="event-title">发布第三季度财报并上调全年指引</div>
+    <p>全球销量增长5%，有机收入增长7%，可比 EPS 增长11%。</p>
+    <span class="tag green">强正面</span>
+   </div>
+   <div class="event">
+    <div class="event-date">2026.11.11</div>
+    <div class="event-title">宣布参加摩根士丹利全球消费与零售会议</div>
+    <p>投资者沟通窗口，为观察管理层对消费趋势和战略执行的表态提供机会。</p>
+    <span class="tag">信息披露</span>
+   </div>
+   <div class="event">
+    <div class="event-date">2026.11.23</div>
+    <div class="event-title">任命 David Elkins 为下一任 CFO</div>
+    <p>新 CFO 计划于2027年4月2日正式接任，现任 CFO Murphy 继续担任总裁。</p>
+    <span class="tag green">治理层面偏正面</span>
+   </div>
+   <div class="event">
+    <div class="event-date">2026.12.01</div>
+    <div class="event-title">下一次除息日</div>
+    <p>预计每股季度股息0.53美元，需留意实际持股及登记日期要求。</p>
+    <span class="tag gold">股东回报</span>
+   </div>
+   <div class="event">
+    <div class="event-date">2026.12.02</div>
+    <div class="event-title">摩根士丹利全球消费与零售会议</div>
+    <p>关注管理层对2027年经营环境、销量、定价及资本配置的最新表述。</p>
+    <span class="tag">未来观察</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="fundamentals" class="section">
+ <div class="section-title">03 / 公司经营基本面</div>
+ <div class="section-desc">从增长质量、产品结构、地区结构、盈利能力和现金流五个维度分析</div>
+
+ <div class="card mb-4">
+  <h3>第三季度核心财务指标</h3>
+  <div class="overflow-x-auto">
+   <table>
+    <thead><tr><th>指标</th><th>2026 Q3</th><th>同比变化</th><th>投资解读</th></tr></thead>
+    <tbody>
+     <tr><td>净收入</td><td>$13.4B</td><td class="positive">+7%</td><td>收入增长稳健</td></tr>
+     <tr><td>有机收入</td><td>—</td><td class="positive">+7%</td><td>核心经营增长</td></tr>
+     <tr><td>销量</td><td>—</td><td class="positive">+5%</td><td>需求端表现积极</td></tr>
+     <tr><td>价格/组合</td><td>—</td><td>+1%</td><td>定价贡献有限但为正</td></tr>
+     <tr><td>报告经营利润</td><td>—</td><td class="positive">+12%</td><td>包含汇率及可比项目影响</td></tr>
+     <tr><td>可比经营利润</td><td>—</td><td class="positive">+8%</td><td>汇率中性增长</td></tr>
+     <tr><td>报告 EPS</td><td>$0.93</td><td class="positive">+8%</td><td>每股盈利改善</td></tr>
+     <tr><td>可比 EPS</td><td>$0.91</td><td class="positive">+11%</td><td>核心盈利能力较好</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="mt-3">注：有机收入、可比经营利润及可比 EPS 为非 GAAP 指标，不应与报告口径混为一谈。</p>
+ </div>
+
+ <div class="grid g2">
+  <div class="card">
+   <h3>产品组合：零糖饮料表现突出</h3>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">Trademark Coca-Cola</span><b class="positive">+5%</b>
+   </div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">Coca-Cola Zero Sugar</span><b class="positive">+16%</b>
+   </div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">Diet Coke / Light</span><b class="positive">+6%</b>
+   </div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">气泡风味饮料</span><b class="positive">+3%</b>
+   </div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)">
+    <span class="text-sm">水、运动、咖啡及茶</span><b class="positive">+5%</b>
+   </div>
+   <div class="flex justify-between py-3">
+    <span class="text-sm">运动饮料</span><b class="negative">-3%</b>
+   </div>
+   <p class="mt-3">零糖产品增长16%，是值得持续跟踪的产品结构亮点，说明消费者对低糖替代品的接受度仍在提升。</p>
+  </div>
+  <div class="card">
+   <h3>区域收入增长情况</h3>
+   <div class="chartbox"><canvas id="regionChart"></canvas></div>
+   <p>拉丁美洲有机收入增长16%，亚洲增长6%，北美增长3%。区域之间的增长质量差异明显。</p>
+  </div>
+ </div>
+
+ <div class="card section">
+  <h3>地区业务深度分析</h3>
+  <div class="overflow-x-auto">
+   <table>
+    <thead><tr><th>区域</th><th>销量</th><th>有机收入</th><th>价格/组合</th><th>基本面判断</th></tr></thead>
+    <tbody>
+     <tr><td>欧洲、中东和非洲</td><td>+5%</td><td>+7%</td><td>+1%</td><td><span class="tag gold">增长但份额承压</span></td></tr>
+     <tr><td>拉丁美洲</td><td>+6%</td><td>+16%</td><td>+7%</td><td><span class="tag green">表现强劲</span></td></tr>
+     <tr><td>北美</td><td>0%</td><td>+3%</td><td>+1%</td><td><span class="tag gold">销量待改善</span></td></tr>
+     <tr><td>亚太</td><td>+6%</td><td>+6%</td><td>-2%</td><td><span class="tag green">销量增长</span></td></tr>
+     <tr><td>装瓶投资业务</td><td>+8%</td><td>+12%</td><td>+3%</td><td><span class="tag green">经营改善</span></td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="mt-3">
+   特别注意：北美销量持平，意味着公司不能仅依靠成熟市场的价格调整来推动长期增长。欧洲虽然销量增长5%，但法国和英国的市场份额损失值得持续监测。亚太销量增长较快，但价格组合下降2%，反映增长的变现能力仍有改善空间。
+  </p>
+ </div>
+
+ <div class="grid g2 section">
+  <div class="card">
+   <h3>现金流质量</h3>
+   <div class="metric">$12.5B</div>
+   <div class="label">前三季度经营现金流</div>
+   <div class="metric positive mt-5">$11.4B</div>
+   <div class="label">前三季度自由现金流（非 GAAP）</div>
+   <p class="mt-4">现金流是可口可乐长期股东回报能力的关键支撑。高现金流使公司能够持续支付股息、投入品牌建设并进行资本配置。</p>
+  </div>
+  <div class="card">
+   <h3>商业模式与护城河</h3>
+   <ul>
+    <li>全球品牌资产和消费者心智形成长期竞争壁垒。</li>
+    <li>浓缩液和糖浆业务模式具有较强规模经济。</li>
+    <li>全球装瓶伙伴网络形成广泛的渠道覆盖。</li>
+    <li>多品类产品组合降低单一碳酸饮料需求波动。</li>
+    <li>定价能力和品牌忠诚度为利润率提供支撑。</li>
+   </ul>
+   <p>风险在于：品牌壁垒不等于销量永远增长，消费者偏好、健康意识及渠道变化仍会影响长期需求。</p>
+  </div>
+ </div>
+</section>
+
+<section id="industry" class="section">
+ <div class="section-title">04 / 行业与宏观传导分析</div>
+ <div class="section-desc">分析外部因素如何通过消费需求、成本、汇率和资本市场估值传导至 KO</div>
+
+ <div class="grid g3">
+  <div class="card">
+   <span class="tag">宏观变量一</span>
+   <h3 class="mt-3">全球消费需求</h3>
+   <p>就业、实际收入及消费信心影响饮料购买频率与产品档次。</p>
+   <div class="font-semibold text-sm mt-3">传导路径</div>
+   <p>消费者购买力 → 产品销量与产品组合 → 有机收入 → EPS</p>
+  </div>
+  <div class="card">
+   <span class="tag">宏观变量二</span>
+   <h3 class="mt-3">美元汇率</h3>
+   <p>海外市场占比高，美元升值可能压低海外收入折算值及报告利润。</p>
+   <div class="font-semibold text-sm mt-3">传导路径</div>
+   <p>美元指数 → 海外收入折算 → 报告收入和 EPS</p>
+  </div>
+  <div class="card">
+   <span class="tag">宏观变量三</span>
+   <h3 class="mt-3">原材料与运输成本</h3>
+   <p>糖、铝、塑料、能源和运输费用影响产业链成本及装瓶伙伴利润。</p>
+   <div class="font-semibold text-sm mt-3">传导路径</div>
+   <p>投入成本 → 单位成本 → 利润率 → 现金流</p>
+  </div>
+ </div>
+
+ <div class="card section">
+  <h3>行业竞争格局</h3>
+  <div class="grid g2 mt-4">
+   <div>
+    <div class="font-bold mb-2">主要竞争力量</div>
+    <p><b>百事公司（PEP）：</b>饮料与休闲食品组合更为多元，在渠道及产品组合方面具有差异化竞争优势。</p>
+    <p><b>区域饮料品牌：</b>在本地价格带、分销网络和消费者偏好方面具有竞争力。</p>
+    <p><b>新兴健康饮料：</b>功能饮料、无糖饮料、植物饮料和高蛋白饮品不断争夺消费场景。</p>
+   </div>
+   <div>
+    <div class="font-bold mb-2">KO 的竞争优势</div>
+    <ul>
+     <li>强大的全球品牌矩阵。</li>
+     <li>成熟的全球分销体系。</li>
+     <li>较高的营销规模经济。</li>
+     <li>丰富的产品创新与品牌延伸能力。</li>
+     <li>相对稳定的现金流及股东回报。</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+
+ <div class="card section">
+  <h3>宏观变量敏感性矩阵</h3>
+  <table>
+   <thead><tr><th>变量</th><th>改善情景</th><th>恶化情景</th><th>影响路径</th></tr></thead>
+   <tbody>
+    <tr><td>美元</td><td class="positive">美元走弱</td><td class="negative">美元走强</td><td>海外折算收入</td></tr>
+    <tr><td>原材料</td><td class="positive">成本回落</td><td class="negative">成本上涨</td><td>毛利及经营利润</td></tr>
+    <tr><td>消费者收入</td><td class="positive">实际收入改善</td><td class="negative">消费降级</td><td>销量与产品组合</td></tr>
+    <tr><td>利率</td><td class="positive">贴现率下降</td><td class="negative">贴现率上升</td><td>估值与股息吸引力</td></tr>
+    <tr><td>健康监管</td><td class="positive">创新适应成功</td><td class="negative">税费和限制增加</td><td>成本、销量及品牌</td></tr>
+   </tbody>
+  </table>
+ </div>
+</section>
+
+<section id="valuation" class="section">
+ <div class="section-title">05 / 估值与市场预期</div>
+ <div class="section-desc">以盈利能力、股息回报及市场一致预期判断当前价格的安全边际</div>
+
+ <div class="grid g4">
+  <div class="card"><div class="label">市盈率 TTM</div><div class="metric">28.8x</div></div>
+  <div class="card"><div class="label">每股 EPS TTM</div><div class="metric">$3.39</div></div>
+  <div class="card"><div class="label">远期股息</div><div class="metric">$2.12</div></div>
+  <div class="card"><div class="label">市场平均目标价</div><div class="metric">$99.94</div></div>
+ </div>
+
+ <div class="grid g2 section">
+  <div class="card">
+   <h3>分析师目标价分布</h3>
+   <div class="chartbox"><canvas id="targetChart"></canvas></div>
+   <p>市场分析师12个月目标价区间约86至112美元，平均约99.94美元。目标价是分析师预测，不代表实际可实现价格。</p>
+  </div>
+  <div class="card">
+   <h3>市场预期与当前价格</h3>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)"><span class="label">当前收盘价</span><b>$97.62</b></div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)"><span class="label">平均目标价</span><b>$99.94</b></div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)"><span class="label">高目标价</span><b class="positive">$112.00</b></div>
+   <div class="flex justify-between py-3 border-b" style="border-color:var(--line)"><span class="label">低目标价</span><b class="negative">$86.00</b></div>
+   <div class="flex justify-between py-3"><span class="label">平均隐含涨幅</span><b class="positive">约 +2.38%</b></div>
+   <p class="mt-3">分析师分歧意味着市场对 KO 的增长兑现程度和估值溢价仍存在不同判断。</p>
+  </div>
+ </div>
+
+ <div class="card section">
+  <h3>估值情景分析（研究假设，非市场报价）</h3>
+  <p>以下采用情景法，以每股未来正常化盈利作为估值基础，目的是评估不同增长和估值倍数下的价格空间。</p>
+  <div class="overflow-x-auto">
+   <table>
+    <thead><tr><th>情景</th><th>假设 EPS</th><th>假设 PE</th><th>估算股价</th><th>相对 $97.62</th></tr></thead>
+    <tbody>
+     <tr><td><span class="tag red">悲观</span></td><td>$3.45</td><td>24x</td><td>$82.80</td><td class="negative">-15.2%</td></tr>
+     <tr><td><span class="tag gold">中性</span></td><td>$3.65</td><td>27x</td><td>$98.55</td><td>+1.0%</td></tr>
+     <tr><td><span class="tag green">乐观</span></td><td>$3.80</td><td>30x</td><td>$114.00</td><td class="positive">+16.8%</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="mt-3">
+   上述 EPS 是情景建模输入，不是公司已公布的2027年指引。模型未计入股息、税费和交易成本。实际估值还取决于盈利质量、汇率、资本成本和市场风险偏好。
+  </p>
+ </div>
+
+ <div class="card section">
+  <h3>股息投资价值</h3>
+  <div class="grid g3">
+   <div><div class="metric">$0.53</div><div class="label">每季度股息</div></div>
+   <div><div class="metric">$2.12</div><div class="label">年化股息</div></div>
+   <div><div class="metric">2.17%</div><div class="label">参考股息率</div></div>
+  </div>
+  <p class="mt-3">
+   可口可乐具有长期连续提高股息的记录，收入型投资者可将股息作为总回报的一部分。不过，股息率并不等同于估值安全边际，若买入价格过高，股息收益可能无法弥补估值收缩带来的损失。
+  </p>
+ </div>
+</section>
+
+<section id="catalysts" class="section">
+ <div class="section-title">06 / 未来催化剂与风险监测</div>
+ <div class="section-desc">将未来可能影响预期差的事项转化为可持续追踪的观察指标</div>
+
+ <div class="grid g2">
+  <div class="card">
+   <h3 class="positive">正向催化剂</h3>
+   <div class="bull">
+    <b>1. 零糖产品持续增长</b>
+    <p>若零糖产品持续跑赢传统品类，有望改善产品结构并拓宽健康饮料消费场景。</p>
+   </div>
+   <div class="bull">
+    <b>2. 新兴市场销量扩张</b>
+    <p>印度、中国、墨西哥和巴西等市场持续增长，有望成为长期销量驱动力。</p>
+   </div>
+   <div class="bull">
+    <b>3. 营销投入效率改善</b>
+    <p>品牌营销体系升级若能够提升消费者触达和市场份额，将为长期增长提供支撑。</p>
+   </div>
+   <div class="bull">
+    <b>4. 经营利润率继续扩张</b>
+    <p>规模效应、成本效率及产品组合改善，有望推动可比盈利增速高于收入增速。</p>
+   </div>
+   <div class="bull">
+    <b>5. CFO 平稳交接</b>
+    <p>2027年财务领导层平稳过渡，有助于降低治理层面的不确定性。</p>
+   </div>
+  </div>
+
+  <div class="card">
+   <h3 class="negative">主要下行风险</h3>
+   <div class="risk">
+    <b>1. 成熟市场销量增长乏力</b>
+    <p>北美销量持平，若长期无法恢复增长，可能削弱收入质量。</p>
+   </div>
+   <div class="risk">
+    <b>2. 健康监管与糖税</b>
+    <p>糖分限制、包装法规、营养标签和健康消费趋势可能提高经营成本。</p>
+   </div>
+   <div class="risk">
+    <b>3. 原材料成本上升</b>
+    <p>包装、能源、糖及运输成本上涨，可能抵消产品定价带来的利润贡献。</p>
+   </div>
+   <div class="risk">
+    <b>4. 汇率波动</b>
+    <p>国际业务规模大，美元升值可能使报告收入和 EPS 受到不利影响。</p>
+   </div>
+   <div class="risk">
+    <b>5. 估值压缩</b>
+    <p>28倍以上的市盈率意味着市场对公司质量已有较高预期，盈利不达预期可能触发估值回归。</p>
+   </div>
+  </div>
+ </div>
+
+ <div class="card section">
+  <h3>未来重要观察日历</h3>
+  <table>
+   <thead><tr><th>时间</th><th>观察事项</th><th>重要性</th><th>核心观察指标</th></tr></thead>
+   <tbody>
+    <tr><td>2026.12.01</td><td>季度股息除息日</td><td><span class="tag">一般</span></td><td>股息及价格调整</td></tr>
+    <tr><td>2026.12.02</td><td>摩根士丹利消费零售会议</td><td><span class="tag gold">较高</span></td><td>管理层经营展望</td></tr>
+    <tr><td>2027年初</td><td>2026年第四季度及全年财报</td><td><span class="tag red">极高</span></td><td>全年业绩、2027年指引</td></tr>
+    <tr><td>2027.04.02</td><td>新 CFO 正式接任</td><td><span class="tag gold">较高</span></td><td>资本配置及财务策略</td></tr>
+   </tbody>
+  </table>
+ </div>
+</section>
+
+<section id="strategy" class="section">
+ <div class="section-title">07 / 投资判断与研究结论</div>
+ <div class="section-desc">将基本面判断转化为可执行的观察框架</div>
+
+ <div class="card">
+  <div class="flex justify-between items-center flex-wrap gap-3">
+   <div>
+    <div class="label">综合研究立场</div>
+    <div class="text-2xl font-bold mt-2">优质防御型资产 · 等待合理买入价格</div>
+   </div>
+   <span class="tag gold">估值敏感型关注</span>
+  </div>
+  <p class="mt-4">
+   KO 当前的投资逻辑主要来自品牌护城河、稳定需求、全球分销网络、经营现金流及长期股东回报。第三季度业绩验证了公司仍具有一定的增长能力，尤其是销量增长5%及可比 EPS 增长11%，构成基本面支撑。
+  </p>
+  <p>
+   但股价接近52周高点，市场平均目标价相对当前价格的空间有限，估值已经反映部分经营优势。此时投资者更需要关注未来盈利增长是否能够持续超过估值所隐含的要求。
+  </p>
+ </div>
+
+ <div class="grid g3 section">
+  <div class="card">
+   <span class="tag green">长期投资者</span>
+   <h3 class="mt-3">关注长期复利</h3>
+   <p>重点观察自由现金流、股息增长、零糖产品及新兴市场增长。避免只因品牌知名度而忽视买入价格。</p>
+  </div>
+  <div class="card">
+   <span class="tag gold">价值投资者</span>
+   <h3 class="mt-3">等待估值安全边际</h3>
+   <p>优先观察盈利预测与估值倍数变化，若股价回调而基本面没有恶化，风险收益比可能改善。</p>
+  </div>
+  <div class="card">
+   <span class="tag">事件驱动投资者</span>
+   <h3 class="mt-3">跟踪关键经营数据</h3>
+   <p>重点关注下一次财报、管理层对2027年指引的表态、销量趋势和市场份额，而非单纯追逐新闻。</p>
+  </div>
+ </div>
+
+ <div class="card section">
+  <h3>投资者每季度必查清单</h3>
+  <div class="grid g2 mt-4">
+   <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1">全球销量是否持续增长？</label>
+   <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1">有机收入增长是否高于通胀？</label>
+   <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1">可比经营利润率是否持续改善？</label>
+   <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1">自由现金流是否覆盖股息？</label>
+   <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1">北美市场销量是否恢复增长？</label>
+   <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1">欧洲市场份额是否止跌？</label>
+   <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1">新兴市场增长是否可持续？</label>
+   <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1">估值是否仍有合理安全边际？</label>
+  </div>
+ </div>
+
+ <div class="card section">
+  <h3>最终研究结论</h3>
+  <p class="text-base" style="color:var(--text)">
+   可口可乐是一家具有全球品牌护城河、强分销网络和高现金流质量的成熟消费品企业。2026年第三季度的经营数据支持其增长韧性，全年指引上调进一步增强了市场对短期业绩的信心。
+  </p>
+  <p class="text-base" style="color:var(--text)">
+   本轮追踪期最值得关注的新增事件是 CFO 接班安排，其次是营销体系调整。两者分别影响公司治理连续性与长期品牌竞争力，但都尚未构成可以直接推导短期盈利大幅上修的证据。
+  </p>
+  <p class="text-base" style="color:var(--text)">
+   从投资回报角度，KO 的核心矛盾不是企业质量，而是价格与增长之间的平衡。约28.8倍 TTM 市盈率和有限的市场平均目标价空间，提示投资者不宜忽视估值风险。后续需要通过销量、有机收入、利润率和现金流的持续兑现来验证当前估值。
+  </p>
+  <div class="mt-5 p-4 rounded-lg" style="background:var(--bg)">
+   <div class="text-xs font-semibold tracking-wider mb-2">BOTTOM LINE</div>
+   <div class="text-xl font-bold">好公司不等于任何价格都是好投资。</div>
+   <p class="mb-0">优先跟踪经营质量与估值变化，等待更有吸引力的风险收益比。</p>
+  </div>
+ </div>
+</section>
+
+<section id="sources" class="section">
+ <div class="section-title">08 / 数据来源与研究说明</div>
+ <div class="section-desc">优先采用公司投资者关系公告及主流金融数据来源</div>
+
+ <div class="card">
+  <h3>公司官方来源</h3>
+  <div class="source">
+   <p><b>1. Coca-Cola Investor Relations</b><br>
+   <a href="https://investors.coca-colacompany.com/" target="_blank">https://investors.coca-colacompany.com/</a></p>
+
+   <p><b>2. CFO 人事公告 · 2026-11-23</b><br>
+   <a href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1178/the-coca-cola-company-names-david-elkins-as-incoming-chief-financial-officer" target="_blank">David Elkins 任命公告</a></p>
+
+   <p><b>3. 第三季度业绩及全年指引 · 2026-10-27</b><br>
+   <a href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1176/coca-cola-reports-third-quarter-2026-results-and-raises-full-year-guidance" target="_blank">Q3 2026 Earnings Release</a></p>
+
+   <p><b>4. 营销代理合作伙伴公告 · 2026-10-22</b><br>
+   <a href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1175/the-coca-cola-company-selects-agency-partners-to-accelerate-the-future-of-marketing" target="_blank">Marketing Agency Partners</a></p>
+
+   <p><b>5. 投资者会议与财务资料</b><br>
+   <a href="https://investors.coca-colacompany.com/news-events" target="_blank">Coca-Cola News & Events</a></p>
+  </div>
+  <hr class="my-4" style="border-color:var(--line)">
+  <h3>市场数据来源</h3>
+  <div class="source">
+   <p><b>6. Google Finance</b><br><a href="https://www.google.com/finance/quote/KO:NYSE" target="_blank">KO 市场报价、估值及分析师预期</a></p>
+   <p><b>7. Yahoo Finance</b><br><a href="https://finance.yahoo.com/quote/KO/" target="_blank">KO 股价、交易量及历史表现</a></p>
+   <p><b>8. Stock Analysis</b><br><a href="https://stockanalysis.com/stocks/ko/" target="_blank">财务与估值数据交叉核对</a></p>
+  </div>
+ </div>
+
+ <div class="card section">
+  <h3>研究口径与风险声明</h3>
+  <ul>
+   <li>本报告追踪期为2026年10月25日至2026年11月25日。10月27日发布的第三季度财报作为本期经营基本面基础。</li>
+   <li>股价采用2026年11月24日最近一个完整交易日收盘价97.62美元，不将盘后报价混入正式收盘价。</li>
+   <li>公司财报中的 GAAP 与非 GAAP 指标分别标识，不作直接等同处理。</li>
+   <li>估值情景为分析假设，不代表公司官方盈利预测或确定性目标价。</li>
+   <li>未获得完整逐笔资金流数据，因此不对机构资金净流入、主力建仓或资金流向作未经验证的结论。</li>
+   <li>部分宏观因素属于风险传导分析，并不代表已发生或已被市场定价的事件。</li>
+   <li>本报告仅用于投资研究和信息交流，不构成个性化投资建议。</li>
+  </ul>
+ </div>
+</section>
+
+<footer class="footer">
+ <div class="font-bold text-sm mb-2">AIPE INVESTMENT RESEARCH</div>
+ <div>可口可乐（NYSE: KO）｜最新动态全景追踪</div>
+ <div>研究日期：2026年11月25日 · 版本：1.0</div>
+ <div>数据来源：The Coca-Cola Company Investor Relations、Google Finance、Yahoo Finance、Stock Analysis。</div>
+ <div>投资有风险，市场数据与分析结论可能发生变化。请以公司正式披露及实时市场数据为准。</div>
+ <div class="mt-3">© 2026 AIPE Investment Research. All Rights Reserved.</div>
+</footer>
+</main>
+
+<script>
+function go(id,btn){
+ document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
+ btn.classList.add('active');
+ document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+}
+function toggleTheme(){
+ document.documentElement.classList.toggle('dark');
+ localStorage.setItem('ko_theme',document.documentElement.classList.contains('dark')?'dark':'light');
+}
+if(localStorage.getItem('ko_theme')==='dark')document.documentElement.classList.add('dark');
+
+const chartText=getComputedStyle(document.body).getPropertyValue('--muted').trim();
+const chartGrid=getComputedStyle(document.body).getPropertyValue('--line').trim();
+
+new Chart(document.getElementById('regionChart'),{
+ type:'bar',
+ data:{
+  labels:['拉丁美洲','亚太','欧洲/中东/非洲','北美','装瓶投资'],
+  datasets:[{
+   label:'有机收入同比增长（%）',
+   data:[16,6,7,3,12],
+   backgroundColor:['#15966b','#547ab7','#8296b0','#d0a14b','#4d9c89'],
+   borderRadius:5
+  }]
+ },
+ options:{
+  responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false}},
+  scales:{
+   y:{beginAtZero:true,grid:{color:chartGrid},ticks:{color:chartText},title:{display:true,text:'同比增长 %',color:chartText}},
+   x:{grid:{display:false},ticks:{color:chartText}}
+  }
+ }
+});
+
+new Chart(document.getElementById('targetChart'),{
+ type:'bar',
+ data:{
+  labels:['低目标价','当前价格','平均目标价','高目标价'],
+  datasets:[{
+   label:'美元',
+   data:[86,97.62,99.94,112],
+   backgroundColor:['#d66a71','#547ab7','#15966b','#d0a14b'],
+   borderRadius:5
+  }]
+ },
+ options:{
+  indexAxis:'y',responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false}},
+  scales:{
+   x:{min:75,max:120,grid:{color:chartGrid},ticks:{color:chartText}},
+   y:{grid:{display:false},ticks:{color:chartText}}
+  }
+ }
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

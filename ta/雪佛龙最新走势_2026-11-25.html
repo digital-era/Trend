@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪佛龙（CVX）最新走势归因与操作指引｜截至 2026-11-25</title>
+<meta name="description" content="雪佛龙CVX近一个月股价走势、基本面事件、油气行业、量价结构与交易策略分析。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: { colors: {
+    primary: {
+      50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+      300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+      600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+      900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+    },
+    accent: {
+      50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+      300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+      600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+      900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+    }
+  }}}
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:90px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.btn-interactive{transition:all .2s ease}
+.btn-interactive:hover{transform:scale(1.04)}
+.card-interactive{transition:all .25s ease}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 16px 30px -10px rgba(0,0,0,.15)}
+.dark .card-interactive:hover{box-shadow:0 16px 30px -10px rgba(0,0,0,.5)}
+.driver-bar{height:9px;border-radius:99px;background:#e5e7eb;overflow:hidden}
+.dark .driver-bar{background:#374151}
+.driver-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+table{width:100%;border-collapse:collapse}
+th,td{padding:.75rem;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#374151}
+#mobileMenu{display:none}
+#mobileMenu.mobile-menu-open{display:block}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+.price-tag{font-variant-numeric:tabular-nums}
+.bg-grid{background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,.045) 1px,transparent 0);background-size:24px 24px}
+.dark .bg-grid{background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.05) 1px,transparent 0)}
+.ref-tag{font-size:10px;color:#9ca3af;font-family:monospace}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+<script>
+(function(){
+ try{
+  if(window.self!==window.top||window.matchMedia('(prefers-color-scheme: dark)').matches)
+   document.documentElement.classList.add('dark');
+ }catch(e){document.documentElement.classList.add('dark')}
+})();
+function syncThemeIcons(){
+ const d=document.documentElement.classList.contains('dark');
+ const s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+ if(s)s.style.display=d?'block':'none';
+ if(m)m.style.display=d?'none':'block';
+}
+function toggleDarkMode(){document.documentElement.classList.toggle('dark');syncThemeIcons()}
+function toggleMobileMenu(){document.getElementById('mobileMenu')?.classList.toggle('mobile-menu-open')}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="min-h-screen bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 bg-grid">
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[60]" style="width:0%"></div>
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+  <div class="flex items-center justify-between gap-3">
+   <div class="flex items-center gap-2">
+    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+    <span class="font-bold text-primary-700 dark:text-primary-300">雪佛龙 <span class="font-mono text-xs text-gray-500">NYSE: CVX</span></span>
+   </div>
+   <nav class="hidden md:flex gap-5 text-sm font-medium text-gray-700 dark:text-gray-200">
+    <a href="#overview">走势总览</a><a href="#phases">阶段复盘</a><a href="#drivers">涨跌归因</a><a href="#technicals">量价技术</a><a href="#strategy">操作指引</a>
+   </nav>
+   <div class="flex items-center gap-2">
+    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800" aria-label="菜单"><i data-lucide="menu" class="w-4 h-4"></i></button>
+    <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" style="display:none" class="w-4 h-4"></i><i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+   <nav class="flex flex-col gap-3 text-sm text-gray-700 dark:text-gray-200">
+    <a href="#overview" onclick="toggleMobileMenu()">走势总览</a><a href="#phases" onclick="toggleMobileMenu()">阶段复盘</a><a href="#drivers" onclick="toggleMobileMenu()">涨跌归因</a><a href="#technicals" onclick="toggleMobileMenu()">量价技术</a><a href="#strategy" onclick="toggleMobileMenu()">操作指引</a>
+   </nav>
+  </div>
+ </div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16 space-y-10">
+
+<section id="overview" data-aos="fade-up">
+ <div class="rounded-2xl bg-white dark:bg-[#161f2c] border border-gray-200 dark:border-gray-800 shadow-sm p-6 sm:p-8">
+  <div class="flex flex-wrap justify-between gap-4">
+   <div>
+    <div class="flex flex-wrap gap-2 mb-3 text-xs">
+     <span class="text-primary-600 dark:text-primary-400 font-bold tracking-wider">量价归因 · 买方视角</span>
+     <span class="px-2 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300">NYSE · USD</span>
+     <span class="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">2026-10-26 → 2026-11-25</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-black">雪佛龙（CVX）</h1>
+    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Chevron Corporation · 综合能源 · 上游勘探生产 / 下游炼化 / 化工</p>
+   </div>
+   <div class="flex flex-col sm:items-end gap-2">
+    <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">数据核验状态：待补齐</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400">截至 2026-11-25 · 美股交易日口径</span>
+   </div>
+  </div>
+  <div class="mt-5 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/70 dark:bg-amber-950/25 p-4 text-sm leading-relaxed text-amber-900 dark:text-amber-200">
+   <strong>重要数据完整性说明：</strong>本报告生成环境未取得可核验的 2026-10-26 至 2026-11-25 CVX、标普500、纳斯达克及能源板块逐日行情源。因此不填入未经验证的收盘价、区间高低点、成交量、均线或精确涨跌幅，也不把历史行情猜测包装成实时数据。下文将事实、分析框架与条件式策略明确分开；所有价格触发点须由最新行情补齐后才能执行。
+  </div>
+  <p class="mt-5 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+   本月对 CVX 的核心观察应围绕三条传导链展开：原油与天然气价格决定上游实现价格，炼化与化工利润影响下游对冲能力，资本开支、产量兑现及股东回报决定现金流质量。由于缺少本月逐日行情和事件时间戳，当前不能可靠判定股价究竟处于突破、震荡还是回撤阶段；不以油价方向替代个股走势证据。
+  </p>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
+   <div class="card-interactive rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+    <p class="text-xs text-gray-500 dark:text-gray-400">最新收盘价</p>
+    <p class="text-xl font-black mt-2 price-tag">待核验</p>
+    <p class="text-xs text-gray-500 mt-1">USD · 2026-11-25</p>
+   </div>
+   <div class="card-interactive rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+    <p class="text-xs text-gray-500 dark:text-gray-400">近 1 月区间涨跌幅</p>
+    <p class="text-xl font-black mt-2">待核验</p>
+    <p class="text-xs text-gray-500 mt-1">相对标普500 Alpha 待计算</p>
+   </div>
+   <div class="card-interactive rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+    <p class="text-xs text-gray-500 dark:text-gray-400">区间最高 / 最低</p>
+    <p class="text-xl font-black mt-2">待核验</p>
+    <p class="text-xs text-gray-500 mt-1">振幅待计算</p>
+   </div>
+   <div class="card-interactive rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+    <p class="text-xs text-gray-500 dark:text-gray-400">趋势定性</p>
+    <p class="text-lg font-black mt-2 text-amber-600 dark:text-amber-400">暂不判定</p>
+    <p class="text-xs text-gray-500 mt-1">避免无行情依据的方向判断</p>
+   </div>
+  </div>
+  <div class="mt-5 grid sm:grid-cols-3 gap-3 text-xs">
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800/60"><span class="text-gray-500">分析窗口</span><p class="font-bold mt-1">近 30 个自然日</p><p class="text-gray-500 mt-1">约 20–22 个交易日，具体以交易所日历为准</p></div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800/60"><span class="text-gray-500">基准市场</span><p class="font-bold mt-1">S&P 500 / Nasdaq</p><p class="text-gray-500 mt-1">行业参照：S&P 500 Energy / XLE</p></div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800/60"><span class="text-gray-500">归因主线</span><p class="font-bold mt-1">油价 × 产量 × 现金流</p><p class="text-gray-500 mt-1">区分商品 Beta 与公司 Alpha</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="phases" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-5"><span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="layers" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i></span><h2 class="text-xl font-bold">一、近一月量价全景与阶段拆解</h2></div>
+ <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+  <h3 class="font-bold text-sm mb-3">CVX 与市场 / 能源板块对比</h3>
+  <div class="overflow-x-auto">
+   <table class="text-sm min-w-[720px]">
+    <thead class="bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-300"><tr><th>标的 / 指数</th><th>区间涨跌幅</th><th>区间最高日 / 价格</th><th>区间最低日 / 价格</th><th>成交量特征</th></tr></thead>
+    <tbody class="text-gray-700 dark:text-gray-200">
+     <tr><td class="font-bold text-primary-700 dark:text-primary-300">雪佛龙 CVX</td><td>待核验</td><td>待核验</td><td>待核验</td><td>待核验逐日成交量</td></tr>
+     <tr><td class="font-semibold">标普500 SPX</td><td>待核验</td><td>待核验</td><td>待核验</td><td>指数成交额 / 广度待核验</td></tr>
+     <tr><td class="font-semibold">纳斯达克综合 IXIC</td><td>待核验</td><td>待核验</td><td>待核验</td><td>指数成交额 / 科技股风险偏好</td></tr>
+     <tr><td class="font-semibold">能源板块 XLE</td><td>待核验</td><td>待核验</td><td>待核验</td><td>ETF 成交量待核验</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 mt-3">比较口径：2026-10-26 前一交易日收盘至 2026-11-25 收盘；区间收益以复权或未复权收盘价统一计算，指数与 ETF 分别注明口径。当前没有可审计的逐日行情，因此不提供虚构数字。</p>
+ </div>
+ <div class="grid md:grid-cols-3 gap-4 mt-4">
+  <article class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-gray-400">
+   <span class="text-xs font-bold text-gray-500">波段 A · 月初至第一周</span><p class="text-xl font-black mt-2">行情待核验</p>
+   <p class="text-xs text-gray-500 mt-1">日期：2026-10-26 起</p>
+   <p class="text-sm text-gray-600 dark:text-gray-300 mt-3 leading-relaxed">核验重点：原油基准价格变化、美国库存周报、OPEC+ 供给政策，以及 CVX 相对 XLE 的强弱。如果油价上涨而 CVX 滞涨，应检查炼化利润、产量指引与公司特定消息。</p>
+  </article>
+  <article class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500">
+   <span class="text-xs font-bold text-amber-600 dark:text-amber-400">波段 B · 月中趋势验证</span><p class="text-xl font-black mt-2">行情待核验</p>
+   <p class="text-xs text-gray-500 mt-1">日期：11 月上中旬</p>
+   <p class="text-sm text-gray-600 dark:text-gray-300 mt-3 leading-relaxed">观察上涨日是否伴随成交量高于 20 日均量、收盘接近日高；若股价上涨但 XLE 与原油走弱，需寻找公司层面的独立催化，而非直接归因于能源板块。</p>
+  </article>
+  <article class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-primary-500">
+   <span class="text-xs font-bold text-primary-600 dark:text-primary-400">波段 C · 最近一周与最新交易日</span><p class="text-xl font-black mt-2">行情待核验</p>
+   <p class="text-xs text-gray-500 mt-1">日期：11 月下旬至 11-25</p>
+   <p class="text-sm text-gray-600 dark:text-gray-300 mt-3 leading-relaxed">重点识别高位放量滞涨、缩量回撤或放量跌破支撑。11 月 25 日是否为完整交易日、是否存在节假日提前收市，应以 NYSE 官方交易日历确认。</p>
+  </article>
+ </div>
+</section>
+
+<section id="drivers" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-5"><span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="git-branch" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i></span><h2 class="text-xl font-bold">二、上涨与下跌的深层根因剖析</h2></div>
+ <div class="grid lg:grid-cols-2 gap-4">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+   <h3 class="font-bold text-emerald-700 dark:text-emerald-300 mb-4 flex gap-2 items-center"><i data-lucide="trending-up" class="w-4 h-4"></i>多头根因：需要验证的正向传导</h3>
+   <div class="space-y-4 text-sm">
+    <div class="border-l-2 border-emerald-500 pl-3"><p class="font-bold">① 上游油气实现价格与产量贡献</p><p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed mt-1">原油价格上行只有在产量、实现价格及成本结构同步改善时，才会转化为更强的上游现金流。需结合 Brent / WTI、天然气价格、季度产量和单位成本，避免把期货价格涨幅等同于公司利润增幅。</p></div>
+    <div class="border-l-2 border-emerald-500 pl-3"><p class="font-bold">② Hess 整合与 Guyana 资产兑现</p><p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed mt-1">Hess 并表后的协同、Guyana 项目产能爬坡及资本回报，是 CVX 中期产量增长和现金流的重要变量。应核对本月是否有实际投产、产量更新、项目进度或成本超支公告；没有事件证据时，不将长期预期作为本月上涨原因。</p></div>
+    <div class="border-l-2 border-emerald-500 pl-3"><p class="font-bold">③ 股东回报与自由现金流支撑</p><p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed mt-1">股息、回购和资本纪律可以在油价震荡时提供估值底部，但必须用最新现金流、净债务、回购执行额和股息公告验证回报的可持续性。</p></div>
+    <div class="border-l-2 border-emerald-500 pl-3"><p class="font-bold">④ 公司特定事件与机构评级变化</p><p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed mt-1">资产处置、项目审批、法律争议进展、分析师评级或目标价调整可能带来独立 Alpha。应以公告日期与股价异动日对齐，不以事后叙事替代事件归因。</p></div>
+   </div>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+   <h3 class="font-bold text-rose-600 dark:text-rose-400 mb-4 flex gap-2 items-center"><i data-lucide="trending-down" class="w-4 h-4"></i>空头根因：估值与现金流压制</h3>
+   <div class="space-y-4 text-sm">
+    <div class="border-l-2 border-rose-500 pl-3"><p class="font-bold">① 原油供给增加或需求预期下修</p><p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed mt-1">OPEC+ 政策、非 OPEC 供给增长、美国库存累积及全球需求预测下修，都可能压低油价风险溢价。若 CVX 与 Brent 同步走弱，需先判断商品 Beta 是否为主因。</p></div>
+    <div class="border-l-2 border-rose-500 pl-3"><p class="font-bold">② 炼化利润与下游周期波动</p><p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed mt-1">原油上涨并不必然利好综合能源公司。炼油裂解价差收窄、化工需求疲弱或检修增加，可能抵消上游收益，形成股价与油价背离。</p></div>
+    <div class="border-l-2 border-rose-500 pl-3"><p class="font-bold">③ 高资本开支、并购整合与债务约束</p><p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed mt-1">大型项目投资、Hess 整合成本、资产负债表变化若高于市场预期，会压制自由现金流和回购空间。需区分长期战略投资与短期现金流恶化。</p></div>
+    <div class="border-l-2 border-rose-500 pl-3"><p class="font-bold">④ 美债收益率、美元与市场风格切换</p><p class="text-gray-600 dark:text-gray-300 text-xs leading-relaxed mt-1">实际利率上行通常会压制高股息资产估值；美元走强可能影响大宗商品定价。若 CVX 跑输 XLE 且大盘同步回撤，需分解行业与宏观冲击。</p></div>
+   </div>
+  </div>
+ </div>
+ <div class="mt-4 bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+  <h3 class="font-bold text-sm mb-4 flex items-center gap-2"><i data-lucide="pie-chart" class="w-4 h-4 text-accent-500"></i>归因权重矩阵 · 暂定研究先验，并非本月实证回归</h3>
+  <div class="space-y-4">
+   <div><div class="flex justify-between text-xs mb-1"><b>个股基本面与公司事件</b><b>35%</b></div><div class="driver-bar"><div class="driver-fill" style="width:35%"></div></div><p class="text-xs text-gray-500 mt-1">产量兑现、Hess 整合、项目进度、资本回报与公司公告。</p></div>
+   <div><div class="flex justify-between text-xs mb-1"><b>行业景气度与板块情绪轮动</b><b>45%</b></div><div class="driver-bar"><div class="driver-fill" style="width:45%"></div></div><p class="text-xs text-gray-500 mt-1">原油 / 天然气价格、供需预期、炼化价差与能源股风险偏好。</p></div>
+   <div><div class="flex justify-between text-xs mb-1"><b>宏观利率、汇率与大盘 Beta</b><b>20%</b></div><div class="driver-bar"><div class="driver-fill" style="width:20%"></div></div><p class="text-xs text-gray-500 mt-1">美债实际收益率、美元指数、标普风险偏好及资金风格。</p></div>
+  </div>
+  <p class="text-xs text-amber-700 dark:text-amber-300 mt-4">注意：35 / 45 / 20 是能源综合股的分析框架初始权重，不代表已经测得的 2026 年 10–11 月实际贡献率。取得逐日数据后，应以 CVX 对 XLE、Brent、SPX 的回归与事件窗口分析重新估计。</p>
+ </div>
+</section>
+
+<section id="technicals" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-5"><span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="activity" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i></span><h2 class="text-xl font-bold">三、资金行为与技术面关键位诊断</h2></div>
+ <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800"><p class="text-xs text-gray-500">MA5 / MA10</p><p class="font-bold mt-2">待行情计算</p></div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800"><p class="text-xs text-gray-500">MA20 / MA60</p><p class="font-bold mt-2">待行情计算</p></div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800"><p class="text-xs text-gray-500">RSI(14) / MACD</p><p class="font-bold mt-2">待行情计算</p></div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800"><p class="text-xs text-gray-500">成交量 / 20日均量</p><p class="font-bold mt-2">待行情计算</p></div>
+ </div>
+ <div class="grid lg:grid-cols-2 gap-4">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+   <h3 class="font-bold text-sm mb-3">量价与筹码诊断规则</h3>
+   <div class="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+    <p><b class="text-emerald-600 dark:text-emerald-400">放量上涨：</b>成交量高于 20 日均量 1.3 倍，收盘位于日内振幅上部，且 XLE 同步走强，才可视为较可信的趋势接力。</p>
+    <p><b class="text-amber-600 dark:text-amber-400">缩量回调：</b>回撤时成交量低于 20 日均量，且守住 MA20，通常属于卖压收敛；若连续收盘失守 MA20，则不能简单解释为健康回踩。</p>
+    <p><b class="text-rose-600 dark:text-rose-400">放量滞涨：</b>成交量显著放大但收盘涨幅有限、上影线明显，需警惕高位换手与供给增加。</p>
+    <p><b class="text-rose-600 dark:text-rose-400">放量破位：</b>收盘跌破 MA20 或前平台下沿且成交量大于 20 日均量 1.5 倍，视为趋势恶化信号。</p>
+   </div>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+   <h3 class="font-bold text-sm mb-3">价格水位与执行锚点</h3>
+   <div class="space-y-2 text-xs">
+    <div class="rounded-lg p-3 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800"><b class="text-rose-700 dark:text-rose-300">强阻力位</b><p class="mt-1 text-gray-600 dark:text-gray-300">近 60 个交易日前高 / 放量密集成交区上沿：待逐日行情识别</p></div>
+    <div class="rounded-lg p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800"><b class="text-amber-700 dark:text-amber-300">第一压力位</b><p class="mt-1 text-gray-600 dark:text-gray-300">本月反弹高点与 MA5 / MA10 压制交汇：待核验</p></div>
+    <div class="rounded-lg p-3 bg-primary-50 dark:bg-primary-950/30 border-2 border-primary-500"><b class="text-primary-700 dark:text-primary-300">最新收盘价</b><p class="mt-1 text-gray-600 dark:text-gray-300">2026-11-25 NYSE 官方收盘价：待核验，USD</p></div>
+    <div class="rounded-lg p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800"><b class="text-emerald-700 dark:text-emerald-300">第一支撑位</b><p class="mt-1 text-gray-600 dark:text-gray-300">MA20 / 最近一次放量突破平台回踩位：待核验</p></div>
+    <div class="rounded-lg p-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700"><b>强支撑 / 防守底线</b><p class="mt-1 text-gray-600 dark:text-gray-300">近一个月起涨平台低点或 MA60 下方有效支撑：待核验</p></div>
+   </div>
+  </div>
+ </div>
+ <div class="mt-4 bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+  <h3 class="font-bold text-sm mb-3">资金流向数据的适用边界</h3>
+  <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">美股没有与 A 股“主力净流入”完全等价、统一且可直接观测的官方口径。CVX 的机构持仓披露通常存在滞后，ETF 资金流也不能直接代表 CVX 单股买卖。建议以逐日成交量、收盘位置、相对 XLE 强弱、期权成交与隐含波动率变化交叉验证，不将数据供应商估算的资金流当作真实机构净买入。</p>
+ </div>
+</section>
+
+<section id="strategy" x-data="{role:'all'}" data-aos="fade-up">
+ <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+  <div class="flex items-center gap-3"><span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="target" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i></span><h2 class="text-xl font-bold">四、未来情景推演与实战操作指引</h2></div>
+  <div class="flex gap-1.5 text-xs">
+   <button @click="role='all'" :class="role==='all'?'bg-primary-500 text-white':'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700'" class="rounded-full px-3 py-2">全部指引</button>
+   <button @click="role='hold'" :class="role==='hold'?'bg-emerald-600 text-white':'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700'" class="rounded-full px-3 py-2">我是持仓者</button>
+   <button @click="role='wait'" :class="role==='wait'?'bg-primary-500 text-white':'bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700'" class="rounded-full px-3 py-2">我是观望者</button>
+  </div>
+ </div>
+ <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 mb-4">
+  <h3 class="font-bold text-sm mb-3">未来 2–4 周三情景推演矩阵</h3>
+  <div class="overflow-x-auto">
+   <table class="text-sm min-w-[760px]">
+    <thead class="bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-300"><tr><th>情景</th><th>触发条件（价格 + 量能）</th><th>主观概率</th><th>潜在目标</th><th>仓位动作</th></tr></thead>
+    <tbody class="text-gray-700 dark:text-gray-200">
+     <tr><td class="font-bold text-emerald-600">乐观突破</td><td>收盘突破本月已核验高点，成交量 ≥ 20 日均量 1.3 倍，且 XLE 同步走强</td><td>30%*</td><td>以突破位至下一历史成交密集区测算</td><td>突破确认后分批建立不超过计划仓位 1/3 的试探仓</td></tr>
+     <tr><td class="font-bold text-amber-600">中性震荡</td><td>价格在 MA20 与本月高点之间运行，回调缩量、反弹量能温和</td><td>45%*</td><td>箱体上沿 / 下沿之间</td><td>持仓者保留底仓；观望者等待支撑确认，不在箱体中部追单</td></tr>
+     <tr><td class="font-bold text-rose-600">悲观破位</td><td>放量跌破 MA20 与本月平台下沿，成交量 ≥ 20 日均量 1.5 倍</td><td>25%*</td><td>下一周线支撑区</td><td>停止加仓，短线仓减至低风险水平；等待重新站回关键位</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 mt-3">*概率为策略情景的先验权重（合计 100%），不是基于本月真实波动率拟合的统计概率。目标区间需在补齐行情后用实际支撑阻力计算。</p>
+ </div>
+ <div class="grid md:grid-cols-2 gap-4">
+  <div x-show="role==='all'||role==='hold'" class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-emerald-200 dark:border-emerald-900">
+   <h3 class="font-bold text-emerald-700 dark:text-emerald-300 flex items-center gap-2 mb-3"><i data-lucide="briefcase" class="w-4 h-4"></i>已持仓投资者</h3>
+   <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-3 leading-relaxed">
+    <li><b>止盈保护：</b>以最新核验的 MA20 作为第一动态保护线。日收盘跌破 MA20 且成交量超过 20 日均量 1.3 倍，先减持交易仓 1/3；连续两日不能收复，再减至半仓以下。</li>
+    <li><b>分批兑现：</b>价格进入本月高点附近、出现放量长上影或相对 XLE 明显转弱时，分批兑现 20%–30%，而非仅凭盘中触及阻力位卖出。</li>
+    <li><b>继续持有：</b>收盘维持 MA20 上方、MA20 走平或上行，回调量缩且油价 / XLE 未同步破位，可保留核心仓位。</li>
+    <li><b>硬性纪律：</b>若收盘有效跌破本月平台下沿与 MA60，且下一交易日无法收复，停止摊平，重新评估中期持仓逻辑。</li>
+   </ul>
+  </div>
+  <div x-show="role==='all'||role==='wait'" class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-primary-200 dark:border-primary-900">
+   <h3 class="font-bold text-primary-700 dark:text-primary-300 flex items-center gap-2 mb-3"><i data-lucide="eye" class="w-4 h-4"></i>未持仓 / 观望者</h3>
+   <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-3 leading-relaxed">
+    <li><b>左侧观察：</b>等待价格回到 MA20 或最近一次放量突破平台附近，出现缩量止跌、收盘重新站回前一日高点后再考虑分批试仓。</li>
+    <li><b>右侧确认：</b>收盘突破本月高点，成交量至少达到 20 日均量 1.3 倍，同时 CVX / XLE 相对强度走高，次日回踩不破突破位，才考虑跟进。</li>
+    <li><b>不宜追高：</b>若股价距离 MA20 乖离超过 8%，或突破日放量但收盘远离日高，不追涨；等待均线跟上或回踩确认。</li>
+    <li><b>仓位控制：</b>首次试仓不超过计划总仓位的 1/3；止损位放在入场依据失效处，而不是机械采用固定百分比。</li>
+   </ul>
+  </div>
+ </div>
+ <div class="mt-4 rounded-xl p-5 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800">
+  <h3 class="font-bold text-rose-700 dark:text-rose-300 flex gap-2 items-center mb-3"><i data-lucide="shield-alert" class="w-4 h-4"></i>核心证伪与风控红线</h3>
+  <div class="grid sm:grid-cols-2 gap-4 text-sm text-rose-900 dark:text-rose-200">
+   <div><b>价格与量价证伪</b><p class="mt-1 leading-relaxed">CVX 放量跌破经行情确认的本月平台下沿和 MA60，且两日不能收复；或连续出现放量下跌、反弹缩量并持续跑输 XLE。具体美元价位必须由真实 OHLCV 数据计算后填写。</p></div>
+   <div><b>基本面证伪</b><p class="mt-1 leading-relaxed">核心油气项目产量 / 投产进度明显低于指引；单位成本或资本开支持续超预算；自由现金流不足以覆盖资本开支与股东回报；或油价下行同时炼化利润收缩，导致盈利预期下修。</p></div>
+  </div>
+ </div>
+</section>
+</main>
+<footer class="bg-white dark:bg-[#0b0f15] border-t border-gray-200 dark:border-gray-800">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+  <p><b class="text-gray-700 dark:text-gray-300">数据来源与核验：</b>本页面未取得可验证的 2026-10-26 至 2026-11-25 CVX / SPX / IXIC / XLE 逐日行情，因此未填入价格、成交量、涨跌幅、均线或关键价位。正式交易前应以 NYSE / Nasdaq 官方行情、Chevron 投资者关系公告、EIA 周度石油状况报告、OPEC 月报及美国国债收益率数据交叉核验。</p>
+  <p><b class="text-gray-700 dark:text-gray-300">分析基准：</b>目标窗口为 2026-10-26 至 2026-11-25，按美股实际交易日计算。收益率应统一使用相同复权口径；Alpha = CVX 区间收益率 − S&P 500 区间收益率。能源板块相对强弱以 XLE 为辅助基准。</p>
+  <p><b class="text-gray-700 dark:text-gray-300">方法说明：</b>归因权重及情景概率为待行情回测校准的研究先验，不是已观察到的本月资金流或统计结果。技术指标和策略触发价必须在补齐日线 OHLCV 后计算。</p>
+  <p><b class="text-gray-700 dark:text-gray-300">风险免责声明：</b>本报告是研究分析框架，不构成证券投资建议、收益承诺或个性化投资服务。能源股受商品价格、地缘政治、政策、汇率和资本开支影响显著，可能出现跳空及流动性风险。请结合自身风险承受能力独立决策。</p>
+  <p class="pt-2">© 2026 · CVX Monthly Price &amp; Volume Attribution Research</p>
+ </div>
+</footer>
+<script>
+window.addEventListener('scroll',()=>{
+ const y=document.documentElement.scrollTop||document.body.scrollTop;
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const bar=document.getElementById('progressBar');
+ if(bar)bar.style.width=(h>0?y/h*100:0)+'%';
+});
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:450,once:true,offset:30});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

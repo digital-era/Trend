@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>亚马逊（AMZN）最新动态全景追踪 · 截至 2026-11-23</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: { colors: {
+    primary: {
+      50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+      300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+      600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+      900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+    },
+    accent: {
+      50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+      300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+      600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+      900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+    }
+  }}}
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:88px}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05)}
+.card-interactive{transition:all .28s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.48)}
+table{width:100%;border-collapse:collapse;min-width:650px}
+th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#374151}
+.dark th{color:#f3f4f6}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.source{font-size:11px;line-height:1.65;overflow-wrap:anywhere}
+.dark .text-gray-500{color:#a1aab8}
+.dark .text-gray-600{color:#c1cad6}
+.dark .text-gray-700{color:#d5dce6}
+.dark .border-gray-200{border-color:#374151}
+.dark .border-gray-100{border-color:#303b49}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+<script>
+(function initTheme(){
+  if(window.self!==window.top||window.matchMedia('(prefers-color-scheme: dark)').matches)
+    document.documentElement.classList.add('dark');
+})();
+function syncThemeIcons(){
+  const dark=document.documentElement.classList.contains('dark');
+  const sun=document.getElementById('sunIcon'),moon=document.getElementById('moonIcon');
+  if(sun)sun.style.display=dark?'block':'none';
+  if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+  document.documentElement.classList.toggle('dark');syncThemeIcons();
+}
+function toggleMobileMenu(){
+  const menu=document.getElementById('mobileMenu');
+  if(menu)menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[60] transition-all duration-300" style="width:0%"></div>
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+<h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">亚马逊 · 最新动态全景追踪</h1>
+</div>
+<nav class="hidden md:flex items-center space-x-5">
+<a href="#overview" class="text-sm hover:text-primary-500">总览</a>
+<a href="#company" class="text-sm hover:text-primary-500">公司Top3</a>
+<a href="#industry" class="text-sm hover:text-primary-500">行业Top3</a>
+<a href="#macro" class="text-sm hover:text-primary-500">宏观政策</a>
+<a href="#matrix" class="text-sm hover:text-primary-500">催化矩阵</a>
+</nav>
+<div class="flex items-center gap-2">
+<button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="菜单"><i data-lucide="menu" class="w-4 h-4"></i></button>
+<button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+<i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800">
+<nav class="flex flex-col space-y-2.5 text-sm">
+<a href="#overview" onclick="toggleMobileMenu()">总览</a><a href="#company" onclick="toggleMobileMenu()">公司Top3</a>
+<a href="#industry" onclick="toggleMobileMenu()">行业Top3</a><a href="#macro" onclick="toggleMobileMenu()">宏观政策</a>
+<a href="#matrix" onclick="toggleMobileMenu()">催化矩阵</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main class="pt-24 pb-16">
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+<div class="flex flex-wrap items-center gap-2.5 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-semibold">NASDAQ: AMZN</span>
+<span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300 text-xs font-semibold">电商零售 · 云计算 · 数字广告 · AI基础设施</span>
+<span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold">近30日 · 2026-10-24 至 2026-11-23</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-bold mb-3">Amazon.com, Inc.（亚马逊）</h2>
+<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6 max-w-5xl">
+本期投资主线是<strong class="text-primary-600 dark:text-primary-400">AWS人工智能基础设施扩张与资本回报兑现</strong>。AWS在智利推进超过40亿美元区域投资、Bedrock模型生态扩展；与此同时，市场对AI资本开支回报、自由现金流及零售旺季利润率的审视仍是估值核心。近30日公开可核验的公司级新增信息以AWS为主，财报基准采用窗口外最近一次正式披露，不冒充本期事件。
+</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+<div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-1">消息面总体基调</div>
+<div class="text-xl font-bold text-emerald-600 dark:text-emerald-400">中性偏多</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-1">云业务扩张与AI产品供给改善，现金流及投入回报仍需验证</p>
+</div>
+<div class="rounded-xl p-4 bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-1">本月最强单一催化剂</div>
+<div class="text-base font-bold text-emerald-700 dark:text-emerald-300">AWS智利云区域投资超过40亿美元</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-1">2026-11-11 · AWS官方新闻</p>
+</div>
+<div class="rounded-xl p-4 bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-1">本月最需警惕信号</div>
+<div class="text-base font-bold text-rose-700 dark:text-rose-300">AI基础设施投资回收期与自由现金流压力</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-1">需结合资本开支、折旧及AWS利润率持续验证</p>
+</div>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+<div class="rounded-xl p-3 bg-gray-50 dark:bg-gray-800/70"><div class="text-xs text-gray-500 dark:text-gray-400">AMZN 11月20日收盘价</div><div class="text-xl font-bold font-mono">$246.82</div><div class="text-xs text-rose-600 dark:text-rose-400">当日 -4.10%</div></div>
+<div class="rounded-xl p-3 bg-gray-50 dark:bg-gray-800/70"><div class="text-xs text-gray-500 dark:text-gray-400">总市值（11月20日）</div><div class="text-xl font-bold font-mono">$2.67T</div><div class="text-xs text-gray-500 dark:text-gray-400">Yahoo Finance</div></div>
+<div class="rounded-xl p-3 bg-gray-50 dark:bg-gray-800/70"><div class="text-xs text-gray-500 dark:text-gray-400">TTM营收</div><div class="text-xl font-bold font-mono">$797.46B</div><div class="text-xs text-gray-500 dark:text-gray-400">截至11月20日页面数据</div></div>
+<div class="rounded-xl p-3 bg-gray-50 dark:bg-gray-800/70"><div class="text-xs text-gray-500 dark:text-gray-400">TTM杠杆自由现金流</div><div class="text-xl font-bold font-mono text-rose-600 dark:text-rose-400">-$34.73B</div><div class="text-xs text-gray-500 dark:text-gray-400">口径见Yahoo Finance</div></div>
+</div>
+<p class="source text-gray-500 dark:text-gray-400 mt-4">行情及估值数据：Yahoo Finance，页面标示截至2026-11-20；价格为最近一个交易日收盘价，不代表实时行情。<a class="text-primary-600 dark:text-primary-400 underline" target="_blank" rel="noopener" href="https://finance.yahoo.com/quote/AMZN/">来源页面</a>。</p>
+</div>
+</section>
+
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div><h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2></div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-5">排序依据：对亚马逊业务增长、利润率、现金流及估值预期的潜在影响。评级和目标价属于分析师观点，不是公司业绩承诺。</p>
+
+<article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4"><div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span><span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-11</span><span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">温和利好</span></div><span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 9.0 / 10</span></div>
+<h3 class="text-lg font-bold mb-3">AWS智利云基础设施区域进入有限客户运营阶段，承诺投资超过40亿美元</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
+<div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800"><div class="text-xs text-gray-500 dark:text-gray-400">投资承诺</div><div class="text-lg font-bold font-mono">$4B+</div></div>
+<div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800"><div class="text-xs text-gray-500 dark:text-gray-400">项目状态</div><div class="text-lg font-bold">有限客户运营</div></div>
+<div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800"><div class="text-xs text-gray-500 dark:text-gray-400">区域</div><div class="text-lg font-bold">智利</div></div>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">AWS官方于2026-11-11发布消息：AWS在智利的云基础设施区域已开始为部分客户提供服务，全面开放仍有后续阶段；公司宣布投资超过40亿美元建设该区域。官方称该投资将支持当地数字基础设施和就业。<strong>40亿美元是投资承诺，不应理解为本期已确认资本开支或收入。</strong></p>
+<div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-100 dark:border-gray-700 mb-4">
+<p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">影响深度：</strong>拉美本地云区域可降低企业客户对跨境数据传输、延迟和数据驻留的顾虑，扩大AWS在智利及周边市场的企业客户覆盖。收入贡献取决于客户迁移、云服务消耗及区域利用率；前期数据中心建设、电力、网络与折旧将先形成现金流和成本压力，不能把投资额直接等同利润增量。</p>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width:90%"></div></div>
+<p class="source text-gray-500 dark:text-gray-400 mt-3">信源：Amazon AWS官方新闻，2026-11-11，<a class="text-primary-600 dark:text-primary-400 underline" href="https://www.aboutamazon.com/amazon-aws-news" target="_blank" rel="noopener">AWS to launch first cloud infrastructure region in Chile, investing more than $4 billion</a>。</p>
+</article>
+
+<article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4"><div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span><span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-09</span><span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">温和利好</span></div><span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 8.2 / 10</span></div>
+<h3 class="text-lg font-bold mb-3">Claude Fable 5.2登陆AWS Bedrock，扩充高端模型供给与企业AI应用选择</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-4">
+<div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800"><div class="text-xs text-gray-500 dark:text-gray-400">产品平台</div><div class="text-lg font-bold">Bedrock</div></div>
+<div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800"><div class="text-xs text-gray-500 dark:text-gray-400">模型厂商</div><div class="text-lg font-bold">Anthropic</div></div>
+<div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800"><div class="text-xs text-gray-500 dark:text-gray-400">发布日</div><div class="text-lg font-bold font-mono">11-09</div></div>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">AWS官方新闻列表于2026-11-09公布：Claude Fable 5.2在Amazon Bedrock及Claude Platform on AWS提供服务。官方将其描述为面向技术工作和科学领域的高能力通用模型。该信息可确认产品可用性，但公开摘要没有给出模型调用量、定价、客户数或增量收入。</p>
+<div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-100 dark:border-gray-700 mb-4">
+<p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">影响深度：</strong>模型供给丰富有助于Bedrock维持多模型平台定位，降低企业客户因模型偏好而迁移云平台的概率，并推动推理、训练、存储和数据服务的交叉销售。短期收入贡献仍需观察企业工作负载迁移与token消耗；Anthropic模型合作也意味着AWS需在合作伙伴生态与自研模型之间平衡成本和差异化。</p>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width:82%"></div></div>
+<p class="source text-gray-500 dark:text-gray-400 mt-3">信源：Amazon AWS官方新闻，2026-11-09，<a class="text-primary-600 dark:text-primary-400 underline" href="https://www.aboutamazon.com/amazon-aws-news" target="_blank" rel="noopener">Claude Fable 5.2 is now available on AWS</a>。</p>
+</article>
+
+<article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4"><div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span><span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-20 至 2026-11-21</span><span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏多（预期层面）</span></div><span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 7.5 / 10</span></div>
+<h3 class="text-lg font-bold mb-3">华尔街机构更新目标价：Oppenheimer上调，Evercore维持高目标价，UBS启动买入覆盖</h3>
+<div class="overflow-x-auto mb-4">
+<table class="text-xs"><thead><tr class="bg-gray-50 dark:bg-gray-800"><th>机构</th><th>日期</th><th>评级/动作</th><th>目标价</th></tr></thead><tbody>
+<tr><td>UBS</td><td>2026-11-21</td><td>首次覆盖 · Buy</td><td>$340</td></tr>
+<tr><td>Evercore ISI</td><td>2026-11-20</td><td>维持 Buy</td><td>$355</td></tr>
+<tr><td>Oppenheimer</td><td>2026-11-20</td><td>维持 Outperform，上调目标价</td><td>$285 → $310</td></tr>
+<tr><td>Bank of America</td><td>2026-11-18</td><td>维持 Buy</td><td>$317</td></tr>
+</tbody></table>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">StockAnalysis及TipRanks所列机构预测显示，11月20日Oppenheimer将目标价由285美元上调至310美元；Evercore ISI维持355美元。UBS于11月21日启动覆盖并给出340美元买入评级。上述是分析师预测而非公司公告，目标价口径与预测周期可能不同。</p>
+<div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-100 dark:border-gray-700 mb-4">
+<p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">影响深度：</strong>机构继续给予买入或跑赢大市判断，说明市场对AWS增长、广告业务盈利能力及零售效率改善仍有较高预期，可能缓和短期风险偏好波动。但分析师目标价不能替代盈利预测；若AI资本开支增长快于云收入和经营现金流，估值支持可能快速减弱。11月20日股价收于246.82美元、当日下跌4.10%，显示正面评级并未消除短期抛压。</p>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width:75%"></div></div>
+<p class="source text-gray-500 dark:text-gray-400 mt-3">信源：<a class="text-primary-600 dark:text-primary-400 underline" href="https://stockanalysis.com/stocks/amzn/forecast/" target="_blank" rel="noopener">StockAnalysis机构预测汇总</a>；<a class="text-primary-600 dark:text-primary-400 underline" href="https://www.tipranks.com/stocks/amzn/forecast" target="_blank" rel="noopener">TipRanks分析师预测</a>；<a class="text-primary-600 dark:text-primary-400 underline" href="https://finance.yahoo.com/quote/AMZN/" target="_blank" rel="noopener">Yahoo Finance行情</a>，页面数据截至2026-11-20/21。</p>
+</article>
+
+<div class="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/70 dark:bg-amber-950/20 p-4 text-xs text-amber-900 dark:text-amber-200">
+<strong>财报窗口说明：</strong>本次检索到的近30日公司动态中，未将窗口外的季度财报包装成本期事件。Amazon最近一次正式季度业绩应以公司投资者关系网站原始公告核对；本报告不补造未核验的Q4业绩预告、订单、回购或管理层变动。
+</div>
+</section>
+
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-2"><div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i></div><h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2></div>
+<p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6">赛道界定：全球公有云基础设施与AI云平台（AWS/Azure/Google Cloud）、生成式AI模型服务，以及美国线上零售与数字广告。按对亚马逊AWS增长、云份额、资本开支和电商利润率的传导排序。</p>
+
+<article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 mb-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex flex-wrap gap-2 items-center mb-3"><span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span><span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-09</span><span class="text-xs rounded-full px-2.5 py-1 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">AI模型平台竞争升温</span></div>
+<h3 class="font-bold text-lg mb-2">企业级生成式AI从模型能力竞争转向云平台分发、工具链与生产部署竞争</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">AWS于11月9日将Claude Fable 5.2纳入Bedrock，体现云厂商通过聚合第三方模型扩展企业AI入口。对照竞争格局，Azure依托微软企业软件生态、Google Cloud依托自研模型与TPU体系，均在争夺企业推理和AI工作负载。AWS此举属于平台生态竞争的具体产品进展，而非独立的行业市场份额数据。</p>
+<div class="p-3.5 rounded-lg bg-accent-50/70 dark:bg-accent-900/25 border border-accent-200 dark:border-accent-800"><p class="text-xs leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">对亚马逊的横向映射：</strong>AWS多模型策略有助于减少客户锁定在单一模型供应商的顾虑，增加Bedrock、数据服务和算力消费机会；但模型能力本身可被竞品复制，真正的护城河在企业数据、开发工具、价格、可用算力及部署安全。偏利好AWS获客，尚不足以证明份额提升。</p></div>
+<p class="source text-gray-500 dark:text-gray-400 mt-3">信源：Amazon AWS官方，2026-11-09，<a class="text-primary-600 dark:text-primary-400 underline" href="https://www.aboutamazon.com/amazon-aws-news" target="_blank" rel="noopener">AWS News</a>。</p>
+</article>
+
+<article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 mb-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex flex-wrap gap-2 items-center mb-3"><span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span><span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-11</span><span class="text-xs rounded-full px-2.5 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">云基础设施区域扩张</span></div>
+<h3 class="font-bold text-lg mb-2">拉美云基础设施本地化持续推进，区域可用性成为企业云采购竞争要素</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">AWS宣布智利区域开始为部分客户提供服务，并承诺投资超过40亿美元。该项目说明大型云平台继续通过本地基础设施扩展地理覆盖，以满足低延迟、数据驻留和企业数字化需求。公开官方摘要没有提供竞争对手在智利同一时期的新增容量或市场份额对比，因此不对AWS的相对份额作定量推断。</p>
+<div class="p-3.5 rounded-lg bg-accent-50/70 dark:bg-accent-900/25 border border-accent-200 dark:border-accent-800"><p class="text-xs leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">对亚马逊的横向映射：</strong>新区域可提升AWS在拉美企业客户招标中的服务能力，对本地化部署要求较高的金融、公共部门和大型企业尤其重要。竞争优势需通过区域利用率、客户迁移和收入贡献验证；前期投入也会增加云行业资本密集度。</p></div>
+<p class="source text-gray-500 dark:text-gray-400 mt-3">信源：Amazon AWS官方，2026-11-11，<a class="text-primary-600 dark:text-primary-400 underline" href="https://www.aboutamazon.com/amazon-aws-news" target="_blank" rel="noopener">AWS to launch first cloud infrastructure region in Chile</a>。</p>
+</article>
+
+<article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 mb-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex flex-wrap gap-2 items-center mb-3"><span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span><span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-20（市场观察截点）</span><span class="text-xs rounded-full px-2.5 py-1 bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300">估值与资金面承压</span></div>
+<h3 class="font-bold text-lg mb-2">AI云投资回报与科技股风险偏好成为市场重新定价焦点</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">截至11月20日，AMZN收盘246.82美元、单日下跌4.10%；Yahoo Finance同页显示其市值约2.67万亿美元、TTM杠杆自由现金流约为负347.3亿美元。该数据是亚马逊自身财务与市场表现，不是行业总量统计；它反映市场关注点仍包括AI基础设施投入强度、折旧增长与现金回收速度。公开检索未取得可交叉验证的近30日全球云市场份额新数据，故不虚构行业份额或资本开支总额。</p>
+<div class="p-3.5 rounded-lg bg-accent-50/70 dark:bg-accent-900/25 border border-accent-200 dark:border-accent-800"><p class="text-xs leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">对亚马逊的横向映射：</strong>云行业投资热度是需求扩张的正面信号，但投资者将更严格比较AWS增速、经营利润率和资本开支回报。若云收入兑现慢于数据中心、电力和芯片支出，行业高投入将转化为自由现金流与估值折价；若推理需求快速增长，则高投入可能形成未来供给壁垒。</p></div>
+<p class="source text-gray-500 dark:text-gray-400 mt-3">信源：Yahoo Finance AMZN行情与财务统计页面，数据截至2026-11-20，<a class="text-primary-600 dark:text-primary-400 underline" href="https://finance.yahoo.com/quote/AMZN/" target="_blank" rel="noopener">AMZN Quote</a>。</p>
+</article>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 border border-gray-200 dark:border-gray-800">
+<h3 class="font-bold mb-4 flex items-center gap-2"><i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i>行业动态对标影响对比表</h3>
+<div class="overflow-x-auto"><table class="text-xs sm:text-sm"><thead><tr class="bg-gray-50 dark:bg-gray-800"><th>行业事件</th><th>涉及主体</th><th>对亚马逊利弊传导</th><th>影响周期</th></tr></thead><tbody class="text-gray-600 dark:text-gray-300">
+<tr><td>企业AI模型服务与云平台竞争</td><td>AWS、Anthropic、Azure、Google Cloud</td><td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">偏利好。</span>Bedrock模型丰富度提升，利于企业获客；竞争也会压低推理服务价格。</td><td>短中期</td></tr>
+<tr><td>拉美云基础设施本地化</td><td>AWS及全球云服务商</td><td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">偏利好。</span>扩展区域覆盖和客户可服务范围，但前期投入加大。</td><td>中长期</td></tr>
+<tr><td>AI基础设施高投入与现金流审视</td><td>大型云平台及AI算力供应链</td><td><span class="text-amber-600 dark:text-amber-400 font-semibold">双向影响。</span>需求扩大提升云收入空间，折旧、融资和电力成本可能压制自由现金流。</td><td>未来4—8季度</td></tr>
+</tbody></table></div>
+</div>
+</section>
+
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div><h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2></div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-5">宏观板块严格区分已核实政策与需要跟踪的宏观变量。当前可检索材料不足以支持将未经核实的11月新关税、联储决议或中国政策文件写成既成事实；下列以可验证的业务敞口与已公布政策框架为基础，避免杜撰本月政策日期。</p>
+
+<article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3"><div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国际 · 美国货币政策</span><span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-23 · 观察状态</span><span class="text-xs rounded-full px-2.5 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中性偏空风险</span></div><span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 8.5 / 10</span></div>
+<h3 class="font-bold text-lg mb-3">美联储利率路径与长端收益率：影响高资本开支科技公司的估值折现率</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4"><strong class="block text-gray-900 dark:text-white mb-2">1. 政策要点</strong>联邦公开市场委员会（FOMC）通过政策利率、资产负债表及前瞻指引影响美元融资条件。此处不填报未经核验的2026年11月利率决议或点阵图数值；需以美联储当期声明和会议纪要为准。</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4"><strong class="block text-gray-900 dark:text-white mb-2">2. 传导路径</strong>分子端：利率影响消费者信贷、零售需求和企业云支出。分母端：无风险利率上行提高远期AWS与AI投资现金流折现率，抬升资本成本；利率下行则可能改善成长股估值。</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4"><strong class="block text-gray-900 dark:text-white mb-2">3. 业务敞口</strong>AWS长期数据中心投资、物流自动化和AI芯片采购均具资本密集属性；美国消费者购买力也影响北美零售。对AMZN属于需求与估值双通道。</div>
+</div>
+<p class="source text-gray-500 dark:text-gray-400 mt-3">权威核验入口：<a class="text-primary-600 dark:text-primary-400 underline" href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">Federal Reserve · FOMC calendars and statements</a>。本卡为宏观传导分析，不声称11月23日发布了新的政策决定。</p>
+</article>
+
+<article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3"><div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · 贸易与关税</span><span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-10-24 至 2026-11-23 · 持续跟踪</span><span class="text-xs rounded-full px-2.5 py-1 bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300">潜在利空</span></div><span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 8.0 / 10</span></div>
+<h3 class="font-bold text-lg mb-3">美国贸易关税与跨境贸易政策不确定性：影响零售商品成本、卖家供给及消费价格</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4"><strong class="block text-gray-900 dark:text-white mb-2">1. 政策要点</strong>美国贸易代表办公室（USTR）、美国商务部及海关与边境保护局（CBP）是关税、贸易救济及进口执行规则的核心机构。未取得足以确认近30日新增统一关税措施的原始公告，故不编造税率或生效日。</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4"><strong class="block text-gray-900 dark:text-white mb-2">2. 传导路径</strong>分子端：进口商品关税可能推高第三方卖家进货成本、亚马逊自营采购成本及履约费用；卖家提价可能削弱转化率。分母端：通胀预期和贸易摩擦可能推高利率与风险溢价。</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4"><strong class="block text-gray-900 dark:text-white mb-2">3. 业务敞口</strong>北美零售商品来源全球化，第三方卖家占据平台重要交易生态；成本最终由卖家、平台与消费者分担。广告业务也可能受卖家利润率及营销预算影响。</div>
+</div>
+<p class="source text-gray-500 dark:text-gray-400 mt-3">权威核验入口：<a class="text-primary-600 dark:text-primary-400 underline" href="https://ustr.gov/issue-areas/enforcement/section-301-investigations" target="_blank" rel="noopener">USTR贸易调查</a>；<a class="text-primary-600 dark:text-primary-400 underline" href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP贸易公告</a>。政策影响为情景分析，非新增政策公告。</p>
+</article>
+
+<article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3"><div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">中国 · 跨境电商与出口政策</span><span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-10-24 至 2026-11-23 · 持续跟踪</span><span class="text-xs rounded-full px-2.5 py-1 bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中性偏多（条件性）</span></div><span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 6.8 / 10</span></div>
+<h3 class="font-bold text-lg mb-3">中国跨境电商合规、通关与出口政策：影响Amazon平台中国卖家供给和全球履约</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4"><strong class="block text-gray-900 dark:text-white mb-2">1. 政策要点</strong>中国海关总署、商务部及税务部门是跨境电商通关、出口监管和税务政策的主要发布机构。当前可用检索未确认近30日针对亚马逊平台新增的全国性重大政策文件，因此不将既有制度误写为本月新政。</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4"><strong class="block text-gray-900 dark:text-white mb-2">2. 传导路径</strong>分子端：通关效率、出口退税和合规成本影响中国卖家商品价格、上新速度及供货稳定性；监管趋严会增加卖家运营成本，但规范化有利于长期供应链质量。分母端：出口预期及人民币汇率影响卖家美元收入折算与成本。</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4"><strong class="block text-gray-900 dark:text-white mb-2">3. 业务敞口</strong>亚马逊第三方卖家生态中，中国跨境卖家是重要供给来源之一。平台交易额、广告投放、物流服务和全球商品丰富度均可能受到影响；但缺乏本期最新卖家占比数据，不给出未经核验的敞口比例。</div>
+</div>
+<p class="source text-gray-500 dark:text-gray-400 mt-3">权威核验入口：<a class="text-primary-600 dark:text-primary-400 underline" href="https://www.mofcom.gov.cn/" target="_blank" rel="noopener">中国商务部</a>；<a class="text-primary-600 dark:text-primary-400 underline" href="http://www.customs.gov.cn/" target="_blank" rel="noopener">中国海关总署</a>。本卡为政策传导观察，不代表本月已发布新规。</p>
+</article>
+</section>
+
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-10" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div><h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2></div>
+<div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 mb-8">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4"><h3 class="font-bold text-sm sm:text-base">九大动态催化矩阵（点击事件跳转详情）</h3><div class="flex flex-wrap gap-2 text-xs">
+<button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800'" class="px-3 py-1 rounded-full">全部</button>
+<button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800'" class="px-3 py-1 rounded-full">公司</button>
+<button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800'" class="px-3 py-1 rounded-full">行业</button>
+<button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800'" class="px-3 py-1 rounded-full">宏观</button>
+</div></div>
+<div class="overflow-x-auto"><table class="text-xs sm:text-sm"><thead><tr class="bg-gray-50 dark:bg-gray-800"><th>类别</th><th>日期</th><th>核心事件</th><th>影响方向</th><th>强度</th><th>核心投资含义</th></tr></thead><tbody class="text-gray-600 dark:text-gray-300">
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>公司</td><td>11-11</td><td>AWS智利区域投资超过40亿美元</td><td class="text-emerald-600 font-semibold">温和利好</td><td>9.0</td><td>扩展拉美客户覆盖，长期收入机会与前期Capex并存</td></tr>
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>公司</td><td>11-09</td><td>Claude Fable 5.2登陆Bedrock</td><td class="text-emerald-600 font-semibold">温和利好</td><td>8.2</td><td>增强企业AI平台吸引力，观察推理消耗兑现</td></tr>
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>公司</td><td>11-20/21</td><td>Oppenheimer上调目标价，UBS启动买入覆盖</td><td class="text-amber-600 font-semibold">预期偏多</td><td>7.5</td><td>机构预期支撑，但不能替代盈利及现金流验证</td></tr>
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>行业</td><td>11-09</td><td>企业级AI模型聚合与云平台分发竞争</td><td class="text-emerald-600 font-semibold">偏利好</td><td>8.5</td><td>Bedrock多模型策略强化平台获客能力</td></tr>
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>行业</td><td>11-11</td><td>拉美云区域本地化与基础设施投资</td><td class="text-emerald-600 font-semibold">偏利好</td><td>8.0</td><td>地理覆盖扩张，投入先行、收入后置</td></tr>
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>行业</td><td>11-20</td><td>AI投资回报与自由现金流受到市场审视</td><td class="text-amber-600 font-semibold">双向影响</td><td>7.8</td><td>现金流转化率将决定高资本开支估值容忍度</td></tr>
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>宏观</td><td>持续跟踪</td><td>美联储利率路径及长端收益率</td><td class="text-amber-600 font-semibold">估值敏感</td><td>8.5</td><td>折现率和消费融资成本影响双重估值锚</td></tr>
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>宏观</td><td>持续跟踪</td><td>美国贸易关税与跨境进口规则</td><td class="text-rose-600 font-semibold">潜在利空</td><td>8.0</td><td>商品成本、卖家利润率与消费者价格传导</td></tr>
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td>宏观</td><td>持续跟踪</td><td>中国跨境电商通关、出口与税务规则</td><td class="text-amber-600 font-semibold">条件性利好</td><td>6.8</td><td>影响中国卖家供给、履约成本及平台商品丰富度</td></tr>
+</tbody></table></div>
+</div>
+
+<h3 class="text-lg font-bold mb-4">未来30天前瞻观察清单（2026-11-24 至 2026-12-23）</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive"><div class="flex items-center gap-2 mb-2"><i data-lucide="shopping-cart" class="w-4 h-4 text-primary-500"></i><span class="text-xs font-bold text-primary-600 dark:text-primary-300">2026-11-27 · 美国零售旺季</span></div><h4 class="font-bold mb-2">Black Friday与Cyber Monday交易表现</h4><p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">观察亚马逊流量、订单转化、客单价、促销折扣及履约时效。重点区分GMV增长与促销强度、物流成本对零售利润率的影响。日期为零售日历，非公司财报公告。</p></div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive"><div class="flex items-center gap-2 mb-2"><i data-lucide="landmark" class="w-4 h-4 text-accent-500"></i><span class="text-xs font-bold text-accent-600 dark:text-accent-300">2026年12月 · FOMC窗口</span></div><h4 class="font-bold mb-2">美联储年末议息会议及利率指引</h4><p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">以美联储官方会议日历核对具体日期与声明发布时间。关注政策利率、点阵图及长端收益率，对高资本开支科技股估值和消费者融资条件的影响。</p></div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive"><div class="flex items-center gap-2 mb-2"><i data-lucide="cloud" class="w-4 h-4 text-primary-500"></i><span class="text-xs font-bold text-primary-600 dark:text-primary-300">未来30日持续跟踪</span></div><h4 class="font-bold mb-2">AWS智利区域客户开放及商业化进度</h4><p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">关注正式全面开放时间、区域服务清单、客户案例、当地数据中心建设进度及后续投资披露。重点验证区域投入转化为持续云消费收入的速度。</p></div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive"><div class="flex items-center gap-2 mb-2"><i data-lucide="cpu" class="w-4 h-4 text-rose-500"></i><span class="text-xs font-bold text-rose-600 dark:text-rose-400">未来30日持续跟踪</span></div><h4 class="font-bold mb-2">AI算力采购、电力供应与资本开支回报</h4><p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">追踪AWS新增数据中心、芯片供应、算力利用率和企业推理需求。判断资本开支增长是否同步转化为AWS收入、营业利润和经营现金流。</p></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-5">本期未核验到亚马逊在未来30日内已正式确认的下一次财报发布日期或特定解禁事件；不将市场预测日程写成确定事件。公司日程以<a class="text-primary-600 dark:text-primary-400 underline" href="https://ir.aboutamazon.com/" target="_blank" rel="noopener">Amazon Investor Relations</a>更新为准。</p>
+</section>
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div><h4 class="font-bold text-sm mb-3">数据来源与核验入口</h4><ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+<li>Amazon AWS官方新闻：2026-11-09 Claude Fable 5.2；2026-11-11智利云区域投资公告。</li>
+<li>StockAnalysis、TipRanks：2026-11-17至11-21分析师评级与目标价汇总。</li>
+<li>Yahoo Finance：AMZN行情、估值及财务统计，页面数据截至2026-11-20。</li>
+<li>Federal Reserve：FOMC官方日历及政策声明。</li>
+<li>USTR、CBP、中国商务部、中国海关总署：贸易及跨境政策核验入口。</li>
+</ul></div>
+<div><h4 class="font-bold text-sm mb-3">覆盖时间区间与数据边界</h4><p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">主窗口：2026-10-24至2026-11-23（30个自然日）。公司与行业已列事件的发生日期明确标注。宏观部分对尚未核实的本期新政策明确标注为持续跟踪和情景分析，不视为已发生公告。行情截点为2026-11-20。部分行业动态使用公司官方产品公告作为可验证的行业竞争事实，不将其扩展为未经证实的市场份额结论。</p></div>
+<div><h4 class="font-bold text-sm mb-3">免责声明</h4><p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">本报告基于公开网页和可核验信息整理，仅供投资研究参考，不构成证券买卖建议。分析师目标价属于第三方预测；投资承诺不等同已发生资本支出；宏观传导分析不代表政策已出台。数据可能存在发布时间差、口径差和后续修订。投资者应以公司公告、监管机构原文及交易所数据为准，并独立承担投资风险。</p></div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+<p class="text-xs text-gray-400 dark:text-gray-500">Amazon.com, Inc.（NASDAQ: AMZN）· 最新动态全景追踪 · 截至2026-11-23</p>
+<p class="text-xs text-gray-400 dark:text-gray-500">Event-driven equity research · Generated 2026-11-23</p>
+</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const y=document.documentElement.scrollTop||document.body.scrollTop;
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const bar=document.getElementById('progressBar');
+ if(bar)bar.style.width=(h>0?y/h*100:0)+'%';
+});
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:450,offset:30,once:true});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

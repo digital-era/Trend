@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苹果（AAPL）最新走势归因与操作指引｜截至 2026-11-23</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: 'hsl(20, 90%, 95%)', 100: 'hsl(20, 90%, 85%)', 200: 'hsl(20, 90%, 75%)',
+          300: 'hsl(20, 90%, 65%)', 400: 'hsl(20, 90%, 55%)', 500: 'hsl(20, 90%, 50%)',
+          600: 'hsl(20, 90%, 45%)', 700: 'hsl(20, 90%, 35%)', 800: 'hsl(20, 90%, 25%)',
+          900: 'hsl(20, 90%, 15%)', 950: 'hsl(20, 90%, 10%)'
+        },
+        accent: {
+          50: 'hsl(30, 85%, 95%)', 100: 'hsl(30, 85%, 85%)', 200: 'hsl(30, 85%, 75%)',
+          300: 'hsl(30, 85%, 65%)', 400: 'hsl(30, 85%, 60%)', 500: 'hsl(30, 85%, 55%)',
+          600: 'hsl(30, 85%, 50%)', 700: 'hsl(30, 85%, 40%)', 800: 'hsl(30, 85%, 30%)',
+          900: 'hsl(30, 85%, 20%)', 950: 'hsl(30, 85%, 10%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 84px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}
+.btn-interactive { transition: all 0.2s ease-out; }
+.btn-interactive:hover { transform: scale(1.05); }
+.btn-interactive:active { transform: scale(0.95); }
+.card-interactive { transition: all 0.28s ease-out; }
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.14);
+}
+.dark .card-interactive:hover {
+  box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.45);
+}
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 0.7rem 0.75rem; border-bottom: 1px solid hsl(0, 0%, 90%); white-space: nowrap; }
+td { text-align: left; padding: 0.75rem; border-bottom: 1px solid hsl(0, 0%, 90%); vertical-align: top; line-height: 1.5; }
+.dark th, .dark td { border-bottom-color: rgba(255, 255, 255, 0.08); }
+.driver-bar { height: 9px; border-radius: 999px; background: hsl(0, 0%, 90%); overflow: hidden; }
+.dark .driver-bar { background: rgba(255, 255, 255, 0.12); }
+.driver-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%)); }
+#mobileMenu { display: none; }
+@media (min-width: 768px) { #mobileMenu { display: none !important; } }
+@media (max-width: 767px) { #mobileMenu.mobile-menu-open { display: block !important; } }
+.price-tag { font-variant-numeric: tabular-nums; }
+.bg-grid { background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.06) 1px, transparent 0); background-size: 24px 24px; }
+.dark .bg-grid { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0); }
+.ref-tag { font-size: 10px; opacity: 0.6; margin-left: 2px; font-family: monospace; }
+</style>
+<script>
+(function initTheme() {
+  const inIframe = window.self !== window.top;
+  if (inIframe || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+
+function syncThemeIcons() {
+  const isDark = document.documentElement.classList.contains('dark');
+  const sun = document.getElementById('sunIcon');
+  const moon = document.getElementById('moonIcon');
+  if (sun) sun.style.display = isDark ? 'block' : 'none';
+  if (moon) moon.style.display = isDark ? 'none' : 'block';
+}
+
+function toggleDarkMode() {
+  document.documentElement.classList.toggle('dark');
+  syncThemeIcons();
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen bg-grid transition-colors duration-200">
+
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur-md bg-white/90 dark:bg-[#111827]/90 border-b border-primary-500/20 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+        <h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+          苹果 <span class="text-xs sm:text-sm font-mono text-gray-400 dark:text-gray-500">AAPL</span>
+        </h1>
+      </div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">走势总览</a>
+        <a href="#phases" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">阶段复盘</a>
+        <a href="#drivers" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">涨跌根因</a>
+        <a href="#technicals" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">量价结构</a>
+        <a href="#strategy" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">操作指引</a>
+      </nav>
+      <div class="flex items-center space-x-2">
+        <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300 border border-transparent dark:border-gray-700" aria-label="菜单">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+        <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300 border border-transparent dark:border-gray-700" aria-label="切换暗色模式">
+          <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-4 h-4" style="display:block"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800 max-h-[calc(100vh-80px)] overflow-y-auto">
+      <nav class="flex flex-col space-y-2.5">
+        <a href="#overview" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">走势总览</a>
+        <a href="#phases" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">阶段复盘</a>
+        <a href="#drivers" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">涨跌根因</a>
+        <a href="#technicals" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">量价结构</a>
+        <a href="#strategy" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">操作指引</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-16 max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+
+<!-- ================= HERO ================= -->
+<section id="overview" data-aos="fade-up">
+  <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800">
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <span class="text-xs font-semibold tracking-wider uppercase text-primary-600 dark:text-primary-400">量价归因 · 买方视角</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 font-mono">USD · NASDAQ</span>
+          <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-mono border border-transparent dark:border-gray-700">2026-10-23 → 2026-11-20</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white">苹果（AAPL）</h2>
+      </div>
+      <div class="flex flex-col sm:items-end gap-1">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+          <i data-lucide="activity" class="w-3.5 h-3.5"></i> 财报后冲高回落 · 相对强势
+        </span>
+        <span class="text-[11px] text-gray-400 dark:text-gray-500">Q4业绩超预期创历史高后，随大盘AI去杠杆回调，但仍显著跑赢</span>
+      </div>
+    </div>
+
+    <p class="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300 max-w-4xl">
+      11月2日发布的财政Q4（截至2026-09-26）营收<strong class="text-gray-900 dark:text-white">114.5亿美元</strong>（同比+12%）、EPS <strong>2.10美元</strong>超预期，驱动股价自低点快速拉升并在11月13日触及历史新高<strong>360.83美元</strong>。随后在大盘科技股（尤其AI相关）大幅去杠杆中同步回落，11月20日收于<strong class="text-primary-600 dark:text-primary-400">342.56美元</strong>（-1.90%）。近一月区间小幅下跌约1.5%，但标普500同期下跌约9.3%，苹果Alpha显著为正（约+7.8pct），显示相对防御与资金偏好。
+    </p>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
+      <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700/80">
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">最新收盘价</p>
+        <p class="text-xl sm:text-2xl font-black price-tag text-gray-900 dark:text-white">342.56 <span class="text-xs font-normal text-gray-400">美元</span></p>
+        <p class="text-[11px] text-rose-600 dark:text-rose-400 mt-1 font-mono">2026-11-20 · -1.90%</p>
+      </div>
+      <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700/80">
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">近 1 月区间涨跌幅</p>
+        <p class="text-xl sm:text-2xl font-black price-tag text-rose-500 dark:text-rose-400">≈ -1.5%</p>
+        <p class="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1">跑赢标普500 ≈ +7.8 pct</p>
+      </div>
+      <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700/80">
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">区间最高 / 最低</p>
+        <p class="text-lg sm:text-2xl font-black price-tag text-gray-900 dark:text-white">360.83 <span class="text-sm font-normal text-gray-400">/</span> 325.33</p>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">区间振幅约 10.9%（35.5美元）</p>
+      </div>
+      <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700/80">
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">当前技术定位</p>
+        <p class="text-base sm:text-lg font-black text-amber-600 dark:text-amber-400">高位回调消化</p>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">距ATH回撤约5.1%，相对强势</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 1. 量价全景与阶段拆解 ================= -->
+<section id="phases" data-aos="fade-up">
+  <div class="flex items-center gap-2.5 mb-5">
+    <span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+      <i data-lucide="layers" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i>
+    </span>
+    <h2 class="text-lg sm:text-xl font-bold">一、近一月量价全景与阶段拆解</h2>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-5">
+    <h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-4 h-4 text-primary-500"></i>标的 vs 基准指数（2026-10-23 → 2026-11-20）</h3>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm">
+        <thead>
+          <tr class="text-gray-500 dark:text-gray-400 text-xs bg-gray-50 dark:bg-gray-800/70">
+            <th>标的 / 指数</th><th>区间涨跌幅</th><th>最高日 / 价格</th><th>最低日 / 价格</th><th>量能特征</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700 dark:text-gray-300">
+          <tr>
+            <td class="font-semibold text-primary-700 dark:text-primary-300 whitespace-nowrap">苹果 AAPL</td>
+            <td class="font-bold text-rose-500 dark:text-rose-400 price-tag whitespace-nowrap">≈ -1.5%</td>
+            <td class="whitespace-nowrap font-mono">11-13 / 360.83</td>
+            <td class="whitespace-nowrap font-mono">11-03 / 325.33</td>
+            <td class="min-w-[200px]">财报前后放量，11-04大涨日成交约90M；后期回调量能中等</td>
+          </tr>
+          <tr>
+            <td class="font-semibold whitespace-nowrap">标普500</td>
+            <td class="font-bold text-rose-500 dark:text-rose-400 price-tag whitespace-nowrap">≈ -9.3%</td>
+            <td class="whitespace-nowrap font-mono">11-04 / 7688.62</td>
+            <td class="whitespace-nowrap font-mono">11-20 / 6910.39</td>
+            <td class="min-w-[200px]">11月中下旬AI相关科技股大幅去杠杆，指数进入快速回调</td>
+          </tr>
+          <tr>
+            <td class="font-semibold whitespace-nowrap">纳斯达克</td>
+            <td class="font-bold text-rose-500 dark:text-rose-400 whitespace-nowrap">更深回撤</td>
+            <td class="whitespace-nowrap">—</td><td class="whitespace-nowrap">—</td>
+            <td class="min-w-[200px]">AI/芯片板块领跌，苹果因低资本支出与服务占比相对抗跌</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-[11px] text-gray-400 dark:text-gray-500 mt-3 leading-relaxed">
+      数据来源：MarketWatch、StockAnalysis、YCharts等公开行情。区间涨跌幅按10-23收盘约347.73至11-20收盘342.56估算；标普500按约7624至6910估算。Alpha按算术差约<strong class="text-emerald-600 dark:text-emerald-400">+7.8个百分点</strong>。
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-gray-400 dark:border-l-gray-500">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">波段 1 · 财报前寻底</span>
+        <span class="text-xs font-mono text-gray-400">10-23 → 11-03</span>
+      </div>
+      <p class="text-2xl font-black price-tag text-rose-500 dark:text-rose-400 mb-2">≈ -4.6%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+        10月下旬整体震荡下行，11月3日盘中下探<strong>325.33美元</strong>（区间最低）并收于331.90。成交量维持中等水平，属于财报前的谨慎消化与获利回吐阶段。
+      </p>
+    </div>
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">波段 2 · 财报催化冲高</span>
+        <span class="text-xs font-mono text-gray-400">11-04 → 11-13</span>
+      </div>
+      <p class="text-2xl font-black price-tag text-emerald-600 dark:text-emerald-400 mb-2">≈ +8.7%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+        11月2日盘后财报超预期，11月4日放量大涨约5.3%至349.51（成交约89.6M股）。随后持续上攻，11月13日触及<strong>360.83美元</strong>历史新高，完成对前期压力的有效突破。
+      </p>
+    </div>
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300">波段 3 · 大盘拖累回落</span>
+        <span class="text-xs font-mono text-gray-400">11-14 → 11-20</span>
+      </div>
+      <p class="text-2xl font-black price-tag text-rose-500 dark:text-rose-400 mb-2">≈ -3.8%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+        随AI相关科技股大幅去杠杆，苹果从高点回落至11月20日收<strong>342.56美元</strong>。量能中等，未出现恐慌性抛售，相对标普500仍显著抗跌，体现防御属性。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 2. 涨跌深层根因 ================= -->
+<section id="drivers" data-aos="fade-up">
+  <div class="flex items-center gap-2.5 mb-5">
+    <span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+      <i data-lucide="git-branch" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i>
+    </span>
+    <h2 class="text-lg sm:text-xl font-bold">二、上涨与下跌的深层根因剖析</h2>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-5">
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+      <h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
+        <i data-lucide="arrow-up-circle" class="w-4 h-4"></i> 多头根因（上涨驱动）
+      </h3>
+      <div class="space-y-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+        <div class="pl-3.5 border-l-2 border-emerald-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">① 财政Q4业绩全面超预期，创多项纪录</p>
+          <p class="leading-relaxed">营收<strong>114.5亿美元</strong>（同比+12%），iPhone与Services均创季度纪录；稀释EPS <strong>2.10美元</strong>（+14%），全年营收达<strong>478.8亿美元</strong>（+15%）。毛利率受关税退税一次性提升，但核心业务增长扎实。<span class="ref-tag">[Apple IR 11-02]</span></p>
+        </div>
+        <div class="pl-3.5 border-l-2 border-emerald-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">② 低资本支出AI叙事获资金青睐</p>
+          <p class="leading-relaxed">相较其他大科技重资本投入AI基础设施，苹果AI路径更偏软件与端侧，资本开支可控。在AI相关股票大幅去杠杆期间，资金将其视为相对防御标的，叠加AI Agent招聘新闻提供情绪支撑。</p>
+        </div>
+        <div class="pl-3.5 border-l-2 border-emerald-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">③ 服务业务与安装基数持续扩张</p>
+          <p class="leading-relaxed">Services创历史新高，高毛利贡献稳定；活跃设备安装基数再创新高，为后续订阅与硬件升级提供护城河，支撑中长期估值。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+      <h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-rose-600 dark:text-rose-400">
+        <i data-lucide="arrow-down-circle" class="w-4 h-4"></i> 空头 / 压制根因（回调与阻力）
+      </h3>
+      <div class="space-y-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+        <div class="pl-3.5 border-l-2 border-rose-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">① 大盘AI去杠杆与科技股普跌</p>
+          <p class="leading-relaxed">11月中下旬标普500与纳斯达克因AI资本开支担忧、估值重估出现快速回调（标普11月跌幅超8%）。苹果虽相对抗跌，仍无法完全免疫Beta冲击，从360高点回撤约5%。</p>
+        </div>
+        <div class="pl-3.5 border-l-2 border-rose-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">② 存储成本上升压制毛利率预期</p>
+          <p class="leading-relaxed">CEO公开称内存定价“前所未有”，采购义务显著上升。Q4毛利率已降至47.9%，市场担忧2027年毛利率进一步承压，限制估值扩张空间。</p>
+        </div>
+        <div class="pl-3.5 border-l-2 border-rose-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">③ 高位获利回吐与短期乖离消化</p>
+          <p class="leading-relaxed">11月13日创历史新高后，短线资金兑现利润；同时部分分析师微调2027年EPS预期，叠加整体风险偏好下降，导致高位承压。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mt-5">
+    <h3 class="text-sm font-bold mb-4 flex items-center gap-2"><i data-lucide="pie-chart" class="w-4 h-4 text-accent-500"></i>归因权重矩阵（近一月走势解释力，合计 100%）</h3>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between text-xs mb-1.5"><span class="font-semibold text-gray-800 dark:text-gray-200">个股基本面与公司事件</span><span class="font-bold font-mono text-primary-600 dark:text-primary-400">40%</span></div>
+        <div class="driver-bar"><div class="driver-fill" style="width:40%"></div></div>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">Q4业绩超预期是冲高至ATH的核心催化剂，服务与iPhone纪录支撑中期逻辑。</p>
+      </div>
+      <div>
+        <div class="flex justify-between text-xs mb-1.5"><span class="font-semibold text-gray-800 dark:text-gray-200">行业景气与板块 / 情绪轮动</span><span class="font-bold font-mono text-primary-600 dark:text-primary-400">25%</span></div>
+        <div class="driver-bar"><div class="driver-fill" style="width:25%"></div></div>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">AI叙事分化中苹果被资金视为相对防御，但存储成本与毛利率担忧形成压制。</p>
+      </div>
+      <div>
+        <div class="flex justify-between text-xs mb-1.5"><span class="font-semibold text-gray-800 dark:text-gray-200">宏观利率、汇率与大盘 Beta</span><span class="font-bold font-mono text-primary-600 dark:text-primary-400">35%</span></div>
+        <div class="driver-bar"><div class="driver-fill" style="width:35%"></div></div>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">11月中下旬科技股大幅去杠杆是回落主因，苹果Alpha为正但无法完全对冲Beta。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. 资金行为与技术面 ================= -->
+<section id="technicals" data-aos="fade-up">
+  <div class="flex items-center gap-2.5 mb-5">
+    <span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+      <i data-lucide="activity" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i>
+    </span>
+    <h2 class="text-lg sm:text-xl font-bold">三、资金行为与技术面关键位诊断</h2>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 mb-5 text-xs">
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+      <span class="text-gray-400 block">最新收盘</span>
+      <span class="font-bold font-mono text-sm text-gray-900 dark:text-white">342.56</span>
+    </div>
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+      <span class="text-gray-400 block">距ATH回撤</span>
+      <span class="font-bold font-mono text-sm text-amber-600 dark:text-amber-400">≈ -5.1%</span>
+    </div>
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+      <span class="text-gray-400 block">区间低点</span>
+      <span class="font-bold font-mono text-sm text-emerald-600 dark:text-emerald-400">325.33</span>
+    </div>
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+      <span class="text-gray-400 block">相对强弱</span>
+      <span class="font-bold font-mono text-sm text-emerald-600 dark:text-emerald-400">显著跑赢</span>
+    </div>
+    <div class="col-span-2 sm:col-span-1 bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+      <span class="text-gray-400 block">趋势定性</span>
+      <span class="font-bold font-mono text-sm text-amber-600 dark:text-amber-400">高位震荡</span>
+    </div>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-4 mb-5">
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800">
+      <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">量价配合与资金结构</h3>
+      <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">财报后放量突破 → 高位回调换手，筹码相对稳定</p>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+        11月4日放量（约89.6M股）确认突破有效性，随后冲高至ATH过程中量能维持。回落阶段成交量中等（11-20约80.7M），未见极端抛售，显示机构筹码未出现明显发散派发。相对大盘的抗跌性进一步印证资金偏好。
+      </p>
+      <div class="text-xs bg-gray-50 dark:bg-gray-800/70 rounded-lg p-3 border border-gray-100 dark:border-gray-700/70">
+        <strong>趋势结论：</strong>中期仍处上升通道，短期进入高位震荡消化区；若能守住335–340支撑，结构未破坏。
+      </div>
+    </div>
+
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800">
+      <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+        <span>价格水位空间标尺（一眼看清盈亏比）</span>
+        <span class="font-mono text-primary-600 dark:text-primary-400">现价 342.56</span>
+      </h3>
+      <div class="space-y-2 text-xs font-mono">
+        <div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/50">
+          <span class="text-rose-700 dark:text-rose-300 font-bold">▲ 强阻力区 355–361</span>
+          <span class="text-rose-600 dark:text-rose-400">+3.6% ~ +5.4%（前高/ATH）</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-primary-100/80 dark:bg-primary-900/50 border-2 border-primary-500">
+          <span class="text-primary-800 dark:text-primary-200 font-black">● 现价 342.56（回调中继）</span>
+          <span class="text-primary-700 dark:text-primary-300 font-sans font-semibold">观察企稳</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50">
+          <span class="text-emerald-700 dark:text-emerald-300 font-bold">▼ 低吸 / 一撑 335–340</span>
+          <span class="text-emerald-600 dark:text-emerald-400">−2.2% ~ −0.7%（近期支撑）</span>
+        </div>
+        <div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+          <span class="text-gray-700 dark:text-gray-300 font-bold">⛨ 强撑底线 325–330</span>
+          <span class="text-gray-500 dark:text-gray-400">−5.1% ~ −3.7%（破位红线）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+    <h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary-500"></i>关键价格锚点明细表（截至 2026-11-20 收盘）</h3>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm">
+        <thead>
+          <tr class="text-gray-500 dark:text-gray-400 text-xs bg-gray-50 dark:bg-gray-800/70">
+            <th>层级</th><th>价格（美元）</th><th>技术与筹码依据</th><th>距现价</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700 dark:text-gray-300">
+          <tr>
+            <td class="font-semibold text-rose-600 dark:text-rose-400 whitespace-nowrap">强阻力位</td>
+            <td class="price-tag font-bold whitespace-nowrap">355.0 – 361.0</td>
+            <td class="min-w-[220px]">11-13历史高点360.83及附近密集成交区</td>
+            <td class="text-rose-500 whitespace-nowrap font-mono">+3.6% ~ +5.4%</td>
+          </tr>
+          <tr>
+            <td class="font-semibold text-amber-600 dark:text-amber-400 whitespace-nowrap">第一压力位</td>
+            <td class="price-tag font-bold whitespace-nowrap">348.0 – 352.0</td>
+            <td class="min-w-[220px]">11月中旬震荡平台与近期反弹高点区域</td>
+            <td class="text-amber-500 whitespace-nowrap font-mono">+1.6% ~ +2.8%</td>
+          </tr>
+          <tr class="bg-primary-50/70 dark:bg-primary-950/50">
+            <td class="font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">当前最新价</td>
+            <td class="price-tag font-black text-primary-700 dark:text-primary-300 whitespace-nowrap">342.56</td>
+            <td>2026-11-20 收盘价（-1.90%）</td>
+            <td class="font-mono">—</td>
+          </tr>
+          <tr>
+            <td class="font-semibold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">第一支撑位</td>
+            <td class="price-tag font-bold whitespace-nowrap">335.0 – 340.0</td>
+            <td class="min-w-[220px]">近期回落中的低点与短期均线动态支撑区</td>
+            <td class="text-emerald-500 whitespace-nowrap font-mono">−2.2% ~ −0.7%</td>
+          </tr>
+          <tr>
+            <td class="font-semibold text-emerald-700 dark:text-emerald-300 whitespace-nowrap">强支撑 / 防守底线</td>
+            <td class="price-tag font-bold whitespace-nowrap">325.0 – 330.0</td>
+            <td class="min-w-[220px]">11-03低点325.33附近，跌破则突破结构面临考验</td>
+            <td class="text-emerald-600 whitespace-nowrap font-mono">−5.1% ~ −3.7%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 4. 情景推演与操作指引 ================= -->
+<section id="strategy" x-data="{ role: 'all' }" data-aos="fade-up">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+    <div class="flex items-center gap-2.5">
+      <span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+        <i data-lucide="target" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i>
+      </span>
+      <h2 class="text-lg sm:text-xl font-bold">四、未来情景推演与实战操作指引</h2>
+    </div>
+    <div class="flex gap-1.5 text-xs">
+      <button @click="role = 'all'" :class="role === 'all' ? 'bg-primary-500 text-white' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'" class="px-3 py-1.5 rounded-full font-semibold transition-colors">全部指引</button>
+      <button @click="role = 'hold'" :class="role === 'hold' ? 'bg-emerald-600 text-white' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'" class="px-3 py-1.5 rounded-full font-semibold transition-colors">我是持仓者</button>
+      <button @click="role = 'wait'" :class="role === 'wait' ? 'bg-primary-500 text-white' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'" class="px-3 py-1.5 rounded-full font-semibold transition-colors">我是观望者</button>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-5">
+    <h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i data-lucide="git-merge" class="w-4 h-4 text-accent-500"></i>三情景推演矩阵（未来 2–4 周）</h3>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm">
+        <thead>
+          <tr class="text-gray-500 dark:text-gray-400 text-xs bg-gray-50 dark:bg-gray-800/70">
+            <th>情景</th><th>触发条件（价格 + 量能）</th><th>概率</th><th>目标区间</th><th>对应仓位动作</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700 dark:text-gray-300">
+          <tr>
+            <td class="font-bold text-emerald-700 dark:text-emerald-300 whitespace-nowrap">乐观突破</td>
+            <td class="min-w-[180px]">收盘站稳 <strong>352美元</strong>以上，且成交量回升至近期高位水平</td>
+            <td class="font-mono font-bold whitespace-nowrap">30%</td>
+            <td class="whitespace-nowrap font-mono">360–375</td>
+            <td class="min-w-[200px]">持有者持股待涨；观望者放量突破后右侧轻仓跟进，止损340</td>
+          </tr>
+          <tr>
+            <td class="font-bold text-amber-600 dark:text-amber-400 whitespace-nowrap">中性震荡（基准）</td>
+            <td class="min-w-[180px]">在 <strong>335–352美元</strong>箱体运行，量能正常，不放量破335</td>
+            <td class="font-mono font-bold whitespace-nowrap">45%</td>
+            <td class="whitespace-nowrap font-mono">335–352</td>
+            <td class="min-w-[200px]">持有者留底仓，高位可小幅兑现；观望者等回踩335–340企稳再介入</td>
+          </tr>
+          <tr>
+            <td class="font-bold text-rose-600 dark:text-rose-400 whitespace-nowrap">悲观破位</td>
+            <td class="min-w-[180px]">放量跌破 <strong>330美元</strong>，或收盘跌破 <strong>325美元</strong></td>
+            <td class="font-mono font-bold whitespace-nowrap">25%</td>
+            <td class="whitespace-nowrap font-mono">310–325</td>
+            <td class="min-w-[200px]">短线仓果断离场；中线仓在325观察止跌信号，破位即执行纪律止损</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4 mb-5">
+    <div x-show="role === 'all' || role === 'hold'" :class="role === 'hold' ? 'md:col-span-2' : ''" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-emerald-200/80 dark:border-emerald-900/60">
+      <h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
+        <i data-lucide="briefcase" class="w-4 h-4"></i>已持仓投资者操作指南
+      </h3>
+      <ul class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-2.5 leading-relaxed">
+        <li><strong class="text-emerald-600 dark:text-emerald-400">动态止盈保护：</strong>以 <strong>335美元</strong>附近作为短期止盈/减仓观察线；收盘有效跌破可减掉加仓部分的一半以上。</li>
+        <li><strong class="text-emerald-600 dark:text-emerald-400">继续持有条件：</strong>价格守在335–352区间、未出现连续放量破位，可留底仓博弈服务与硬件中期逻辑。</li>
+        <li><strong class="text-amber-600 dark:text-amber-400">高位减仓参考：</strong>355–360区域若放量滞涨收阴，主动减仓20%–30%锁定利润。</li>
+        <li><strong class="text-rose-600 dark:text-rose-400">硬性破位纪律：</strong>收盘跌破 <strong>325美元</strong>，无条件将仓位降至3成以下。</li>
+      </ul>
+    </div>
+
+    <div x-show="role === 'all' || role === 'wait'" :class="role === 'wait' ? 'md:col-span-2' : ''" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-primary-200/80 dark:border-primary-900/60">
+      <h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-primary-700 dark:text-primary-300">
+        <i data-lucide="eye" class="w-4 h-4"></i>未持仓 / 观望者操作指南
+      </h3>
+      <ul class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-2.5 leading-relaxed">
+        <li><strong class="text-primary-600 dark:text-primary-400">左侧低吸观察区：</strong><strong>335 – 340美元</strong>，且前提是回踩时量能收缩、不破330（盈亏比相对较好）。</li>
+        <li><strong class="text-primary-600 dark:text-primary-400">右侧突破确认点：</strong>收盘站稳 <strong>352美元</strong> + 成交量明显放大，可轻仓（≤15%）跟进，止损设340美元。</li>
+        <li><strong class="text-rose-600 dark:text-rose-400">严禁盲目追高区：</strong><strong>355 – 361美元</strong>。已处前高压力区，现价直接重仓追涨的短线赔率较差。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/70 rounded-xl p-5 sm:p-6">
+    <h3 class="text-sm font-bold mb-2.5 flex items-center gap-2 text-rose-700 dark:text-rose-300">
+      <i data-lucide="shield-alert" class="w-4 h-4"></i>核心证伪与风控红线
+    </h3>
+    <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm text-rose-900 dark:text-rose-200 leading-relaxed">
+      <div>
+        <p class="font-bold mb-1">1. 价格证伪线</p>
+        <p>收盘跌破 <strong>325美元</strong> → 11月放量突破结构面临失效风险，看多逻辑需重新评估；若进一步跌破320，中期趋势可能重回弱势。</p>
+      </div>
+      <div>
+        <p class="font-bold mb-1">2. 基本面 / 量价证伪信号</p>
+        <p>① 后续季度毛利率指引显著下修；② 连续多日主力净流出且滞涨；③ 大盘科技股继续大幅去杠杆且苹果相对强度消失。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 text-xs text-gray-500 dark:text-gray-400 leading-relaxed space-y-2">
+    <p><strong class="text-gray-700 dark:text-gray-300">数据来源：</strong>MarketWatch历史行情、StockAnalysis、YCharts标普500数据、Apple官方IR（2026-11-02财报）、公开新闻与资金流向汇总。价格单位为美元（USD），数据截至2026-11-20收盘（最新完整交易日）。</p>
+    <p><strong class="text-gray-700 dark:text-gray-300">分析基准：</strong>2026-10-23至2026-11-20（约20个交易日）。区间涨跌幅与Alpha为基于公开收盘价的估算。</p>
+    <p><strong class="text-gray-700 dark:text-gray-300">免责声明：</strong>本报告为基于公开数据的量价归因与情景推演，仅供研究参考，不构成任何投资建议。市场有风险，决策需谨慎。</p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('progressBar').style.width = (height > 0 ? (winScroll / height) * 100 : 0) + '%';
+});
+document.addEventListener('DOMContentLoaded', () => {
+  syncThemeIcons();
+  if (window.lucide) lucide.createIcons();
+  if (window.AOS) AOS.init({ duration: 450, once: true, offset: 30 });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

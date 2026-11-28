@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>Snowflake（SNOW）最新走势归因与操作指引_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: {50:"#fff7ed",100:"#ffedd5",200:"#fed7aa",300:"#fdba74",400:"#fb923c",500:"#f97316",600:"#ea580c",700:"#c2410c",800:"#9a3412",900:"#7c2d12"},
+        accent: {50:"#fff7ed",100:"#ffedd5",200:"#fed7aa",300:"#fdba74",400:"#fb923c",500:"#f97316",600:"#ea580c",700:"#c2410c"}
+      },
+      fontFamily: {
+        sans: ["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","PingFang SC","Microsoft YaHei","sans-serif"]
+      }
+    }
+  }
+};
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<style>
+:root {
+  --bg:#f5f7fb;
+  --panel:#fff;
+  --text:#182230;
+  --muted:#64748b;
+  --line:#e5eaf1;
+  --soft:#f1f5f9;
+}
+html {scroll-behavior:smooth;scroll-padding-top:85px}
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+.dark {
+  --bg:#0b1220;
+  --panel:#111c2d;
+  --text:#e5edf7;
+  --muted:#a5b4c7;
+  --line:#29384c;
+  --soft:#172438;
+}
+.dark body {background:var(--bg);color:var(--text)}
+.panel {background:var(--panel);border:1px solid var(--line);border-radius:18px}
+.muted {color:var(--muted)}
+.card-interactive {transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.card-interactive:hover {transform:translateY(-3px);box-shadow:0 14px 32px rgba(15,23,42,.09);border-color:#fb923c}
+.dark .card-interactive:hover {box-shadow:0 14px 32px rgba(0,0,0,.24)}
+.section-kicker {font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ea580c}
+.section-title {font-size:clamp(22px,3vw,30px);font-weight:850;letter-spacing:-.035em;line-height:1.2}
+.metric {font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.driver-bar {height:9px;background:var(--soft);border-radius:99px;overflow:hidden}
+.driver-bar>span {display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#fb923c,#ea580c)}
+.price-tag {display:inline-flex;align-items:center;gap:6px;border-radius:8px;padding:5px 9px;font-size:12px;font-weight:750}
+.price-support {background:#dcfce7;color:#166534}
+.price-resistance {background:#fee2e2;color:#991b1b}
+.price-neutral {background:#ffedd5;color:#9a3412}
+.dark .price-support {background:#123c31;color:#86efac}
+.dark .price-resistance {background:#451c25;color:#fca5a5}
+.dark .price-neutral {background:#492b16;color:#fdba74}
+table {border-collapse:separate;border-spacing:0;width:100%;min-width:680px;font-size:13px}
+th {background:var(--soft);color:var(--muted);font-weight:750;text-align:left;padding:12px 14px;white-space:nowrap}
+td {padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+tr:last-child td {border-bottom:0}
+.positive {color:#059669}
+.negative {color:#dc2626}
+.dark .positive {color:#34d399}
+.dark .negative {color:#f87171}
+.nav-link {font-size:13px;font-weight:650;color:var(--muted);transition:color .2s}
+.nav-link:hover {color:#f97316}
+.pill {border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:5px 10px;font-size:11px;font-weight:700;color:var(--muted)}
+.timeline-line {position:absolute;left:11px;top:13px;bottom:10px;width:1px;background:var(--line)}
+.timeline-dot {width:23px;height:23px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#ffedd5;color:#c2410c;z-index:1;flex-shrink:0}
+.dark .timeline-dot {background:#492b16;color:#fdba74}
+#progressBar {position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#fb923c,#ea580c);width:0%;z-index:100}
+.hero-grid {
+  background:radial-gradient(circle at 80% 15%,rgba(249,115,22,.2),transparent 34%),linear-gradient(135deg,#111827,#1f2937 65%,#431407);
+}
+.dark .hero-grid {
+  background:radial-gradient(circle at 80% 15%,rgba(249,115,22,.19),transparent 34%),linear-gradient(135deg,#101827,#172438 65%,#431407);
+}
+.chart-grid line {stroke:var(--line);stroke-width:1}
+.chart-label {fill:var(--muted);font-size:11px}
+@media(max-width:640px) {
+  .hero-grid {border-radius:0 0 22px 22px}
+  .mobile-pad {padding-left:17px;padding-right:17px}
+  .section-title {font-size:23px}
+}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="antialiased">
+<div id="progressBar"></div>
+
+<header class="sticky top-0 z-50 border-b backdrop-blur-xl" style="background:color-mix(in srgb,var(--panel) 88%,transparent);border-color:var(--line)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[66px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-orange-500 flex items-center justify-center text-white font-black text-sm shadow-lg shadow-orange-500/20">S</div>
+      <div>
+        <div class="font-extrabold text-sm tracking-tight">MARKET INSIGHT <span class="text-orange-500">/</span> SNOW</div>
+        <div class="text-[10px] muted tracking-widest">PRICE ACTION & STRATEGY</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-6">
+      <a class="nav-link" href="#overview">走势总览</a>
+      <a class="nav-link" href="#phases">阶段拆解</a>
+      <a class="nav-link" href="#drivers">涨跌归因</a>
+      <a class="nav-link" href="#technicals">技术结构</a>
+      <a class="nav-link" href="#strategy">操作策略</a>
+      <a class="nav-link" href="#sources">数据来源</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <span class="hidden sm:inline text-[11px] muted">AS OF 2026.11.25</span>
+      <button onclick="toggleDarkMode()" aria-label="切换暗色模式" class="w-9 h-9 rounded-xl border flex items-center justify-center hover:border-orange-400" style="border-color:var(--line)">
+        <i data-lucide="moon" class="w-4 h-4" id="themeIcon"></i>
+      </button>
+      <button onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 rounded-xl border flex items-center justify-center" style="border-color:var(--line)" aria-label="打开菜单">
+        <i data-lucide="menu" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t px-5 py-4" style="border-color:var(--line);background:var(--panel)">
+    <div class="grid grid-cols-2 gap-4">
+      <a class="nav-link" href="#overview" onclick="toggleMobileMenu()">走势总览</a>
+      <a class="nav-link" href="#phases" onclick="toggleMobileMenu()">阶段拆解</a>
+      <a class="nav-link" href="#drivers" onclick="toggleMobileMenu()">涨跌归因</a>
+      <a class="nav-link" href="#technicals" onclick="toggleMobileMenu()">技术结构</a>
+      <a class="nav-link" href="#strategy" onclick="toggleMobileMenu()">操作策略</a>
+      <a class="nav-link" href="#sources" onclick="toggleMobileMenu()">数据来源</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero-grid text-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-12 pb-12 sm:pt-16 sm:pb-16">
+    <div class="flex flex-wrap items-center gap-2 mb-7">
+      <span class="px-3 py-1 rounded-full bg-orange-500/20 border border-orange-300/30 text-orange-200 text-[11px] font-bold tracking-wider">NYSE: SNOW</span>
+      <span class="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/80 text-[11px] font-semibold">软件与数据基础设施</span>
+      <span class="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-white/80 text-[11px] font-semibold">近一个月走势归因</span>
+    </div>
+    <div class="grid lg:grid-cols-[1.25fr_.75fr] gap-10 items-end">
+      <div>
+        <div class="text-orange-200 text-xs font-bold tracking-[.22em] mb-3">SNOWFLAKE INC. / LATEST PRICE ACTION</div>
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.06]">Snowflake<span class="text-orange-400">.</span></h1>
+        <p class="mt-4 text-white/70 text-sm sm:text-base max-w-2xl leading-7">
+          AI 数据云的增长逻辑仍在，但高估值成长股遭遇风险偏好收缩。过去一个月，SNOW 从高位快速回撤，11月23日随市场强力反弹，随后再度显露上方抛压。当前核心问题不是“AI故事是否存在”，而是增长能否兑现估值，以及12月2日财报能否重新建立预期。
+        </p>
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="pill !bg-white/10 !border-white/15 !text-white/80">观察区间：10/26—11/24</span>
+          <span class="pill !bg-white/10 !border-white/15 !text-white/80">数据截止：11/24收盘</span>
+          <span class="pill !bg-white/10 !border-white/15 !text-white/80">货币：USD</span>
+        </div>
+      </div>
+      <div class="rounded-2xl border border-white/15 bg-white/[.07] p-6 backdrop-blur-sm">
+        <div class="text-xs text-white/60 font-semibold tracking-wider">LATEST CLOSE · NOV 24, 2026</div>
+        <div class="flex items-baseline gap-3 mt-2">
+          <div class="text-5xl sm:text-6xl font-black metric">$271.09</div>
+          <div class="text-sm font-bold text-red-300">-0.07%</div>
+        </div>
+        <div class="h-px bg-white/15 my-5"></div>
+        <div class="grid grid-cols-2 gap-y-5 gap-x-4">
+          <div><div class="text-[11px] text-white/55">近月区间收益</div><div class="text-2xl font-bold text-red-300 metric">-19.06%</div></div>
+          <div><div class="text-[11px] text-white/55">11/20阶段低点</div><div class="text-2xl font-bold metric">$252.76</div></div>
+          <div><div class="text-[11px] text-white/55">11/24日内高点</div><div class="text-xl font-bold metric">$277.00</div></div>
+          <div><div class="text-[11px] text-white/55">11/24成交量</div><div class="text-xl font-bold metric">357.9万股</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10">
+      <div class="rounded-xl bg-white/[.07] border border-white/10 p-4">
+        <div class="text-[11px] text-white/55 mb-2">近月最高收盘参考</div>
+        <div class="text-xl font-bold metric">$339.91</div>
+        <div class="text-[10px] text-white/45 mt-1">10/28收盘</div>
+      </div>
+      <div class="rounded-xl bg-white/[.07] border border-white/10 p-4">
+        <div class="text-[11px] text-white/55 mb-2">最大单日跌幅</div>
+        <div class="text-xl font-bold text-red-300 metric">-7.32%</div>
+        <div class="text-[10px] text-white/45 mt-1">10/30收盘表现</div>
+      </div>
+      <div class="rounded-xl bg-white/[.07] border border-white/10 p-4">
+        <div class="text-[11px] text-white/55 mb-2">最大单日反弹</div>
+        <div class="text-xl font-bold text-emerald-300 metric">+6.46%</div>
+        <div class="text-[10px] text-white/45 mt-1">11/23收盘表现</div>
+      </div>
+      <div class="rounded-xl bg-white/[.07] border border-white/10 p-4">
+        <div class="text-[11px] text-white/55 mb-2">下一重要事件</div>
+        <div class="text-xl font-bold metric">12/02</div>
+        <div class="text-[10px] text-white/45 mt-1">FY2027 Q3财报</div>
+      </div>
+    </div>
+    <div class="mt-7 flex flex-wrap items-center gap-3 text-xs text-white/55">
+      <i data-lucide="alert-circle" class="w-4 h-4 text-orange-300"></i>
+      <span>11月25日美股尚未收盘，本报告采用11月24日最近一个完整交易日收盘数据。</span>
+    </div>
+  </div>
+</section>
+
+<section id="overview" class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+  <div class="flex flex-wrap justify-between items-end gap-4 mb-6" data-aos="fade-up">
+    <div>
+      <div class="section-kicker mb-2">01 / EXECUTIVE READOUT</div>
+      <h2 class="section-title">走势总览：深度回撤后的弱修复</h2>
+    </div>
+    <span class="pill">判断周期：未来1—4周</span>
+  </div>
+  <div class="grid lg:grid-cols-3 gap-4">
+    <div class="panel p-5 card-interactive" data-aos="fade-up">
+      <div class="flex items-center justify-between mb-4">
+        <div class="font-bold text-sm">趋势状态</div><i data-lucide="trending-down" class="w-5 h-5 text-red-500"></i>
+      </div>
+      <div class="text-2xl font-black text-red-500 mb-2">中期偏弱</div>
+      <p class="text-sm muted leading-6">股价由10月末的330美元上方回落至271美元附近，反弹尚未收复前期密集成交区域。趋势扭转需要连续收复阻力位，而非单日大涨。</p>
+    </div>
+    <div class="panel p-5 card-interactive" data-aos="fade-up" data-aos-delay="80">
+      <div class="flex items-center justify-between mb-4">
+        <div class="font-bold text-sm">短线状态</div><i data-lucide="activity" class="w-5 h-5 text-orange-500"></i>
+      </div>
+      <div class="text-2xl font-black text-orange-500 mb-2">震荡修复</div>
+      <p class="text-sm muted leading-6">11月20日触及252.76美元后，11月23日跟随大盘反弹6.46%。但反弹日高开后回落，11月24日也未延续上攻，短线仍需确认承接强度。</p>
+    </div>
+    <div class="panel p-5 card-interactive" data-aos="fade-up" data-aos-delay="160">
+      <div class="flex items-center justify-between mb-4">
+        <div class="font-bold text-sm">事件风险</div><i data-lucide="calendar-clock" class="w-5 h-5 text-orange-500"></i>
+      </div>
+      <div class="text-2xl font-black text-orange-500 mb-2">财报前高波动</div>
+      <p class="text-sm muted leading-6">12月2日盘后公布FY2027 Q3业绩。市场将检验产品收入增长、全年指引、AI产品商业化与毛利率。财报前仓位应避免建立在单一乐观预期之上。</p>
+    </div>
+  </div>
+
+  <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-4 mt-4">
+    <div class="panel p-6" data-aos="fade-up">
+      <div class="flex justify-between items-center mb-5">
+        <h3 class="font-extrabold">同区间市场对比</h3>
+        <span class="text-[10px] muted">10/26收盘至11/24收盘</span>
+      </div>
+      <div class="space-y-5">
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-semibold">Snowflake（SNOW）</span><span class="font-bold text-red-500">-19.06%</span></div>
+          <div class="driver-bar"><span style="width:100%;background:#dc2626"></span></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-semibold">纳斯达克综合指数</span><span class="font-bold text-red-500">约-9.31%</span></div>
+          <div class="driver-bar"><span style="width:48.8%;background:#f97316"></span></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-semibold">标普500指数</span><span class="font-bold text-red-500">约-6.19%</span></div>
+          <div class="driver-bar"><span style="width:32.5%;background:#64748b"></span></div>
+        </div>
+      </div>
+      <p class="text-xs muted mt-5 leading-5">区间收益按指数10月26日与11月24日收盘点位、SNOW同期收盘价计算。SNOW明显跑输宽基指数，说明市场系统性风险之外，还叠加了高估值软件股的估值压缩与个股波动放大。</p>
+    </div>
+    <div class="panel p-6" data-aos="fade-up" data-aos-delay="80">
+      <h3 class="font-extrabold mb-4">核心结论</h3>
+      <div class="space-y-4">
+        <div class="flex gap-3">
+          <div class="w-7 h-7 rounded-lg bg-red-100 text-red-600 flex items-center justify-center shrink-0"><i data-lucide="arrow-down-right" class="w-4 h-4"></i></div>
+          <div><div class="font-bold text-sm">价格先于基本面预期下修</div><p class="text-xs muted mt-1 leading-5">近月主要压力来自科技股风险偏好下降与估值收缩；并非已确认公司基本面突然恶化。</p></div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-7 h-7 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0"><i data-lucide="scale" class="w-4 h-4"></i></div>
+          <div><div class="font-bold text-sm">增长质量决定估值底</div><p class="text-xs muted mt-1 leading-5">产品收入增速、净收入留存率、AI工作负载变现与产品毛利率是财报核心验证项。</p></div>
+        </div>
+        <div class="flex gap-3">
+          <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><i data-lucide="target" class="w-4 h-4"></i></div>
+          <div><div class="font-bold text-sm">交易上等待确认优于抄底</div><p class="text-xs muted mt-1 leading-5">271美元附近处于支撑与阻力之间；更有价值的信号是268美元上方企稳，或重新站上278—280美元。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="phases" class="py-12" style="background:var(--soft)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="mb-7" data-aos="fade-up">
+      <div class="section-kicker mb-2">02 / PRICE ACTION</div>
+      <h2 class="section-title">近一个月量价阶段拆解</h2>
+      <p class="muted text-sm mt-2">从高位分歧、集中抛售，到超跌反弹与反弹受阻。</p>
+    </div>
+    <div class="grid lg:grid-cols-[1.2fr_.8fr] gap-5">
+      <div class="panel p-5 sm:p-6" data-aos="fade-up">
+        <div class="flex flex-wrap justify-between gap-3 items-center mb-5">
+          <h3 class="font-extrabold">关键交易日价格路径</h3>
+          <span class="text-[10px] muted">USD / 收盘价</span>
+        </div>
+        <div class="w-full overflow-hidden">
+          <svg viewBox="0 0 760 310" class="w-full" role="img" aria-label="Snowflake关键交易日收盘价走势示意图">
+            <g class="chart-grid">
+              <line x1="58" y1="35" x2="735" y2="35"/>
+              <line x1="58" y1="91" x2="735" y2="91"/>
+              <line x1="58" y1="147" x2="735" y2="147"/>
+              <line x1="58" y1="203" x2="735" y2="203"/>
+              <line x1="58" y1="259" x2="735" y2="259"/>
+            </g>
+            <g class="chart-label">
+              <text x="7" y="39">$340</text><text x="7" y="95">$320</text><text x="7" y="151">$300</text><text x="7" y="207">$280</text><text x="7" y="263">$260</text>
+              <text x="58" y="287">10/26</text><text x="205" y="287">10/30</text><text x="350" y="287">11/05</text><text x="490" y="287">11/13</text><text x="610" y="287">11/20</text><text x="700" y="287">11/24</text>
+            </g>
+            <polyline points="58,49 95,42 132,35 169,62 206,130 243,151 280,140 317,191 354,232 391,214 428,171 465,158 502,137 539,147 576,168 613,248 650,196 687,202 724,226" fill="none" stroke="#f97316" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="58,49 95,42 132,35 169,62 206,130 243,151 280,140 317,191 354,232 391,214 428,171 465,158 502,137 539,147 576,168 613,248 650,196 687,202 724,226" fill="none" stroke="#f97316" stroke-width="10" opacity=".08" stroke-linecap="round"/>
+            <circle cx="132" cy="35" r="5" fill="#f97316"/>
+            <circle cx="354" cy="232" r="5" fill="#dc2626"/>
+            <circle cx="613" cy="248" r="5" fill="#dc2626"/>
+            <circle cx="650" cy="196" r="5" fill="#059669"/>
+            <circle cx="724" cy="226" r="5" fill="#f97316"/>
+            <text x="112" y="20" fill="#f97316" font-size="11" font-weight="700">$339.91</text>
+            <text x="330" y="253" fill="#dc2626" font-size="11" font-weight="700">$269.54</text>
+            <text x="585" y="270" fill="#dc2626" font-size="11" font-weight="700">$254.82收盘</text>
+            <text x="637" y="183" fill="#059669" font-size="11" font-weight="700">$271.27</text>
+          </svg>
+        </div>
+        <div class="flex flex-wrap gap-4 text-[11px] muted mt-2">
+          <span class="flex items-center gap-2"><span class="w-3 h-1 rounded bg-orange-500"></span>关键交易日收盘路径示意</span>
+          <span>非逐日完整K线图，不用于精确指标计算</span>
+        </div>
+      </div>
+      <div class="panel p-5 sm:p-6" data-aos="fade-up" data-aos-delay="80">
+        <h3 class="font-extrabold mb-5">四个交易阶段</h3>
+        <div class="relative space-y-5">
+          <div class="timeline-line"></div>
+          <div class="relative flex gap-3">
+            <div class="timeline-dot"><i data-lucide="trending-down" class="w-3 h-3"></i></div>
+            <div><div class="text-xs font-bold text-orange-600">10/26—10/30 · 高位转弱</div><div class="font-bold text-sm mt-1">高位估值开始松动</div><p class="text-xs muted mt-1 leading-5">10月26日收盘334.95美元，10月30日收盘306.08美元，单日跌幅7.32%，科技股抛售放大了个股回撤。</p></div>
+          </div>
+          <div class="relative flex gap-3">
+            <div class="timeline-dot"><i data-lucide="activity" class="w-3 h-3"></i></div>
+            <div><div class="text-xs font-bold text-orange-600">11/02—11/13 · 反弹修复</div><div class="font-bold text-sm mt-1">快速修复后再度承压</div><p class="text-xs muted mt-1 leading-5">11月5日收于269.54美元，随后反弹至11月13日291美元；反弹未能重返300美元上方并形成有效突破。</p></div>
+          </div>
+          <div class="relative flex gap-3">
+            <div class="timeline-dot"><i data-lucide="arrow-down" class="w-3 h-3"></i></div>
+            <div><div class="text-xs font-bold text-red-500">11/16—11/20 · 二次下探</div><div class="font-bold text-sm mt-1">风险偏好再度急剧收缩</div><p class="text-xs muted mt-1 leading-5">11月20日收盘254.82美元，盘中低点252.76美元，短期卖压集中释放。</p></div>
+          </div>
+          <div class="relative flex gap-3">
+            <div class="timeline-dot"><i data-lucide="corner-up-right" class="w-3 h-3"></i></div>
+            <div><div class="text-xs font-bold text-emerald-600">11/23—11/24 · 超跌反弹</div><div class="font-bold text-sm mt-1">反弹尚未证明趋势反转</div><p class="text-xs muted mt-1 leading-5">11月23日上涨6.46%至271.27美元；11月24日收于271.09美元，反弹后在278美元附近遇到供给。</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel mt-5 overflow-hidden" data-aos="fade-up">
+      <div class="p-5 border-b" style="border-color:var(--line)">
+        <div class="flex flex-wrap justify-between gap-2">
+          <h3 class="font-extrabold">关键交易日行情记录</h3>
+          <span class="text-xs muted">数据：美元 / 股；成交量：股</span>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>日期</th><th>收盘价</th><th>涨跌幅</th><th>最高</th><th>最低</th><th>成交量</th><th>盘面解读</th></tr></thead>
+          <tbody>
+            <tr><td>10/26</td><td>$334.95</td><td class="negative">—</td><td>—</td><td>—</td><td>—</td><td>区间起点</td></tr>
+            <tr><td>10/30</td><td>$306.08</td><td class="negative">-7.32%</td><td>$315.00</td><td>$295.26</td><td>816.2万</td><td>集中抛售</td></tr>
+            <tr><td>11/02</td><td>$290.68</td><td class="negative">-5.03%</td><td>$306.96</td><td>$287.93</td><td>643.9万</td><td>下跌延续</td></tr>
+            <tr><td>11/05</td><td>$269.54</td><td class="negative">-7.25%</td><td>$281.12</td><td>$268.28</td><td>807.2万</td><td>科技股风险释放</td></tr>
+            <tr><td>11/09</td><td>$291.14</td><td class="positive">+5.53%</td><td>$294.30</td><td>$278.32</td><td>385.5万</td><td>超跌反弹</td></tr>
+            <tr><td>11/13</td><td>$291.00</td><td class="negative">-2.58%</td><td>$301.62</td><td>$283.41</td><td>293.7万</td><td>反弹遇阻</td></tr>
+            <tr><td>11/19</td><td>$268.59</td><td class="negative">-3.94%</td><td>$297.00</td><td>$268.08</td><td>516.3万</td><td>抛压扩大</td></tr>
+            <tr><td>11/20</td><td>$254.82</td><td class="negative">-5.13%</td><td>$270.35</td><td>$252.76</td><td>490.4万</td><td>阶段低点</td></tr>
+            <tr><td>11/23</td><td>$271.27</td><td class="positive">+6.46%</td><td>$278.28</td><td>$268.50</td><td>432.3万</td><td>市场同步反弹</td></tr>
+            <tr><td>11/24</td><td>$271.09</td><td class="negative">-0.07%</td><td>$277.00</td><td>$268.51</td><td>357.9万</td><td>反弹后横盘</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="px-5 py-3 text-xs muted">注：部分行情供应商的成交量和日内高低价存在小幅差异；表格以StockAnalysis历史行情为主要参考，收盘涨跌幅按前一交易日收盘价核算。10/26部分日内字段未在所引用行情摘录中完整显示，故不补造。</div>
+    </div>
+  </div>
+</section>
+
+<section id="drivers" class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+  <div class="mb-7" data-aos="fade-up">
+    <div class="section-kicker mb-2">03 / CAUSAL ATTRIBUTION</div>
+    <h2 class="section-title">上涨与下跌根因：市场冲击主导，估值压缩放大</h2>
+    <p class="muted text-sm mt-2">区分公司经营变化、行业风险偏好和宏观折现率，不把同日共振误判为公司独有利空。</p>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-5">
+    <div class="panel p-6" data-aos="fade-up">
+      <div class="flex items-center gap-2 mb-5">
+        <div class="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center"><i data-lucide="arrow-down-right" class="w-4 h-4"></i></div>
+        <h3 class="font-extrabold">下跌驱动因素</h3>
+        <span class="ml-auto text-xs text-red-500 font-bold">负面主导</span>
+      </div>
+      <div class="space-y-5">
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-bold">科技股整体去风险与估值压缩</span><span class="font-bold text-red-500">40%</span></div>
+          <div class="driver-bar"><span style="width:40%;background:#dc2626"></span></div>
+          <p class="text-xs muted mt-2 leading-5">11月5日纳指单日大跌约5.5%，SNOW下跌7.25%；11月20日纳指再跌约5.28%，SNOW下跌5.13%。个股走势与成长股风险偏好高度相关。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-bold">高估值与利率预期敏感性</span><span class="font-bold text-red-500">25%</span></div>
+          <div class="driver-bar"><span style="width:25%;background:#ef4444"></span></div>
+          <p class="text-xs muted mt-2 leading-5">高增长软件股估值依赖远期现金流。利率预期偏鹰、AI资本开支回报争议及风险溢价上升，会压低市场愿意支付的收入倍数。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-bold">财报前预期与指引验证压力</span><span class="font-bold text-red-500">20%</span></div>
+          <div class="driver-bar"><span style="width:20%;background:#f97316"></span></div>
+          <p class="text-xs muted mt-2 leading-5">市场不仅要求增长，还要求增长持续加速、AI收入兑现及毛利率稳定。12月2日财报临近，预期差风险提高。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-bold">个股供给与技术性止损</span><span class="font-bold text-red-500">15%</span></div>
+          <div class="driver-bar"><span style="width:15%;background:#fb923c"></span></div>
+          <p class="text-xs muted mt-2 leading-5">关键价位失守后，趋势交易、量化止损和短线仓位调整可能强化下跌。仅凭成交量无法识别机构净买卖方向。</p>
+        </div>
+      </div>
+      <div class="mt-5 pt-4 border-t text-xs muted leading-5" style="border-color:var(--line)">归因权重为基于区间价格表现与公开事件的研究判断，用于表达相对重要性，不是回归模型结果，也不代表可精确分割的实际跌幅贡献。</div>
+    </div>
+
+    <div class="panel p-6" data-aos="fade-up" data-aos-delay="80">
+      <div class="flex items-center gap-2 mb-5">
+        <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center"><i data-lucide="arrow-up-right" class="w-4 h-4"></i></div>
+        <h3 class="font-extrabold">反弹与潜在支撑因素</h3>
+        <span class="ml-auto text-xs text-emerald-600 font-bold">结构性支撑</span>
+      </div>
+      <div class="space-y-5">
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-bold">市场风险偏好快速修复</span><span class="font-bold text-emerald-600">35%</span></div>
+          <div class="driver-bar"><span style="width:35%;background:#059669"></span></div>
+          <p class="text-xs muted mt-2 leading-5">11月23日标普500上涨4.73%、纳指上涨6.51%，SNOW上涨6.46%。当日反弹主要由市场与软件板块普涨推动，未发现足以单独解释涨幅的公司公告。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-bold">AI数据平台长期需求逻辑</span><span class="font-bold text-emerald-600">30%</span></div>
+          <div class="driver-bar"><span style="width:30%;background:#10b981"></span></div>
+          <p class="text-xs muted mt-2 leading-5">公司FY2027 Q2产品收入同比增长37%，AI相关功能与AI Gateway被管理层视为增长加速的重要贡献来源，企业数据治理与AI应用仍是长期需求支点。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-bold">分析师维持正面评级</span><span class="font-bold text-emerald-600">20%</span></div>
+          <div class="driver-bar"><span style="width:20%;background:#34d399"></span></div>
+          <p class="text-xs muted mt-2 leading-5">TD Cowen于11月23日维持买入评级与450美元目标价；但BofA、UBS及KeyBanc近期下调目标价，说明看多评级与估值谨慎并存。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-bold">超跌后的空头回补与技术反弹</span><span class="font-bold text-emerald-600">15%</span></div>
+          <div class="driver-bar"><span style="width:15%;background:#6ee7b7"></span></div>
+          <p class="text-xs muted mt-2 leading-5">从11月20日盘中低点252.76美元到11月23日收盘271.27美元，短线反弹幅度明显，但仍需后续放量确认。</p>
+        </div>
+      </div>
+      <div class="mt-5 pt-4 border-t text-xs muted leading-5" style="border-color:var(--line)">反弹因素同样是定性权重。分析师目标价是观点而非价格承诺，不能直接视作合理价值或短期上涨目标。</div>
+    </div>
+  </div>
+
+  <div class="panel p-6 mt-5" data-aos="fade-up">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+      <h3 class="font-extrabold">公司—行业—宏观三层传导框架</h3>
+      <span class="pill">从基本面到估值的传导链</span>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="rounded-xl p-5" style="background:var(--soft)">
+        <div class="text-xs text-orange-600 font-extrabold tracking-wider mb-2">COMPANY · 公司层</div>
+        <div class="font-extrabold mb-2">产品增长能否兑现？</div>
+        <ul class="text-xs muted leading-6 list-disc pl-4">
+          <li>产品收入同比增长与指引</li>
+          <li>AI功能、Cortex与Agent工作负载变现</li>
+          <li>净收入留存率与大客户扩张</li>
+          <li>产品毛利率、经营杠杆及现金流</li>
+        </ul>
+        <div class="mt-3 text-xs font-bold text-orange-600">传导：盈利预期与收入倍数</div>
+      </div>
+      <div class="rounded-xl p-5" style="background:var(--soft)">
+        <div class="text-xs text-orange-600 font-extrabold tracking-wider mb-2">INDUSTRY · 行业层</div>
+        <div class="font-extrabold mb-2">AI数据平台竞争格局</div>
+        <ul class="text-xs muted leading-6 list-disc pl-4">
+          <li>Databricks等数据平台竞争</li>
+          <li>云厂商原生数据与AI服务替代</li>
+          <li>客户优化云支出与工作负载迁移</li>
+          <li>AI代理应用带来的新数据需求</li>
+        </ul>
+        <div class="mt-3 text-xs font-bold text-orange-600">传导：市场份额与定价权</div>
+      </div>
+      <div class="rounded-xl p-5" style="background:var(--soft)">
+        <div class="text-xs text-orange-600 font-extrabold tracking-wider mb-2">MACRO · 宏观层</div>
+        <div class="font-extrabold mb-2">折现率与风险偏好</div>
+        <ul class="text-xs muted leading-6 list-disc pl-4">
+          <li>美债收益率及美联储政策预期</li>
+          <li>AI资本开支回报率争议</li>
+          <li>科技股拥挤交易与波动率</li>
+          <li>企业IT预算与宏观增长预期</li>
+        </ul>
+        <div class="mt-3 text-xs font-bold text-orange-600">传导：估值倍数与资金风险预算</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+  <div class="mb-7" data-aos="fade-up">
+    <div class="section-kicker mb-2">04 / FUNDAMENTAL CATALYSTS</div>
+    <h2 class="section-title">基本面与事件催化：12月2日是近期关键验证点</h2>
+  </div>
+  <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-5">
+    <div class="panel p-6" data-aos="fade-up">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="font-extrabold">最近一次已披露业绩</h3>
+        <span class="pill">FY2027 Q2</span>
+      </div>
+      <div class="text-xs muted mb-1">截至2026年7月31日的季度</div>
+      <div class="text-3xl font-black metric">$1.55B</div>
+      <div class="text-xs muted mt-1">总收入 · 同比增长35%</div>
+      <div class="grid grid-cols-2 gap-3 mt-5">
+        <div class="rounded-xl p-4" style="background:var(--soft)">
+          <div class="text-xs muted">产品收入</div><div class="text-2xl font-black metric mt-1">$1.49B</div><div class="text-xs positive font-bold mt-1">同比 +37%</div>
+        </div>
+        <div class="rounded-xl p-4" style="background:var(--soft)">
+          <div class="text-xs muted">净收入留存率</div><div class="text-2xl font-black metric mt-1">126%</div><div class="text-xs muted mt-1">客户扩张指标</div>
+        </div>
+        <div class="rounded-xl p-4" style="background:var(--soft)">
+          <div class="text-xs muted">RPO</div><div class="text-2xl font-black metric mt-1">$9.00B</div><div class="text-xs positive font-bold mt-1">同比 +30%</div>
+        </div>
+        <div class="rounded-xl p-4" style="background:var(--soft)">
+          <div class="text-xs muted">百万美元级客户</div><div class="text-2xl font-black metric mt-1">828</div><div class="text-xs positive font-bold mt-1">同比 +27%</div>
+        </div>
+      </div>
+      <p class="text-xs muted mt-4 leading-5">数据来自Snowflake于2026年9月2日公布的FY2027 Q2财报。RPO代表剩余履约义务，反映已签约但尚未确认为收入的合同价值，不等同于短期收入。</p>
+    </div>
+    <div class="panel p-6" data-aos="fade-up" data-aos-delay="80">
+      <h3 class="font-extrabold mb-5">未来关键事件时间轴</h3>
+      <div class="space-y-5">
+        <div class="flex gap-4">
+          <div class="w-16 shrink-0"><div class="text-orange-600 text-xs font-extrabold">11/24</div><div class="text-xl font-black">已发生</div></div>
+          <div class="border-l-2 pl-4 pb-1" style="border-color:var(--line)">
+            <div class="font-bold text-sm">KeyBanc下调目标价</div>
+            <p class="text-xs muted mt-1 leading-5">维持Overweight评级，目标价由460美元下调至400美元。目标价下修反映估值或预期调整，不等同于盈利预测必然下修。</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-16 shrink-0"><div class="text-orange-600 text-xs font-extrabold">12/01</div><div class="text-xl font-black">临近</div></div>
+          <div class="border-l-2 pl-4 pb-1" style="border-color:var(--line)">
+            <div class="font-bold text-sm">MongoDB业绩观察窗口</div>
+            <p class="text-xs muted mt-1 leading-5">数据平台与开发者生态相关公司业绩可提供行业需求、客户预算与竞争环境的旁证，但不可直接等同于Snowflake表现。</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-16 shrink-0"><div class="text-orange-600 text-xs font-extrabold">12/02</div><div class="text-xl font-black">核心事件</div></div>
+          <div class="border-l-2 pl-4 pb-1" style="border-color:#f97316">
+            <div class="font-bold text-sm">Snowflake FY2027 Q3财报（盘后）</div>
+            <p class="text-xs muted mt-1 leading-5">公司已正式公告，财报发布于美国市场收盘后；电话会时间为太平洋时间14:00。重点看产品收入增长、Q4展望、全年指引与产品毛利率。</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-16 shrink-0"><div class="text-orange-600 text-xs font-extrabold">12/09</div><div class="text-xl font-black">宏观事件</div></div>
+          <div class="border-l-2 pl-4" style="border-color:var(--line)">
+            <div class="font-bold text-sm">美联储12月政策会议</div>
+            <p class="text-xs muted mt-1 leading-5">利率路径和美债收益率可能影响高久期成长股的估值折现率。需结合届时官方日程与市场定价核验。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel p-6 mt-5" data-aos="fade-up">
+    <h3 class="font-extrabold mb-4">财报前需要验证的四个问题</h3>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="flex gap-3"><span class="text-orange-500 font-black text-lg">01</span><div><div class="font-bold text-sm">产品收入是否达到或超过指引？</div><p class="text-xs muted mt-1 leading-5">市场关注产品收入增速能否延续加速趋势，以及是否出现需求递延或客户优化消费的迹象。</p></div></div>
+      <div class="flex gap-3"><span class="text-orange-500 font-black text-lg">02</span><div><div class="font-bold text-sm">AI相关收入是否可量化？</div><p class="text-xs muted mt-1 leading-5">AI产品和代理工作负载应从客户使用、消费量、付费转化及收入贡献来判断，而不只看发布会或产品数量。</p></div></div>
+      <div class="flex gap-3"><span class="text-orange-500 font-black text-lg">03</span><div><div class="font-bold text-sm">产品毛利率能否维持？</div><p class="text-xs muted mt-1 leading-5">AI工作负载增长可能带来计算成本、云基础设施费用及产品组合变化，增长质量需要利润率配合。</p></div></div>
+      <div class="flex gap-3"><span class="text-orange-500 font-black text-lg">04</span><div><div class="font-bold text-sm">全年指引是否再次上修？</div><p class="text-xs muted mt-1 leading-5">FY2027产品收入指引及下一季度展望将决定市场是否愿意重新给予高成长估值。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="technicals" class="py-12" style="background:var(--soft)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="mb-7" data-aos="fade-up">
+      <div class="section-kicker mb-2">05 / TECHNICAL STRUCTURE</div>
+      <h2 class="section-title">技术结构与关键价格锚点</h2>
+      <p class="muted text-sm mt-2">不以单一指标猜底，重点观察关键价位的收盘确认、成交量与市场同步性。</p>
+    </div>
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-5">
+      <div class="panel p-6" data-aos="fade-up">
+        <h3 class="font-extrabold mb-5">关键价格区间</h3>
+        <div class="relative pl-3">
+          <div class="absolute left-[20px] top-3 bottom-3 w-px" style="background:var(--line)"></div>
+          <div class="space-y-4">
+            <div class="relative flex items-center gap-4">
+              <div class="w-4 h-4 rounded-full bg-red-500 border-4 border-red-100 z-10"></div>
+              <div class="flex-1 flex justify-between items-center gap-3"><div><div class="font-bold text-sm">强阻力区</div><div class="text-xs muted">前期破位与密集交易区域</div></div><span class="price-tag price-resistance">$306—315</span></div>
+            </div>
+            <div class="relative flex items-center gap-4">
+              <div class="w-4 h-4 rounded-full bg-red-400 border-4 border-red-100 z-10"></div>
+              <div class="flex-1 flex justify-between items-center gap-3"><div><div class="font-bold text-sm">主要阻力区</div><div class="text-xs muted">11月上旬多次受阻附近</div></div><span class="price-tag price-resistance">$295—302</span></div>
+            </div>
+            <div class="relative flex items-center gap-4">
+              <div class="w-4 h-4 rounded-full bg-orange-500 border-4 border-orange-100 z-10"></div>
+              <div class="flex-1 flex justify-between items-center gap-3"><div><div class="font-bold text-sm">短线突破确认位</div><div class="text-xs muted">11/23日内高点附近</div></div><span class="price-tag price-neutral">$278—280</span></div>
+            </div>
+            <div class="relative flex items-center gap-4">
+              <div class="w-4 h-4 rounded-full bg-blue-500 border-4 border-blue-100 z-10"></div>
+              <div class="flex-1 flex justify-between items-center gap-3"><div><div class="font-bold text-sm">最新收盘</div><div class="text-xs muted">11月24日</div></div><span class="price-tag price-neutral">$271.09</span></div>
+            </div>
+            <div class="relative flex items-center gap-4">
+              <div class="w-4 h-4 rounded-full bg-emerald-500 border-4 border-emerald-100 z-10"></div>
+              <div class="flex-1 flex justify-between items-center gap-3"><div><div class="font-bold text-sm">近端支撑区</div><div class="text-xs muted">11/19—11/24低点聚集</div></div><span class="price-tag price-support">$268—269</span></div>
+            </div>
+            <div class="relative flex items-center gap-4">
+              <div class="w-4 h-4 rounded-full bg-emerald-600 border-4 border-emerald-100 z-10"></div>
+              <div class="flex-1 flex justify-between items-center gap-3"><div><div class="font-bold text-sm">阶段重要支撑</div><div class="text-xs muted">11/20盘中低点与收盘区</div></div><span class="price-tag price-support">$252—255</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs muted mt-5 leading-5">上述为历史成交与拐点形成的观察区间，不是精确支撑/阻力预测。若收盘有效跌破268美元，应提高回测252—255美元区域的风险权重。</p>
+      </div>
+      <div class="panel p-6" data-aos="fade-up" data-aos-delay="80">
+        <h3 class="font-extrabold mb-5">量价与均线观察</h3>
+        <div class="space-y-4">
+          <div class="rounded-xl p-4" style="background:var(--soft)">
+            <div class="flex justify-between items-center"><span class="font-bold text-sm">成交量</span><span class="pill">已观察</span></div>
+            <p class="text-xs muted mt-2 leading-5">10月30日约816万股、11月5日约807万股，均出现明显放量下跌；11月23日上涨日约432万股，11月24日约358万股。反弹并未显示持续放量确认。</p>
+          </div>
+          <div class="rounded-xl p-4" style="background:var(--soft)">
+            <div class="flex justify-between items-center"><span class="font-bold text-sm">50日均线</span><span class="pill">历史参考</span></div>
+            <p class="text-xs muted mt-2 leading-5">截至11月12日的公开技术资料显示，50日均线约326.3美元，明显高于当时股价。此为11月12日历史截面，不作为11月24日实时均线值。</p>
+          </div>
+          <div class="rounded-xl p-4" style="background:var(--soft)">
+            <div class="flex justify-between items-center"><span class="font-bold text-sm">200日均线</span><span class="pill">历史参考</span></div>
+            <p class="text-xs muted mt-2 leading-5">截至11月12日公开资料显示，200日均线约242.31美元，低于当时股价。不能据此推断当前价格已经获得长期均线支撑，仍需更新日线数据确认。</p>
+          </div>
+          <div class="rounded-xl p-4" style="background:var(--soft)">
+            <div class="flex justify-between items-center"><span class="font-bold text-sm">资金行为判断</span><span class="pill">谨慎解释</span></div>
+            <p class="text-xs muted mt-2 leading-5">美股普通日线成交量不提供可靠的“主力净流入”数据。不能将放量上涨直接认定为机构吸筹，也不能仅凭放量下跌断定机构出逃。应结合13F、短仓披露、期权与ETF资金数据另行核验。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel p-6 mt-5" data-aos="fade-up">
+      <h3 class="font-extrabold mb-4">技术信号的确认条件</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div><div class="text-xs font-bold text-emerald-600 mb-2">偏多确认</div><p class="text-sm font-bold">收复278—280美元并站稳</p><p class="text-xs muted mt-2 leading-5">最好伴随成交量高于近期均值，随后进一步挑战295—302美元。</p></div>
+        <div><div class="text-xs font-bold text-orange-600 mb-2">中性震荡</div><p class="text-sm font-bold">268—280美元区间反复</p><p class="text-xs muted mt-2 leading-5">财报前资金等待，区间内追涨杀跌的盈亏比不理想，宜控制交易频率。</p></div>
+        <div><div class="text-xs font-bold text-red-600 mb-2">偏空确认</div><p class="text-sm font-bold">放量收盘跌破268美元</p><p class="text-xs muted mt-2 leading-5">若随后反抽无法收复268—269美元，252—255美元成为下一观察区。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="strategy" class="max-w-7xl mx-auto px-5 sm:px-8 py-12">
+  <div class="mb-7" data-aos="fade-up">
+    <div class="section-kicker mb-2">06 / TRADING PLAYBOOK</div>
+    <h2 class="section-title">三情景交易策略与操作指引</h2>
+    <p class="muted text-sm mt-2">以价格确认和事件风险管理为核心，不以分析师目标价替代交易纪律。</p>
+  </div>
+  <div class="grid lg:grid-cols-3 gap-4">
+    <div class="panel p-5 card-interactive" data-aos="fade-up">
+      <div class="flex items-center justify-between mb-4"><span class="pill !text-emerald-600">情景 A · 偏多</span><i data-lucide="trending-up" class="w-5 h-5 text-emerald-500"></i></div>
+      <div class="text-2xl font-black text-emerald-600 mb-1">突破修复</div>
+      <div class="text-xs muted mb-4">触发：有效收复278—280美元</div>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between"><span class="muted">第一观察目标</span><b>$295—302</b></div>
+        <div class="flex justify-between"><span class="muted">第二观察目标</span><b>$306—315</b></div>
+        <div class="flex justify-between"><span class="muted">失效参考</span><b class="text-red-500">回落并失守268</b></div>
+      </div>
+      <div class="mt-5 pt-4 border-t text-xs muted leading-5" style="border-color:var(--line)">策略：等待突破后的回踩确认，不在单根大阳线后追高。若突破无量、收盘重新跌回278美元下方，视为假突破风险上升。</div>
+    </div>
+    <div class="panel p-5 card-interactive" data-aos="fade-up" data-aos-delay="80">
+      <div class="flex items-center justify-between mb-4"><span class="pill !text-orange-600">情景 B · 中性</span><i data-lucide="move-horizontal" class="w-5 h-5 text-orange-500"></i></div>
+      <div class="text-2xl font-black text-orange-500 mb-1">区间震荡</div>
+      <div class="text-xs muted mb-4">触发：268—280美元反复拉锯</div>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between"><span class="muted">区间下沿</span><b>$268—269</b></div>
+        <div class="flex justify-between"><span class="muted">区间上沿</span><b>$278—280</b></div>
+        <div class="flex justify-between"><span class="muted">主要风险</span><b>财报跳空</b></div>
+      </div>
+      <div class="mt-5 pt-4 border-t text-xs muted leading-5" style="border-color:var(--line)">策略：轻仓或观望为主。只有在支撑附近出现止跌结构、风险回报比合理时才考虑试探性交易；财报前避免把短线区间交易误当成中期反转。</div>
+    </div>
+    <div class="panel p-5 card-interactive" data-aos="fade-up" data-aos-delay="160">
+      <div class="flex items-center justify-between mb-4"><span class="pill !text-red-600">情景 C · 偏空</span><i data-lucide="trending-down" class="w-5 h-5 text-red-500"></i></div>
+      <div class="text-2xl font-black text-red-500 mb-1">支撑失守</div>
+      <div class="text-xs muted mb-4">触发：放量跌破268美元</div>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between"><span class="muted">第一观察区域</span><b>$260附近</b></div>
+        <div class="flex justify-between"><span class="muted">重要支撑区域</span><b>$252—255</b></div>
+        <div class="flex justify-between"><span class="muted">反抽观察</span><b>$268—269</b></div>
+      </div>
+      <div class="mt-5 pt-4 border-t text-xs muted leading-5" style="border-color:var(--line)">策略：已有仓位优先管理风险，不盲目补仓。跌破后若反抽无法收复268—269美元，说明原支撑可能转化为阻力。</div>
+    </div>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-5 mt-5">
+    <div class="panel p-6" data-aos="fade-up">
+      <div class="flex items-center gap-2 mb-4"><i data-lucide="briefcase-business" class="w-5 h-5 text-orange-500"></i><h3 class="font-extrabold">已有持仓者：风险管理</h3></div>
+      <div class="space-y-4">
+        <div class="flex gap-3"><span class="w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center text-xs font-black shrink-0">1</span><div><div class="font-bold text-sm">先明确持仓成本与风险预算</div><p class="text-xs muted mt-1 leading-5">不因分析师目标价高于现价而忽略回撤风险。单笔风险敞口应与账户规模、波动承受能力匹配。</p></div></div>
+        <div class="flex gap-3"><span class="w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center text-xs font-black shrink-0">2</span><div><div class="font-bold text-sm">268美元作为短线风险观察线</div><p class="text-xs muted mt-1 leading-5">若收盘跌破并伴随放量，重新评估仓位；252—255美元是下一重要价格区域，不应假设一定守住。</p></div></div>
+        <div class="flex gap-3"><span class="w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center text-xs font-black shrink-0">3</span><div><div class="font-bold text-sm">财报前避免仓位过度集中</div><p class="text-xs muted mt-1 leading-5">盘后财报可能造成跳空，普通止损单无法保证成交价格。若不愿承担跳空风险，可考虑提前降低风险敞口。</p></div></div>
+        <div class="flex gap-3"><span class="w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center text-xs font-black shrink-0">4</span><div><div class="font-bold text-sm">上涨时分层评估阻力</div><p class="text-xs muted mt-1 leading-5">278—280、295—302、306—315美元为逐级观察区域。每次突破都需要收盘确认，不把盘中冲高等同于趋势反转。</p></div></div>
+      </div>
+    </div>
+    <div class="panel p-6" data-aos="fade-up" data-aos-delay="80">
+      <div class="flex items-center gap-2 mb-4"><i data-lucide="eye" class="w-5 h-5 text-orange-500"></i><h3 class="font-extrabold">空仓观望者：入场纪律</h3></div>
+      <div class="space-y-4">
+        <div class="rounded-xl p-4" style="background:var(--soft)">
+          <div class="text-xs font-bold text-emerald-600 mb-1">稳健型观察</div>
+          <div class="font-bold text-sm">等待站上280美元并回踩不破</div>
+          <p class="text-xs muted mt-1 leading-5">用趋势确认换取更高确定性，接受入场成本可能上升。</p>
+        </div>
+        <div class="rounded-xl p-4" style="background:var(--soft)">
+          <div class="text-xs font-bold text-orange-600 mb-1">积极型观察</div>
+          <div class="font-bold text-sm">关注268—269美元支撑测试</div>
+          <p class="text-xs muted mt-1 leading-5">仅在出现止跌、缩量回落或放量收复等确认信号后考虑小仓位试探，不能仅因价格下跌而买入。</p>
+        </div>
+        <div class="rounded-xl p-4" style="background:var(--soft)">
+          <div class="text-xs font-bold text-red-600 mb-1">暂缓入场</div>
+          <div class="font-bold text-sm">财报前后方向不明、波动急剧扩大</div>
+          <p class="text-xs muted mt-1 leading-5">等业绩与指引公布后观察市场如何重新定价，避免在事件跳空中被动承受大幅滑点。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel p-6 mt-5" data-aos="fade-up">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <h3 class="font-extrabold">投资逻辑证伪红线</h3>
+      <span class="pill">出现时需要重新评估，而非机械等待目标价</span>
+    </div>
+    <div class="grid md:grid-cols-2 gap-3">
+      <div class="flex gap-3 p-3 rounded-xl" style="background:var(--soft)"><i data-lucide="alert-triangle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i><p class="text-xs muted leading-5">产品收入增速明显低于管理层指引，且管理层将其归因于客户消费放缓或优化周期延长。</p></div>
+      <div class="flex gap-3 p-3 rounded-xl" style="background:var(--soft)"><i data-lucide="alert-triangle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i><p class="text-xs muted leading-5">净收入留存率持续走弱，或大客户扩张无法抵消客户消费降速。</p></div>
+      <div class="flex gap-3 p-3 rounded-xl" style="background:var(--soft)"><i data-lucide="alert-triangle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i><p class="text-xs muted leading-5">产品毛利率明显承压，AI工作负载增长未能形成相应的利润与现金流贡献。</p></div>
+      <div class="flex gap-3 p-3 rounded-xl" style="background:var(--soft)"><i data-lucide="alert-triangle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i><p class="text-xs muted leading-5">股价放量跌破252—255美元，同时公司下修指引或出现核心经营指标恶化。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-12" style="background:var(--soft)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="mb-7" data-aos="fade-up">
+      <div class="section-kicker mb-2">07 / EXPECTATIONS & VALUATION</div>
+      <h2 class="section-title">分析师预期：评级仍偏多，目标价却在下修</h2>
+    </div>
+    <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-5">
+      <div class="panel p-6" data-aos="fade-up">
+        <h3 class="font-extrabold mb-4">近期公开目标价变化</h3>
+        <div class="space-y-4">
+          <div class="flex justify-between gap-3 items-center border-b pb-3" style="border-color:var(--line)">
+            <div><div class="font-bold text-sm">KeyBanc</div><div class="text-xs muted">11月24日 · Overweight</div></div>
+            <div class="text-right"><div class="font-black text-red-500">$400</div><div class="text-[11px] muted line-through">$460</div></div>
+          </div>
+          <div class="flex justify-between gap-3 items-center border-b pb-3" style="border-color:var(--line)">
+            <div><div class="font-bold text-sm">BofA Securities</div><div class="text-xs muted">11月20日 · Buy</div></div>
+            <div class="text-right"><div class="font-black text-red-500">$400</div><div class="text-[11px] muted line-through">$470</div></div>
+          </div>
+          <div class="flex justify-between gap-3 items-center border-b pb-3" style="border-color:var(--line)">
+            <div><div class="font-bold text-sm">UBS</div><div class="text-xs muted">11月18日 · Buy</div></div>
+            <div class="text-right"><div class="font-black">$450</div><div class="text-[11px] muted line-through">$500</div></div>
+          </div>
+          <div class="flex justify-between gap-3 items-center border-b pb-3" style="border-color:var(--line)">
+            <div><div class="font-bold text-sm">TD Cowen</div><div class="text-xs muted">11月23日 · Buy</div></div>
+            <div class="text-right"><div class="font-black text-emerald-600">$450</div><div class="text-[11px] muted">维持</div></div>
+          </div>
+          <div class="flex justify-between gap-3 items-center">
+            <div><div class="font-bold text-sm">Wells Fargo</div><div class="text-xs muted">11月24日 · Buy</div></div>
+            <div class="text-right"><div class="font-black text-emerald-600">$525</div><div class="text-[11px] muted">维持</div></div>
+          </div>
+        </div>
+        <p class="text-xs muted mt-4 leading-5">目标价来源于公开分析师行动记录，评级与目标价可能随时更新。不同机构模型、预测期与估值方法不同，不宜简单平均。</p>
+      </div>
+      <div class="panel p-6" data-aos="fade-up" data-aos-delay="80">
+        <h3 class="font-extrabold mb-4">如何解读目标价与现价的差距？</h3>
+        <div class="rounded-xl p-5 mb-4" style="background:var(--soft)">
+          <div class="text-xs muted">以11月24日收盘价$271.09为基准</div>
+          <div class="text-3xl font-black metric mt-1">+47.5% 至 +93.6%</div>
+          <div class="text-xs muted mt-1">对应$400—$525目标价的静态上行空间</div>
+        </div>
+        <p class="text-sm muted leading-6">目标价看起来显著高于现价，但这并不意味着市场低估已被证明。分析师的长期收入增速假设、利润率路径和终值倍数都可能变化；近期多个机构下调目标价，说明估值风险已经进入模型调整阶段。</p>
+        <div class="mt-4 p-4 border-l-4 border-orange-500 rounded-r-xl" style="background:var(--soft)">
+          <div class="font-bold text-sm">研究判断</div>
+          <p class="text-xs muted mt-1 leading-5">在财报前，目标价对短线交易的指导意义低于产品收入与指引的实际兑现。若基本面强但市场仍压缩估值，股价也可能出现“业绩不错、股价不涨”的反应。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-7xl mx-auto px-5 sm:px-8 py-14">
+  <div class="rounded-2xl bg-slate-900 text-white p-7 sm:p-10 relative overflow-hidden" data-aos="fade-up">
+    <div class="absolute -right-20 -top-24 w-72 h-72 rounded-full bg-orange-500/20 blur-3xl"></div>
+    <div class="relative z-10">
+      <div class="text-orange-300 text-xs font-extrabold tracking-[.2em] mb-3">FINAL INVESTMENT VIEW</div>
+      <h2 class="text-2xl sm:text-3xl font-black mb-5">结论：基本面逻辑未被证伪，价格趋势仍待修复</h2>
+      <p class="text-sm sm:text-base text-white/75 leading-7 max-w-4xl">
+        Snowflake近一个月约19%的回撤，明显大于同期标普500与纳斯达克综合指数。现有公开信息更支持“科技股风险偏好收缩与高估值压缩放大波动”的解释，而非公司经营突然恶化。FY2027 Q2产品收入仍保持37%的同比增长，AI数据平台的长期机会并未消失；但市场正在提高对增长质量、产品毛利率和AI商业化兑现的要求。
+      </p>
+      <div class="grid sm:grid-cols-3 gap-4 mt-8">
+        <div class="bg-white/10 rounded-xl p-4 border border-white/10">
+          <div class="text-xs text-white/55 mb-2">短线策略</div><div class="font-extrabold text-orange-300">等待268—280区间选择方向</div><p class="text-xs text-white/60 mt-2">不追单日反弹，优先确认收盘价与成交量。</p>
+        </div>
+        <div class="bg-white/10 rounded-xl p-4 border border-white/10">
+          <div class="text-xs text-white/55 mb-2">中期观察</div><div class="font-extrabold text-orange-300">12月2日财报是核心变量</div><p class="text-xs text-white/60 mt-2">验证产品收入、AI变现、毛利率与指引。</p>
+        </div>
+        <div class="bg-white/10 rounded-xl p-4 border border-white/10">
+          <div class="text-xs text-white/55 mb-2">风险控制</div><div class="font-extrabold text-orange-300">252—255美元是下方重要观察区</div><p class="text-xs text-white/60 mt-2">若支撑失守且基本面预期同步恶化，需重新评估投资逻辑。</p>
+        </div>
+      </div>
+      <div class="mt-8 pt-5 border-t border-white/15 flex flex-wrap justify-between gap-3 text-xs text-white/45">
+        <span>SNOW · NYSE · USD</span><span>研究截止：2026年11月25日</span><span>事件驱动 / 量价分析 / 风险管理</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sources" class="py-12" style="background:var(--soft)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="mb-7">
+      <div class="section-kicker mb-2">08 / SOURCES & METHODOLOGY</div>
+      <h2 class="section-title">数据来源、口径与风险提示</h2>
+    </div>
+    <div class="panel p-6">
+      <h3 class="font-extrabold mb-4">主要信息来源</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="https://www.snowflake.com/en/news/press-releases/fy27-q3-earnings-date-announcement/" target="_blank" rel="noopener" class="flex gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition">
+          <i data-lucide="building-2" class="w-5 h-5 text-orange-500 shrink-0"></i>
+          <div><div class="font-bold text-sm">Snowflake官方公告</div><p class="text-xs muted mt-1">FY2027 Q3财报日期：2026年12月2日盘后。</p></div>
+        </a>
+        <a href="https://www.sec.gov/Archives/edgar/data/1640147/000164014726000033/fy2027q2earnings.htm" target="_blank" rel="noopener" class="flex gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition">
+          <i data-lucide="file-text" class="w-5 h-5 text-orange-500 shrink-0"></i>
+          <div><div class="font-bold text-sm">SEC / FY2027 Q2业绩披露</div><p class="text-xs muted mt-1">总收入、产品收入、净收入留存率及RPO等经营指标。</p></div>
+        </a>
+        <a href="https://www.stockanalysis.com/stocks/snow/history/" target="_blank" rel="noopener" class="flex gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition">
+          <i data-lucide="chart-candlestick" class="w-5 h-5 text-orange-500 shrink-0"></i>
+          <div><div class="font-bold text-sm">StockAnalysis历史行情</div><p class="text-xs muted mt-1">SNOW日线收盘价、涨跌幅、最高最低价及成交量。</p></div>
+        </a>
+        <a href="https://www.investing.com/indices/us-spx-500-historical-data" target="_blank" rel="noopener" class="flex gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition">
+          <i data-lucide="chart-no-axes-combined" class="w-5 h-5 text-orange-500 shrink-0"></i>
+          <div><div class="font-bold text-sm">Investing.com · 标普500历史行情</div><p class="text-xs muted mt-1">市场基准同期收盘点位与日涨跌。</p></div>
+        </a>
+        <a href="https://finance.yahoo.com/quote/%5EIXIC/history/" target="_blank" rel="noopener" class="flex gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition">
+          <i data-lucide="chart-line" class="w-5 h-5 text-orange-500 shrink-0"></i>
+          <div><div class="font-bold text-sm">Yahoo Finance · 纳斯达克综合指数</div><p class="text-xs muted mt-1">指数历史收盘点位及成交信息。</p></div>
+        </a>
+        <a href="https://www.trefis.com/stock/snow/articles/628635/why-is-snowflake-stock-going-up/2026-11-24" target="_blank" rel="noopener" class="flex gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition">
+          <i data-lucide="newspaper" class="w-5 h-5 text-orange-500 shrink-0"></i>
+          <div><div class="font-bold text-sm">Trefis · 11月23日上涨归因</div><p class="text-xs muted mt-1">市场普涨、软件板块反弹及公司特定催化剂判断。</p></div>
+        </a>
+        <a href="https://www.tikr.com/blog/snowflake-has-slumped-ahead-of-its-dec-2-report-why-td-cowen-sees-66-upside" target="_blank" rel="noopener" class="flex gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition">
+          <i data-lucide="target" class="w-5 h-5 text-orange-500 shrink-0"></i>
+          <div><div class="font-bold text-sm">TIKR · 财报前分析师观点</div><p class="text-xs muted mt-1">TD Cowen目标价及财报前市场预期。</p></div>
+        </a>
+        <a href="https://www.benzinga.com/quote/SNOW/charts" target="_blank" rel="noopener" class="flex gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition">
+          <i data-lucide="landmark" class="w-5 h-5 text-orange-500 shrink-0"></i>
+          <div><div class="font-bold text-sm">Benzinga · 分析师行动记录</div><p class="text-xs muted mt-1">近期目标价调整、评级与新闻摘要。</p></div>
+        </a>
+        <a href="https://finance.yahoo.com/markets/stocks/articles/just-happened-snowflake-stock-141918493.html" target="_blank" rel="noopener" class="flex gap-3 p-3 rounded-xl hover:bg-orange-50 dark:hover:bg-slate-800 transition">
+          <i data-lucide="globe" class="w-5 h-5 text-orange-500 shrink-0"></i>
+          <div><div class="font-bold text-sm">Trefis / Yahoo Finance · 11月5日下跌分析</div><p class="text-xs muted mt-1">科技股下跌背景与SNOW当日相对表现。</p></div>
+        </a>
+      </div>
+    </div>
+    <div class="panel p-6 mt-5">
+      <h3 class="font-extrabold mb-3">研究口径与免责声明</h3>
+      <ul class="text-xs muted leading-6 list-disc pl-5 space-y-1">
+        <li>本报告观察区间为2026年10月26日至11月24日，采用11月24日最近一个完整交易日收盘价；11月25日当日尚未收盘。</li>
+        <li>区间收益根据起止收盘价计算，指数对比使用标普500与纳斯达克综合指数。行情供应商之间可能存在成交量、盘中高低价及复权口径差异。</li>
+        <li>部分技术均线数据为历史截面参考，不代表11月24日实时均线；报告没有用不完整行情推算RSI、MACD、布林带或精确均线值。</li>
+        <li>美股成交量不等同于机构资金净流入。若无可靠资金流数据，不将成交量变化包装为“主力吸筹”或“主力出逃”。</li>
+        <li>分析师目标价、评级与公开观点不构成未来收益承诺；情景价格区间是技术观察锚点，不是确定性预测。</li>
+        <li>本报告仅用于信息研究与投资教育，不构成投资建议、证券买卖要约或个性化投资服务。股票可能出现本金损失，财报前后还可能发生跳空与流动性风险。</li>
+      </ul>
+    </div>
+    <div class="text-center text-xs muted mt-8">
+      <div class="font-extrabold tracking-widest">MARKET INSIGHT · SNOWFLAKE</div>
+      <div class="mt-2">数据截至 2026.11.25 · Generated for research purposes</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-5 w-11 h-11 rounded-full bg-orange-500 text-white shadow-xl shadow-orange-500/25 flex items-center justify-center opacity-0 pointer-events-none transition-all z-40" aria-label="返回顶部">
+  <i data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>
+
+<script>
+function toggleDarkMode() {
+  const root = document.documentElement;
+  root.classList.toggle("dark");
+  const dark = root.classList.contains("dark");
+  localStorage.setItem("snow-report-dark", dark ? "1" : "0");
+  const icon = document.getElementById("themeIcon");
+  if (icon) icon.setAttribute("data-lucide", dark ? "sun" : "moon");
+  if (window.lucide) lucide.createIcons();
+}
+
+function toggleMobileMenu() {
+  document.getElementById("mobileMenu").classList.toggle("hidden");
+}
+
+(function() {
+  try {
+    if (localStorage.getItem("snow-report-dark") === "1") {
+      document.documentElement.classList.add("dark");
+      const icon = document.getElementById("themeIcon");
+      if (icon) icon.setAttribute("data-lucide", "sun");
+    }
+  } catch(e) {}
+
+  const update = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = height > 0 ? (scrollTop / height) * 100 : 0;
+    document.getElementById("progressBar").style.width = progress + "%";
+
+    const btn = document.getElementById("backToTop");
+    if (scrollTop > 500) {
+      btn.classList.remove("opacity-0","pointer-events-none");
+      btn.classList.add("opacity-100");
+    } else {
+      btn.classList.add("opacity-0","pointer-events-none");
+      btn.classList.remove("opacity-100");
+    }
+  };
+
+  window.addEventListener("scroll", update, {passive:true});
+  update();
+
+  if (window.lucide) lucide.createIcons();
+  if (window.AOS) AOS.init({duration:650,once:true,offset:60});
+})();
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111827">
+<title>英特尔最新动态全景追踪_2026-11-24</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+          300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+          300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+          900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:90px}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05)}
+.btn-interactive:active{transform:scale(.95)}
+.card-interactive{transition:all .28s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.5)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#374151}
+.dark th{color:#f3f4f6}
+.dark td{color:#d1d5db}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%));transition:width .8s ease}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.source-link{color:#ea580c;text-decoration:underline;text-decoration-color:rgba(234,88,12,.35);text-underline-offset:3px}
+.dark .source-link{color:#fb923c}
+.source-link:hover{color:#c2410c}
+.dark .source-link:hover{color:#fdba74}
+.kpi{min-height:112px}
+.section-label{letter-spacing:.12em}
+@media print{
+header,#progressBar,.no-print{display:none!important}
+main{padding-top:0!important}
+body{background:white!important;color:black!important}
+}
+</style>
+<script>
+(function initTheme(){
+try{
+const saved=localStorage.getItem('intel-report-theme');
+if(saved==='dark'||(!saved&&window.matchMedia('(prefers-color-scheme: dark)').matches)||window.self!==window.top){
+document.documentElement.classList.add('dark');
+}
+}catch(e){}
+})();
+function syncThemeIcons(){
+const dark=document.documentElement.classList.contains('dark');
+const sun=document.getElementById('sunIcon');
+const moon=document.getElementById('moonIcon');
+if(sun)sun.style.display=dark?'block':'none';
+if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+document.documentElement.classList.toggle('dark');
+try{localStorage.setItem('intel-report-theme',document.documentElement.classList.contains('dark')?'dark':'light')}catch(e){}
+syncThemeIcons();
+}
+function toggleMobileMenu(){
+const menu=document.getElementById('mobileMenu');
+if(menu)menu.classList.toggle('mobile-menu-open');
+}
+function closeMobileMenu(){
+const menu=document.getElementById('mobileMenu');
+if(menu)menu.classList.remove('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+<h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">INTEL · 最新动态全景追踪</h1>
+</div>
+<nav class="hidden md:flex items-center gap-5">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">总览</a>
+<a href="#company" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">公司动态</a>
+<a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">行业动态</a>
+<a href="#macro" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">宏观政策</a>
+<a href="#matrix" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">催化矩阵</a>
+</nav>
+<div class="flex items-center gap-2 shrink-0">
+<button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+<i data-lucide="menu" class="w-4 h-4"></i>
+</button>
+<button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+<i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800 max-h-[calc(100vh-80px)] overflow-y-auto">
+<nav class="flex flex-col gap-2.5">
+<a href="#overview" onclick="closeMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">总览</a>
+<a href="#company" onclick="closeMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">公司动态</a>
+<a href="#industry" onclick="closeMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">行业动态</a>
+<a href="#macro" onclick="closeMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">宏观政策</a>
+<a href="#matrix" onclick="closeMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">催化矩阵</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-16">
+
+<!-- HERO -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+
+<div class="flex flex-wrap items-center gap-2.5 mb-5">
+<span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-semibold font-mono">NASDAQ · INTC</span>
+<span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300 text-xs font-semibold">半导体 · IDM · 晶圆代工 · AI计算</span>
+<span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-semibold">近30日 · 2026-10-26 至 2026-11-24</span>
+<span class="px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 text-xs font-semibold">研究基准日 2026-11-24</span>
+</div>
+
+<div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-5">
+<div>
+<p class="text-xs font-bold text-primary-600 dark:text-primary-400 section-label mb-2">INTEL CORPORATION</p>
+<h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">英特尔公司</h2>
+<p class="text-sm text-gray-500 dark:text-gray-400">NASDAQ: INTC · 美国加州圣克拉拉 · CEO：陈立武（Lip-Bu Tan）</p>
+</div>
+<div class="lg:text-right">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-1">最近可核验交易日收盘价</div>
+<div class="text-3xl font-bold font-mono text-gray-900 dark:text-white">$51.28</div>
+<div class="text-xs text-gray-500 dark:text-gray-400">2026-11-20 · 美东收盘 · 非11月24日实时行情</div>
+</div>
+</div>
+
+<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-7 max-w-5xl">
+近30日英特尔呈现<strong class="text-primary-600 dark:text-primary-400">“18A外部客户突破、AI服务器需求强劲，但供应链与出口管制约束并存”</strong>格局。Q3业绩改善与首个18A-P外部客户增强转型可信度，然而PC需求疲软、内存及基板短缺、晶圆代工竞争和政策合规风险，仍是估值修复的关键制约。
+</p>
+
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-7">
+<div class="kpi rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Q3 2026 营收</div>
+<div class="text-xl sm:text-2xl font-bold font-mono text-gray-900 dark:text-white">$16.5B</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">同比 +21%</div>
+</div>
+<div class="kpi rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Q3 GAAP毛利率</div>
+<div class="text-xl sm:text-2xl font-bold font-mono text-gray-900 dark:text-white">43.0%</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">同比 +4.8个百分点</div>
+</div>
+<div class="kpi rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Q3数据中心收入表现</div>
+<div class="text-lg sm:text-xl font-bold text-emerald-600 dark:text-emerald-400">15年最强增长</div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-1">公司管理层表述</div>
+</div>
+<div class="kpi rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">18A-P外部客户</div>
+<div class="text-xl sm:text-2xl font-bold text-primary-600 dark:text-primary-400">首个签约</div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2026-11-19公开确认</div>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+<div class="flex items-center gap-2 mb-3">
+<i data-lucide="gauge" class="w-4 h-4 text-primary-500"></i>
+<span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">消息面总体基调</span>
+</div>
+<p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">中性偏多</p>
+<p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">业绩与18A客户验证改善基本面，但盈利兑现和现金流修复仍需时间。</p>
+</div>
+
+<div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+<div class="flex items-center gap-2 mb-3">
+<i data-lucide="zap" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+<span class="text-xs font-semibold text-emerald-700 dark:text-emerald-300 uppercase">本月最强单一催化剂</span>
+</div>
+<p class="text-base font-bold text-emerald-800 dark:text-emerald-200">18A-P首个外部客户签约</p>
+<p class="text-xs text-emerald-700 dark:text-emerald-300 mt-2">2026-11-19 · 首次出现先进制程外部客户商业化验证信号。</p>
+</div>
+
+<div class="bg-rose-50/70 dark:bg-rose-950/30 rounded-xl p-5 border border-rose-200 dark:border-rose-800/60 card-interactive">
+<div class="flex items-center gap-2 mb-3">
+<i data-lucide="alert-triangle" class="w-4 h-4 text-rose-500"></i>
+<span class="text-xs font-semibold text-rose-700 dark:text-rose-300 uppercase">本月最需警惕信号</span>
+</div>
+<p class="text-base font-bold text-rose-800 dark:text-rose-200">供给短缺与PC需求双重挤压</p>
+<p class="text-xs text-rose-700 dark:text-rose-300 mt-2">10-Q明确指出基板、内存等短缺可能持续至2027年。</p>
+</div>
+</div>
+
+<div class="mt-5 p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+<p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+<strong class="text-gray-700 dark:text-gray-200">研究口径：</strong>本报告以2026-10-26至2026-11-24为30个自然日观察窗口。公司Q3财报虽在窗口内发布，但财报统计期截至2026-09-26。区分公告发布日期、财务统计期间与预测期间；未经权威来源证实的合同金额、客户身份、良率及股价数据不作推断。
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- COMPANY -->
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">按照对英特尔未来盈利、战略执行与估值的影响重要性排序</p>
+</div>
+</div>
+
+<!-- COMPANY 1 -->
+<article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-10-29</span>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">温和利好 · 盈利改善</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.5 / 10</span>
+</div>
+
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">Q3营收同比增长21%，毛利率改善，数据中心业务创15年来最强增长</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-5">
+<div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">GAAP营收</div>
+<div class="text-lg font-bold font-mono">$16.5B</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400">同比 +21%</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">GAAP毛利率</div>
+<div class="text-lg font-bold font-mono">43.0%</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400">同比 +4.8pct</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">GAAP营业利润率</div>
+<div class="text-lg font-bold font-mono">15.3%</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400">同比 +10.3pct</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">GAAP净利润</div>
+<div class="text-lg font-bold font-mono">$3.3B</div>
+<div class="text-xs text-rose-600 dark:text-rose-400">同比 -18%</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+英特尔于2026-10-29发布2026年第三季度财报。公司营收达到<strong>165亿美元</strong>，高于上年同期137亿美元；GAAP毛利率由38.2%升至43.0%，营业利润率由5.0%升至15.3%。GAAP摊薄EPS为0.60美元，非GAAP EPS为0.52美元。需要注意，GAAP净利润为33亿美元，同比下降18%，而非GAAP净利润为28亿美元，同比增长169%，两套口径不能混为一谈。
+</p>
+
+<div class="bg-primary-50/70 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-primary-100 dark:border-gray-700">
+<p class="text-xs font-bold text-primary-700 dark:text-primary-300 mb-2">Q4 2026 公司指引</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div>
+<div class="text-xs text-gray-500 dark:text-gray-400">营收区间</div>
+<div class="text-lg font-bold font-mono">$15–16B</div>
+</div>
+<div>
+<div class="text-xs text-gray-500 dark:text-gray-400">GAAP毛利率</div>
+<div class="text-lg font-bold font-mono">37.1%</div>
+</div>
+<div>
+<div class="text-xs text-gray-500 dark:text-gray-400">非GAAP毛利率</div>
+<div class="text-lg font-bold font-mono">38.0%</div>
+</div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">公司Q4 GAAP EPS指引0.10美元，非GAAP EPS指引0.25美元。指引较Q3实际毛利率回落，需关注产品组合、成本及供应改善情况。</p>
+</div>
+
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700">
+<div class="flex items-start gap-2">
+<i data-lucide="trending-up" class="w-4 h-4 text-primary-500 mt-0.5 shrink-0"></i>
+<div class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<strong class="text-gray-900 dark:text-white">经营传导：</strong>
+CEO陈立武表示，Xeon服务器CPU需求强劲，公司正在优先释放供应以满足需求。CFO同时确认，这是数据中心业务15年来最强增长表现。AI基础设施建设由GPU向CPU、网络及配套计算扩散，为英特尔传统服务器CPU提供需求支撑。
+<br><br>
+<strong class="text-gray-900 dark:text-white">核心矛盾：</strong>
+公司并非缺乏订单，而是供给能力不足。需求无法转化为全部可交付收入，意味着营收增长上限受制造产能、先进封装基板和关键组件共同制约。
+</div>
+</div>
+</div>
+
+<div class="bg-amber-50/70 dark:bg-amber-950/20 rounded-xl p-4 mb-4 border border-amber-200 dark:border-amber-800/40">
+<p class="text-xs text-amber-800 dark:text-amber-200 leading-relaxed">
+<strong>风险提示：</strong>英特尔10-Q（2026-10-30）披露，基板、内存及其他关键组件供应约束预计在Q4 2026及2027年持续。PC市场受到内存价格上涨影响，部分客户端产品需求已经弱于2026年上半年。公司还表示PC市场放缓至少可能持续至2027年上半年。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">核心信源：
+<a class="source-link" href="https://www.intc.com/news-events/press-releases/detail/1786/intel-reports-third-quarter-2026-financial-results" target="_blank" rel="noopener">Intel Q3 2026财报 · 2026-10-29</a>；
+<a class="source-link" href="https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000191/0000050863-26-000191.pdf" target="_blank" rel="noopener">Intel Form 10-Q · 2026-10-30</a>。
+</p>
+<div class="impact-bar"><div class="impact-fill" style="width:95%"></div></div>
+</article>
+
+<!-- COMPANY 2 -->
+<article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up" data-aos-delay="80">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-18 / 11-19</span>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大利好 · 战略突破</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.3 / 10</span>
+</div>
+
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">18A-P先进制程首次获得外部客户签约，Intel Foundry商业化迎来关键里程碑</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">外部客户</div>
+<div class="text-xl font-bold text-emerald-600 dark:text-emerald-400">1家</div>
+<div class="text-xs text-gray-500">首个签约确认</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">制造节点</div>
+<div class="text-xl font-bold font-mono">18A-P</div>
+<div class="text-xs text-gray-500">性能增强版本</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">风险试产</div>
+<div class="text-xl font-bold font-mono">2026-06</div>
+<div class="text-xs text-gray-500">已进入风险生产</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">量产客户信息</div>
+<div class="text-xl font-bold">未披露</div>
+<div class="text-xs text-gray-500">合同金额未披露</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026-11-18，英特尔CEO陈立武在美国奥斯汀TomorrowX Summit上确认，公司已经签署首个18A外部客户。相关消息于11月19日由Data Center Dynamics等媒体报道。英特尔CTO Pushkar Ranade随后确认，客户选择的是<strong>18A-P</strong>工艺。
+</p>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+18A是英特尔“五年五节点”制造路线的重要节点之一，采用RibbonFET全环绕栅极晶体管和PowerVia背面供电技术。18A-P是增强性能的衍生版本，与18A设计兼容。它意味着英特尔正在尝试从内部产品自用制造，向真正的外部晶圆代工客户转变。
+</p>
+
+<div class="bg-emerald-50/60 dark:bg-emerald-950/20 rounded-xl p-4 mb-4 border border-emerald-200 dark:border-emerald-800/40">
+<p class="text-xs font-bold text-emerald-800 dark:text-emerald-300 mb-2">三层投资价值</p>
+<div class="space-y-3 text-xs text-gray-600 dark:text-gray-300">
+<div><strong class="text-gray-900 dark:text-white">第一层：商业验证。</strong>外部客户签约是Foundry战略的重要突破，表明英特尔的先进工艺开始获得内部业务之外的市场认可。</div>
+<div><strong class="text-gray-900 dark:text-white">第二层：制造资产利用率。</strong>若未来形成稳定外部晶圆订单，能够提高工厂利用率，分摊高额折旧，改善晶圆代工业务毛利率。</div>
+<div><strong class="text-gray-900 dark:text-white">第三层：估值重构。</strong>外部客户的持续增加，有望降低市场对英特尔仅依靠自有CPU订单支撑先进制程投资的担忧。</div>
+</div>
+</div>
+
+<div class="bg-rose-50/60 dark:bg-rose-950/20 rounded-xl p-4 mb-4 border border-rose-200 dark:border-rose-800/40">
+<p class="text-xs text-rose-800 dark:text-rose-200 leading-relaxed">
+<strong>必须区分商业里程碑与财务兑现：</strong>目前客户身份、订单金额、晶圆规模、量产时间和毛利贡献均未披露。签约不等于已经形成规模化收入，更不等于良率、交付和成本竞争力已经全面达到成熟水平。市场此前关于苹果潜在合作的报道不能据此视为已确认客户身份。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">核心信源：
+<a class="source-link" href="https://www.datacenterdynamics.com/en/news/intel-secures-first-external-customer-for-18a-p-process-node/" target="_blank" rel="noopener">Data Center Dynamics · 2026-11-19</a>；
+<a class="source-link" href="https://thenextweb.com/news/intel-ceo-lip-bu-tan-says-intel-has-signed-its-first-outside-18a-customer" target="_blank" rel="noopener">The Next Web · 2026-11-19</a>。
+</p>
+<div class="impact-bar"><div class="impact-fill" style="width:93%"></div></div>
+</article>
+
+<!-- COMPANY 3 -->
+<article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive" data-aos="fade-up" data-aos-delay="120">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-12</span>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">温和利好 · AI生态合作</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.8 / 10</span>
+</div>
+
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">与RadixArk合作优化SGLang，推动英特尔CPU、GPU及加速器切入开放式AI推理市场</h3>
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">合作伙伴</div>
+<div class="font-bold text-base mt-1">RadixArk</div>
+<div class="text-xs text-gray-500">AI推理软件生态</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">核心框架</div>
+<div class="font-bold text-base mt-1">SGLang</div>
+<div class="text-xs text-gray-500">开源AI推理技术栈</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">优化硬件</div>
+<div class="font-bold text-base mt-1">CPU / GPU / 加速器</div>
+<div class="text-xs text-gray-500">包括Intel AMX</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026-11-12，英特尔宣布与RadixArk开展合作，共同优化开源SGLang推理技术栈，使其能够更好地适配英特尔CPU、GPU及加速器平台。合作重点是将深度优化贡献回主流开源框架，改善模型部署效率、推理延迟及企业级生产环境的成本表现。
+</p>
+
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+<p class="text-xs font-bold text-gray-900 dark:text-white mb-2">投资传导逻辑</p>
+<div class="space-y-2 text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<p><strong>1. CPU价值重新定位：</strong>AI推理不完全等于GPU计算。模型路由、调度、数据预处理、内存管理及部分推理任务都存在CPU价值空间。</p>
+<p><strong>2. 生态壁垒改善：</strong>软件框架优化能够降低客户迁移成本，使英特尔现有服务器和数据中心硬件更容易进入AI推理工作流。</p>
+<p><strong>3. 商业化仍需验证：</strong>目前公告未披露合同金额、收入贡献、客户部署规模或量化性能提升数据，不应直接将合作等同于重大订单。</p>
+</div>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">核心信源：
+<a class="source-link" href="https://www.intc.com/news-events/press-releases/detail/1787/intel-radixark-collaborate-to-advance-open-ai-inference-on" target="_blank" rel="noopener">Intel官方新闻稿 · 2026-11-12</a>。
+</p>
+<div class="impact-bar"><div class="impact-fill" style="width:78%"></div></div>
+</article>
+
+<!-- supplemental company signal -->
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center gap-2 mb-3">
+<i data-lucide="file-bar-chart" class="w-4 h-4 text-primary-500"></i>
+<h3 class="font-bold text-sm">补充观察：机构估值调整与市场分歧</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-gray-600 dark:text-gray-300">
+<div>
+<strong class="text-gray-900 dark:text-white">2026-11-12 · Bank of America Securities</strong>
+<p class="mt-1 leading-relaxed">维持Neutral评级，将英特尔目标价由100美元下调至80美元，反映对公司经营改善、竞争格局及估值兑现节奏的谨慎态度。</p>
+</div>
+<div>
+<strong class="text-gray-900 dark:text-white">2026-11-23 · Bernstein</strong>
+<p class="mt-1 leading-relaxed">公开跟踪的评级资料显示Mark Newman维持Hold，目标价75美元。评级资料属于第三方汇总，并非券商原始研报全文。</p>
+</div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+来源：<a class="source-link" href="https://stockanalysis.com/stocks/intc/ratings/" target="_blank" rel="noopener">Stock Analysis评级记录</a>；
+<a class="source-link" href="https://www.tipranks.com/stocks/intc/forecast" target="_blank" rel="noopener">TipRanks · 2026-11-23</a>。
+</p>
+</div>
+
+</section>
+
+<!-- INDUSTRY -->
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+<i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+</div>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">重点覆盖先进制程晶圆制造、AI服务器CPU、AI推理及半导体供应链</p>
+</div>
+</div>
+
+<div class="bg-accent-50/60 dark:bg-accent-950/20 rounded-xl p-4 mb-6 border border-accent-200 dark:border-accent-800/40">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-accent-700 dark:text-accent-300">赛道界定：</strong>英特尔不是单一晶圆代工厂，而是同时经营客户端与服务器CPU、GPU及AI加速器、晶圆制造和先进封装的综合性IDM企业。行业映射必须同时考虑产品市场份额、制造工艺竞争力、代工客户获取能力及上游材料供应。
+</p>
+</div>
+
+<!-- INDUSTRY 1 -->
+<article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-11</span>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">结构性利好</span>
+</div>
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-3">TrendForce预测2027年晶圆代工景气维持高位，AI需求推动产能紧张与涨价</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+<div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">全球12英寸代工产能</div>
+<div class="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400">+12%</div>
+<div class="text-xs text-gray-500">2027年同比预测</div>
+</div>
+<div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">2027年代工报价</div>
+<div class="text-xl font-bold font-mono">+5%–20%</div>
+<div class="text-xs text-gray-500">报告预测区间</div>
+</div>
+<div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">核心需求来源</div>
+<div class="text-lg font-bold">AI / Server</div>
+<div class="text-xs text-gray-500">服务器与AI芯片</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+TrendForce于2026-11-11发布《2027 Foundry Outlook: AI Demand Drives Expansion and Price Hikes》。报告指出，服务器与AI需求将推动晶圆代工产能利用率维持高位，8英寸产能供应趋紧，12英寸产能继续扩张。成本转嫁与供需紧张有望推动2027年部分晶圆代工价格上涨，报告预测区间为5%至20%，但并不代表所有制程和厂商统一涨价。
+</p>
+
+<div class="bg-accent-50/60 dark:bg-accent-900/20 rounded-lg p-4 border border-accent-200/70 dark:border-accent-700/40">
+<p class="text-xs leading-relaxed text-gray-700 dark:text-gray-300">
+<strong class="text-accent-700 dark:text-accent-300">对英特尔的横向映射：</strong>
+行业需求扩张有利于英特尔先进制程及代工业务争取外部客户。但TSMC在先进制程和客户生态方面仍具有强大竞争优势。TrendForce指出英特尔和三星的先进制程扩张相对谨慎，意味着英特尔必须依靠18A/14A实际良率、量产和外部客户订单证明竞争力。行业景气改善并不会自动转化为英特尔市场份额提升。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">来源：<a class="source-link" href="https://www.trendforce.com/research/download/RP261111RZ3" target="_blank" rel="noopener">TrendForce · 2026-11-11 · 2027 Foundry Outlook</a>。</p>
+</article>
+
+<!-- INDUSTRY 2 -->
+<article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-18</span>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏空 · 成本压力</span>
+</div>
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-3">DRAM供应结构出现分化：AI服务器需求强劲，消费电子内存成本继续挤压PC需求</h3>
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">移动DRAM</div>
+<div class="font-bold text-base mt-1">议价停滞</div>
+<div class="text-xs text-gray-500">品牌采购谨慎</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">AI服务器内存</div>
+<div class="font-bold text-base mt-1 text-emerald-600 dark:text-emerald-400">需求持续强劲</div>
+<div class="text-xs text-gray-500">HBM采购基本锁定</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">消费端价格</div>
+<div class="font-bold text-base mt-1">涨幅趋缓</div>
+<div class="text-xs text-gray-500">供需缺口逐渐收窄</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+TrendForce于2026-11-18发布DRAM Market Bulletin。报告指出，移动DRAM合约谈判陷入停滞，品牌厂商普遍采取观望策略，现货市场需求疲软。但AI数据中心建设仍在推进，HBM采购大部分已锁定，服务器内存需求继续支撑行业供需紧张。随着三大DRAM厂商扩产和制程迁移，短期内合约价格仍可能上涨，但涨幅预计逐季收窄。
+</p>
+
+<div class="bg-amber-50/60 dark:bg-amber-950/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800/40">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-amber-700 dark:text-amber-300">对英特尔的横向映射：</strong>
+英特尔客户端业务受到双重挤压：一方面，内存涨价推高整机BOM成本，PC OEM可能提高售价或降低配置；另一方面，终端消费者可能推迟换机，进一步影响CPU出货。服务器端AI建设仍是积极因素，但英特尔自己也需要内存、基板等关键组件完成产品交付。因此，内存短缺既是需求端压力，也是公司供应链瓶颈。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">来源：<a class="source-link" href="https://www.trendforce.com/research/download/RP261028TO" target="_blank" rel="noopener">TrendForce DRAM Market Bulletin · 2026-10-28</a>；
+<a class="source-link" href="https://fandai.donguapan.workers.dev/https/www.trendforce.com/research/download/RP261118PS" target="_blank" rel="noopener">TrendForce DRAM Market Bulletin · 2026-11-18</a>。</p>
+</article>
+
+<!-- INDUSTRY 3 -->
+<article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-10</span>
+<span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">竞争压力 · 先进制程</span>
+</div>
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-3">台积电10月营收同比增长59.7%，先进制程规模化优势继续扩大</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+<div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+<div class="text-xs text-gray-500 dark:text-gray-400">10月营收</div>
+<div class="text-lg font-bold font-mono">NT$586.89B</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+<div class="text-xs text-gray-500 dark:text-gray-400">同比增长</div>
+<div class="text-lg font-bold font-mono text-emerald-600 dark:text-emerald-400">59.7%</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+<div class="text-xs text-gray-500 dark:text-gray-400">环比增长</div>
+<div class="text-lg font-bold font-mono">14.7%</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+<div class="text-xs text-gray-500 dark:text-gray-400">1—10月累计</div>
+<div class="text-lg font-bold font-mono">+43.3%</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+台积电于2026-11-10公布10月合并营收5868.90亿新台币，环比增长14.7%，同比增长59.7%；2026年1月至10月累计营收4.4856万亿新台币，同比增长43.3%。这表明全球先进芯片需求依然强劲，AI相关芯片及高端制造业务仍处于较高景气水平。
+</p>
+
+<div class="bg-rose-50/60 dark:bg-rose-950/20 rounded-lg p-4 border border-rose-200 dark:border-rose-800/40">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-rose-700 dark:text-rose-300">对英特尔的横向映射：</strong>
+这是最重要的竞争参照。台积电强劲增长说明市场需求真实存在，同时也证明先进制程商业化已经在成熟客户体系中形成规模。英特尔虽然获得首个18A-P外部客户，但与台积电相比，仍需要证明多客户并行、稳定良率、长期交付和代工利润率。行业需求高增长与竞争对手优势扩大同时存在，不能只看行业贝塔而忽视份额差距。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">来源：<a class="source-link" href="https://pr.tsmc.com/english/news/3349" target="_blank" rel="noopener">TSMC October 2026 Revenue Report · 2026-11-10</a>；
+<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1046179/000104617926000796/tsm-revenue20261110.htm" target="_blank" rel="noopener">TSMC SEC披露</a>。</p>
+</article>
+
+<!-- Industry comparison -->
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
+<h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+<i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i>
+行业动态对标影响对比表
+</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm min-w-[700px]">
+<thead><tr class="bg-gray-50 dark:bg-gray-800">
+<th>行业事件</th>
+<th>涉及主体</th>
+<th>对英特尔利弊传导</th>
+<th>影响周期</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-gray-100">AI需求推动晶圆代工涨价</td>
+<td>TSMC、Intel、Samsung及全球代工厂</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-bold">偏利好。</span>代工市场扩张为18A外部客户开发创造空间，但仍需竞争兑现。</td>
+<td>2026Q4—2027</td>
+</tr>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-gray-100">DRAM供应紧张、PC成本上升</td>
+<td>Samsung、SK hynix、Micron、PC OEM</td>
+<td><span class="text-rose-600 dark:text-rose-400 font-bold">偏利空。</span>整机成本上涨与换机放缓压制客户端CPU需求。</td>
+<td>短期—2027</td>
+</tr>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-gray-100">台积电10月营收同比+59.7%</td>
+<td>TSMC、Intel Foundry</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-bold">竞争性压力。</span>先进制造需求得到验证，但台积电规模优势继续扩大。</td>
+<td>中长期</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">关注先进芯片出口管制、国内产业支持与美国利率环境</p>
+</div>
+</div>
+
+<!-- MACRO 1 -->
+<article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 shadow-sm card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · 出口管制</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-16 / 11-19</span>
+<span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">中性偏空 · 合规风险</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.0 / 10</span>
+</div>
+
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">美国BIS出台先进半导体远程访问新规，扩大第三国数据中心及代工出口审查范围</h3>
+
+<div class="bg-rose-50/60 dark:bg-rose-950/20 rounded-xl p-4 mb-4 border border-rose-200 dark:border-rose-800/40">
+<p class="text-xs font-bold text-rose-800 dark:text-rose-300 mb-2">政策时间线</p>
+<div class="space-y-2 text-xs text-gray-600 dark:text-gray-300">
+<p><strong>2026-11-16：</strong>美国商务部BIS宣布针对先进超级智能（SI）芯片及服务器远程访问的新临时最终规则。</p>
+<p><strong>2026-11-19：</strong>相关规则刊载于Federal Register，91 FR 74970，正式生效。</p>
+<p><strong>2027-01-19：</strong>相关规则意见提交截止日期。</p>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="block text-gray-900 dark:text-white mb-2">1. 政策要点</strong>
+新规要求对特定境外数据中心向中国及其他受限制目的地企业提供大规模先进算力的行为实施许可审查；同时对向印度尼西亚、马来西亚、新加坡、泰国和巴西出口先进芯片增加许可要求，并调整先进逻辑芯片制造商和封装厂相关出口审查规则。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="block text-gray-900 dark:text-white mb-2">2. 盈利与估值传导</strong>
+先进AI产品跨境销售及客户合规审查可能增加成本和交付周期；制造设备、零部件与服务出口限制也可能影响全球生产协同。政策不确定性会增加风险溢价，对半导体公司的估值倍数形成压力。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="block text-gray-900 dark:text-white mb-2">3. 英特尔业务敞口</strong>
+英特尔的先进计算产品、境外云服务客户、代工客户及全球制造设施均需要评估合规义务。尤其需要关注客户最终受益人、数据中心算力用途、出口目的地与代工厂交付责任。该规则不是针对英特尔的专门禁令，实际影响取决于具体产品分类与交易路径。
+</div>
+</div>
+
+<div class="bg-amber-50/60 dark:bg-amber-950/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800/40">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-amber-700 dark:text-amber-300">关键判断：</strong>
+政策存在两种方向的影响：美国本土制造和可信供应链建设可能提升英特尔的战略地位；但客户跨境交易、先进芯片销售和供应链合规复杂度也可能提高。不能简单把出口限制解释为英特尔直接受益，更不能把所有英特尔CPU视为受新规直接限制的先进AI芯片。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+官方信源：
+<a class="source-link" href="https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology" target="_blank" rel="noopener">美国BIS新闻稿 · 2026-11-16</a>；
+<a class="source-link" href="https://www.govinfo.gov/content/pkg/FR-2026-11-19/html/2026-23529.htm" target="_blank" rel="noopener">Federal Register · 91 FR 74970 · 2026-11-19</a>。
+</p>
+<div class="impact-bar mt-3"><div class="impact-fill" style="width:90%"></div></div>
+</article>
+
+<!-- MACRO 2 -->
+<article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 shadow-sm card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">中国 · 产业政策</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-06</span>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">中长期利好 · 产业需求</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 6.8 / 10</span>
+</div>
+
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">北京经开区启动AI4Chip项目征集，推动人工智能与芯片设计、制造、封测及设备材料融合</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">政策行动计划</div>
+<div class="font-bold text-lg">2026—2028</div>
+<div class="text-xs text-gray-500">AI4Chip</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">重点任务</div>
+<div class="font-bold text-lg">20项</div>
+<div class="text-xs text-gray-500">产业任务方向</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">征集方向</div>
+<div class="font-bold text-lg">5大类</div>
+<div class="text-xs text-gray-500">设计、制造等</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">项目实施期限</div>
+<div class="font-bold text-lg">≤24个月</div>
+<div class="text-xs text-gray-500">原则上不超过</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+北京市集成电路重大项目办公室于2026-11-06发布通知，面向北京经济技术开发区集成电路相关企业征集AI4Chip项目。政策围绕AI原生全链赋能、智能设计、制造封测、设备材料和产业生态五大方向开展项目支持，符合条件的项目经评审后可获得相应资金支持，申报截止日期为2026-11-20。
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-sm text-gray-900 dark:text-white">盈利分子端</strong>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">国内AI产业发展和芯片研发投入有望扩大服务器、边缘计算、工业计算及配套芯片需求。英特尔如果能够在国内客户群中维持竞争力，有机会参与相关需求扩张。</p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-sm text-gray-900 dark:text-white">估值分母端</strong>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">政策推动国内产业链自主化，也可能强化国产CPU、AI芯片、制造和封测生态，形成对英特尔的竞争替代压力。</p>
+</div>
+</div>
+
+<div class="bg-amber-50/60 dark:bg-amber-950/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800/40">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-amber-700 dark:text-amber-300">业务敞口判断：</strong>
+该政策属于北京市地方产业项目征集，并非对英特尔的直接补贴，也不是全国性采购政策。对英特尔的净影响取决于中国市场需求增长与国产替代速度之间的平衡，短期收入贡献不宜量化。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">官方信源：
+<a class="source-link" href="https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202611/t20261109_4938861.html" target="_blank" rel="noopener">北京经济技术开发区AI4Chip项目通知 · 2026-11-06</a>。</p>
+<div class="impact-bar mt-3"><div class="impact-fill" style="width:68%"></div></div>
+</article>
+
+<!-- MACRO 3 -->
+<article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 shadow-sm card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国际 · 货币政策</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-10-28 / 11-18</span>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性 · 估值敏感</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 6.5 / 10</span>
+</div>
+
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">美联储维持利率在3.75%—4.00%，通胀仍高于目标，12月议息会议成为下一观察窗口</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">联邦基金利率下限</div>
+<div class="text-lg font-bold font-mono">3.75%</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">联邦基金利率上限</div>
+<div class="text-lg font-bold font-mono">4.00%</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">美联储会议</div>
+<div class="text-lg font-bold">12月8—9日</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+<div class="text-xs text-gray-500 dark:text-gray-400">下一次会议纪要</div>
+<div class="text-lg font-bold">12月30日</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+美联储于2026-10-28公布货币政策决定，维持联邦基金利率目标区间在3.75%至4.00%。会议纪要于2026-11-18公布，显示10名委员支持维持利率不变，2名委员倾向加息25个基点。美联储指出经济活动保持强劲、居民支出有韧性，但通胀仍高于2%的政策目标。
+</p>
+
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+<p class="text-xs font-bold text-gray-900 dark:text-white mb-2">对英特尔的双路径影响</p>
+<div class="space-y-3 text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<p><strong>盈利分子端：</strong>利率维持高位可能提高企业融资成本，影响PC、服务器和数据中心客户的资本开支决策。对需要持续投入先进制程、晶圆厂和先进封装的英特尔而言，融资成本和资本纪律具有较高重要性。</p>
+<p><strong>估值分母端：</strong>无风险利率及美债收益率决定成长股未来现金流折现率。若市场预期利率长期维持高位，英特尔尚未充分兑现的先进制程成长预期可能面临估值压缩。</p>
+</div>
+</div>
+
+<div class="bg-amber-50/60 dark:bg-amber-950/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800/40">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-amber-700 dark:text-amber-300">业务敞口判断：</strong>
+英特尔属于高资本开支、长周期制造企业，利率变化对其影响主要通过融资成本、客户资本开支和长期估值折现传导。美联储此次决定是维持利率而非降息，且会议内部存在分歧，不应将其直接解读为宽松周期已经启动。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+官方信源：
+<a class="source-link" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm" target="_blank" rel="noopener">Federal Reserve · 2026-10-28会议纪要（2026-11-18公布）</a>；
+<a class="source-link" href="https://www.federalreserve.gov/monetarypolicy.htm" target="_blank" rel="noopener">FOMC会议日历</a>。
+</p>
+<div class="impact-bar mt-3"><div class="impact-fill" style="width:65%"></div></div>
+</article>
+
+</section>
+
+<!-- MATRIX -->
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-10" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<div>
+<h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">把公司、行业、宏观三个维度压缩为可跟踪的投资信号</p>
+</div>
+</div>
+
+<div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-8">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+<h3 class="font-bold text-gray-900 dark:text-white text-sm sm:text-base flex items-center gap-2">
+<i data-lucide="list" class="w-4 h-4 text-primary-500"></i> 九大动态催化矩阵
+</h3>
+<div class="flex flex-wrap gap-1.5 text-xs">
+<button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">全部 (9)</button>
+<button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">公司 (3)</button>
+<button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">行业 (3)</button>
+<button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">宏观 (3)</button>
+</div>
+</div>
+
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm min-w-[850px]">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800">
+<th>类别</th>
+<th>日期</th>
+<th>核心事件</th>
+<th>影响方向</th>
+<th>强度</th>
+<th>核心投资含义</th>
+</tr>
+</thead>
+<tbody>
+<tr x-show="filter==='all'||filter==='company'" @click="document.getElementById('card-company-1').scrollIntoView({behavior:'smooth'})" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 font-semibold">公司</span></td>
+<td class="font-mono whitespace-nowrap">10-29</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">Q3营收+21%，毛利率同比提升4.8个百分点</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-semibold">温和利好</td>
+<td class="font-bold font-mono">9.5</td>
+<td>盈利改善与数据中心需求强劲，但供应受限。</td>
+</tr>
+<tr x-show="filter==='all'||filter==='company'" @click="document.getElementById('card-company-2').scrollIntoView({behavior:'smooth'})" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 font-semibold">公司</span></td>
+<td class="font-mono whitespace-nowrap">11-18/19</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">18A-P首个外部客户签约</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-semibold">重大利好</td>
+<td class="font-bold font-mono">9.3</td>
+<td>Foundry商业化首次取得关键外部客户验证。</td>
+</tr>
+<tr x-show="filter==='all'||filter==='company'" @click="document.getElementById('card-company-3').scrollIntoView({behavior:'smooth'})" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 font-semibold">公司</span></td>
+<td class="font-mono whitespace-nowrap">11-12</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">RadixArk合作优化SGLang AI推理</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-semibold">温和利好</td>
+<td class="font-bold font-mono">7.8</td>
+<td>扩展CPU及加速器在企业AI推理的应用生态。</td>
+</tr>
+<tr x-show="filter==='all'||filter==='industry'" @click="document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth'})" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold">行业</span></td>
+<td class="font-mono whitespace-nowrap">11-11</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">AI需求推动代工景气与2027年报价上升</td>
+<td class="text-emerald-600 dark:text-emerald-400 font-semibold">结构性利好</td>
+<td class="font-bold font-mono">8.5</td>
+<td>行业扩张有利于Foundry客户开发，但竞争仍激烈。</td>
+</tr>
+<tr x-show="filter==='all'||filter==='industry'" @click="document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth'})" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold">行业</span></td>
+<td class="font-mono whitespace-nowrap">11-18</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">DRAM成本高企，PC需求承压，AI服务器保持强势</td>
+<td class="text-rose-600 dark:text-rose-400 font-semibold">中性偏空</td>
+<td class="font-bold font-mono">8.0</td>
+<td>PC出货及英特尔供应链交付可能双重受压。</td>
+</tr>
+<tr x-show="filter==='all'||filter==='industry'" @click="document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth'})" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold">行业</span></td>
+<td class="font-mono whitespace-nowrap">11-10</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">台积电10月营收同比增长59.7%</td>
+<td class="text-amber-600 dark:text-amber-400 font-semibold">竞争承压</td>
+<td class="font-bold font-mono">7.8</td>
+<td>先进制程竞争对手规模化优势进一步得到验证。</td>
+</tr>
+<tr x-show="filter==='all'||filter==='macro'" @click="document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth'})" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold">宏观</span></td>
+<td class="font-mono whitespace-nowrap">11-16/19</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">美国BIS远程访问先进芯片新规</td>
+<td class="text-rose-600 dark:text-rose-400 font-semibold">合规风险</td>
+<td class="font-bold font-mono">9.0</td>
+<td>增加全球先进芯片及代工交易合规复杂度。</td>
+</tr>
+<tr x-show="filter==='all'||filter==='macro'" @click="document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth'})" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold">宏观</span></td>
+<td class="font-mono whitespace-nowrap">11-06</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">北京AI4Chip项目征集及产业扶持</td>
+<td class="text-amber-600 dark:text-amber-400 font-semibold">中长期双向</td>
+<td class="font-bold font-mono">6.8</td>
+<td>扩大国内AI芯片生态，需求扩张与国产替代并存。</td>
+</tr>
+<tr x-show="filter==='all'||filter==='macro'" @click="document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth'})" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold">宏观</span></td>
+<td class="font-mono whitespace-nowrap">10-28/11-18</td>
+<td class="font-medium text-gray-900 dark:text-gray-100">美联储维持3.75%—4.00%利率</td>
+<td class="text-amber-600 dark:text-amber-400 font-semibold">估值中性</td>
+<td class="font-bold font-mono">6.5</td>
+<td>高资本开支与成长估值对利率变化敏感。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-400 dark:text-gray-500 mt-3">交互说明：点击任意事件行，可跳转至对应详细分析卡片。影响强度为研究判断评分，并非市场机构发布的量化指标。</p>
+</div>
+
+<!-- Forward calendar -->
+<div class="mb-5">
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+<i data-lucide="calendar-clock" class="w-5 h-5 text-primary-500"></i>
+未来30天关键观察日历 · 2026-11-24 至 2026-12-24
+</h3>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-300">2026-12-08 至 12-09</span>
+<span class="px-2 py-1 rounded-full text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">高重要性</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">美联储12月FOMC议息会议</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">关注利率决定、点阵图及主席新闻发布会。重点判断利率路径是否影响半导体成长股估值与英特尔资本开支融资成本。</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">官方日历：<a class="source-link" href="https://www.federalreserve.gov/monetarypolicy.htm" target="_blank" rel="noopener">Federal Reserve</a></p>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-300">2026-12-10</span>
+<span class="px-2 py-1 rounded-full text-xs bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">高重要性</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">台积电11月营收公告</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">台积电官方财务日历已列出11月10日之后的下一次月度销售公告为12月10日。重点比较先进制程与AI需求的持续性，判断英特尔18A竞争环境。</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">官方日历：<a class="source-link" href="https://investor.tsmc.com/english/financial-calendar" target="_blank" rel="noopener">TSMC Financial Calendar</a></p>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-300">2026-12-30</span>
+<span class="px-2 py-1 rounded-full text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中高重要性</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">美联储12月会议纪要</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">该日期已超过本报告未来30日窗口一天，作为延伸观察项。重点分析委员会内部对通胀、利率与经济增长的判断。</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">官方来源：<a class="source-link" href="https://www.federalreserve.gov/monetarypolicy.htm" target="_blank" rel="noopener">Federal Reserve</a></p>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-300">持续跟踪 · 未来30日</span>
+<span class="px-2 py-1 rounded-full text-xs bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300">高风险变量</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">18A-P客户身份、量产与良率验证</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">重点关注客户身份是否进一步明确、是否披露晶圆规模、订单价值及量产节奏。对英特尔Foundry估值重构而言，这比单纯的技术发布更重要。</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">持续跟踪：<a class="source-link" href="https://www.intc.com/news-events" target="_blank" rel="noopener">Intel News & Events</a></p>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-300">持续跟踪 · 未来30日</span>
+<span class="px-2 py-1 rounded-full text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">高重要性</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Q4制造供应与服务器CPU交付能力</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">观察基板、内存供应情况，Xeon产品供给释放速度，以及PC OEM是否继续削减配置和采购计划。重点寻找需求转化为实际收入的证据。</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">跟踪来源：<a class="source-link" href="https://www.intc.com/filings-reports" target="_blank" rel="noopener">Intel SEC Filings</a></p>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-300">2027-01-19</span>
+<span class="px-2 py-1 rounded-full text-xs bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300">窗口外延伸项</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">BIS先进芯片新规意见提交截止</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">超过未来30天窗口。关注企业反馈、执行解释和后续监管细则，评估英特尔全球制造与客户交易的实际合规成本。</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">官方来源：<a class="source-link" href="https://www.govinfo.gov/content/pkg/FR-2026-11-19/html/2026-23529.htm" target="_blank" rel="noopener">Federal Register</a></p>
+</div>
+
+</div>
+</div>
+
+<!-- Strategic dashboard -->
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-800 shadow-sm mb-8">
+<div class="flex items-center gap-2 mb-5">
+<i data-lucide="target" class="w-5 h-5 text-primary-500"></i>
+<h3 class="font-bold text-lg">五、买方策略师：英特尔核心投资判断</h3>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="rounded-xl p-4 bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/50">
+<div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">正向催化</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Foundry转型获得真实验证</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">首个18A-P外部客户签约，叠加Q3业绩改善，为制造业务的长期估值修复提供了新的验证点。</p>
+</div>
+<div class="rounded-xl p-4 bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/50">
+<div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">中性变量</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">AI需求与实际交付错配</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">服务器CPU需求强劲，但内存、基板及制造能力限制出货。未来利润改善必须来自真实交付，而非仅有订单需求。</p>
+</div>
+<div class="rounded-xl p-4 bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-800/50">
+<div class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-2">核心风险</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">资本开支与竞争壁垒</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">先进制程持续投入巨大，若客户订单、良率和产能利用率无法同步兑现，折旧及现金流压力将重新压制估值。</p>
+</div>
+</div>
+
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-3">未来30日最重要的三个验证指标</h4>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead><tr class="bg-gray-50 dark:bg-gray-800">
+<th>观察指标</th>
+<th>积极信号</th>
+<th>负面信号</th>
+<th>投资意义</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-white">18A-P外部客户</td>
+<td class="text-emerald-600 dark:text-emerald-400">公布客户、订单及量产计划</td>
+<td class="text-rose-600 dark:text-rose-400">长期无新增商业化信息</td>
+<td>决定Foundry估值能否重构</td>
+</tr>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-white">Xeon服务器CPU</td>
+<td class="text-emerald-600 dark:text-emerald-400">供给增加、收入兑现</td>
+<td class="text-rose-600 dark:text-rose-400">订单积压、关键组件短缺</td>
+<td>决定短期利润增长斜率</td>
+</tr>
+<tr>
+<td class="font-semibold text-gray-900 dark:text-white">制造毛利率与现金流</td>
+<td class="text-emerald-600 dark:text-emerald-400">毛利率稳定改善、现金流转强</td>
+<td class="text-rose-600 dark:text-rose-400">折旧增加、自由现金流恶化</td>
+<td>决定资本开支的可持续性</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="mt-6 p-5 rounded-xl bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="brain-circuit" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+<strong class="text-sm text-primary-800 dark:text-primary-300">最终投资结论</strong>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+英特尔当前最重要的投资逻辑，已经不只是PC CPU周期反弹，而是<strong>“服务器CPU需求兑现 + 18A外部客户商业化 + 制造业务盈利改善”</strong>三条主线能否形成共振。Q3财报证明经营指标改善，18A-P首个外部客户证明战略开始取得外部验证；但尚未证明先进制程已经实现规模化盈利。短期最值得跟踪的不是单纯的技术宣传，而是外部客户订单量、良率、交付、制造毛利率和自由现金流。综合消息面判断为<strong class="text-emerald-600 dark:text-emerald-400">中性偏多，但需要业绩继续验证</strong>。
+</p>
+</div>
+</div>
+
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+<i data-lucide="database" class="w-4 h-4 text-primary-500"></i> 数据来源清单
+</h4>
+<ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+<li><a class="source-link" href="https://www.intc.com/news-events" target="_blank" rel="noopener">Intel Investor Relations / Newsroom</a>：Q3 2026财报、RadixArk合作公告。</li>
+<li><a class="source-link" href="https://www.intc.com/filings-reports/all-sec-filings/content/0000050863-26-000191/0000050863-26-000191.pdf" target="_blank" rel="noopener">Intel Form 10-Q</a>：供应链、PC需求及经营风险披露。</li>
+<li><a class="source-link" href="https://www.datacenterdynamics.com/en/news/intel-secures-first-external-customer-for-18a-p-process-node/" target="_blank" rel="noopener">Data Center Dynamics</a>：18A-P外部客户消息。</li>
+<li><a class="source-link" href="https://www.trendforce.com/research/download/RP261111RZ3" target="_blank" rel="noopener">TrendForce</a>：2027年晶圆代工市场展望。</li>
+<li><a class="source-link" href="https://pr.tsmc.com/english/news/3349" target="_blank" rel="noopener">TSMC</a>：2026年10月营收公告。</li>
+<li><a class="source-link" href="https://www.govinfo.gov/content/pkg/FR-2026-11-19/html/2026-23529.htm" target="_blank" rel="noopener">Federal Register / BIS</a>：先进半导体远程访问规则。</li>
+<li><a class="source-link" href="https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202611/t20261109_4938861.html" target="_blank" rel="noopener">北京经济技术开发区</a>：AI4Chip产业项目通知。</li>
+<li><a class="source-link" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm" target="_blank" rel="noopener">Federal Reserve</a>：2026年10月FOMC会议纪要。</li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+<i data-lucide="calendar-range" class="w-4 h-4 text-primary-500"></i> 覆盖时间区间
+</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+主观察窗口：2026-10-26 至 2026-11-24，共30个自然日。
+<br><br>
+公司财报发布日期：2026-10-29；财务统计期截至2026-09-26。
+<br><br>
+重要公司事件：2026-11-12、2026-11-18/19。
+<br><br>
+行业及政策事件：2026-11-06、11-10、11-11、11-16、11-18、11-19。
+<br><br>
+未来观察区间：2026-11-24 至 2026-12-24。
+<br><br>
+对于公告日与事件发生日不同的事项，页面分别注明，不将预测日期当作实际发生日期。
+</p>
+</div>
+
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+<i data-lucide="shield-check" class="w-4 h-4 text-primary-500"></i> 研究口径与免责声明
+</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+本报告基于截至2026-11-24可核验的公开资料进行整理与分析。公司公告及监管文件优先于媒体报道；机构评级信息使用第三方公开记录时，已注明其数据性质。
+<br><br>
+影响力评分为研究分析师主观评估，综合考虑事件重要性、财务影响、持续时间与市场预期差，并非统计模型输出。
+<br><br>
+报告中的行业预测、政策传导与未来观察指标均属于分析判断，不构成确定性结果。未披露的客户身份、合同金额、产能和良率不作虚构或推断。
+<br><br>
+本报告仅供投资研究参考，不构成证券投资建议、买卖邀约或收益承诺。半导体行业具有高资本开支、技术迭代、地缘政治与周期波动风险，投资者应独立判断并自行承担投资风险。
+</p>
+</div>
+
+</div>
+
+<div class="border-t border-gray-100 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+<p class="text-xs text-gray-400 dark:text-gray-500">英特尔 Intel Corporation · NASDAQ: INTC · 最新动态全景追踪 · 截至2026-11-24</p>
+<p class="text-xs text-gray-400 dark:text-gray-500">BUY-SIDE RESEARCH · EVENT-DRIVEN ANALYSIS</p>
+</div>
+</div>
+</footer>
+
+<script>
+function updateProgress(){
+const scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+const progress=height>0?(scrollTop/height)*100:0;
+const bar=document.getElementById('progressBar');
+if(bar)bar.style.width=progress+'%';
+}
+window.addEventListener('scroll',updateProgress,{passive:true});
+document.addEventListener('DOMContentLoaded',()=>{
+syncThemeIcons();
+if(window.lucide)lucide.createIcons();
+if(window.AOS)AOS.init({duration:450,offset:35,once:true});
+updateProgress();
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+link.addEventListener('click',()=>{
+if(window.innerWidth<768)closeMobileMenu();
+});
+});
+});
+</script>
+
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

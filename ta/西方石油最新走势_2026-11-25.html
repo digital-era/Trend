@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西方石油（OXY）最新走势归因与操作指引_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: { colors: {
+    primary: {
+      50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+      300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+      600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+      900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+    },
+    accent: {
+      50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+      300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+      600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+      900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+    }
+  }}}
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:88px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05)}
+.card-interactive{transition:all .25s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.5)}
+table{width:100%;border-collapse:collapse}
+th{padding:.75rem;text-align:left;white-space:nowrap;border-bottom:1px solid #d1d5db}
+td{padding:.75rem;text-align:left;vertical-align:top;line-height:1.55;border-bottom:1px solid #e5e7eb}
+.dark th,.dark td{border-bottom-color:#374151;color:#e5e7eb}
+.dark th{color:#cbd5e1}
+.driver-bar{height:9px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .driver-bar{background:#374151}
+.driver-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.price-tag{font-variant-numeric:tabular-nums}
+.bg-grid{background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,.055) 1px,transparent 0);background-size:24px 24px}
+.dark .bg-grid{background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.055) 1px,transparent 0)}
+.ref-tag{font-size:10px;opacity:.7;margin-left:3px;font-family:monospace}
+a.source-link{color:#ea580c;text-decoration:underline;text-underline-offset:3px}
+.dark a.source-link{color:#fdba74}
+.price-pill{font-variant-numeric:tabular-nums;white-space:nowrap}
+</style>
+<script>
+(function initTheme(){
+  try{
+    if(window.self!==window.top||window.matchMedia('(prefers-color-scheme: dark)').matches)
+      document.documentElement.classList.add('dark');
+  }catch(e){document.documentElement.classList.add('dark')}
+})();
+function syncThemeIcons(){
+  const dark=document.documentElement.classList.contains('dark');
+  const sun=document.getElementById('sunIcon'),moon=document.getElementById('moonIcon');
+  if(sun)sun.style.display=dark?'block':'none';
+  if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){document.documentElement.classList.toggle('dark');syncThemeIcons()}
+function toggleMobileMenu(){const m=document.getElementById('mobileMenu');if(m)m.classList.toggle('mobile-menu-open')}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen bg-grid transition-colors duration-200">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[70] transition-all duration-200" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+        <h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">西方石油 <span class="text-xs sm:text-sm font-mono text-gray-500 dark:text-gray-400">OXY · NYSE</span></h1>
+      </div>
+      <nav class="hidden md:flex items-center gap-5">
+        <a href="#overview" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">走势总览</a>
+        <a href="#phases" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">阶段复盘</a>
+        <a href="#drivers" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">涨跌根因</a>
+        <a href="#technicals" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">量价结构</a>
+        <a href="#strategy" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">操作指引</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-300" aria-label="菜单"><i data-lucide="menu" class="w-4 h-4"></i></button>
+        <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-300" aria-label="切换暗色模式">
+          <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+      <nav class="flex flex-col gap-2.5">
+        <a href="#overview" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">走势总览</a>
+        <a href="#phases" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">阶段复盘</a>
+        <a href="#drivers" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">涨跌根因</a>
+        <a href="#technicals" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">量价结构</a>
+        <a href="#strategy" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">操作指引</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-16 max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+
+<section id="overview" data-aos="fade-up">
+  <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800">
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="text-xs font-bold tracking-wider uppercase text-primary-600 dark:text-primary-400">量价归因 · 买方视角</span>
+          <span class="text-[11px] px-2.5 py-1 rounded-full bg-primary-100 dark:bg-primary-950/60 text-primary-700 dark:text-primary-300 font-mono">USD · NYSE</span>
+          <span class="text-[11px] px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-mono">2026-10-26 → 2026-11-24</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-gray-900 dark:text-white">西方石油（Occidental Petroleum）</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">NYSE: OXY · 美国综合能源 / 上游油气 / 化工与中游业务</p>
+      </div>
+      <div class="flex flex-col sm:items-end gap-1">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-rose-50 dark:bg-rose-950/50 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
+          <i data-lucide="trending-down" class="w-3.5 h-3.5"></i> 弱势下行 · 超跌反抽未确认
+        </span>
+        <span class="text-[11px] text-gray-500 dark:text-gray-400">油价供给预期压制，个股显著跑输大盘</span>
+      </div>
+    </div>
+
+    <p class="mt-5 text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-300 max-w-5xl">
+      OXY 在统计区间内从 <strong class="text-gray-900 dark:text-white">$64.07</strong>（10 月 26 日收盘）回落至 <strong class="text-primary-600 dark:text-primary-400">$53.38</strong>（11 月 24 日收盘），累计下跌约 <strong class="text-rose-600 dark:text-rose-400">16.69%</strong>，同期标普 500 下跌约 6.20%，相对落后约 10.49 个百分点。11 月 9 日公布的三季度业绩显示调整后 EPS 超预期、债务里程碑达成，但股价并未形成持续反转；市场更关注原油供给过剩预期、商品价格弹性和油气股风险溢价。11 月 24 日反弹 1.29%，尚不足以扭转中短期下降结构。
+    </p>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
+      <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">最新常规收盘价</p>
+        <p class="text-2xl font-black price-tag text-gray-900 dark:text-white">$53.38</p>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">USD · 2026-11-24</p>
+        <p class="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1">当日 +1.29%</p>
+      </div>
+      <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">近 1 月区间涨跌幅</p>
+        <p class="text-2xl font-black price-tag text-rose-600 dark:text-rose-400">−16.69%</p>
+        <p class="text-[11px] text-rose-600 dark:text-rose-400 mt-1">相对标普 500 Alpha −10.49pct</p>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">收盘价口径 · 未含股息</p>
+      </div>
+      <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">区间最高 / 最低</p>
+        <p class="text-xl sm:text-2xl font-black price-tag text-gray-900 dark:text-white">$64.96 <span class="text-gray-400">/</span> $52.55</p>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">日内高低价 · 振幅约 23.1%</p>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">最高 10-23 · 最低 11-23</p>
+      </div>
+      <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">趋势定性</p>
+        <p class="text-lg sm:text-xl font-black text-rose-600 dark:text-rose-400">弱势下行</p>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">反弹未收复关键平台</p>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">不宜仅凭单日上涨判定反转</p>
+      </div>
+    </div>
+
+    <div class="mt-5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/60 p-4 text-xs leading-relaxed text-amber-900 dark:text-amber-200">
+      <strong>行情时点说明：</strong>截至北京时间 2026-11-25，美国 11 月 25 日常规交易时段尚未结束，因此本报告采用最新已完成常规交易日——美东时间 11 月 24 日收盘 $53.38。11 月 25 日盘前报价不作为正式收盘价，也不混入区间收益率。
+    </div>
+  </div>
+</section>
+
+<section id="phases" data-aos="fade-up">
+  <div class="flex items-center gap-2.5 mb-5">
+    <span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="layers" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i></span>
+    <h2 class="text-lg sm:text-xl font-bold">一、近一月量价全景与阶段拆解</h2>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-800 shadow-sm mb-5">
+    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+      <h3 class="text-sm font-bold flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-4 h-4 text-primary-500"></i>OXY vs 标普 500（2026-10-26 至 2026-11-24）</h3>
+      <span class="text-[11px] text-gray-500 dark:text-gray-400">22 个交易日 · 收盘价对收盘价</span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm">
+        <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-500 dark:text-gray-300">
+          <tr><th>标的 / 指数</th><th>区间起点</th><th>最新收盘</th><th>区间涨跌幅</th><th>相对表现</th><th>量能 / 走势观察</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">西方石油 OXY</td>
+            <td class="font-mono">$64.07</td><td class="font-mono">$53.38</td>
+            <td class="font-bold text-rose-600 dark:text-rose-400">−16.69%</td>
+            <td class="font-bold text-rose-600 dark:text-rose-400">基准</td>
+            <td class="min-w-[210px]">下跌段多次放量；11-10 至 11-12 反弹放量，随后再度回落</td>
+          </tr>
+          <tr>
+            <td class="font-semibold whitespace-nowrap">标普 500（^GSPC）</td>
+            <td class="font-mono">7,676.77</td><td class="font-mono">7,201.09</td>
+            <td class="font-bold text-rose-600 dark:text-rose-400">−6.20%</td>
+            <td class="font-bold text-rose-600 dark:text-rose-400">OXY 跑输约 10.49pct</td>
+            <td class="min-w-[210px]">11 月中下旬出现明显回撤，市场风险偏好收缩</td>
+          </tr>
+          <tr>
+            <td class="font-semibold whitespace-nowrap">相对强弱</td>
+            <td colspan="2">OXY 净值相对指数</td>
+            <td class="font-bold text-rose-600 dark:text-rose-400">显著偏弱</td>
+            <td>负 Alpha</td>
+            <td class="min-w-[210px]">个股跌幅约为指数跌幅的 2.7 倍，说明并非单纯大盘拖累</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-3 leading-relaxed">
+      区间收益率计算：OXY = 53.38 ÷ 64.07 − 1；标普 500 = 7,201.09 ÷ 7,676.77 − 1。Alpha 为两者简单收益率差，未做 Beta 调整，且均未计入股息。标普 500 采用 Yahoo Finance 历史收盘数据。
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500">
+      <div class="flex justify-between items-center mb-3"><span class="text-[11px] font-bold px-2 py-1 rounded bg-rose-50 dark:bg-rose-950/50 text-rose-700 dark:text-rose-300">阶段 1 · 高位转弱</span><span class="text-[11px] text-gray-500">10-26 → 11-04</span></div>
+      <p class="text-2xl font-black text-rose-600 dark:text-rose-400 mb-2">−10.51%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">收盘由 $64.07 降至 $57.33。10-30 收 $64.00 后，11-02 下跌 5.13%，成交约 1,268 万股；11-04 再跌 5.13%，成交约 1,308 万股。高位平台破坏，卖压由温和转为主动。</p>
+    </div>
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500">
+      <div class="flex justify-between items-center mb-3"><span class="text-[11px] font-bold px-2 py-1 rounded bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-300">阶段 2 · 财报前修复</span><span class="text-[11px] text-gray-500">11-05 → 11-13</span></div>
+      <p class="text-2xl font-black text-emerald-600 dark:text-emerald-400 mb-2">约 +4.24%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">11-04 收盘 $57.33，11-13 收盘 $58.75。11-10 上涨 2.04%，11-11 上涨 0.60%，11-12 上涨 2.03%；成交分别约 1,679 万、1,788 万、1,869 万股，反弹有明显换手，但未突破此前 $60 上方压力。</p>
+    </div>
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500">
+      <div class="flex justify-between items-center mb-3"><span class="text-[11px] font-bold px-2 py-1 rounded bg-rose-50 dark:bg-rose-950/50 text-rose-700 dark:text-rose-300">阶段 3 · 财报后回吐</span><span class="text-[11px] text-gray-500">11-16 → 11-20</span></div>
+      <p class="text-2xl font-black text-rose-600 dark:text-rose-400 mb-2">−6.03%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">11-13 收 $58.75，11-20 收 $53.90。11-16 至 11-18 连续回落，11-18 单日下跌 4.88%，成交约 1,312 万股；财报利好没有转化为持续买盘，反映商品价格与盈利质量疑虑压过 EPS 超预期。</p>
+    </div>
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-primary-500">
+      <div class="flex justify-between items-center mb-3"><span class="text-[11px] font-bold px-2 py-1 rounded bg-primary-50 dark:bg-primary-950/50 text-primary-700 dark:text-primary-300">阶段 4 · 低位震荡</span><span class="text-[11px] text-gray-500">11-23 → 11-24</span></div>
+      <p class="text-2xl font-black text-gray-900 dark:text-white mb-2">+1.29%</p>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">11-23 收盘 $52.70，日内低点 $52.55；11-24 收 $53.38，反弹 $0.68。11-23 成交约 1,277 万股，11-24 降至约 977 万股。低位反弹伴随量能回落，暂时更像卖压缓和，不是趋势反转确认。</p>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 mt-5">
+    <h3 class="text-sm font-bold mb-3">关键交易日 OHLCV 核验表</h3>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm">
+        <thead class="bg-gray-50 dark:bg-gray-800/80"><tr><th>日期</th><th>开盘</th><th>最高</th><th>最低</th><th>收盘</th><th>涨跌幅</th><th>成交量</th></tr></thead>
+        <tbody>
+          <tr><td>2026-10-26</td><td>$63.81</td><td>$64.58</td><td>$63.26</td><td>$64.07</td><td>−0.16%</td><td>7.31M</td></tr>
+          <tr><td>2026-11-02</td><td>$62.69</td><td>$62.97</td><td>$60.54</td><td>$60.72</td><td>−5.13%</td><td>12.68M</td></tr>
+          <tr><td>2026-11-04</td><td>$59.35</td><td>$59.35</td><td>$56.48</td><td>$57.33</td><td>−5.13%</td><td>13.08M</td></tr>
+          <tr><td>2026-11-10</td><td>$55.25</td><td>$57.23</td><td>$53.86</td><td>$56.90</td><td>+2.04%</td><td>16.79M</td></tr>
+          <tr><td>2026-11-12</td><td>$57.74</td><td>$58.98</td><td>$57.40</td><td>$58.40</td><td>+2.03%</td><td>18.69M</td></tr>
+          <tr><td>2026-11-18</td><td>$55.80</td><td>$56.30</td><td>$53.67</td><td>$53.76</td><td>−4.88%</td><td>13.12M</td></tr>
+          <tr><td>2026-11-23</td><td>$53.44</td><td>$54.27</td><td>$52.55</td><td>$52.70</td><td>−2.23%</td><td>12.77M</td></tr>
+          <tr><td>2026-11-24</td><td>$52.97</td><td>$53.83</td><td>$52.70</td><td>$53.38</td><td>+1.29%</td><td>9.77M</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-3">数据单位：美元 / 股；成交量为股数，M = 百万股。历史行情以 StockAnalysis、StockScan、Finabase 等公开历史行情页面交叉核对；不同数据商成交量可能有小幅差异。</p>
+  </div>
+</section>
+
+<section id="drivers" data-aos="fade-up">
+  <div class="flex items-center gap-2.5 mb-5">
+    <span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="git-branch" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i></span>
+    <h2 class="text-lg sm:text-xl font-bold">二、上涨与下跌的深层根因剖析</h2>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-5">
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+      <h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-emerald-700 dark:text-emerald-300"><i data-lucide="arrow-up-circle" class="w-4 h-4"></i>多头因素：为什么仍有承接力量</h3>
+      <div class="space-y-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+        <div class="pl-3.5 border-l-2 border-emerald-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">① 三季度调整后 EPS 明显超预期，经营韧性仍在</p>
+          <p class="leading-relaxed">公司 11 月 9 日公布 Q3 2026 业绩：报告 EPS 为 <strong>$1.61</strong>，持续经营业务调整后 EPS 为 <strong>$1.91</strong>；调整后 EPS 高于市场一致预期约 42.5%（Investing.com 报道）。经营现金流（持续经营）为 <strong>$4.1B</strong>，资本开支 $1.3B，营运资本前自由现金流 $2.8B。该数据说明上游现金创造能力并未失速。<a class="source-link" href="https://www.oxy.com/news/news-releases/occidental-announces-3rd-quarter-2026-results" target="_blank" rel="noopener">公司三季报</a> · <a class="source-link" href="https://in.investing.com/news/stock-market-news/occidental-petroleum-earnings-analysis-questions-answered-and-next-catalysts-93CH-5694715" target="_blank" rel="noopener">业绩预期对比</a></p>
+        </div>
+        <div class="pl-3.5 border-l-2 border-emerald-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">② 资产负债表修复：债务本金降至 $10B 里程碑</p>
+          <p class="leading-relaxed">Q3 公司宣布达成 <strong>$10.0B principal debt</strong> 里程碑，季度减少债务本金 $1.8B。高杠杆曾是 OXY 估值折价的重要原因，债务持续下降有助于降低利息负担、提高股权现金流对油价波动的承受力。该因素构成中期基本面支撑，但并不自动抵消油价下跌对上游盈利的冲击。<a class="source-link" href="https://www.oxy.com/news/news-releases/occidental-announces-3rd-quarter-2026-results" target="_blank" rel="noopener">公司公告</a></p>
+        </div>
+        <div class="pl-3.5 border-l-2 border-emerald-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">③ 11 月 10–12 日出现放量反弹，说明低位并非无买盘</p>
+          <p class="leading-relaxed">11 月 10 日上涨 2.04%，成交约 1,679 万股；11 月 12 日上涨 2.03%，成交约 1,869 万股，明显高于 11 月 24 日的约 977 万股。该段量能说明财报后存在资金回补和短线交易需求，但随后股价重新下行，表明这批买盘尚未完成趋势反转。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+      <h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-rose-600 dark:text-rose-400"><i data-lucide="arrow-down-circle" class="w-4 h-4"></i>空头因素：本轮下跌的主要解释</h3>
+      <div class="space-y-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+        <div class="pl-3.5 border-l-2 border-rose-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">① 原油供给过剩预期压低上游盈利定价</p>
+          <p class="leading-relaxed">11 月 25 日 Reuters 报道，市场对全球供给过剩的预期压过中东供应中断风险，布伦特原油报约 <strong>$90.96/桶</strong>、WTI 约 <strong>$81.43/桶</strong>，当日分别下跌约 0.5% 与 0.8%；IEA 近期报告强化过剩预期，利比亚 Sharara 管线重启增加供应预期。OXY 上游业务对油价敏感，市场因此下调未来实现价格和现金流的风险调整估值。<a class="source-link" href="https://www.reuters.com/business/energy/oil-prices-fall-supply-glut-concerns-offset-middle-east-disruption-fears-2026-11-25/" target="_blank" rel="noopener">Reuters · 2026-11-25</a></p>
+        </div>
+        <div class="pl-3.5 border-l-2 border-rose-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">② 财报“超 EPS、收入略低于预期”，利好未能形成重估</p>
+          <p class="leading-relaxed">Investing.com 报道显示，Q3 调整后 EPS $1.91，高于约 $1.34 的一致预期；但营收约 <strong>$6.57B</strong>，略低于约 $6.61B 的预期。市场反应被描述为温和，原因包括业绩超预期已被部分计价，以及现金流较上一季度走弱的关注点。11 月 10–12 日放量反弹后，11 月 16–18 日重新下跌，说明交易者并未将单季 EPS beat 直接外推为持续盈利上修。<a class="source-link" href="https://in.investing.com/news/stock-market-news/occidental-petroleum-earnings-analysis-questions-answered-and-next-catalysts-93CH-5694715" target="_blank" rel="noopener">Investing.com 业绩分析</a></p>
+        </div>
+        <div class="pl-3.5 border-l-2 border-rose-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">③ 11 月 18 日放量下跌，财报反弹结构遭破坏</p>
+          <p class="leading-relaxed">11 月 18 日股价下跌 <strong>4.88%</strong>，收于 $53.76，成交约 1,312 万股；当日最低 $53.67。随后 11 月 23 日再跌 2.23%，成交约 1,277 万股。连续下行伴随较高成交量，说明卖盘并非单纯流动性稀薄造成的价格漂移，短线资金正在降低风险敞口。</p>
+        </div>
+        <div class="pl-3.5 border-l-2 border-rose-500">
+          <p class="font-semibold text-gray-900 dark:text-white mb-1">④ 大盘风险偏好下降，放大高 Beta 能源股波动</p>
+          <p class="leading-relaxed">同一统计区间标普 500 亦下跌约 6.20%，11 月中下旬市场出现大幅波动。OXY 跌幅约为指数的 2.7 倍，说明大盘是放大器而非唯一原因；油价敏感度、杠杆历史和盈利预期弹性共同形成额外折价。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 mt-5">
+    <h3 class="text-sm font-bold mb-4 flex items-center gap-2"><i data-lucide="pie-chart" class="w-4 h-4 text-accent-500"></i>归因权重矩阵（解释本月相对弱势的主观权重）</h3>
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-4">权重是对本月价格变化驱动因素的研究判断，不是统计回归结果，也不是可观测的机构资金流比例。</p>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between text-xs mb-1.5"><span class="font-semibold">个股基本面与公司事件</span><span class="font-bold font-mono text-primary-600 dark:text-primary-400">25%</span></div>
+        <div class="driver-bar"><div class="driver-fill" style="width:25%"></div></div>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">EPS 超预期与降债提供支撑；收入略低于预期及现金流环比变化限制估值修复。</p>
+      </div>
+      <div>
+        <div class="flex justify-between text-xs mb-1.5"><span class="font-semibold">行业景气度与板块情绪轮动</span><span class="font-bold font-mono text-primary-600 dark:text-primary-400">50%</span></div>
+        <div class="driver-bar"><div class="driver-fill" style="width:50%"></div></div>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">原油供给过剩预期、库存与产量政策不确定性，直接压低上游资产的边际盈利预期。</p>
+      </div>
+      <div>
+        <div class="flex justify-between text-xs mb-1.5"><span class="font-semibold">宏观利率、汇率与大盘 Beta</span><span class="font-bold font-mono text-primary-600 dark:text-primary-400">25%</span></div>
+        <div class="driver-bar"><div class="driver-fill" style="width:25%"></div></div>
+        <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">标普 500 同期下跌约 6.20%，风险偏好收缩；OXY 跑输说明个股与能源因子影响更大。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="technicals" data-aos="fade-up">
+  <div class="flex items-center gap-2.5 mb-5">
+    <span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="activity" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i></span>
+    <h2 class="text-lg sm:text-xl font-bold">三、资金行为与技术面关键位诊断</h2>
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800"><p class="text-[11px] text-gray-500 dark:text-gray-400">最新收盘</p><p class="text-xl font-black price-tag">$53.38</p><p class="text-[11px] text-emerald-600 dark:text-emerald-400">11-24 · +1.29%</p></div>
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800"><p class="text-[11px] text-gray-500 dark:text-gray-400">11-24 成交量</p><p class="text-xl font-black price-tag">9.77M</p><p class="text-[11px] text-gray-500 dark:text-gray-400">低于 11-23 的 12.77M</p></div>
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800"><p class="text-[11px] text-gray-500 dark:text-gray-400">近期关键低点</p><p class="text-xl font-black price-tag text-rose-600 dark:text-rose-400">$52.55</p><p class="text-[11px] text-gray-500 dark:text-gray-400">11-23 日内最低</p></div>
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 border border-gray-200 dark:border-gray-800"><p class="text-[11px] text-gray-500 dark:text-gray-400">近期反弹高点</p><p class="text-xl font-black price-tag">$59.03</p><p class="text-[11px] text-gray-500 dark:text-gray-400">11-13 日内最高</p></div>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-4 mb-5">
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+      <h3 class="text-sm font-bold mb-3">量价结构：反弹有量，持续性不足</h3>
+      <div class="space-y-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p><strong class="text-gray-900 dark:text-white">下跌段：</strong>11 月 2 日、4 日均跌 5.13%，成交分别约 1,268 万股和 1,308 万股，较 10 月 26 日的 731 万股显著放大，显示高位筹码开始主动交换。</p>
+        <p><strong class="text-gray-900 dark:text-white">反弹段：</strong>11 月 10–12 日成交量升至约 1,679–1,869 万股，价格短暂反弹，但未能站稳 $59–60，放量买盘没有延续为持续上行趋势。</p>
+        <p><strong class="text-gray-900 dark:text-white">最新段：</strong>11 月 23 日下跌 2.23% 且成交约 1,277 万股，11 月 24 日上涨 1.29% 但成交回落至约 977 万股。更符合<strong class="text-rose-600 dark:text-rose-400">弱势下跌后的缩量修复</strong>，不能视作机构持续吸筹证据。</p>
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-800/80 p-3 border border-gray-200 dark:border-gray-700"><strong class="text-gray-900 dark:text-white">筹码判断：</strong>目前偏向“高位套牢盘向下交换、低位短线承接”，尚未出现足以确认惜售筑底的持续缩量止跌与放量突破组合。</div>
+      </div>
+    </div>
+
+    <div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800">
+      <h3 class="text-sm font-bold mb-3">趋势结构与均线说明</h3>
+      <div class="space-y-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+        <p>近一个月收盘价从 $64.07 下行至 $53.38，反弹高点逐步降低，11 月 13 日 $59.03 的日内高点未被收复，短中期价格结构偏空。</p>
+        <p><strong class="text-gray-900 dark:text-white">MA5 / MA10：</strong>以最新价持续低于此前密集交易区间的走势观察，短期均线方向偏下，价格反弹仍需先收复 $54.5–56.0 的近端供给带。</p>
+        <p><strong class="text-gray-900 dark:text-white">MA20 / MA60：</strong>当前价格较一个月前显著下移，趋势结构不支持直接认定中期均线多头排列。MA20、MA60 的精确数值未在本次交叉行情页面中获得完整可复核序列，因此不填入未经核验的均线读数。</p>
+        <p><strong class="text-gray-900 dark:text-white">趋势确认：</strong>先收复 $56.5–57.5，再有效突破 $59.0，才可将走势从弱势反抽升级为阶段性反转观察；单日站回 $53 上方不构成趋势确认。</p>
+        <div class="rounded-lg bg-amber-50 dark:bg-amber-950/30 p-3 border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200">指标纪律：本报告不虚构 MA、RSI、MACD 或主力净流入数值。技术判断以已核验 OHLCV、价格平台和相对指数表现为基础。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 mb-5">
+    <div class="flex items-center justify-between gap-2 mb-4">
+      <h3 class="text-sm font-bold flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary-500"></i>关键价格水位标尺</h3>
+      <span class="text-xs font-mono text-primary-600 dark:text-primary-400">现价 $53.38</span>
+    </div>
+    <div class="space-y-2.5 text-xs">
+      <div class="flex flex-wrap justify-between gap-2 p-3 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800"><span class="font-bold text-rose-700 dark:text-rose-300">强阻力区 · $59.00–60.80</span><span class="text-rose-600 dark:text-rose-300">距现价 +10.5% 至 +13.9%</span></div>
+      <div class="flex flex-wrap justify-between gap-2 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800"><span class="font-bold text-amber-700 dark:text-amber-300">第一压力区 · $54.30–56.30</span><span class="text-amber-600 dark:text-amber-300">距现价 +1.7% 至 +5.5%</span></div>
+      <div class="flex flex-wrap justify-between gap-2 p-3 rounded-lg bg-primary-100 dark:bg-primary-900/50 border-2 border-primary-500"><span class="font-black text-primary-800 dark:text-primary-200">● 最新收盘 · $53.38</span><span class="font-semibold text-primary-700 dark:text-primary-200">2026-11-24</span></div>
+      <div class="flex flex-wrap justify-between gap-2 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800"><span class="font-bold text-emerald-700 dark:text-emerald-300">第一支撑区 · $52.50–53.00</span><span class="text-emerald-600 dark:text-emerald-300">11-23 / 11-24 低点区域</span></div>
+      <div class="flex flex-wrap justify-between gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="font-bold text-gray-800 dark:text-gray-200">强支撑 / 防守观察 · $50.00–51.00</span><span class="text-gray-600 dark:text-gray-300">整数心理位与下方情景区间，非已确认历史低点</span></div>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-800">
+    <h3 class="text-sm font-bold mb-3">关键价格锚点明细表（美元 / 股）</h3>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm">
+        <thead class="bg-gray-50 dark:bg-gray-800/80"><tr><th>层级</th><th>价格区间</th><th>依据与性质</th><th>距现价</th></tr></thead>
+        <tbody>
+          <tr><td class="font-bold text-rose-600 dark:text-rose-400">强阻力位</td><td class="font-mono font-bold">$59.00–60.80</td><td class="min-w-[220px]">11-03 收盘 $60.43、11-02 收盘 $60.72，且 11-13 日内高点 $59.03；前期反弹供给带</td><td class="text-rose-500">+10.5% 至 +13.9%</td></tr>
+          <tr><td class="font-bold text-amber-600 dark:text-amber-400">第一压力位</td><td class="font-mono font-bold">$54.30–56.30</td><td class="min-w-[220px]">11-18 日内低点 $53.67 上方至 11-18 高点 $56.30；近端反弹需收复区域</td><td class="text-amber-500">+1.7% 至 +5.5%</td></tr>
+          <tr class="bg-primary-50/70 dark:bg-primary-950/40"><td class="font-bold text-primary-700 dark:text-primary-300">最新收盘价</td><td class="font-mono font-black">$53.38</td><td>2026-11-24 常规交易时段收盘，日涨幅 +1.29%</td><td>—</td></tr>
+          <tr><td class="font-bold text-emerald-600 dark:text-emerald-400">第一支撑位</td><td class="font-mono font-bold">$52.50–53.00</td><td class="min-w-[220px]">11-23 低点 $52.55，11-24 低点 $52.70；短线多空分界</td><td class="text-emerald-600">−1.6% 至 −0.7%</td></tr>
+          <tr><td class="font-bold text-gray-700 dark:text-gray-200">强支撑 / 防守线</td><td class="font-mono font-bold">$50.00–51.00</td><td class="min-w-[220px]">情景推演区间，并非本统计窗口已确认的低点；若 $52.50 失守需观察此区间</td><td class="text-gray-500">−6.3% 至 −4.5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="strategy" x-data="{role:'all'}" data-aos="fade-up">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+    <div class="flex items-center gap-2.5">
+      <span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="target" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i></span>
+      <h2 class="text-lg sm:text-xl font-bold">四、未来情景推演与实战操作指引</h2>
+    </div>
+    <div class="flex flex-wrap gap-1.5 text-xs">
+      <button @click="role='all'" :class="role==='all'?'bg-primary-500 text-white':'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'" class="px-3 py-1.5 rounded-full font-semibold">全部指引</button>
+      <button @click="role='hold'" :class="role==='hold'?'bg-emerald-600 text-white':'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'" class="px-3 py-1.5 rounded-full font-semibold">我是持仓者</button>
+      <button @click="role='wait'" :class="role==='wait'?'bg-primary-500 text-white':'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'" class="px-3 py-1.5 rounded-full font-semibold">我是观望者</button>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-800 mb-5">
+    <h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i data-lucide="git-merge" class="w-4 h-4 text-accent-500"></i>未来 2–4 周三情景推演矩阵</h3>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm">
+        <thead class="bg-gray-50 dark:bg-gray-800/80"><tr><th>情景</th><th>触发条件（价格 + 量能）</th><th>主观概率</th><th>潜在目标区间</th><th>对应仓位动作</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="font-bold text-emerald-700 dark:text-emerald-300 whitespace-nowrap">乐观反转</td>
+            <td class="min-w-[190px]">收盘站稳 $56.30，随后放量突破 $57.50；单日成交量至少达到近 20 日均量的 1.2 倍，且 WTI 不再持续走弱</td>
+            <td class="font-mono font-bold">20%</td>
+            <td class="font-mono whitespace-nowrap">$59.00–60.80</td>
+            <td class="min-w-[190px]">已有仓位可保留核心；突破确认后才允许小仓右侧跟随，未确认前不加码</td>
+          </tr>
+          <tr>
+            <td class="font-bold text-amber-600 dark:text-amber-400 whitespace-nowrap">中性震荡</td>
+            <td class="min-w-[190px]">守住 $52.50，价格在 $52.50–56.30 区间整理；成交量逐步收敛，油价无新一轮急跌</td>
+            <td class="font-mono font-bold">45%</td>
+            <td class="font-mono whitespace-nowrap">$52.50–56.30</td>
+            <td class="min-w-[190px]">持仓者控制总仓位，反弹至压力区分批降低风险；观望者等待缩量止跌，不抢第一根阳线</td>
+          </tr>
+          <tr>
+            <td class="font-bold text-rose-600 dark:text-rose-400 whitespace-nowrap">悲观破位</td>
+            <td class="min-w-[190px]">日收盘有效跌破 $52.50，且成交量放大至近期均量 1.2 倍以上；或 WTI 快速下破近期关键区间</td>
+            <td class="font-mono font-bold">35%</td>
+            <td class="font-mono whitespace-nowrap">$50.00–51.00；极弱看 $48</td>
+            <td class="min-w-[190px]">停止加仓，短线仓减至低仓位；等待 $50 附近是否出现止跌结构，不以摊平代替止损</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-3">概率为主观情景权重，不是统计模型输出；目标价是条件触发后的观察区间，不代表价格必然到达。成交量阈值以近 20 个交易日实际均量为基准，执行时应重新计算。</p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4 mb-5">
+    <div x-show="role==='all'||role==='hold'" :class="role==='hold'?'md:col-span-2':''" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-emerald-200 dark:border-emerald-900/60">
+      <h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-emerald-700 dark:text-emerald-300"><i data-lucide="briefcase" class="w-4 h-4"></i>已持仓投资者操作指南</h3>
+      <ul class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-3 leading-relaxed">
+        <li><strong class="text-emerald-600 dark:text-emerald-400">第一道风险观察线：$52.50。</strong>若盘中跌破但收盘收回，先观察是否出现放量下影线；若日收盘跌破且成交量放大，不宜继续把它视为普通震荡。</li>
+        <li><strong class="text-emerald-600 dark:text-emerald-400">反弹减压区：$54.30–56.30。</strong>若反弹至该区但成交量低于近 20 日均量，或出现冲高回落，可考虑分批降低 20%–30% 的交易仓位。</li>
+        <li><strong class="text-amber-600 dark:text-amber-400">继续持有的必要条件：</strong>守住 $52.50，并在随后数个交易日收复 $54.30；同时 WTI 油价止跌、公司现金流和债务改善趋势未被后续披露证伪。</li>
+        <li><strong class="text-rose-600 dark:text-rose-400">破位纪律：</strong>收盘有效跌破 $52.50 且放量，优先削减短线仓；若反弹无法收复 $52.50，避免以无条件补仓摊平成本。</li>
+      </ul>
+    </div>
+
+    <div x-show="role==='all'||role==='wait'" :class="role==='wait'?'md:col-span-2':''" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-primary-200 dark:border-primary-900/60">
+      <h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-primary-700 dark:text-primary-300"><i data-lucide="eye" class="w-4 h-4"></i>未持仓 / 观望者操作指南</h3>
+      <ul class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-3 leading-relaxed">
+        <li><strong class="text-primary-600 dark:text-primary-400">左侧观察区：$52.50–53.00。</strong>只在该区出现缩量止跌、收盘重新站回 $53.00，且次日不再创新低时考虑试探；初始仓位控制在计划仓位的 10%–15%。</li>
+        <li><strong class="text-primary-600 dark:text-primary-400">右侧确认买点：收盘站上 $56.30。</strong>最好伴随成交量达到近 20 日均量 1.2 倍以上，之后回踩 $55–56 不破，再考虑分批跟进。</li>
+        <li><strong class="text-amber-600 dark:text-amber-400">更强趋势确认：$59.00 上方。</strong>突破 $59 且量价配合，才说明 11 月中旬以来的下降结构有机会被破坏。</li>
+        <li><strong class="text-rose-600 dark:text-rose-400">不宜追高：</strong>在 $54.30–56.30 压力区内，若无放量突破而只是单日跳涨，不建议追涨；若跌破 $52.50，则取消左侧低吸计划，等待新的支撑结构。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bg-rose-50/80 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/70 rounded-xl p-5 sm:p-6">
+    <h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-rose-700 dark:text-rose-300"><i data-lucide="shield-alert" class="w-4 h-4"></i>核心证伪与风控红线</h3>
+    <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm text-rose-900 dark:text-rose-200 leading-relaxed">
+      <div>
+        <p class="font-bold mb-1">1. 价格结构证伪</p>
+        <p>日收盘有效跌破 <strong>$52.50</strong>，同时成交量显著放大，意味着近端支撑失效；若后续反抽无法收复 $52.50，应将 $50–51 视为下一观察区，而不是自动补仓区。</p>
+      </div>
+      <div>
+        <p class="font-bold mb-1">2. 基本面 / 商品价格证伪</p>
+        <p>若油价供给过剩预期继续强化、WTI 持续走低，且公司后续披露的实现油价、经营现金流或自由现金流明显恶化，即使股价短暂反弹，也应下调估值假设。</p>
+      </div>
+      <div>
+        <p class="font-bold mb-1">3. 反弹失败信号</p>
+        <p>股价反弹至 $54.30–56.30 时成交放大却收长上影或收阴，说明上方套牢供给仍强；若随后再度跌破 $52.50，反弹失败得到确认。</p>
+      </div>
+      <div>
+        <p class="font-bold mb-1">4. 逻辑重新转多的必要条件</p>
+        <p>公司降债和现金流改善持续兑现，油价供需预期趋稳，股价收复 $56.30 并进一步突破 $59.00，且成交量确认。仅有一次 EPS 超预期或单日上涨不构成反转依据。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sources" data-aos="fade-up">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+    <h2 class="text-lg font-bold mb-4 flex items-center gap-2"><i data-lucide="book-open-check" class="w-5 h-5 text-primary-500"></i>数据来源与交叉核验</h2>
+    <div class="grid md:grid-cols-2 gap-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+      <div class="space-y-2">
+        <p class="font-bold text-gray-900 dark:text-white">股价与成交量</p>
+        <p>• <a class="source-link" href="https://stockanalysis.com/stocks/oxy/history/" target="_blank" rel="noopener">StockAnalysis · OXY 历史行情</a>：日开高低收、涨跌幅及成交量。</p>
+        <p>• <a class="source-link" href="https://stockscan.io/stocks/OXY/price-history" target="_blank" rel="noopener">StockScan · OXY 价格历史</a>：区间日内高低与成交量交叉核对。</p>
+        <p>• <a class="source-link" href="https://finabase.io/symbol/oxy/history" target="_blank" rel="noopener">Finabase · OXY 历史价格</a>：逐日 OHLCV 辅助核验。</p>
+        <p>• <a class="source-link" href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener">Yahoo Finance · 标普 500 历史数据</a>：指数区间收盘值与成交量。</p>
+      </div>
+      <div class="space-y-2">
+        <p class="font-bold text-gray-900 dark:text-white">公司与行业事件</p>
+        <p>• <a class="source-link" href="https://www.oxy.com/news/news-releases/occidental-announces-3rd-quarter-2026-results" target="_blank" rel="noopener">Occidental 官方 Q3 2026 业绩公告</a>：EPS、经营现金流、自由现金流、产量及债务。</p>
+        <p>• <a class="source-link" href="https://in.investing.com/news/stock-market-news/occidental-petroleum-earnings-analysis-questions-answered-and-next-catalysts-93CH-5694715" target="_blank" rel="noopener">Investing.com · OXY Q3 业绩分析</a>：EPS 与一致预期、营收预期及市场反应。</p>
+        <p>• <a class="source-link" href="https://www.reuters.com/business/energy/oil-prices-fall-supply-glut-concerns-offset-middle-east-disruption-fears-2026-11-25/" target="_blank" rel="noopener">Reuters · 2026-11-25 原油市场</a>：布伦特、WTI、供给过剩预期、库存与 OPEC+ 政策背景。</p>
+      </div>
+    </div>
+    <div class="mt-5 pt-4 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400 leading-relaxed space-y-2">
+      <p><strong class="text-gray-700 dark:text-gray-300">分析区间：</strong>2026-10-26 至 2026-11-24，共 22 个交易日；以北京时间 2026-11-25 为报告日期。由于美股 11 月 25 日常规交易尚未结束，最新完整收盘行情截至 11 月 24 日。</p>
+      <p><strong class="text-gray-700 dark:text-gray-300">数据口径：</strong>股价单位为美元 / 股，成交量为股；区间涨跌幅按首尾收盘价计算，未计股息。不同行情供应商对成交量的统计可能存在轻微差异。价格锚点根据已核验高低价及收盘平台推导；$50–51 为情景观察区，不是本窗口已确认低点。</p>
+      <p><strong class="text-gray-700 dark:text-gray-300">研究限制：</strong>公开行情数据未提供可完整复核的逐日资金流、MA5/MA10/MA20/MA60 与 RSI/MACD 计算序列，因此不编造主力净流入、均线读数或指标数值。归因权重、情景概率及目标区间属于研究判断，并非客观统计事实。</p>
+      <p><strong class="text-gray-700 dark:text-gray-300">风险免责声明：</strong>本报告仅基于公开信息提供研究讨论，不构成投资建议、证券买卖要约或收益承诺。油价、地缘政治、库存、OPEC+ 政策及公司资本配置均可能快速变化。投资者应结合自身风险承受能力、持仓成本与实时行情独立决策。</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-7 text-xs text-gray-500 dark:text-gray-400 flex flex-wrap justify-between gap-3">
+    <span>西方石油 OXY · 最新走势归因与操作指引</span>
+    <span>研究日期：2026-11-25 · 行情截止：2026-11-24 美股收盘</span>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const y=document.body.scrollTop||document.documentElement.scrollTop;
+  const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  const p=document.getElementById('progressBar');
+  if(p)p.style.width=(h>0?Math.min(100,Math.max(0,y/h*100)):0)+'%';
+});
+document.addEventListener('DOMContentLoaded',()=>{
+  syncThemeIcons();
+  if(window.lucide)lucide.createIcons();
+  if(window.AOS)AOS.init({duration:480,once:true,offset:35});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

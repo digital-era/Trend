@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="安达保险 Chubb Limited（NYSE: CB）截至2026年11月28日的最新走势归因、技术分析与操作指引。">
+<title>安达保险（CB）最新走势归因与操作指引 · 2026-11-28</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,96%)',100:'hsl(20,90%,90%)',200:'hsl(20,90%,80%)',
+          300:'hsl(20,90%,68%)',400:'hsl(20,90%,58%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,43%)',700:'hsl(20,90%,34%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,17%)',950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,96%)',100:'hsl(30,85%,89%)',200:'hsl(30,85%,79%)',
+          300:'hsl(30,85%,68%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,47%)',700:'hsl(30,85%,38%)',800:'hsl(30,85%,28%)',
+          900:'hsl(30,85%,18%)',950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+};
+(function initTheme(){
+  try {
+    const saved=localStorage.getItem('cb-trend-theme');
+    if(saved==='dark'||(!saved&&window.matchMedia('(prefers-color-scheme: dark)').matches)){
+      document.documentElement.classList.add('dark');
+    }
+  } catch(e) {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.classList.add('dark');
+  }
+})();
+function toggleDarkMode(){
+  document.documentElement.classList.toggle('dark');
+  try {
+    localStorage.setItem('cb-trend-theme',
+      document.documentElement.classList.contains('dark')?'dark':'light');
+  } catch(e){}
+  syncThemeIcons();
+}
+function syncThemeIcons(){
+  const dark=document.documentElement.classList.contains('dark');
+  const sun=document.getElementById('sunIcon');
+  const moon=document.getElementById('moonIcon');
+  if(sun) sun.style.display=dark?'block':'none';
+  if(moon) moon.style.display=dark?'none':'block';
+}
+function toggleMobileMenu(){
+  const menu=document.getElementById('mobileMenu');
+  if(menu) menu.classList.toggle('mobile-menu-open');
+}
+function closeMobileMenu(){
+  const menu=document.getElementById('mobileMenu');
+  if(menu) menu.classList.remove('mobile-menu-open');
+}
+</script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+:root{
+  --page:#f6f7f9;
+  --surface:#ffffff;
+  --surface-soft:#f8fafc;
+  --ink:#172033;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --primary:#f05a24;
+  --accent:#ed9a22;
+}
+.dark{
+  --page:#0c1420;
+  --surface:#151f2b;
+  --surface-soft:#1b2938;
+  --ink:#e7edf5;
+  --muted:#a7b4c4;
+  --line:#334155;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  background:var(--page);
+  color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",
+  "Microsoft YaHei",sans-serif;
+  transition:background .25s,color .25s;
+}
+.surface{background:var(--surface);border:1px solid var(--line)}
+.surface-soft{background:var(--surface-soft)}
+.text-muted{color:var(--muted)}
+.border-theme{border-color:var(--line)}
+.nav-link{
+  color:var(--muted);font-size:13px;font-weight:650;
+  padding:9px 11px;border-radius:9px;transition:.2s;white-space:nowrap;
+}
+.nav-link:hover,.nav-link.active{color:var(--primary);background:rgba(240,90,36,.09)}
+.card-interactive{transition:transform .22s,box-shadow .22s,border-color .22s}
+.card-interactive:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(15,23,42,.08);
+  border-color:rgba(240,90,36,.38);
+}
+.dark .card-interactive:hover{box-shadow:0 12px 28px rgba(0,0,0,.24)}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:19px}
+.kpi-label{font-size:12px;color:var(--muted);font-weight:650}
+.kpi-value{font-size:clamp(22px,3vw,30px);font-weight:850;letter-spacing:-.04em;margin-top:9px}
+.kpi-note{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.5}
+.section-kicker{
+  color:var(--primary);font-size:11px;letter-spacing:.13em;
+  font-weight:800;text-transform:uppercase;
+}
+.section-title{font-size:clamp(21px,3vw,28px);font-weight:850;letter-spacing:-.035em}
+.section-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-top:8px}
+.pill{
+  display:inline-flex;align-items:center;gap:5px;padding:5px 9px;
+  border-radius:999px;font-size:11px;font-weight:750;white-space:nowrap;
+}
+.pill-orange{background:rgba(240,90,36,.12);color:#e35422}
+.pill-green{background:rgba(16,185,129,.13);color:#059669}
+.pill-red{background:rgba(244,63,94,.12);color:#e11d48}
+.pill-amber{background:rgba(245,158,11,.14);color:#b7791f}
+.dark .pill-orange{color:#ff9a73}
+.dark .pill-green{color:#6ee7b7}
+.dark .pill-red{color:#fda4af}
+.dark .pill-amber{color:#fcd34d}
+.driver-bar{height:7px;border-radius:999px;background:var(--line);overflow:hidden}
+.driver-fill{height:100%;border-radius:999px}
+.price-tag{
+  display:inline-flex;align-items:center;border-radius:8px;
+  padding:5px 9px;font-size:12px;font-weight:800;
+  background:rgba(240,90,36,.10);color:var(--primary);
+}
+.prose-report{font-size:13px;line-height:1.9;color:var(--muted)}
+.prose-report strong{color:var(--ink)}
+.data-table{width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap}
+.data-table th{
+  text-align:left;padding:12px 13px;background:var(--surface-soft);
+  color:var(--muted);font-weight:750;border-bottom:1px solid var(--line);
+}
+.data-table td{padding:11px 13px;border-bottom:1px solid var(--line)}
+.data-table tbody tr:hover{background:rgba(148,163,184,.07)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:13px}
+.source-link{color:var(--primary);text-decoration:underline;text-decoration-color:rgba(240,90,36,.35);text-underline-offset:3px}
+.source-link:hover{text-decoration-color:var(--primary)}
+.timeline-line{position:absolute;left:12px;top:18px;bottom:0;width:1px;background:var(--line)}
+.timeline-dot{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;z-index:1}
+.level-row{display:grid;grid-template-columns:110px 1fr 100px;gap:12px;align-items:center}
+.level-track{height:12px;background:var(--line);border-radius:999px;position:relative;overflow:hidden}
+.level-zone{position:absolute;top:0;bottom:0;border-radius:999px}
+.role-btn{
+  border:1px solid var(--line);border-radius:10px;padding:9px 15px;
+  font-size:12px;font-weight:750;color:var(--muted);transition:.2s;
+}
+.role-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.role-panel{display:none}
+.role-panel.active{display:block}
+.scenario-card{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:18px}
+#progressBar{
+  position:fixed;top:0;left:0;height:3px;width:0;z-index:100;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+}
+#mobileMenu{display:none}
+#mobileMenu.mobile-menu-open{
+  display:flex;position:absolute;top:65px;left:12px;right:12px;
+  flex-direction:column;padding:12px;background:var(--surface);
+  border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);z-index:60;
+}
+.chart-shell{background:var(--surface-soft);border:1px solid var(--line);border-radius:14px;padding:12px}
+.chart-svg{width:100%;height:auto;display:block;overflow:visible}
+.chart-grid{stroke:var(--line);stroke-width:1;stroke-dasharray:4 5}
+.chart-label{fill:var(--muted);font-size:11px}
+.chart-line{fill:none;stroke:var(--primary);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.chart-area{fill:url(#chartGradient)}
+.chart-point{fill:var(--primary);stroke:var(--surface);stroke-width:2}
+.chart-volume{fill:rgba(237,154,34,.36)}
+.note-box{
+  border:1px solid rgba(237,154,34,.35);
+  background:rgba(237,154,34,.08);border-radius:12px;padding:14px;
+}
+.positive{color:#059669}.negative{color:#e11d48}
+.dark .positive{color:#6ee7b7}.dark .negative{color:#fda4af}
+@media(max-width:767px){
+  .desktop-nav{display:none}
+  #mobileMenu.mobile-menu-open{display:flex}
+  .level-row{grid-template-columns:85px 1fr 82px;gap:7px}
+  .level-row .level-name{font-size:11px}
+  .level-row .level-value{font-size:11px}
+}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body>
+<div id="progressBar"></div>
+
+<header class="sticky top-0 z-50 border-b border-theme" style="background:var(--surface);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[65px] flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-3 min-w-0">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-black text-sm"
+           style="background:linear-gradient(135deg,#f05a24,#ed9a22)">CB</div>
+      <div class="min-w-0">
+        <div class="font-extrabold text-sm tracking-tight">安达保险 <span class="text-primary-600">CB</span></div>
+        <div class="text-[10px] text-muted">PRICE ACTION & TRADING PLAN</div>
+      </div>
+    </a>
+
+    <nav class="desktop-nav flex items-center gap-1">
+      <a class="nav-link" href="#overview">走势概览</a>
+      <a class="nav-link" href="#phases">阶段复盘</a>
+      <a class="nav-link" href="#drivers">驱动归因</a>
+      <a class="nav-link" href="#technicals">技术分析</a>
+      <a class="nav-link" href="#strategy">操作策略</a>
+      <a class="nav-link" href="#sources">数据来源</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <span class="hidden sm:inline text-[10px] text-muted font-semibold">2026.11.28</span>
+      <button onclick="toggleDarkMode()" aria-label="切换深色模式"
+        class="w-9 h-9 rounded-xl border border-theme flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800">
+        <i id="sunIcon" data-lucide="sun" class="w-4 h-4"></i>
+        <i id="moonIcon" data-lucide="moon" class="w-4 h-4"></i>
+      </button>
+      <button onclick="toggleMobileMenu()" aria-label="打开菜单"
+        class="md:hidden w-9 h-9 rounded-xl border border-theme flex items-center justify-center">
+        <i data-lucide="menu" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobileMenu">
+    <a class="nav-link" href="#overview" onclick="closeMobileMenu()">走势概览</a>
+    <a class="nav-link" href="#phases" onclick="closeMobileMenu()">阶段复盘</a>
+    <a class="nav-link" href="#drivers" onclick="closeMobileMenu()">驱动归因</a>
+    <a class="nav-link" href="#technicals" onclick="closeMobileMenu()">技术分析</a>
+    <a class="nav-link" href="#strategy" onclick="closeMobileMenu()">操作策略</a>
+    <a class="nav-link" href="#sources" onclick="closeMobileMenu()">数据来源</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 pt-9 sm:pt-14 pb-8">
+  <div class="flex flex-wrap items-center gap-2 mb-4">
+    <span class="pill pill-orange">NYSE · CB</span>
+    <span class="pill" style="background:var(--surface-soft);color:var(--muted)">保险 · 财产与意外险</span>
+    <span class="pill pill-green">相对强势</span>
+    <span class="text-xs text-muted ml-auto">报告日期：2026年11月28日</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[1.35fr_.65fr] gap-8 items-end">
+    <div>
+      <p class="section-kicker mb-3">Latest Trend Attribution & Trading Guide</p>
+      <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+        安达保险
+        <span class="block mt-1" style="color:var(--primary)">最新走势归因与操作指引</span>
+      </h1>
+      <p class="text-sm sm:text-base text-muted leading-8 mt-5 max-w-3xl">
+        Chubb Limited（NYSE: CB）近一个月呈现温和上涨、显著跑赢大盘的结构。
+        11月中旬随市场风险偏好骤降而回撤，随后在370美元附近企稳修复；
+        最新可交叉核验收盘价已回到380美元上方，正逼近月内高点区域。
+        当前核心问题不是简单判断涨跌，而是观察384美元附近能否有效突破，
+        以及370—376美元支撑带能否持续守住。
+      </p>
+    </div>
+    <div class="surface rounded-2xl p-5 sm:p-6">
+      <div class="text-xs text-muted font-semibold mb-2">最新可核验收盘价 · USD</div>
+      <div class="flex items-end gap-3">
+        <div class="text-4xl sm:text-5xl font-black tracking-tight">$380.51</div>
+        <div class="pill pill-green mb-1"><i data-lucide="trending-up" class="w-3 h-3"></i> +1.37%</div>
+      </div>
+      <div class="text-xs text-muted mt-2">2026-11-25 · NYSE 正常交易日收盘</div>
+      <div class="border-t border-theme mt-5 pt-4 grid grid-cols-2 gap-4">
+        <div>
+          <div class="text-[11px] text-muted">月内区间高点</div>
+          <div class="text-lg font-extrabold mt-1">$384.26</div>
+          <div class="text-[10px] text-muted">11月5日盘中</div>
+        </div>
+        <div>
+          <div class="text-[11px] text-muted">月内区间低点</div>
+          <div class="text-lg font-extrabold mt-1">$358.24</div>
+          <div class="text-[10px] text-muted">10月29日盘中</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box mt-7 flex gap-3 items-start">
+    <i data-lucide="info" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:#c17b12"></i>
+    <div class="text-xs leading-6" style="color:var(--muted)">
+      <strong style="color:var(--ink)">行情截止口径：</strong>
+      报告日期为11月28日。由于生成报告时美国11月27日交易时段尚未形成可交叉核验的完整日线收盘数据，
+      本报告以11月25日作为最近一个已确认的完整交易日收盘基准；不将11月27日盘中或盘前快照误写为正式收盘价。
+      近一个月收益、均线、成交量和技术位均基于截至11月25日的日线数据。
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
+    <div class="kpi card-interactive">
+      <div class="kpi-label">近20个交易日涨幅</div>
+      <div class="kpi-value positive">+5.03%</div>
+      <div class="kpi-note">10月29日收盘至11月25日收盘</div>
+    </div>
+    <div class="kpi card-interactive">
+      <div class="kpi-label">同期标普500涨幅</div>
+      <div class="kpi-value negative">-6.96%</div>
+      <div class="kpi-note">同期相对收益约 +12.0 个百分点</div>
+    </div>
+    <div class="kpi card-interactive">
+      <div class="kpi-label">20日平均成交量</div>
+      <div class="kpi-value">161.1万</div>
+      <div class="kpi-note">股 / 日；11月25日约198.0万股</div>
+    </div>
+    <div class="kpi card-interactive">
+      <div class="kpi-label">技术趋势状态</div>
+      <div class="kpi-value text-primary-600">偏强</div>
+      <div class="kpi-note">收盘价高于MA5、MA10与MA20</div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 py-9">
+  <div class="mb-6">
+    <div class="section-kicker">01 / Market Snapshot</div>
+    <h2 class="section-title mt-2">走势概览：抗跌性突出，短线来到前高压力区</h2>
+    <p class="section-desc">价格表现、相对收益和成交量共同刻画近一个月的交易结构。</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[1.55fr_.75fr] gap-5">
+    <div class="surface rounded-2xl p-4 sm:p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <h3 class="font-extrabold text-sm">CB 近20个交易日收盘走势</h3>
+          <p class="text-[11px] text-muted mt-1">2026-10-29 至 2026-11-25 · USD</p>
+        </div>
+        <div class="flex items-center gap-3 text-[10px] text-muted">
+          <span class="flex items-center gap-1.5"><i class="w-3 h-[3px] rounded" style="background:var(--primary)"></i>收盘价</span>
+          <span class="flex items-center gap-1.5"><i class="w-3 h-2 rounded" style="background:rgba(237,154,34,.6)"></i>成交量</span>
+        </div>
+      </div>
+      <div class="chart-shell">
+        <svg id="priceChart" class="chart-svg" viewBox="0 0 820 330" role="img" aria-label="安达保险近20个交易日收盘价及成交量图"></svg>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mt-4">
+        <div class="surface-soft rounded-xl p-3">
+          <div class="text-[10px] text-muted">区间涨幅</div>
+          <div class="text-lg font-extrabold positive mt-1">+5.03%</div>
+        </div>
+        <div class="surface-soft rounded-xl p-3">
+          <div class="text-[10px] text-muted">区间振幅</div>
+          <div class="text-lg font-extrabold mt-1">7.26%</div>
+        </div>
+        <div class="surface-soft rounded-xl p-3">
+          <div class="text-[10px] text-muted">最新日成交量</div>
+          <div class="text-lg font-extrabold mt-1">198.0万</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div class="surface rounded-2xl p-5 card-interactive">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-extrabold text-sm">相对大盘表现</h3>
+          <span class="pill pill-green">明显跑赢</span>
+        </div>
+        <div class="mb-4">
+          <div class="flex justify-between text-xs mb-2">
+            <span class="text-muted">安达保险 CB</span>
+            <strong class="positive">+5.03%</strong>
+          </div>
+          <div class="driver-bar"><div class="driver-fill" style="width:100%;background:#10b981"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-2">
+            <span class="text-muted">标普500</span>
+            <strong class="negative">-6.96%</strong>
+          </div>
+          <div class="driver-bar"><div class="driver-fill" style="width:70%;background:#e45b68"></div></div>
+        </div>
+        <div class="mt-5 p-3 rounded-xl surface-soft">
+          <div class="text-[10px] text-muted">超额收益差</div>
+          <div class="text-2xl font-black positive mt-1">+11.99<span class="text-sm ml-1">个百分点</span></div>
+          <p class="text-[11px] text-muted leading-5 mt-1">在同期美股明显回撤的环境中，CB表现出较强防御属性。</p>
+        </div>
+      </div>
+
+      <div class="surface rounded-2xl p-5 card-interactive">
+        <h3 class="font-extrabold text-sm mb-4">成交量观察</h3>
+        <div class="flex items-end justify-between">
+          <div>
+            <div class="text-[11px] text-muted">20日均量</div>
+            <div class="text-2xl font-black mt-1">161.1万</div>
+          </div>
+          <div class="text-right">
+            <div class="text-[11px] text-muted">最近5日均量</div>
+            <div class="text-xl font-extrabold mt-1">184.5万</div>
+          </div>
+        </div>
+        <div class="driver-bar mt-4"><div class="driver-fill" style="width:100%;background:var(--accent)"></div></div>
+        <p class="text-xs text-muted leading-6 mt-3">
+          最近5日均量较20日均量高约14.5%。11月23日成交约230.9万股，
+          随后两日价格连续修复，显示回撤后有交易活跃度配合，但不能据此直接推断机构净流入。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASES -->
+<section id="phases" class="max-w-7xl mx-auto px-4 sm:px-6 py-9">
+  <div class="mb-6">
+    <div class="section-kicker">02 / Price Action Review</div>
+    <h2 class="section-title mt-2">阶段复盘：冲高、回撤、企稳与修复</h2>
+    <p class="section-desc">将近20个交易日拆分为四个阶段，区分价格行为与可能的市场背景。</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <div class="surface rounded-2xl p-5 sm:p-6 card-interactive">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="timeline-dot" style="background:rgba(16,185,129,.13);color:#059669"><i data-lucide="trending-up" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <div class="text-xs text-muted">阶段一 · 10月29日—11月4日</div>
+          <h3 class="font-extrabold mt-1">震荡上行，保险股防御特征占优</h3>
+        </div>
+        <span class="pill pill-green">+3.28%</span>
+      </div>
+      <div class="flex gap-4 items-end mb-3">
+        <div><div class="text-[10px] text-muted">起点收盘</div><div class="text-xl font-black">$362.28</div></div>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-muted mb-1"></i>
+        <div><div class="text-[10px] text-muted">终点收盘</div><div class="text-xl font-black">$374.17</div></div>
+      </div>
+      <p class="prose-report">
+        CB从10月29日的362.28美元逐步上行，11月4日收于374.17美元。
+        这一阶段价格呈现连续抬高的结构，买方承接较为稳定。
+        但单凭价格表现无法证明特定资金主体持续买入，较合理的描述是防御型保险资产相对受到市场偏好支持。
+      </p>
+    </div>
+
+    <div class="surface rounded-2xl p-5 sm:p-6 card-interactive">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="timeline-dot" style="background:rgba(244,63,94,.13);color:#e11d48"><i data-lucide="activity" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <div class="text-xs text-muted">阶段二 · 11月5日—11月13日</div>
+          <h3 class="font-extrabold mt-1">高位震荡，11月5日冲高回落</h3>
+        </div>
+        <span class="pill pill-green">+1.11%</span>
+      </div>
+      <div class="flex gap-4 items-end mb-3">
+        <div><div class="text-[10px] text-muted">11月5日收盘</div><div class="text-xl font-black">$371.63</div></div>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-muted mb-1"></i>
+        <div><div class="text-[10px] text-muted">11月13日收盘</div><div class="text-xl font-black">$375.74</div></div>
+      </div>
+      <p class="prose-report">
+        11月5日盘中最高触及384.26美元，随后回落至371.63美元收盘，
+        当日成交约205.7万股。价格从盘中高点至收盘回撤约3.28%，显示高位抛压明显。
+        同日标普500大幅下跌约4.36%，说明该日的风险偏好冲击具有广泛市场属性，
+        不宜全部归因于安达保险自身基本面。
+      </p>
+    </div>
+
+    <div class="surface rounded-2xl p-5 sm:p-6 card-interactive">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="timeline-dot" style="background:rgba(245,158,11,.15);color:#b7791f"><i data-lucide="trending-down" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <div class="text-xs text-muted">阶段三 · 11月16日—11月20日</div>
+          <h3 class="font-extrabold mt-1">跟随市场回撤，但跌幅明显较小</h3>
+        </div>
+        <span class="pill pill-red">-2.53%</span>
+      </div>
+      <div class="flex gap-4 items-end mb-3">
+        <div><div class="text-[10px] text-muted">11月16日收盘</div><div class="text-xl font-black">$381.28</div></div>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-muted mb-1"></i>
+        <div><div class="text-[10px] text-muted">11月20日收盘</div><div class="text-xl font-black">$371.63</div></div>
+      </div>
+      <p class="prose-report">
+        11月中旬美国科技股和AI相关资产出现明显抛售，标普500在11月20日下跌3.70%。
+        CB同期从381.28美元回落至371.63美元，跌幅约2.53%，相对大盘仍具韧性。
+        11月20日CB上涨0.41%，而标普500当日下跌3.70%，防御属性进一步显现。
+      </p>
+    </div>
+
+    <div class="surface rounded-2xl p-5 sm:p-6 card-interactive">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="timeline-dot" style="background:rgba(16,185,129,.13);color:#059669"><i data-lucide="rotate-ccw" class="w-4 h-4"></i></div>
+        <div class="flex-1">
+          <div class="text-xs text-muted">阶段四 · 11月23日—11月25日</div>
+          <h3 class="font-extrabold mt-1">370美元附近企稳，连续两日修复</h3>
+        </div>
+        <span class="pill pill-green">+3.21%</span>
+      </div>
+      <div class="flex gap-4 items-end mb-3">
+        <div><div class="text-[10px] text-muted">11月23日收盘</div><div class="text-xl font-black">$368.67</div></div>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-muted mb-1"></i>
+        <div><div class="text-[10px] text-muted">11月25日收盘</div><div class="text-xl font-black">$380.51</div></div>
+      </div>
+      <p class="prose-report">
+        11月23日成交量升至约230.9万股，股价小幅下跌0.80%；
+        随后11月24日和25日分别上涨1.82%和1.37%。
+        最新收盘重新站上380美元，且11月25日成交量约198.0万股，
+        高于20日均量，显示修复并非完全缺乏成交配合。
+        不过，384.26美元前高仍是确认趋势突破的关键门槛。
+      </p>
+    </div>
+  </div>
+
+  <div class="surface rounded-2xl p-5 mt-5">
+    <h3 class="font-extrabold text-sm mb-4">阶段价格路径</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="surface-soft rounded-xl p-4">
+        <div class="text-[10px] text-muted">10/29—11/04</div>
+        <div class="text-xl font-black positive mt-1">+3.28%</div>
+        <div class="text-xs text-muted mt-1">$362.28 → $374.17</div>
+      </div>
+      <div class="surface-soft rounded-xl p-4">
+        <div class="text-[10px] text-muted">11/05—11/13</div>
+        <div class="text-xl font-black positive mt-1">+1.11%</div>
+        <div class="text-xs text-muted mt-1">$371.63 → $375.74</div>
+      </div>
+      <div class="surface-soft rounded-xl p-4">
+        <div class="text-[10px] text-muted">11/16—11/20</div>
+        <div class="text-xl font-black negative mt-1">-2.53%</div>
+        <div class="text-xs text-muted mt-1">$381.28 → $371.63</div>
+      </div>
+      <div class="surface-soft rounded-xl p-4">
+        <div class="text-[10px] text-muted">11/23—11/25</div>
+        <div class="text-xl font-black positive mt-1">+3.21%</div>
+        <div class="text-xs text-muted mt-1">$368.67 → $380.51</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRIVERS -->
+<section id="drivers" class="max-w-7xl mx-auto px-4 sm:px-6 py-9">
+  <div class="mb-6">
+    <div class="section-kicker">03 / Driver Attribution</div>
+    <h2 class="section-title mt-2">走势驱动归因：公司、行业与宏观三层传导</h2>
+    <p class="section-desc">近一个月公司层面新增公告较少，股价相对强势更多体现为防御属性、行业预期与市场风险偏好的综合结果。</p>
+  </div>
+
+  <div class="surface rounded-2xl p-5 sm:p-6 mb-5">
+    <div class="flex flex-wrap justify-between gap-3 items-center mb-5">
+      <h3 class="font-extrabold">研究判断：影响因素权重拆分</h3>
+      <span class="text-[10px] text-muted">主观归因框架 · 非统计回归结果</span>
+    </div>
+    <div class="space-y-5">
+      <div>
+        <div class="flex justify-between text-sm mb-2">
+          <span class="font-bold">宏观与市场风险偏好</span><strong>45%</strong>
+        </div>
+        <div class="driver-bar"><div class="driver-fill" style="width:45%;background:#64748b"></div></div>
+        <p class="text-xs text-muted mt-2">同期标普500显著回撤，CB仍取得正收益，市场风险偏好变化是理解其相对表现的首要背景。</p>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-2">
+          <span class="font-bold">保险行业与分析师预期</span><strong>30%</strong>
+        </div>
+        <div class="driver-bar"><div class="driver-fill" style="width:30%;background:var(--accent)"></div></div>
+        <p class="text-xs text-muted mt-2">再保险续约价格预期、承保周期与分析师目标价调整影响行业估值和盈利预期。</p>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-2">
+          <span class="font-bold">公司经营与公司事件</span><strong>25%</strong>
+        </div>
+        <div class="driver-bar"><div class="driver-fill" style="width:25%;background:var(--primary)"></div></div>
+        <p class="text-xs text-muted mt-2">股息公告、Q3经营质量与投资收益能力构成公司层面的基本面支撑和风险约束。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <article class="surface rounded-2xl p-5 sm:p-6 card-interactive">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="pill pill-orange">公司事件</span>
+        <span class="text-[11px] text-muted">2026-11-19 / 11-20</span>
+      </div>
+      <h3 class="font-extrabold text-base leading-7">董事会宣布每股1.02美元季度股息</h3>
+      <p class="prose-report mt-3">
+        Chubb董事会宣布每股1.02美元的季度现金股息，股权登记日为2026年12月11日，
+        计划于2027年1月5日支付。该季度金额与2026年8月已宣布的每股1.02美元相同，
+        因而本次公告主要体现持续现金回报能力，而不是新的季度股息上调惊喜。
+      </p>
+      <div class="grid grid-cols-3 gap-2 mt-4">
+        <div class="surface-soft rounded-lg p-3">
+          <div class="text-[10px] text-muted">每股股息</div>
+          <div class="font-extrabold mt-1">$1.02</div>
+        </div>
+        <div class="surface-soft rounded-lg p-3">
+          <div class="text-[10px] text-muted">登记日</div>
+          <div class="font-extrabold mt-1">12/11</div>
+        </div>
+        <div class="surface-soft rounded-lg p-3">
+          <div class="text-[10px] text-muted">支付日</div>
+          <div class="font-extrabold mt-1">01/05</div>
+        </div>
+      </div>
+      <div class="mt-4 text-xs text-muted">
+        来源：<a class="source-link" href="https://chubb.mediaroom.com/2026-11-19-Chubb-Limited-Board-Declares-Quarterly-Dividend" target="_blank" rel="noopener">Chubb官方股息公告</a>；
+        <a class="source-link" href="https://investors.chubb.com/stock-info/Dividends/default.aspx" target="_blank" rel="noopener">官方股息历史</a>。
+      </div>
+    </article>
+
+    <article class="surface rounded-2xl p-5 sm:p-6 card-interactive">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="pill pill-amber">公司基本面基准</span>
+        <span class="text-[11px] text-muted">Q3 2026 · 10月20日披露</span>
+      </div>
+      <h3 class="font-extrabold text-base leading-7">保费增长温和，但承保利润同比承压</h3>
+      <p class="prose-report mt-3">
+        以下是截至报告日可获得的最近一季经营基准，业绩公告日期为10月20日，
+        不属于本报告近一个月内的新公告。第三季度净保费收入151.43亿美元，同比增长1.9%；
+        财产与意外险净保费收入131.83亿美元，同比增长1.9%。
+        但P&C承保利润同比下降8.8%，综合成本率从81.8%升至84.1%。
+      </p>
+      <div class="grid grid-cols-2 gap-2 mt-4">
+        <div class="surface-soft rounded-lg p-3">
+          <div class="text-[10px] text-muted">Q3净保费收入</div>
+          <div class="font-extrabold mt-1">$15.143B</div>
+          <div class="text-[10px] positive">同比 +1.9%</div>
+        </div>
+        <div class="surface-soft rounded-lg p-3">
+          <div class="text-[10px] text-muted">P&C承保利润</div>
+          <div class="font-extrabold mt-1">$2.061B</div>
+          <div class="text-[10px] negative">同比 -8.8%</div>
+        </div>
+        <div class="surface-soft rounded-lg p-3">
+          <div class="text-[10px] text-muted">综合成本率</div>
+          <div class="font-extrabold mt-1">84.1%</div>
+          <div class="text-[10px] negative">上年同期81.8%</div>
+        </div>
+        <div class="surface-soft rounded-lg p-3">
+          <div class="text-[10px] text-muted">核心经营EPS</div>
+          <div class="font-extrabold mt-1">$7.66</div>
+          <div class="text-[10px] positive">同比 +0.8%</div>
+        </div>
+      </div>
+      <div class="mt-4 text-xs text-muted">
+        来源：<a class="source-link" href="https://chubb.mediaroom.com/2026-10-20-Chubb-Reports-Third-Quarter-Per-Share-Net-Income-and-Record-Core-Operating-Income-of-7-30-and-7-66%2C-Respectively%2C-Up-4-4-and-0-8-Consolidated-Net-Premiums-Written-of-15-1-Billion%2C-Up-1-9-%2C-with-P-C-and-Life-Insurance-Up-1-9-and-1-4-P-C-Combined" target="_blank" rel="noopener">Chubb Q3 2026官方业绩公告</a>。
+      </div>
+    </article>
+
+    <article class="surface rounded-2xl p-5 sm:p-6 card-interactive">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="pill pill-green">分析师预期</span>
+        <span class="text-[11px] text-muted">11月16日 / 11月20日</span>
+      </div>
+      <h3 class="font-extrabold text-base leading-7">两家机构上调目标价，但评级维持Hold</h3>
+      <div class="table-wrap mt-4">
+        <table class="data-table">
+          <thead><tr><th>机构</th><th>日期</th><th>目标价调整</th><th>评级</th></tr></thead>
+          <tbody>
+            <tr><td class="font-semibold">Morgan Stanley</td><td>11/16</td><td class="positive font-bold">$360 → $380</td><td>Hold</td></tr>
+            <tr><td class="font-semibold">Mizuho</td><td>11/20</td><td class="positive font-bold">$350 → $368</td><td>Hold</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose-report mt-4">
+        目标价上调说明分析师对估值或盈利预期有所改善，但两家机构均维持Hold。
+        以11月25日收盘价380.51美元衡量，两个目标价均未提供明显的目标价上行空间。
+        这些调整可以作为预期变化的观察指标，但不能直接认定为股价上涨的唯一原因。
+      </p>
+      <div class="mt-4 text-xs text-muted">
+        来源：<a class="source-link" href="https://www.tipranks.com/stocks/cb/forecast" target="_blank" rel="noopener">TipRanks CB分析师预测记录</a>。
+      </div>
+    </article>
+
+    <article class="surface rounded-2xl p-5 sm:p-6 card-interactive">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="pill pill-amber">行业周期</span>
+        <span class="text-[11px] text-muted">2027年1月1日再保险续约</span>
+      </div>
+      <h3 class="font-extrabold text-base leading-7">财产再保险价格承压，责任险仍受赔付通胀约束</h3>
+      <p class="prose-report mt-3">
+        11月初行业报道显示，市场普遍预期2027年1月财产再保险续约价格继续下降，
+        竞争和充足资本增加了保险公司议价空间。不同市场参与者的预测幅度并不一致：
+        有观点认为降幅可能接近20%，也有机构认为降幅不会像上一年度那么深。
+        责任险方面，持续的索赔通胀和美国诉讼环境令再保险人保持谨慎，价格预期相对稳定。
+      </p>
+      <div class="mt-4 p-3 rounded-xl surface-soft">
+        <div class="text-xs font-bold mb-1">对Chubb的双向传导</div>
+        <p class="text-xs text-muted leading-6">
+          再保险采购成本下降可能降低分出成本、改善风险转移条件；
+          但行业原保险定价竞争也可能压缩部分业务的保费增长和承保利润。
+          实际净影响取决于Chubb各地区、险种组合、再保险结构和续约条款，
+          不宜将行业平均价格预测直接等同于Chubb利润变化。
+        </p>
+      </div>
+      <div class="mt-4 text-xs text-muted">
+        来源：
+        <a class="source-link" href="https://www.theinsurer.com/bdbb44589559/ti/interview/property-reinsurance-price-pressure-wont-be-as-deep-as-last-year-2026-11-03/" target="_blank" rel="noopener">The Insurer：财产再保险价格压力</a>；
+        <a class="source-link" href="https://www.theinsurer.com/ti/news/lockton-res-lorence-reinsurers-increasingly-expect-near-20-property-rate-falls-2026-11-02/" target="_blank" rel="noopener">Lockton Re续约预期</a>；
+        <a class="source-link" href="https://www.businessinsurance.com/reinsurance-renewal-discussions-shaped-by-abundant-capital-loss-concerns/" target="_blank" rel="noopener">Business Insurance行业报道</a>。
+      </div>
+    </article>
+  </div>
+
+  <div class="surface rounded-2xl p-5 sm:p-6 mt-5">
+    <div class="flex items-center gap-2 mb-4">
+      <i data-lucide="globe" class="w-5 h-5 text-primary-600"></i>
+      <h3 class="font-extrabold">宏观市场：11月中旬风险资产集中调整</h3>
+    </div>
+    <p class="prose-report">
+      11月19日至20日，美国市场出现显著风险偏好下降，AI相关股票遭遇抛售，
+      标普500在11月20日下跌3.70%，收于6,910.39点。
+      市场讨论集中于AI投资回报、融资成本、利率和高估值资产拥挤交易等问题。
+      在这一背景下，CB于11月20日收涨0.41%，显示出明显的相对防御性。
+      保险公司的投资组合收益会受到利率和资产价格变化影响，但不能据此将某一天的股价变化简单归因于利率单一因素。
+    </p>
+    <div class="mt-4 text-xs text-muted">
+      来源：
+      <a class="source-link" href="https://apnews.com/article/c10b797a17c2acf37924d834efebe135" target="_blank" rel="noopener">Associated Press市场回顾</a>；
+      <a class="source-link" href="https://cislergroup.bairdwealth.com/resource-center/investment/in-the-markets-now-selloff-summary-november-19-2026" target="_blank" rel="noopener">Baird市场回顾</a>。
+    </div>
+  </div>
+
+  <div class="note-box mt-5">
+    <div class="flex items-start gap-3">
+      <i data-lucide="shield-check" class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:#b7791f"></i>
+      <div class="text-xs leading-6 text-muted">
+        <strong style="color:var(--ink)">资金流口径说明：</strong>
+        本报告使用公开日线成交量分析交易活跃度，不把成交量等同于机构净买入。
+        NYSE公开成交量本身不能识别买卖双方身份；当前没有足够可靠的公开证据支持
+        “主力资金持续净流入”“机构集中吸筹”或“空头回补主导上涨”等确定性结论。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNICALS -->
+<section id="technicals" class="max-w-7xl mx-auto px-4 sm:px-6 py-9">
+  <div class="mb-6">
+    <div class="section-kicker">04 / Technical Structure</div>
+    <h2 class="section-title mt-2">技术分析：均线修复完成，前高突破仍待确认</h2>
+    <p class="section-desc">以11月25日收盘价380.51美元为基准，观察短中期均线、支撑阻力和量价确认。</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <div class="surface rounded-2xl p-5 sm:p-6">
+      <h3 class="font-extrabold text-sm mb-5">短中期均线状态</h3>
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div><div class="text-xs text-muted">MA5</div><div class="text-xl font-black mt-1">$373.26</div></div>
+          <span class="pill pill-green">价格上方</span>
+        </div>
+        <div class="driver-bar"><div class="driver-fill" style="width:98%;background:var(--primary)"></div></div>
+        <div class="flex items-center justify-between">
+          <div><div class="text-xs text-muted">MA10</div><div class="text-xl font-black mt-1">$374.17</div></div>
+          <span class="pill pill-green">价格上方</span>
+        </div>
+        <div class="driver-bar"><div class="driver-fill" style="width:98.2%;background:var(--accent)"></div></div>
+        <div class="flex items-center justify-between">
+          <div><div class="text-xs text-muted">MA20</div><div class="text-xl font-black mt-1">$370.87</div></div>
+          <span class="pill pill-green">价格上方</span>
+        </div>
+        <div class="driver-bar"><div class="driver-fill" style="width:97.3%;background:#64748b"></div></div>
+      </div>
+      <div class="surface-soft rounded-xl p-4 mt-5">
+        <div class="text-xs font-bold mb-2">均线结构解读</div>
+        <p class="text-xs text-muted leading-6">
+          收盘价高于MA5、MA10和MA20，说明短线修复已转化为均线之上的价格结构；
+          MA10高于MA20，体现中短期趋势改善。
+          但MA5仍低于MA10，均线尚未形成完全多头排列，趋势确认仍需要后续交易日配合。
+          本报告不在缺少完整历史序列时臆测MA60。
+        </p>
+      </div>
+    </div>
+
+    <div class="surface rounded-2xl p-5 sm:p-6">
+      <h3 class="font-extrabold text-sm mb-5">关键价位与交易区域</h3>
+      <div class="space-y-4">
+        <div class="level-row">
+          <div class="level-name text-xs font-bold">强阻力区</div>
+          <div class="level-track"><div class="level-zone" style="left:88%;width:12%;background:#e45b68"></div></div>
+          <div class="level-value text-right font-extrabold text-xs">$383.6–384.3</div>
+        </div>
+        <div class="level-row">
+          <div class="level-name text-xs font-bold">近端压力区</div>
+          <div class="level-track"><div class="level-zone" style="left:78%;width:13%;background:#ed9a22"></div></div>
+          <div class="level-value text-right font-extrabold text-xs">$381–383.6</div>
+        </div>
+        <div class="level-row">
+          <div class="level-name text-xs font-bold">最新收盘</div>
+          <div class="level-track"><div class="level-zone" style="left:72%;width:5%;background:var(--primary)"></div></div>
+          <div class="level-value text-right font-extrabold text-xs">$380.51</div>
+        </div>
+        <div class="level-row">
+          <div class="level-name text-xs font-bold">第一支撑</div>
+          <div class="level-track"><div class="level-zone" style="left:52%;width:18%;background:#10b981"></div></div>
+          <div class="level-value text-right font-extrabold text-xs">$374–376</div>
+        </div>
+        <div class="level-row">
+          <div class="level-name text-xs font-bold">强支撑区</div>
+          <div class="level-track"><div class="level-zone" style="left:29%;width:23%;background:#0d9488"></div></div>
+          <div class="level-value text-right font-extrabold text-xs">$368–371</div>
+        </div>
+        <div class="level-row">
+          <div class="level-name text-xs font-bold">深层支撑</div>
+          <div class="level-track"><div class="level-zone" style="left:0;width:28%;background:#64748b"></div></div>
+          <div class="level-value text-right font-extrabold text-xs">$358–363.5</div>
+        </div>
+      </div>
+      <p class="text-[10px] text-muted mt-5 leading-5">
+        以上为基于近期高低点、收盘密集区和均线计算的技术观察区间，不代表交易所官方支撑阻力价。
+        价格区间应结合收盘确认和成交量，而非盘中瞬时触及判断。
+      </p>
+    </div>
+  </div>
+
+  <div class="surface rounded-2xl p-5 sm:p-6 mt-5">
+    <h3 class="font-extrabold text-sm mb-4">关键位的形成依据</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>价格区域</th><th>技术属性</th><th>历史依据</th><th>观察重点</th></tr></thead>
+        <tbody>
+          <tr><td class="font-extrabold">$383.60–384.30</td><td><span class="pill pill-red">强阻力</span></td><td>11月25日高点383.61；11月5日区间高点384.26</td><td>能否放量收盘突破</td></tr>
+          <tr><td class="font-extrabold">$381–383.60</td><td><span class="pill pill-amber">近端压力</span></td><td>近期反弹接近前高的价格区域</td><td>冲高后是否出现明显回落</td></tr>
+          <tr><td class="font-extrabold">$374–376</td><td><span class="pill pill-green">第一支撑</span></td><td>MA10约374.17；11月24日收盘375.37</td><td>回踩能否缩量企稳</td></tr>
+          <tr><td class="font-extrabold">$368–371</td><td><span class="pill pill-green">强支撑</span></td><td>MA20约370.87；11月23日收盘368.67</td><td>多空趋势分界区域</td></tr>
+          <tr><td class="font-extrabold">$358.20–363.50</td><td><span class="pill">深层支撑</span></td><td>10月29日低点358.24；11月9日低点360.48</td><td>若失守需重新评估趋势</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="surface rounded-2xl p-5 sm:p-6 mt-5">
+    <h3 class="font-extrabold text-sm mb-4">量价确认规则</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div class="surface-soft rounded-xl p-4">
+        <span class="pill pill-green mb-3">突破确认</span>
+        <div class="font-extrabold text-lg">收盘站上 $384.30</div>
+        <p class="text-xs text-muted leading-6 mt-2">成交量超过约210万股，并且收盘价保持在前高上方，突破信号更可信。</p>
+      </div>
+      <div class="surface-soft rounded-xl p-4">
+        <span class="pill pill-amber mb-3">回踩确认</span>
+        <div class="font-extrabold text-lg">$374–376企稳</div>
+        <p class="text-xs text-muted leading-6 mt-2">回落时成交量低于约160万股，随后收盘重新站回支撑区域，可视为较健康的回踩。</p>
+      </div>
+      <div class="surface-soft rounded-xl p-4">
+        <span class="pill pill-red mb-3">破位确认</span>
+        <div class="font-extrabold text-lg">收盘跌破 $370</div>
+        <p class="text-xs text-muted leading-6 mt-2">若同时放量超过约210万股，需警惕反弹结构失效，观察363—365美元区域。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section id="strategy" class="max-w-7xl mx-auto px-4 sm:px-6 py-9">
+  <div class="mb-6">
+    <div class="section-kicker">05 / Trading Playbook</div>
+    <h2 class="section-title mt-2">操作指引：持仓者与观望者的不同策略</h2>
+    <p class="section-desc">以收盘确认、成交量和支撑阻力为触发条件，避免在前高压力区盲目追价。</p>
+  </div>
+
+  <div class="surface rounded-2xl p-5 sm:p-6">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+      <h3 class="font-extrabold">选择你的交易状态</h3>
+      <div class="flex gap-2">
+        <button class="role-btn active" id="holdBtn" onclick="switchRole('hold')">已有持仓</button>
+        <button class="role-btn" id="waitBtn" onclick="switchRole('wait')">暂未持仓</button>
+      </div>
+    </div>
+
+    <div id="holdPanel" class="role-panel active">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="pill pill-green">持仓管理</span>
+        <span class="text-xs text-muted">核心原则：守住370美元趋势支撑，前高区域控制追涨风险</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="scenario-card">
+          <div class="text-xs text-muted mb-2">情形 A · 价格突破前高</div>
+          <div class="text-xl font-black positive">收盘高于 $384.30</div>
+          <p class="text-xs text-muted leading-6 mt-2">
+            若成交量同步超过210万股，且收盘价保持在突破位上方，可继续持有核心仓位，
+            将观察目标上移至390—398美元区域。若只是盘中突破、收盘重新跌回384美元下方，不视为有效确认。
+          </p>
+        </div>
+        <div class="scenario-card">
+          <div class="text-xs text-muted mb-2">情形 B · 冲击前高失败</div>
+          <div class="text-xl font-black" style="color:#b7791f">$383.60–384.30受阻</div>
+          <p class="text-xs text-muted leading-6 mt-2">
+            若在前高区域出现明显上影线、放量滞涨或收盘回落，可考虑分批兑现20%—30%的战术仓位，
+            保留核心持仓，等待价格重新确认方向。
+          </p>
+        </div>
+        <div class="scenario-card">
+          <div class="text-xs text-muted mb-2">情形 C · 回踩第一支撑</div>
+          <div class="text-xl font-black positive">$374–376企稳</div>
+          <p class="text-xs text-muted leading-6 mt-2">
+            若回踩期间成交量低于约160万股，且收盘重新站回374—376美元区域，
+            可继续持有；风险承受能力较高者可考虑小幅增加仓位，但不宜一次性加满。
+          </p>
+        </div>
+        <div class="scenario-card">
+          <div class="text-xs text-muted mb-2">情形 D · 趋势支撑失守</div>
+          <div class="text-xl font-black negative">收盘跌破 $370</div>
+          <p class="text-xs text-muted leading-6 mt-2">
+            若放量跌破370美元，可考虑降低约1/3至1/2仓位；
+            若进一步收盘跌破358.20美元，则原有短线修复逻辑基本失效，
+            应退出战术仓位并重新评估基本面和市场环境。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="waitPanel" class="role-panel">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="pill pill-orange">等待入场</span>
+        <span class="text-xs text-muted">核心原则：优先等待回踩，不在前高压力区追涨</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="scenario-card">
+          <div class="text-xs text-muted mb-2">优先观察 · 第一买入观察区</div>
+          <div class="text-xl font-black positive">$374–376</div>
+          <p class="text-xs text-muted leading-6 mt-2">
+            价格回落至第一支撑区域，成交量收缩至约160万股以下，
+            并出现止跌、收盘重新站回支撑区的信号，可考虑分批建立试探仓位。
+          </p>
+        </div>
+        <div class="scenario-card">
+          <div class="text-xs text-muted mb-2">次级观察 · 更强支撑区域</div>
+          <div class="text-xl font-black positive">$368–371</div>
+          <p class="text-xs text-muted leading-6 mt-2">
+            若市场回撤导致价格进一步下探，观察MA20附近是否企稳。
+            只有在出现止跌信号、收盘重新站回关键区域时，才考虑分批参与。
+          </p>
+        </div>
+        <div class="scenario-card">
+          <div class="text-xs text-muted mb-2">右侧入场 · 突破交易</div>
+          <div class="text-xl font-black">$384.30上方</div>
+          <p class="text-xs text-muted leading-6 mt-2">
+            等待日线收盘有效站上384.30美元，且成交量超过210万股。
+            最好再观察一个交易日确认突破有效性，避免追入假突破。
+          </p>
+        </div>
+        <div class="scenario-card">
+          <div class="text-xs text-muted mb-2">不建议操作 · 追高区域</div>
+          <div class="text-xl font-black negative">$381–384</div>
+          <p class="text-xs text-muted leading-6 mt-2">
+            当前价格已接近前高供给区，若没有放量突破确认，
+            此处潜在收益空间与短线回撤风险并不对称。等待更好的风险收益比。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h3 class="font-extrabold text-base mb-4">未来走势情景推演</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="scenario-card card-interactive">
+        <div class="flex justify-between items-center">
+          <span class="pill pill-green">乐观情景</span>
+          <span class="text-xs text-muted">主观概率 30%</span>
+        </div>
+        <div class="text-2xl font-black positive mt-4">$390–398</div>
+        <div class="text-xs text-muted mt-1">潜在观察目标区</div>
+        <p class="text-xs text-muted leading-6 mt-4">
+          日线有效突破384.30美元，成交量超过210万股，
+          市场风险偏好改善，且保险股相对强势延续。
+          突破后关注390美元整数位及398美元附近的延伸空间。
+        </p>
+        <div class="driver-bar mt-4"><div class="driver-fill" style="width:30%;background:#10b981"></div></div>
+      </div>
+      <div class="scenario-card card-interactive">
+        <div class="flex justify-between items-center">
+          <span class="pill pill-amber">基准情景</span>
+          <span class="text-xs text-muted">主观概率 50%</span>
+        </div>
+        <div class="text-2xl font-black mt-4">$374–384</div>
+        <div class="text-xs text-muted mt-1">主要震荡区间</div>
+        <p class="text-xs text-muted leading-6 mt-4">
+          前高附近卖压尚未消化，股价在370美元上方维持震荡，
+          通过回踩均线和区间整理消化短线涨幅。
+          该情景下，等待支撑位附近的量价确认优于追涨。
+        </p>
+        <div class="driver-bar mt-4"><div class="driver-fill" style="width:50%;background:var(--accent)"></div></div>
+      </div>
+      <div class="scenario-card card-interactive">
+        <div class="flex justify-between items-center">
+          <span class="pill pill-red">悲观情景</span>
+          <span class="text-xs text-muted">主观概率 20%</span>
+        </div>
+        <div class="text-2xl font-black negative mt-4">$363–365</div>
+        <div class="text-xs text-muted mt-1">下方观察区域</div>
+        <p class="text-xs text-muted leading-6 mt-4">
+          若放量收盘跌破370美元，反弹结构可能转弱，
+          价格有机会回测363—365美元。
+          如果358.20美元进一步失守，则需考虑350—355美元的更深层风险区。
+        </p>
+        <div class="driver-bar mt-4"><div class="driver-fill" style="width:20%;background:#e45b68"></div></div>
+      </div>
+    </div>
+    <p class="text-[10px] text-muted mt-3 leading-5">
+      情景概率、目标区间均为研究判断，不是统计模型预测或保证结果；三个情景概率合计100%，
+      实际走势可能超出所列区间。仓位调整比例为风险管理示例，应结合个人成本、持仓规模和风险承受能力。
+    </p>
+  </div>
+
+  <div class="surface rounded-2xl p-5 sm:p-6 mt-5">
+    <h3 class="font-extrabold text-sm mb-4">交易执行清单</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+      <label class="flex items-start gap-3 p-3 rounded-xl surface-soft">
+        <input type="checkbox" class="mt-1 accent-orange-500">
+        <span><strong>突破确认：</strong><span class="text-muted">收盘是否站上384.30美元，成交量是否超过210万股。</span></span>
+      </label>
+      <label class="flex items-start gap-3 p-3 rounded-xl surface-soft">
+        <input type="checkbox" class="mt-1 accent-orange-500">
+        <span><strong>回踩确认：</strong><span class="text-muted">374—376美元附近是否缩量企稳，收盘能否收复支撑。</span></span>
+      </label>
+      <label class="flex items-start gap-3 p-3 rounded-xl surface-soft">
+        <input type="checkbox" class="mt-1 accent-orange-500">
+        <span><strong>风险控制：</strong><span class="text-muted">是否出现放量跌破370美元或358.20美元的情况。</span></span>
+      </label>
+      <label class="flex items-start gap-3 p-3 rounded-xl surface-soft">
+        <input type="checkbox" class="mt-1 accent-orange-500">
+        <span><strong>基本面复核：</strong><span class="text-muted">后续季度综合成本率、承保利润和净保费增长是否恶化。</span></span>
+      </label>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section id="history" class="max-w-7xl mx-auto px-4 sm:px-6 py-9">
+  <div class="mb-6">
+    <div class="section-kicker">06 / Historical Data</div>
+    <h2 class="section-title mt-2">近20个交易日行情明细</h2>
+    <p class="section-desc">价格单位为美元，成交量单位为股。不同数据供应商成交量可能存在小幅差异。</p>
+  </div>
+  <div class="surface rounded-2xl p-4 sm:p-6">
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>日期</th><th>开盘</th><th>最高</th><th>最低</th><th>收盘</th><th>涨跌幅</th><th>成交量</th></tr>
+        </thead>
+        <tbody id="historyTable">
+          <tr><td>2026-10-29</td><td>360.25</td><td>362.49</td><td>358.24</td><td>362.28</td><td class="positive">—</td><td>1,869,068</td></tr>
+          <tr><td>2026-10-30</td><td>367.47</td><td>369.00</td><td>363.23</td><td>364.12</td><td class="positive">+0.51%</td><td>1,630,108</td></tr>
+          <tr><td>2026-11-02</td><td>365.00</td><td>370.29</td><td>364.12</td><td>368.98</td><td class="positive">+1.34%</td><td>1,433,190</td></tr>
+          <tr><td>2026-11-03</td><td>366.42</td><td>369.10</td><td>364.58</td><td>366.54</td><td class="negative">-0.66%</td><td>1,205,618</td></tr>
+          <tr><td>2026-11-04</td><td>370.16</td><td>374.60</td><td>366.10</td><td>374.17</td><td class="positive">+2.08%</td><td>1,726,618</td></tr>
+          <tr><td>2026-11-05</td><td>378.88</td><td>384.26</td><td>371.05</td><td>371.63</td><td class="negative">-0.68%</td><td>2,057,123</td></tr>
+          <tr><td>2026-11-06</td><td>362.30</td><td>368.30</td><td>362.30</td><td>365.02</td><td class="negative">-1.78%</td><td>1,627,199</td></tr>
+          <tr><td>2026-11-09</td><td>367.17</td><td>367.17</td><td>360.48</td><td>363.45</td><td class="negative">-0.43%</td><td>1,203,345</td></tr>
+          <tr><td>2026-11-10</td><td>364.44</td><td>370.05</td><td>363.60</td><td>369.11</td><td class="positive">+1.56%</td><td>969,915</td></tr>
+          <tr><td>2026-11-11</td><td>366.16</td><td>370.57</td><td>365.52</td><td>370.33</td><td class="positive">+0.33%</td><td>1,369,581</td></tr>
+          <tr><td>2026-11-12</td><td>375.98</td><td>376.06</td><td>371.02</td><td>371.76</td><td class="positive">+0.39%</td><td>887,094</td></tr>
+          <tr><td>2026-11-13</td><td>375.32</td><td>377.93</td><td>373.80</td><td>375.74</td><td class="positive">+1.07%</td><td>1,516,418</td></tr>
+          <tr><td>2026-11-16</td><td>380.56</td><td>383.18</td><td>379.29</td><td>381.28</td><td class="positive">+1.48%</td><td>1,532,709</td></tr>
+          <tr><td>2026-11-17</td><td>378.75</td><td>380.00</td><td>373.92</td><td>375.64</td><td class="negative">-1.48%</td><td>1,916,497</td></tr>
+          <tr><td>2026-11-18</td><td>372.31</td><td>374.61</td><td>369.45</td><td>371.02</td><td class="negative">-1.23%</td><td>2,054,721</td></tr>
+          <tr><td>2026-11-19</td><td>367.99</td><td>371.45</td><td>367.14</td><td>370.11</td><td class="negative">-0.25%</td><td>1,327,561</td></tr>
+          <tr><td>2026-11-20</td><td>374.82</td><td>379.21</td><td>371.00</td><td>371.63</td><td class="positive">+0.41%</td><td>2,250,848</td></tr>
+          <tr><td>2026-11-23</td><td>369.62</td><td>372.06</td><td>367.52</td><td>368.67</td><td class="negative">-0.80%</td><td>2,308,629</td></tr>
+          <tr><td>2026-11-24</td><td>369.32</td><td>375.92</td><td>367.56</td><td>375.37</td><td class="positive">+1.82%</td><td>1,359,464</td></tr>
+          <tr><td>2026-11-25</td><td>377.21</td><td>383.61</td><td>376.45</td><td class="font-extrabold">380.51</td><td class="positive">+1.37%</td><td>1,980,256</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-[10px] text-muted mt-3 leading-5">
+      注：历史价格与成交量取公开行情页面的日线记录，四舍五入及供应商汇总口径可能带来少量成交量差异。
+      收益率计算使用未复权收盘价，未将股息再投资计入价格涨幅。
+    </div>
+  </div>
+</section>
+
+<!-- RISKS -->
+<section id="risks" class="max-w-7xl mx-auto px-4 sm:px-6 py-9">
+  <div class="mb-6">
+    <div class="section-kicker">07 / Risk Monitor</div>
+    <h2 class="section-title mt-2">后续需要持续跟踪的风险变量</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="surface rounded-2xl p-5 card-interactive">
+      <div class="flex items-center gap-2 mb-3"><i data-lucide="cloud-lightning" class="w-5 h-5 text-rose-500"></i><h3 class="font-extrabold text-sm">巨灾损失与综合成本率</h3></div>
+      <p class="prose-report">Q3综合成本率升至84.1%，高于上年同期81.8%；税前巨灾损失约7.05亿美元，高于上年同期约2.85亿美元。若后续巨灾损失增加、赔付通胀加剧或准备金发展不利，承保利润可能进一步承压。</p>
+    </div>
+    <div class="surface rounded-2xl p-5 card-interactive">
+      <div class="flex items-center gap-2 mb-3"><i data-lucide="scale" class="w-5 h-5 text-amber-500"></i><h3 class="font-extrabold text-sm">再保险价格与竞争</h3></div>
+      <p class="prose-report">2027年1月财产再保险续约可能继续降价，保险公司采购成本或受益，但原保险市场竞争、条款变化和风险定价纪律也需要观察。责任险赔付通胀与诉讼环境仍是行业风险。</p>
+    </div>
+    <div class="surface rounded-2xl p-5 card-interactive">
+      <div class="flex items-center gap-2 mb-3"><i data-lucide="landmark" class="w-5 h-5 text-primary-600"></i><h3 class="font-extrabold text-sm">投资组合与利率变化</h3></div>
+      <p class="prose-report">保险公司持有规模较大的固定收益投资组合，利率变动会影响新增资金再投资收益、资产估值和资本状况。需要区分利息收入改善与未实现估值波动，避免将两者混为一谈。</p>
+    </div>
+    <div class="surface rounded-2xl p-5 card-interactive">
+      <div class="flex items-center gap-2 mb-3"><i data-lucide="chart-no-axes-combined" class="w-5 h-5 text-rose-500"></i><h3 class="font-extrabold text-sm">估值与技术位回撤</h3></div>
+      <p class="prose-report">股价已靠近384美元附近的前高区域，而Morgan Stanley和Mizuho的目标价分别为380美元和368美元。若突破失败并跌破370美元，短线回撤风险将上升；若跌破358.20美元，则应重新评估趋势假设。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-9">
+  <div class="rounded-2xl p-6 sm:p-8 text-white" style="background:linear-gradient(120deg,#172033,#263b52 65%,#6d3827)">
+    <div class="section-kicker" style="color:#ffb08e">Investment Conclusion</div>
+    <h2 class="text-2xl sm:text-3xl font-black mt-3">结论：趋势偏强，但不宜在前高附近无条件追涨</h2>
+    <p class="text-sm leading-8 text-slate-200 mt-4 max-w-4xl">
+      安达保险近一个月上涨约5.03%，而同期标普500下跌约6.96%，相对收益优势明显。
+      11月中旬市场系统性回撤期间，CB表现出较强防御性；随后在370美元附近企稳，
+      连续两个交易日修复至380.51美元。技术上，价格已站上MA5、MA10和MA20，
+      但MA5尚未超过MA10，且384.26美元前高仍未被有效突破。
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
+      <div class="rounded-xl p-4" style="background:rgba(255,255,255,.09)">
+        <div class="text-xs text-slate-300">趋势判断</div>
+        <div class="text-xl font-extrabold mt-2">偏强修复</div>
+        <div class="text-xs text-slate-300 mt-1">收盘高于三条短中期均线</div>
+      </div>
+      <div class="rounded-xl p-4" style="background:rgba(255,255,255,.09)">
+        <div class="text-xs text-slate-300">关键压力</div>
+        <div class="text-xl font-extrabold mt-2">$383.60–384.30</div>
+        <div class="text-xs text-slate-300 mt-1">放量收盘突破才更有说服力</div>
+      </div>
+      <div class="rounded-xl p-4" style="background:rgba(255,255,255,.09)">
+        <div class="text-xs text-slate-300">关键防线</div>
+        <div class="text-xl font-extrabold mt-2">$368–371</div>
+        <div class="text-xs text-slate-300 mt-1">跌破370需降低短线风险</div>
+      </div>
+    </div>
+    <p class="text-xs text-slate-300 leading-6 mt-6">
+      执行重点：持仓者以370美元作为短线风险观察线，前高附近关注冲高回落信号；
+      观望者优先等待374—376美元或368—371美元区域出现企稳信号，
+      右侧交易则等待384.30美元上方的放量收盘确认。
+    </p>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section id="sources" class="max-w-7xl mx-auto px-4 sm:px-6 py-9">
+  <div class="mb-6">
+    <div class="section-kicker">08 / Sources & Methodology</div>
+    <h2 class="section-title mt-2">数据来源、口径与研究说明</h2>
+    <p class="section-desc">优先使用公司公告和公开市场行情记录；行业与宏观信息用于解释背景，不替代公司自身财务数据。</p>
+  </div>
+
+  <div class="surface rounded-2xl p-5 sm:p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="font-extrabold text-sm mb-3">市场行情与基准指数</h3>
+        <ul class="space-y-3 text-xs leading-6">
+          <li><a class="source-link" href="https://stockanalysis.com/stocks/cb/history/" target="_blank" rel="noopener">StockAnalysis · Chubb历史行情</a><p class="text-muted">CB日线开盘、最高、最低、收盘及成交量数据。</p></li>
+          <li><a class="source-link" href="https://finance.yahoo.com/quote/CB/history/" target="_blank" rel="noopener">Yahoo Finance · CB历史行情</a><p class="text-muted">用于交叉核对最新完整交易日收盘价和日线数据。</p></li>
+          <li><a class="source-link" href="https://ycharts.com/indices/%5ESPX/level" target="_blank" rel="noopener">YCharts · S&P 500历史指数</a><p class="text-muted">标普500同期收盘水平及市场基准表现。</p></li>
+          <li><a class="source-link" href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener">Yahoo Finance · S&P 500历史行情</a><p class="text-muted">用于核对指数历史收盘数据。</p></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-extrabold text-sm mb-3">公司公告与财务资料</h3>
+        <ul class="space-y-3 text-xs leading-6">
+          <li><a class="source-link" href="https://investors.chubb.com/News--Events/news/" target="_blank" rel="noopener">Chubb Investor Relations · 新闻公告</a><p class="text-muted">公司官方公告时间线。</p></li>
+          <li><a class="source-link" href="https://chubb.mediaroom.com/2026-11-19-Chubb-Limited-Board-Declares-Quarterly-Dividend" target="_blank" rel="noopener">Chubb · 2026年11月季度股息公告</a><p class="text-muted">每股1.02美元股息及登记日、支付日。</p></li>
+          <li><a class="source-link" href="https://chubb.mediaroom.com/2026-10-20-Chubb-Reports-Third-Quarter-Per-Share-Net-Income-and-Record-Core-Operating-Income-of-7-30-and-7-66%2C-Respectively%2C-Up-4-4-and-0-8-Consolidated-Net-Premiums-Written-of-15-1-Billion%2C-Up-1-9-%2C-with-P-C-and-Life-Insurance-Up-1-9-and-1-4-P-C-Combined" target="_blank" rel="noopener">Chubb · Q3 2026业绩公告</a><p class="text-muted">保费、承保利润、综合成本率及每股收益数据。</p></li>
+          <li><a class="source-link" href="https://investors.chubb.com/stock-info/Dividends/default.aspx" target="_blank" rel="noopener">Chubb · 股息历史</a><p class="text-muted">核对股息金额和历史支付记录。</p></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-extrabold text-sm mb-3">行业与分析师资料</h3>
+        <ul class="space-y-3 text-xs leading-6">
+          <li><a class="source-link" href="https://www.tipranks.com/stocks/cb/forecast" target="_blank" rel="noopener">TipRanks · CB分析师目标价</a><p class="text-muted">Morgan Stanley、Mizuho等机构目标价调整记录。</p></li>
+          <li><a class="source-link" href="https://www.theinsurer.com/bdbb44589559/ti/interview/property-reinsurance-price-pressure-wont-be-as-deep-as-last-year-2026-11-03/" target="_blank" rel="noopener">The Insurer · 2027年财产再保险续约</a><p class="text-muted">财产再保险价格压力与市场参与者观点。</p></li>
+          <li><a class="source-link" href="https://www.theinsurer.com/ti/news/lockton-res-lorence-reinsurers-increasingly-expect-near-20-property-rate-falls-2026-11-02/" target="_blank" rel="noopener">The Insurer · Lockton Re续约价格预期</a><p class="text-muted">市场对2027年1月续约价格变化的预测。</p></li>
+          <li><a class="source-link" href="https://www.businessinsurance.com/reinsurance-renewal-discussions-shaped-by-abundant-capital-loss-concerns/" target="_blank" rel="noopener">Business Insurance · 再保险续约讨论</a><p class="text-muted">财产与责任险再保险市场的供需及定价背景。</p></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-extrabold text-sm mb-3">宏观市场与方法说明</h3>
+        <ul class="space-y-3 text-xs leading-6">
+          <li><a class="source-link" href="https://apnews.com/article/c10b797a17c2acf37924d834efebe135" target="_blank" rel="noopener">Associated Press · 11月20日市场回顾</a><p class="text-muted">AI相关资产抛售及标普500市场表现背景。</p></li>
+          <li><a class="source-link" href="https://cislergroup.bairdwealth.com/resource-center/investment/in-the-markets-now-selloff-summary-november-19-2026" target="_blank" rel="noopener">Baird · 市场抛售总结</a><p class="text-muted">市场广泛风险偏好变化背景。</p></li>
+        </ul>
+        <div class="surface-soft rounded-xl p-3 mt-4">
+          <div class="font-bold text-xs mb-2">计算口径</div>
+          <p class="text-[11px] text-muted leading-6">
+            近20日收益 = 11月25日收盘 / 10月29日收盘 - 1。
+            均线为对应交易日收盘价简单算术平均。
+            量能均值按20个交易日成交股数计算。
+            阶段收益按各阶段首末交易日收盘价计算。
+            技术支撑与阻力为研究判断区间。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-theme mt-6 pt-5">
+      <h3 class="font-extrabold text-sm mb-2">研究限制与免责声明</h3>
+      <p class="text-xs text-muted leading-7">
+        本报告根据截至2026年11月28日可获得的公开资料整理。行情分析基准采用截至11月25日已交叉核验的完整日线数据，
+        不将盘中或盘前报价当作正式收盘价。公司Q3 2026财务数据于2026年10月20日发布，作为最近一季经营基准使用，
+        并非近一个月内新披露的业绩事件。分析师目标价、行业续约预期和情景概率均可能变化。
+        本报告中的趋势判断、驱动权重、目标区间、情景概率和交易策略属于研究分析意见，不构成投资建议、
+        证券买卖要约或收益承诺。股票投资存在价格波动和本金损失风险，请结合个人风险承受能力独立决策。
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-theme mt-6" style="background:var(--surface)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-7">
+    <div class="flex flex-col sm:flex-row justify-between gap-3">
+      <div>
+        <div class="font-extrabold text-sm">安达保险 Chubb Limited（NYSE: CB）</div>
+        <div class="text-xs text-muted mt-1">最新走势归因与操作指引 · 2026-11-28</div>
+      </div>
+      <div class="text-xs text-muted sm:text-right">
+        <div>Market Research · Price Action · Risk Management</div>
+        <div class="mt-1">仅供研究参考，不构成投资建议</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cbData = [
+ {d:'10/29',c:362.28,v:1869068},
+ {d:'10/30',c:364.12,v:1630108},
+ {d:'11/02',c:368.98,v:1433190},
+ {d:'11/03',c:366.54,v:1205618},
+ {d:'11/04',c:374.17,v:1726618},
+ {d:'11/05',c:371.63,v:2057123},
+ {d:'11/06',c:365.02,v:1627199},
+ {d:'11/09',c:363.45,v:1203345},
+ {d:'11/10',c:369.11,v:969915},
+ {d:'11/11',c:370.33,v:1369581},
+ {d:'11/12',c:371.76,v:887094},
+ {d:'11/13',c:375.74,v:1516418},
+ {d:'11/16',c:381.28,v:1532709},
+ {d:'11/17',c:375.64,v:1916497},
+ {d:'11/18',c:371.02,v:2054721},
+ {d:'11/19',c:370.11,v:1327561},
+ {d:'11/20',c:371.63,v:2250848},
+ {d:'11/23',c:368.67,v:2308629},
+ {d:'11/24',c:375.37,v:1359464},
+ {d:'11/25',c:380.51,v:1980256}
+];
+
+function drawPriceChart(){
+  const svg=document.getElementById('priceChart');
+  if(!svg)return;
+  const W=820,H=330;
+  const left=55,right=25,top=20,bottom=55;
+  const plotW=W-left-right,plotH=205;
+  const min=358,max=386;
+  const x=i=>left+i*(plotW/(cbData.length-1));
+  const y=v=>top+(max-v)/(max-min)*plotH;
+  const maxVol=2500000;
+  let out=`
+    <defs>
+      <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f05a24" stop-opacity=".24"/>
+        <stop offset="100%" stop-color="#f05a24" stop-opacity="0"/>
+      </linearGradient>
+    </defs>`;
+  [360,368,376,384].forEach(v=>{
+    out+=`<line x1="${left}" y1="${y(v)}" x2="${W-right}" y2="${y(v)}" class="chart-grid"/>`;
+    out+=`<text x="${left-10}" y="${y(v)+4}" text-anchor="end" class="chart-label">$${v}</text>`;
+  });
+  const baseY=top+plotH+63;
+  out+=`<line x1="${left}" y1="${baseY}" x2="${W-right}" y2="${baseY}" class="chart-grid"/>`;
+  cbData.forEach((p,i)=>{
+    const barH=(p.v/maxVol)*48;
+    out+=`<rect x="${x(i)-7}" y="${baseY-barH}" width="14" height="${barH}" rx="3" class="chart-volume"/>`;
+  });
+  let line='';
+  cbData.forEach((p,i)=>{line+=(i===0?'M':'L')+x(i)+' '+y(p.c)+' ';});
+  const area=line+`L ${x(cbData.length-1)} ${top+plotH} L ${x(0)} ${top+plotH} Z`;
+  out+=`<path d="${area}" class="chart-area"/>`;
+  out+=`<path d="${line}" class="chart-line"/>`;
+  cbData.forEach((p,i)=>{
+    const r=i===cbData.length-1?5:3;
+    out+=`<circle cx="${x(i)}" cy="${y(p.c)}" r="${r}" class="chart-point"/>`;
+  });
+  const labels=[0,3,6,9,12,15,19];
+  labels.forEach(i=>{
+    out+=`<text x="${x(i)}" y="${H-12}" text-anchor="middle" class="chart-label">${cbData[i].d}</text>`;
+  });
+  const last=cbData[cbData.length-1];
+  out+=`<text x="${x(19)-5}" y="${y(last.c)-13}" text-anchor="end" fill="#f05a24" font-size="12" font-weight="800">$380.51</text>`;
+  out+=`<text x="${left}" y="${H-32}" class="chart-label">成交量（下方柱形）</text>`;
+  svg.innerHTML=out;
+}
+
+function switchRole(role){
+  const hold=document.getElementById('holdPanel');
+  const wait=document.getElementById('waitPanel');
+  const holdBtn=document.getElementById('holdBtn');
+  const waitBtn=document.getElementById('waitBtn');
+  if(role==='hold'){
+    hold.classList.add('active');wait.classList.remove('active');
+    holdBtn.classList.add('active');waitBtn.classList.remove('active');
+  }else{
+    wait.classList.add('active');hold.classList.remove('active');
+    waitBtn.classList.add('active');holdBtn.classList.remove('active');
+  }
+}
+
+window.addEventListener('scroll',()=>{
+  const y=document.documentElement.scrollTop||document.body.scrollTop;
+  const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  const bar=document.getElementById('progressBar');
+  if(bar)bar.style.width=(h>0?Math.min(100,y/h*100):0)+'%';
+
+  const sections=['overview','phases','drivers','technicals','strategy','sources'];
+  let current='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<150)current=id;
+  });
+  document.querySelectorAll('.desktop-nav .nav-link').forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+  });
+});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  syncThemeIcons();
+  drawPriceChart();
+  if(window.lucide)lucide.createIcons();
+  if(window.AOS)AOS.init({duration:480,offset:35,once:true});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

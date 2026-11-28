@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特斯拉体系全景解析</title>
+<!-- Essential CDN Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)',
+100: 'hsl(20, 90%, 85%)',
+200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)',
+400: 'hsl(20, 90%, 55%)',
+500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)',
+700: 'hsl(20, 90%, 35%)',
+800: 'hsl(20, 90%, 25%)',
+900: 'hsl(20, 90%, 15%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)',
+100: 'hsl(30, 85%, 85%)',
+200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)',
+400: 'hsl(30, 85%, 60%)',
+500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)',
+700: 'hsl(30, 85%, 40%)',
+800: 'hsl(30, 85%, 30%)',
+900: 'hsl(30, 85%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Micro-interactions & Custom Styles -->
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html { scroll-behavior: auto; }
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th, .dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+transition: width 1.2s ease-out;
+}
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+display: none;
+}
+#mobileMenu.mobile-menu-open {
+display: block;
+}
+@media (min-width: 768px) {
+#mobileMenu {
+display: none !important;
+}
+}
+@media (max-width: 767px) {
+header .max-w-7xl {
+padding-left: 1rem;
+padding-right: 1rem;
+}
+header .flex.items-center.justify-between > h1 {
+font-size: 1rem;
+line-height: 1.25rem;
+white-space: nowrap;
+margin-right: 0.5rem;
+}
+#mobileMenu {
+margin-top: 1rem;
+padding-top: 1rem;
+padding-bottom: 0.5rem;
+border-top: 1px solid rgba(20, 20, 20, 0.12);
+max-height: calc(100vh - 90px);
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+}
+.dark #mobileMenu {
+border-top-color: rgba(255, 255, 255, 0.15);
+}
+#mobileMenu a {
+display: block;
+width: 100%;
+padding: 0.7rem 0.5rem;
+border-radius: 0.5rem;
+}
+#mobileMenu a:active {
+background: rgba(20, 20, 20, 0.06);
+}
+.dark #mobileMenu a:active {
+background: rgba(255, 255, 255, 0.08);
+}
+}
+/* 桌面端导航：明确指定亮色/暗色文字，避免 dark 模式下依赖继承导致不可见 */
+@media (min-width: 768px) {
+header nav[aria-label="桌面端导航"] a {
+color: #374151;
+}
+.dark header nav[aria-label="桌面端导航"] a {
+color: #e5e7eb;
+}
+header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 45%);
+}
+.dark header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 55%);
+}
+}
+/* 防止固定 Header 在展开移动菜单时被内容裁剪 */
+header {
+overflow: visible;
+}
+</style>
+<script>
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<!-- Floating Header -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">特斯拉体系全景解析</h1>
+<!-- 桌面端导航 -->
+<nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">创始人</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联生态</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+Code
+<!-- 右侧按钮 -->
+<div class="flex items-center space-x-2 flex-shrink-0">
+  <!-- 移动端汉堡菜单 -->
+  <button
+    type="button"
+    onclick="toggleMobileMenu()"
+    class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="打开或关闭导航菜单"
+    aria-controls="mobileMenu"
+    aria-expanded="false"
+    id="mobileMenuButton"
+  >
+    <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+  </button>
+
+  <!-- 暗色模式 -->
+  <button
+    type="button"
+    onclick="toggleDarkMode()"
+    class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="切换暗色模式"
+  >
+    <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+    <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+  </button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">创始人</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联生态</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+特斯拉体系全景解析
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+本页基于截至2026年11月最新 SEC 财报、委托书及司法进展，系统拆解围绕特斯拉（NASDAQ: TSLA）的核心公司治理与资本架构议题：埃隆·马斯克及核心执政层向“物理 AI”的战略迁移、15:1拆股与高管授股驱动的股本膨胀、迁册得州后围绕“20%–25%控股权”展开的股权博弈、与 SpaceX/xAI（含20亿美元战略入股及 Megapack 大单）之间庞杂的关联交易矩阵，以及史无前例的“2025万亿美元绩效激励方案”。通过将公司治理、资本结构、商业协同与财务现实置于同一框架下，还原这家约1.38万亿美元市值科技工业巨头的全貌。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">掌门人与管理层</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+马斯克“物理AI”转型、高管大换血与制造中台整合
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与股权</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+37.54亿流通股、2018期权平反与迁册得州治理重构
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">关联与激励</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+xAI/SpaceX 20亿美元关联绑定与8.5万亿市值对赌
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 1: 创始人发展 -->
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+核心领军者马斯克与管理层演进：从“电动车企”向“物理 AI 平台”迁移
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+特斯拉于2003年由马丁·艾伯哈德（Martin Eberhard）和马克·塔彭宁（Marc Tarpenning）创立，2004年埃隆·马斯克（Elon Musk）领投 A 轮出任董事长并于2008年危难之际接任 CEO。二十余年间，公司经历了从“高端跑车技术验证→Model 3/Y 全球超级工厂制造扩张→汽车主业饱和承压→全面押注自动驾驶、人形机器人与自研 AI 算力”的四次战略跃迁。
+</p>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+<i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+关键转折：2024–2026年特斯拉经历高层大换血并完成战略重定位——面对电动车价格战与2025年营收首现微降（-2.9%），马斯克将公司重塑为“物理 AI（Physical AI）”巨头，并于2026年11月进一步宣布推进 Terafab 自研 AI 晶圆与算力战略，将资源全线向 Cybercab、Optimus 与 Megapack 倾斜。[reference:0]
+</p>
+</div>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">早期与成长期：工程极客与产能地狱</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300">实施“秘密宏图（Master Plan）”三部曲，以高毛利 Roadster/Model S 补贴平价 Model 3/Y</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300">2019–2022年闪电建成上海、柏林、得州超级工厂，一体压铸工艺改写汽车制造效率</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300">极度扁平化与“第一性原理”倒逼降本，单车制造费用连续十年下探</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">转型期（2024–2026）：大换血与组织重塑</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300">2024–2025年多名资深核心高管（Drew Baglino、Rebecca Tinucci、Omead Afshar 等）相继离任，2026年高管团队进一步精简</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300">2024年砍撤超充与市场部门逾10%岗位，集中资源压注 FSD 端到端神经网络训练集群</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300">2025–2026年推出 Cybercab 无人驾驶出租车、FSD v14/15 及 Optimus 人形机器人产线测试</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+近年管理架构：强集权“三核执政”与战略重点
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+经历2024–2026年上半年的多轮高管洗牌（包括原高管 Raj Jegannathan 于2026年初离任）后，特斯拉当前向 SEC 申报的核心执行层（Section 16 Officers）变得前所未有地精干集中。这一方面消除了大型传统车企的跨部门内耗，另一方面也让公司的治理决策高度系于少数关键人物之手。[reference:1]
+</p>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md mt-6">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026年特斯拉核心执政梯队与管理特征</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>核心高管“三核架构”：</strong>CEO <strong>埃隆·马斯克</strong>直抓 FSD、Optimus 机器人与自研 AI 芯片；汽车业务高级副总裁 <strong>朱晓彤（Tom Zhu）</strong>统筹全球超级工厂制造、Cybercab 爬坡及亚太核心基地；CFO <strong>Vaibhav Taneja</strong> 掌管财务纪律与416亿美元现金池调度；辅以2025年7月获提拔的北美销售及商业化高管 <strong>Troy Jones</strong>。[reference:2]</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>董事会治理补强：</strong>为回应外界对“独立性不足”的批评，特斯拉于2025年8月任命前 Chipotle CEO <strong>Jack Hartung</strong> 加入董事会审计委员会，与董事长 Robyn Denholm 共同稳固得州公司治理防火墙。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2026年四大战略重心：</strong>稳守能源储能 Megapack 高毛利增长（Q3 营收37.12亿美元）、推动得州及加州 Robotaxi 车队商业化、推进 Optimus 工业试产以及建设自主 AI 训练与芯片供应链。</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: 股本数量变化 -->
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+股本数量变化过程：两次拆股、股权融资与期权稀释冲击
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+与苹果、博通等持续回购注销股本的科技现金牛不同，特斯拉自2010年上市以来<strong>从未进行过股票回购，也从未派发现金股息</strong>。公司股本变化主要由三大力量推动：早期（2013–2020年）频密的可转债与增发融资、两次前向拆股（累计 <strong>15:1</strong>），以及近年来规模庞大且引起市场热议的员工 RSU 与 CEO 巨额激励股票释放。[reference:3]
+</p>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">股本演变关键里程碑</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2010年6月 IPO：</strong>以17.00美元/股（复权后约1.13美元）上市募资2.26亿美元，初始复权总股本约13.97亿股</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>两次拆股（累计15倍）：</strong>2020年8月31日实施 5:1 拆股；2022年8月25日实施 3:1 拆股</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2025–2026年股本加速扩容：</strong>受2025年8月向马斯克授出9,600万股过渡股、2018期权恢复及 RSU 归属影响，流通股由 FY24 末32.16亿股升至2026年10月的37.54亿股</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">当前股本、市值与期权池概览（2026年11月）</h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-700 dark:text-gray-300">流通普通股（2026-10-19 10-Q 封面）</span>
+<span class="text-base font-semibold text-accent-600 dark:text-accent-400">37.54 亿股</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-700 dark:text-gray-300">Q3 基本 / 稀释加权平均股数</span>
+<span class="text-base font-semibold text-accent-600 dark:text-accent-400">33.47亿 / 37.13亿股</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-700 dark:text-gray-300">总市值（2026-11-20 收盘 ~$367.26）</span>
+<span class="text-base font-semibold text-accent-600 dark:text-accent-400">约 1.38 万亿美元</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-gray-700 dark:text-gray-300">2025年方案潜在远期授股上限</span>
+<span class="text-base font-semibold text-accent-600 dark:text-accent-400">至多 4.24 亿股</span>
+</div>
+</div>
+</div>
+</div>
+Code
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md mt-6 overflow-x-auto">
+    <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">特斯拉（TSLA）股本数量变动关键节点表（已按累计 15:1 追溯复权）</h3>
+    <table class="text-sm">
+      <thead>
+        <tr class="text-gray-600 dark:text-gray-400">
+          <th>时间节点</th>
+          <th>资本事件 / 报告期</th>
+          <th>拆股 / 股本规模（复权）</th>
+          <th>资本运作与稀释说明</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700 dark:text-gray-300">
+        <tr>
+          <td>2010-06-29</td>
+          <td>纳斯达克 IPO</td>
+          <td>原始1x / 约 13.97 亿股</td>
+          <td>发行价17.00美元，募资2.26亿美元</td>
+        </tr>
+        <tr>
+          <td>2020-08-31</td>
+          <td>首次前向拆股 &amp; ATM 融资</td>
+          <td>5 : 1 / 约 28.80 亿股</td>
+          <td>2020全年通过多次增发募资逾120亿美元，彻底化解破产危机</td>
+        </tr>
+        <tr>
+          <td>2022-08-25</td>
+          <td>第二次前向拆股</td>
+          <td>3 : 1（累计15x）/ 约 31.64 亿股</td>
+          <td>提升散户交易便利度，停止外部股权增发融资</td>
+        </tr>
+        <tr>
+          <td>2024-12-31</td>
+          <td>FY2024 年报期末</td>
+          <td>32.16 亿股（流通口径）</td>
+          <td>温和股权激励稀释，年稀释率约 1.1%</td>
+        </tr>
+        <tr>
+          <td>2025-12-31</td>
+          <td>FY2025 年报期末</td>
+          <td>33.42 亿股（稀释约35.0亿）</td>
+          <td>同比+3.9%，纳入2025年8月向马斯克授出的9,600万股过渡限制股[reference:4]</td>
+        </tr>
+        <tr>
+          <td>2026-10-19</td>
+          <td>Q3 2026 Form 10-Q</td>
+          <td>37.54 亿股（Q3 稀释37.13亿）</td>
+          <td>2018期权恢复行权及2025方案股份登记带动流通股数明显攀升，市值约1.38万亿美元</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+      <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      大股东增减持轨迹：2021年底至2022年底，马斯克累计抛售逾390亿美元特斯拉股票用于缴税及收购 Twitter（X）；自2023年起，马斯克停止了公开市场大额减持，并于2025年9月自掏腰包约 <strong>10.00亿美元</strong>在二级市场买回约257万股，释放强烈信心信号。同期，董事长 Robyn Denholm、高管 Kimbal Musk 及董事 Ira Ehrenpreis 等则在2025–2026年间按既定 10b5-1 计划例行套现。[reference:5]
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<!-- Section 3: 股权结构变化 -->
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+股权结构变化：从“13%保卫战”到重返20%+与得州堡垒
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+与许多由 AB 股锁死10倍投票权的硅谷同行不同，特斯拉一直实行<strong>单一类别普通股（一股一票）</strong>。正因如此，马斯克与特拉华州法院、机构股东围绕“13% vs 25%投票控制权”展开了长达两年的惊心动魄博弈，并在2024–2026年间通过“迁册得州 + 恢复2018期权 + 通过2025万亿美元级绩效方案”完成了控制权护城河的全面加固。
+</p>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">核心实益控制人与投票同盟</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>埃隆·马斯克（最大股东）：</strong>经2025年12月恢复2018约3.04亿股期权及2025年过渡授股后，实益持股由2024年约12.8%回升至约 <strong>19.7%–22.5%</strong>，目标锁定25%–28.8%表决权重</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>家族信托与股权质押：</strong>马斯克绝大部分持股置于个人可撤销信托（Elon Musk Revocable Trust），并质押了逾2.3亿股作为个人信贷额度抵押（公司限制质押借款不得超股票市值25%）</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>全球散户铁盟（约30%）：</strong>散户持股比例在万亿美元巨头中罕见高达约三成，长期与马斯克高度同频</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">机构股东矩阵（合计约 47%–50%）</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>先锋领航（Vanguard）：</strong>最大外部机构股东，持股占比约 <strong>7.5%–8.1%</strong></span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>贝莱德（BlackRock）：</strong>第二大外部机构股东，持股占比约 <strong>6.0%–6.4%</strong></span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>道富集团（State Street，约3.4%）</strong>及 Geode Capital（约2.0%）、主权基金（挪威主权基金等）；其余高管董事（含 Kimbal Musk、Robyn Denholm）合计持股不足1%</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+股权治理演变时间线与控制权稳定性分析
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+2024年1月特拉华州衡平法院以“董事会独立性不足”撤销马斯克2018年薪酬方案后，马斯克公开表示“若没有至少25%投票控制权，不愿在特斯拉全力开发 AI 与机器人”，随后迅速推动三步反击：2024年6月完成<strong>注册地迁至得克萨斯州</strong>（大幅提高股东衍生诉讼门槛）；2025年11月6日股东大会以逾75%赞成票通过<strong>“2025万亿美元绩效方案”</strong>；2025年12月<strong>特拉华州最高法院正式推翻下级法院判决、全面恢复2018年约3.04亿股期权</strong>。[reference:6]
+</p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+至此，虽然特斯拉在法律名义上仍是一股一票的公众公司，但通过“马斯克约20%持股 + 高粘性30%散户票仓 + 得州亲商公司法护航”，马斯克在战略与人事上的实际控制权极其稳固；然而，大量股份质押及2025年方案引发的北欧主权基金/传统治理派反弹，仍是机构长线评估其 ESG 风险的核心扣分项。
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: 关联企业关系与内部矩阵 -->
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+关联生态矩阵：特斯拉能源与 xAI / SpaceX 关联交易网络
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+特斯拉不设分拆上市子公司，但马斯克旗下全产业链非上市私营帝国——<strong>xAI（已于2026年2月与 SpaceX 合并）</strong>、<strong>SpaceX</strong>、<strong>The Boring Company</strong> 与 <strong>X Corp.</strong>——与上市公司特斯拉之间形成了全球资本市场最复杂、金额最庞大的关联交易网络。此外，全资内部板块 <strong>Tesla Energy（能源储能）</strong> 正崛起为公司新的利润护城河。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-8">
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<div class="flex items-center space-x-3 mb-4">
+<div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="cpu" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">xAI / SpaceX（2026年2月合并）</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-2">大模型、算力基建与航天制造关联体</p>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>2026年1月特斯拉向 xAI 现金投资 <strong>20.00亿美元</strong>优先股（2月并入 SpaceX 后转为合并体权益）</li>
+<li>2024–2025年 xAI 向特斯拉累计采购 <strong>6.29亿美元</strong> Megapack 储能系统（2025年4.30亿）</li>
+<li>SpaceX 2025年向特斯拉采购约9,660万美元工业组件，并收取约150万美元包机服务费[reference:7]</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<div class="flex items-center space-x-3 mb-4">
+<div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="zap" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">Tesla Energy（全资内部支柱）</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-2">Megapack 大储与 Powerwall 业务</p>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>FY2025 营收跃升至 <strong>127.70亿美元</strong>（同比+26.6%）</li>
+<li>2026 Q3 单季营收达 <strong>37.12亿美元</strong>，毛利率稳居30%+</li>
+<li>受益于全球 AI 数据中心配储潮及 xAI 自采大单，利润率显著高于造车主业</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<div class="flex items-center space-x-3 mb-4">
+<div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">X Corp. 与 The Boring Co.</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-2">品牌流量分发与地下交通协同</p>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>X 平台承载特斯拉高管沟通、FSD 实测传播与股东会直播，2025年广告投放恢复至百万美元级</li>
+<li>Boring Company 在拉斯维加斯环线及得州工厂隧道采购特斯拉电动车组建无人接驳体系</li>
+<li>2026年11月市场持续关注特斯拉与 SpaceX/xAI 在 FSD/Grok 算力上的边界划分</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+关联交易深度分析：商业协同 vs “股东利益转移”争议
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+从积极的商业协同视角看，xAI 对 Megapack 储能的巨额采购（2025年4.30亿美元）直接助推了特斯拉能源板块爆发，而 SpaceX 在合金材料、航空级压铸与精密制造上的经验亦反哺了 Cybertruck 与 Optimus 机器人工程；Grok 接入车机则补齐了特斯拉车载语音大模型的短板。
+</p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+但从公司治理角度看，特斯拉于2026年1月动用上市公司 <strong>20.00亿美元</strong>现金战略入股马斯克私人控制的 xAI（随后并入 SpaceX），并曾发生原本归属特斯拉的 Nvidia H100 GPU 集群优先调拨至 xAI 的争议，已直接引发2026年3月机构与中小股东提起衍生诉讼，指控管理层违反受托责任与商业机会原则。如何在“跨实体生态协同”与“上市公司独立性保护”之间划清红线，是特斯拉长期折价或溢价的关键。[reference:8]
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: 员工持股与激励 -->
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+员工持股与激励机制：从产线 ESPP 到史诗级万亿薪酬对赌
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+特斯拉是全球少数将股权激励覆盖至“一线装配工人与工程基层”的制造科技企业，全公司员工持股文化浓厚；而在顶层，马斯克则采用<strong>“零底薪、零现金奖金、100%绑定极高市值与运营里程碑期权”</strong>的极端激励模式。2025财年特斯拉全公司股权激励费用（SBC）达 <strong>28.25亿美元</strong>（同比大增41.3%），并在2026年继续维持高位。[reference:9]
+</p>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">普通员工与核心骨干层（12.57万人）</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>85折员工购股计划（ESPP）：</strong>广泛向全球产线、门店及研发人员开放，可按半年期起止低价的85%购买 TSLA 股票</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>分期 RSU / 期权奖励：</strong>研发、AI 算法与工厂管理骨干常规采用4年归属 RSU 或期权，高绩效员工可获额外“杰出贡献增发包”</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>高管薪酬绑定：</strong>CFO Vaibhav Taneja 等核心高管极低底薪搭配大额期权/RSU（如2024年其因获大额股权包法定总薪酬一度逾1.39亿美元）</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">CEO 2025万亿美元级绩效方案（4.237亿股）</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>12档市值阶梯：</strong>自 <strong>2.0万亿美元</strong>起跳，每增5,000亿美元解锁一档，最高直指 <strong>8.5万亿美元</strong>全球未见市值上限</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>12项硬核运营目标：</strong>累计交付2,000万辆电车、1,000万 FSD 订阅、100万台 Optimus 机器人、100万辆商业 Robotaxi，以及最高4,000亿美元 Adj. EBITDA[reference:10]</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>超长锁定期：</strong>2025年8月先行授予的9,600万过渡股与11月通过的4.24亿股方案均设 <strong>5年至7.5年强制持有期</strong></span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+激励效果与深层组织矛盾
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+历史证明，马斯克“只赌未来大目标、不拿日常现金”的机制曾奇迹般地把特斯拉从600亿美元市值推向万亿美元俱乐部；2025年方案进一步把全公司的命运死死绑定在 FSD 商业化与 Optimus 量产两大终极命题上，赋予了股价极强的长期想象空间。
+</p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+但这一机制背后的矛盾在2026年也愈发尖锐：其一，2024–2025年的高强度裁员（员工总数自14万余人降至125,665人）叠加北美及欧洲工会/劳动权益摩擦，使得部分中基层骨干感到“风险自担、红利倾斜顶层”；其二，2025方案若完全兑现将释放逾4.2亿股新股，叠加2018年3.04亿股期权恢复，在无股票回购对冲的情况下，普通投资者的长期每股权益面临不可忽视的摊薄代价。
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: 综合研判 -->
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+综合研判与关键结论
+</h2>
+<div class="space-y-6">
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+1. 组织与战略阶段：重夺控制权后全面“All-in 物理 AI”
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+经历迁册得州、特拉华最高法院恢复2018期权以及2025年11月股东大会批准万亿绩效方案，马斯克在特斯拉的战略统治力达到了前所未有的峰值。公司正加速剥离传统车企的扩张惯性，把资源集中投向端到端 FSD、Cybercab 无人车队、Optimus 人形机器人以及自主 AI 算力芯片（Terafab）构建。
+</p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+精干集权的“马斯克+朱晓彤+Taneja”执政格局提升了决策速度，但也放大了高管人才板凳深度变薄的单核依赖风险。
+</p>
+</div>
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+2. 财务核心矛盾：“汽车主业增收难、盈利腰斩” vs “416亿现金与储能托底万亿估值”
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+从硬财务数据看，特斯拉正处于“造车主业阵痛期”：FY2025 总营收948.27亿美元（同比-2.9%），GAAP 净利润大降46.5%至37.94亿美元；2026年 Q3 单季营收虽回升11.6%至281.00亿美元、自由现金流创下39.90亿美元、在手现金及投资高达 <strong>416.00亿美元</strong>，但单季 GAAP 营业利润率仍仅约5.8%、净利润同比下滑37%至13.70亿美元。[reference:11]
+</p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+能源板块（FY25 127.70亿美元、Q3 37.12亿美元、毛利率逾30%）扮演了至关重要的利润稳定器角色；而支撑1.38万亿美元高市值（TTM P/E 逾200x）的并非当下造车利润，而是市场为未来 Robotaxi 与机器人赋予的巨大期权溢价。
+</p>
+</div>
+Code
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      3. 体系治理与护城河量化评分（Governance &amp; Moat Scorecard）
+    </h3>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between text-sm font-medium mb-1">
+          <span class="text-gray-700 dark:text-gray-300">纯电制造集成、超充网络与 Megapack 储能规模壁垒</span>
+          <span class="font-bold text-primary-600 dark:text-primary-400">90 / 100</span>
+        </div>
+        <div class="moat-bar"><div class="moat-fill" style="width: 90%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm font-medium mb-1">
+          <span class="text-gray-700 dark:text-gray-300">FSD 端到端数据飞轮与物理 AI 商业化先发心智</span>
+          <span class="font-bold text-primary-600 dark:text-primary-400">88 / 100</span>
+        </div>
+        <div class="moat-bar"><div class="moat-fill" style="width: 88%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm font-medium mb-1">
+          <span class="text-gray-700 dark:text-gray-300">领军者战略决断力与2025万亿美元方案长期对齐度</span>
+          <span class="font-bold text-accent-600 dark:text-accent-400">85 / 100</span>
+        </div>
+        <div class="moat-bar"><div class="moat-fill" style="width: 85%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm font-medium mb-1">
+          <span class="text-gray-700 dark:text-gray-300">独立董事制衡、关联交易隔离与反稀释保护（xAI投资/期权扣分）</span>
+          <span class="font-bold text-accent-600 dark:text-accent-400">62 / 100</span>
+        </div>
+        <div class="moat-bar"><div class="moat-fill" style="width: 62%;"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      4. 体系核心风险提示
+    </h3>
+    <div class="space-y-4">
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>关联交易边界模糊与股东诉讼风险。</strong>动用20亿美元现金入股 SpaceX/xAI 合并体、芯片/算力资源优先级争议及 Megapack 关联大单，已在2026年触发新一轮衍生诉讼，要求投资者为“马斯克系跨企业冲突”支付治理折价。[reference:12]
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>物理 AI 商业化节奏不及预期的估值重杀风险。</strong>当汽车净利率跌至不足5%且面临中美欧激进竞争时，若无监管许可或技术突破导致 Robotaxi 与 Optimus 大规模放量推迟至2028年之后，1.38万亿美元高估值将面临严峻回撤。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>持续股本摊薄与个人精力分散风险。</strong>2025年薪酬方案、2018期权及员工 SBC 将令流通股本持续突破37.5亿–41亿股；同时马斯克身兼 SpaceX/xAI、X 及多项外部事务，精力分配高度考验单核管理体制。
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+      <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      一句话总结：特斯拉已不再是一家纯粹的汽车公司，而是以得州治理堡垒、416亿美元现金池与万亿美元 AI 对赌激励为底座，在传统造车利润承压之际孤注一掷押注 Robotaxi 与人形机器人的“物理 AI 超级期权”。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合特斯拉公司（TSLA）FY2025 SEC 10-K 年报、2026年 Q3 10-Q 季报、委托书（DEF 14A）、司法裁决公告及公开市场数据，系统梳理其管理层演进、股本与股权变化、关联生态关系与员工激励体系（更新至2026-11-24）。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 马斯克“物理AI”战略演进</li>
+<li>• 15:1拆股与股本扩容轨迹</li>
+<li>• 迁册得州与20%+控制权架构</li>
+<li>• xAI/SpaceX 关联交易矩阵</li>
+<li>• 2025万亿对赌与全员ESPP</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供公司治理研究与信息参考，不构成任何证券买卖建议。所有财务及股权数据均基于公开监管文件整理校验。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 特斯拉（TSLA）体系全景研究（2026-11-24）。保留所有权利。</p>
+</div>
+</div>
+</footer>
+<!-- Scripts -->
+<script>
+function toggleMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+const isOpen = menu.classList.toggle('mobile-menu-open');
+menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+if (button) {
+button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+lucide.createIcons();
+}
+}
+function closeMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+menu.classList.remove('mobile-menu-open');
+menu.setAttribute('aria-hidden', 'true');
+if (button) {
+button.setAttribute('aria-expanded', 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', 'menu');
+lucide.createIcons();
+}
+}
+// Progress Bar
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+});
+// Initialize AOS & Lucide
+document.addEventListener('DOMContentLoaded', function() {
+lucide.createIcons();
+AOS.init({ duration: 800, once: true });
+// 点击移动端导航后自动收起菜单
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+link.addEventListener('click', () => {
+closeMobileMenu();
+});
+});
+// Citation System
+let i = 1, map = new Map();
+document.querySelectorAll('[data-ref]').forEach(el => {
+if (el.dataset.citationProcessed) return;
+const raw = (el.getAttribute('data-ref')||'').trim();
+if (!raw) return;
+const parts = raw.split('|');
+const url = parts[0].trim();
+const idx = (parts[1]||'').trim() || map.get(raw) || (map.set(raw, String(i)), String(i++));
+if (!el.textContent || !el.textContent.trim()) { el.dataset.citationProcessed = 'true'; return; }
+const btn = document.createElement('sup'); btn.textContent = String(idx);
+Object.assign(btn.style, { fontSize:'8px', color:'#fff', cursor:'pointer', top: '1px', fontWeight:'bold', backgroundColor:'#0284c7', borderRadius:'50%', transition:'all .15s', userSelect:'none', minWidth:'19px', height:'19px', marginLeft:'6px', display:'inline-flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 3px rgba(0,0,0,.2)', lineHeight:'1'});
+btn.addEventListener('mouseenter', ()=> Object.assign(btn.style, { backgroundColor:'#0369a1', transform:'scale(1.12)' }));
+btn.addEventListener('mouseleave', ()=> Object.assign(btn.style, { backgroundColor:'#0284c7', transform:'scale(1)' }));
+btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(url, '_blank'); });
+el.appendChild(btn); el.dataset.citationProcessed = 'true';
+});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

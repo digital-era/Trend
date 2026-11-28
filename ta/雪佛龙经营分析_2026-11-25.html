@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>雪佛龙（NYSE: CVX）经营分析报告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+primary: {
+50: "hsl(20, 90%, 95%)",
+100: "hsl(20, 90%, 85%)",
+200: "hsl(20, 90%, 75%)",
+300: "hsl(20, 90%, 65%)",
+400: "hsl(20, 90%, 55%)",
+500: "hsl(20, 90%, 50%)",
+600: "hsl(20, 90%, 45%)",
+700: "hsl(20, 90%, 35%)",
+800: "hsl(20, 90%, 25%)",
+900: "hsl(20, 90%, 15%)",
+},
+accent: {
+50: "hsl(30, 85%, 95%)",
+100: "hsl(30, 85%, 85%)",
+200: "hsl(30, 85%, 75%)",
+300: "hsl(30, 85%, 65%)",
+400: "hsl(30, 85%, 60%)",
+500: "hsl(30, 85%, 55%)",
+600: "hsl(30, 85%, 50%)",
+700: "hsl(30, 85%, 40%)",
+800: "hsl(30, 85%, 30%)",
+900: "hsl(30, 85%, 20%)",
+},
+},
+},
+},
+};
+</script>
+<script
+defer
+src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html {
+scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html {
+scroll-behavior: auto;
+}
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow:
+0 10px 15px -3px rgba(0, 0, 0, 0.1),
+0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow:
+0 20px 25px -5px rgba(0, 0, 0, 0.1),
+0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th,
+td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th,
+.dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(
+90deg,
+hsl(20, 90%, 55%),
+hsl(30, 85%, 55%)
+);
+transition: width 1.2s ease-out;
+}
+.risk-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-width: 28px;
+height: 28px;
+border-radius: 8px;
+font-weight: 700;
+font-size: 13px;
+}
+Code
+/* ===== 暗色模式全局对比度增强 ===== */
+  .dark body {
+    color: #f3f4f6;
+  }
+  .dark header nav a {
+    color: #e5e7eb !important;
+  }
+  .dark header nav a:hover {
+    color: hsl(20, 90%, 65%) !important;
+  }
+  .dark .text-gray-400,
+  .dark .text-gray-500 {
+    color: #9ca3af !important;
+  }
+  .dark table th {
+    color: #f3f4f6;
+  }
+  .dark table td {
+    color: #e5e7eb;
+  }
+  .dark .text-gray-600 {
+    color: #d1d5db !important;
+  }
+  .dark .text-gray-700 {
+    color: #e5e7eb !important;
+  }
+
+  /* ===== 移动端菜单 ===== */
+  #mobileMenu {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    #mobileMenu {
+      display: none !important;
+    }
+  }
+  @media (max-width: 767px) {
+    #mobileMenu.mobile-menu-open {
+      display: block !important;
+    }
+  }
+</style>
+<script>
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById("sunIcon").style.display = isDark
+      ? "block"
+      : "none";
+    document.getElementById("moonIcon").style.display = isDark
+      ? "none"
+      : "block";
+  }
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body
+class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen"
+>
+<!-- Progress Bar -->
+<div
+class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out"
+id="progressBar"
+style="width: 0%"
+></div>
+Code
+<!-- Floating Header -->
+<header
+  class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100"
+>
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+        雪佛龙 CVX 经营分析
+      </h1>
+      <!-- 桌面端导航 -->
+      <nav class="hidden md:flex space-x-5">
+        <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <!-- 移动端汉堡菜单按钮 -->
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300"
+          aria-label="菜单"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+        <!-- 暗色模式切换 -->
+        <button
+          onclick="toggleDarkMode()"
+          class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+          aria-label="切换暗色模式"
+        >
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 移动端下拉菜单 -->
+    <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+      <nav class="flex flex-col space-y-3">
+        <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="min-h-screen">
+  <!-- Hero -->
+  <section
+    class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300"
+          >美股 · 综合能源 · 超级石油巨头</span
+        >
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300"
+          >NYSE: CVX · 2026-11-25</span
+        >
+      </div>
+      <h2
+        class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300"
+      >
+        雪佛龙公司（Chevron Corporation）<br /><span
+          class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium"
+          >深度经营与投资价值分析报告</span
+        >
+      </h2>
+      <p
+        class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl"
+      >
+        雪佛龙（NYSE: CVX）是全球运营纪律最严明的一体化能源巨头之一，掌控美国二叠纪盆地（超 100 万桶/日）、圭亚那深水区块（30% 权益）及哈萨克斯坦 TCO 巨型油田。受 2026 年美伊冲突推动布伦特原油冲破 97–104 美元催化，Q3 2026 公司交出 99.2 亿美元净利润（调整后 103.6 亿）与 142 亿美元调整后自由现金流的震撼答卷，净债务骤降至 0.4 倍现金流；而随着近期地缘风险溢价回吐，股价自 10 月高点 236.48 美元回落约 12% 至 208.98 美元。本报告从八大维度研判其周期配置价值。
+      </p>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            2,333.3亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            TTM 总营收（FY25 为 1,890.3亿$）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            341.0亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            TTM 自由现金流（+120.9%）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            18.0%
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            Q3 2026 动用资本回报率 ROCE
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            10.8x–11.7x
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            远期市盈率（股息率 3.42%）
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一、商业模式 -->
+  <section
+    id="model"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="flame"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          一、商业模式
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          雪佛龙采用经典的<strong>“上中下游纵向一体化（Integrated Oil &amp; Gas）+ 化工与低碳电力协同”</strong>模式。虽然按表面流水口径，下游炼油及成品油销售占总营业收入的 <strong>71.0%</strong>（FY2025 为 1,308.80 亿美元）、上游勘探开发占 <strong>29.0%</strong>（534.50 亿美元）[reference:2.1.7]，但在真实利润构成上，上游油气开采（Q3 2026 盈利 56.98 亿美元）依然是长期利润绝对支柱，而下游炼化（Q3 2026 创纪录赚 49.31 亿美元）则扮演“天然利润对冲垫”——当油价下跌压低上游时，低原料成本往往提振下游裂解价差[reference:1.2.3][reference:1.2.4]。
+        </p>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="droplets"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                短长周期互补的超级油田池
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              2025年7月完成赫斯并购后，日均油当量产量跃至 <strong>372万–398万桶/日</strong>，探明储量达 <strong>106 亿桶</strong>（2025 储量替代率 158%）。既手握可随时调节开支的二叠纪短周期页岩（&gt;100万桶/日），又拥有低衰减、低盈亏平衡的圭亚那深水、墨西哥湾及哈萨克斯坦 TCO 长周期基地[reference:1.2.8][reference:1.3.9]。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="factory"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+              <h3
+                class="font-semibold text-accent-700 dark:text-accent-300"
+              >
+                高稼动率精炼 + 委内瑞拉协同
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              Q3 2026 美区炼厂原油加工利用率冲上惊人的 <strong>98%</strong>（109.3万桶/日），全美柴油/航空煤油出率达 46%；更巧妙的是，2026 年扩产的委内瑞拉低成本重油（&lt;20美元/桶全成本）绝大部分正好直接输往具备复杂重油加工能力的美国墨西哥湾炼厂消化[reference:1.2.8]。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="zap"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                AI 数据中心供电与新能源卡位
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              不同于盲目追高风电光伏的欧洲油企，雪佛龙将新能源资本聚焦于高协同的<strong>可再生柴油、碳捕集封存（CCUS）</strong>以及依托创纪录天然气产量（&gt;9 Bcf/d）为微软等 AI 数据中心提供离网燃气电力的 <em>Project Kilby</em>。
+            </p>
+          </div>
+        </div>
+        <div
+          class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6"
+        >
+          <p
+            class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+          >
+            <i
+              data-lucide="lightbulb"
+              class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+            ></i>
+            商业模式本质：一家把资本开支纪律刻进 DNA 的全球能源现金牛——用不到 30 美元/桶的边际成本保底、用下游炼化和化工平滑周期波动、再将超额现金悉数回馈股东（38 年股息连增）。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、竞争优势（护城河） -->
+  <section
+    id="moat"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="shield"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          二、竞争优势：护城河评估
+        </h2>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        大宗商品生产商难以像软件那样拥有定价权，其护城河核心取决于<strong>“地质资源禀赋（开采成本位置）”</strong>与<strong>“跨周期资本规模壁垒”</strong>。以下对雪佛龙五个维度打分（1–10分）并与埃克森美孚（XOM）、壳牌（SHEL）及 BP 对标。
+      </p>
+
+      <div class="space-y-6">
+        <!-- 品牌实力 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              品牌实力（主权国家合作信誉与终端品牌）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            虽然加油站汽油存在同质化，但雪佛龙（Chevron / Texaco / Caltex）拥有强大的品牌号召力与特种润滑油（Havoline / Delo）溢价；更重要的是，作为美国能源安全旗舰，其在中东、哈萨克斯坦、澳大利亚与委内瑞拉均享有一流主权合作信用，使之能够拿到稀缺低成本油田准入证。
+          </p>
+        </div>
+
+        <!-- 网络效应 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              网络效应（天然较弱，体现为一体化物流协同）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >5<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 50%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            石油天然气作为标准化大宗商品，基本不存在消费端的用户网络效应；仅在自有管道、墨西哥湾深水基础设施、炼厂与 CPChem 化工园区之间存在内部物理管网规模协同效应。
+          </p>
+        </div>
+
+        <!-- 转换成本 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              转换成本（消费端低、资源长约及 B2B 化工较高）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >6<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 60%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            散客加油转换成本几乎为零；但对于亚洲 LNG 长协买家（依托 Gorgon/Wheatstone 澳州基地）、航空燃料大客户以及绑定特殊乙烯聚乙烯牌号的下游化工制造厂而言，长约违约与供应链重配成本较高。
+          </p>
+        </div>
+
+        <!-- 成本优势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              成本优势（核心护城河所在：顶级盆地成本曲线左端）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            雪佛龙的核心护城河所在：二叠纪享有大片无矿区使用费（No-royalty）历史土地红利；圭亚那深水与委内瑞拉（全成本 &lt;20 美元/桶）极具现金成本竞争力；加之 2026年10月剥离 HESM 将巴肯中游管输费砍半，并推进 30亿–40 亿美元结构降本，稳居全球私营石油巨头成本曲线第一梯队[reference:1.2.8]。
+          </p>
+        </div>
+
+        <!-- 专利或自有技术 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              专利或自有技术（超深水钻探 + 40% 勘探成功率 + AI 提效）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >7<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 70%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            在墨西哥湾 20,000 psi 超高压深水钻完井技术、TCO 极高含硫油气回注工程领域保有行业顶尖专有工程能力；近两年深水勘探斩获 15 项发现且成功率高达 <strong>40%</strong>（显著超越同业均值），AI 辅助油藏开发与生产优化今年以来已创造超 1 亿美元增量价值[reference:1.2.7]。
+          </p>
+        </div>
+      </div>
+
+      <!-- 竞对对比 -->
+      <div class="mt-10">
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5"
+        >
+          全球五大综合石油巨头护城河与估值对标（2026年11月）
+        </h3>
+        <div
+          class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <table
+            class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+          >
+            <thead class="bg-primary-50 dark:bg-primary-900/30">
+              <tr>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">雪佛龙 (CVX)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">埃克森美孚 (XOM)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">壳牌 (SHEL)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">英国石油 (BP)</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr>
+                <td class="font-medium">日均油当量产量</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">398万桶/日（Q3 2026）</td>
+                <td>约 470万+桶/日（含Pioneer）</td>
+                <td>约 280万桶/日（全球LNG霸主）</td>
+                <td>约 230万桶/日</td>
+              </tr>
+              <tr>
+                <td class="font-medium">成本优势与资产质量</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">8 / 10（二叠纪+圭亚那30%）</td>
+                <td>9 / 10（圭亚那作业者45%+化工）</td>
+                <td>7 / 10（偏重LNG贸易）</td>
+                <td>6 / 10（杠杆较高、战略摇摆）</td>
+              </tr>
+              <tr>
+                <td class="font-medium">TTM P/E（2026-11）</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">14.5x–15.3x</td>
+                <td>15.1x–16.3x</td>
+                <td>8.0x–9.4x</td>
+                <td>12.4x–13.5x</td>
+              </tr>
+              <tr>
+                <td class="font-medium">远期 P/E / 股息率</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">10.8–11.7x / 3.42%</td>
+                <td>12.2–12.5x / ~2.5%</td>
+                <td>~8.5x / ~3.8%</td>
+                <td>~9.0x / ~4.8%</td>
+              </tr>
+              <tr>
+                <td class="font-medium">最新市值 (2026-11)</td>
+                <td>约 4,073亿–4,106亿美元</td>
+                <td>约 6,549亿–6,959亿美元</td>
+                <td>约 2,670亿–2,823亿美元</td>
+                <td>约 1,196亿–1,200亿美元</td>
+              </tr>
+              <tr>
+                <td class="font-medium">综合护城河</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">6.8 / 10</td>
+                <td>7.4 / 10</td>
+                <td>6.5 / 10</td>
+                <td>5.8 / 10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+          数据来源：CVX/XOM Q3 2026 财报、Macrotrends、StocksToBuyNow、ValueInvesting.io 及 FINRA 截至 2026 年 11 月数据。
+        </p>
+      </div>
+
+      <div
+        class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed"
+        >
+          <i
+            data-lucide="award"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          综合护城河评分：<strong>6.8 / 10</strong>。作为资源商品公司，雪佛龙无法摆脱国际原油定价权受制于 OPEC+ 与地缘供需的行业宿命（因此护城河低于消费/科技垄断巨头）；但在全球上市能源阵营内，凭借低盈亏平衡的圭亚那、二叠纪与 TCO 核心资产，其护城河厚度紧随埃克森美孚稳居全球第二。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、行业趋势 -->
+  <section
+    id="industry"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="trending-up"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          三、行业趋势
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          2026 年全球能源市场经历了从“供给宽松忧虑”向“地缘冲突引爆供应溢价 + AI 算力重估基荷能源”的剧烈反转。上半年至三季度美伊冲突引发霍尔木兹海峡航运受阻，把布伦特原油重新推升至 <strong>97–104 美元/桶</strong>；与此同时，西方能源巨头在经历早年激进绿色转型受挫后，集体回归“高现金流传统油气 + 务实天然气 AI 供电”主航道[reference:3.2.9]。
+        </p>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="compass" class="w-5 h-5"></i>超级寡头整合与产能自律
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>优质储量集中化：</strong>经过埃克森美孚并购先锋自然资源、雪佛龙拿下赫斯、康菲吞并马拉松石油，美国顶尖页岩与深水储量已高度集中于少数具备极低资本成本的巨头手中。</li>
+              <li>• <strong>克制资本开支取代“增产竞赛”：</strong>即便 2026 年油价逼近百元，美国油企并未重演 2014 年式盲目钻井，而是将自由现金流优先用于降债与回购，延长了行业景气中枢。</li>
+            </ul>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="cpu" class="w-5 h-5"></i>AI 算力耗电重塑天然气长期需求
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>从“化石夕阳”转为“AI 电网压舱石”：</strong>超大规模数据中心对 7×24 小时稳定基荷电力需求井喷，使高效天然气发电厂（搭配 CCUS 碳捕集）成为科技巨头唯一可快速落地的替代方案。</li>
+              <li>• <strong>化工与航煤景气回暖：</strong>全球航空旅游复苏叠加北美廉价乙烷优势，推动炼厂柴油/航煤利润及合资化工（如 CPChem 2026 Q2–Q3 净利暴增）重返景气周期。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、财务状况 -->
+  <section
+    id="financial"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="bar-chart-3"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          四、财务状况（2021–2025 五年财报与 2026 TTM 诊断）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        以下汇整雪佛龙 FY2021–FY2025 五个完整财年（SEC Form 10-K）及截至 2026 年 9 月 30 日（Q3 2026 业绩报告）滚动十二个月（TTM）核心财务指标（单位：亿美元）[reference:2.1.2][reference:2.1.4][reference:3.1.3][reference:3.1.5][reference:3.1.6][reference:3.1.8]。
+      </p>
+
+      <!-- 5年财务表 -->
+      <div
+        class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+      >
+        <table
+          class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+        >
+          <thead class="bg-accent-50 dark:bg-accent-900/30">
+            <tr>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">指标（亿美元）</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2021</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2022</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2023</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2024</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2025</th>
+              <th class="font-semibold text-primary-700 dark:text-primary-300">TTM (至26-09)</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr>
+              <td class="font-medium">总营收及其他收入（含联营收益）</td>
+              <td>1,624.65</td>
+              <td>2,462.52</td>
+              <td>2,009.49</td>
+              <td>2,027.92</td>
+              <td>1,890.31</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">2,333.33 (+20.0%)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">归母净利润（Net Income）</td>
+              <td>156.25</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">354.65</td>
+              <td>213.69</td>
+              <td>176.61</td>
+              <td class="text-amber-600 dark:text-amber-400">122.99 (-30.4%)</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">269.76 (+111.3%)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">GAAP 营业利润率 / 净利率</td>
+              <td>13.3% / 9.6%</td>
+              <td>20.2% / 14.4%</td>
+              <td>14.7% / 10.6%</td>
+              <td>13.6% / 8.7%</td>
+              <td>10.4% / 6.5%</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">~15.1% / 11.6%</td>
+            </tr>
+            <tr>
+              <td class="font-medium">经营性现金流 (OCF)</td>
+              <td>~291.85</td>
+              <td>496.02</td>
+              <td>356.09</td>
+              <td>314.92</td>
+              <td>339.39 (+7.8%)</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">Q3单季 160.00 (+70%)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">自由现金流 (FCF)</td>
+              <td>211.31</td>
+              <td>376.28</td>
+              <td>197.80</td>
+              <td>150.44</td>
+              <td>165.92 (+10.3%)</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">341.00 (+120.9%)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">长期债务 / 股东权益 (D/E)</td>
+              <td>0.22x</td>
+              <td>0.15x</td>
+              <td>0.13x</td>
+              <td>0.16x</td>
+              <td>0.21x（含赫斯债）</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">0.16x（净杠杆 0.40x）</td>
+            </tr>
+            <tr>
+              <td class="font-medium">股本回报率 (ROE)</td>
+              <td>~11.6%</td>
+              <td>22.8%</td>
+              <td>13.2%–17.6%</td>
+              <td>11.2%–11.4%</td>
+              <td>7.2%–8.6%</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">13.89%–14.64%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <!-- 收入增长 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="trending-up" class="w-5 h-5"></i
+            >收入增长：典型的油价周期共振与 2026 强反弹
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            在能源行业，“收入”高度受国际油价锚定：俄乌冲突后 FY2022 冲上 2,462.52 亿美元峰值，随后随油价回落至 FY2025 的 1,890.31 亿美元（-6.8%）。然而进入 2026 年，一方面赫斯并购带来 26.1 万桶/日以上并表产量增量，另一方面布伦特油价跃至 97–104 美元，促使 Q2/Q3 营收分别同比大增 51% 与 35%–36%（Q3 652.40 亿），将 TTM 总营收推回 <strong>2,333.33 亿美元</strong>高位。
+          </p>
+        </div>
+
+        <!-- 净利润趋势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="award" class="w-5 h-5"></i
+            >净利润趋势：深蹲后实现翻倍式爆发反转
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            FY2023–FY2025 三年间公司净利润随裂解价差收敛及赫斯并购折旧增加从 213.69 亿美元回调至 122.99 亿美元（曾引发市场担忧）。但 2026 年 Q2 猛赚创公司纪录的 <strong>120.72 亿美元</strong>、Q3 再赚 <strong>99.24 亿美元</strong>（+180.4% YoY，调整后 103.61 亿 / EPS $5.28），一举把 TTM 净利润拉回 <strong>269.76 亿美元</strong>（同比 +111.3%），证明只要油价站在合理中枢，资产盈利弹性惊人。
+          </p>
+        </div>
+
+        <!-- 自由现金流 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流：即使在 2025 低谷依然稳守 166 亿
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            最直观体现雪佛龙“底盘稳健”的数据在于：哪怕是在利润相对低迷的 FY2024–FY2025，公司仍稳稳产出 <strong>150.44 亿与 165.92 亿美元</strong>自由现金流（剔除一次性为 202 亿+），资本开支极其克制；而到 2026 年 Q3，TTM 自由现金流已暴涨 120.9% 至 <strong>341.00 亿美元</strong>（Q3 单季调整后 FCF 即达 142.00 亿美元），充分覆盖 130 多亿美元年度分红并支撑百亿美元回购。
+          </p>
+        </div>
+
+        <!-- 利润率与债务 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="scale" class="w-5 h-5"></i>利润率修复与 0.16x 极低债务水平
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            营业利润率从 2025 年低谷的 10.44% 强势修复至 TTM 的约 <strong>15.1%</strong>（净利率由 6.51% 回升至 11.56%+）。债务端更是堪比铁桶：尽管 2025 年承接赫斯 88 亿美元债务一度使长期 D/E 小升至 0.21x，但仅凭 2026 年内生现金流已迅速偿债并将总债务降至 <strong>335.30 亿美元</strong>（手握 128 亿美元现金，净债务仅 <strong>207.00 亿美元</strong>，D/E 降回 <strong>0.16x</strong>，低于十年均值 0.20x），净债务/CFFO 低至 <strong>0.40x</strong>！
+          </p>
+        </div>
+      </div>
+
+      <!-- ROE 与财务稳健性判断 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+      >
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4"
+        >
+          股本回报率（ROE / ROCE）与整体财务稳健性判断
+        </h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-4">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">
+              13.9%–14.6%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              Q3 2026 TTM ROE（十年均值 7.7%）
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">
+              18.0%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              Q3 2026 已动用资本回报率 ROCE
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-400">
+              0.40x
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              净债务 / 经营性现金流
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          综合近五年财报及 2026 年前三季度实绩，雪佛龙的财务状况属于<strong>极度稳健且现金流爆发力正处于近年最强状态（绝非下滑）</strong>。即便在 2025 年低油价与大并购承压期，其依然保持 150亿+ 美元自由现金流及全行业最低梯队杠杆；而在 2026 年油价催化叠加赫斯产出释放下，TTM ROE 已迅速跃回 14%+（高于十年均值 7.72% 近一倍）、ROCE 达 18%，资产负债表固若金汤。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、估值分析 -->
+  <section
+    id="valuation"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calculator"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          五、估值分析（投行可比估值 + DCF 情景估算）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+        截至 2026 年 11 月 24 日美股收盘，雪佛龙报 <strong>208.73–208.98 美元</strong>（总市值约 4,073亿–4,106 亿美元，过去一年涨幅约 37.1%，近一个月自 236.48 美元峰值回撤约 12%）[reference:2.1.9][reference:2.3.2][reference:2.3.5]。以下从市盈率对标、大行目标价及多情景 DCF 进行交叉估值。
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <div
+          class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-primary-700 dark:text-primary-300 mb-4"
+          >
+            市盈率（P/E）与能源同业横向对比
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">雪佛龙 (CVX，现价 208.98$)</span>
+              <span class="font-bold text-primary-600 dark:text-primary-400">TTM 14.5–15.3x | 远期 10.8–11.7x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">埃克森美孚 (XOM)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 15.1–16.3x | 远期 12.2–12.5x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">英国石油 (BP) / 康菲石油 (COP)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 12.4–13.5x / 14.1x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">壳牌 (SHEL) / 道达尔 (TTE)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 8.0–9.4x / 8.8–9.8x</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">CVX 自身 10 年历史 P/E 均值 / 欧美同业 P/S 中位</span>
+              <span class="font-semibold text-gray-700 dark:text-gray-300">25.40x（周期峰值拉高）/ P/S 1.0x (CVX 1.8x)</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">
+            注：CVX 当前 TTM P/E（~15.1x）比过去十年均值（25.40x）低 43%，也比 GuruFocus 历史中枢低约 10%，且无论 TTM 还是远期倍数（10.8x–11.7x）均略便宜于美股头号同行 XOM（12.2x–12.5x），但按市销率（1.8x）仍显著贵于欧洲油企（0.5x–0.9x）[reference:1.1.2][reference:1.4.5]。
+          </p>
+        </div>
+
+        <div
+          class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-accent-700 dark:text-accent-300 mb-4"
+          >
+            华尔街机构最新目标价汇总（2026年11月）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Wells Fargo（11月13日，买入）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">268.00 美元（+28.6%）</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">UBS Group（11月2日上调，买入）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">265.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Barclays（11月13日上调，标配） / Piper Sandler</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">248.00 / 243.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Bernstein（11月12日，持有） / Morgan Stanley（买入）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">233.00 / 230.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Raymond James / Argus</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">225.00 / 211.00 美元</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">MarketBeat (31家) / StockAnalysis (26家) 一致目标</span>
+              <span class="font-bold text-primary-600 dark:text-primary-400">222.96 – 242.54 美元（+6.7%~16.4%）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DCF 参考 -->
+      <div
+        class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8"
+      >
+        <h3
+          class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"
+        >
+          <i data-lucide="line-chart" class="w-5 h-5"></i
+          >现金流折现（DCF）敏感性拆解：一切取决于长期油价假设
+        </h3>
+        <p
+          class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+        >
+          资源股的 DCF 对远期商品假设极其敏感：若用 Macroaxis 偏保守的杠杆 DCF（假定油价景气消退，自由现金流向 2024–2025 年 ~150 亿美元常态回归），仅得出 <strong>153.30 美元</strong>（折价 26%）；而按中周期基准假设（未来十年布伦特油价稳守 75–82 美元，叠加赫斯圭亚那增量与 40 亿美元结构降本，稳态 FCF 维持 220亿–250 亿美元，WACC=7.0%，永续增长 2.0%），测算公允价值落于 <strong>195–222 美元</strong>（贴近 Macroaxis 3个月公允值 <strong>222.22 美元</strong>）；若假设 $85–$95 高油价延续（A.L. Capital 纯 DCF 模型），合理估值上看 <strong>243–290 美元</strong>[reference:1.4.6][reference:1.4.7]。
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-primary-600 dark:text-primary-400"
+            >
+              243.00–290.00$
+            </div>
+            <div class="text-xs text-gray-500">乐观高油价情景（布油 $85–$95 常态化）</div>
+          </div>
+          <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-accent-600 dark:text-accent-400"
+            >
+              195.00–222.22$
+            </div>
+            <div class="text-xs text-gray-500">中周期基准 DCF 区间（布油 $75–$82）</div>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div
+              class="text-lg font-bold text-gray-700 dark:text-gray-300"
+            >
+              153.30$
+            </div>
+            <div class="text-xs text-gray-500">保守低油价 DCF（布油回落 $60–$65）</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="search"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          <strong>估值结论：处于“周期合理至温和低估（Fairly Valued to Modestly Undervalued）”区间，估值高低高度锚定未来油价中枢。</strong><br />
+          按当前 208.98 美元计，雪佛龙相对美股同行埃克森美孚与历史十年 PE 均具一定折价，且较近一个月高点（236.48 美元）回调后已贴近华尔街保守目标及中周期基准 DCF（195–223 美元）；但对比欧洲石油巨头（8x–9x）及 $60 油价假设下的保守 DCF（153 美元），股价并不算极度廉价。结论是：<strong>若看多油价稳守 $75–$85 以上，当前约 11x 远期 PE 被温和低估约 7%–16%；若预判油价回落至 $60 时代，则现价略显偏贵。</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、经营展望 -->
+  <section
+    id="outlook"
+    class="py-20 bg-accent-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calendar"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          六、经营展望（未来 12–24 个月）
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            1. 营收与盈利节奏：2026 年冲高与 2027 年正常化回落预期
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            受高油价驱动，卖方一致预期 FY2026 总营收将暴增 35.5% 至 <strong>2,502.4 亿美元</strong>、EPS 飙至 <strong>18.15–18.71 美元</strong>；进入 FY2027，伴随市场假设中东风险溢价逐步消化、油价温和平滑，一致预期营收微降至 <strong>2,393.3 亿美元</strong>（-4.4%）、EPS 为 <strong>16.52–17.97 美元</strong>（-9.9%）[reference:2.2.4][reference:2.2.6]。核心亮点在于即便油价温和回调，产量与自由现金流仍将显著强于 2024–2025 年。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            2. HESM 剥离落地、结构降本 40 亿美元与产能提效
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2026 年底完成 Hess Midstream 资产置换后，37 亿美元并表债务清零且巴肯油田管输成本砍半（延约至 2045 年），直接提升 2027 年 ROCE 约 0.50%；同时公司将在 2026 年底兑现 30亿–40 亿美元永久性成本削减，并推进希腊爱奥尼亚海 4.7 万平方公里四区块三维地震勘探及深水去瓶颈增产（近期已低成本挖潜 8.5 万桶/日）[reference:1.2.4][reference:1.2.8][reference:2.3.2]。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            3. 委内瑞拉 60 万桶/日自筹爬坡与 2027 高管交班落地
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2027 年 1 月 1 日起，Eimear Bonner（油气炼化总裁）、Jeff Gustavson（CFO）、Mark Nelson（战略副董事长）与 Brent Gros（新能源兼 AI 战略）新领导班子正式履新。未来 18 个月内，委内瑞拉三家合资厂在 70 亿美元自筹扩产计划下有望逐季放量（全成本 &lt;20 美元/桶），加上哈萨克斯坦 TCO 稳态满产和圭亚那新 FPSO 投产，长期自由现金流下限将再上一个台阶。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、风险识别 -->
+  <section
+    id="risk"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="alert-triangle"
+            class="w-5 h-5 text-red-600 dark:text-red-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">
+          七、风险识别（按危险程度从高到低排序）
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- 风险1 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0"
+            >
+              1
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2"
+              >
+                经济与油价周期风险（危险度：极高）— 高油价风险溢价消退及需求放缓
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                最直接、杀伤力最大的风险。过去一个月 CVX 股价随布伦特原油回吐美伊战争风险溢价而迅速回调 12%（空头持仓也同步升至 2,619 万股），已直观演示了其对油价的高贝塔弹性[reference:2.3.2][reference:2.3.4]。若 2027 年全球宏观走弱叠加霍尔木兹海峡航运恢复及 OPEC+ 增产，油价若重挫至 60–65 美元/桶，上游利润将大幅跳水并迫使回购减半。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险2 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0"
+            >
+              2
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2"
+              >
+                监管与地缘政治威胁（危险度：高）— 委内瑞拉制裁摇摆、TCO 续约与碳税诉讼
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                雪佛龙的国际核心储量高度暴露于复杂地缘区：委内瑞拉 60 万桶/日扩产高度依赖美国 OFAC 制裁豁免的政治连续性；哈萨克斯坦 TCO 特许权延期涉及东道国税收重谈且依赖经俄罗斯过境的 CPC 管道；此外，尽管总部迁离加州，公司在加州依然拥有庞大炼厂，面对州级气候诉讼与严格碳排监管仍难独善其身。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险3 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0"
+            >
+              3
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2"
+              >
+                行业颠覆风险（危险度：中高）— 长期电动化达峰与炼化/化工周期过剩
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                新能源乘用车及重卡（尤其中国与欧洲市场）普及正在渐进式压低交通燃料长期需求天花板；同时虽然 2026 年美国炼厂与 CPChem 化工利润亮眼，但全球炼化及基础烯烃依然面临亚洲新建超级基地投产带来的中长期周期性压制。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险4 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0"
+            >
+              4
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2"
+              >
+                竞争与组织执行风险（危险度：中）— XOM 圭亚那作业权优势及 2027 高管轮岗磨合
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                在圭亚那 Stabroek 区块雪佛龙仅是非作业方（持股 30%），生产节奏实际受制于作业者竞争对手埃克森美孚（45%）；此外 2027 年 1 月起四位核心高管全面跨界换岗（加之近期 90 天内副董事长等内部人累计套现 3,460 万美元及 Zacks 下调评级至持有），短中期仍需时间检验磨合效率[reference:1.4.4][reference:2.2.5]。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险5 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0"
+            >
+              5
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2"
+              >
+                债务或财务风险（危险度：低）— Q4 一次性 HESM 账面亏损，实质偿债无忧
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                当前净债务仅 207 亿美元（净债务/CFFO 低至 0.40x），具备行业顶格财务安全垫；唯一财务扰动在于 Q4 2026 将因退出 HESM 计入 30亿–40 亿美元一次性税后非现金账面损失（可能短暂美化/扭曲单季 GAAP 表观市盈率），但实则出清了 37 亿美元表内债务并改善未来现金流[reference:1.2.4]。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、多空视角 -->
+  <section
+    id="longshort"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="scale"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          八、多空视角：机构投资组合经理评估
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- 可能买入的原因 -->
+        <div
+          class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800"
+        >
+          <h3
+            class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>估值回撤后具吸引力的相对赔率与高股息</strong>：月度回撤 12% 至 208.98 美元后，远期 P/E 仅 10.8x–11.7x（低于 XOM 的 12.2x 及十年均值 25.4x），同时提供 3.42% 稳健股息率（连续 38 年上调）及百亿美元级回购，0.45 倍低贝塔自带组合抗震属性。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>0.4x 净杠杆与世界级低成本资产组合</strong>：Q3 2026 一口气将净债务砍至 207 亿美元，叠加圭亚那 30%、二叠纪 100 万桶/日及委内瑞拉 &lt;20 美元/桶扩张，抗跌弹性大幅提升。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>HESM 剥离提效与 AI 电力新催化剂</strong>：甩掉 HESM 后省下 50% 巴肯管输费、抬升 ROCE 0.50%，且与微软等推进的 AI 数据中心天然气直供供电（Project Kilby）提供额外估值期权。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>卖方普遍看好 &amp; 伯克希尔停卖稳仓</strong>：26 位分析师中 81% 给予买入，一致目标价上看 223–243 美元（UBS 看高至 265 美元、Wells Fargo 看 268 美元），伯克希尔亦连续两季守住 8,438 万股不变。</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 可能回避的原因 -->
+        <div
+          class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800"
+        >
+          <h3
+            class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>2027 年盈利从峰值自然滑落</strong>：今年 37% 涨幅与创纪录利润高度依托美伊冲突期间 97–104 美元超高油价；随溢价退潮，卖方一致预期 2027 年营收（-4.4%）与 EPS（-9.9%）均将同比回落，易压制估值扩张。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>若油价跌回 60–65 美元，保守 DCF 仅值 153 美元</strong>：按 1.8x 市销率计已大幅贵于欧洲能源同行（Shell 0.8x / TTE 0.9x），大宗周期高位追买的风险不对称性正在显现。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>地缘敏感度较高与内部人减持信号</strong>：委内瑞拉与哈萨克斯坦存在地缘反复风险；近期 90 天内副董事长等高管累计抛售 3,460 万美元且空头持仓攀升至 2,619 万股。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>Q4 一次性 30亿–40 亿美元会计亏损噪声</strong>：年报季 HESM 剥离减值计提虽无现金流出，但仍可能引发量化及被动算法短暂误杀波动。</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 关键因素 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6"
+      >
+        <h3
+          class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4"
+        >
+          关键因素：机构组合需要密切跟踪的 3 个指标
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div
+            class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="flame"
+              class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-primary-700 dark:text-primary-300"
+            >
+              布伦特油价中枢 &amp; 霍尔木兹航运
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              油价能否守住 75–85 美元舒适带，直接决定了 CVX 2027 年能否延续超百亿美元回购步伐
+            </p>
+          </div>
+          <div
+            class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="scissors"
+              class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-accent-700 dark:text-accent-300"
+            >
+              40 亿美元降本与 HESM 降费落地
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              2026年底结构降本收官与巴肯管输费砍半后，单桶盈亏平衡成本的真实下移幅度
+            </p>
+          </div>
+          <div
+            class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center"
+          >
+            <i
+              data-lucide="globe"
+              class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-gray-700 dark:text-gray-300"
+            >
+              委内瑞拉放量与 TCO 续约进展
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              美国 OFAC 对委内瑞拉许可稳定性及 2027 年初哈萨克斯坦 TCO 谈判落地信号
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投资论点 -->
+      <div
+        class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="target"
+            class="inline-block w-5 h-5 mr-2 -mt-0.5"
+          ></i>
+          <strong>机构投资论点：</strong
+          >站在机构投资组合经理的视角，雪佛龙（CVX）在当前约 <strong>209 美元</strong>价位是一只极佳的<strong>“攻守兼备型通胀对冲与优质红利核心底仓（Core Energy &amp; Dividend Anchor）”</strong>。虽然经历了今年近四成的强力重估，但过去一个月 12% 的地缘降温回调恰好消除了此前追高泡沫——以 10.8x–11.7x 远期市盈率、3.42% 连续 38 年增长的现金股息以及 0.4 倍净杠杆的极低风险资产负债表，配置一家同时握有圭亚那深水、二叠纪页岩与委内瑞拉 &lt;20 美元低成本油田的超级龙头，其在组合中抵御地缘黑天鹅、能源通胀及 AI 电网瓶颈的战略价值无可替代。<br /><br />
+          建议在大型股价值/多资产组合中维持<strong>标配至温和超配（3%–5% 权重）</strong>，耐心赚取“3.4% 股息 + ~3% 回购缩股 + 结构降本抬升 ROCE”的复利收益；同时保持周期敬畏——若明年中东全面和平导致油价重挫、股价借机回调至 <strong>175–190 美元中周期强支撑区间</strong>，则是逢低大力加仓的黄金窗口。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          关于本报告
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告基于雪佛龙公司（NYSE: CVX）公开 SEC 财务报告、Q3 2026 业绩发布材料、10 月高管轮岗及 HESM 剥离公告、伯克希尔 13F 披露及华尔街机构研报，从商业模式、护城河、行业趋势、五年财务、投行估值、未来展望、风险识别及多空视角八个维度提供系统分析。
+        </p>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          数据来源
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>• 雪佛龙 FY2025 10-K 年报及 Q3 2026 业绩发布 / 8-K 文件</li>
+          <li>• 2026 年 10 月 HESM 退出公告及 2027 高管轮岗披露</li>
+          <li>• Wells Fargo、UBS、Barclays、Morgan Stanley、Bernstein 11月研报</li>
+          <li>• Macrotrends、StockAnalysis、GuruFocus、Macroaxis 数据库</li>
+          <li>• ExxonMobil (XOM)、Shell (SHEL)、BP 2026年11月公开财务</li>
+        </ul>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          免责声明
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告仅供教育与金融研究参考，不构成任何证券买卖或投资建议。所有财务及估值数据均基于截至 2026 年 11 月 25 日（北京时间）的公开披露信息整理，能源商品价格波动剧烈，决策需独立审慎。
+        </p>
+      </div>
+    </div>
+    <div
+      class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500"
+    >
+      <p>© 2026 雪佛龙公司（CVX）经营分析报告 · 生成日期：2026-11-25</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    if (!menu) return;
+    menu.classList.toggle("mobile-menu-open");
+  }
+
+  window.addEventListener("scroll", () => {
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    lucide.createIcons();
+    AOS.init({ duration: 800, once: true });
+  });
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

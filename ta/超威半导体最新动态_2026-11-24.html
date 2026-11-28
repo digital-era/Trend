@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="超威半导体 AMD 最新动态全景追踪：2026年11月公司业绩、AI算力产业链、出口管制、宏观政策及投资催化剂分析。">
+<title>超威半导体最新动态_2026-11-24</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: {
+    colors: {
+      primary: {
+        50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+        300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+        600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+        900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+      },
+      accent: {
+        50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+        300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+        600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+        900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+      }
+    }
+  }}
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:90px}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05)}
+.btn-interactive:active{transform:scale(.95)}
+.card-interactive{transition:all .28s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.48)}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#374151}
+.dark th{color:#f3f4f6}
+.dark td{color:#d1d5db}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:rgba(255,255,255,.13)}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%));transition:width .8s}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.source-link{color:#c65a24;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#ffad78}
+.metric{font-variant-numeric:tabular-nums}
+</style>
+<script>
+(function initTheme(){
+try{
+if(window.self!==window.top||localStorage.getItem('amd-report-theme')==='dark'||(!localStorage.getItem('amd-report-theme')&&window.matchMedia('(prefers-color-scheme:dark)').matches)){
+document.documentElement.classList.add('dark');
+}
+}catch(e){document.documentElement.classList.add('dark')}
+})();
+function syncThemeIcons(){
+const dark=document.documentElement.classList.contains('dark');
+const sun=document.getElementById('sunIcon'),moon=document.getElementById('moonIcon');
+if(sun)sun.style.display=dark?'block':'none';
+if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+document.documentElement.classList.toggle('dark');
+try{localStorage.setItem('amd-report-theme',document.documentElement.classList.contains('dark')?'dark':'light')}catch(e){}
+syncThemeIcons();
+}
+function toggleMobileMenu(){
+const menu=document.getElementById('mobileMenu');
+if(menu)menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+<h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">AMD · 最新动态全景追踪</h1>
+</div>
+<nav class="hidden md:flex items-center space-x-5">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">总览</a>
+<a href="#company" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">公司动态</a>
+<a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">行业动态</a>
+<a href="#macro" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">宏观政策</a>
+<a href="#matrix" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">催化矩阵</a>
+</nav>
+<div class="flex items-center gap-2">
+<button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+<i data-lucide="menu" class="w-4 h-4"></i>
+</button>
+<button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+<i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800">
+<nav class="flex flex-col space-y-2.5">
+<a href="#overview" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">总览</a>
+<a href="#company" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">公司动态</a>
+<a href="#industry" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">行业动态</a>
+<a href="#macro" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">宏观政策</a>
+<a href="#matrix" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">催化矩阵</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-16">
+
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+<div class="flex flex-wrap items-center gap-2.5 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-semibold">NASDAQ: AMD</span>
+<span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300 text-xs font-semibold">AI加速器 · CPU/GPU · 数据中心</span>
+<span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-semibold">近30日 · 2026-10-26 至 2026-11-24</span>
+</div>
+<h2 class="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">超威半导体（Advanced Micro Devices）</h2>
+<p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 max-w-5xl">
+AMD当前进入<strong class="text-primary-600 dark:text-primary-400">数据中心AI业务加速兑现期</strong>：Q3营收创纪录、数据中心收入同比增长97%，Q4收入指引进一步跃升；World Labs收购与橡树岭Lux超级计算机强化AI生态。但出口管制、先进封装供应竞争及高增长预期下的估值敏感性，仍是决定股价弹性的关键变量。
+</p>
+
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">Q3 2026 营收</div>
+<div class="text-xl sm:text-2xl font-bold metric text-gray-900 dark:text-white">$13.4B</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">同比 +45% · 创纪录</div>
+</div>
+<div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">数据中心收入增速</div>
+<div class="text-xl sm:text-2xl font-bold metric text-emerald-600 dark:text-emerald-400">+97%</div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-1">同比 · Q3 2026</div>
+</div>
+<div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">Q4营收指引中值</div>
+<div class="text-xl sm:text-2xl font-bold metric text-primary-600 dark:text-primary-400">$17.0B</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">环比约 +27%</div>
+</div>
+<div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+<div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">Q3非GAAP毛利率</div>
+<div class="text-xl sm:text-2xl font-bold metric text-gray-900 dark:text-white">56%</div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-1">Q4指引约55%</div>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="gauge" class="w-4 h-4 text-emerald-600"></i>
+<span class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">消息面总体基调</span>
+</div>
+<p class="text-2xl font-bold text-emerald-700 dark:text-emerald-300">偏多</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">数据中心增长、产品迭代和AI客户部署构成基本面主线；政策风险与供应链约束限制估值上修幅度。</p>
+</div>
+<div class="bg-primary-50/70 dark:bg-primary-950/25 rounded-xl p-5 border border-primary-200 dark:border-primary-800/60 card-interactive">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="zap" class="w-4 h-4 text-primary-600"></i>
+<span class="text-xs font-semibold text-primary-700 dark:text-primary-300">本月最强单一催化剂</span>
+</div>
+<p class="text-sm font-bold text-primary-800 dark:text-primary-200 leading-snug">Q3数据中心收入同比增长97%，Q4营收指引中值达170亿美元</p>
+<p class="text-xs text-gray-600 dark:text-gray-400 mt-2">AMD · 2026-11-03</p>
+</div>
+<div class="bg-rose-50/70 dark:bg-rose-950/25 rounded-xl p-5 border border-rose-200 dark:border-rose-800/60 card-interactive">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="shield-alert" class="w-4 h-4 text-rose-600"></i>
+<span class="text-xs font-semibold text-rose-700 dark:text-rose-300">本月最需警惕信号</span>
+</div>
+<p class="text-sm font-bold text-rose-800 dark:text-rose-200 leading-snug">美国BIS强化先进芯片远程算力与第三国转运审查，扩大AMD海外销售合规不确定性</p>
+<p class="text-xs text-gray-600 dark:text-gray-400 mt-2">美国商务部BIS · 2026-11-19生效</p>
+</div>
+</div>
+<div class="mt-5 text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+数据口径：美元；财务数字按AMD公司披露。增长率与指引均为公司披露口径，非独立预测。报告仅采用可核验的公开信息；无法确认的市场传闻不纳入事实结论。
+</div>
+</div>
+</section>
+
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div>
+<h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-5">排序依据：对收入、利润、AI业务竞争力及估值预期的综合影响，而非单纯按发布时间排序。</p>
+
+<article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-03</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大利好</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 10.0 / 10</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">Q3创纪录业绩：数据中心收入同比增长97%，Q4营收指引跃升至170亿美元</h3>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4">
+<div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">总营收</div><div class="text-lg font-bold metric">$13.4B</div><div class="text-xs text-emerald-600">同比 +45%</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">GAAP净利润</div><div class="text-lg font-bold metric">$2.4B</div><div class="text-xs text-gray-500">摊薄EPS $1.46</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">非GAAP EPS</div><div class="text-lg font-bold metric">$2.09</div><div class="text-xs text-emerald-600">同比 +74%</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg p-3 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">Q4营收指引</div><div class="text-lg font-bold metric">$17B</div><div class="text-xs text-emerald-600">±3%</div>
+</div>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+AMD于2026年11月3日公布2026财年第三季度业绩：营收<strong>134亿美元</strong>，同比增长45%；GAAP毛利率54%、营业利润28亿美元、净利润24亿美元、摊薄EPS 1.46美元。非GAAP毛利率56%、营业利润39亿美元、净利润35亿美元、EPS 2.09美元。数据中心业务收入同比增长<strong>97%</strong>，由Instinct GPU与EPYC CPU创纪录销售驱动。公司预计Q4营收约170亿美元、上下浮动3%，中值对应同比增长约66%、环比增长约27%，非GAAP毛利率约55%。来源：AMD官方新闻稿及SEC 8-K，2026-11-03。
+</p>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700">
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<strong>影响深度：</strong>这不仅是单季超预期，更重要的是数据中心收入增长速度显著高于公司整体增速，证明AMD正在从传统CPU厂商向AI计算平台供应商转型。Q4指引意味着订单交付、GPU出货和CPU配套销售进入加速阶段，可能推动市场上修未来收入与利润预测。需重点观察收入兑现是否同步转化为毛利率、经营现金流和自由现金流，而不能仅以订单或营收增速推断利润质量。
+</p>
+</div>
+<div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2"><span>盈利增长与指引兑现的重要性</span><strong>100%</strong></div>
+<div class="impact-bar"><div class="impact-fill" style="width:100%"></div></div>
+<p class="text-xs mt-3"><a class="source-link" href="https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results" target="_blank" rel="noopener">AMD官方Q3 2026财报（2026-11-03）</a> · <a class="source-link" href="https://ir.amd.com/financial-information/sec-filings" target="_blank" rel="noopener">AMD SEC披露</a></p>
+</article>
+
+<article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up" data-aos-delay="80">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-16</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">温和利好</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.8 / 10</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">完成收购World Labs：向空间智能与下一代AI模型计算生态延伸</h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+<div class="bg-primary-50/70 dark:bg-gray-800/80 rounded-lg p-3 border border-primary-100 dark:border-gray-700"><div class="text-xs text-gray-500 dark:text-gray-400">交易状态</div><div class="font-bold text-primary-700 dark:text-primary-300 mt-1">已完成收购</div></div>
+<div class="bg-primary-50/70 dark:bg-gray-800/80 rounded-lg p-3 border border-primary-100 dark:border-gray-700"><div class="text-xs text-gray-500 dark:text-gray-400">完成日期</div><div class="font-bold mt-1">2026-11-16</div></div>
+<div class="bg-primary-50/70 dark:bg-gray-800/80 rounded-lg p-3 border border-primary-100 dark:border-gray-700"><div class="text-xs text-gray-500 dark:text-gray-400">交易金额</div><div class="font-bold mt-1">未在本次公告摘要中披露</div></div>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+AMD投资者关系网站于2026年11月16日披露，AMD完成对World Labs的收购。该事项承接AMD于2026年9月28日公布的收购计划。World Labs聚焦空间智能及世界模型相关技术，技术方向与多模态模型、物理世界理解、模拟环境和具身智能计算需求存在关联。来源：AMD Investor Relations，2026-11-16；原始收购公告，2026-09-28。
+</p>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4">
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<strong>影响深度：</strong>战略价值在于拓宽AMD与前沿AI模型开发者的联系，使其不只出售GPU和CPU，也有机会深入模型训练、推理及空间智能应用生态。若World Labs技术能够与Instinct GPU、EPYC及ROCm软件栈形成协同，将增强客户黏性并增加平台化收入机会。短期财务贡献尚无法量化，需观察收购整合成本、人才留存、产品落地与商业客户采用情况；不能把收购完成直接等同于新增订单。
+</p>
+</div>
+<div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2"><span>AI生态与长期战略价值</span><strong>88%</strong></div>
+<div class="impact-bar"><div class="impact-fill" style="width:88%"></div></div>
+<p class="text-xs mt-3"><a class="source-link" href="https://ir.amd.com/" target="_blank" rel="noopener">AMD Investor Relations · 2026-11-16公告列表</a> · <a class="source-link" href="https://ir.amd.com/news-events/press-releases/detail/1298" target="_blank" rel="noopener">AMD收购计划原始公告（2026-09-28，超出主窗口）</a></p>
+</article>
+
+<article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 card-interactive" data-aos="fade-up" data-aos-delay="120">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-16</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">温和利好</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.2 / 10</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">AMD驱动Lux超级计算机向科研用户开放：进入美国DOE Genesis Mission核心AI基础设施</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+AMD于2026年11月16日宣布，基于AMD技术的Lux超级计算机在美国能源部橡树岭国家实验室向科研用户开放，并成为美国能源部Genesis Mission的首个AI工厂。该项目将AMD计算平台用于科学研究与AI计算工作负载，形成真实的大规模部署案例。来源：AMD官方投资者关系新闻，2026-11-16；美国能源部相关项目资料。
+</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+<div class="bg-emerald-50/60 dark:bg-emerald-950/25 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+<div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">正面传导</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">大型科研机构的实际部署提高AMD Instinct与EPYC在高性能计算、AI训练及科学模拟场景的可信度，有利于后续政府、科研和企业客户采购评估。</p>
+</div>
+<div class="bg-amber-50/60 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800/50">
+<div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">仍需验证</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">单一超级计算机项目的商业价值不能直接外推为持续性大额收入。需观察后续利用率、软件生态成熟度、客户扩容和可复制订单。</p>
+</div>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4">
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed"><strong>影响深度：</strong>AI基础设施竞争已经从单颗芯片性能转向整机系统、网络、软件和应用协同。Lux有助于AMD展示系统级交付能力，降低客户采用非单一供应商平台的技术风险；对市场估值的贡献更偏向长期竞争力验证，而非当季收入直接增量。</p>
+</div>
+<div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2"><span>平台验证与客户生态影响</span><strong>82%</strong></div>
+<div class="impact-bar"><div class="impact-fill" style="width:82%"></div></div>
+<p class="text-xs mt-3"><a class="source-link" href="https://ir.amd.com/" target="_blank" rel="noopener">AMD Investor Relations · 2026-11-16</a></p>
+</article>
+
+<div class="bg-amber-50/70 dark:bg-amber-950/20 rounded-xl p-5 border border-amber-200 dark:border-amber-800/50">
+<div class="flex items-center gap-2 mb-2"><i data-lucide="info" class="w-4 h-4 text-amber-600"></i><strong class="text-sm text-amber-800 dark:text-amber-200">公司动态补充观察</strong></div>
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">2026-11-10，AMD展示第六代EPYC处理器，强调其面向AI与企业计算的定位；2026-11-09，AMD发布EPYC产品生态与AI基础设施相关信息。这些事件强化CPU与GPU协同战略，但本报告将其作为产品路线佐证，不重复计入前三大催化剂。来源：AMD官方新闻列表，2026-11-09、2026-11-10。</p>
+<p class="text-xs mt-2"><a class="source-link" href="https://ir.amd.com/news-events" target="_blank" rel="noopener">AMD News & Events</a></p>
+</div>
+</section>
+
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i></div>
+<h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+</div>
+<p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6">细分赛道：数据中心CPU/GPU、AI加速器、服务器平台及高性能计算；重点观察先进封装、HBM、基板与AI基础设施资本开支。行业新闻与AMD自身公告分开归类。</p>
+
+<article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+<div class="flex flex-wrap items-center gap-2.5 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-17</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">行业需求利好 / 供应链竞争加剧</span>
+</div>
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-3">NVIDIA扩大供应链长期承诺：先进封装、基板与整机产能争夺进入长期化阶段</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+NVIDIA于2026年11月17日宣布扩大与供应链伙伴的长期合作，涉及Kinsus、Samsung Electro-Mechanics的基板产能，Amkor与SPIL的先进封装产能，以及Foxconn的全球制造协作。公司披露Vera Rubin NVL72及Vera CPU已于2026年第三季度开始批量出货，采用TSMC 5nm、3nm及CoWoS先进封装技术。来源：NVIDIA官方新闻稿，2026-11-17。
+</p>
+<div class="bg-accent-50/70 dark:bg-accent-900/25 rounded-lg p-4 border border-accent-200 dark:border-accent-700/40">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">对AMD的横向映射：</strong>首先是需求侧利好，竞争对手持续扩张供应链，验证AI基础设施需求具有长期性；其次是供给侧压力，先进封装、基板和系统制造能力成为竞争稀缺资源，AMD需要确保Instinct平台获得足够的晶圆、HBM、封装与整机产能。NVIDIA强化供应链绑定，也可能提高AMD争取关键产能的成本和难度。整体判断：AI行业贝塔利好，但相对竞争压力上升。</p>
+</div>
+<div class="impact-bar mt-4"><div class="impact-fill" style="width:94%"></div></div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-2">影响力 9.4 / 10 · 影响周期：未来4—8个季度</div>
+<p class="text-xs mt-3"><a class="source-link" href="https://investor.nvidia.com/news/press-release-details/2026/ NVIDIA-Expands-Commitments-With-Supply-Chain-Partners-to-Support-AI-Infrastructure-Buildout/default.aspx" target="_blank" rel="noopener">NVIDIA官方供应链公告 · 2026-11-17</a></p>
+</article>
+
+<article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+<div class="flex flex-wrap items-center gap-2.5 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-16</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">需求验证利好</span>
+</div>
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-3">美国DOE Genesis Mission推进AI科研基础设施部署，超级计算机转向AI工厂化</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月16日，AMD宣布其技术驱动的Lux超级计算机在橡树岭国家实验室向科研用户开放，成为美国能源部Genesis Mission的首个AI工厂。该项目反映美国科研基础设施将AI计算能力纳入长期建设重点。来源：AMD官方新闻稿，2026-11-16；美国能源部项目资料。
+</p>
+<div class="bg-accent-50/70 dark:bg-accent-900/25 rounded-lg p-4 border border-accent-200 dark:border-accent-700/40">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">对AMD的横向映射：</strong>AMD属于直接参与者，获得真实的政府科研与高性能计算场景验证。AI需求从云端模型训练扩展到科学计算、模拟和科研推理，有助于扩大Instinct GPU与EPYC CPU的潜在市场。但项目的合同金额、持续采购量及利润率未在已核实公告中明确，不能据此直接估算收入贡献。</p>
+</div>
+<div class="impact-bar mt-4"><div class="impact-fill" style="width:88%"></div></div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-2">影响力 8.8 / 10 · 影响周期：1—3年</div>
+<p class="text-xs mt-3"><a class="source-link" href="https://ir.amd.com/" target="_blank" rel="noopener">AMD官方新闻列表 · 2026-11-16</a></p>
+</article>
+
+<article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+<div class="flex flex-wrap items-center gap-2.5 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-03 至 2026-11-17</span>
+<span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏多 · 竞争加剧</span>
+</div>
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-3">AI芯片竞争由单颗GPU性能转向机柜级系统与全栈交付</h3>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+11月3日AMD财报强调Instinct GPU与EPYC CPU共同推动数据中心收入增长；11月10日AMD展示第六代EPYC处理器；11月17日NVIDIA披露Vera Rubin NVL72与Vera CPU进入批量出货，并同步扩大封装、基板及整机合作。上述公开信息共同显示，行业竞争重心正从芯片参数扩展至CPU/GPU协同、网络互联、软件栈、机柜级部署与供应链交付。来源：AMD 2026-11-03财报、AMD 2026-11-10产品公告、NVIDIA 2026-11-17公告。
+</p>
+<div class="bg-accent-50/70 dark:bg-accent-900/25 rounded-lg p-4 border border-accent-200 dark:border-accent-700/40">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">对AMD的横向映射：</strong>AMD拥有CPU、GPU及自适应计算产品组合，具备参与全栈竞争的基础。EPYC与Instinct协同可能提高平台平均销售价值和客户黏性；但NVIDIA的CUDA生态、系统级产品整合和供应链规模构成较高竞争门槛。AMD必须证明ROCm软件成熟度、系统稳定性及大规模交付能力，才能把芯片性能优势转化为持续份额。</p>
+</div>
+<div class="impact-bar mt-4"><div class="impact-fill" style="width:83%"></div></div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-2">影响力 8.3 / 10 · 影响周期：未来4—12个季度</div>
+</article>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+<h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2"><i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i> 行业动态对标影响对比表</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead><tr class="bg-gray-50 dark:bg-gray-800"><th>行业事件</th><th>涉及主体</th><th>对AMD利弊传导</th><th>影响周期</th></tr></thead>
+<tbody class="text-gray-600 dark:text-gray-300">
+<tr><td class="font-semibold">AI供应链长期扩容与先进封装绑定</td><td>NVIDIA、TSMC、Amkor、SPIL、基板供应商</td><td><span class="text-emerald-600 font-semibold">需求利好、供给承压。</span>AI市场扩大，但关键产能竞争更激烈。</td><td>2026Q4—2028</td></tr>
+<tr><td class="font-semibold">美国DOE AI科研基础设施部署</td><td>DOE、橡树岭国家实验室、AMD</td><td><span class="text-emerald-600 font-semibold">直接利好。</span>提供真实系统部署案例，拓宽科研与HPC市场。</td><td>2026—2028</td></tr>
+<tr><td class="font-semibold">竞争由芯片转向全栈系统交付</td><td>AMD、NVIDIA及服务器生态</td><td><span class="text-amber-600 font-semibold">双向影响。</span>AMD平台化空间扩大，但软件和系统交付能力面临考验。</td><td>中长期</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div>
+<h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+</div>
+
+<article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · 美国出口管制</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-19</span>
+<span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">短期承压</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.8 / 10</span>
+</div>
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">美国商务部BIS发布《限制先进半导体远程访问》临时最终规则，第三国数据中心与先进芯片代工审查升级</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">1. 政策要点</strong>
+美国商务部BIS于2026年11月19日在《Federal Register》发布临时最终规则《Addressing Remote Access to Advanced Semiconductors》，规定对向海外数据中心出口、再出口或境内转移先进计算产品，且相关算力将向特定受关注国家或澳门总部实体提供的情形增加许可要求；对印度尼西亚、马来西亚、新加坡、泰国、巴西等地的特定先进芯片出口增加许可要求；同时修改先进节点逻辑芯片代工及封装出口审查路径，并正式撤销此前未执行的AI Diffusion Rule。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">2. 传导路径</strong>
+<strong>分子端：</strong>出口许可、最终用户核验、第三国数据中心审查可能增加AMD销售周期、合规成本与客户不确定性，特别是Instinct加速器及相关服务器系统。<br><br>
+<strong>分母端：</strong>若市场提高对海外收入可持续性、政策突变及库存风险的折价，AMD估值倍数可能承压；另一方面，合规规则明确化也可能使部分获批客户采购路径更可预测。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">3. AMD业务敞口</strong>
+重点关注MI系列GPU、先进计算芯片、服务器整机与第三国数据中心客户。AMD在2026年11月4日提交的10-Q披露，2026年上半年已获得部分向中国客户出口MI325产品的许可证，且相关产品须先在美国接受检查。新规则实施后，需重新评估现有许可适用范围及最终用户合规义务，不能假定既有许可自动覆盖新增规则。
+</div>
+</div>
+<div class="bg-rose-50/70 dark:bg-rose-950/25 rounded-xl p-4 mt-4 border border-rose-200 dark:border-rose-800/50">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed"><strong>投资判断：</strong>这是当前AMD最重要的政策尾部风险。关键不是规则是否全面禁止所有海外销售，而是许可边界、最终用户穿透核验、远程算力定义和执法尺度。若规则导致客户延迟下单或许可审批周期延长，将直接影响收入兑现节奏。</p>
+</div>
+<div class="impact-bar mt-4"><div class="impact-fill" style="width:98%"></div></div>
+<p class="text-xs mt-3"><a class="source-link" href="https://www.govinfo.gov/app/details/FR-2026-11-19/2026-23529" target="_blank" rel="noopener">美国《Federal Register》正式规则 · 2026-11-19</a> · <a class="source-link" href="https://ir.amd.com/financial-information/sec-filings" target="_blank" rel="noopener">AMD 10-Q · 2026-11-04</a></p>
+</article>
+
+<article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国际 · 中美科技贸易</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-19</span>
+<span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏空 · 政策不确定性</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.6 / 10</span>
+</div>
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">美国强化第三国转运与云端算力监管，中美科技贸易合规风险延伸至数据中心服务</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">1. 态势要点</strong>
+2026年11月19日生效的BIS规则，不仅关注芯片实体出口，也将特定海外数据中心向受关注地区企业提供先进算力的情形纳入监管；并对若干第三国先进芯片出口设定许可要求。美联社2026年11月18日对相关政策背景及第三国转运调查进行了报道。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">2. 传导路径</strong>
+<strong>分子端：</strong>跨国云服务商和服务器OEM可能重新核验采购与部署地点，增加订单确认及交付时间；若部分地区客户无法满足合规要求，潜在销售市场收缩。<br><br>
+<strong>分母端：</strong>地缘政策风险提高海外业务现金流折现率，尤其对市场预期较高的AI加速器业务估值形成压力。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">3. AMD业务敞口</strong>
+重点是中国相关客户、东南亚服务器组装及转运渠道、跨国云厂商和分销体系。AMD需要对最终受益人、数据中心实际使用者、产品配置及出口许可证实施更严格管理。规则对不同产品和交易的适用性需逐项判断。
+</div>
+</div>
+<div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 mt-4 border border-amber-200 dark:border-amber-800/50">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed"><strong>投资判断：</strong>这一政策变量与AMD的海外收入、库存管理和客户结构高度相关。若美国与相关国家监管口径持续升级，AMD可能需要调整地区收入预期及渠道库存；如果许可执行保持清晰且客户可合规部署，影响则主要体现为成本增加而非市场完全关闭。</p>
+</div>
+<div class="impact-bar mt-4"><div class="impact-fill" style="width:86%"></div></div>
+<p class="text-xs mt-3"><a class="source-link" href="https://www.govinfo.gov/content/pkg/FR-2026-11-19/html/2026-23529.htm" target="_blank" rel="noopener">BIS规则全文 · 2026-11-19</a> · <a class="source-link" href="https://apnews.com/article/60f868d3bb430b85a8657b27d421096e" target="_blank" rel="noopener">Associated Press · 2026-11-18</a></p>
+</article>
+
+<article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">国内 · 中国AI产业与算力需求</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-10-26 至 2026-11-24</span>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">需求端潜在利好 · 供给受限</span>
+</div>
+<span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.2 / 10</span>
+</div>
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">中国AI基础设施自主化与国产算力建设持续推进，外部先进芯片约束强化本土替代动力</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">1. 政策与态势要点</strong>
+在本报告30日窗口内，可核验的直接政策主线是美国BIS于2026年11月19日强化先进芯片和远程算力监管。中国AI算力自主化、国产芯片和数据中心建设仍是长期产业方向，但本次检索未取得足以确认在窗口内新增发布、且直接改变AMD采购政策或订单规模的中国中央层级正式文件，因此不将未经核实的政策传闻列作已发生事件。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">2. 传导路径</strong>
+<strong>分子端：</strong>中国本土算力投资扩大可能提高全球AI芯片需求总量，但国产替代政策和美国出口许可约束同时限制AMD可服务市场。<br><br>
+<strong>分母端：</strong>市场可能同时计入AI基础设施增长溢价和中国业务政策折价，估值方向取决于海外市场增量能否覆盖中国市场不确定性。
+</div>
+<div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">3. AMD业务敞口</strong>
+重点关注Instinct GPU中国客户许可、国内云厂商采购结构、服务器整机出口、国产替代竞争及中国以外亚洲市场的需求承接。AMD在中国市场的潜在机会必须以具体许可证、客户订单和实际出货为依据，不应把中国AI投资规模直接折算为AMD可获得收入。
+</div>
+</div>
+<div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 mt-4 border border-emerald-200 dark:border-emerald-800/50">
+<p class="text-xs text-gray-700 dark:text-gray-200 leading-relaxed"><strong>投资判断：</strong>中国算力建设是行业长期需求变量，但对AMD而言并非无条件利好。真正需要跟踪的是许可证范围是否变化、已获批产品能否顺利交付，以及中国以外市场是否能持续吸收AI加速器产能。</p>
+</div>
+<div class="impact-bar mt-4"><div class="impact-fill" style="width:72%"></div></div>
+<p class="text-xs mt-3"><a class="source-link" href="https://www.govinfo.gov/app/details/FR-2026-11-19/2026-23529" target="_blank" rel="noopener">BIS规则 · 2026-11-19</a> · <a class="source-link" href="https://ir.amd.com/financial-information/sec-filings" target="_blank" rel="noopener">AMD 10-Q披露 · 2026-11-04</a></p>
+</article>
+
+<div class="bg-gray-100 dark:bg-gray-800/70 rounded-xl p-4 text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<strong>宏观数据边界：</strong>本报告不引用未经实时核验的11月CPI、就业、联邦基金利率或中国宏观统计数字，也不把预期中的政策会议写成已发生事件。对AMD而言，当前已核实且直接影响业务的政策催化剂是BIS先进芯片出口及远程算力规则。
+</div>
+</section>
+
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-10" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div>
+<h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+</div>
+
+<div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-8">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-2 text-sm sm:text-base"><i data-lucide="list" class="w-4 h-4 text-primary-500"></i> 九大动态催化矩阵（点击行跳转详情）</h3>
+<div class="flex flex-wrap gap-1.5 text-xs">
+<button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">全部</button>
+<button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">公司</button>
+<button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">行业</button>
+<button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">宏观</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead><tr class="bg-gray-50 dark:bg-gray-800/80"><th>类别</th><th>日期</th><th>核心事件</th><th>影响方向</th><th>强度</th><th>核心投资含义</th></tr></thead>
+<tbody class="text-gray-600 dark:text-gray-300">
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td><td class="font-mono">11-03</td><td class="font-semibold">Q3营收134亿美元，数据中心增长97%，Q4指引170亿美元</td><td class="text-emerald-600 font-semibold">重大利好</td><td class="font-bold">10.0</td><td>盈利预期上修，AI业务进入规模兑现期</td>
+</tr>
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td><td class="font-mono">11-16</td><td class="font-semibold">完成收购World Labs</td><td class="text-emerald-600 font-semibold">温和利好</td><td class="font-bold">8.8</td><td>扩展空间智能与模型生态，长期协同待验证</td>
+</tr>
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td><td class="font-mono">11-16</td><td class="font-semibold">Lux超级计算机向科研用户开放</td><td class="text-emerald-600 font-semibold">温和利好</td><td class="font-bold">8.2</td><td>验证AMD整机级AI系统部署能力</td>
+</tr>
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td><td class="font-mono">11-17</td><td class="font-semibold">NVIDIA扩大先进封装、基板及制造合作</td><td class="text-amber-600 font-semibold">需求利好/竞争加剧</td><td class="font-bold">9.4</td><td>AI景气持续，但产能争夺和交付门槛上升</td>
+</tr>
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td><td class="font-mono">11-16</td><td class="font-semibold">DOE Genesis Mission首个AI工厂投入科研使用</td><td class="text-emerald-600 font-semibold">需求利好</td><td class="font-bold">8.8</td><td>政府科研算力应用拓展AMD潜在客户群</td>
+</tr>
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td><td class="font-mono">11-03至11-17</td><td class="font-semibold">AI芯片竞争转向CPU/GPU、软件及机柜系统全栈交付</td><td class="text-amber-600 font-semibold">双向影响</td><td class="font-bold">8.3</td><td>平台化能力将决定市场份额和毛利率</td>
+</tr>
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td><td class="font-mono">11-19</td><td class="font-semibold">BIS先进芯片远程访问规则生效</td><td class="text-rose-600 font-semibold">短期承压</td><td class="font-bold">9.8</td><td>海外客户审查与许可风险直接影响收入兑现</td>
+</tr>
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td><td class="font-mono">11-19</td><td class="font-semibold">第三国转运及海外云算力监管升级</td><td class="text-amber-600 font-semibold">中性偏空</td><td class="font-bold">8.6</td><td>跨国客户合规、渠道库存和交付周期需重新评估</td>
+</tr>
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60">
+<td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td><td class="font-mono">10-26至11-24</td><td class="font-semibold">中国AI算力自主化与国产替代政策环境</td><td class="text-amber-600 font-semibold">双向影响</td><td class="font-bold">7.2</td><td>全球需求扩张与中国市场准入约束并存</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 mb-8">
+<h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2"><i data-lucide="calendar-days" class="w-4 h-4 text-primary-500"></i> 未来30天重点跟踪日历（2026-11-25 至 2026-12-24）</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700 card-interactive">
+<div class="text-xs font-bold text-primary-700 dark:text-primary-300 mb-2">2026-12-01 · 已公布日程</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">UBS Global Technology and AI Conference</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">AMD已于2026-10-06公告将参加该会议。关注管理层对Instinct GPU订单、Helios机柜系统、2027年数据中心收入及供应链产能的最新表述。会议陈述不等同于业绩指引变更。</p>
+<p class="text-xs mt-2"><a class="source-link" href="https://ir.amd.com/news-events/press-releases/detail/1300/amd-to-report-fiscal-third-quarter-2026-financial-results" target="_blank" rel="noopener">AMD会议日程公告</a></p>
+</div>
+<div class="rounded-xl p-4 bg-accent-50/70 dark:bg-gray-800/80 border border-accent-100 dark:border-gray-700 card-interactive">
+<div class="text-xs font-bold text-accent-700 dark:text-accent-300 mb-2">2026-12-09 · 已公布日程</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Barclays第24届全球科技大会</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">AMD已公告参加。重点跟踪公司是否更新AI服务器客户导入、EPYC平台渗透、毛利率路径及2027年供货节奏。若管理层未提供新增指引，不应将会议内容误读为订单确认。</p>
+<p class="text-xs mt-2"><a class="source-link" href="https://ir.amd.com/news-events/press-releases/detail/1300/amd-to-report-fiscal-third-quarter-2026-financial-results" target="_blank" rel="noopener">AMD会议日程公告</a></p>
+</div>
+<div class="rounded-xl p-4 bg-rose-50/70 dark:bg-gray-800/80 border border-rose-100 dark:border-gray-700 card-interactive">
+<div class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-2">2026-11-25 至 12-24 · 持续观察</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">BIS出口规则实施与许可审查反馈</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">关注海外客户、云厂商及服务器OEM是否调整采购地点、最终用户申报与交付安排；重点观察AMD对MI系列出口许可适用范围的后续披露。尚无经核实的统一后续执法日期。</p>
+<p class="text-xs mt-2"><a class="source-link" href="https://www.govinfo.gov/app/details/FR-2026-11-19/2026-23529" target="_blank" rel="noopener">BIS规则正式文本</a></p>
+</div>
+<div class="rounded-xl p-4 bg-emerald-50/70 dark:bg-gray-800/80 border border-emerald-100 dark:border-gray-700 card-interactive">
+<div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">未来30天 · 供应链跟踪</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">HBM、先进封装与机柜级系统交付</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">跟踪HBM供给、TSMC先进封装产能、服务器ODM交付周期及NVIDIA供应链扩容对AMD的挤出效应。重点核实AMD Helios及Instinct产品量产爬坡，而非只关注竞争对手的发布会。</p>
+<p class="text-xs mt-2"><a class="source-link" href="https://investor.nvidia.com/news/press-release-details/2026/" target="_blank" rel="noopener">NVIDIA投资者新闻</a> · <a class="source-link" href="https://ir.amd.com/news-events" target="_blank" rel="noopener">AMD新闻中心</a></p>
+</div>
+</div>
+</div>
+
+<div class="bg-gray-900 dark:bg-black text-white rounded-2xl p-6 sm:p-8 mb-8" data-aos="fade-up">
+<div class="flex items-center gap-2 mb-4"><i data-lucide="target" class="w-5 h-5 text-orange-400"></i><h3 class="text-lg font-bold">买方策略师结论：未来股价的三条决定性变量</h3></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<div>
+<div class="text-xs text-emerald-400 font-bold mb-2">第一优先级 · 盈利兑现</div>
+<p class="text-sm font-semibold mb-2">Q4能否兑现170亿美元营收指引</p>
+<p class="text-xs text-gray-300 leading-relaxed">重点看数据中心收入增速、非GAAP毛利率是否接近55%、经营现金流是否同步增长。营收达标但毛利率显著走弱，仍可能引发估值回调。</p>
+</div>
+<div>
+<div class="text-xs text-rose-400 font-bold mb-2">第二优先级 · 政策风险</div>
+<p class="text-sm font-semibold mb-2">BIS规则对中国及第三国销售的实际影响</p>
+<p class="text-xs text-gray-300 leading-relaxed">关注许可审批周期、客户最终用途核验及服务器部署地点。若出现订单延迟、库存增加或收入确认推迟，政策风险将从估值因素转化为盈利因素。</p>
+</div>
+<div>
+<div class="text-xs text-amber-400 font-bold mb-2">第三优先级 · 竞争格局</div>
+<p class="text-sm font-semibold mb-2">Instinct与EPYC能否形成系统级份额突破</p>
+<p class="text-xs text-gray-300 leading-relaxed">关注Helios交付、ROCm软件生态、客户复购及供应链产能。只有形成规模化、可重复交付，AMD才可能获得持续的平台溢价。</p>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-6 pt-5">
+<p class="text-sm text-gray-200 leading-relaxed"><strong class="text-orange-300">核心判断：</strong>AMD的基本面主线明显向好，AI数据中心业务已经成为增长引擎。但市场定价将从“AI需求是否存在”转向“AMD能否持续交付、保持利润率并合规进入目标市场”。短期最重要的验证组合是Q4业绩兑现、出口许可影响和先进封装供给，而非单纯追逐AI行业热度。</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">一、核心数据来源</h4>
+<ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+<li>AMD Q3 2026财报及业绩指引，2026-11-03。</li>
+<li>AMD SEC 10-Q季度报告，2026-11-04。</li>
+<li>AMD World Labs收购完成公告，2026-11-16。</li>
+<li>AMD Lux超级计算机新闻，2026-11-16。</li>
+<li>AMD第六代EPYC处理器新闻，2026-11-10。</li>
+<li>NVIDIA供应链扩容公告，2026-11-17。</li>
+<li>美国商务部BIS《Addressing Remote Access to Advanced Semiconductors》，Federal Register，2026-11-19。</li>
+<li>Associated Press关于第三国转运监管报道，2026-11-18。</li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">二、覆盖时间区间与数据口径</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">主窗口：2026-10-26至2026-11-24，共30个自然日（含首尾日期）。所有核心事件均按实际公告或规则发布日期标注。</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">World Labs收购计划于2026-09-28公布，早于主窗口；本报告仅将2026-11-16完成收购作为窗口内动态，并将原始公告作为背景参考。</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">财务数据以AMD官方GAAP及非GAAP口径区分。未取得可核实来源的市场价格、目标价、资金流、估值倍数和宏观统计数字均不作虚构填充。</p>
+</div>
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">三、免责声明</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">本报告根据截至2026-11-24可核验的公开资料整理，旨在提供公司、行业与宏观事件驱动研究，不构成证券投资建议、买卖邀约或收益保证。影响力评分为研究判断，不代表市场一致预期。半导体行业具有技术迭代、客户集中、供应链和政策风险，请结合最新公告、股价及个人风险承受能力独立决策。</p>
+</div>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+<p class="text-xs text-gray-400 dark:text-gray-500">超威半导体（NASDAQ: AMD）· 最新动态全景追踪 · 截至 2026-11-24</p>
+<p class="text-xs text-gray-400 dark:text-gray-500">Generated for event-driven investment research</p>
+</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+const y=document.body.scrollTop||document.documentElement.scrollTop;
+const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+const bar=document.getElementById('progressBar');
+if(bar)bar.style.width=(h>0?y/h*100:0)+'%';
+});
+document.addEventListener('DOMContentLoaded',()=>{
+syncThemeIcons();
+if(window.lucide)lucide.createIcons();
+if(window.AOS)AOS.init({duration:450,offset:30,once:true});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

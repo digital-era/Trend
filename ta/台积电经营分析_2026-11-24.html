@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+<title>台积电经营分析报告 | TSM | 2026-11-24</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{colors:{
+primary:'#60a5fa',accent:'#c084fc',dark:'#080d18',
+panel:'#111b2d',muted:'#8b9bb4',success:'#34d399',
+danger:'#fb7185',gold:'#fbbf24'
+},fontFamily:{sans:['DM Sans','Noto Sans SC','sans-serif']}}}};
+</script>
+<style>
+:root{--bg:#080d18;--panel:#111b2d;--line:rgba(148,163,184,.14);--blue:#60a5fa;--purple:#c084fc;--text:#e5edf8;--muted:#94a3b8}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans','Noto Sans SC',sans-serif;margin:0}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 12% 5%,rgba(59,130,246,.12),transparent 35%),radial-gradient(ellipse at 90% 30%,rgba(168,85,247,.08),transparent 32%)}
+a{color:inherit;text-decoration:none}
+.nav-link{font-size:12px;color:#94a3b8;transition:.2s;white-space:nowrap}
+.nav-link:hover,.nav-link.active{color:#93c5fd}
+.card{background:linear-gradient(145deg,rgba(17,27,45,.96),rgba(12,20,35,.96));border:1px solid var(--line);border-radius:16px;padding:22px}
+.card-interactive{transition:transform .25s,border-color .25s,box-shadow .25s}
+.card-interactive:hover{transform:translateY(-4px);border-color:rgba(96,165,250,.4);box-shadow:0 14px 40px rgba(0,0,0,.2)}
+.section{padding:86px 0;border-bottom:1px solid var(--line);scroll-margin-top:80px}
+.section-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#60a5fa;font-weight:700}
+.section-title{font-size:clamp(25px,4vw,38px);font-weight:800;letter-spacing:-1px;margin:12px 0}
+.section-desc{color:#94a3b8;font-size:14px;line-height:1.9;max-width:850px}
+.metric{font-size:clamp(25px,3vw,36px);font-weight:800;letter-spacing:-1px}
+.metric-label{font-size:12px;color:#94a3b8;margin-top:7px}
+.tag{display:inline-flex;align-items:center;padding:5px 10px;border-radius:7px;font-size:11px;font-weight:700}
+.tag-blue{background:rgba(59,130,246,.13);color:#93c5fd}
+.tag-purple{background:rgba(168,85,247,.13);color:#d8b4fe}
+.tag-green{background:rgba(16,185,129,.12);color:#6ee7b7}
+.tag-red{background:rgba(244,63,94,.12);color:#fda4af}
+.tag-gold{background:rgba(245,158,11,.12);color:#fcd34d}
+.progress-track{height:7px;background:#253248;border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,#3b82f6,#a78bfa)}
+.moat-bar{display:flex;align-items:center;gap:12px;margin:17px 0}
+.moat-bar .name{width:125px;font-size:13px;color:#cbd5e1;flex-shrink:0}
+.moat-bar .score{width:35px;text-align:right;font-weight:700;font-size:13px;color:#93c5fd}
+.moat-bar .progress-track{flex:1}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:580px}
+th{text-align:left;padding:13px;color:#94a3b8;font-weight:600;background:rgba(30,41,59,.55);white-space:nowrap}
+td{padding:13px;border-bottom:1px solid var(--line);color:#dbe5f2}
+tr:hover td{background:rgba(59,130,246,.035)}
+.positive{color:#34d399!important}.negative{color:#fb7185!important}
+.chart-wrap{position:relative;height:280px;width:100%}
+.timeline{border-left:1px solid rgba(96,165,250,.4);margin-left:8px;padding-left:24px}
+.timeline-item{position:relative;padding-bottom:24px}
+.timeline-item:before{content:"";position:absolute;left:-30px;top:5px;width:11px;height:11px;border-radius:50%;background:#60a5fa;box-shadow:0 0 12px rgba(96,165,250,.5)}
+.hero-grid{background:linear-gradient(125deg,rgba(30,58,100,.38),rgba(79,35,111,.18));border:1px solid rgba(96,165,250,.2);border-radius:24px;overflow:hidden}
+.glow{background:linear-gradient(110deg,#60a5fa,#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent}
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#60a5fa,#c084fc);z-index:100;width:0}
+#topnav{backdrop-filter:blur(18px);background:rgba(8,13,24,.91);border-bottom:1px solid var(--line)}
+.mobile-menu{display:none}
+.mobile-menu.open{display:flex}
+.source-link{color:#93c5fd;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:768px){
+.section{padding:60px 0}.desktop-nav{display:none}
+.mobile-menu{position:absolute;top:65px;left:0;right:0;background:#0d1728;padding:20px;flex-direction:column;gap:17px;border-bottom:1px solid var(--line)}
+.card{padding:17px}.hero-grid{border-radius:16px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav id="topnav" class="fixed top-0 left-0 right-0 z-50">
+ <div class="max-w-7xl mx-auto px-5 h-[66px] flex items-center justify-between">
+  <a href="#home" class="flex items-center gap-3">
+   <div class="w-9 h-9 rounded-xl flex items-center justify-center bg-blue-500/15 border border-blue-400/30">
+    <i data-lucide="cpu" class="text-blue-400 w-5"></i>
+   </div>
+   <div>
+    <div class="text-sm font-extrabold tracking-wider">EQUITY <span class="text-blue-400">INSIGHT</span></div>
+    <div class="text-[9px] text-slate-500 tracking-[2px]">FUNDAMENTAL RESEARCH</div>
+   </div>
+  </a>
+  <div class="desktop-nav flex items-center gap-6">
+   <a class="nav-link" href="#model">商业模式</a>
+   <a class="nav-link" href="#moat">竞争优势</a>
+   <a class="nav-link" href="#industry">行业趋势</a>
+   <a class="nav-link" href="#financial">财务分析</a>
+   <a class="nav-link" href="#valuation">估值分析</a>
+   <a class="nav-link" href="#outlook">未来展望</a>
+   <a class="nav-link" href="#risk">风险</a>
+   <a class="nav-link" href="#longshort">多空观点</a>
+  </div>
+  <div class="flex items-center gap-3">
+   <button id="themeBtn" class="p-2 rounded-lg hover:bg-slate-700/50" aria-label="切换主题"><i data-lucide="sun-moon" class="w-4"></i></button>
+   <button id="menuBtn" class="md:hidden p-2" aria-label="打开菜单"><i data-lucide="menu"></i></button>
+  </div>
+ </div>
+ <div id="mobileMenu" class="mobile-menu">
+  <a class="nav-link" href="#model">01 商业模式</a>
+  <a class="nav-link" href="#moat">02 竞争优势与护城河</a>
+  <a class="nav-link" href="#industry">03 行业趋势</a>
+  <a class="nav-link" href="#financial">04 财务分析</a>
+  <a class="nav-link" href="#valuation">05 估值分析</a>
+  <a class="nav-link" href="#outlook">06 未来展望</a>
+  <a class="nav-link" href="#risk">07 风险因素</a>
+  <a class="nav-link" href="#longshort">08 机构多空观点</a>
+ </div>
+</nav>
+
+<main id="home" class="max-w-7xl mx-auto px-5 pt-28">
+<section class="hero-grid relative p-7 md:p-12" data-aos="fade-up">
+ <div class="absolute right-0 top-0 opacity-[.08] pointer-events-none">
+  <i data-lucide="cpu" style="width:300px;height:300px"></i>
+ </div>
+ <div class="relative z-10 max-w-4xl">
+  <div class="flex flex-wrap items-center gap-3 mb-7">
+   <span class="tag tag-blue">深度经营研究</span>
+   <span class="tag tag-purple">半导体 · AI算力</span>
+   <span class="text-xs text-slate-500">报告日期：2026年11月24日</span>
+  </div>
+  <div class="text-sm text-blue-300 tracking-[5px] font-bold mb-3">TAIWAN SEMICONDUCTOR MANUFACTURING COMPANY</div>
+  <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">台积电 <span class="glow">TSMC</span></h1>
+  <p class="text-lg md:text-xl text-slate-300 font-light mb-5">全球先进制程的核心制造平台，AI时代的关键基础设施。</p>
+  <p class="text-sm text-slate-400 leading-8 max-w-3xl">
+   本报告从商业模式、技术护城河、产业周期、财务质量与估值体系出发，
+   分析台积电在人工智能算力扩张、先进制程升级和全球半导体产业重构中的竞争地位。
+   重点判断：公司能否将AI需求转化为持续的盈利增长，以及当前股价是否已经充分反映未来成长。
+  </p>
+  <div class="flex flex-wrap gap-3 mt-8">
+   <a href="#financial" class="px-5 py-3 rounded-lg bg-blue-500 hover:bg-blue-400 text-white text-sm font-bold transition">查看财务表现 <i data-lucide="arrow-down-right" class="inline w-4"></i></a>
+   <a href="#valuation" class="px-5 py-3 rounded-lg border border-slate-600 hover:border-blue-400 text-sm font-semibold">估值与投资判断</a>
+  </div>
+ </div>
+</section>
+
+<section class="py-8">
+ <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="card card-interactive">
+   <div class="text-xs text-slate-500 mb-2">2026年1—10月营收</div>
+   <div class="metric text-blue-300">NT$4.49T</div>
+   <div class="metric-label"><span class="positive">+43.3%</span> 同比增长</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="text-xs text-slate-500 mb-2">2026年第三季度营收</div>
+   <div class="metric text-purple-300">$46.72B</div>
+   <div class="metric-label"><span class="positive">+41.2%</span> 美元口径同比</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="text-xs text-slate-500 mb-2">第三季度毛利率</div>
+   <div class="metric text-green-300">66.4%</div>
+   <div class="metric-label">营业利润率 58.7%</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="text-xs text-slate-500 mb-2">2025年净利润</div>
+   <div class="metric text-amber-300">NT$1.72T</div>
+   <div class="metric-label">同比增长约46.4%</div>
+  </div>
+ </div>
+ <p class="text-[11px] text-slate-600 mt-3">注：截至2026年11月24日可获得的最新正式季度业绩为2026年第三季度；月度营收最新披露为2026年10月。股价和估值参考数据采用11月23日市场数据，存在盘中波动。</p>
+</section>
+
+<section class="section" id="model">
+ <div class="section-kicker">01 / BUSINESS MODEL</div>
+ <h2 class="section-title">商业模式：全球芯片产业的专业化制造中枢</h2>
+ <p class="section-desc">台积电的核心价值不是设计某一款芯片，而是为全球芯片设计公司提供高精度、高资本密集度、高技术壁垒的晶圆制造和先进封装服务。其商业模式建立在专业化分工、规模经济与持续技术领先之上。</p>
+
+ <div class="grid md:grid-cols-2 gap-5 mt-8">
+  <div class="card">
+   <div class="flex items-center gap-3 mb-5">
+    <i data-lucide="workflow" class="text-blue-400"></i>
+    <h3 class="font-bold">产业链定位</h3>
+   </div>
+   <div class="space-y-3">
+    <div class="p-4 rounded-xl bg-slate-800/60 text-center">
+     <div class="text-xs text-slate-500 mb-1">上游</div>
+     <div class="font-bold">半导体设备、材料与EDA</div>
+     <div class="text-xs text-slate-500 mt-1">ASML / Applied Materials / Lam Research / 材料供应商</div>
+    </div>
+    <div class="text-center text-blue-400"><i data-lucide="arrow-down" class="inline"></i></div>
+    <div class="p-5 rounded-xl bg-blue-500/10 border border-blue-400/30 text-center">
+     <div class="text-xs text-blue-300 mb-1">核心制造环节</div>
+     <div class="text-xl font-extrabold">TSMC 台积电</div>
+     <div class="text-xs text-slate-400 mt-2">先进制程 · 晶圆代工 · 先进封装 · 工艺平台</div>
+    </div>
+    <div class="text-center text-blue-400"><i data-lucide="arrow-down" class="inline"></i></div>
+    <div class="p-4 rounded-xl bg-slate-800/60 text-center">
+     <div class="text-xs text-slate-500 mb-1">下游</div>
+     <div class="font-bold">Fabless芯片设计与系统厂商</div>
+     <div class="text-xs text-slate-500 mt-1">NVIDIA / Apple / AMD / Qualcomm / Broadcom 等</div>
+    </div>
+   </div>
+  </div>
+  <div class="card">
+   <div class="flex items-center gap-3 mb-5">
+    <i data-lucide="layers" class="text-purple-400"></i>
+    <h3 class="font-bold">核心收入来源</h3>
+   </div>
+   <div class="space-y-5">
+    <div>
+     <div class="flex justify-between text-sm mb-2"><span>先进制程晶圆制造</span><span class="text-blue-300 font-bold">核心业务</span></div>
+     <div class="progress-track"><div class="progress-fill" style="width:88%"></div></div>
+     <p class="text-xs text-slate-500 mt-2">先进节点贡献高附加值，客户对性能、功耗和面积优化要求不断提高。</p>
+    </div>
+    <div>
+     <div class="flex justify-between text-sm mb-2"><span>成熟制程与特殊工艺</span><span class="text-blue-300 font-bold">稳定需求</span></div>
+     <div class="progress-track"><div class="progress-fill" style="width:55%"></div></div>
+     <p class="text-xs text-slate-500 mt-2">汽车、工业、消费电子及电源管理等应用提供多元化需求。</p>
+    </div>
+    <div>
+     <div class="flex justify-between text-sm mb-2"><span>先进封装与系统整合</span><span class="text-purple-300 font-bold">增长引擎</span></div>
+     <div class="progress-track"><div class="progress-fill" style="width:72%"></div></div>
+     <p class="text-xs text-slate-500 mt-2">CoWoS、SoIC等技术支持GPU、HBM与复杂芯片系统整合。</p>
+    </div>
+   </div>
+   <div class="mt-7 p-4 rounded-xl bg-slate-800/50">
+    <div class="text-xs text-slate-500 mb-2">商业模式的本质</div>
+    <p class="text-sm leading-7 text-slate-300">客户承担芯片设计和市场竞争风险，台积电通过制造工艺、产能利用率、良率提升和资本投入获取制造服务收入。</p>
+   </div>
+  </div>
+ </div>
+
+ <div class="grid md:grid-cols-3 gap-4 mt-5">
+  <div class="card card-interactive">
+   <i data-lucide="factory" class="text-blue-400 mb-4"></i>
+   <h3 class="font-bold mb-2">资本密集型平台</h3>
+   <p class="text-xs text-slate-400 leading-6">通过长期巨额资本支出建设先进晶圆厂，形成竞争者难以复制的产能、工艺和规模优势。</p>
+  </div>
+  <div class="card card-interactive">
+   <i data-lucide="users" class="text-purple-400 mb-4"></i>
+   <h3 class="font-bold mb-2">全球客户协同</h3>
+   <p class="text-xs text-slate-400 leading-6">与客户从架构、设计规则、工艺验证到量产深度协同，提前参与下一代芯片开发。</p>
+  </div>
+  <div class="card card-interactive">
+   <i data-lucide="repeat" class="text-green-400 mb-4"></i>
+   <h3 class="font-bold mb-2">规模与技术循环</h3>
+   <p class="text-xs text-slate-400 leading-6">更多客户带来更大产能规模，规模支持更高研发投入，研发领先进一步吸引高价值客户。</p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="moat">
+ <div class="section-kicker">02 / COMPETITIVE MOAT</div>
+ <h2 class="section-title">竞争优势与护城河：技术、规模、生态的复合壁垒</h2>
+ <p class="section-desc">台积电最重要的竞争优势不是单一制程节点，而是工艺研发、量产良率、客户协同、资本投入与先进封装构成的系统性优势。评分为研究判断，10分代表极强。</p>
+
+ <div class="grid lg:grid-cols-5 gap-5 mt-8">
+  <div class="lg:col-span-3 card">
+   <h3 class="font-bold mb-6">护城河综合评分</h3>
+   <div id="moatBars">
+    <div class="moat-bar"><div class="name">技术与工艺领先</div><div class="progress-track"><div class="progress-fill" style="width:98%"></div></div><div class="score">9.8</div></div>
+    <div class="moat-bar"><div class="name">规模经济优势</div><div class="progress-track"><div class="progress-fill" style="width:98%"></div></div><div class="score">9.8</div></div>
+    <div class="moat-bar"><div class="name">客户转换成本</div><div class="progress-track"><div class="progress-fill" style="width:95%"></div></div><div class="score">9.5</div></div>
+    <div class="moat-bar"><div class="name">客户生态网络</div><div class="progress-track"><div class="progress-fill" style="width:93%"></div></div><div class="score">9.3</div></div>
+    <div class="moat-bar"><div class="name">专利与自有技术</div><div class="progress-track"><div class="progress-fill" style="width:92%"></div></div><div class="score">9.2</div></div>
+    <div class="moat-bar"><div class="name">品牌与市场信任</div><div class="progress-track"><div class="progress-fill" style="width:96%"></div></div><div class="score">9.6</div></div>
+    <div class="moat-bar"><div class="name">成本与制造效率</div><div class="progress-track"><div class="progress-fill" style="width:91%"></div></div><div class="score">9.1</div></div>
+   </div>
+   <div class="mt-7 p-4 bg-blue-500/10 rounded-xl border border-blue-400/20">
+    <div class="text-xs text-slate-400">综合护城河研究评分</div>
+    <div class="flex items-end gap-2 mt-1"><span class="text-4xl font-extrabold text-blue-300">9.5</span><span class="text-sm text-slate-500 mb-1">/ 10</span></div>
+    <p class="text-xs text-slate-400 mt-2">属于全球半导体产业中极具竞争壁垒的制造平台，但地缘政治与资本开支风险不应被评分掩盖。</p>
+   </div>
+  </div>
+  <div class="lg:col-span-2 card">
+   <h3 class="font-bold mb-5">护城河结构</h3>
+   <div class="space-y-5">
+    <div><div class="font-semibold text-sm text-blue-300 mb-1">第一层：技术壁垒</div><p class="text-xs text-slate-400 leading-6">先进制程需要长期研发、设备协同、工艺整合与量产经验。技术领先必须转化为良率和单位成本优势。</p></div>
+    <div><div class="font-semibold text-sm text-purple-300 mb-1">第二层：客户锁定</div><p class="text-xs text-slate-400 leading-6">更换代工厂涉及重新设计、流片验证、IP适配、软件生态及产品上市时间，转换成本高。</p></div>
+    <div><div class="font-semibold text-sm text-green-300 mb-1">第三层：规模经济</div><p class="text-xs text-slate-400 leading-6">大规模产能分摊研发和设备成本，良率学习曲线形成持续成本优势。</p></div>
+    <div><div class="font-semibold text-sm text-amber-300 mb-1">第四层：产业生态</div><p class="text-xs text-slate-400 leading-6">客户、EDA、IP、设备与材料供应商围绕工艺平台形成长期协作关系。</p></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="grid md:grid-cols-2 gap-5 mt-5">
+  <div class="card">
+   <h3 class="font-bold mb-4">先进制程的技术优势</h3>
+   <div class="text-xs text-slate-500 mb-4">2026年第三季度晶圆营收结构</div>
+   <div class="space-y-4">
+    <div><div class="flex justify-between text-sm mb-2"><span>2nm</span><b class="text-blue-300">8%</b></div><div class="progress-track"><div class="progress-fill" style="width:8%"></div></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>3nm</span><b class="text-blue-300">33%</b></div><div class="progress-track"><div class="progress-fill" style="width:33%"></div></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>5nm</span><b class="text-blue-300">28%</b></div><div class="progress-track"><div class="progress-fill" style="width:28%"></div></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>7nm</span><b class="text-blue-300">10%</b></div><div class="progress-track"><div class="progress-fill" style="width:10%"></div></div></div>
+    <div class="text-xs text-slate-500">先进技术（7nm及更先进）合计占晶圆营收79%。</div>
+   </div>
+  </div>
+  <div class="card">
+   <h3 class="font-bold mb-4">主要竞争者比较</h3>
+   <div class="overflow-x-auto">
+    <table>
+     <thead><tr><th>公司</th><th>核心定位</th><th>竞争判断</th></tr></thead>
+     <tbody>
+      <tr><td class="font-bold">TSMC</td><td>纯晶圆代工</td><td class="positive">先进制造领先</td></tr>
+      <tr><td>Samsung</td><td>综合半导体制造</td><td>先进制程竞争者</td></tr>
+      <tr><td>Intel</td><td>IDM及代工</td><td>长期潜在挑战者</td></tr>
+      <tr><td>SMIC</td><td>晶圆代工</td><td>成熟及部分先进节点竞争</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-slate-500 mt-3">各公司业务结构、制程定义、客户结构和财务口径不同，不宜仅凭节点名称进行简单比较。</p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="industry">
+ <div class="section-kicker">03 / INDUSTRY LANDSCAPE</div>
+ <h2 class="section-title">行业趋势：AI算力基础设施驱动先进制造扩张</h2>
+ <p class="section-desc">半导体产业正从传统PC和智能手机周期，逐步进入AI数据中心、先进封装、高性能计算和边缘智能共同驱动的新阶段。台积电的核心机会在于先进逻辑芯片需求和系统级封装复杂度同步上升。</p>
+
+ <div class="grid md:grid-cols-2 gap-5 mt-8">
+  <div class="card card-interactive">
+   <div class="flex justify-between items-center mb-4"><i data-lucide="brain-circuit" class="text-blue-400 w-7 h-7"></i><span class="tag tag-green">强劲增长</span></div>
+   <h3 class="text-lg font-bold mb-2">AI训练与推理需求</h3>
+   <p class="text-sm text-slate-400 leading-7">大型模型训练、推理服务、企业级AI应用推动GPU、ASIC和高带宽存储需求，增加先进逻辑芯片与封装产能需求。</p>
+   <div class="text-xs text-blue-300 mt-4">核心传导：AI资本开支 → 加速器订单 → 晶圆制造 → 先进封装</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="flex justify-between items-center mb-4"><i data-lucide="layers-3" class="text-purple-400 w-7 h-7"></i><span class="tag tag-green">结构性机会</span></div>
+   <h3 class="text-lg font-bold mb-2">先进封装成为关键瓶颈</h3>
+   <p class="text-sm text-slate-400 leading-7">芯片性能不再仅由单颗晶体管决定，HBM、Chiplet、CoWoS与SoIC等技术正在改变系统性能和制造价值分配。</p>
+   <div class="text-xs text-purple-300 mt-4">核心传导：芯片复杂度提升 → 封装价值量提高</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="flex justify-between items-center mb-4"><i data-lucide="cpu" class="text-green-400 w-7 h-7"></i><span class="tag tag-blue">长期成长</span></div>
+   <h3 class="text-lg font-bold mb-2">2nm及后续制程迭代</h3>
+   <p class="text-sm text-slate-400 leading-7">晶体管结构、供电方式、工艺整合与设计规则不断进化，先进制程研发和量产能力决定未来高端芯片竞争格局。</p>
+   <div class="text-xs text-green-300 mt-4">核心传导：节点升级 → 性能功耗改善 → 客户产品升级</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="flex justify-between items-center mb-4"><i data-lucide="globe" class="text-amber-400 w-7 h-7"></i><span class="tag tag-gold">结构调整</span></div>
+   <h3 class="text-lg font-bold mb-2">全球化产能布局</h3>
+   <p class="text-sm text-slate-400 leading-7">美国、日本和欧洲等地区强化本地半导体供应链。多地制造提高供应链韧性，但也可能增加成本和管理复杂度。</p>
+   <div class="text-xs text-amber-300 mt-4">核心传导：地缘政策 → 资本配置 → 成本结构与利润率</div>
+  </div>
+ </div>
+
+ <div class="card mt-5">
+  <h3 class="font-bold mb-5">产业增长逻辑与关键观察指标</h3>
+  <div class="grid md:grid-cols-4 gap-4">
+   <div class="p-4 bg-slate-800/50 rounded-xl"><div class="text-blue-300 font-bold mb-2">AI需求</div><p class="text-xs text-slate-400 leading-6">云厂商资本开支、GPU及ASIC订单、推理需求。</p></div>
+   <div class="p-4 bg-slate-800/50 rounded-xl"><div class="text-purple-300 font-bold mb-2">制造技术</div><p class="text-xs text-slate-400 leading-6">2nm量产良率、3nm扩产、下一代节点研发。</p></div>
+   <div class="p-4 bg-slate-800/50 rounded-xl"><div class="text-green-300 font-bold mb-2">封装供给</div><p class="text-xs text-slate-400 leading-6">CoWoS产能、HBM供应、封装交付周期。</p></div>
+   <div class="p-4 bg-slate-800/50 rounded-xl"><div class="text-amber-300 font-bold mb-2">资本回报</div><p class="text-xs text-slate-400 leading-6">资本开支、产能利用率、毛利率及自由现金流。</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="financial">
+ <div class="section-kicker">04 / FINANCIAL PERFORMANCE</div>
+ <h2 class="section-title">财务分析：增长、盈利能力与现金流质量</h2>
+ <p class="section-desc">台积电的财务特征是高资本开支、高技术投入、高毛利率与强劲经营现金流并存。2025年公司盈利显著增长，2026年前十个月营收继续加速，第三季度利润率进一步体现先进制程和产品结构的优势。</p>
+
+ <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+  <div class="card"><div class="text-xs text-slate-500">2025年营收</div><div class="metric text-blue-300 mt-2">3,809</div><div class="text-xs text-slate-500 mt-1">NT$十亿</div><div class="positive text-xs mt-2">+31.6% YoY</div></div>
+  <div class="card"><div class="text-xs text-slate-500">2025年净利润</div><div class="metric text-green-300 mt-2">1,718</div><div class="text-xs text-slate-500 mt-1">NT$十亿</div><div class="positive text-xs mt-2">+46.4% YoY</div></div>
+  <div class="card"><div class="text-xs text-slate-500">2025年自由现金流</div><div class="metric text-purple-300 mt-2">1,003</div><div class="text-xs text-slate-500 mt-1">NT$十亿</div><div class="positive text-xs mt-2">+15.2% YoY</div></div>
+  <div class="card"><div class="text-xs text-slate-500">2025年ROE</div><div class="metric text-amber-300 mt-2">35.4%</div><div class="text-xs text-slate-500 mt-1">股东权益回报率</div><div class="positive text-xs mt-2">同比提升5.1个百分点</div></div>
+ </div>
+
+ <div class="card mt-5">
+  <div class="flex flex-wrap justify-between items-center gap-3 mb-5">
+   <div><h3 class="font-bold">近五年财务表现</h3><p class="text-xs text-slate-500 mt-1">单位：NT$十亿，2021—2025财年</p></div>
+   <span class="tag tag-blue">年度审计口径</span>
+  </div>
+  <div class="overflow-x-auto">
+   <table>
+    <thead><tr><th>财务指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr></thead>
+    <tbody>
+     <tr><td>营业收入</td><td>1,587</td><td>2,264</td><td>2,162</td><td>2,894</td><td class="font-bold text-blue-300">3,809</td></tr>
+     <tr><td>净利润</td><td>597</td><td>1,017</td><td>838</td><td>1,173</td><td class="font-bold text-green-300">1,718</td></tr>
+     <tr><td>毛利率</td><td>51.6%</td><td>59.6%</td><td>54.4%</td><td>56.1%</td><td class="positive">59.9%</td></tr>
+     <tr><td>营业利润率</td><td>40.9%</td><td>49.5%</td><td>42.6%</td><td>45.7%</td><td class="positive">50.8%</td></tr>
+     <tr><td>净利率</td><td>37.7%</td><td>44.9%</td><td>38.8%</td><td>40.5%</td><td class="positive">45.1%</td></tr>
+     <tr><td>经营现金流</td><td>1,112</td><td>1,611</td><td>1,242</td><td>1,826</td><td>2,275</td></tr>
+     <tr><td>资本开支</td><td>839</td><td>1,083</td><td>950</td><td>956</td><td>1,272</td></tr>
+     <tr><td>自由现金流</td><td>273</td><td>528</td><td>292</td><td>870</td><td>1,003</td></tr>
+     <tr><td>ROE</td><td>约30%</td><td>约40%</td><td>约26%</td><td>30.3%</td><td class="positive">35.4%</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-slate-600 mt-3">注：金额为新台币十亿，四舍五入。资本开支按现金流量表资本支出数据整理；自由现金流为经营现金流减资本开支。ROE历史数据为年度报告及相关财务披露的约数。</p>
+ </div>
+
+ <div class="grid lg:grid-cols-2 gap-5 mt-5">
+  <div class="card">
+   <h3 class="font-bold mb-2">营业收入与净利润趋势</h3>
+   <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
+  </div>
+  <div class="card">
+   <h3 class="font-bold mb-2">毛利率与净利率趋势</h3>
+   <div class="chart-wrap"><canvas id="marginChart"></canvas></div>
+  </div>
+ </div>
+
+ <div class="card mt-5">
+  <h3 class="font-bold mb-5">2026年经营表现：增长仍在加速</h3>
+  <div class="grid md:grid-cols-3 gap-4">
+   <div class="p-4 bg-slate-800/50 rounded-xl">
+    <div class="text-xs text-slate-500 mb-2">2026年第三季度营收</div>
+    <div class="text-2xl font-extrabold text-blue-300">US$46.72B</div>
+    <div class="text-xs positive mt-2">同比增长41.2%</div>
+    <div class="text-xs text-slate-500 mt-2">环比增长16.2%</div>
+   </div>
+   <div class="p-4 bg-slate-800/50 rounded-xl">
+    <div class="text-xs text-slate-500 mb-2">2026年第三季度净利润</div>
+    <div class="text-2xl font-extrabold text-green-300">NT$763.06B</div>
+    <div class="text-xs positive mt-2">同比增长68.7%</div>
+    <div class="text-xs text-slate-500 mt-2">稀释后EPS：NT$29.43</div>
+   </div>
+   <div class="p-4 bg-slate-800/50 rounded-xl">
+    <div class="text-xs text-slate-500 mb-2">2026年1—10月营收</div>
+    <div class="text-2xl font-extrabold text-purple-300">NT$4.49T</div>
+    <div class="text-xs positive mt-2">同比增长43.3%</div>
+    <div class="text-xs text-slate-500 mt-2">10月单月同比增长59.7%</div>
+   </div>
+  </div>
+  <div class="overflow-x-auto mt-5">
+   <table>
+    <thead><tr><th>月份</th><th>营收（NT$十亿）</th><th>同比增长</th></tr></thead>
+    <tbody>
+     <tr><td>2026年1月</td><td>401.26</td><td class="positive">36.8%</td></tr>
+     <tr><td>2026年2月</td><td>317.66</td><td class="positive">22.2%</td></tr>
+     <tr><td>2026年3月</td><td>415.19</td><td class="positive">45.2%</td></tr>
+     <tr><td>2026年4月</td><td>410.73</td><td class="positive">17.5%</td></tr>
+     <tr><td>2026年5月</td><td>416.98</td><td class="positive">30.1%</td></tr>
+     <tr><td>2026年6月</td><td>442.68</td><td class="positive">67.9%</td></tr>
+     <tr><td>2026年7月</td><td>467.58</td><td class="positive">44.7%</td></tr>
+     <tr><td>2026年8月</td><td>514.81</td><td class="positive">53.3%</td></tr>
+     <tr><td>2026年9月</td><td>511.86</td><td class="positive">54.6%</td></tr>
+     <tr><td>2026年10月</td><td class="font-bold text-blue-300">586.89</td><td class="positive font-bold">59.7%</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-slate-600 mt-3">2026年月度营收为公司公告的未经审计数据。10月营收于2026年11月10日公布。</p>
+ </div>
+
+ <div class="grid lg:grid-cols-2 gap-5 mt-5">
+  <div class="card">
+   <h3 class="font-bold mb-4">资产负债表：净现金优势</h3>
+   <div class="space-y-4">
+    <div class="flex justify-between text-sm"><span class="text-slate-400">2025年末现金及有价证券</span><b>NT$3,068.6B</b></div>
+    <div class="flex justify-between text-sm"><span class="text-slate-400">2025年末总债务</span><b>约NT$1,068.4B</b></div>
+    <div class="flex justify-between text-sm"><span class="text-slate-400">净现金</span><b class="text-green-300">约NT$2,000B</b></div>
+    <div class="progress-track"><div class="progress-fill" style="width:65%"></div></div>
+    <p class="text-xs text-slate-500 leading-6">公司保持较大规模的净现金储备，有利于承担下一代制程研发、晶圆厂建设和海外布局所需的巨额投资。</p>
+   </div>
+  </div>
+  <div class="card">
+   <h3 class="font-bold mb-4">财务质量评价</h3>
+   <div class="space-y-4">
+    <div><div class="flex justify-between text-sm mb-2"><span>盈利能力</span><span class="text-green-300">优秀</span></div><div class="progress-track"><div class="progress-fill" style="width:96%"></div></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>现金流创造</span><span class="text-green-300">优秀</span></div><div class="progress-track"><div class="progress-fill" style="width:94%"></div></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>资产负债安全性</span><span class="text-green-300">优秀</span></div><div class="progress-track"><div class="progress-fill" style="width:95%"></div></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>资本开支效率</span><span class="text-amber-300">良好但需跟踪</span></div><div class="progress-track"><div class="progress-fill" style="width:78%"></div></div></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="card mt-5">
+  <h3 class="font-bold mb-3">财务分析核心结论</h3>
+  <p class="text-sm text-slate-300 leading-8">台积电的财务竞争力不仅体现在收入增长，还体现在高毛利率、较强经营现金流和净现金资产负债表。2025年自由现金流超过NT$1万亿，说明公司在高资本投入背景下仍能创造大量现金。但AI需求推动的高增长需要持续转化为有效产能和资本回报，未来必须同时观察资本开支增长、海外工厂成本和先进制程良率。</p>
+ </div>
+</section>
+
+<section class="section" id="valuation">
+ <div class="section-kicker">05 / VALUATION</div>
+ <h2 class="section-title">估值分析：卓越公司与合理价格并非同一概念</h2>
+ <p class="section-desc">台积电的估值核心在于市场愿意为未来AI基础设施需求、先进制程份额和长期现金流支付多少溢价。公司质量极高，但股价仍然受增长预期、利率和地缘风险影响。</p>
+
+ <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+  <div class="card"><div class="text-xs text-slate-500">参考股价</div><div class="metric text-blue-300">$370.50</div><div class="text-xs text-slate-500 mt-2">NYSE: TSM，11月23日盘中参考</div></div>
+  <div class="card"><div class="text-xs text-slate-500">市盈率 TTM</div><div class="metric">约25.0x</div><div class="text-xs text-slate-500 mt-2">第三方市场数据</div></div>
+  <div class="card"><div class="text-xs text-slate-500">Forward P/E</div><div class="metric text-purple-300">约17.7x</div><div class="text-xs text-slate-500 mt-2">基于预期盈利</div></div>
+  <div class="card"><div class="text-xs text-slate-500">市值参考</div><div class="metric text-amber-300">$1.86T</div><div class="text-xs text-slate-500 mt-2">美元口径，近似市场数据</div></div>
+ </div>
+
+ <div class="grid lg:grid-cols-2 gap-5 mt-5">
+  <div class="card">
+   <h3 class="font-bold mb-4">估值方法一：历史与预期市盈率</h3>
+   <div class="overflow-x-auto">
+    <table>
+     <thead><tr><th>估值指标</th><th>参考水平</th><th>解读</th></tr></thead>
+     <tbody>
+      <tr><td>当前TTM P/E</td><td>约25x</td><td>反映高质量溢价</td></tr>
+      <tr><td>Forward P/E</td><td>约17.7x</td><td>隐含盈利继续增长</td></tr>
+      <tr><td>保守情景</td><td>18x</td><td>AI增长预期降温</td></tr>
+      <tr><td>基准情景</td><td>22x</td><td>增长与估值平衡</td></tr>
+      <tr><td>乐观情景</td><td>26x</td><td>先进制程持续超预期</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-slate-500 mt-3">估值倍数为研究情景假设，不是市场已经实现的交易价格或机构一致预期。</p>
+  </div>
+  <div class="card">
+   <h3 class="font-bold mb-4">估值方法二：DCF现金流折现</h3>
+   <p class="text-xs text-slate-500 leading-6 mb-4">采用未来五年自由现金流增长、折现率和永续增长率构建情景模型。以下为研究假设，不等于公司官方盈利预测。</p>
+   <div class="space-y-4">
+    <div><div class="flex justify-between text-sm"><span>保守情景</span><b class="text-amber-300">WACC 9.5%</b></div><p class="text-xs text-slate-500 mt-1">FCF增长率约8%，永续增长率3%。</p></div>
+    <div><div class="flex justify-between text-sm"><span>基准情景</span><b class="text-blue-300">WACC 8.5%</b></div><p class="text-xs text-slate-500 mt-1">FCF增长率约14%，永续增长率3.5%。</p></div>
+    <div><div class="flex justify-between text-sm"><span>乐观情景</span><b class="text-green-300">WACC 7.5%</b></div><p class="text-xs text-slate-500 mt-1">FCF增长率约20%，永续增长率4%。</p></div>
+   </div>
+   <div class="mt-5 p-4 rounded-xl bg-slate-800/50">
+    <div class="text-xs text-slate-500">DCF模型需要重点验证</div>
+    <p class="text-sm text-slate-300 leading-7 mt-2">先进制程投资周期、海外建厂的资本效率、折旧费用、现金税率、长期自由现金流转化率，以及资本成本。</p>
+   </div>
+  </div>
+ </div>
+
+ <div class="card mt-5">
+  <h3 class="font-bold mb-4">情景估值：以2027年预期EPS为基础</h3>
+  <p class="text-xs text-slate-500 mb-4">示例模型假设：2027年ADR口径EPS分别为17、19、21美元，估值倍数分别为18、22、26倍。仅用于敏感性分析，不构成正式盈利预测。</p>
+  <div class="overflow-x-auto">
+   <table>
+    <thead><tr><th>情景</th><th>假设EPS</th><th>估值倍数</th><th>理论价格</th><th>相对$370.50</th></tr></thead>
+    <tbody>
+     <tr><td>保守</td><td>$17</td><td>18x</td><td>$306</td><td class="negative">-17.4%</td></tr>
+     <tr><td>基准</td><td>$19</td><td>22x</td><td>$418</td><td class="positive">+12.8%</td></tr>
+     <tr><td>乐观</td><td>$21</td><td>26x</td><td>$546</td><td class="positive">+47.4%</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="mt-5">
+   <h4 class="font-semibold text-sm mb-3">理论价格区间</h4>
+   <div class="relative h-12 rounded-xl bg-slate-800 overflow-hidden">
+    <div class="absolute inset-y-0 left-0 w-[33.3%] bg-amber-500/50"></div>
+    <div class="absolute inset-y-0 left-[33.3%] w-[37.5%] bg-blue-500/50"></div>
+    <div class="absolute inset-y-0 left-[70.8%] right-0 bg-green-500/50"></div>
+    <div class="absolute inset-0 flex justify-around items-center text-xs font-bold">
+     <span>$306</span><span>$418</span><span>$546</span>
+    </div>
+   </div>
+   <div class="flex justify-between text-[10px] text-slate-500 mt-2"><span>保守</span><span>基准</span><span>乐观</span></div>
+  </div>
+ </div>
+
+ <div class="card mt-5">
+  <h3 class="font-bold mb-4">机构观点与估值参照</h3>
+  <div class="grid md:grid-cols-3 gap-4">
+   <div class="p-4 rounded-xl bg-slate-800/50">
+    <div class="text-xs text-slate-500 mb-2">分析师平均目标价</div>
+    <div class="text-2xl font-bold text-green-300">$586.69</div>
+    <div class="text-xs text-slate-400 mt-2">第三方汇总的21位分析师样本</div>
+   </div>
+   <div class="p-4 rounded-xl bg-slate-800/50">
+    <div class="text-xs text-slate-500 mb-2">目标价区间</div>
+    <div class="text-2xl font-bold">$440—$1,000</div>
+    <div class="text-xs text-slate-400 mt-2">机构预测分散度较大</div>
+   </div>
+   <div class="p-4 rounded-xl bg-slate-800/50">
+    <div class="text-xs text-slate-500 mb-2">综合评级</div>
+    <div class="text-2xl font-bold text-green-300">Strong Buy</div>
+    <div class="text-xs text-slate-400 mt-2">第三方分析师汇总口径</div>
+   </div>
+  </div>
+  <p class="text-xs text-slate-500 mt-4">机构目标价来自第三方汇总页面，可能随股价、报告更新和汇率变化而改变，不代表机构对未来收益的保证。不同市场报价时间也可能不一致。</p>
+ </div>
+
+ <div class="card mt-5 border border-blue-400/20">
+  <div class="flex gap-3 items-start">
+   <i data-lucide="scale" class="text-blue-300 mt-1"></i>
+   <div>
+    <h3 class="font-bold mb-2">估值结论</h3>
+    <p class="text-sm text-slate-300 leading-8">台积电拥有较强的基本面支撑，但股价已包含相当程度的AI增长预期。以当前约25倍TTM市盈率和约17.7倍预期市盈率观察，估值并非明显低估。基准情景仍有一定空间，但保守情景显示盈利预期或估值倍数一旦下修，股价回撤可能较为显著。更适合采用分批配置、关注盈利兑现与估值安全边际的方式，而不是单纯追逐行业热度。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="outlook">
+ <div class="section-kicker">06 / FUTURE OUTLOOK</div>
+ <h2 class="section-title">未来12—24个月：增长引擎与战略变量</h2>
+ <p class="section-desc">2027—2028年的核心观察重点是AI需求能否持续转化为先进制程订单、2nm能否顺利爬坡、先进封装能否缓解供给瓶颈，以及全球制造布局能否保持合理的资本回报。</p>
+
+ <div class="grid lg:grid-cols-2 gap-5 mt-8">
+  <div class="card">
+   <h3 class="font-bold mb-5">关键增长驱动因素</h3>
+   <div class="timeline">
+    <div class="timeline-item">
+     <div class="flex justify-between gap-2"><b class="text-sm">2nm量产与客户导入</b><span class="tag tag-green">高重要性</span></div>
+     <p class="text-xs text-slate-400 leading-6 mt-2">2nm节点贡献新一轮技术升级机会，需重点观察良率、产能利用率、产品结构和客户订单。</p>
+    </div>
+    <div class="timeline-item">
+     <div class="flex justify-between gap-2"><b class="text-sm">CoWoS与先进封装扩产</b><span class="tag tag-green">高重要性</span></div>
+     <p class="text-xs text-slate-400 leading-6 mt-2">AI芯片复杂度提升，先进封装成为供应链核心瓶颈。产能释放可能带来新的收入增长和价值量提升。</p>
+    </div>
+    <div class="timeline-item">
+     <div class="flex justify-between gap-2"><b class="text-sm">美国、日本及其他地区布局</b><span class="tag tag-gold">中高重要性</span></div>
+     <p class="text-xs text-slate-400 leading-6 mt-2">海外制造布局增强客户供应链韧性，但需要持续跟踪当地运营成本、补贴、人才和良率。</p>
+    </div>
+    <div class="timeline-item">
+     <div class="flex justify-between gap-2"><b class="text-sm">AI ASIC与定制芯片增长</b><span class="tag tag-green">高重要性</span></div>
+     <p class="text-xs text-slate-400 leading-6 mt-2">云厂商自研芯片、网络处理器及高性能计算芯片有望增加先进制程需求来源。</p>
+    </div>
+   </div>
+  </div>
+  <div class="card">
+   <h3 class="font-bold mb-5">未来经营情景</h3>
+   <div class="space-y-5">
+    <div class="p-4 rounded-xl bg-green-500/5 border border-green-500/20">
+     <div class="flex justify-between"><b class="text-green-300">乐观情景</b><span class="tag tag-green">Bull Case</span></div>
+     <p class="text-xs text-slate-400 leading-6 mt-3">AI基础设施投入继续超预期，先进制程与封装产能供不应求，2nm爬坡顺利，海外扩产成本得到控制。</p>
+     <div class="text-xs text-green-300 mt-3">结果：收入高增长，利润率保持韧性。</div>
+    </div>
+    <div class="p-4 rounded-xl bg-blue-500/5 border border-blue-500/20">
+     <div class="flex justify-between"><b class="text-blue-300">基准情景</b><span class="tag tag-blue">Base Case</span></div>
+     <p class="text-xs text-slate-400 leading-6 mt-3">AI需求持续增长但增速逐渐正常化，先进节点持续迭代，资本开支与折旧同步上升。</p>
+     <div class="text-xs text-blue-300 mt-3">结果：收入与利润稳健增长，估值逐步回归盈利。</div>
+    </div>
+    <div class="p-4 rounded-xl bg-rose-500/5 border border-rose-500/20">
+     <div class="flex justify-between"><b class="text-rose-300">悲观情景</b><span class="tag tag-red">Bear Case</span></div>
+     <p class="text-xs text-slate-400 leading-6 mt-3">AI资本开支回落，客户削减订单，竞争者技术追赶，地缘冲突或海外成本显著侵蚀利润。</p>
+     <div class="text-xs text-rose-300 mt-3">结果：增长放缓、估值收缩、自由现金流承压。</div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="card mt-5">
+  <h3 class="font-bold mb-4">未来季度重点跟踪指标</h3>
+  <div class="overflow-x-auto">
+   <table>
+    <thead><tr><th>跟踪指标</th><th>观察方向</th><th>积极信号</th><th>警惕信号</th></tr></thead>
+    <tbody>
+     <tr><td>月度营收</td><td>同比与环比</td><td class="positive">持续超预期增长</td><td class="negative">连续放缓</td></tr>
+     <tr><td>毛利率</td><td>先进节点及成本结构</td><td class="positive">维持高位</td><td class="negative">持续下滑</td></tr>
+     <tr><td>2nm量产</td><td>良率及客户导入</td><td class="positive">产能顺利爬坡</td><td class="negative">良率或进度延迟</td></tr>
+     <tr><td>先进封装</td><td>CoWoS产能及订单</td><td class="positive">供需持续健康</td><td class="negative">客户订单取消</td></tr>
+     <tr><td>资本开支</td><td>投资回报与折旧</td><td class="positive">资本效率改善</td><td class="negative">投入增长快于回报</td></tr>
+     <tr><td>自由现金流</td><td>经营现金流减资本开支</td><td class="positive">持续增长</td><td class="negative">持续收缩</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="risk">
+ <div class="section-kicker">07 / RISK ANALYSIS</div>
+ <h2 class="section-title">风险因素：不可忽视的结构性挑战</h2>
+ <p class="section-desc">台积电拥有极强的产业竞争力，但其商业模式也面临资本密集度、地缘政治、客户集中度、技术迭代和行业周期等多重风险。风险排序按潜在影响和长期重要性综合判断。</p>
+
+ <div class="space-y-4 mt-8">
+  <div class="card card-interactive">
+   <div class="flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3"><span class="text-2xl font-extrabold text-rose-400">01</span><h3 class="font-bold">地缘政治与台海风险</h3></div>
+    <span class="tag tag-red">极高风险</span>
+   </div>
+   <p class="text-sm text-slate-400 leading-7 mt-3">台积电核心制造资产集中在台湾，任何地区安全事件、出口管制升级、供应链中断或国际贸易限制，都可能对生产、客户交付和估值造成重大影响。该风险具有非线性特征，不能仅用传统财务指标衡量。</p>
+   <div class="text-xs text-slate-500 mt-3">观察指标：政策变化、国际关系、供应链分散程度、海外产能占比。</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3"><span class="text-2xl font-extrabold text-rose-400">02</span><h3 class="font-bold">AI需求与客户资本开支周期</h3></div>
+    <span class="tag tag-red">高风险</span>
+   </div>
+   <p class="text-sm text-slate-400 leading-7 mt-3">AI基础设施投资规模巨大，若云服务商资本开支增速下降、AI商业化回报不及预期或客户削减采购，先进制程和先进封装需求可能出现周期性调整。</p>
+   <div class="text-xs text-slate-500 mt-3">观察指标：云厂商资本开支、GPU订单、AI服务收入、客户库存。</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3"><span class="text-2xl font-extrabold text-amber-400">03</span><h3 class="font-bold">先进制程技术竞争</h3></div>
+    <span class="tag tag-gold">高风险</span>
+   </div>
+   <p class="text-sm text-slate-400 leading-7 mt-3">Samsung和Intel持续推进先进制造技术。若竞争者在良率、成本或客户导入方面实现突破，台积电可能面临价格压力或市场份额变化。</p>
+   <div class="text-xs text-slate-500 mt-3">观察指标：竞争对手量产进度、客户订单分配、良率及成本。</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3"><span class="text-2xl font-extrabold text-amber-400">04</span><h3 class="font-bold">资本开支与折旧压力</h3></div>
+    <span class="tag tag-gold">中高风险</span>
+   </div>
+   <p class="text-sm text-slate-400 leading-7 mt-3">先进晶圆厂投资规模不断扩大，海外工厂的建设、人员和运营成本可能高于台湾本土。若产能利用率低于预期，折旧和固定成本将压缩毛利率。</p>
+   <div class="text-xs text-slate-500 mt-3">观察指标：资本开支、折旧、产能利用率、自由现金流。</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3"><span class="text-2xl font-extrabold text-amber-400">05</span><h3 class="font-bold">客户集中与产业链依赖</h3></div>
+    <span class="tag tag-gold">中高风险</span>
+   </div>
+   <p class="text-sm text-slate-400 leading-7 mt-3">高端芯片客户对先进制程需求集中，关键客户订单变化可能对产能安排和营收产生较大影响。同时，公司依赖关键设备、材料和技术供应商。</p>
+   <div class="text-xs text-slate-500 mt-3">观察指标：前五大客户收入占比、供应商集中度、关键设备交付。</div>
+  </div>
+  <div class="card card-interactive">
+   <div class="flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3"><span class="text-2xl font-extrabold text-blue-400">06</span><h3 class="font-bold">汇率、能源与自然灾害</h3></div>
+    <span class="tag tag-blue">中等风险</span>
+   </div>
+   <p class="text-sm text-slate-400 leading-7 mt-3">美元收入与新台币成本之间的汇率变化、能源和水资源供应、地震及其他自然灾害可能影响生产成本和交付稳定性。</p>
+   <div class="text-xs text-slate-500 mt-3">观察指标：汇率、能源价格、水资源保障、工厂运营连续性。</div>
+  </div>
+ </div>
+
+ <div class="card mt-5">
+  <h3 class="font-bold mb-3">风险管理的核心逻辑</h3>
+  <p class="text-sm text-slate-300 leading-8">投资者应将台积电的基本面风险与股价估值风险分开。即使技术领先和订单增长没有发生变化，宏观利率、地缘政治溢价和市场风险偏好也可能导致估值倍数大幅波动。对于长期投资者，仓位管理和安全边际比单纯预测短期股价更加重要。</p>
+ </div>
+</section>
+
+<section class="section" id="longshort">
+ <div class="section-kicker">08 / BULL & BEAR CASE</div>
+ <h2 class="section-title">机构多空视角：AI增长确定性与估值风险的博弈</h2>
+ <p class="section-desc">对台积电的投资分歧，主要不是其是否具备优秀的制造能力，而是AI需求能够持续多久、技术领先能否兑现为利润，以及市场愿意为这些未来利润支付多少估值。</p>
+
+ <div class="grid lg:grid-cols-2 gap-5 mt-8">
+  <div class="card border border-green-500/20">
+   <div class="flex justify-between items-center mb-5">
+    <div class="flex items-center gap-3"><i data-lucide="trending-up" class="text-green-400 w-6 h-6"></i><h3 class="text-lg font-bold text-green-300">看多逻辑</h3></div>
+    <span class="tag tag-green">Bull Case</span>
+   </div>
+   <div class="space-y-5">
+    <div><b class="text-sm">1. AI算力需求长期增长</b><p class="text-xs text-slate-400 leading-6 mt-2">训练与推理需求推动高性能芯片、先进制程和封装技术持续升级，台积电处于产业链关键位置。</p></div>
+    <div><b class="text-sm">2. 技术领先形成持续溢价</b><p class="text-xs text-slate-400 leading-6 mt-2">先进制程研发和大规模量产能力难以复制，客户更换供应商的成本高，增强长期客户黏性。</p></div>
+    <div><b class="text-sm">3. 盈利与现金流强劲</b><p class="text-xs text-slate-400 leading-6 mt-2">2025年营收、净利润和自由现金流均保持增长，2026年前十个月营收同比增长43.3%。</p></div>
+    <div><b class="text-sm">4. 先进封装提升价值量</b><p class="text-xs text-slate-400 leading-6 mt-2">芯片系统整合复杂度提高，使先进封装成为新的增长来源，并可能提高客户对台积电平台的依赖程度。</p></div>
+   </div>
+   <div class="mt-6 p-4 bg-green-500/5 rounded-xl">
+    <div class="text-xs text-green-300 font-bold">看多核心命题</div>
+    <p class="text-sm text-slate-300 mt-2 leading-7">台积电有望成为AI基础设施长期建设周期中最重要的制造受益者之一，未来盈利增长可能持续消化当前估值。</p>
+   </div>
+  </div>
+
+  <div class="card border border-rose-500/20">
+   <div class="flex justify-between items-center mb-5">
+    <div class="flex items-center gap-3"><i data-lucide="trending-down" class="text-rose-400 w-6 h-6"></i><h3 class="text-lg font-bold text-rose-300">看空逻辑</h3></div>
+    <span class="tag tag-red">Bear Case</span>
+   </div>
+   <div class="space-y-5">
+    <div><b class="text-sm">1. AI投资回报存在不确定性</b><p class="text-xs text-slate-400 leading-6 mt-2">若AI商业化进度落后于基础设施投资，云厂商可能调整资本开支，引发芯片需求预期下修。</p></div>
+    <div><b class="text-sm">2. 当前估值已反映增长预期</b><p class="text-xs text-slate-400 leading-6 mt-2">市场给予公司较高质量溢价，盈利增速即使保持正增长，只要低于预期，也可能出现估值压缩。</p></div>
+    <div><b class="text-sm">3. 海外制造成本上升</b><p class="text-xs text-slate-400 leading-6 mt-2">多地布局需要额外资本、运营和管理投入，若成本无法转嫁给客户，可能长期影响利润率。</p></div>
+    <div><b class="text-sm">4. 地缘政治风险无法消除</b><p class="text-xs text-slate-400 leading-6 mt-2">制造资产集中与国际贸易政策变化可能造成极端尾部风险，传统估值模型难以充分定价。</p></div>
+   </div>
+   <div class="mt-6 p-4 bg-rose-500/5 rounded-xl">
+    <div class="text-xs text-rose-300 font-bold">看空核心命题</div>
+    <p class="text-sm text-slate-300 mt-2 leading-7">市场可能过度外推AI需求增长，忽略资本开支周期、制造成本和地缘政治风险，股价存在预期修正空间。</p>
+   </div>
+  </div>
+ </div>
+
+ <div class="card mt-5">
+  <h3 class="font-bold mb-5">多空关键变量对照</h3>
+  <div class="overflow-x-auto">
+   <table>
+    <thead><tr><th>关键变量</th><th>多头判断</th><th>空头判断</th><th>实际验证指标</th></tr></thead>
+    <tbody>
+     <tr><td>AI需求</td><td class="positive">长期结构性增长</td><td class="negative">存在资本开支泡沫</td><td>云厂商资本开支及芯片订单</td></tr>
+     <tr><td>先进制程</td><td class="positive">持续保持领先</td><td class="negative">竞争者可能追赶</td><td>良率、节点进度及客户份额</td></tr>
+     <tr><td>利润率</td><td class="positive">规模效应与产品结构改善</td><td class="negative">海外成本及折旧侵蚀</td><td>毛利率与营业利润率</td></tr>
+     <tr><td>现金流</td><td class="positive">高盈利支撑投资</td><td class="negative">扩产消耗现金</td><td>经营现金流与自由现金流</td></tr>
+     <tr><td>估值</td><td class="positive">盈利增长消化倍数</td><td class="negative">高预期带来下行风险</td><td>Forward P/E与盈利预测变化</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<section class="py-20" id="conclusion">
+ <div class="section-kicker">09 / INVESTMENT CONCLUSION</div>
+ <h2 class="section-title">最终投资判断</h2>
+ <div class="card mt-6 p-6 md:p-9">
+  <div class="grid lg:grid-cols-3 gap-7">
+   <div class="lg:col-span-2">
+    <div class="tag tag-green mb-4">长期基本面：高度看好</div>
+    <h3 class="text-2xl md:text-3xl font-extrabold leading-tight">全球先进半导体制造的核心资产，<span class="glow">AI时代的关键受益者。</span></h3>
+    <p class="text-sm text-slate-400 leading-8 mt-5">台积电拥有难以复制的先进制程技术、全球客户生态、规模经济和强大的现金流创造能力。2026年第三季度的利润率和2026年前十个月的营收增长，进一步验证了公司在AI与高性能计算产业链中的核心地位。</p>
+    <p class="text-sm text-slate-400 leading-8 mt-3">但优秀企业不等于任何价格都值得买入。当前股价需要与未来盈利增长相匹配，同时为资本开支、海外制造成本、AI投资周期和地缘政治风险保留安全边际。</p>
+   </div>
+   <div class="space-y-3">
+    <div class="p-4 rounded-xl bg-slate-800/60">
+     <div class="text-xs text-slate-500">企业竞争力</div>
+     <div class="text-xl font-bold text-green-300 mt-1">极强</div>
+    </div>
+    <div class="p-4 rounded-xl bg-slate-800/60">
+     <div class="text-xs text-slate-500">长期行业前景</div>
+     <div class="text-xl font-bold text-green-300 mt-1">积极</div>
+    </div>
+    <div class="p-4 rounded-xl bg-slate-800/60">
+     <div class="text-xs text-slate-500">估值安全边际</div>
+     <div class="text-xl font-bold text-amber-300 mt-1">需要观察</div>
+    </div>
+    <div class="p-4 rounded-xl bg-slate-800/60">
+     <div class="text-xs text-slate-500">主要风险</div>
+     <div class="text-xl font-bold text-rose-300 mt-1">地缘政治</div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ <div class="grid md:grid-cols-3 gap-4 mt-5">
+  <div class="card">
+   <i data-lucide="calendar-days" class="text-blue-400 mb-4"></i>
+   <h3 class="font-bold mb-2">短期：关注盈利兑现</h3>
+   <p class="text-xs text-slate-400 leading-7">重点跟踪2026年第四季度指引、11月营收、2nm产能爬坡及AI客户订单变化。</p>
+  </div>
+  <div class="card">
+   <i data-lucide="trending-up" class="text-purple-400 mb-4"></i>
+   <h3 class="font-bold mb-2">中期：关注资本回报</h3>
+   <p class="text-xs text-slate-400 leading-7">关注2027年先进制程、先进封装增长与海外工厂利润率，验证高资本开支是否产生足够回报。</p>
+  </div>
+  <div class="card">
+   <i data-lucide="shield-check" class="text-green-400 mb-4"></i>
+   <h3 class="font-bold mb-2">长期：关注护城河持续性</h3>
+   <p class="text-xs text-slate-400 leading-7">持续评估技术领先、客户黏性、供应链韧性及地缘风险，判断长期竞争优势是否保持。</p>
+  </div>
+ </div>
+</section>
+
+<section class="py-14 border-t border-slate-800">
+ <div class="section-kicker">RESEARCH SOURCES</div>
+ <h2 class="text-xl font-bold mt-3 mb-5">数据来源与研究说明</h2>
+ <div class="card">
+  <div class="space-y-4 text-sm">
+   <div>
+    <b>1. 台积电2025年度报告</b>
+    <p class="text-xs text-slate-500 mt-1">年度营收、净利润、毛利率、营业利润率、先进制程收入占比、客户及产能信息。</p>
+    <a class="source-link text-xs" href="https://investor.tsmc.com/static/annualReports/2025/english/index.html" target="_blank" rel="noopener">TSMC 2025 Annual Report ↗</a>
+   </div>
+   <div>
+    <b>2. 台积电2026年第三季度业绩公告</b>
+    <p class="text-xs text-slate-500 mt-1">第三季度收入、净利润、EPS、毛利率、营业利润率及第四季度指引。</p>
+    <a class="source-link text-xs" href="https://investor.tsmc.com/english/quarterly-results/2026/q3" target="_blank" rel="noopener">TSMC 3Q26 Quarterly Results ↗</a>
+   </div>
+   <div>
+    <b>3. 台积电2026年10月营收公告</b>
+    <p class="text-xs text-slate-500 mt-1">2026年10月月度营收及1—10月累计营收。</p>
+    <a class="source-link text-xs" href="https://pr.tsmc.com/english/news/3349" target="_blank" rel="noopener">October 2026 Revenue Report ↗</a>
+   </div>
+   <div>
+    <b>4. 台积电2025年财务演示材料</b>
+    <p class="text-xs text-slate-500 mt-1">经营现金流、资本开支、自由现金流、ROE及现金储备。</p>
+    <a class="source-link text-xs" href="https://investor.tsmc.com/english/quarterly-results/2025/q4" target="_blank" rel="noopener">TSMC Investor Relations ↗</a>
+   </div>
+   <div>
+    <b>5. Stock Analysis：TSM市场估值及分析师预测</b>
+    <p class="text-xs text-slate-500 mt-1">股价、市值、TTM及Forward P/E、分析师目标价等第三方市场数据。</p>
+    <a class="source-link text-xs" href="https://stockanalysis.com/stocks/tsm/" target="_blank" rel="noopener">TSM Stock Overview ↗</a>
+    <span class="text-slate-600"> · </span>
+    <a class="source-link text-xs" href="https://stockanalysis.com/stocks/tsm/forecast/" target="_blank" rel="noopener">Analyst Forecast ↗</a>
+   </div>
+  </div>
+ </div>
+ <div class="mt-7 p-5 rounded-xl bg-slate-900/70 border border-slate-800">
+  <div class="flex gap-3 items-start">
+   <i data-lucide="info" class="text-blue-400 w-5 h-5 mt-1"></i>
+   <div>
+    <h3 class="font-semibold text-sm">免责声明</h3>
+    <p class="text-xs text-slate-500 leading-7 mt-2">本报告仅用于企业经营分析与投资研究，不构成证券买卖建议或收益承诺。报告中历史财务数据以公司公开披露为基础；估值倍数、DCF参数和情景价格属于研究假设，可能与市场实际预测存在差异。第三方行情和机构预测具有时效性，实际数据可能发生变化。投资者应结合最新公告、市场价格、个人风险承受能力及投资期限独立决策。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<footer class="py-9 border-t border-slate-800">
+ <div class="flex flex-col md:flex-row justify-between gap-5 items-center">
+  <div>
+   <div class="font-extrabold tracking-widest">EQUITY <span class="text-blue-400">INSIGHT</span></div>
+   <div class="text-xs text-slate-600 mt-2">Fundamental Research · Technology · Investment</div>
+  </div>
+  <div class="text-xs text-slate-600 text-center">台积电经营分析报告 · TSM · 2026-11-24</div>
+  <a href="#home" class="text-xs text-blue-300 hover:text-blue-200">返回顶部 ↑</a>
+ </div>
+</footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ if(window.AOS) AOS.init({duration:700,once:true,offset:50});
+ if(window.lucide) lucide.createIcons();
+
+ const menuBtn=document.getElementById('menuBtn');
+ const mobileMenu=document.getElementById('mobileMenu');
+ menuBtn.addEventListener('click',()=>{
+  mobileMenu.classList.toggle('open');
+  menuBtn.innerHTML=mobileMenu.classList.contains('open')
+   ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
+  if(window.lucide)lucide.createIcons();
+ });
+ mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mobileMenu.classList.remove('open');
+ }));
+
+ window.addEventListener('scroll',()=>{
+  const total=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('progress').style.width=
+   (total>0?window.scrollY/total*100:0)+'%';
+  const sections=document.querySelectorAll('main section[id]');
+  let current='';
+  sections.forEach(s=>{
+   if(window.scrollY>=s.offsetTop-150)current=s.id;
+  });
+  document.querySelectorAll('.nav-link').forEach(a=>{
+   a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+  });
+ });
+
+ const themeBtn=document.getElementById('themeBtn');
+ let light=false;
+ themeBtn.addEventListener('click',()=>{
+  light=!light;
+  document.body.style.background=light?'#f1f5f9':'#080d18';
+  document.body.style.color=light?'#172033':'#e5edf8';
+  document.querySelectorAll('.card,.hero-grid').forEach(el=>{
+   el.style.background=light?'#ffffff':'';
+   el.style.color=light?'#172033':'';
+   el.style.borderColor=light?'#dbe4ef':'';
+  });
+  document.querySelectorAll('.section-desc,.metric-label').forEach(el=>{
+   el.style.color=light?'#64748b':'';
+  });
+ });
+
+ if(window.Chart){
+  Chart.defaults.color='#94a3b8';
+  Chart.defaults.font.family="'DM Sans','Noto Sans SC',sans-serif";
+  Chart.defaults.plugins.legend.labels.usePointStyle=true;
+  const gridColor='rgba(148,163,184,.12)';
+
+  new Chart(document.getElementById('revenueChart'),{
+   type:'bar',
+   data:{
+    labels:['2021','2022','2023','2024','2025'],
+    datasets:[
+     {label:'营收',data:[1587,2264,2162,2894,3809],backgroundColor:'rgba(96,165,250,.72)',borderRadius:5,yAxisID:'y'},
+     {label:'净利润',data:[597,1017,838,1173,1718],type:'line',borderColor:'#c084fc',backgroundColor:'#c084fc',tension:.35,pointRadius:4,yAxisID:'y'}
+    ]
+   },
+   options:{
+    responsive:true,maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{legend:{position:'bottom'}},
+    scales:{
+     x:{grid:{display:false}},
+     y:{beginAtZero:true,grid:{color:gridColor},ticks:{callback:v=>v.toLocaleString()}}
+    }
+   }
+  });
+
+  new Chart(document.getElementById('marginChart'),{
+   type:'line',
+   data:{
+    labels:['2021','2022','2023','2024','2025'],
+    datasets:[
+     {label:'毛利率',data:[51.6,59.6,54.4,56.1,59.9],borderColor:'#60a5fa',backgroundColor:'rgba(96,165,250,.1)',fill:true,tension:.3,pointRadius:4},
+     {label:'净利率',data:[37.7,44.9,38.8,40.5,45.1],borderColor:'#34d399',backgroundColor:'transparent',tension:.3,pointRadius:4}
+    ]
+   },
+   options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom'}},
+    scales:{
+     x:{grid:{display:false}},
+     y:{min:0,max:70,grid:{color:gridColor},ticks:{callback:v=>v+'%'}}
+    }
+   }
+  });
+ }
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

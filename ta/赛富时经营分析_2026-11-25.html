@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080f1e">
+<title>赛富时（CRM）最新动态全景追踪报告_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={
+ darkMode:'class',
+ theme:{extend:{
+  colors:{
+   primary:{50:'#eef5ff',100:'#dceaff',500:'#3978d7',600:'#2864bd',700:'#1d4e9a',900:'#102c55'},
+   accent:{400:'#38bdf8',500:'#0ea5e9',600:'#0284c7'},
+   dark:{900:'#080f1e',800:'#101a2b',700:'#172438'}
+  },
+  fontFamily:{sans:['Inter','-apple-system','BlinkMacSystemFont','Segoe UI','Microsoft YaHei','sans-serif']},
+  boxShadow:{glow:'0 0 30px rgba(56,189,248,.12)'}
+ }}
+};
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+:root{--bg:#f4f7fb;--panel:#fff;--text:#17243a;--muted:#64748b;--line:#e2e8f0;--blue:#2864bd;--cyan:#0891b2}
+.dark{--bg:#080f1e;--panel:#101a2b;--text:#e5edf8;--muted:#9aabc1;--line:#26364c;--blue:#60a5fa;--cyan:#38bdf8}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;transition:background .25s,color .25s}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px}
+.muted{color:var(--muted)}
+.nav-link{padding:9px 12px;border-radius:8px;font-size:13px;white-space:nowrap}
+.nav-link:hover{background:rgba(56,189,248,.12);color:var(--blue)}
+.section-title{font-size:25px;font-weight:800;letter-spacing:-.5px}
+.section-kicker{font-size:11px;letter-spacing:2px;font-weight:800;color:var(--cyan);text-transform:uppercase}
+.card-interactive{transition:transform .2s,box-shadow .2s,border-color .2s}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(30,64,175,.09);border-color:var(--blue)}
+.impact-bar{height:7px;border-radius:10px;background:var(--line);overflow:hidden}
+.impact-bar span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#2563eb,#38bdf8)}
+.tag{display:inline-flex;padding:4px 9px;border-radius:6px;font-size:11px;font-weight:700}
+.tag-blue{background:#dbeafe;color:#1d4ed8}
+.tag-green{background:#dcfce7;color:#166534}
+.tag-red{background:#fee2e2;color:#b91c1c}
+.tag-amber{background:#fef3c7;color:#92400e}
+.dark .tag-blue{background:#1e3a5f;color:#93c5fd}
+.dark .tag-green{background:#143b2a;color:#86efac}
+.dark .tag-red{background:#451e28;color:#fda4af}
+.dark .tag-amber{background:#45351b;color:#fcd34d}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:650px;font-size:13px}
+th{background:rgba(100,116,139,.1);text-align:left;padding:13px;font-weight:800;white-space:nowrap}
+td{padding:13px;border-top:1px solid var(--line);vertical-align:top;line-height:1.65}
+tr:hover td{background:rgba(56,189,248,.035)}
+a.source{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+a.source:hover{color:var(--cyan)}
+.metric{font-size:30px;font-weight:850;letter-spacing:-1px}
+#progressBar{position:fixed;top:0;left:0;height:3px;background:#38bdf8;width:0;z-index:100}
+.hero-grid{background:radial-gradient(ellipse at 85% 20%,rgba(14,165,233,.22),transparent 45%),linear-gradient(135deg,#0b1730,#142d50 65%,#0c2039);color:white}
+.timeline-line{border-left:2px solid var(--line);margin-left:8px;padding-left:24px}
+.timeline-item{position:relative;padding-bottom:25px}
+.timeline-item:before{content:'';position:absolute;width:11px;height:11px;border-radius:50%;background:#38bdf8;left:-31px;top:5px;box-shadow:0 0 0 4px rgba(56,189,248,.12)}
+.mobile-menu{display:none}
+.mobile-menu.open{display:flex}
+@media(max-width:768px){
+ .section-title{font-size:21px}
+ .metric{font-size:25px}
+ .hero-grid{border-radius:0}
+ .desktop-nav{display:none}
+ .mobile-menu{flex-direction:column}
+}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body>
+<div id="progressBar"></div>
+
+<header class="sticky top-0 z-50 border-b backdrop-blur-xl" style="background:color-mix(in srgb,var(--panel) 92%,transparent);border-color:var(--line)">
+ <div class="max-w-7xl mx-auto px-4 lg:px-8 h-16 flex items-center justify-between">
+  <a href="#top" class="flex items-center gap-3">
+   <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black">S</div>
+   <div><div class="font-extrabold text-sm">AIPE RESEARCH</div><div class="text-xs muted">EQUITY INTELLIGENCE</div></div>
+  </a>
+  <nav class="desktop-nav flex items-center gap-1">
+   <a class="nav-link" href="#overview">核心结论</a>
+   <a class="nav-link" href="#company">公司动态</a>
+   <a class="nav-link" href="#industry">行业动态</a>
+   <a class="nav-link" href="#macro">宏观环境</a>
+   <a class="nav-link" href="#catalysts">催化矩阵</a>
+   <a class="nav-link" href="#strategy">投资策略</a>
+  </nav>
+  <div class="flex items-center gap-2">
+   <button onclick="toggleTheme()" class="p-2 rounded-lg border" style="border-color:var(--line)" aria-label="切换主题"><i data-lucide="moon" class="w-4 h-4"></i></button>
+   <button onclick="toggleMenu()" class="md:hidden p-2 rounded-lg border" style="border-color:var(--line)"><i data-lucide="menu"></i></button>
+  </div>
+ </div>
+ <nav id="mobileMenu" class="mobile-menu px-4 pb-4">
+  <a class="nav-link" href="#overview">核心结论</a>
+  <a class="nav-link" href="#company">公司动态</a>
+  <a class="nav-link" href="#industry">行业动态</a>
+  <a class="nav-link" href="#macro">宏观环境</a>
+  <a class="nav-link" href="#catalysts">催化矩阵</a>
+  <a class="nav-link" href="#strategy">投资策略</a>
+ </nav>
+</header>
+
+<main id="top" class="max-w-7xl mx-auto px-4 lg:px-8 py-7">
+
+<section class="hero-grid rounded-3xl p-7 md:p-12 mb-8 relative overflow-hidden" data-aos="fade-up">
+ <div class="absolute right-0 top-0 opacity-10 pointer-events-none"><i data-lucide="orbit" style="width:300px;height:300px"></i></div>
+ <div class="relative z-10 max-w-4xl">
+  <div class="flex flex-wrap gap-2 mb-6">
+   <span class="tag bg-blue-500/20 text-blue-200 border border-blue-300/20">NYSE: CRM</span>
+   <span class="tag bg-cyan-500/20 text-cyan-200 border border-cyan-300/20">ENTERPRISE AI</span>
+   <span class="tag bg-white/10 text-white">2026年11月25日</span>
+  </div>
+  <p class="text-sm text-blue-200 font-bold tracking-widest mb-3">MONTHLY INTELLIGENCE · 30-DAY TRACKER</p>
+  <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-5">赛富时 Salesforce</h1>
+  <h2 class="text-xl md:text-2xl text-blue-100 font-semibold mb-5">从传统CRM软件平台，向企业级AI Agent操作系统转型</h2>
+  <p class="text-blue-100/80 leading-8 max-w-3xl text-sm md:text-base">
+   本报告聚焦Salesforce在企业级AI、Agentforce、数据平台、客户关系管理软件以及企业自动化领域的竞争格局，评估AI商业化能否转化为持续的有机增长、合同储备和自由现金流。
+  </p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-9">
+   <div class="bg-white/10 border border-white/10 rounded-xl p-4">
+    <div class="text-xs text-blue-200">最新官方股价数据</div>
+    <div class="text-2xl font-black mt-2">$185.46</div>
+    <div class="text-xs text-blue-200 mt-1">11月23日收盘</div>
+   </div>
+   <div class="bg-white/10 border border-white/10 rounded-xl p-4">
+    <div class="text-xs text-blue-200">FY27收入指引</div>
+    <div class="text-2xl font-black mt-2">$46.1–46.4B</div>
+    <div class="text-xs text-blue-200 mt-1">全年管理层指引</div>
+   </div>
+   <div class="bg-white/10 border border-white/10 rounded-xl p-4">
+    <div class="text-xs text-blue-200">Agentforce ARR</div>
+    <div class="text-2xl font-black mt-2">$1.5B+</div>
+    <div class="text-xs text-blue-200 mt-1">Q2 FY27披露</div>
+   </div>
+   <div class="bg-white/10 border border-white/10 rounded-xl p-4">
+    <div class="text-xs text-blue-200">下一关键事件</div>
+    <div class="text-2xl font-black mt-2">12.02</div>
+    <div class="text-xs text-blue-200 mt-1">预计Q3 FY27财报</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="overview" class="mb-12">
+ <div class="flex items-center gap-3 mb-5">
+  <div><div class="section-kicker">Executive Summary</div><h2 class="section-title">一、核心投资结论</h2></div>
+ </div>
+ <div class="grid md:grid-cols-3 gap-4 mb-5">
+  <div class="panel p-5 card-interactive" data-aos="fade-up">
+   <div class="flex justify-between items-center mb-4"><span class="font-bold">AI商业化</span><i data-lucide="brain-circuit" class="text-blue-500"></i></div>
+   <div class="text-2xl font-black text-blue-500">高速增长</div>
+   <p class="text-sm muted leading-6 mt-3">Agentforce ARR超过15亿美元，同比增长超过240%；Agentforce与Data 360合计ARR接近39亿美元，同比增长超过210%。</p>
+   <span class="tag tag-green mt-3">积极催化</span>
+  </div>
+  <div class="panel p-5 card-interactive" data-aos="fade-up" data-aos-delay="100">
+   <div class="flex justify-between items-center mb-4"><span class="font-bold">传统业务增长</span><i data-lucide="chart-line" class="text-amber-500"></i></div>
+   <div class="text-2xl font-black text-amber-500">仍需验证</div>
+   <p class="text-sm muted leading-6 mt-3">FY27收入增长指引为11%–12%，但其中包含Informatica等并购贡献。核心有机增长与AI产品增量需要分开评估。</p>
+   <span class="tag tag-amber mt-3">重点观察</span>
+  </div>
+  <div class="panel p-5 card-interactive" data-aos="fade-up" data-aos-delay="200">
+   <div class="flex justify-between items-center mb-4"><span class="font-bold">估值与股价</span><i data-lucide="activity" class="text-red-500"></i></div>
+   <div class="text-2xl font-black text-red-500">承压修复</div>
+   <p class="text-sm muted leading-6 mt-3">截至11月23日收盘185.46美元，显著低于52周高点269.11美元。估值吸引力提升，但市场仍在重新评估SaaS商业模式。</p>
+   <span class="tag tag-red mt-3">风险与机会并存</span>
+  </div>
+ </div>
+
+ <div class="panel p-6">
+  <h3 class="font-bold text-lg mb-4">核心判断：市场真正需要回答的三个问题</h3>
+  <div class="space-y-5">
+   <div>
+    <div class="flex justify-between text-sm mb-2"><b>Agentforce能否从产品使用增长转化为收入增长？</b><span class="text-blue-500 font-bold">最高优先级</span></div>
+    <div class="impact-bar"><span style="width:96%"></span></div>
+    <p class="text-xs muted mt-2">关注付费客户数、净新增ARR、Agentic Work Units与合同金额之间的关系。</p>
+   </div>
+   <div>
+    <div class="flex justify-between text-sm mb-2"><b>并购贡献能否转化为持续有机增长？</b><span class="text-blue-500 font-bold">高优先级</span></div>
+    <div class="impact-bar"><span style="width:85%"></span></div>
+    <p class="text-xs muted mt-2">重点拆分Informatica、Contentful、Fin带来的收入与原有业务增长。</p>
+   </div>
+   <div>
+    <div class="flex justify-between text-sm mb-2"><b>AI是否会削弱传统按席位收费模式？</b><span class="text-blue-500 font-bold">高优先级</span></div>
+    <div class="impact-bar"><span style="width:80%"></span></div>
+    <p class="text-xs muted mt-2">观察Agentforce的消费计费、用户席位优化、客户续约与总体合同价值。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="company" class="mb-12">
+ <div class="mb-5"><div class="section-kicker">Company Developments</div><h2 class="section-title">二、公司重大动态 TOP 3</h2><p class="muted text-sm mt-2">以截至2026年11月25日能够核实的公司披露为基础。未将缺少可靠来源的传闻列为事实。</p></div>
+ <div class="space-y-5">
+  <article class="panel p-6 card-interactive" data-aos="fade-up">
+   <div class="flex flex-wrap justify-between gap-3 mb-4">
+    <div><span class="tag tag-blue">TOP 1 · AI核心业务</span><span class="tag tag-green ml-2">长期重大利好</span></div>
+    <span class="text-xs muted">官方披露：2026-08-26</span>
+   </div>
+   <h3 class="text-xl font-extrabold mb-3">Agentforce与Data 360 ARR接近39亿美元，AI商业化进入规模化验证阶段</h3>
+   <div class="grid sm:grid-cols-3 gap-3 mb-4">
+    <div class="rounded-xl p-4" style="background:var(--bg)"><div class="text-xs muted">Agentforce ARR</div><div class="metric text-blue-500">$1.5B+</div><div class="text-xs text-green-600">同比增长240%以上</div></div>
+    <div class="rounded-xl p-4" style="background:var(--bg)"><div class="text-xs muted">Agentforce + Data 360 ARR</div><div class="metric">$3.9B</div><div class="text-xs text-green-600">同比增长210%以上</div></div>
+    <div class="rounded-xl p-4" style="background:var(--bg)"><div class="text-xs muted">累计AWUs</div><div class="metric">7.0B</div><div class="text-xs muted">Q2单季32亿</div></div>
+   </div>
+   <p class="text-sm leading-7 muted mb-3">Salesforce在FY27第二季度披露，Agentforce ARR超过15亿美元，同比增长超过240%；Agentforce与Data 360合计ARR接近39亿美元，同比增长超过210%。Agentforce与Slack在Q2累计交付约32亿Agentic Work Units，环比增长97%。</p>
+   <div class="rounded-xl p-4 mb-3" style="background:var(--bg)">
+    <b class="text-sm">投资传导逻辑</b>
+    <p class="text-sm muted mt-2 leading-7">企业从AI试点转向生产环境部署 → Agentforce调用量提升 → 消费型收入与高阶订阅增加 → 客户合同价值提升 → cRPO和收入增长。真正的验证指标不是AI调用次数，而是AI产品净新增ARR及其对总收入的贡献。</p>
+   </div>
+   <div class="text-sm"><b>后续跟踪：</b>Q3 Agentforce ARR增速、付费客户数、AI产品续费率、AWU转化效率。</div>
+   <div class="text-xs muted mt-3">来源：<a class="source" href="https://www.salesforce.com/news/press-releases/2026/08/26/fy27-q2-earnings/" target="_blank">Salesforce FY27 Q2官方财报，2026-08-26</a></div>
+  </article>
+
+  <article class="panel p-6 card-interactive" data-aos="fade-up">
+   <div class="flex flex-wrap justify-between gap-3 mb-4">
+    <div><span class="tag tag-blue">TOP 2 · 财务基本面</span><span class="tag tag-green ml-2">收入指引上调</span></div>
+    <span class="text-xs muted">2026-08-26</span>
+   </div>
+   <h3 class="text-xl font-extrabold mb-3">FY27收入指引上调至461亿–464亿美元，增长质量成为关注焦点</h3>
+   <div class="table-wrap mb-4">
+    <table>
+     <thead><tr><th>指标</th><th>FY27指引/实际</th><th>同比变化</th><th>分析意义</th></tr></thead>
+     <tbody>
+      <tr><td>Q2收入</td><td>$11.3B</td><td>+11%</td><td>收入维持双位数增长</td></tr>
+      <tr><td>订阅及支持收入</td><td>$10.8B</td><td>+12%</td><td>核心经常性业务稳健</td></tr>
+      <tr><td>cRPO</td><td>$33.5B</td><td>+14% CC</td><td>未来收入可见度提升</td></tr>
+      <tr><td>RPO</td><td>$66.3B</td><td>+11%</td><td>合同储备保持增长</td></tr>
+      <tr><td>全年收入指引</td><td>$46.1B–$46.4B</td><td>+11%–12%</td><td>管理层上调预期</td></tr>
+      <tr><td>非GAAP营业利润率</td><td>34.3%</td><td>全年指引</td><td>经营杠杆的重要体现</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-sm leading-7 muted">本次全年收入指引上调约2亿美元，其中包含约1亿美元有机增长贡献、约2亿美元Contentful与Fin拟收购贡献，以及约1亿美元外汇逆风调整。需要注意，Informatica贡献也包含在收入增长中，不能把合并口径增速直接视为内生增速。</p>
+   <div class="rounded-xl p-4 mt-3" style="background:var(--bg)">
+    <b class="text-sm">核心研究判断</b>
+    <p class="text-sm muted mt-2 leading-7">下一季度财报需要验证：有机订阅收入是否加速、cRPO能否维持约14%的增长、并购业务整合成本是否影响现金流，以及AI产品能否成为收入增长的实质性第二引擎。</p>
+   </div>
+   <div class="text-xs muted mt-3">来源：<a class="source" href="https://investor.salesforce.com/financials/quarterly-results/default.aspx" target="_blank">Salesforce Investor Relations：Q2 FY27 Results</a></div>
+  </article>
+
+  <article class="panel p-6 card-interactive" data-aos="fade-up">
+   <div class="flex flex-wrap justify-between gap-3 mb-4">
+    <div><span class="tag tag-blue">TOP 3 · 资本配置</span><span class="tag tag-amber ml-2">整合风险</span></div>
+    <span class="text-xs muted">2026年Q2财报披露</span>
+   </div>
+   <h3 class="text-xl font-extrabold mb-3">围绕数据、内容与客户服务扩展AI生态，资本配置进入整合阶段</h3>
+   <p class="text-sm muted leading-7 mb-4">Salesforce在2026年宣布拟收购Contentful与Fin，进一步扩展数字体验内容管理与AI客户服务能力。同时，Informatica整合使其能够强化企业数据管理、数据治理与AI应用基础设施。</p>
+   <div class="grid md:grid-cols-3 gap-3">
+    <div class="rounded-xl p-4" style="background:var(--bg)">
+     <b>Informatica</b><p class="text-xs muted mt-2">数据管理、数据治理、企业数据连接。战略意义是提高AI Agent的数据可用性与可信度。</p>
+    </div>
+    <div class="rounded-xl p-4" style="background:var(--bg)">
+     <b>Contentful</b><p class="text-xs muted mt-2">数字内容管理与多渠道内容体验。战略意义是扩大客户体验与数字商务应用场景。</p>
+    </div>
+    <div class="rounded-xl p-4" style="background:var(--bg)">
+     <b>Fin</b><p class="text-xs muted mt-2">AI客户服务能力。战略意义是强化自动化客户支持与服务工作流。</p>
+    </div>
+   </div>
+   <p class="text-sm muted leading-7 mt-4">投资者需要区分战略协同与财务回报：并购可以扩大产品覆盖，但整合成本、客户迁移、产品重叠和研发资源分配也可能影响短期利润率。</p>
+   <div class="text-xs muted mt-3">来源：<a class="source" href="https://investor.salesforce.com/financials/quarterly-results/default.aspx" target="_blank">Salesforce Q2 FY27财报及管理层指引</a></div>
+  </article>
+ </div>
+</section>
+
+<section id="industry" class="mb-12">
+ <div class="mb-5"><div class="section-kicker">Industry Intelligence</div><h2 class="section-title">三、行业重大动态 TOP 3</h2></div>
+ <div class="space-y-4">
+  <div class="panel p-6 card-interactive">
+   <div class="flex flex-wrap gap-2 mb-3"><span class="tag tag-blue">TOP 1</span><span class="tag tag-green">结构性机会</span></div>
+   <h3 class="font-extrabold text-lg mb-2">企业软件竞争从Copilot转向Agentic AI平台</h3>
+   <p class="text-sm muted leading-7">企业AI竞争正从辅助生成内容，扩展到能够理解业务上下文、调用工具、执行任务和反馈结果的Agent系统。Salesforce拥有CRM客户关系、销售流程、服务记录和权限体系等业务上下文优势。其竞争力在于能否将这些数据和工作流转化为可靠的企业级Agent服务。</p>
+   <p class="text-sm mt-3"><b>对CRM影响：</b>积极。提高产品附加值与客户扩容空间，但需要持续证明Agent执行结果的可靠性、可审计性和经济性。</p>
+  </div>
+  <div class="panel p-6 card-interactive">
+   <div class="flex flex-wrap gap-2 mb-3"><span class="tag tag-blue">TOP 2</span><span class="tag tag-amber">竞争加剧</span></div>
+   <h3 class="font-extrabold text-lg mb-2">微软、Oracle、ServiceNow等厂商扩大企业AI工作流竞争</h3>
+   <p class="text-sm muted leading-7">企业客户可能同时使用多个云平台、模型和自动化系统。微软拥有Office与Azure分发优势；Oracle拥有数据库和ERP客户基础；ServiceNow深耕IT服务管理和工作流；Salesforce则拥有客户经营与CRM业务流程优势。竞争焦点逐渐转向数据连接、跨系统执行、治理和总拥有成本。</p>
+   <p class="text-sm mt-3"><b>对CRM影响：</b>中性偏负。竞争将提高研发投入与客户获取成本，同时也扩大企业Agent平台市场。</p>
+  </div>
+  <div class="panel p-6 card-interactive">
+   <div class="flex flex-wrap gap-2 mb-3"><span class="tag tag-blue">TOP 3</span><span class="tag tag-amber">商业模式重构</span></div>
+   <h3 class="font-extrabold text-lg mb-2">AI Agent可能改变传统SaaS按席位收费的收入逻辑</h3>
+   <p class="text-sm muted leading-7">传统SaaS通常按照用户席位、功能等级或订阅规模收费。Agent能够自动化部分重复工作，可能降低人工席位增长，但也创造了按调用量、任务量、消耗量或业务结果收费的空间。未来软件厂商的收入质量将更多取决于客户实际使用价值，而不只是用户数。</p>
+   <p class="text-sm mt-3"><b>对CRM影响：</b>长期偏正、短期不确定。Agentforce的消费计费模式有机会抵消部分席位压缩，但仍需要证明单位经济模型。</p>
+  </div>
+ </div>
+
+ <div class="panel p-6 mt-5">
+  <h3 class="font-bold text-lg mb-4">主要竞争对手比较</h3>
+  <div class="table-wrap">
+   <table>
+    <thead><tr><th>企业</th><th>核心优势</th><th>AI战略重点</th><th>对Salesforce的威胁</th></tr></thead>
+    <tbody>
+     <tr><td><b>Salesforce</b></td><td>CRM客户数据、销售与服务流程</td><td>Agentforce、Data 360、Slack</td><td>自身转型与商业化执行</td></tr>
+     <tr><td>Microsoft</td><td>Office、Azure、企业分发渠道</td><td>Copilot、Azure AI、Dynamics</td><td>渠道与平台生态优势</td></tr>
+     <tr><td>Oracle</td><td>数据库、ERP与企业核心系统</td><td>企业AI Agent、数据库AI</td><td>企业数据与应用整合</td></tr>
+     <tr><td>ServiceNow</td><td>ITSM与企业工作流</td><td>Now Assist、AI Agents</td><td>工作流自动化场景重叠</td></tr>
+     <tr><td>SAP</td><td>企业资源计划与业务数据</td><td>Joule及企业AI</td><td>大型企业客户预算竞争</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs muted mt-3">比较基于各企业公开产品定位的定性分析，并非市场份额或产品性能排名。</p>
+  <div class="text-xs muted mt-2">行业参考：<a class="source" href="https://www.sas.com/content/dam/sasdam/documents/2026-11/idc-marketscape-worldwide-agentic-ai-platforms-2026-vendor-assessment.pdf" target="_blank">IDC MarketScape：Worldwide Agentic AI Platforms 2026</a></div>
+ </div>
+</section>
+
+<section id="macro" class="mb-12">
+ <div class="mb-5"><div class="section-kicker">Macro & Policy</div><h2 class="section-title">四、宏观与政策传导 TOP 3</h2><p class="muted text-sm mt-2">宏观因素属于影响CRM估值和客户支出的变量；本节不把未核实的近期政策事件描述为已发生事实。</p></div>
+ <div class="grid md:grid-cols-3 gap-4">
+  <div class="panel p-5 card-interactive">
+   <span class="tag tag-blue mb-3">TOP 1 · 利率环境</span>
+   <h3 class="font-extrabold text-lg mb-3">美国利率与长期成长股估值</h3>
+   <p class="text-sm muted leading-7">Salesforce的价值高度依赖未来多年现金流。若利率下降，成长股估值折现压力可能减轻；若利率维持高位，市场可能要求更高自由现金流回报和更低估值倍数。</p>
+   <div class="mt-4 rounded-lg p-3" style="background:var(--bg)">
+    <div class="text-xs muted">正向传导</div><div class="text-sm font-bold mt-1">利率下降 → 折现率下降 → 估值修复空间扩大</div>
+   </div>
+   <p class="text-xs muted mt-3">关注：<a class="source" href="https://www.federalreserve.gov/monetarypolicy.htm" target="_blank">美联储货币政策</a></p>
+  </div>
+  <div class="panel p-5 card-interactive">
+   <span class="tag tag-blue mb-3">TOP 2 · 企业IT预算</span>
+   <h3 class="font-extrabold text-lg mb-3">企业软件采购与宏观景气度</h3>
+   <p class="text-sm muted leading-7">经济增长放缓可能使企业推迟非必要软件采购、压缩新增席位和延长采购决策周期。相反，AI自动化能够直接降低运营成本，有望帮助Salesforce以效率提升而非单纯IT扩张来推动销售。</p>
+   <div class="mt-4 rounded-lg p-3" style="background:var(--bg)">
+    <div class="text-xs muted">关键传导</div><div class="text-sm font-bold mt-1">企业IT预算 → 新合同与续约 → cRPO → 收入</div>
+   </div>
+   <p class="text-xs muted mt-3">关注：<a class="source" href="https://www.bea.gov/" target="_blank">美国经济分析局BEA</a></p>
+  </div>
+  <div class="panel p-5 card-interactive">
+   <span class="tag tag-blue mb-3">TOP 3 · 美元与国际业务</span>
+   <h3 class="font-extrabold text-lg mb-3">美元汇率与海外收入折算</h3>
+   <p class="text-sm muted leading-7">Salesforce拥有国际业务，美元走强可能压低海外收入折算后的美元金额。公司FY27 Q2已披露美元走强使此前预期的汇率顺风减弱，意味着投资者需要关注固定汇率口径和报告口径的差异。</p>
+   <div class="mt-4 rounded-lg p-3" style="background:var(--bg)">
+    <div class="text-xs muted">关键传导</div><div class="text-sm font-bold mt-1">美元走强 → 海外收入折算承压 → 报告收入增速下降</div>
+   </div>
+   <p class="text-xs muted mt-3">关注：<a class="source" href="https://www.federalreserve.gov/releases/h10/current/" target="_blank">美联储汇率数据</a></p>
+  </div>
+ </div>
+</section>
+
+<section id="catalysts" class="mb-12">
+ <div class="mb-5"><div class="section-kicker">Catalyst Matrix</div><h2 class="section-title">五、九大催化因素与未来30日跟踪</h2></div>
+ <div class="panel p-6 mb-5">
+  <h3 class="font-bold mb-4">九大催化因素综合评估</h3>
+  <div class="table-wrap">
+   <table>
+    <thead><tr><th>催化因素</th><th>方向</th><th>影响程度</th><th>作用周期</th><th>核心观察指标</th></tr></thead>
+    <tbody>
+     <tr><td><b>Agentforce ARR持续增长</b></td><td><span class="tag tag-green">利好</span></td><td>极高</td><td>中长期</td><td>ARR、付费客户、净新增订单</td></tr>
+     <tr><td><b>Data 360数据平台扩张</b></td><td><span class="tag tag-green">利好</span></td><td>高</td><td>中长期</td><td>数据消费、客户扩容、Zero Copy</td></tr>
+     <tr><td><b>cRPO持续增长</b></td><td><span class="tag tag-green">利好</span></td><td>极高</td><td>中期</td><td>同比增速、合同期限与质量</td></tr>
+     <tr><td><b>并购业务整合</b></td><td><span class="tag tag-amber">双向</span></td><td>高</td><td>中长期</td><td>有机增长、成本协同、留存率</td></tr>
+     <tr><td><b>AI Agent市场扩张</b></td><td><span class="tag tag-green">利好</span></td><td>高</td><td>长期</td><td>企业部署率、商业化付费</td></tr>
+     <tr><td><b>微软等平台竞争</b></td><td><span class="tag tag-red">利空风险</span></td><td>高</td><td>长期</td><td>市场份额、合同折扣、续约率</td></tr>
+     <tr><td><b>SaaS席位收费重构</b></td><td><span class="tag tag-amber">双向</span></td><td>极高</td><td>长期</td><td>席位数、消费收入、单位经济</td></tr>
+     <tr><td><b>利率与成长股估值</b></td><td><span class="tag tag-amber">双向</span></td><td>中高</td><td>短中期</td><td>美债收益率、估值倍数</td></tr>
+     <tr><td><b>自由现金流与回购</b></td><td><span class="tag tag-green">利好</span></td><td>高</td><td>中期</td><td>FCF增长、股数变化、回购成本</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+
+ <div class="panel p-6">
+  <h3 class="font-bold text-lg mb-5">未来30日关键事件日历</h3>
+  <div class="timeline-line">
+   <div class="timeline-item">
+    <div class="flex flex-wrap justify-between gap-2"><b>2026年11月25日</b><span class="tag tag-blue">报告基准日</span></div>
+    <p class="text-sm muted mt-2">建立基准：跟踪CRM价格、成交量、企业软件板块相对表现及市场对AI商业化的预期。</p>
+   </div>
+   <div class="timeline-item">
+    <div class="flex flex-wrap justify-between gap-2"><b>2026年12月2日</b><span class="tag tag-amber">重要财报事件</span></div>
+    <p class="text-sm muted mt-2">市场数据平台列示的Q3 FY27财报预期日期。需以公司投资者关系网站最终公告确认。重点关注收入、cRPO、Agentforce ARR、有机增长和全年指引。</p>
+   </div>
+   <div class="timeline-item">
+    <div class="flex flex-wrap justify-between gap-2"><b>2026年12月3日–12月9日</b><span class="tag tag-blue">财报后验证</span></div>
+    <p class="text-sm muted mt-2">观察财报后的价格反应、成交量、分析师预期调整及管理层对FY28增长的表述。</p>
+   </div>
+   <div class="timeline-item">
+    <div class="flex flex-wrap justify-between gap-2"><b>2026年12月10日–12月24日</b><span class="tag tag-blue">持续跟踪</span></div>
+    <p class="text-sm muted mt-2">跟踪企业AI产品商业化、客户案例、竞争者发布及宏观利率变化。未来30日内尚未核实的事件不预设具体公告日期。</p>
+   </div>
+  </div>
+  <p class="text-xs muted mt-3">财报日期参考：<a class="source" href="https://stockanalysis.com/stocks/crm/statistics/" target="_blank">Stock Analysis财务日历</a>。请以Salesforce官方公告为准。</p>
+ </div>
+</section>
+
+<section id="market" class="mb-12">
+ <div class="mb-5"><div class="section-kicker">Market Performance</div><h2 class="section-title">六、市场表现与估值观察</h2></div>
+ <div class="panel p-6">
+  <h3 class="font-bold mb-4">近期股价走势：11月中旬出现明显调整</h3>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+   <div class="p-4 rounded-xl" style="background:var(--bg)"><div class="text-xs muted">11月23日收盘</div><div class="metric">$185.46</div></div>
+   <div class="p-4 rounded-xl" style="background:var(--bg)"><div class="text-xs muted">52周高点</div><div class="metric">$269.11</div></div>
+   <div class="p-4 rounded-xl" style="background:var(--bg)"><div class="text-xs muted">52周低点</div><div class="metric">$146.32</div></div>
+   <div class="p-4 rounded-xl" style="background:var(--bg)"><div class="text-xs muted">11月23日成交量</div><div class="metric">6.11M</div></div>
+  </div>
+  <div class="table-wrap">
+   <table>
+    <thead><tr><th>交易日</th><th>收盘价</th><th>涨跌幅</th><th>成交量</th><th>观察</th></tr></thead>
+    <tbody>
+     <tr><td>11月23日</td><td>$185.46</td><td class="text-green-600">+2.68%</td><td>6.11M</td><td>反弹</td></tr>
+     <tr><td>11月20日</td><td>$180.62</td><td class="text-red-500">-1.47%</td><td>8.72M</td><td>继续调整</td></tr>
+     <tr><td>11月19日</td><td>$183.31</td><td class="text-red-500">-3.72%</td><td>7.98M</td><td>抛压增加</td></tr>
+     <tr><td>11月18日</td><td>$190.40</td><td class="text-red-500">-2.12%</td><td>10.19M</td><td>放量下跌</td></tr>
+     <tr><td>11月17日</td><td>$194.52</td><td class="text-red-500">-9.45%</td><td>13.40M</td><td>显著放量调整</td></tr>
+     <tr><td>11月16日</td><td>$214.83</td><td class="text-red-500">-1.38%</td><td>5.89M</td><td>高位回落</td></tr>
+     <tr><td>11月13日</td><td>$217.84</td><td class="text-green-600">+0.12%</td><td>5.05M</td><td>高位震荡</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs muted mt-3">数据来源：Yahoo Finance及Salesforce官方报价页面。成交量单位为百万股；不同数据平台可能存在轻微差异。11月24日盘中数据不作为完整收盘价使用。</p>
+  <div class="mt-5 grid md:grid-cols-2 gap-4">
+   <div class="rounded-xl p-4" style="background:var(--bg)">
+    <b class="text-sm">技术面观察</b>
+    <p class="text-sm muted leading-7 mt-2">11月17日单日跌幅约9.45%，成交量约1340万股，随后数日持续回落。说明市场经历了明显的风险偏好重估。11月23日出现反弹，但单日反弹不足以确认趋势反转。</p>
+   </div>
+   <div class="rounded-xl p-4" style="background:var(--bg)">
+    <b class="text-sm">基本面观察</b>
+    <p class="text-sm muted leading-7 mt-2">公司基本面仍有AI产品高增长和现金流改善的支撑，但市场可能更加关注有机增长、AI收入转化、并购贡献以及SaaS估值中枢变化。</p>
+   </div>
+  </div>
+  <div class="text-xs muted mt-4">数据链接：<a class="source" href="https://investor.salesforce.com/stock-info/" target="_blank">Salesforce官方股票报价</a> · <a class="source" href="https://finance.yahoo.com/quote/CRM/history/" target="_blank">Yahoo Finance历史行情</a></div>
+ </div>
+</section>
+
+<section id="strategy" class="mb-12">
+ <div class="mb-5"><div class="section-kicker">Investment Strategy</div><h2 class="section-title">七、投资策略与情景推演</h2></div>
+ <div class="grid md:grid-cols-3 gap-4 mb-5">
+  <div class="panel p-5">
+   <span class="tag tag-green mb-3">乐观情景</span>
+   <h3 class="font-extrabold text-lg">AI收入兑现</h3>
+   <p class="text-sm muted leading-7 mt-3">Agentforce ARR继续快速增长，cRPO保持强劲，有机订阅收入加速，管理层上调未来增长预期。市场重新认可AI平台的商业化价值。</p>
+   <p class="text-sm font-bold text-green-600 mt-4">观察信号：财报超预期 + 放量突破</p>
+  </div>
+  <div class="panel p-5">
+   <span class="tag tag-amber mb-3">基准情景</span>
+   <h3 class="font-extrabold text-lg">增长与估值再平衡</h3>
+   <p class="text-sm muted leading-7 mt-3">收入保持双位数增长，AI业务高速扩张，但传统CRM增长和利润率提升有限。市场等待更多商业化证据，股价可能以区间震荡为主。</p>
+   <p class="text-sm font-bold text-amber-600 mt-4">观察信号：收入符合预期 + 指引稳定</p>
+  </div>
+  <div class="panel p-5">
+   <span class="tag tag-red mb-3">悲观情景</span>
+   <h3 class="font-extrabold text-lg">AI变现不及预期</h3>
+   <p class="text-sm muted leading-7 mt-3">Agentforce使用增长无法有效转化为收入，传统业务增速下滑，企业客户削减席位，竞争者以更低成本提供替代产品。</p>
+   <p class="text-sm font-bold text-red-500 mt-4">观察信号：cRPO放缓 + 指引下调</p>
+  </div>
+ </div>
+
+ <div class="panel p-6">
+  <h3 class="font-bold text-lg mb-4">建议重点观察的价格区域</h3>
+  <p class="text-sm muted mb-4">以下为基于近期已披露交易价格的观察区间，不是预测目标价，也不是保证有效的支撑阻力。</p>
+  <div class="space-y-4">
+   <div>
+    <div class="flex justify-between text-sm mb-2"><b>上方压力观察区</b><b>$194–$195</b></div>
+    <div class="impact-bar"><span style="width:90%"></span></div>
+    <p class="text-xs muted mt-1">11月17日收盘价194.52美元及11月19日盘中高点195.39美元附近。</p>
+   </div>
+   <div>
+    <div class="flex justify-between text-sm mb-2"><b>中间观察区</b><b>$180–$185</b></div>
+    <div class="impact-bar"><span style="width:65%"></span></div>
+    <p class="text-xs muted mt-1">11月20日收盘180.62美元与11月23日收盘185.46美元附近。</p>
+   </div>
+   <div>
+    <div class="flex justify-between text-sm mb-2"><b>下方风险观察区</b><b>$146–$150</b></div>
+    <div class="impact-bar"><span style="width:35%"></span></div>
+    <p class="text-xs muted mt-1">52周低点146.32美元附近，若再次接近，应结合基本面和成交量重新评估。</p>
+   </div>
+  </div>
+  <div class="rounded-xl p-4 mt-5" style="background:var(--bg)">
+   <b class="text-sm">操作纪律</b>
+   <ul class="text-sm muted mt-3 space-y-2 leading-7 list-disc pl-5">
+    <li>不因单日大跌或单日反弹直接判断趋势反转。</li>
+    <li>关注12月2日财报，重点检验Agentforce ARR、cRPO和有机增长。</li>
+    <li>若放量重新站上194–195美元区域，可观察是否形成有效突破，而非追逐盘中瞬时价格。</li>
+    <li>若跌破180美元附近且成交量持续放大，应优先评估下行风险。</li>
+    <li>任何投资决策均应结合持仓成本、风险承受能力和仓位约束。</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section id="risks" class="mb-12">
+ <div class="mb-5"><div class="section-kicker">Risk Assessment</div><h2 class="section-title">八、主要风险清单</h2></div>
+ <div class="panel p-6">
+  <div class="table-wrap">
+   <table>
+    <thead><tr><th>风险</th><th>发生机制</th><th>影响</th><th>跟踪指标</th></tr></thead>
+    <tbody>
+     <tr><td>AI商业化风险</td><td>产品使用量增长但付费转化不足</td><td><span class="tag tag-red">高</span></td><td>ARR、订单、客户扩容</td></tr>
+     <tr><td>传统业务放缓</td><td>CRM席位优化及客户预算收缩</td><td><span class="tag tag-red">高</span></td><td>订阅收入、续约率</td></tr>
+     <tr><td>竞争加剧</td><td>微软及其他企业平台侵蚀客户预算</td><td><span class="tag tag-red">高</span></td><td>市场份额、合同折扣</td></tr>
+     <tr><td>并购整合风险</td><td>整合成本增加、产品协同不及预期</td><td><span class="tag tag-amber">中高</span></td><td>利润率、现金流</td></tr>
+     <tr><td>估值风险</td><td>成长股风险溢价上升</td><td><span class="tag tag-amber">中高</span></td><td>利率、Forward P/E</td></tr>
+     <tr><td>数据及合规风险</td><td>Agent错误执行、数据安全与隐私问题</td><td><span class="tag tag-amber">中高</span></td><td>合规事件、客户信任</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<section id="conclusion" class="mb-12">
+ <div class="panel p-7 md:p-9 border-blue-500/30" style="background:linear-gradient(135deg,var(--panel),color-mix(in srgb,#0ea5e9 8%,var(--panel)))">
+  <div class="section-kicker">Final Investment View</div>
+  <h2 class="text-2xl md:text-3xl font-black mt-2 mb-5">最终判断：关注AI收入兑现，而不是单纯追逐AI叙事</h2>
+  <p class="leading-8 muted text-sm md:text-base">
+   Salesforce拥有庞大的企业客户基础、深度CRM工作流、数据资产与成熟的软件订阅体系。Agentforce与Data 360的快速增长，为公司打开了从传统CRM向企业Agent平台升级的空间。FY27 Q2披露的AI业务增长和合同储备提供了积极信号，但并购贡献、传统业务增速和AI收入变现质量仍需要进一步拆解。
+  </p>
+  <p class="leading-8 muted text-sm md:text-base mt-3">
+   对CRM最重要的验证窗口是2026年12月2日预计发布的FY27 Q3业绩。若Agentforce ARR增长、cRPO、有机收入和自由现金流同时改善，当前市场对SaaS成长性及AI替代风险的担忧可能得到修正。反之，如果AI使用量继续增长而有机收入和合同储备未能同步改善，估值修复就可能缺乏基本面支撑。
+  </p>
+  <div class="grid sm:grid-cols-3 gap-3 mt-7">
+   <div class="rounded-xl bg-blue-500/10 p-4"><div class="text-xs muted">核心看多逻辑</div><div class="font-extrabold mt-2">Agentforce商业化</div></div>
+   <div class="rounded-xl bg-amber-500/10 p-4"><div class="text-xs muted">核心观察风险</div><div class="font-extrabold mt-2">传统SaaS增长压力</div></div>
+   <div class="rounded-xl bg-cyan-500/10 p-4"><div class="text-xs muted">最近重要催化</div><div class="font-extrabold mt-2">Q3 FY27财报</div></div>
+  </div>
+ </div>
+</section>
+
+<section id="sources" class="mb-10">
+ <div class="mb-4"><div class="section-kicker">Sources & Methodology</div><h2 class="section-title">九、信息来源与研究说明</h2></div>
+ <div class="panel p-6">
+  <p class="text-sm muted leading-7 mb-4">本报告采用公司官方披露、投资者关系资料、历史行情数据和行业研究资料。财务数据以Salesforce官方披露为优先；股价数据以已完成交易日为基准。报告基准日为2026年11月25日，部分最新公司经营数据仍以Q2 FY27财报为基础，不代表尚未发布的Q3业绩。</p>
+  <div class="space-y-3 text-sm">
+   <div class="flex gap-3"><i data-lucide="file-text" class="text-blue-500 shrink-0"></i><div><b>Salesforce Q2 FY27财报</b><p class="muted mt-1">2026年8月26日：收入、cRPO、Agentforce ARR、Data 360、利润率及指引。</p><a class="source" href="https://www.salesforce.com/news/press-releases/2026/08/26/fy27-q2-earnings/" target="_blank">官方新闻稿</a></div></div>
+   <div class="flex gap-3"><i data-lucide="chart-no-axes-combined" class="text-blue-500 shrink-0"></i><div><b>Salesforce投资者关系</b><p class="muted mt-1">季度财报、年度报告及管理层指引。</p><a class="source" href="https://investor.salesforce.com/financials/quarterly-results/default.aspx" target="_blank">Quarterly Results</a></div></div>
+   <div class="flex gap-3"><i data-lucide="trending-up" class="text-blue-500 shrink-0"></i><div><b>Salesforce官方股票报价</b><p class="muted mt-1">截至2026年11月23日的官方收盘行情。</p><a class="source" href="https://investor.salesforce.com/stock-info/" target="_blank">Stock Information</a></div></div>
+   <div class="flex gap-3"><i data-lucide="database" class="text-blue-500 shrink-0"></i><div><b>Yahoo Finance历史行情</b><p class="muted mt-1">CRM日线价格及成交量参考。</p><a class="source" href="https://finance.yahoo.com/quote/CRM/history/" target="_blank">Historical Data</a></div></div>
+   <div class="flex gap-3"><i data-lucide="building-2" class="text-blue-500 shrink-0"></i><div><b>IDC MarketScape</b><p class="muted mt-1">2026年全球Agentic AI平台厂商评估。</p><a class="source" href="https://www.sas.com/content/dam/sasdam/documents/2026-11/idc-marketscape-worldwide-agentic-ai-platforms-2026-vendor-assessment.pdf" target="_blank">研究报告</a></div></div>
+   <div class="flex gap-3"><i data-lucide="landmark" class="text-blue-500 shrink-0"></i><div><b>美国宏观数据</b><p class="muted mt-1">美联储货币政策与汇率数据。</p><a class="source" href="https://www.federalreserve.gov/" target="_blank">Federal Reserve</a></div></div>
+  </div>
+  <div class="border-t mt-5 pt-4 text-xs muted" style="border-color:var(--line)">
+   <b>研究限制：</b>本报告为公开信息研究与情景分析，不构成证券买卖建议。未获得可靠来源支持的近30日公司新闻、内幕信息和市场传闻不作为已确认事件。股价与估值会实时变化，历史数据不代表未来表现。
+  </div>
+ </div>
+</section>
+
+<footer class="border-t py-8 text-center text-xs muted" style="border-color:var(--line)">
+ <div class="font-extrabold tracking-widest mb-2">AIPE INVESTMENT RESEARCH</div>
+ <p>赛富时 Salesforce（NYSE: CRM）· 最新动态全景追踪</p>
+ <p class="mt-2">研究基准日：2026年11月25日 · 版本：1.0</p>
+ <p class="mt-3">书写思想旋律，点燃探索火花。</p>
+</footer>
+</main>
+
+<script>
+function toggleTheme(){
+ document.documentElement.classList.toggle('dark');
+ localStorage.setItem('crm-report-theme',
+  document.documentElement.classList.contains('dark')?'dark':'light');
+}
+function toggleMenu(){
+ document.getElementById('mobileMenu').classList.toggle('open');
+}
+(function(){
+ if(localStorage.getItem('crm-report-theme')==='dark'){
+  document.documentElement.classList.add('dark');
+ }
+ const bar=document.getElementById('progressBar');
+ window.addEventListener('scroll',()=>{
+  const total=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.width=(total>0?window.scrollY/total*100:0)+'%';
+ });
+ document.querySelectorAll('#mobileMenu a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open'));
+ });
+ if(window.AOS)AOS.init({duration:650,once:true,offset:60});
+ if(window.lucide)lucide.createIcons();
+})();
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

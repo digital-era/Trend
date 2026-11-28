@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Meta Platforms（NASDAQ:META）经营分析报告，从商业模式、竞争优势、行业趋势、五年财务、DCF估值、经营展望、风险及多空视角全面评估投资价值。">
+<title>Meta Platforms经营分析_2026-11-23</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={
+  darkMode:"class",
+  theme:{extend:{colors:{
+    primary:{50:"hsl(214,90%,96%)",100:"hsl(214,85%,90%)",200:"hsl(214,80%,80%)",300:"hsl(214,75%,68%)",400:"hsl(214,75%,58%)",500:"hsl(214,85%,50%)",600:"hsl(214,85%,43%)",700:"hsl(214,85%,34%)",800:"hsl(214,80%,25%)",900:"hsl(214,75%,16%)"},
+    accent:{50:"hsl(190,80%,96%)",100:"hsl(190,75%,88%)",200:"hsl(190,70%,78%)",300:"hsl(190,70%,65%)",400:"hsl(190,75%,55%)",500:"hsl(190,85%,45%)",600:"hsl(190,85%,38%)",700:"hsl(190,80%,30%)",800:"hsl(190,75%,22%)",900:"hsl(190,70%,14%)"}
+  }}}
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.btn-interactive,.card-interactive{transition:all .25s ease}
+.btn-interactive:hover{transform:translateY(-2px);box-shadow:0 8px 18px #0002}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 15px 30px #00000012}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:12px;border-bottom:1px solid #e5e7eb;white-space:normal}
+.dark th,.dark td{border-color:#374151}
+.moat-bar{height:10px;background:#e5e7eb;border-radius:8px;overflow:hidden}
+.dark .moat-bar{background:#374151}
+.moat-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,#2878d8,#22b8cf);transition:width 1s}
+.risk-badge{width:32px;height:32px;min-width:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800}
+#mobileMenu{display:none}
+#mobileMenu.mobile-menu-open{display:block}
+.dark body{color:#f3f4f6}
+.dark header nav a{color:#e5e7eb!important}
+.dark .text-gray-400,.dark .text-gray-500{color:#a1a1aa!important}
+.dark .text-gray-600{color:#d1d5db!important}
+.dark .text-gray-700{color:#e5e7eb!important}
+.dark table th{color:#f3f4f6}
+.dark table td{color:#e5e7eb}
+.dark .bg-white{background-color:#111827}
+.dark .bg-gray-50{background-color:#1f2937}
+.dark .bg-gray-100{background-color:#374151}
+.dark .border-gray-200{border-color:#374151}
+.dark .bg-primary-50\/50{background-color:#17243a}
+.dark .bg-accent-50\/50{background-color:#102d37}
+.section-heading{letter-spacing:-.025em}
+.source-link{color:#3985db;text-decoration:underline;text-underline-offset:3px}
+.source-link:hover{color:#22b8cf}
+.metric-card{min-height:112px}
+.tag{display:inline-flex;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700}
+@media(max-width:767px){
+ .desktop-nav{display:none!important}
+ .hero-title{font-size:2.2rem}
+ th,td{padding:9px;font-size:12px}
+ .section-heading{font-size:1.65rem}
+}
+</style>
+<script>
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ const d=document.documentElement.classList.contains('dark');
+ document.getElementById("sunIcon").style.display=d?"block":"none";
+ document.getElementById("moonIcon").style.display=d?"none":"block";
+ try{localStorage.setItem("meta-dark",d?"1":"0")}catch(e){}
+}
+function toggleMobileMenu(){
+ document.getElementById("mobileMenu").classList.toggle("mobile-menu-open");
+}
+document.addEventListener("DOMContentLoaded",()=>{
+ try{if(localStorage.getItem("meta-dark")==="1")document.documentElement.classList.add('dark')}catch(e){}
+ const d=document.documentElement.classList.contains('dark');
+ document.getElementById("sunIcon").style.display=d?"block":"none";
+ document.getElementById("moonIcon").style.display=d?"none":"block";
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:750,once:true,offset:50});
+ window.addEventListener("scroll",()=>{
+  const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById("progressBar").style.width=(h>0?window.scrollY/h*100:0)+"%";
+ });
+ document.querySelectorAll("#mobileMenu a").forEach(a=>a.addEventListener("click",()=>document.getElementById("mobileMenu").classList.remove("mobile-menu-open")));
+ if(window.Chart){
+  const dark=document.documentElement.classList.contains('dark');
+  Chart.defaults.color=dark?"#d1d5db":"#64748b";
+  Chart.defaults.font.family="'Microsoft YaHei',sans-serif";
+  const ctx=document.getElementById("financialChart");
+  if(ctx)new Chart(ctx,{type:"bar",data:{
+   labels:["2021","2022","2023","2024","2025"],
+   datasets:[
+    {label:"营业收入",data:[117.93,116.61,134.90,164.50,200.97],backgroundColor:"#3785d8",borderRadius:5},
+    {label:"净利润",data:[39.37,23.20,39.10,62.36,60.46],backgroundColor:"#23b8c9",borderRadius:5}
+   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"}},scales:{y:{beginAtZero:true,title:{display:true,text:"十亿美元"}}}}});
+  const fcf=document.getElementById("fcfChart");
+  if(fcf)new Chart(fcf,{type:"line",data:{
+   labels:["2021","2022","2023","2024","2025"],
+   datasets:[{label:"自由现金流",data:[39.12,19.04,43.85,54.07,46.11],borderColor:"#23b8c9",backgroundColor:"rgba(35,184,201,.12)",fill:true,tension:.35,pointRadius:5}]
+  },options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"}},scales:{y:{beginAtZero:true,title:{display:true,text:"十亿美元"}}}}});
+ }
+});
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[60]" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/95 dark:bg-gray-950/95 border-b border-primary-500/20">
+<div class="max-w-7xl mx-auto px-5 py-4">
+<div class="flex items-center justify-between gap-3">
+<h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">META 经营分析</h1>
+<nav class="desktop-nav hidden md:flex space-x-4">
+<a href="#model" class="text-xs font-medium hover:text-primary-500">商业模式</a>
+<a href="#moat" class="text-xs font-medium hover:text-primary-500">护城河</a>
+<a href="#industry" class="text-xs font-medium hover:text-primary-500">行业趋势</a>
+<a href="#financial" class="text-xs font-medium hover:text-primary-500">财务状况</a>
+<a href="#valuation" class="text-xs font-medium hover:text-primary-500">估值</a>
+<a href="#outlook" class="text-xs font-medium hover:text-primary-500">展望</a>
+<a href="#risk" class="text-xs font-medium hover:text-primary-500">风险</a>
+<a href="#longshort" class="text-xs font-medium hover:text-primary-500">多空</a>
+</nav>
+<div class="flex items-center gap-2 flex-shrink-0">
+<button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600" aria-label="菜单"><i data-lucide="menu" class="w-5 h-5"></i></button>
+<button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600" aria-label="切换主题">
+<i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[75vh] overflow-y-auto">
+<nav class="flex flex-col gap-3">
+<a href="#model" class="text-sm">商业模式</a><a href="#moat" class="text-sm">竞争优势</a>
+<a href="#industry" class="text-sm">行业趋势</a><a href="#financial" class="text-sm">财务状况</a>
+<a href="#valuation" class="text-sm">估值分析</a><a href="#outlook" class="text-sm">经营展望</a>
+<a href="#risk" class="text-sm">风险识别</a><a href="#longshort" class="text-sm">多空视角</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="pt-36 pb-20 bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex flex-wrap gap-2 mb-5">
+<span class="tag bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-200">NASDAQ · 科技平台</span>
+<span class="tag bg-accent-100 text-accent-700 dark:bg-accent-900 dark:text-accent-200">META</span>
+<span class="tag bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200">研究日期：2026-11-23</span>
+</div>
+<h2 class="hero-title text-4xl md:text-5xl font-bold mb-5 text-primary-700 dark:text-primary-300 leading-tight">
+Meta Platforms<br>
+<span class="text-2xl md:text-3xl font-medium text-gray-600 dark:text-gray-400">经营分析与投资价值评估</span>
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl mb-8">
+Meta Platforms是全球最具影响力的数字社交与广告平台之一。Facebook、Instagram、WhatsApp和Messenger构成了庞大的全球社交网络，广告业务为公司提供强大的现金流，而人工智能正在成为其下一阶段的核心增长引擎。当前公司正处于一个关键的战略转折点：一方面，AI推荐系统和广告技术显著提升商业变现效率；另一方面，AI基础设施投入、数据中心建设和监管诉讼正在改变公司的资本结构与利润曲线。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+本报告以2026年11月23日为分析基准，采用截至11月20日可获得的市场价格，以及2026年第三季度财报和2021—2025年年度财务数据。重点判断Meta是否能够将社交网络优势转化为AI时代的持续盈利能力，以及当前估值是否已经充分反映资本开支与监管风险。
+</p>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="metric-card card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="text-2xl font-bold text-primary-600 dark:text-primary-400">$560.84</div>
+<div class="text-xs text-gray-500 mt-2">11月20日收盘价</div>
+<div class="text-xs text-gray-400 mt-1">美元/股</div>
+</div>
+<div class="metric-card card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="text-2xl font-bold text-accent-600 dark:text-accent-400">$241.61B</div>
+<div class="text-xs text-gray-500 mt-2">最近12个月营收</div>
+<div class="text-xs text-gray-400 mt-1">TTM</div>
+</div>
+<div class="metric-card card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="text-2xl font-bold text-primary-600 dark:text-primary-400">19.12x</div>
+<div class="text-xs text-gray-500 mt-2">TTM市盈率</div>
+<div class="text-xs text-gray-400 mt-1">Forward PE约17.02x</div>
+</div>
+<div class="metric-card card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="text-2xl font-bold text-accent-600 dark:text-accent-400">3.64B</div>
+<div class="text-xs text-gray-500 mt-2">日活跃用户（DAP）</div>
+<div class="text-xs text-gray-400 mt-1">2026年9月平均值</div>
+</div>
+</div>
+
+<div class="mt-8 p-5 rounded-xl border border-primary-200 dark:border-primary-800 bg-primary-50/60 dark:bg-primary-900/20">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="brain-circuit" class="w-5 h-5 text-primary-600"></i>
+<strong class="text-primary-800 dark:text-primary-200">核心投资判断</strong>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+Meta是一家具有<strong>强网络效应、极高现金创造能力和AI商业化优势</strong>的优质平台企业。2026年广告业务仍在快速增长，但资本开支和法律费用使财务报表出现显著波动。当前约19倍TTM市盈率并不昂贵，但也不能简单视为明显低估。未来12—24个月最重要的变量，是AI投入能否转化为持续的广告收入、利润和自由现金流增长。
+</p>
+</div>
+</div>
+</section>
+
+<!-- 一、商业模式 -->
+<section id="model" class="py-20 bg-white dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"><i data-lucide="network" class="w-5 h-5 text-primary-600"></i></div>
+<h2 class="section-heading text-3xl font-bold text-primary-700 dark:text-primary-300">一、商业模式</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+Meta的商业模式可以概括为：<strong>通过免费社交产品积累全球用户和注意力，再利用广告竞价系统、AI推荐算法和商业消息服务，将用户注意力转化为广告收入与商业价值。</strong>这是一种典型的双边平台模式：用户获得免费的社交、内容和通讯服务，广告客户则为精准触达潜在消费者付费。
+</p>
+
+<div class="grid md:grid-cols-3 gap-5 mb-8">
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow">
+<i data-lucide="users" class="w-7 h-7 text-primary-600 mb-3"></i>
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">全球用户网络</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Facebook、Instagram、WhatsApp和Messenger覆盖社交、短视频、图片分享、群组、即时通信等不同场景。用户规模越大，平台内容和社交连接的价值越高，进而吸引更多用户和创作者。
+</p>
+</div>
+<div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow">
+<i data-lucide="target" class="w-7 h-7 text-accent-600 mb-3"></i>
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">广告精准变现</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+通过用户兴趣、互动行为、内容消费和广告反馈训练推荐模型，提升广告相关性和转化率。广告客户通过竞价系统购买展示机会，Meta按照广告展示和相关计费机制获得收入。
+</p>
+</div>
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow">
+<i data-lucide="cpu" class="w-7 h-7 text-primary-600 mb-3"></i>
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">AI基础设施与新业务</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+利用自研AI模型、GPU集群、数据中心、广告自动化工具及AI眼镜等产品扩大商业价值。长期目标是将AI从推荐技术扩展为广告生产、内容创作、个人助手和商业服务的基础平台。
+</p>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-5">核心业务板块</h3>
+<div class="space-y-4">
+<div class="card-interactive p-5 border border-gray-200 dark:border-gray-700 rounded-xl">
+<div class="flex justify-between items-center mb-2"><h4 class="font-semibold">Family of Apps（FoA）</h4><span class="tag bg-green-100 text-green-700">核心利润来源</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+包含Facebook、Instagram、WhatsApp、Messenger及其他相关服务。主要收入来自广告业务，其他收入还包括付费消息、订阅及其他商业服务。2026年前九个月FoA收入同比增长约29%，广告仍是最主要的增长来源。
+</p>
+</div>
+<div class="card-interactive p-5 border border-gray-200 dark:border-gray-700 rounded-xl">
+<div class="flex justify-between items-center mb-2"><h4 class="font-semibold">Reality Labs（RL）</h4><span class="tag bg-orange-100 text-orange-700">长期战略投资</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+负责Quest头显、Ray-Ban Meta智能眼镜、Horizon及相关AR/VR技术。其战略价值在于下一代人机交互入口，而不是当前利润贡献。管理层预计2026年Reality Labs经营亏损约180亿—190亿美元，显示该业务仍处于高投入阶段。
+</p>
+</div>
+</div>
+
+<div class="mt-8 p-5 rounded-xl bg-primary-50/60 dark:bg-primary-900/20 border-l-4 border-primary-500">
+<strong class="text-primary-800 dark:text-primary-200">商业模式的本质：</strong>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+Meta并不是简单地出售社交软件，而是经营一个全球规模的注意力与商业匹配系统。用户提供注意力、互动数据和内容生态，AI负责提高匹配效率，广告客户为商业转化付费。其最重要的经济优势，是庞大的用户规模能够以相对较低的边际成本支持更多广告交易。
+</p>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-4">收入结构与经营质量</h3>
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+<table class="bg-white dark:bg-gray-900 text-sm">
+<thead class="bg-primary-50 dark:bg-primary-900/30"><tr><th>业务</th><th>商业模式</th><th>增长驱动</th><th>盈利特征</th></tr></thead>
+<tbody>
+<tr><td class="font-semibold">广告业务</td><td>广告竞价、展示和转化</td><td>用户参与度、广告展示量、广告单价</td><td class="text-green-600 font-semibold">高利润、高现金流</td></tr>
+<tr><td class="font-semibold">商业消息</td><td>WhatsApp商业消息、企业通信</td><td>企业客户、消息量、付费服务</td><td>潜在高增长</td></tr>
+<tr><td class="font-semibold">订阅服务</td><td>Meta Verified及其他付费服务</td><td>创作者、企业和认证用户</td><td>收入多元化</td></tr>
+<tr><td class="font-semibold">Reality Labs</td><td>硬件销售、软件和生态</td><td>智能眼镜、VR/AR普及</td><td class="text-red-600">目前持续亏损</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="text-xs text-gray-500 mt-3">来源：Meta 2026年第三季度10-Q及业绩公告。FoA与Reality Labs是公司主要可报告经营分部。</p>
+</div>
+</section>
+
+<!-- 二、护城河 -->
+<section id="moat" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"><i data-lucide="shield-check" class="w-5 h-5 text-accent-600"></i></div>
+<h2 class="section-heading text-3xl font-bold text-accent-700 dark:text-accent-300">二、竞争优势：护城河评估</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-7">
+Meta的护城河并非来自某一款社交应用，而是由全球用户网络、社交关系链、广告生态、数据反馈循环、算法工程能力和基础设施规模共同构成。其真正的优势在于：竞争者即使能够复制某种产品形态，也很难在短期内复制Meta已经形成的全球社交关系、广告客户基础和商业化系统。
+</p>
+
+<div class="space-y-5">
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">1. 品牌实力</h3>
+<span class="text-2xl font-bold text-primary-600">9<span class="text-sm text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:90%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Facebook、Instagram和WhatsApp在全球拥有极高的品牌认知度。Instagram在视觉社交、创作者经济和品牌营销领域拥有强势地位，WhatsApp在多个国际市场已成为重要的日常通信基础设施。品牌优势不仅降低用户获取成本，也降低广告客户尝试平台的心理和运营成本。但Meta品牌并非没有负面因素，隐私争议、内容治理和青少年保护问题可能侵蚀品牌信任。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">2. 网络效应</h3>
+<span class="text-2xl font-bold text-primary-600">10<span class="text-sm text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:100%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+这是Meta最核心的护城河。2026年9月，Meta旗下应用Family日活跃人数达到36.4亿，同比增长3%。用户越多，好友、社群、内容创作者和商业账户越丰富；广告客户越多，广告交易和数据反馈越完善。其网络效应同时存在于消费者端和广告主端，构成双边网络效应。竞争者可以复制短视频功能，却很难复制跨国家、跨年龄层的社交关系网络。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">3. 转换成本</h3>
+<span class="text-2xl font-bold text-primary-600">8<span class="text-sm text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:80%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+用户离开Meta不仅意味着更换应用，还可能失去好友关系、社群、历史内容、关注网络及商业联系。对企业和广告主而言，重新建立广告账户、像素追踪、受众模型、创意素材、转化数据和运营经验也存在成本。不过，普通用户同时使用TikTok、YouTube等平台的现象非常普遍，跨平台消费降低了实际迁移壁垒，因此转换成本虽高，但并非绝对锁定。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">4. 成本优势</h3>
+<span class="text-2xl font-bold text-primary-600">9<span class="text-sm text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:90%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Meta拥有巨大的数据中心、服务器、网络基础设施和广告技术研发规模。2025年营收达到2009.66亿美元，营业利润832.76亿美元，营业利润率约41.4%。巨大的收入规模使研发、基础设施和内容推荐算法成本能够被数十亿用户及庞大广告交易量分摊。AI基础设施投入正在推高成本，但规模经济仍然是其长期优势。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">5. 专利或自有技术</h3>
+<span class="text-2xl font-bold text-primary-600">9<span class="text-sm text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:90%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Meta的技术护城河主要体现在自研AI模型、广告排序与推荐算法、内容理解系统、AI训练基础设施、Llama技术体系以及硬件和人机交互研发。其价值并非单纯依靠专利数量，而是来自专有工程能力、训练数据、模型优化、基础设施和产品部署之间的协同。Llama及后续模型的发展有望降低内部AI开发成本，并形成外部开发者生态。但开源策略也意味着模型技术本身并不一定产生独占性收入。
+</p>
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">与主要竞争对手的护城河对比</h3>
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+<table class="bg-white dark:bg-gray-900 text-sm">
+<thead class="bg-primary-50 dark:bg-primary-900/30">
+<tr><th>竞争维度</th><th>Meta</th><th>Alphabet</th><th>TikTok</th><th>Snap</th><th>Amazon Ads</th></tr>
+</thead>
+<tbody>
+<tr><td class="font-medium">品牌实力</td><td class="text-primary-600 font-bold">9</td><td>10</td><td>9</td><td>7</td><td>9</td></tr>
+<tr><td class="font-medium">网络效应</td><td class="text-primary-600 font-bold">10</td><td>10</td><td>9</td><td>7</td><td>8</td></tr>
+<tr><td class="font-medium">转换成本</td><td class="text-primary-600 font-bold">8</td><td>9</td><td>6</td><td>5</td><td>9</td></tr>
+<tr><td class="font-medium">成本优势</td><td class="text-primary-600 font-bold">9</td><td>10</td><td>7</td><td>6</td><td>10</td></tr>
+<tr><td class="font-medium">自有技术</td><td class="text-primary-600 font-bold">9</td><td>10</td><td>8</td><td>7</td><td>9</td></tr>
+<tr><td class="font-semibold">综合评分</td><td class="font-bold text-primary-600">9.0</td><td>9.8</td><td>7.8</td><td>6.4</td><td>9.0</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 mt-3">说明：1—10分为研究者定性评价，并非公司披露指标；各平台业务边界不同，评分用于比较竞争壁垒，不代表财务表现排名。</p>
+</div>
+
+<div class="mt-6 p-5 rounded-xl bg-accent-50/60 dark:bg-accent-900/20 border-l-4 border-accent-500">
+<strong class="text-accent-800 dark:text-accent-200">综合护城河评分：9.0/10</strong>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+Meta拥有全球顶级的网络效应和广告商业化能力，护城河深度仅次于或接近Alphabet等少数大型科技平台。其最值得关注的不是社交应用数量，而是36亿级用户网络与AI广告系统形成的正向反馈。未来真正可能削弱护城河的因素，是新型AI交互入口改变用户获取信息和社交的方式，以及监管限制对数据利用和广告精准投放的影响。
+</p>
+</div>
+</div>
+</section>
+
+<!-- 三、行业趋势 -->
+<section id="industry" class="py-20 bg-white dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"><i data-lucide="trending-up" class="w-5 h-5 text-primary-600"></i></div>
+<h2 class="section-heading text-3xl font-bold text-primary-700 dark:text-primary-300">三、行业趋势</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-7">
+全球数字广告行业正在从传统的流量购买，转向AI驱动的内容推荐、自动化创意生成和转化优化。Meta处于这一转型的核心位置。2026年第三季度广告展示量同比增长10%，平均广告单价同比增长14%，表明公司同时获得了广告供给量和变现价格的增长。
+</p>
+
+<div class="grid md:grid-cols-2 gap-5">
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 flex gap-2 items-center mb-3"><i data-lucide="brain-circuit"></i>趋势一：生成式AI重构广告产业链</h3>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>• AI自动生成广告素材、视频、文案和商品展示内容。</li>
+<li>• AI自动优化受众、预算和投放组合，提高广告转化率。</li>
+<li>• 广告客户有望减少人工运营和创意制作成本。</li>
+<li>• Meta的优势是拥有庞大广告交易数据和实时反馈系统。</li>
+</ul>
+<p class="text-sm text-primary-700 dark:text-primary-300 mt-3 font-semibold">判断：长期利好，可能推动广告单价和广告主预算份额提升。</p>
+</div>
+
+<div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 flex gap-2 items-center mb-3"><i data-lucide="video"></i>趋势二：短视频成为主流内容消费形式</h3>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>• Reels持续与TikTok、YouTube Shorts争夺用户时长。</li>
+<li>• 推荐算法逐渐取代传统好友动态成为内容分发核心。</li>
+<li>• 视频广告的商业化效率成为平台竞争关键。</li>
+<li>• 创作者经济推动广告、订阅和商业合作增长。</li>
+</ul>
+<p class="text-sm text-accent-700 dark:text-accent-300 mt-3 font-semibold">判断：Meta具备强竞争力，但用户注意力竞争将长期持续。</p>
+</div>
+
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 flex gap-2 items-center mb-3"><i data-lucide="message-circle"></i>趋势三：即时通信商业化</h3>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>• WhatsApp逐步成为企业客户服务和商业沟通入口。</li>
+<li>• Click-to-WhatsApp广告将广告展示与商业对话连接。</li>
+<li>• 企业付费消息、自动化客服和AI商业助手存在增长空间。</li>
+<li>• 商业消息可能成为广告之外的重要收入来源。</li>
+</ul>
+<p class="text-sm text-primary-700 dark:text-primary-300 mt-3 font-semibold">判断：具有较高潜力，但需要持续观察收入占比和利润贡献。</p>
+</div>
+
+<div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 flex gap-2 items-center mb-3"><i data-lucide="glasses"></i>趋势四：AI眼镜和新交互入口</h3>
+<ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+<li>• AI眼镜将摄像头、语音助手和多模态AI结合。</li>
+<li>• 穿戴设备可能成为手机之外的新型AI入口。</li>
+<li>• Meta与硬件合作伙伴在智能眼镜方面具备先发优势。</li>
+<li>• 但硬件销量、用户留存和生态盈利尚需验证。</li>
+</ul>
+<p class="text-sm text-accent-700 dark:text-accent-300 mt-3 font-semibold">判断：长期战略价值较高，短期财务贡献仍不确定。</p>
+</div>
+</div>
+
+<div class="mt-7 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">趋势五：AI基础设施投资进入资本密集期</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+AI模型训练和推理需要大量GPU、服务器、数据中心、电力和网络资源。Meta在2026年第三季度10-Q中预计，2026年全年资本开支约为1,350亿—1,450亿美元。AI基础设施可能进一步强化Meta的技术能力，但同时带来折旧、能源、融资及设备更新成本。行业正在从轻资产软件竞争转向部分重资产基础设施竞争，资本配置能力将决定长期回报率。
+</p>
+</div>
+
+<div class="mt-7 p-5 rounded-xl bg-primary-50/50 dark:bg-primary-900/20 border-l-4 border-primary-500">
+<strong class="text-primary-800 dark:text-primary-200">对Meta的行业判断：</strong>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+Meta是AI广告产业链的直接受益者，也是AI基础设施投入最大的科技公司之一。其广告业务仍有增长空间，但行业竞争已经从单纯争夺用户转向争夺模型能力、算力资源、广告主预算和用户交互入口。未来真正决定估值的不是Meta投入了多少AI，而是这些投入能否带来超过资本成本的增量利润。
+</p>
+</div>
+</div>
+</section>
+
+<!-- 四、财务状况 -->
+<section id="financial" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"><i data-lucide="chart-no-axes-combined" class="w-5 h-5 text-accent-600"></i></div>
+<h2 class="section-heading text-3xl font-bold text-accent-700 dark:text-accent-300">四、财务状况：五年财务深度分析</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-7">
+以下采用2021—2025年已公布年度财务数据，并结合2026年第三季度最新财报。金额均为美元，表格以十亿美元（B）为单位。需要特别区分：2026年第三季度出现的巨额法律费用属于一次性或非经常性因素，但仍然是真实经济成本，不能在估值中完全忽略。
+</p>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="card-interactive p-4 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="text-2xl font-bold text-primary-600">$200.97B</div>
+<div class="text-xs text-gray-500 mt-1">2025年营业收入</div>
+</div>
+<div class="card-interactive p-4 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="text-2xl font-bold text-accent-600">$83.28B</div>
+<div class="text-xs text-gray-500 mt-1">2025年营业利润</div>
+</div>
+<div class="card-interactive p-4 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="text-2xl font-bold text-primary-600">$115.80B</div>
+<div class="text-xs text-gray-500 mt-1">2025年经营现金流</div>
+</div>
+<div class="card-interactive p-4 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="text-2xl font-bold text-accent-600">$46.11B</div>
+<div class="text-xs text-gray-500 mt-1">2025年自由现金流</div>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">1. 最近五年利润表核心数据</h3>
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-7">
+<table class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 text-sm">
+<thead class="bg-accent-50 dark:bg-accent-900/30">
+<tr><th>财务指标（十亿美元）</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
+</thead>
+<tbody>
+<tr><td class="font-medium">营业收入</td><td>117.93</td><td>116.61</td><td>134.90</td><td>164.50</td><td class="font-bold text-primary-600">200.97</td></tr>
+<tr><td>营收同比增长</td><td>+37.2%</td><td>-1.1%</td><td>+15.7%</td><td>+21.9%</td><td class="text-green-600">+22.2%</td></tr>
+<tr><td class="font-medium">营业利润</td><td>46.75</td><td>28.94</td><td>46.75</td><td>69.38</td><td>83.28</td></tr>
+<tr><td>营业利润率</td><td>39.6%</td><td>24.8%</td><td>34.7%</td><td>42.2%</td><td>41.4%</td></tr>
+<tr><td class="font-medium">净利润</td><td>39.37</td><td>23.20</td><td>39.10</td><td>62.36</td><td>60.46</td></tr>
+<tr><td>净利率</td><td>33.4%</td><td>19.9%</td><td>29.0%</td><td>37.9%</td><td>30.1%</td></tr>
+<tr><td>稀释后EPS（美元）</td><td>13.77</td><td>8.59</td><td>14.87</td><td>23.86</td><td>23.49</td></tr>
+<tr><td>毛利率</td><td>80.8%</td><td>78.3%</td><td>80.8%</td><td>81.7%</td><td>82.0%</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 mb-8">数据来源：Meta年度10-K及公开财务数据库。2025年净利润同比下降约3.1%，主要受到所得税费用增加影响；营业利润仍同比增长约20.0%。</p>
+
+<div class="grid md:grid-cols-2 gap-6 mb-8">
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">五年收入与净利润变化</h3>
+<div class="h-64"><canvas id="financialChart"></canvas></div>
+<p class="text-xs text-gray-500 mt-3">单位：十亿美元。收入增长和净利润变化应分别观察，避免将税务因素造成的利润波动误认为主营业务恶化。</p>
+</div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">五年自由现金流变化</h3>
+<div class="h-64"><canvas id="fcfChart"></canvas></div>
+<p class="text-xs text-gray-500 mt-3">自由现金流=经营活动现金流-资本开支。2025年资本开支大幅增加，自由现金流受到挤压。</p>
+</div>
+</div>
+
+<!-- 收入 -->
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-5">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"><i data-lucide="trending-up"></i>2. 收入增长：AI驱动下重新加速</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+Meta的收入从2021年的1,179亿美元增长至2025年的2,010亿美元，五年复合增长率约14.3%。2022年受到宏观广告预算收缩、苹果隐私政策变化和TikTok竞争影响，收入出现轻微下滑。2023年开始恢复，2024—2025年增长进一步加速。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+2026年前九个月，公司营业收入达到1,817.12亿美元，同比增长约28.8%。其中第三季度收入646.01亿美元，同比增长26%。第三季度广告展示量增长10%，平均广告单价增长14%。这表明Meta当前增长不只是依靠增加广告展示次数，还能够通过更好的广告匹配和竞价效率提高单次广告的商业价值。
+</p>
+<div class="mt-4 p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+<strong class="text-primary-700 dark:text-primary-300 text-sm">研究判断：</strong>
+<span class="text-sm text-gray-700 dark:text-gray-300">收入增长质量较高。AI推荐算法、Reels商业化和广告自动化是重要驱动力。但需警惕收入增长快于利润增长的现象，尤其是AI基础设施费用持续上升时。</span>
+</div>
+</div>
+
+<!-- 净利润 -->
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-5">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"><i data-lucide="chart-line"></i>3. 净利润趋势：经营恢复强于账面净利润表现</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+2021年净利润393.7亿美元，2022年下降至232亿美元，主要由于广告市场疲软和费用扩张。2023年净利润恢复至391亿美元，2024年达到623.6亿美元。2025年净利润为604.6亿美元，同比下降约3.1%，但营业利润增长约20%，说明主营经营能力并未同步恶化。2025年税费达到254.74亿美元，是净利润低于2024年的重要原因。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-3">
+2026年第三季度，公司确认98.9亿美元与青少年心理健康和社交媒体诉讼相关的费用，导致GAAP营业利润由上年同期205.35亿美元下降至129.88亿美元，营业利润率从40%降至20%。若剔除这笔诉讼费用，营业利润为228.78亿美元，同比增长约11.4%，调整后营业利润率约35.4%。需要强调，调整数据用于观察经营趋势，不能替代GAAP报表。
+</p>
+<div class="mt-4 p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+<strong class="text-accent-700 dark:text-accent-300 text-sm">研究判断：</strong>
+<span class="text-sm text-gray-700 dark:text-gray-300">核心经营仍然具有盈利能力，但法律成本、研发费用和算力投资正在提高利润波动性。应重点观察剔除重大一次性项目后的营业利润率。</span>
+</div>
+</div>
+
+<!-- FCF -->
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-5">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"><i data-lucide="wallet"></i>4. 自由现金流：最值得警惕的财务变量</h3>
+<div class="overflow-x-auto mb-4">
+<table class="text-sm">
+<thead class="bg-primary-50 dark:bg-primary-900/30"><tr><th>指标（十亿美元）</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr></thead>
+<tbody>
+<tr><td>经营现金流</td><td>57.68</td><td>50.48</td><td>71.11</td><td>91.33</td><td>115.80</td></tr>
+<tr><td>资本开支</td><td>18.57</td><td>31.43</td><td>27.27</td><td>37.26</td><td>69.69</td></tr>
+<tr><td class="font-semibold">自由现金流</td><td>39.12</td><td>19.04</td><td>43.85</td><td>54.07</td><td>46.11</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+经营现金流在五年内持续增长，2025年达到1,158亿美元，显示广告业务具备极强的现金创造能力。但资本开支从2024年的373亿美元大幅升至2025年的697亿美元，使自由现金流下降至461亿美元。2026年资本开支进一步进入非常规高投入阶段。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-3">
+2026年第三季度资本开支（包括融资租赁本金支付）达到349.1亿美元，经营现金流327.9亿美元，当季自由现金流为负21.2亿美元。公司2026年前九个月购置物业和设备约830.6亿美元，预计全年资本开支约1,350亿—1,450亿美元。如此庞大的投资会显著提高未来折旧费用，也会增加数据中心和服务器的更新压力。
+</p>
+<div class="mt-4 p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+<strong class="text-red-700 dark:text-red-300 text-sm">关键警示：</strong>
+<span class="text-sm text-gray-700 dark:text-gray-300">Meta并不是缺乏现金，而是进入了资本开支快速扩张周期。投资者不能只看营业收入和净利润，必须同时观察自由现金流、资本开支回报率和AI投资产生的增量收入。</span>
+</div>
+</div>
+
+<!-- 利润率 -->
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-5">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"><i data-lucide="percent"></i>5. 利润率：仍处于全球互联网行业领先水平</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Meta 2025年毛利率约82%，营业利润率约41.4%，净利率约30.1%。这意味着每创造100美元收入，扣除直接成本后仍有约82美元毛利，最终形成约30美元净利润。如此高的利润率体现了数字广告平台的规模经济和较低边际分发成本。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-3">
+但2026年第三季度研发费用达到200.54亿美元，明显高于上年同期151.44亿美元。AI人才、算力、数据中心和模型研发的费用增长将持续考验经营杠杆。未来利润率的关键并非是否继续维持40%以上，而是AI收入增长能否抵消折旧、研发和能源成本。
+</p>
+</div>
+
+<!-- 债务 -->
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-5">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"><i data-lucide="landmark"></i>6. 债务水平：从净现金型公司转向更积极的融资结构</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+2025年末公司现金及现金等价物约358.73亿美元，短期有价证券约457.19亿美元，合计流动性约815.92亿美元。长期债务约587.44亿美元。按照不包含租赁负债的口径，现金和有价证券扣除长期债务后仍有约228.48亿美元净现金。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-3">
+2026年5月，公司通过发行债券取得约249.1亿美元净融资收入。2026年9月末现金及现金等价物和有价证券达到824.49亿美元。融资活动反映了公司为AI基础设施投资预留资金的战略选择。需要注意，2026年融资债务和租赁负债已经增加，不能继续用过去低杠杆时期的财务结构来判断未来。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-3">
+即使考虑新增债务，Meta仍拥有庞大的现金储备和经营现金流，偿债能力远强于大多数科技企业。但如果资本开支长期维持高位，同时AI投资回报不及预期，净现金优势可能进一步缩小。
+</p>
+</div>
+
+<!-- ROE -->
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-7">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"><i data-lucide="activity"></i>7. 股本回报率（ROE）：资本使用效率仍然突出</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-5">
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg"><div class="text-3xl font-bold text-primary-600">31.1%</div><div class="text-xs text-gray-500 mt-1">2021 ROE</div></div>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg"><div class="text-3xl font-bold text-primary-600">18.5%</div><div class="text-xs text-gray-500 mt-1">2022 ROE</div></div>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg"><div class="text-3xl font-bold text-primary-600">37.1%</div><div class="text-xs text-gray-500 mt-1">2024 ROE</div></div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg"><div class="text-3xl font-bold text-accent-600">30.2%</div><div class="text-xs text-gray-500 mt-1">2025 ROE</div></div>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Meta的ROE从2022年18.5%恢复至2024年37.1%，2025年约30.2%。虽然略有回落，但依然属于较高水平。其高ROE主要来自强劲利润率、较高资产周转效率和持续的股票回购。未来应同时关注ROIC（投入资本回报率），因为AI基础设施投资会显著扩大资本基数，ROE可能因杠杆和回购而产生一定失真。
+</p>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">2026年第三季度：最新经营情况</h3>
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-6">
+<table class="bg-white dark:bg-gray-900 text-sm">
+<thead class="bg-accent-50 dark:bg-accent-900/30"><tr><th>指标</th><th>2026 Q3</th><th>2025 Q3</th><th>同比变化</th></tr></thead>
+<tbody>
+<tr><td>营业收入</td><td class="font-semibold">$64.60B</td><td>$51.24B</td><td class="text-green-600">+26%</td></tr>
+<tr><td>营业利润</td><td>$12.99B</td><td>$20.54B</td><td class="text-red-600">-37%</td></tr>
+<tr><td>GAAP营业利润率</td><td>20%</td><td>40%</td><td class="text-red-600">-20个百分点</td></tr>
+<tr><td>净利润</td><td>$9.86B</td><td>$2.71B</td><td class="text-green-600">+264%</td></tr>
+<tr><td>稀释后EPS</td><td>$3.83</td><td>$1.05</td><td class="text-green-600">+265%</td></tr>
+<tr><td>日活跃人数DAP</td><td>36.4亿</td><td>约35.3亿</td><td>+3%</td></tr>
+<tr><td>广告展示量</td><td>同比增长10%</td><td>—</td><td>增长</td></tr>
+<tr><td>平均广告单价</td><td>同比增长14%</td><td>—</td><td>增长</td></tr>
+<tr><td>当季自由现金流</td><td class="text-red-600">-$2.12B</td><td>—</td><td>受高资本开支影响</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="p-5 rounded-xl bg-white dark:bg-gray-900 shadow border-l-4 border-accent-500 mb-5">
+<strong class="text-accent-700 dark:text-accent-300">如何正确理解第三季度净利润和营业利润的背离？</strong>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+第三季度营业利润受到98.9亿美元法律费用影响，净利润则受到税务因素影响。公司当季实际有效税率为24%，而2025年同期由于特殊税务项目有效税率高达87%。因此，净利润同比增长264%并不代表当季经营能力突然增长264%。同样，营业利润下降37%也不完全代表广告业务恶化。投资分析应同时看GAAP结果和剔除重大一次性费用后的经营表现。
+</p>
+</div>
+
+<div class="p-6 rounded-xl bg-primary-50/70 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-3">整体财务健康度结论</h3>
+<div class="flex flex-wrap gap-5 mb-4">
+<div><div class="text-3xl font-bold text-primary-600">A</div><div class="text-xs text-gray-500">盈利能力</div></div>
+<div><div class="text-3xl font-bold text-primary-600">A+</div><div class="text-xs text-gray-500">经营现金流</div></div>
+<div><div class="text-3xl font-bold text-accent-600">B+</div><div class="text-xs text-gray-500">自由现金流趋势</div></div>
+<div><div class="text-3xl font-bold text-primary-600">A-</div><div class="text-xs text-gray-500">偿债能力</div></div>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong>结论：Meta财务状况总体稳健，主营经营增长强劲，但资本开支和自由现金流压力明显上升。</strong>公司不存在传统意义上的现金短缺或偿债危机。真正的问题是AI基础设施投资规模是否过大，以及资本回报周期是否足够短。如果未来两年资本开支增长持续快于经营现金流增长，公司的自由现金流和资本回报率将面临压力。
+</p>
+</div>
+</div>
+</section>
+
+<!-- 五、估值 -->
+<section id="valuation" class="py-20 bg-white dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"><i data-lucide="calculator" class="w-5 h-5 text-primary-600"></i></div>
+<h2 class="section-heading text-3xl font-bold text-primary-700 dark:text-primary-300">五、估值分析：投行视角</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-7">
+估值基准日为2026年11月23日。由于11月23日美股交易时段尚未结束，以下市场估值采用最近一个完整交易日——2026年11月20日收盘数据。META收盘价560.84美元，市值约1.43万亿美元，TTM市盈率约19.12倍，Forward PE约17.02倍。
+</p>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-7">
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-xl text-center"><div class="text-2xl font-bold text-primary-600">$560.84</div><div class="text-xs text-gray-500 mt-1">市场价格</div></div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-xl text-center"><div class="text-2xl font-bold text-accent-600">19.12x</div><div class="text-xs text-gray-500 mt-1">TTM PE</div></div>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-xl text-center"><div class="text-2xl font-bold text-primary-600">17.02x</div><div class="text-xs text-gray-500 mt-1">Forward PE</div></div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-xl text-center"><div class="text-2xl font-bold text-accent-600">$1.43T</div><div class="text-xs text-gray-500 mt-1">总市值</div></div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">1. 市盈率（P/E）对比</h3>
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-5">
+<table class="bg-white dark:bg-gray-900 text-sm">
+<thead class="bg-primary-50 dark:bg-primary-900/30"><tr><th>公司</th><th>股票代码</th><th>TTM PE</th><th>Forward PE</th><th>主要估值特征</th></tr></thead>
+<tbody>
+<tr><td class="font-bold text-primary-600">Meta Platforms</td><td>META</td><td class="font-semibold">19.12x</td><td>17.02x</td><td>广告平台与AI增长</td></tr>
+<tr><td>Alphabet</td><td>GOOGL</td><td>13.85x</td><td>约17.80x</td><td>搜索、云计算与AI</td></tr>
+<tr><td>Snap</td><td>SNAP</td><td>盈利质量较弱</td><td>视盈利预测而定</td><td>社交广告与AR</td></tr>
+<tr><td>Pinterest</td><td>PINS</td><td>盈利口径差异较大</td><td>视盈利预测而定</td><td>视觉搜索与商业推荐</td></tr>
+<tr><td>Amazon</td><td>AMZN</td><td>与业务结构相关</td><td>通常高于传统广告平台</td><td>电商、云与广告</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 mb-7">
+估值数据截至2026年11月20日。Meta及Alphabet数据来自StockAnalysis/Yahoo Finance公开统计。Snap、Pinterest和Amazon的业务结构、利润质量和会计口径差异较大，不能将其简单视为同质化可比公司。当前可核验的同口径比较中，Meta的PE低于部分大型科技成长股，但高于Alphabet的TTM PE。
+</p>
+
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow mb-7">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">估值倍数的含义</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-sm mb-1"><span>Meta TTM PE</span><strong>19.12x</strong></div>
+<div class="moat-bar"><div class="moat-fill" style="width:76.5%"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-1"><span>Meta Forward PE</span><strong>17.02x</strong></div>
+<div class="moat-bar"><div class="moat-fill" style="width:68.1%"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-1"><span>Alphabet TTM PE</span><strong>13.85x</strong></div>
+<div class="moat-bar"><div class="moat-fill" style="width:55.4%"></div></div>
+</div>
+</div>
+<p class="text-xs text-gray-500 mt-3">可视化仅用于比较倍数大小，不代表企业质量或投资价值的直接排名。</p>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">2. DCF现金流折现估值</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-5">
+DCF模型的核心是预测公司未来能够产生多少自由现金流，再将这些现金流折算为今天的价值。对于Meta，直接使用2026年当期自由现金流并不合理，因为公司正在经历特殊的AI基础设施资本开支周期。因此，本模型采用正常化自由现金流作为起点，进行情景化估值，而非机械外推单季度负自由现金流。
+</p>
+
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-5">
+<table class="bg-white dark:bg-gray-900 text-sm">
+<thead class="bg-accent-50 dark:bg-accent-900/30"><tr><th>核心参数</th><th>基准假设</th><th>解释</th></tr></thead>
+<tbody>
+<tr><td>正常化起始FCF</td><td>$60B</td><td>考虑AI投资周期后的中长期现金创造能力假设</td></tr>
+<tr><td>未来五年FCF增长率</td><td>12%</td><td>广告增长、AI商业化及效率改善</td></tr>
+<tr><td>折现率（WACC）</td><td>9%</td><td>反映成熟大型科技平台风险</td></tr>
+<tr><td>永续增长率</td><td>3%</td><td>长期名义增长假设</td></tr>
+<tr><td>净债务调整</td><td>$32.4B</td><td>保守采用包含租赁等项目的参考调整</td></tr>
+<tr><td>稀释后股份数</td><td>25.6亿股</td><td>近似当前流通股数量</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid md:grid-cols-3 gap-4 mb-6">
+<div class="card-interactive p-5 bg-red-50 dark:bg-red-900/20 rounded-xl text-center">
+<div class="text-xs text-gray-500 mb-2">悲观情景</div>
+<div class="text-3xl font-bold text-red-600">$379</div>
+<div class="text-xs text-gray-500 mt-2">FCF增长10% · WACC 9.5%</div>
+<div class="text-sm text-red-600 mt-2 font-semibold">较现价-32.4%</div>
+</div>
+<div class="card-interactive p-5 bg-primary-50 dark:bg-primary-900/20 rounded-xl text-center">
+<div class="text-xs text-gray-500 mb-2">基准情景</div>
+<div class="text-3xl font-bold text-primary-600">$575</div>
+<div class="text-xs text-gray-500 mt-2">FCF增长12% · WACC 9%</div>
+<div class="text-sm text-primary-600 mt-2 font-semibold">较现价+2.6%</div>
+</div>
+<div class="card-interactive p-5 bg-green-50 dark:bg-green-900/20 rounded-xl text-center">
+<div class="text-xs text-gray-500 mb-2">乐观情景</div>
+<div class="text-3xl font-bold text-green-600">$802</div>
+<div class="text-xs text-gray-500 mt-2">FCF增长14% · WACC 8.5%</div>
+<div class="text-sm text-green-600 mt-2 font-semibold">较现价+43.0%</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-6">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">DCF模型计算逻辑</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+基准情景假设2027年起正常化自由现金流为600亿美元，未来五年按12%增长，折现率9%，永续增长率3%。五年预测现金流折现值约298.6亿美元的十倍，即2,986亿美元；终值折现值约1.081万亿美元。两者相加后扣除约324亿美元净债务调整，得到股权价值约1.472万亿美元。
+</p>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+<p class="text-sm font-semibold text-primary-700 dark:text-primary-300">基准DCF估值约575美元/股</p>
+<p class="text-xs text-gray-500 mt-1">计算结果为模型情景估算，并非市场一致预期或券商目标价。</p>
+</div>
+<p class="text-xs text-gray-500 mt-3">
+DCF对正常化自由现金流、WACC和终值增长率高度敏感。特别是AI资本开支仍在快速上升阶段，正常化自由现金流假设可能偏乐观。模型中终值占企业价值较高，因此不应将575美元视为精确的内在价值。
+</p>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">3. 相对估值与行业平均判断</h3>
+<div class="grid md:grid-cols-2 gap-5 mb-6">
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">有利于估值的因素</h4>
+<ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+<li>• TTM PE约19倍，低于许多高成长科技公司的估值。</li>
+<li>• Forward PE约17倍，市场预期未来盈利继续增长。</li>
+<li>• 全球36亿级用户网络，商业化基础牢固。</li>
+<li>• AI广告系统有机会持续提高广告单价和投资回报率。</li>
+<li>• 广告业务毛利率和现金创造能力具备长期优势。</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow">
+<h4 class="font-semibold text-red-700 dark:text-red-300 mb-3">压制估值的因素</h4>
+<ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+<li>• 2026年资本开支预计高达1,350亿—1,450亿美元。</li>
+<li>• 自由现金流短期可能持续承压。</li>
+<li>• 青少年诉讼、隐私和反垄断风险可能产生长期成本。</li>
+<li>• AI投资回报周期和技术领先地位存在不确定性。</li>
+<li>• 高额折旧可能削弱未来经营利润率。</li>
+</ul>
+</div>
+</div>
+
+<div class="p-6 rounded-xl bg-primary-50/60 dark:bg-primary-900/20 border-l-4 border-primary-500">
+<h3 class="font-semibold text-primary-800 dark:text-primary-200 mb-2">估值结论：合理估值附近，略有安全边际不足</h3>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+以560.84美元的参考股价计算，Meta的TTM PE约19.12倍，Forward PE约17.02倍。从优质平台企业的长期盈利能力来看，这一估值具有一定吸引力。但DCF基准情景仅提供约2.6%的理论上涨空间，说明当前股价已经反映相当一部分AI增长预期。悲观情景下，资本开支和监管费用可能使估值显著下修。综合判断：<strong>Meta当前更接近合理估值，而非明显低估；如果未来自由现金流恢复速度快于预期，才有进一步的估值修复空间。</strong>
+</p>
+</div>
+</div>
+</section>
+
+<!-- 六、经营展望 -->
+<section id="outlook" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"><i data-lucide="calendar-days" class="w-5 h-5 text-accent-600"></i></div>
+<h2 class="section-heading text-3xl font-bold text-accent-700 dark:text-accent-300">六、经营展望：未来12—24个月</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-7">
+展望2027年至2028年，Meta最重要的战略任务是将AI能力从基础设施投入转化为广告业务的利润增长，并逐步建立广告之外的商业收入。预计公司仍将保持较高收入增长，但利润率和自由现金流将受到资本开支周期的影响。
+</p>
+
+<div class="space-y-5">
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between gap-3 items-center mb-3"><h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">1. AI广告系统：未来盈利增长的核心引擎</h3><span class="tag bg-green-100 text-green-700">高确定性</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+AI广告推荐和自动化投放有望继续提高广告客户的转化率。Advantage+等自动化广告产品能够帮助客户降低投放门槛，AI生成创意和广告素材则有望提高广告供给效率。2026年第三季度广告展示量增长10%、平均广告价格增长14%，已经体现了广告业务的强劲变现能力。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">未来观察重点：广告展示量增速、广告价格增速、广告主ROI和FoA营业利润率。</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between gap-3 items-center mb-3"><h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">2. Llama及下一代模型：从技术投入走向商业价值</h3><span class="tag bg-green-100 text-green-700">中高确定性</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Meta正在将AI模型深度整合进Facebook、Instagram、WhatsApp和智能硬件。2026年第三季度公司宣布推出Muse和Muse Wonder等新一代前沿模型，标志着其AI战略继续向更高能力层级推进。未来如果模型显著提高内容推荐、广告投放、用户互动和企业自动化服务效率，Meta可以通过既有产品分发渠道实现规模化商业化。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">主要挑战：模型训练成本、推理成本、人才竞争，以及模型能力是否真正形成差异化收入。</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between gap-3 items-center mb-3"><h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">3. WhatsApp商业生态：广告之外的第二增长曲线</h3><span class="tag bg-green-100 text-green-700">中高确定性</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+WhatsApp具备庞大的全球用户基础，商业消息、企业客服、自动化营销和AI助手具有长期变现空间。随着企业将AI客服嵌入消息沟通，Meta有望从广告平台进一步转型为商业交易与客户关系管理入口。其优势是用户不需要额外下载应用，企业可以在已有通信网络内开展业务。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">观察指标：付费商业消息规模、企业账户数量、商业消息收入增长和相关业务利润率。</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between gap-3 items-center mb-3"><h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">4. AI眼镜：下一代个人计算入口</h3><span class="tag bg-yellow-100 text-yellow-700">中等确定性</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Ray-Ban Meta等智能眼镜产品将AI助手、语音、摄像头和环境感知结合，可能成为AI进入真实世界的重要入口。与VR头显相比，轻量化智能眼镜更容易融入日常生活。如果未来形成稳定的设备销售、订阅服务和开发者生态，Meta有机会获得新的硬件及服务收入。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">观察指标：销量、复购率、活跃设备数、硬件毛利率及AI服务使用频率。</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between gap-3 items-center mb-3"><h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">5. AI基础设施：投资回报将决定估值上限</h3><span class="tag bg-red-100 text-red-700">高风险变量</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+2026年Meta预计资本开支1,350亿—1,450亿美元。数据中心、服务器和网络基础设施建设会带来长期生产能力，但其回报不是立即实现的。2027年可能继续承受折旧、能源和维护成本上升。若AI商业化收入增长不足，资本回报率将下降；若AI广告和推理服务的需求快速扩张，则巨额基础设施投资可能形成长期竞争优势。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">观察指标：资本开支同比增速、经营现金流、自由现金流、折旧费用及增量ROIC。</p>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-4">未来两年情景预测</h3>
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+<table class="bg-white dark:bg-gray-900 text-sm">
+<thead class="bg-accent-50 dark:bg-accent-900/30"><tr><th>情景</th><th>收入增长</th><th>利润率变化</th><th>FCF表现</th><th>主要触发条件</th></tr></thead>
+<tbody>
+<tr><td class="font-semibold text-green-600">乐观</td><td>年增20%—25%</td><td>稳定或改善</td><td>重新加速增长</td><td>AI广告变现超预期、资本回报较快</td></tr>
+<tr><td class="font-semibold text-primary-600">基准</td><td>年增15%—20%</td><td>短期承压后企稳</td><td>逐步恢复</td><td>广告业务稳健、AI投入持续兑现</td></tr>
+<tr><td class="font-semibold text-red-600">悲观</td><td>年增5%—10%</td><td>明显下滑</td><td>持续承压</td><td>竞争加剧、监管限制、AI回报不足</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 mt-3">以上为研究者情景假设，不是Meta管理层正式业绩指引或分析师一致预期。</p>
+
+<div class="mt-7 p-5 rounded-xl bg-accent-50 dark:bg-accent-900/20 border-l-4 border-accent-500">
+<strong class="text-accent-800 dark:text-accent-200">12—24个月核心判断：</strong>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+Meta的收入增长有望保持强劲，广告业务是确定性最高的利润引擎。WhatsApp商业化和AI眼镜是潜在增量。短期最大挑战不是需求，而是投资效率。2027年应重点关注自由现金流能否恢复，以及AI资本投入是否开始产生超过资本成本的收益。
+</p>
+</div>
+</div>
+</section>
+
+<!-- 七、风险 -->
+<section id="risk" class="py-20 bg-white dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"><i data-lucide="alert-triangle" class="w-5 h-5 text-red-600"></i></div>
+<h2 class="section-heading text-3xl font-bold text-red-700 dark:text-red-400">七、风险识别：按危险程度排序</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-7">
+Meta虽然具有很强的财务实力，但其业务同时暴露于数字广告周期、AI技术变革、全球反垄断、青少年保护和巨额资本开支等风险。以下按照潜在损失规模、发生概率及对公司长期竞争优势的影响进行排序。
+</p>
+
+<div class="space-y-5">
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-red-600">
+<div class="flex items-start gap-4">
+<div class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700">1</div>
+<div>
+<div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-semibold text-lg text-red-700 dark:text-red-400">监管威胁：反垄断、隐私和青少年保护</h3><span class="tag bg-red-100 text-red-700">极高风险</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+这是Meta最具结构性和长期性的风险之一。美国、欧盟及其他地区监管机构持续关注平台竞争、用户数据使用、广告定向、未成年人保护和内容治理。2026年8月，Meta宣布与美国52个州及地区总检察长达成有关青少年心理健康和社交媒体诉讼的协议，潜在支付金额最高约185.9亿美元。2026年第三季度公司已确认98.9亿美元相关费用。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">
+风险不仅是一次性罚款，还可能包括广告定向能力受限、产品设计调整、年龄验证成本增加、平台使用限制及长期法律支出。如果监管改变数据使用规则，可能直接影响Meta最重要的广告商业模式。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-orange-500">
+<div class="flex items-start gap-4">
+<div class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700">2</div>
+<div>
+<div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-semibold text-lg text-orange-700 dark:text-orange-400">行业颠覆：AI改变社交与信息分发入口</h3><span class="tag bg-orange-100 text-orange-700">高风险</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+未来用户可能不再通过传统社交应用获取信息，而是通过AI助手、智能眼镜和对话式界面完成搜索、内容消费、购物及社交活动。如果AI助手成为新的流量入口，Meta可能失去部分用户注意力和广告展示机会。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">
+另一个风险是AI推荐系统可能造成内容同质化、用户疲劳和创作者收入分配变化。如果Meta未能在AI入口竞争中保持领先，当前庞大的社交网络未必能够自动转化为未来的用户增长。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-yellow-500">
+<div class="flex items-start gap-4">
+<div class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700">3</div>
+<div>
+<div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-semibold text-lg text-yellow-700 dark:text-yellow-400">债务或财务风险：AI资本开支回报不及预期</h3><span class="tag bg-yellow-100 text-yellow-700">高风险</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+2026年预计资本开支达到1,350亿—1,450亿美元，已成为公司财务结构的重要变量。大型数据中心投资需要持续投入服务器、GPU、电力和网络资源，设备折旧速度也可能较快。如果AI收入无法覆盖新增成本，公司的自由现金流和资本回报率可能持续下降。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">
+Meta目前仍有较强流动性，传统意义上的破产风险很低。真正需要担心的是资本配置效率：如果投入持续扩大而收入增量不足，企业价值可能被资本开支和折旧侵蚀。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-blue-500">
+<div class="flex items-start gap-4">
+<div class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700">4</div>
+<div>
+<div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-semibold text-lg text-blue-700 dark:text-blue-400">竞争风险：TikTok、YouTube与AI平台争夺用户和广告预算</h3><span class="tag bg-blue-100 text-blue-700">中高风险</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+TikTok在短视频内容推荐方面具有强竞争力，YouTube拥有成熟的视频生态，Amazon Ads则利用电商交易数据提高广告转化能力。Meta需要持续投入推荐算法、广告技术和创作者生态建设。竞争者如果在内容消费或广告转化效率方面取得明显优势，Meta的广告价格和市场份额可能受到压力。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">
+此外，竞争并不只发生在社交媒体行业。搜索、零售、AI助手和内容平台都可能争夺同一批广告主预算。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-green-500">
+<div class="flex items-start gap-4">
+<div class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700">5</div>
+<div>
+<div class="flex flex-wrap items-center gap-2 mb-2"><h3 class="font-semibold text-lg text-green-700 dark:text-green-400">经济风险：全球广告预算周期性下行</h3><span class="tag bg-green-100 text-green-700">中等风险</span></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+广告属于企业可调整的营销支出。当经济衰退、企业利润下降或消费者信心恶化时，广告客户可能削减预算。Meta的收入高度依赖广告业务，因此对全球经济增长、企业盈利和广告市场景气度较为敏感。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-400 mt-3">
+不过，Meta拥有全球化客户结构、较高的广告投资回报率和较强的中小企业广告客户基础，具有一定的抗周期能力。
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-7 p-6 rounded-xl bg-red-50/60 dark:bg-red-900/20 border-l-4 border-red-500">
+<strong class="text-red-800 dark:text-red-300">风险综合判断：</strong>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-2 leading-relaxed">
+Meta最大的风险不是传统债务违约，而是监管变化和AI资本开支投资回报不确定性。监管风险可能改变商业模式的规则，AI投资风险可能改变利润和现金流的质量。对于长期投资者，这两项风险比短期广告市场波动更值得重视。
+</p>
+</div>
+</div>
+</section>
+
+<!-- 八、多空 -->
+<section id="longshort" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"><i data-lucide="scale" class="w-5 h-5 text-primary-600"></i></div>
+<h2 class="section-heading text-3xl font-bold text-primary-700 dark:text-primary-300">八、多空视角：机构投资组合经理评估</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-7">
+从机构投资组合经理的角度，Meta属于具有长期竞争优势、较高盈利能力和较大AI成长空间的大型科技核心资产。但当前并非毫无风险的低估值投资机会。投资决策应建立在AI资本回报率、广告增长持续性及监管风险三个核心变量之上。
+</p>
+
+<div class="grid md:grid-cols-2 gap-6 mb-7">
+<div class="card-interactive p-6 bg-green-50/70 dark:bg-green-900/20 rounded-xl shadow border border-green-200 dark:border-green-800">
+<h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex gap-2 items-center"><i data-lucide="thumbs-up"></i>可能买入的原因</h3>
+<ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+<li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>全球顶级的社交网络护城河：</strong>36亿级日活跃用户形成难以复制的网络效应，具备长期竞争优势。</span></li>
+<li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>广告业务持续增长：</strong>2026年第三季度收入增长26%，广告展示量和广告价格同时增长，商业化能力仍然强劲。</span></li>
+<li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>AI投资具有较强的战略逻辑：</strong>AI可以提高广告匹配效率、降低创意成本、提升用户留存和广告客户回报。</span></li>
+<li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>利润率和ROE领先：</strong>2025年营业利润率约41.4%，ROE约30.2%，体现出优质平台企业的盈利能力。</span></li>
+<li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>广告以外存在增量空间：</strong>WhatsApp商业化、AI眼镜和新型AI服务提供未来增长选择权。</span></li>
+<li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i><span><strong>估值不算昂贵：</strong>约19倍TTM PE和17倍Forward PE，对于具有全球竞争优势的科技平台具有一定吸引力。</span></li>
+</ul>
+</div>
+
+<div class="card-interactive p-6 bg-red-50/70 dark:bg-red-900/20 rounded-xl shadow border border-red-200 dark:border-red-800">
+<h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex gap-2 items-center"><i data-lucide="thumbs-down"></i>可能回避的原因</h3>
+<ul class="space-y-4 text-sm text-gray-700 dark:text-gray-300">
+<li class="flex gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>资本开支规模过大：</strong>2026年资本开支预计最高1,450亿美元，可能显著压低自由现金流。</span></li>
+<li class="flex gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>AI投资回报尚未完全验证：</strong>投入规模巨大，但未来AI收入和新增利润是否足以覆盖成本仍有不确定性。</span></li>
+<li class="flex gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>监管诉讼可能持续：</strong>青少年保护、隐私和反垄断问题可能带来巨额罚款及商业模式限制。</span></li>
+<li class="flex gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>估值安全边际有限：</strong>DCF基准估值与现价接近，尚不足以证明股价存在显著低估。</span></li>
+<li class="flex gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>广告业务集中度较高：</strong>收入主要依赖广告，全球经济衰退或广告预算削减会直接影响盈利。</span></li>
+<li class="flex gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i><span><strong>创始人控制权集中：</strong>双重股权结构使Mark Zuckerberg拥有较强控制权，战略执行效率高，但外部股东制衡能力有限。</span></li>
+</ul>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-7">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-5">机构投资者需要跟踪的六项关键指标</h3>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+<i data-lucide="trending-up" class="w-6 h-6 text-primary-600 mb-2"></i>
+<strong class="text-sm text-primary-700 dark:text-primary-300">广告收入增长率</strong>
+<p class="text-xs text-gray-500 mt-2">判断核心业务是否持续扩张。关注展示量和平均广告价格能否同时增长。</p>
+</div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+<i data-lucide="wallet" class="w-6 h-6 text-accent-600 mb-2"></i>
+<strong class="text-sm text-accent-700 dark:text-accent-300">自由现金流</strong>
+<p class="text-xs text-gray-500 mt-2">判断AI投入是否开始产生现金回报。重点关注FCF是否恢复增长。</p>
+</div>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+<i data-lucide="building-2" class="w-6 h-6 text-primary-600 mb-2"></i>
+<strong class="text-sm text-primary-700 dark:text-primary-300">资本开支与折旧</strong>
+<p class="text-xs text-gray-500 mt-2">观察资本开支增速是否逐步放缓，以及折旧费用对利润率的影响。</p>
+</div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+<i data-lucide="cpu" class="w-6 h-6 text-accent-600 mb-2"></i>
+<strong class="text-sm text-accent-700 dark:text-accent-300">AI商业化效率</strong>
+<p class="text-xs text-gray-500 mt-2">广告转化率、广告主ROI、AI产品使用率和模型推理成本。</p>
+</div>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+<i data-lucide="scale" class="w-6 h-6 text-primary-600 mb-2"></i>
+<strong class="text-sm text-primary-700 dark:text-primary-300">法律与监管进展</strong>
+<p class="text-xs text-gray-500 mt-2">跟踪诉讼付款、年龄验证、隐私规则和反垄断政策。</p>
+</div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+<i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-accent-600 mb-2"></i>
+<strong class="text-sm text-accent-700 dark:text-accent-300">资本回报率ROIC</strong>
+<p class="text-xs text-gray-500 mt-2">判断新增AI基础设施是否创造高于资本成本的回报。</p>
+</div>
+</div>
+</div>
+
+<!-- 估值区间与投资策略 -->
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-7">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-5">投资价值与价格区间评估</h3>
+<div class="overflow-x-auto">
+<table class="text-sm">
+<thead class="bg-primary-50 dark:bg-primary-900/30"><tr><th>价格区间</th><th>相对现价</th><th>研究判断</th><th>投资逻辑</th></tr></thead>
+<tbody>
+<tr><td class="font-semibold text-green-600">$350以下</td><td>明显折价</td><td class="text-green-600 font-semibold">较强安全边际</td><td>若基本面未发生结构性恶化，长期赔率较好</td></tr>
+<tr><td class="font-semibold text-green-600">$350—450</td><td>折价区间</td><td class="text-green-600 font-semibold">具有吸引力</td><td>适合在资本开支压力可控时评估长期配置</td></tr>
+<tr><td class="font-semibold text-primary-600">$450—550</td><td>接近合理价值</td><td>中性偏积极</td><td>关注盈利增长和自由现金流恢复</td></tr>
+<tr><td class="font-semibold text-primary-600">$550—650</td><td>当前附近</td><td>合理估值</td><td>需要AI投资持续兑现才能获得超额回报</td></tr>
+<tr><td class="font-semibold text-red-600">$650以上</td><td>溢价区间</td><td>谨慎追高</td><td>需要更强的盈利增长和更高的现金流预期支撑</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 mt-3">价格区间是基于DCF情景、盈利能力和风险折价形成的研究参考，并非精确支撑位、技术交易信号或保证收益的目标价。</p>
+</div>
+
+<div class="p-6 rounded-xl bg-white dark:bg-gray-900 shadow mb-7">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">机构投资组合经理的最终判断</h3>
+<div class="grid md:grid-cols-3 gap-4 mb-5">
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+<div class="text-3xl font-bold text-primary-600">9.0/10</div>
+<div class="text-xs text-gray-500 mt-1">商业护城河</div>
+</div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+<div class="text-3xl font-bold text-accent-600">8.5/10</div>
+<div class="text-xs text-gray-500 mt-1">长期成长潜力</div>
+</div>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+<div class="text-3xl font-bold text-primary-600">7.5/10</div>
+<div class="text-xs text-gray-500 mt-1">当前投资吸引力</div>
+</div>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+从长期资产配置角度，Meta值得进入全球科技成长股的核心观察名单。其广告业务具有较强的盈利韧性，社交网络具备难以复制的规模优势，AI则为现有商业模式提供了新的效率提升空间。公司已经拥有成熟的商业化体系，不需要从零开始寻找AI客户和分发渠道。
+</p>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+但对于当前股价，机构投资者不应仅凭AI叙事进行高比例配置。2026年资本开支规模巨大，诉讼费用也已经对当期财报产生显著影响。更合理的做法是把Meta视为高质量、具有长期增长潜力，但需要严格管理估值和资本回报风险的核心科技资产。
+</p>
+</div>
+
+<div class="p-6 rounded-xl bg-primary-50/60 dark:bg-primary-900/30 border-l-4 border-primary-500">
+<h3 class="text-xl font-semibold text-primary-800 dark:text-primary-200 mb-3">最终投资论点</h3>
+<p class="text-base text-gray-800 dark:text-gray-200 leading-relaxed">
+Meta Platforms是一家拥有全球顶级社交网络、强大广告商业化能力和领先AI基础设施投入的大型科技平台。其长期价值来自三种能力的结合：第一，36亿级用户网络所形成的竞争壁垒；第二，AI驱动的广告效率提升和现金流创造能力；第三，WhatsApp商业化及AI智能硬件带来的新增长机会。
+</p>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+当前约19倍TTM PE和17倍Forward PE，使其估值具有一定合理性，但基准DCF估值约575美元，与现价基本接近，尚未形成显著安全边际。因此，Meta更适合被定义为<strong>长期基本面优质、估值合理、需要等待自由现金流改善确认的科技成长股</strong>，而不是无条件买入的深度价值股。
+</p>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-3">
+未来12—24个月，如果广告收入持续增长、AI基础设施投入逐渐产生回报、自由现金流恢复增长，同时监管风险没有进一步恶化，Meta有机会通过盈利增长实现长期资本增值。反之，如果资本开支不断扩大而投资回报下降，或者监管政策实质性削弱广告定向能力，那么即使收入继续增长，估值也可能受到压制。
+</p>
+<p class="text-sm font-bold text-primary-700 dark:text-primary-300 mt-4">
+核心判断：长期看好Meta的商业模式和竞争壁垒；短期对AI资本开支及监管成本保持审慎；当前估值合理，等待自由现金流和投资回报率进一步验证，是更理性的机构投资策略。
+</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 mb-4">关于本报告</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本报告以Meta Platforms, Inc.（NASDAQ:META）为研究对象，基于公开财务报告、SEC文件、公司公告和市场估值数据，从商业模式、护城河、行业趋势、财务、估值、经营展望和风险等维度进行分析。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 mb-4">主要数据来源</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="source-link" target="_blank" rel="noopener" href="https://investor.atmeta.com/">Meta Investor Relations</a></li>
+<li><a class="source-link" target="_blank" rel="noopener" href="https://www.sec.gov/edgar/browse/?CIK=1326801&owner=exclude">SEC：Meta官方申报文件</a></li>
+<li><a class="source-link" target="_blank" rel="noopener" href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/">Meta 2026年第三季度业绩公告</a></li>
+<li><a class="source-link" target="_blank" rel="noopener" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm">Meta 2026 Q3 Form 10-Q</a></li>
+<li><a class="source-link" target="_blank" rel="noopener" href="https://materials.proxyvote.com/Approved/30303M/20260401/AR_633984/INDEX.HTML?page=90">Meta 2025年度报告</a></li>
+<li><a class="source-link" target="_blank" rel="noopener" href="https://stockanalysis.com/stocks/meta/statistics/">META估值与市场数据</a></li>
+<li><a class="source-link" target="_blank" rel="noopener" href="https://stockanalysis.com/stocks/meta/financials/">META历史财务数据</a></li>
+<li><a class="source-link" target="_blank" rel="noopener" href="https://finance.yahoo.com/quote/META/">Yahoo Finance：META市场行情</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本报告仅供研究、教育及信息参考，不构成任何证券投资建议、买卖推荐或收益承诺。财务数据以公司正式披露为准，市场价格和估值倍数会持续变化。DCF估值基于假设参数，实际结果可能与模型存在显著差异。投资者应独立判断并充分考虑自身风险承受能力。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-7 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>Meta Platforms经营分析报告 · 生成日期：2026-11-23</p>
+<p class="mt-2">Research Framework · Business Quality · Financial Strength · Intrinsic Value</p>
+</div>
+</div>
+</footer>
+
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

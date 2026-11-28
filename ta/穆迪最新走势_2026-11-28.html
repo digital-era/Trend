@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1220">
+<title>穆迪（MCO）最新走势归因与操作指引_2026-11-28</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d30;--panel2:#17243a;--line:#263750;--text:#e8eef8;--muted:#91a2ba;--blue:#65a9ff;--cyan:#57d5d0;--green:#48c99a;--red:#ff737d;--gold:#e9bd68;--shadow:0 12px 35px #0003}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 15% 0%,#183252 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.65}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1240px;margin:auto;padding:28px 22px 70px}
+header{padding:26px 0 22px;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:2px;font-weight:700}
+h1{font-size:clamp(27px,4vw,42px);line-height:1.2;margin:10px 0}
+.sub{color:var(--muted);font-size:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.tag{border:1px solid #314763;background:#172941;color:#bcd3f1;border-radius:30px;padding:4px 11px;font-size:12px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+.nav{display:flex;gap:7px;flex-wrap:wrap}
+.nav a{padding:7px 12px;border:1px solid var(--line);border-radius:8px;color:#c6d4e8;font-size:12px}
+.actions{display:flex;gap:8px}
+.btn{border:1px solid #3b5678;background:#1b304b;color:#dceaff;border-radius:8px;padding:8px 12px;font-size:12px}
+.btn:hover{background:#274464}
+.grid{display:grid;gap:16px}
+.kpis{grid-template-columns:repeat(4,1fr);margin:22px 0}
+.card{background:linear-gradient(145deg,#15243a,#101a2b);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:var(--shadow)}
+.kpi-label{color:var(--muted);font-size:12px}
+.kpi-value{font-size:27px;font-weight:750;letter-spacing:-.5px;margin:5px 0}
+.kpi-note{font-size:12px;color:var(--muted)}
+.positive{color:var(--green)!important}.negative{color:var(--red)!important}.neutral{color:var(--gold)!important}
+section{margin-top:32px;scroll-margin-top:15px}
+h2{font-size:22px;margin:0 0 6px}
+h3{font-size:16px;margin:0 0 10px}
+.section-desc{font-size:13px;color:var(--muted);margin:0 0 16px}
+.two{grid-template-columns:1.2fr .8fr}
+.three{grid-template-columns:repeat(3,1fr)}
+.chart-card{padding:20px}
+.chart-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.chart-legend{display:flex;gap:14px;color:var(--muted);font-size:12px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+svg{width:100%;height:auto;display:block}
+.chart-label{font-size:11px;fill:#91a2ba}
+.chart-grid{stroke:#263750;stroke-width:1;stroke-dasharray:3 5}
+.chart-line{fill:none;stroke:#65a9ff;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.chart-area{fill:url(#area)}
+.bar{fill:#4388d0;opacity:.65}
+.callout{border-left:3px solid var(--gold);background:#302b203b;padding:13px 15px;border-radius:0 9px 9px 0;color:#d9d3c2;font-size:13px}
+.pill{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700;background:#25364c;color:#b9d6f8}
+.pill.red{background:#492b36;color:#ff9aa1}.pill.green{background:#173d37;color:#78e0b7}.pill.gold{background:#443922;color:#f1ce7f}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:11px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:#a9bdd7;font-weight:600;background:#17243a}
+td{color:#d6e0ee}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.event{display:grid;grid-template-columns:95px 1fr;gap:13px;padding:15px 0;border-bottom:1px solid var(--line)}
+.event:last-child{border-bottom:0}
+.date{color:var(--cyan);font-size:12px;font-weight:700}
+.event p{margin:5px 0 0;color:#b8c7da;font-size:13px}
+.event strong{color:#edf4ff}
+.cause{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.cause:last-child{border:0}
+.cause-label{font-size:12px;color:var(--cyan);font-weight:700}
+.cause p{margin:0;color:#c2cede;font-size:13px}
+.scenarios{grid-template-columns:repeat(3,1fr)}
+.scenario{cursor:pointer;transition:.2s;border:1px solid var(--line)}
+.scenario.active{border-color:var(--blue);box-shadow:0 0 0 1px #65a9ff55}
+.scenario p{font-size:13px;color:#b8c7da;margin:8px 0}
+.scenario .range{font-size:20px;font-weight:750;margin-top:12px}
+.scenario-detail{margin-top:13px;padding:16px;background:#0d1828;border:1px solid var(--line);border-radius:10px;font-size:13px;color:#c8d5e7}
+.levels{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.level{background:#101b2c;border:1px solid var(--line);border-radius:9px;padding:12px}
+.level small{display:block;color:var(--muted);font-size:11px}
+.level b{font-size:18px}
+.checklist{display:grid;gap:9px}
+.check{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#101b2b;font-size:13px;color:#c7d4e5}
+.check input{accent-color:#65a9ff;margin-top:5px}
+.progress{height:6px;background:#27384d;border-radius:8px;overflow:hidden;margin:10px 0}
+.progress>div{height:100%;background:linear-gradient(90deg,#58b8e8,#55d3ad);width:0;transition:.2s}
+.source-list{display:grid;gap:9px}
+.source{font-size:12px;color:#aebfd4;padding:10px 12px;background:#101b2b;border-radius:8px;border:1px solid var(--line)}
+.source a{font-weight:650}
+.disclaimer{margin-top:28px;padding:15px;border:1px solid #4b432f;background:#302b203b;border-radius:10px;color:#c9c0aa;font-size:12px}
+footer{margin-top:25px;color:#7588a2;font-size:11px;text-align:center}
+.light{--bg:#f1f5fa;--panel:#fff;--panel2:#f7f9fc;--line:#d8e1ed;--text:#17243a;--muted:#65758c;--shadow:0 8px 24px #18304a12;background:var(--bg);color:var(--text)}
+.light .card{background:#fff}.light .nav a{color:#33465e}.light .tag{background:#e8f0fa;color:#375575}
+.light .source,.light .check,.light .level,.light .scenario-detail{background:#f8fafc;color:#34465d}
+.light td{color:#33465e}.light th{background:#edf2f8;color:#415873}.light .event p,.light .cause p,.light .scenario p{color:#53647a}
+@media(max-width:850px){.kpis{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.three,.scenarios{grid-template-columns:1fr}.levels{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.wrap{padding:17px 13px 45px}.kpi-value{font-size:23px}.event{grid-template-columns:75px 1fr}.cause{grid-template-columns:85px 1fr}th,td{padding:9px 7px;font-size:12px}}
+@media print{body{background:#fff;color:#111}.wrap{max-width:none;padding:0}.card{box-shadow:none;break-inside:avoid;background:#fff;border-color:#ccc}.nav,.actions,.checklist input{display:none}.source,.check,.level{background:#fff;color:#222}.event p,.cause p,.scenario p,td{color:#333}a{color:#174f8c}section{break-inside:avoid}}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="eyebrow">AIPE · EQUITY RESEARCH / PRICE ACTION</div>
+ <h1>穆迪（Moody’s · MCO）<br>最新走势归因与操作指引</h1>
+ <div class="sub">观察窗口：2026.10.27 — 2026.11.28　｜　报告日期：2026年11月28日　｜　市场：NYSE</div>
+ <div class="tags">
+  <span class="tag">走势判断：震荡修复</span><span class="tag">趋势状态：中期仍待确认</span><span class="tag">策略倾向：等待关键位确认</span><span class="tag">数据截止：最近可核验收盘 11/25</span>
+ </div>
+ <div class="topline">
+  <nav class="nav">
+   <a href="#overview">行情总览</a><a href="#chart">价格走势</a><a href="#drivers">涨跌归因</a><a href="#technical">技术结构</a><a href="#strategy">操作策略</a><a href="#events">催化事件</a><a href="#sources">数据来源</a>
+  </nav>
+  <div class="actions"><button class="btn" id="themeBtn">切换主题</button><button class="btn" onclick="window.print()">打印 / PDF</button></div>
+ </div>
+</header>
+
+<div id="overview" class="grid kpis">
+ <div class="card"><div class="kpi-label">最近可核验收盘价</div><div class="kpi-value">$485.69</div><div class="kpi-note">2026-11-25 收盘，美元</div></div>
+ <div class="card"><div class="kpi-label">10/27 至 11/25 区间变化</div><div class="kpi-value negative">+2.62%</div><div class="kpi-note">473.27 → 485.69；期间波动显著</div></div>
+ <div class="card"><div class="kpi-label">52周价格区间</div><div class="kpi-value">$402–$547</div><div class="kpi-note">距52周高点约 -11.2%</div></div>
+ <div class="card"><div class="kpi-label">技术状态</div><div class="kpi-value neutral">中性震荡</div><div class="kpi-note">RSI约49；价格略高于50日及200日均线</div></div>
+</div>
+
+<section id="chart">
+ <h2>01 / 价格走势与交易结构</h2>
+ <p class="section-desc">根据可核验日线收盘价绘制。图表不代表实时行情；11月26日为美国感恩节休市，11月27日行情尚未取得完整收盘确认。</p>
+ <div class="grid two">
+  <div class="card chart-card">
+   <div class="chart-head"><h3>近一个月收盘价轨迹</h3><div class="chart-legend"><span><i class="dot" style="background:#65a9ff"></i>收盘价</span><span><i class="dot" style="background:#e9bd68"></i>参考价位</span></div></div>
+   <svg viewBox="0 0 760 330" role="img" aria-label="穆迪股票日线收盘价走势图">
+    <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#65a9ff" stop-opacity=".28"/><stop offset="1" stop-color="#65a9ff" stop-opacity="0"/></linearGradient></defs>
+    <g class="chart-grid">
+     <line x1="55" y1="35" x2="720" y2="35"/><line x1="55" y1="95" x2="720" y2="95"/><line x1="55" y1="155" x2="720" y2="155"/><line x1="55" y1="215" x2="720" y2="215"/><line x1="55" y1="275" x2="720" y2="275"/>
+    </g>
+    <g class="chart-label"><text x="8" y="39">$535</text><text x="8" y="99">$520</text><text x="8" y="159">$505</text><text x="8" y="219">$490</text><text x="8" y="279">$475</text>
+    <text x="55" y="306">10/27</text><text x="190" y="306">11/03</text><text x="325" y="306">11/10</text><text x="460" y="306">11/17</text><text x="595" y="306">11/24</text></g>
+    <line x1="55" y1="233" x2="720" y2="233" stroke="#e9bd68" stroke-dasharray="5 5" opacity=".8"/>
+    <text x="605" y="225" class="chart-label" fill="#e9bd68">参考 $485</text>
+    <path class="chart-area" d="M55 282 L83 263 L111 234 L139 211 L167 168 L195 180 L223 110 L251 152 L279 116 L307 103 L335 85 L363 72 L391 87 L419 55 L447 82 L475 102 L503 139 L531 119 L559 140 L587 188 L615 205 L643 246 L671 206 L699 208 L720 208 L720 275 L55 275 Z"/>
+    <path class="chart-line" d="M55 282 L83 263 L111 234 L139 211 L167 168 L195 180 L223 110 L251 152 L279 116 L307 103 L335 85 L363 72 L391 87 L419 55 L447 82 L475 102 L503 139 L531 119 L559 140 L587 188 L615 205 L643 246 L671 206 L699 208 L720 208"/>
+    <circle cx="720" cy="208" r="5" fill="#65a9ff" stroke="#fff" stroke-width="2"/>
+    <text x="650" y="190" fill="#d9eaff" font-size="12" font-weight="700">$485.69</text>
+   </svg>
+   <div class="callout">走势特征：10月底至11月初快速反弹，11月4日冲高后未能延续；11月中旬出现明显回撤，11月20日触及阶段低位后连续反弹，价格重新回到约485美元区域。</div>
+  </div>
+  <div class="card">
+   <h3>关键交易日复盘</h3>
+   <div class="table-wrap">
+    <table><thead><tr><th>日期</th><th>收盘价</th><th>单日变化</th><th>观察</th></tr></thead><tbody>
+     <tr><td>10/27</td><td>$473.27</td><td>—</td><td>阶段起点</td></tr>
+     <tr><td>11/04</td><td>$528.34</td><td class="positive">+4.89%</td><td>快速上冲</td></tr>
+     <tr><td>11/05</td><td>$515.34</td><td class="negative">-2.46%</td><td>高位回吐</td></tr>
+     <tr><td>11/12</td><td>$506.56</td><td class="negative">-1.63%</td><td>上攻乏力</td></tr>
+     <tr><td>11/17</td><td>$484.41</td><td class="negative">-4.32%</td><td>放量下挫</td></tr>
+     <tr><td>11/20</td><td>$466.83</td><td class="negative">-0.85%</td><td>区间低点</td></tr>
+     <tr><td>11/24</td><td>$485.40</td><td class="positive">+1.00%</td><td>反弹延续</td></tr>
+     <tr><td>11/25</td><td>$485.69</td><td class="positive">+0.06%</td><td>修复趋缓</td></tr>
+    </tbody></table>
+   </div>
+   <p class="section-desc" style="margin:12px 0 0">数据来源：StockAnalysis历史日线。不同行情网站的复权、报价时间及数据商可能造成小幅差异。</p>
+  </div>
+ </div>
+</section>
+
+<section id="drivers">
+ <h2>02 / 最新涨跌归因：公司—行业—宏观</h2>
+ <p class="section-desc">将可观察事件与股价波动分开处理。以下为逻辑归因，不把时间上的先后关系直接等同于因果关系。</p>
+ <div class="card">
+  <div class="cause"><div class="cause-label">公司层面<br><span class="pill green">中长期利好</span></div><p><strong>AI数据分发与商业化预期升温。</strong>11月24日，穆迪宣布将其数据以零拷贝方式嵌入客户构建AI应用的平台，数据可直接用于AI代理、模型及分析流程。此举强化分发能力与工作流嵌入，但尚不能据此确认新增收入规模。11月17日管理层称，AI基础设施相关发行贡献年内发行增长约一半、收入增长约四成，显示AI融资活动已成为评级业务的重要需求来源。</p></div>
+  <div class="cause"><div class="cause-label">行业层面<br><span class="pill gold">双向影响</span></div><p><strong>私募信贷风险与信息透明度需求并存。</strong>私人信贷违约压力仍处较高水平，可能提升信用监测、评级及风险数据需求；但若违约扩散，也可能引发融资收缩、风险偏好下降和发行延迟。AI基础设施债务融资规模扩大，短期支持发行量，长期则增加资本开支回报和融资结构风险。</p></div>
+  <div class="cause"><div class="cause-label">宏观层面<br><span class="pill red">估值压制</span></div><p><strong>利率、债券供给和信用利差共同影响发行窗口。</strong>美国财政部11月季度再融资计划发行约1250亿美元证券；英国央行金融稳定报告提示AI融资复杂性、循环融资及信用利差扩大的风险。更高融资成本会压制部分新发债需求，但到期债务再融资又可能形成评级业务的结构性需求。</p></div>
+  <div class="cause"><div class="cause-label">市场层面<br><span class="pill gold">短线主导</span></div><p><strong>高位回撤后的技术性修复。</strong>11月4日大幅上涨后，股价未能稳定在高位，随后持续回落，11月17日单日跌幅超过4%。11月20日跌至466.83美元后，连续几个交易日反弹至485美元附近。当前更像下跌后的修复，而非已经确认的新一轮上升趋势。</p></div>
+ </div>
+ <div class="grid three" style="margin-top:14px">
+  <div class="card"><span class="pill green">支撑因素</span><h3 style="margin-top:10px">AI融资与数据平台化</h3><p class="section-desc">AI基础设施债券发行、数据产品嵌入客户工作流，有望提升评级与分析业务的中长期需求。</p></div>
+  <div class="card"><span class="pill gold">中性因素</span><h3 style="margin-top:10px">成熟业务的韧性</h3><p class="section-desc">订阅型分析业务和信用风险数据提供一定稳定性，但不能完全抵消评级发行周期波动。</p></div>
+  <div class="card"><span class="pill red">压制因素</span><h3 style="margin-top:10px">高估值与信用风险</h3><p class="section-desc">利率与信用利差变化可能影响融资活动，AI资本开支回报不确定性也会压制估值。</p></div>
+ </div>
+</section>
+
+<section id="technical">
+ <h2>03 / 技术面：趋势、动能与关键价位</h2>
+ <p class="section-desc">技术指标采用第三方截至11月25日的日线估算。关键位为交易观察区间，不是确定性支撑或阻力。</p>
+ <div class="grid two">
+  <div class="card">
+   <h3>技术指标快照</h3>
+   <div class="table-wrap"><table><tbody>
+    <tr><td>RSI（14）</td><td><strong>约49</strong></td><td><span class="pill gold">中性</span></td></tr>
+    <tr><td>50日均线</td><td><strong>约$478.58</strong></td><td><span class="pill green">现价略高于均线</span></td></tr>
+    <tr><td>200日均线</td><td><strong>约$464.68</strong></td><td><span class="pill green">中期均线仍在下方</span></td></tr>
+    <tr><td>成交量</td><td><strong>约69.3万股</strong></td><td><span class="pill gold">低于三个月均量</span></td></tr>
+    <tr><td>52周高点</td><td><strong>$546.88</strong></td><td><span class="pill red">仍有距离</span></td></tr>
+    <tr><td>趋势状态</td><td><strong>横向震荡</strong></td><td><span class="pill gold">等待方向确认</span></td></tr>
+   </tbody></table></div>
+  </div>
+  <div class="card">
+   <h3>关键价位地图</h3>
+   <div class="levels">
+    <div class="level"><small>第一阻力区</small><b class="negative">$490–493</b></div>
+    <div class="level"><small>第二阻力区</small><b class="negative">$500–506</b></div>
+    <div class="level"><small>第一支撑区</small><b class="positive">$478–480</b></div>
+    <div class="level"><small>第二支撑区</small><b class="positive">$465–467</b></div>
+   </div>
+   <div class="callout" style="margin-top:13px">观察重点：485美元附近是当前多空拉锯区域。若放量站稳490–493美元，短线修复有望延续；若跌破478美元且反抽失败，则需防范再次测试465–467美元。</div>
+  </div>
+ </div>
+ <div class="card" style="margin-top:14px">
+  <h3>结构判断</h3>
+  <div class="grid three">
+   <div><span class="pill green">积极信号</span><p class="section-desc" style="margin-top:8px">466.83美元附近出现阶段性承接，随后价格反弹收复部分短期失地。</p></div>
+   <div><span class="pill gold">待确认信号</span><p class="section-desc" style="margin-top:8px">反弹尚未有效突破490–493美元阻力，成交量也未显示明确的持续放大。</p></div>
+   <div><span class="pill red">风险信号</span><p class="section-desc" style="margin-top:8px">11月上旬高点528美元附近形成明显套牢压力，500美元上方可能存在供给。</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="strategy">
+ <h2>04 / 交易操作指引</h2>
+ <p class="section-desc">以11月25日可核验收盘价485.69美元为分析锚点。策略为条件触发，不构成个性化投资建议。</p>
+ <div class="grid scenarios">
+  <div class="card scenario active" data-scenario="base">
+   <span class="pill gold">基准情景 · 当前</span><h3 style="margin-top:10px">区间震荡修复</h3>
+   <p>价格在478–493美元之间反复，等待方向选择。避免在阻力位下方追涨。</p>
+   <div class="range">$478–493</div><div class="kpi-note">策略：区间观察、轻仓试错</div>
+  </div>
+  <div class="card scenario" data-scenario="bull">
+   <span class="pill green">乐观情景</span><h3 style="margin-top:10px">突破确认</h3>
+   <p>放量突破并站稳493美元，进一步挑战500–506美元；若持续走强，再观察528美元附近。</p>
+   <div class="range positive">$493 → $506</div><div class="kpi-note">策略：突破确认后分批跟随</div>
+  </div>
+  <div class="card scenario" data-scenario="bear">
+   <span class="pill red">悲观情景</span><h3 style="margin-top:10px">修复失败</h3>
+   <p>跌破478美元并且反抽无法收复，回测466美元；若该区域失守，需重新评估中期趋势。</p>
+   <div class="range negative">$478 → $466</div><div class="kpi-note">策略：控制仓位、避免摊平</div>
+  </div>
+ </div>
+ <div class="scenario-detail" id="scenarioDetail">基准情景：485美元附近不宜仅凭单日小幅反弹判断趋势反转。观察478美元支撑与490–493美元阻力，等待收盘确认和成交量配合。</div>
+ <div class="card" style="margin-top:14px">
+  <h3>分层执行框架</h3>
+  <div class="table-wrap"><table><thead><tr><th>价格行为</th><th>操作思路</th><th>确认条件</th><th>风险控制</th></tr></thead><tbody>
+   <tr><td>回踩478–480美元企稳</td><td>观察性小仓试探</td><td>日线止跌、收盘重新站回区间</td><td>有效跌破478美元则退出试错逻辑</td></tr>
+   <tr><td>突破490–493美元</td><td>等待回踩确认后跟随</td><td>收盘站稳且成交量改善</td><td>假突破重新跌回区间则降低仓位</td></tr>
+   <tr><td>突破500–506美元</td><td>观察趋势延续，不盲目追高</td><td>突破后回踩不破</td><td>关注528美元前的压力和风险收益比</td></tr>
+   <tr><td>跌破478美元</td><td>降低交易敞口</td><td>收盘确认、反抽失败</td><td>下看466美元附近支撑</td></tr>
+   <tr><td>跌破465美元</td><td>重新评估中期趋势</td><td>连续收盘走弱</td><td>不以低价为理由机械补仓</td></tr>
+  </tbody></table></div>
+  <p class="section-desc" style="margin:12px 0 0">仓位建议采用风险预算而非固定比例：单笔最大可承受损失应事先设定，止损距离越大，仓位越小。若无明确触发条件，现金也是策略。</p>
+ </div>
+</section>
+
+<section id="events">
+ <h2>05 / 未来催化剂与风险日历</h2>
+ <p class="section-desc">重点跟踪可能改变评级发行量、信用风险定价及AI数据产品商业化预期的事件。</p>
+ <div class="card">
+  <div class="event"><div class="date">11月24日<br>已发生</div><div><strong>穆迪推出零拷贝数据分发能力</strong><p>数据可直接进入客户AI代理、模型和分析工作流。后续需要观察客户采用、付费使用、续约和收入贡献，而不是仅依据产品发布形成估值溢价。</p></div></div>
+  <div class="event"><div class="date">11月26日<br>已发布</div><div><strong>英国央行金融稳定报告</strong><p>关注AI基础设施融资规模、循环融资、信用利差和私募信贷风险。若信用环境继续恶化，可能同时影响评级需求与发行节奏。</p></div></div>
+  <div class="event"><div class="date">12月8–9日<br>待观察</div><div><strong>美联储FOMC会议</strong><p>利率路径和金融条件变化将影响债券发行窗口、融资成本与信用利差。需关注AI相关融资风险在政策讨论中的权重。</p></div></div>
+  <div class="event"><div class="date">后续季度<br>待确认</div><div><strong>穆迪2026年第四季度业绩</strong><p>关注评级业务发行量、分析业务有机增长、续约率、利润率、自由现金流，以及全年指引兑现情况。具体财报日期以公司公告为准。</p></div></div>
+  <div class="event"><div class="date">持续跟踪</div><div><strong>AI基础设施融资与私募信贷违约</strong><p>观察超大规模云厂商融资、AI资本开支回报、私募信贷违约和展期、CCC级信用利差变化，判断行业需求是否从扩张转向风险出清。</p></div></div>
+ </div>
+</section>
+
+<section id="monitor">
+ <h2>06 / 投资者跟踪清单</h2>
+ <p class="section-desc">勾选已完成的跟踪事项，进度仅保存在当前页面会话中。</p>
+ <div class="card">
+  <div id="progressText" class="kpi-label">完成进度：0 / 6</div><div class="progress"><div id="progressBar"></div></div>
+  <div class="checklist">
+   <label class="check"><input type="checkbox"> MCO日线是否有效站稳490–493美元，并有成交量配合？</label>
+   <label class="check"><input type="checkbox"> 回踩478–480美元时是否出现有效承接？</label>
+   <label class="check"><input type="checkbox"> 零拷贝数据产品是否披露实际客户采用或商业化指标？</label>
+   <label class="check"><input type="checkbox"> AI基础设施债券发行是否保持韧性，还是出现融资放缓？</label>
+   <label class="check"><input type="checkbox"> 私募信贷违约、展期及信用利差是否继续恶化？</label>
+   <label class="check"><input type="checkbox"> 下一次业绩是否支持全年收入、利润率及现金流指引？</label>
+  </div>
+ </div>
+</section>
+
+<section id="conclusion">
+ <h2>07 / 综合判断</h2>
+ <div class="card">
+  <div class="grid two">
+   <div><span class="pill gold">当前结论</span><h3 style="font-size:20px;margin-top:12px">下跌后的修复阶段，趋势反转尚待确认</h3><p style="font-size:14px;color:var(--muted)">穆迪基本面存在AI基础设施融资和AI数据平台化两条潜在增长线索，分析业务的订阅属性也提供一定韧性。但股价在11月初冲高后明显回撤，近期反弹仍处于关键阻力区下方。现阶段更适合等待价格与成交量确认，而非单纯根据基本面叙事追涨。</p></div>
+   <div><h3>未来最重要的三个变量</h3><ol style="padding-left:20px;color:#c4d2e4;font-size:13px"><li style="margin:8px 0">技术结构：490–493美元能否转化为有效支撑。</li><li style="margin:8px 0">业务兑现：AI数据产品能否从分发优势转化为可量化收入。</li><li style="margin:8px 0">信用周期：AI融资和私募信贷风险是否改变债券发行节奏。</li></ol></div>
+  </div>
+ </div>
+</section>
+
+<section id="sources">
+ <h2>08 / 数据来源与口径</h2>
+ <p class="section-desc">市场数据与公司/宏观事件来源。不同网站的价格字段、复权口径及盘前报价可能存在差异。</p>
+ <div class="source-list">
+  <div class="source"><a href="https://stockanalysis.com/stocks/mco/history/" target="_blank" rel="noopener">StockAnalysis — MCO Historical Price Data</a><br>日线OHLC、成交量；本报告价格走势以11月25日最近可核验收盘数据为准。</div>
+  <div class="source"><a href="https://www.marketbeat.com/stocks/NYSE/MCO/chart/" target="_blank" rel="noopener">MarketBeat — MCO Stock Chart & Price History</a><br>近一个月表现、历史行情交叉核验。</div>
+  <div class="source"><a href="https://www.pretickt.com/stocks/mco/technicals/" target="_blank" rel="noopener">PreTick — MCO Technical Analysis</a><br>截至11月25日的RSI、均线、趋势和技术位估算。</div>
+  <div class="source"><a href="https://markets.financialcontent.com/stocks/quote?Symbol=MCO" target="_blank" rel="noopener">FinancialContent — Moody's Corporation Quote</a><br>报价、52周区间、成交量及公司新闻信息。</div>
+  <div class="source"><a href="https://6ix.com/news/moodys-embeds-connected-intelligence-in-the-platforms-where-customers-build-with-ai" target="_blank" rel="noopener">Moody's AI Data Zero-Copy Distribution Announcement — Nov 24, 2026</a><br>公司AI数据分发与平台嵌入战略。</div>
+  <div class="source"><a href="https://www.investing.com/news/transcripts/moodys-at-jp-morgan-conference-ai-and-private-credit-drive-growth-93CH-5033823" target="_blank" rel="noopener">Moody's at J.P. Morgan Conference — Nov 17, 2026</a><br>管理层关于AI基础设施发行、收入增长及私人信贷市场的表述。</div>
+  <div class="source"><a href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener">Bank of England — Financial Stability Report, Nov 2026</a><br>AI融资、信用利差和金融稳定风险。</div>
+  <div class="source"><a href="https://home.treasury.gov/news/press-releases/sb0678" target="_blank" rel="noopener">U.S. Treasury — Quarterly Refunding Statement, Nov 4, 2026</a><br>美国国债季度再融资发行计划。</div>
+  <div class="source"><a href="https://www.sec.gov/Archives/edgar/data/1059556/000162828026066594/a3q26earningsrelease.htm" target="_blank" rel="noopener">Moody's — Q3 2026 Earnings Release, Oct 21, 2026</a><br>第三季度业绩及2026年全年指引，作为走势分析的基本面背景。</div>
+ </div>
+</section>
+
+<div class="disclaimer"><strong>风险提示：</strong>本报告为基于公开信息的研究分析示例，不构成证券投资建议、收益承诺或买卖指令。价格数据存在时点差异，技术指标和价位属于估算及情景分析，不保证未来走势。投资者应结合自身风险承受能力、持仓成本、流动性和最新交易数据独立决策。</div>
+<footer>AIPE Investment Research · MCO Price Action Review · 2026-11-28<br>市场数据截止口径：最近可核验完整收盘日 2026-11-25</footer>
+</div>
+<script>
+const scenarios={
+ base:"基准情景：485美元附近不宜仅凭单日小幅反弹判断趋势反转。观察478美元支撑与490–493美元阻力，等待收盘确认和成交量配合。若价格在区间内反复，控制交易频率，避免在阻力位下方追涨。",
+ bull:"乐观情景：若股价放量突破490–493美元，并在后续交易日守住该区域，可视为短线修复增强。策略上等待回踩确认再考虑跟随，随后观察500–506美元压力区；若突破失败并重新跌回493美元下方，应及时降低突破交易仓位。",
+ bear:"悲观情景：若收盘有效跌破478美元，且反抽无法重新站回，说明近期修复可能失败。优先控制风险，观察466–467美元区域；若该区域也失守，应重新评估中期趋势，不宜仅因价格下跌而机械补仓。"
+};
+document.querySelectorAll(".scenario").forEach(el=>{
+ el.addEventListener("click",()=>{
+  document.querySelectorAll(".scenario").forEach(x=>x.classList.remove("active"));
+  el.classList.add("active");
+  document.getElementById("scenarioDetail").textContent=scenarios[el.dataset.scenario];
+ });
+});
+const checks=[...document.querySelectorAll(".check input")];
+function updateProgress(){
+ const n=checks.filter(x=>x.checked).length;
+ document.getElementById("progressText").textContent=`完成进度：${n} / ${checks.length}`;
+ document.getElementById("progressBar").style.width=(n/checks.length*100)+"%";
+}
+checks.forEach(x=>x.addEventListener("change",updateProgress));
+document.getElementById("themeBtn").addEventListener("click",()=>document.body.classList.toggle("light"));
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

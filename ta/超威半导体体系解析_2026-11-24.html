@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="超威半导体（AMD）体系全景解析：创始人、核心管理层、股本、股权结构、关联企业、股权激励与公司治理研究。">
+<meta name="author" content="AIPE Investment Research">
+<meta name="theme-color" content="#f9fafb">
+<title>超威半导体体系全景解析_2026-11-24</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+ darkMode:'class',
+ theme:{extend:{
+  colors:{
+   primary:{50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',900:'hsl(20,90%,15%)'},
+   accent:{50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',900:'hsl(30,85%,20%)'}
+  }
+ }}
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.btn-interactive:active{transform:scale(.95)}
+.card-interactive{transition:all .3s ease-out;border:1px solid transparent}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 20px 25px -5px rgba(0,0,0,.1);filter:brightness(.99)}
+.card-interactive[class*="primary"]:hover,.card-interactive[class*="white"]:hover,.card-interactive[class*="gray-"]:hover{border-color:hsl(20,90%,65%)}
+.card-interactive[class*="accent"]:hover{border-color:hsl(30,85%,65%)}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{text-align:left;padding:.85rem .75rem;border-bottom:1px solid hsl(0,0%,90%);vertical-align:top;font-size:.875rem}
+th{font-weight:650;color:#9a3412;background:rgba(249,115,22,.07)}
+.dark th,.dark td{border-bottom-color:hsl(0,0%,30%)}
+.dark th{color:#fdba74;background:rgba(249,115,22,.1)}
+.table-wrap{overflow-x:auto;border-radius:.8rem}
+#mobileMenu{display:none}
+#mobileMenu.mobile-menu-open{display:block}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){
+ header .max-w-7xl{padding-left:1rem;padding-right:1rem}
+ header .flex.items-center.justify-between>h1{font-size:.95rem;white-space:nowrap;margin-right:.4rem}
+ #mobileMenu{margin-top:1rem;padding:1rem 0 .5rem;border-top:1px solid rgba(20,20,20,.12);max-height:calc(100vh - 90px);overflow-y:auto}
+ .dark #mobileMenu{border-top-color:rgba(255,255,255,.15)}
+ #mobileMenu a{display:block;width:100%;padding:.7rem .5rem;border-radius:.5rem}
+}
+@media(min-width:768px){
+ header nav[aria-label="桌面端导航"] a{color:#374151}
+ .dark header nav[aria-label="桌面端导航"] a{color:#e5e7eb}
+ header nav[aria-label="桌面端导航"] a:hover{color:hsl(20,90%,45%)}
+ .dark header nav[aria-label="桌面端导航"] a:hover{color:hsl(20,90%,55%)}
+}
+header{overflow:visible}
+.moat-bar{height:9px;background:#e5e7eb;border-radius:99px;overflow:hidden}
+.dark .moat-bar{background:#374151}
+.moat-bar>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#ea580c,#f59e0b)}
+.timeline{position:relative;padding-left:1.7rem}
+.timeline:before{content:"";position:absolute;left:.38rem;top:.4rem;bottom:.4rem;width:2px;background:rgba(249,115,22,.35)}
+.timeline-item{position:relative;padding-bottom:1.4rem}
+.timeline-item:before{content:"";position:absolute;left:-1.68rem;top:.35rem;width:12px;height:12px;border-radius:50%;background:#ea580c;border:2px solid #fff;box-shadow:0 0 0 2px rgba(234,88,12,.2)}
+.dark .timeline-item:before{border-color:#111827}
+.source-link{color:#ea580c;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.source-link:hover{color:#c2410c}
+.tag{display:inline-block;padding:.2rem .55rem;border-radius:999px;font-size:.7rem;font-weight:650;background:rgba(234,88,12,.1);color:#c2410c}
+.dark .tag{color:#fdba74;background:rgba(234,88,12,.18)}
+</style>
+<script>
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ const d=document.documentElement.classList.contains('dark');
+ document.getElementById('sunIcon').style.display=d?'block':'none';
+ document.getElementById('moonIcon').style.display=d?'none':'block';
+}
+function toggleMobileMenu(){
+ const m=document.getElementById('mobileMenu'),b=document.getElementById('mobileMenuButton'),i=document.getElementById('mobileMenuIcon');
+ if(!m)return;
+ const o=m.classList.toggle('mobile-menu-open');
+ m.setAttribute('aria-hidden',o?'false':'true');
+ b.setAttribute('aria-expanded',o?'true':'false');
+ i.setAttribute('data-lucide',o?'x':'menu');
+ lucide.createIcons();
+}
+function closeMobileMenu(){
+ const m=document.getElementById('mobileMenu'),b=document.getElementById('mobileMenuButton'),i=document.getElementById('mobileMenuIcon');
+ if(!m)return;
+ m.classList.remove('mobile-menu-open');m.setAttribute('aria-hidden','true');
+ if(b)b.setAttribute('aria-expanded','false');
+ if(i){i.setAttribute('data-lucide','menu');lucide.createIcons()}
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">AMD体系全景解析</h1>
+<nav class="hidden md:flex space-x-5 flex-shrink-0" aria-label="桌面端导航">
+<a href="#overview" class="text-sm font-medium">总览</a>
+<a href="#founder" class="text-sm font-medium">管理层</a>
+<a href="#capital" class="text-sm font-medium">股本</a>
+<a href="#equity" class="text-sm font-medium">股权</a>
+<a href="#companies" class="text-sm font-medium">关联企业</a>
+<a href="#employee" class="text-sm font-medium">员工激励</a>
+<a href="#summary" class="text-sm font-medium">综合研判</a>
+</nav>
+<div class="flex items-center space-x-2 flex-shrink-0">
+<button type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="导航菜单" aria-controls="mobileMenu" aria-expanded="false" id="mobileMenuButton"><i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i></button>
+<button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式"><i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i><i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i></button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+<a href="#overview">总览</a><a href="#founder">核心管理层</a><a href="#capital">股本变化</a><a href="#equity">股权结构</a><a href="#companies">关联企业</a><a href="#employee">员工激励</a><a href="#summary">综合研判</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main>
+<section id="overview" class="py-36 md:py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex flex-wrap items-center gap-2 mb-5"><span class="tag">NASDAQ: AMD</span><span class="tag">半导体 / AI算力</span><span class="text-xs text-gray-500 dark:text-gray-400">研究基准日：2026年11月24日</span></div>
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">超威半导体体系全景解析</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+本报告以 Advanced Micro Devices, Inc.（AMD）为研究主体，系统梳理其从硅谷芯片创业公司到全球CPU、GPU及数据中心AI加速器供应商的演进路径。重点考察苏姿丰领导下的战略转型、股本与机构股东结构、Xilinx及Pensando等并购资产、供应链与生态伙伴关系，以及高管长期股权激励。分析特别区分上市公司法律控制权、经营影响力与产业合作关系，避免将客户、代工厂或生态伙伴误判为关联方。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4"><div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="user-round" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i></div><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">管理层与战略</h3></div>
+<p class="text-sm text-gray-700 dark:text-gray-300">苏姿丰主导的高性能计算转型，从产品路线图、工程执行到数据中心AI平台化。</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4"><div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center"><i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i></div><h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">资本与股权</h3></div>
+<p class="text-sm text-gray-700 dark:text-gray-300">公开市场股权高度分散，机构投资者占据重要位置，创始人家族控制模式并不存在。</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4"><div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="network" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i></div><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">产业生态与激励</h3></div>
+<p class="text-sm text-gray-700 dark:text-gray-300">通过并购、开放软件生态、先进封装供应链和高管股权激励构建竞争体系。</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+<div class="p-4 rounded-xl bg-primary-100/60 dark:bg-gray-800"><p class="text-xs text-gray-500 dark:text-gray-400">2026 Q3营收</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">$133.77亿</p><p class="text-xs text-green-600">同比 +45%</p></div>
+<div class="p-4 rounded-xl bg-primary-100/60 dark:bg-gray-800"><p class="text-xs text-gray-500 dark:text-gray-400">Q3 GAAP净利润</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">$24.28亿</p><p class="text-xs text-green-600">同比 +95%</p></div>
+<div class="p-4 rounded-xl bg-primary-100/60 dark:bg-gray-800"><p class="text-xs text-gray-500 dark:text-gray-400">Q3数据中心收入</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">$85.46亿</p><p class="text-xs text-green-600">同比 +97%</p></div>
+<div class="p-4 rounded-xl bg-primary-100/60 dark:bg-gray-800"><p class="text-xs text-gray-500 dark:text-gray-400">Q3 GAAP毛利率</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">54%</p><p class="text-xs text-gray-500">同比提升2个百分点</p></div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-4">注：财务数据来自AMD 2026年第三季度业绩公告及10-Q；美元金额按原始披露换算为亿美元。市值及实时股价不在本页使用未经核实的静态估值。[1][2]</p>
+</div>
+</section>
+
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">一、创始人及核心管理层：从工程师创业到苏姿丰时代</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">AMD成立于1969年，创始团队包括Jerry Sanders及其同事。公司最初从逻辑芯片、标准半导体产品起步，随后进入微处理器市场。与由创始家族长期控制的企业不同，AMD经历多轮职业经理人治理，其战略转折主要由董事会、CEO及技术管理团队推动。Lisa T. Su（苏姿丰）于2014年10月出任CEO，2017年起担任董事会主席，成为AMD近十年战略重构的核心领导者。</p>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100"><i data-lucide="lightbulb" class="inline w-4 h-4 mr-1"></i> 核心判断：AMD的治理核心不是创始人家族控制，而是以董事会监督、职业经理人负责、工程技术路线图和长期股权激励为主的美国公众公司治理模式。</p>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">1.1 创业历程与战略演进</h3>
+<div class="timeline">
+<div class="timeline-item"><h4 class="font-semibold">1969年：公司创立</h4><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Jerry Sanders与团队在加州创立AMD，早期聚焦逻辑芯片和半导体产品，逐渐建立芯片设计与制造能力。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2000年代：处理器竞争与制造转型</h4><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Athlon、Opteron等产品曾推动AMD在x86市场取得突破；2009年制造业务分拆，GlobalFoundries独立，AMD逐步转为无晶圆厂（fabless）芯片设计公司。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2012—2014年：经营压力与管理层更迭</h4><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">PC市场结构变化、产品竞争与财务压力迫使公司重新聚焦高性能计算、半定制芯片及长期产品路线图。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2014年：苏姿丰出任CEO</h4><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">苏姿丰推动产品组合重整、工程纪律与执行效率提升，逐步将资源集中于高性能CPU、GPU和数据中心业务。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2017—2020年：Zen架构与数据中心复兴</h4><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Ryzen与EPYC产品线建立竞争力，Zen架构迭代成为公司核心技术资产；Chiplet设计提升产品性能、良率与产品组合灵活性。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2022年：Xilinx并购完成</h4><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">AMD完成对Xilinx的全股票收购，扩展FPGA、自适应计算及嵌入式产品能力，改变公司业务结构。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2023—2026年：AI数据中心平台化</h4><p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Instinct GPU、EPYC CPU、ROCm软件、网络及机架级系统形成协同。2026年重点转向Helios机架级方案、MI450系列和第六代EPYC Venice规模化部署。[1]</p></div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">1.2 核心管理层与治理分工</h3>
+<div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+<table>
+<thead><tr><th>管理人员</th><th>主要职务</th><th>管理职责与战略影响</th></tr></thead>
+<tbody>
+<tr><td><strong>Lisa T. Su</strong></td><td>董事会主席、总裁兼CEO</td><td>集团战略、产品组合、资本配置、重大客户关系与组织执行。</td></tr>
+<tr><td><strong>Jean Hu</strong></td><td>执行副总裁、CFO及财务主管</td><td>财务管理、资本纪律、投资者关系、预算和风险管理。</td></tr>
+<tr><td><strong>Mark Papermaster</strong></td><td>执行副总裁、CTO</td><td>技术路线图、工程组织、芯片与平台研发协同。</td></tr>
+<tr><td><strong>Forrest Norrod</strong></td><td>执行副总裁、数据中心解决方案事业群负责人</td><td>EPYC、Instinct及数据中心产品组合与系统方案。</td></tr>
+<tr><td><strong>Darren Grasby</strong></td><td>执行副总裁、首席销售官及EMEA负责人</td><td>全球销售、渠道与区域客户体系。</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">注：职务依据AMD公开披露整理；具体董事会委员会分工及独立董事名单应以最新Proxy Statement为准。[3][4]</p>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">1.3 管理哲学：工程执行、平台化与结果导向</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">产品路线图驱动</h4>
+<ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+<li>• 强调跨代产品节奏和架构连续性。</li><li>• CPU、GPU、软件、网络及系统协同设计。</li><li>• 通过Chiplet和先进封装提高产品组合效率。</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl">
+<h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">资本配置与经营纪律</h4>
+<ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+<li>• 并购补齐技术和产品能力，而非单纯追求规模。</li><li>• 研发投入与长期技术竞争力优先。</li><li>• 通过绩效奖金和股权奖励强化长期价值创造。</li>
+</ul>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">1.4 近期战略重点：从芯片供应商转向AI基础设施平台</h3>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card-interactive p-5 bg-white dark:bg-gray-800 rounded-xl shadow"><i data-lucide="cpu" class="w-7 h-7 text-primary-600 mb-3"></i><h4 class="font-semibold mb-2">Instinct GPU</h4><p class="text-sm text-gray-600 dark:text-gray-400">MI450系列及后续加速器，争夺训练与推理市场。</p></div>
+<div class="card-interactive p-5 bg-white dark:bg-gray-800 rounded-xl shadow"><i data-lucide="server" class="w-7 h-7 text-primary-600 mb-3"></i><h4 class="font-semibold mb-2">Helios机架系统</h4><p class="text-sm text-gray-600 dark:text-gray-400">整合GPU、EPYC CPU、网络与机架级系统能力。</p></div>
+<div class="card-interactive p-5 bg-white dark:bg-gray-800 rounded-xl shadow"><i data-lucide="code-2" class="w-7 h-7 text-primary-600 mb-3"></i><h4 class="font-semibold mb-2">ROCm软件生态</h4><p class="text-sm text-gray-600 dark:text-gray-400">降低CUDA迁移门槛，扩展开发者和模型适配能力。</p></div>
+</div>
+<div class="mt-6">
+<h4 class="font-semibold mb-3">管理层能力评价（研究者定性评分）</h4>
+<div class="space-y-4">
+<div><div class="flex justify-between text-sm mb-1"><span>技术战略与产品路线图</span><strong>92/100</strong></div><div class="moat-bar"><span style="width:92%"></span></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>组织执行与经营复苏</span><strong>90/100</strong></div><div class="moat-bar"><span style="width:90%"></span></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>并购整合能力</span><strong>82/100</strong></div><div class="moat-bar"><span style="width:82%"></span></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>软件生态建设</span><strong>74/100</strong></div><div class="moat-bar"><span style="width:74%"></span></div></div>
+</div>
+<p class="text-xs text-gray-500 mt-2">评分为研究分析判断，并非公司披露或第三方评级。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">二、股本数量变化：上市公司股本、并购发行与回购</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">AMD于1972年在美国公开上市，股票代码AMD，现于纳斯达克交易。其股本结构与港股家族控制企业不同：公司长期通过员工股票奖励、并购发行、公开市场回购及股权激励计划管理股本。Xilinx全股票并购是近年最重要的股本结构事件之一。分析股本时必须区分授权股数、已发行股数、流通股数及稀释后加权平均股数。</p>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow"><p class="text-xs text-gray-500">上市市场</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">NASDAQ</p><p class="text-sm">代码：AMD</p></div>
+<div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow"><p class="text-xs text-gray-500">主要股本驱动因素</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">并购 / SBC</p><p class="text-sm">员工股权奖励及收购对价</p></div>
+<div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow"><p class="text-xs text-gray-500">回购机制</p><p class="text-2xl font-bold text-primary-700 dark:text-primary-300">授权回购</p><p class="text-sm">视市场条件及资本配置决定执行</p></div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">2.1 股本与重大资本事件时间线</h3>
+<div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+<table>
+<thead><tr><th>时间</th><th>事项</th><th>股本影响</th><th>分析意义</th></tr></thead>
+<tbody>
+<tr><td>1972年</td><td>公开上市</td><td>形成公开交易股份</td><td>进入公众公司治理与资本市场融资体系。</td></tr>
+<tr><td>2009年</td><td>制造业务分拆，GlobalFoundries成立</td><td>业务资产结构变化，不等同于普通股转增</td><td>转向轻资产芯片设计与外部晶圆代工。</td></tr>
+<tr><td>2016—2020年</td><td>股权融资、员工股权奖励及回购等资本管理</td><td>股数受发行、归属和回购影响</td><td>配合经营复苏与研发人才竞争。</td></tr>
+<tr><td>2022年2月</td><td>Xilinx全股票收购完成</td><td>向Xilinx股东发行AMD普通股，显著扩大股本</td><td>并购对价主要通过股票支付，增强稀释效应。</td></tr>
+<tr><td>2022年</td><td>Pensando收购</td><td>交易对价及相关股权安排需按交易文件核对</td><td>补足数据中心DPU与网络能力。</td></tr>
+<tr><td>2023年</td><td>2023 Equity Incentive Plan获批</td><td>为未来员工及高管股权奖励提供股份池</td><td>以股权奖励绑定技术和管理人才。</td></tr>
+<tr><td>2024—2026年</td><td>持续实施股票奖励、回购及资本配置</td><td>需结合10-K、10-Q核对净发行量</td><td>员工奖励造成潜在稀释，回购可部分抵消。</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">说明：未在本页填入未经核验的历史逐年股数或回购金额。应以各年度10-K的普通股发行与回购附注、股东权益变动表为准。[5][6]</p>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">2.2 Xilinx并购：股本变化的关键节点</h3>
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+<div class="grid md:grid-cols-3 gap-5">
+<div><p class="text-xs text-gray-500">交易完成时间</p><p class="text-xl font-bold text-primary-700 dark:text-primary-300">2022年2月</p></div>
+<div><p class="text-xs text-gray-500">交易形式</p><p class="text-xl font-bold text-primary-700 dark:text-primary-300">全股票交易</p></div>
+<div><p class="text-xs text-gray-500">换股比例</p><p class="text-xl font-bold text-primary-700 dark:text-primary-300">每股Xilinx换1.7234股AMD</p></div>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-4">该交易将Xilinx的FPGA、自适应计算和嵌入式产品业务纳入AMD体系。交易以AMD股票作为主要收购对价，使原Xilinx股东成为AMD股东，也使AMD股本出现一次显著扩张。其长期价值不只体现在收入并表，更在于把FPGA、嵌入式处理器和自适应SoC纳入数据中心、通信、工业及汽车产品组合。[6]</p>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">2.3 当前股本、市值与股东交易：数据口径</h3>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-accent-900 dark:text-accent-100"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-1"></i> 数据审慎提示：本报告基准日为2026年11月24日。当前已核实的最新季度文件为截至2026年9月26日的10-Q。由于实时股价、当日流通股数及市值会变动，未将未经实时行情核验的数值伪装成最新数据。</p>
+</div>
+<div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+<table>
+<thead><tr><th>指标</th><th>口径</th><th>本页处理方式</th></tr></thead>
+<tbody>
+<tr><td>已发行普通股</td><td>10-Q封面披露的报告期后最近可用日期</td><td>以SEC原文为准，不以加权平均股数替代。</td></tr>
+<tr><td>稀释后加权平均股数</td><td>季度利润表EPS计算口径</td><td>反映期间平均稀释，不等同于期末流通股。</td></tr>
+<tr><td>市值</td><td>最新股价×已发行/流通股数</td><td>需要同一交易日的价格与股数，避免口径混用。</td></tr>
+<tr><td>大股东增减持</td><td>Form 4、13D/13G、13F</td><td>13F是机构季度持仓，存在披露滞后，不代表实时交易。</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">股本分析的重点不是单纯判断股数增加或减少，而是评估每股收益的真实增长是否跑赢股票薪酬稀释，以及并购资产是否产生高于资本成本的回报。对AMD而言，Xilinx并购后的业务整合、研发投入和员工股权奖励应放在同一框架内考察。</p>
+</div>
+</div>
+</section>
+
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">三、股权结构变化：机构投资者主导的分散持股体系</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">AMD是美国上市公众公司，不存在类似创始人家族信托控制上市公司的典型结构。创始人Jerry Sanders已不再是公司控制人，现任CEO苏姿丰虽拥有重要经营影响力，但并非凭借控股股权控制公司。公司股权主要由大型资产管理机构、指数基金、养老金及其他机构投资者持有，控制权依赖股东大会投票、董事会选举及公司治理规则。</p>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-3">控制权结构的核心判断</h3>
+<p class="text-sm text-gray-700 dark:text-gray-300">AMD属于典型的股权分散型美国公众公司。董事会负责监督CEO及重大事项，CEO负责经营管理；大型机构股东拥有投票影响力，但通常不直接参与日常经营。不存在可据公开资料认定的单一自然人最终控制人或家族信托控制链条。</p>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3.1 股权与治理链条</h3>
+<div class="grid md:grid-cols-5 gap-3 text-center">
+<div class="p-4 rounded-xl bg-primary-50 dark:bg-gray-800"><i data-lucide="users" class="w-7 h-7 mx-auto text-primary-600 mb-2"></i><p class="text-sm font-semibold">公众股东</p><p class="text-xs text-gray-500">个人及机构</p></div>
+<div class="hidden md:flex items-center justify-center"><i data-lucide="arrow-right" class="text-primary-500"></i></div>
+<div class="p-4 rounded-xl bg-primary-50 dark:bg-gray-800"><i data-lucide="landmark" class="w-7 h-7 mx-auto text-primary-600 mb-2"></i><p class="text-sm font-semibold">股东大会</p><p class="text-xs text-gray-500">投票与选举</p></div>
+<div class="hidden md:flex items-center justify-center"><i data-lucide="arrow-right" class="text-primary-500"></i></div>
+<div class="p-4 rounded-xl bg-primary-50 dark:bg-gray-800"><i data-lucide="shield-check" class="w-7 h-7 mx-auto text-primary-600 mb-2"></i><p class="text-sm font-semibold">董事会</p><p class="text-xs text-gray-500">监督与决策</p></div>
+</div>
+<div class="flex justify-center"><i data-lucide="arrow-down" class="text-primary-500"></i></div>
+<div class="max-w-sm mx-auto p-4 rounded-xl bg-accent-50 dark:bg-accent-900/20 text-center"><i data-lucide="briefcase-business" class="w-7 h-7 mx-auto text-accent-600 mb-2"></i><p class="font-semibold text-accent-700 dark:text-accent-300">CEO及执行管理团队</p><p class="text-xs text-gray-500">负责战略执行与日常运营</p></div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3.2 主要股东与机构持股</h3>
+<p class="text-sm text-gray-700 dark:text-gray-300">AMD主要机构持有人通常包括大型指数及资产管理机构。由于13F披露存在季度滞后，且不同数据平台可能将受托管理资产、基金持仓和实益所有权作不同合并处理，本页不将历史机构持仓百分比冒充2026年11月24日的即时持股比例。</p>
+<div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+<table>
+<thead><tr><th>股东类别/机构</th><th>典型角色</th><th>治理影响</th><th>核验依据</th></tr></thead>
+<tbody>
+<tr><td><strong>Vanguard Group</strong></td><td>指数基金及资产管理</td><td>通过投票政策影响董事选举、薪酬和治理提案。</td><td>13F、13G及Proxy Statement</td></tr>
+<tr><td><strong>BlackRock</strong></td><td>大型资产管理机构</td><td>关注资本配置、董事会独立性、气候及薪酬治理。</td><td>13F、13G及Proxy Statement</td></tr>
+<tr><td><strong>State Street</strong></td><td>机构资产管理及指数投资</td><td>在股东投票及治理政策方面具有影响力。</td><td>13F及Proxy Statement</td></tr>
+<tr><td><strong>其他共同基金与养老金</strong></td><td>长期机构投资者</td><td>形成分散的机构股东基础。</td><td>13F及基金持仓报告</td></tr>
+<tr><td><strong>高管及董事</strong></td><td>内部人持股及奖励权益</td><td>通过直接持股、限制性股票及绩效奖励形成利益绑定。</td><td>Proxy Statement、Form 4</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">注：表格是主要持股主体类别说明，不构成2026年最新持股比例排名。应通过SEC EDGAR最新13G/13D、13F及DEF 14A逐项确认。[3][7]</p>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3.3 股权结构演变时间线</h3>
+<div class="timeline">
+<div class="timeline-item"><h4 class="font-semibold">1969—2000年代：创始团队及公众股东</h4><p class="text-sm text-gray-600 dark:text-gray-400">创始团队建立公司，上市后股东基础逐步分散。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2009年：制造业务分拆</h4><p class="text-sm text-gray-600 dark:text-gray-400">GlobalFoundries独立，AMD聚焦芯片设计，股东控制结构仍以公众持股为主。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2014—2020年：苏姿丰时代</h4><p class="text-sm text-gray-600 dark:text-gray-400">经营层影响力增强，但CEO身份不等于控股股东身份。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2022年：Xilinx全股票并购</h4><p class="text-sm text-gray-600 dark:text-gray-400">原Xilinx股东获得AMD股票，扩大股东基础并调整持股比例。</p></div>
+<div class="timeline-item"><h4 class="font-semibold">2023—2026年：机构投资者与员工权益并存</h4><p class="text-sm text-gray-600 dark:text-gray-400">机构股东维持重要投票影响力，股权奖励使高管和核心员工与股东回报绑定。</p></div>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3.4 控制权稳定性分析</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md"><h4 class="font-semibold mb-3">稳定因素</h4><ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300"><li>• 美国成熟证券监管体系及信息披露制度。</li><li>• 董事会与职业经理人治理架构稳定。</li><li>• 机构股东通常关注长期经营价值与治理质量。</li><li>• 高管长期激励有助于管理层留任。</li></ul></div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md"><h4 class="font-semibold mb-3">潜在治理风险</h4><ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300"><li>• 机构投资者投票立场可能随业绩和市场环境变化。</li><li>• CEO权力集中时需关注董事会监督有效性。</li><li>• 大额股票奖励可能引发稀释与薪酬公平性争议。</li><li>• 并购整合及战略投入可能增加资本配置监督难度。</li></ul></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">四、关联上市公司与产业企业关系：AMD的生态体系</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">AMD并没有类似海底捞—颐海国际—特海国际的多家关联上市公司矩阵。其产业体系主要由全资子公司、并购纳入的业务平台、晶圆代工及封装供应商、IP合作方、服务器OEM/ODM厂商和大型云计算客户构成。必须严格区分合并报表内子公司、会计准则下关联方、供应商、客户及战略合作伙伴。</p>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+<div class="flex items-center space-x-3 mb-4"><div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="cpu" class="w-5 h-5 text-primary-600"></i></div><h3 class="font-semibold text-primary-700 dark:text-primary-300">Xilinx业务</h3></div>
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">2022年并购纳入AMD，现为自适应计算与嵌入式产品组合的重要来源。</p>
+<ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2"><li>• FPGA及自适应SoC</li><li>• 通信、工业、航空航天及汽车</li><li>• 嵌入式计算与边缘AI</li></ul>
+<span class="tag mt-3">全资并购业务</span>
+</div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+<div class="flex items-center space-x-3 mb-4"><div class="w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center"><i data-lucide="network" class="w-5 h-5 text-accent-600"></i></div><h3 class="font-semibold text-accent-700 dark:text-accent-300">Pensando</h3></div>
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">2022年收购的分布式服务处理器及网络技术企业，强化数据中心基础设施产品。</p>
+<ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2"><li>• DPU及数据处理</li><li>• 网络与安全加速</li><li>• 云数据中心基础设施</li></ul>
+<span class="tag mt-3">并购纳入</span>
+</div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+<div class="flex items-center space-x-3 mb-4"><div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="server" class="w-5 h-5 text-primary-600"></i></div><h3 class="font-semibold text-primary-700 dark:text-primary-300">ZT Systems</h3></div>
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-3">AMD于2025年完成对ZT Systems的收购，增强云端AI系统设计与部署能力。</p>
+<ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2"><li>• AI服务器系统设计</li><li>• 机架级解决方案</li><li>• 大规模数据中心部署经验</li></ul>
+<span class="tag mt-3">系统能力扩张</span>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4.1 核心产业链关系图</h3>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow text-center"><i data-lucide="factory" class="w-8 h-8 mx-auto text-primary-600 mb-2"></i><h4 class="font-semibold">制造与封装供应商</h4><p class="text-xs text-gray-500 mt-2">TSMC等晶圆代工、先进封装与测试供应链</p><span class="tag mt-3">供应链合作</span></div>
+<div class="p-5 bg-primary-100/70 dark:bg-primary-900/30 rounded-xl shadow text-center"><i data-lucide="cpu" class="w-8 h-8 mx-auto text-primary-600 mb-2"></i><h4 class="font-semibold">AMD</h4><p class="text-xs text-gray-600 dark:text-gray-400 mt-2">CPU / GPU / FPGA / DPU / 系统与软件</p><span class="tag mt-3">核心设计平台</span></div>
+<div class="p-5 bg-white dark:bg-gray-900 rounded-xl shadow text-center"><i data-lucide="cloud" class="w-8 h-8 mx-auto text-accent-600 mb-2"></i><h4 class="font-semibold">云客户与OEM</h4><p class="text-xs text-gray-500 mt-2">云服务商、服务器厂商及企业客户</p><span class="tag mt-3">客户与生态合作</span></div>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-400">上述为产业链关系示意，不代表三方存在股权控制或关联交易关系。具体采购集中度、重大客户占比及供应商依赖程度，应以10-K风险因素和采购承诺附注核对。[5]</p>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4.2 2026年第三季度业务结构与经营表现</h3>
+<div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+<table>
+<thead><tr><th>业务分部</th><th>2026 Q3收入</th><th>同比变化</th><th>Q3营业利润</th><th>战略定位</th></tr></thead>
+<tbody>
+<tr><td><strong>Data Center</strong></td><td>$85.46亿美元</td><td class="text-green-600">+97%</td><td>$28.82亿美元</td><td>EPYC CPU、Instinct GPU及数据中心平台，是增长主引擎。</td></tr>
+<tr><td><strong>Client & Gaming</strong></td><td>$37.22亿美元</td><td class="text-red-600">-8%</td><td>$5.73亿美元</td><td>Ryzen客户端处理器与游戏业务；内部结构分化。</td></tr>
+<tr><td><strong>Embedded</strong></td><td>$11.09亿美元</td><td class="text-green-600">+29%</td><td>$4.53亿美元</td><td>FPGA、自适应计算与工业、通信、汽车等市场。</td></tr>
+<tr><td><strong>合计</strong></td><td><strong>$133.77亿美元</strong></td><td class="text-green-600">+45%</td><td><strong>$28.32亿美元</strong></td><td>GAAP合并口径。</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">来源：AMD 2026年第三季度财务公告，报告期截至2026年9月26日。[1][2]</p>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4.3 关联交易与供应链关系辨析</h3>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+<h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">合并报表内企业</h4>
+<ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300"><li>• AMD通过控制的子公司开展全球业务。</li><li>• Xilinx、Pensando及ZT Systems相关业务纳入集团体系。</li><li>• 子公司间交易在合并报表中按会计规则抵销。</li><li>• 并购产生的商誉、无形资产摊销需持续跟踪。</li></ul>
+</div>
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+<h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">外部产业合作方</h4>
+<ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300"><li>• TSMC等代工厂是制造供应链合作方。</li><li>• Microsoft、Meta、Oracle等属于客户或生态伙伴关系范畴。</li><li>• 服务器OEM/ODM承担系统制造与市场交付。</li><li>• 客户和供应商身份本身不构成关联方关系。</li></ul>
+</div>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">AMD在2026年第三季度披露，Anthropic、Meta、Microsoft、OpenAI及Oracle Cloud Infrastructure等客户和生态伙伴正在运行基于AMD Helios系统的相关工作负载。该信息说明AMD正在扩大AI基础设施部署，但不能直接等同于这些企业向AMD承诺了固定采购金额，也不能据此推定其为AMD关联公司。[1]</p>
+
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4.4 产业协同与潜在风险</h3>
+<div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+<table>
+<thead><tr><th>维度</th><th>协同价值</th><th>主要风险</th></tr></thead>
+<tbody>
+<tr><td>先进制程及封装</td><td>外部代工模式降低自建晶圆厂资本负担。</td><td>先进制程产能、封装资源及地缘政治集中风险。</td></tr>
+<tr><td>云计算客户</td><td>大型云厂商提供大规模AI计算需求和产品验证场景。</td><td>客户集中、订单波动及自研芯片替代。</td></tr>
+<tr><td>软件生态</td><td>ROCm与开放开发工具降低生态迁移障碍。</td><td>CUDA开发者网络、工具成熟度及软件优化仍构成竞争压力。</td></tr>
+<tr><td>并购资产</td><td>Xilinx、Pensando、ZT Systems补齐产品和系统能力。</td><td>并购整合、人才留存、商誉减值和资本回报率风险。</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">五、员工持股与激励机制：以股权奖励绑定技术人才</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">AMD的员工激励体系以现金薪酬、年度绩效奖金、限制性股票单位（RSU）、绩效股票单位（PSU）及股票期权等工具为主。对于芯片设计企业，核心人才的价值往往体现于多年研发周期和产品代际成果，因此股权激励不仅是薪酬组成部分，也是技术人才竞争和组织稳定的重要工具。</p>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">高管与核心技术人才</h3>
+<ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li><i data-lucide="check" class="inline w-4 h-4 text-primary-600 mr-2"></i>长期限制性股票奖励（RSU）。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-primary-600 mr-2"></i>与长期业绩目标相关的绩效股票奖励。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-primary-600 mr-2"></i>股票期权及其他基于股价的奖励。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-primary-600 mr-2"></i>通过归属周期提高人才留任与长期责任感。</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">普通员工与研发组织</h3>
+<ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+<li><i data-lucide="check" class="inline w-4 h-4 text-accent-600 mr-2"></i>固定薪酬与年度绩效奖金。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-accent-600 mr-2"></i>符合条件员工参与股权奖励计划。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-accent-600 mr-2"></i>技术晋升、项目责任及跨部门发展通道。</li>
+<li><i data-lucide="check" class="inline w-4 h-4 text-accent-600 mr-2"></i>健康福利、退休储蓄和员工支持计划。</li>
+</ul>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">5.1 2023 Equity Incentive Plan：长期股权激励基础</h3>
+<div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">AMD 2023 Equity Incentive Plan为董事、高管、员工及符合条件的服务提供者提供股权奖励制度基础。奖励类型可包括股票期权、股票增值权、限制性股票、限制性股票单位及绩效类奖励。具体授予对象、数量、归属时间表、绩效指标及没收条款，以股东批准的计划文本和年度Proxy Statement为准。[3]</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
+<div class="p-3 bg-primary-50 dark:bg-gray-900 rounded-lg"><i data-lucide="calendar-check" class="w-5 h-5 text-primary-600 mb-2"></i><p class="text-sm font-semibold">RSU</p><p class="text-xs text-gray-500">分期归属</p></div>
+<div class="p-3 bg-primary-50 dark:bg-gray-900 rounded-lg"><i data-lucide="target" class="w-5 h-5 text-primary-600 mb-2"></i><p class="text-sm font-semibold">PSU</p><p class="text-xs text-gray-500">绩效目标</p></div>
+<div class="p-3 bg-primary-50 dark:bg-gray-900 rounded-lg"><i data-lucide="trending-up" class="w-5 h-5 text-primary-600 mb-2"></i><p class="text-sm font-semibold">Stock Options</p><p class="text-xs text-gray-500">股价上涨收益</p></div>
+<div class="p-3 bg-primary-50 dark:bg-gray-900 rounded-lg"><i data-lucide="award" class="w-5 h-5 text-primary-600 mb-2"></i><p class="text-sm font-semibold">绩效奖金</p><p class="text-xs text-gray-500">年度经营成果</p></div>
+</div>
+</div>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">5.2 2026年高管薪酬与长期激励：公开披露案例</h3>
+<p class="text-sm text-gray-700 dark:text-gray-300">AMD于2026年6月26日提交的8-K披露，董事会批准部分高管自2026年7月1日起调整基本年薪，并披露拟于2026年8月15日授予的长期股权奖励目标价值。该公告提供了观察公司高管激励规模与治理机制的直接证据。[4]</p>
+<div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+<table>
+<thead><tr><th>高管</th><th>职务</th><th>调整后年基本工资</th><th>2026年长期奖励目标价值</th></tr></thead>
+<tbody>
+<tr><td>Lisa T. Su</td><td>董事会主席、总裁兼CEO</td><td>$137.50万美元</td><td><strong>$3,600.00万美元</strong></td></tr>
+<tr><td>Jean Hu</td><td>执行副总裁、CFO</td><td>$85.00万美元</td><td>$900.00万美元</td></tr>
+<tr><td>Mark Papermaster</td><td>执行副总裁、CTO</td><td>$90.00万美元</td><td>$1,000.00万美元</td></tr>
+<tr><td>Darren Grasby</td><td>执行副总裁、首席销售官</td><td>$84.39万美元</td><td>$750.00万美元</td></tr>
+<tr><td>Forrest Norrod</td><td>执行副总裁、数据中心业务负责人</td><td>$80.00万美元</td><td>$800.00万美元</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400">注：奖励目标价值不是现金工资，也不代表授予日或最终归属日的实际实现价值。最终价值受股价、归属条件和绩效达成情况影响。Grasby薪酬由英镑折算美元。[4]</p>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">5.3 薪酬考核与经营指标之间的联系</h3>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card-interactive p-5 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl"><i data-lucide="bar-chart-3" class="w-7 h-7 text-primary-600 mb-3"></i><h4 class="font-semibold mb-2">财务表现</h4><p class="text-sm text-gray-600 dark:text-gray-400">收入、利润、现金流及长期股东回报。</p></div>
+<div class="card-interactive p-5 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl"><i data-lucide="rocket" class="w-7 h-7 text-accent-600 mb-3"></i><h4 class="font-semibold mb-2">战略里程碑</h4><p class="text-sm text-gray-600 dark:text-gray-400">产品上市、技术路线图及数据中心业务拓展。</p></div>
+<div class="card-interactive p-5 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl"><i data-lucide="users" class="w-7 h-7 text-primary-600 mb-3"></i><h4 class="font-semibold mb-2">人才与组织</h4><p class="text-sm text-gray-600 dark:text-gray-400">关键人才留任、跨团队协同与管理层继任。</p></div>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">具体绩效权重及目标值可能因年度、职位及薪酬委员会决策而不同，不应将一般经营指标描述为所有高管统一适用的固定考核公式。投资者应查看Proxy Statement中薪酬讨论与分析（CD&amp;A）及绩效目标披露。</p>
+
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">5.4 激励机制的效果与潜在矛盾</h3>
+<div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+<table>
+<thead><tr><th>机制</th><th>正面效果</th><th>潜在问题</th><th>跟踪指标</th></tr></thead>
+<tbody>
+<tr><td>RSU及长期股票奖励</td><td>留住核心研发及管理人才。</td><td>持续授予带来股本稀释。</td><td>股票薪酬费用、稀释后股数。</td></tr>
+<tr><td>绩效股票奖励</td><td>将长期业绩与薪酬挂钩。</td><td>指标选择可能诱发短期行为。</td><td>绩效目标、实际归属率。</td></tr>
+<tr><td>股票期权</td><td>强化股价上涨与员工收益联系。</td><td>股价低迷时激励效力下降。</td><td>行权价、未归属数量及期限。</td></tr>
+<tr><td>现金绩效奖金</td><td>强化年度经营执行。</td><td>可能偏向短期利润和预算目标。</td><td>现金奖金与经营成果匹配度。</td></tr>
+</tbody>
+</table>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-accent-900 dark:text-accent-100"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-1"></i> 核心矛盾：股权激励能增强人才稳定性，但如果授予规模长期超过回购抵消能力，股东最终获得的每股价值可能被稀释。评价激励质量必须同时考察股价表现、每股收益、股票薪酬费用和净股数变化。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">六、综合研判与关键结论</h2>
+<div class="space-y-6">
+<div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">1. 组织与战略：从CPU/GPU供应商迈向AI系统平台</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">AMD正在由传统处理器公司向涵盖CPU、GPU、FPGA、DPU、网络、软件和机架级系统的综合计算平台演进。苏姿丰的核心战略是将高性能计算能力转化为可规模化的产品组合，并通过并购和生态合作补足产品链条。2026年第三季度数据中心收入达到85.46亿美元，同比增长97%，已经成为集团增长和利润扩张的关键引擎。[1]</p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">Helios、MI450及Venice等产品的规模化交付，将检验AMD是否能够从单芯片供应商进一步成长为AI基础设施系统级供应商。系统级产品带来的订单规模更大，但也意味着更复杂的供应链、交付和客户支持责任。</p>
+</div>
+
+<div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">2. 财务表现：高增长与业务结构分化并存</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">2026年前九个月AMD实现收入351.66亿美元，同比增长约44.3%；GAAP毛利率为54%，较上年同期47%提高7个百分点；营业利润为62.98亿美元，上年同期为19.42亿美元。同期数据中心收入210.39亿美元，同比增长87%，成为增长核心。[1][2]</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>指标</th><th>2026年前九个月</th><th>2025年前九个月</th><th>变化</th></tr></thead>
+<tbody>
+<tr><td>营业收入</td><td>$351.66亿美元</td><td>$243.69亿美元</td><td class="text-green-600">+44.3%</td></tr>
+<tr><td>毛利</td><td>$188.29亿美元</td><td>$115.75亿美元</td><td class="text-green-600">+62.7%</td></tr>
+<tr><td>GAAP毛利率</td><td>54%</td><td>47%</td><td class="text-green-600">+7个百分点</td></tr>
+<tr><td>营业利润</td><td>$62.98亿美元</td><td>$19.42亿美元</td><td class="text-green-600">显著增长</td></tr>
+<tr><td>经营现金流之外的自由现金流</td><td>$46.78亿美元</td><td>$34.37亿美元</td><td class="text-green-600">+36.1%</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300 mt-4">需要关注的结构性矛盾是：数据中心高增长与客户端、游戏业务承压同时存在。2026年第三季度Client &amp; Gaming收入同比下降8%，其中Gaming收入同比下降40%；这意味着AI业务虽然快速扩张，但传统业务周期性仍会影响集团整体增长质量。[1]</p>
+</div>
+
+<div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">3. 关联企业与供应链：生态协同是优势，也是依赖</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">Xilinx、Pensando和ZT Systems扩展了AMD从芯片到系统的能力。外部晶圆代工、先进封装及服务器制造伙伴降低了资本开支压力，同时也使AMD依赖外部产能与供应链资源。大型云客户既是增长来源，也是潜在议价力量。</p>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">AMD的竞争优势不能仅用CPU或GPU单颗芯片性能衡量，还需要观察软件适配、系统互联、机架级功耗效率、客户部署周期及总体拥有成本。若ROCm生态持续成熟，AMD有机会提升平台粘性；反之，软件生态短板可能限制硬件性能转化为收入的速度。</p>
+</div>
+
+<div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">4. 员工激励：人才绑定与股东稀释之间的平衡</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">AMD以长期股票奖励为核心的激励体系，适合芯片研发周期长、人才稀缺和技术竞争激烈的行业特征。2026年披露的高管长期奖励目标价值显示，公司愿意为关键管理岗位提供较大规模的长期激励。其合理性取决于未来收入、利润、现金流和股东回报是否能够兑现，而不能只看名义奖励价值。[4]</p>
+</div>
+
+<div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">5. 核心护城河与竞争短板评分</h3>
+<div class="space-y-5">
+<div><div class="flex justify-between text-sm mb-1"><span>CPU架构与产品竞争力</span><strong>88/100</strong></div><div class="moat-bar"><span style="width:88%"></span></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>Chiplet及产品设计能力</span><strong>91/100</strong></div><div class="moat-bar"><span style="width:91%"></span></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>数据中心客户拓展能力</span><strong>86/100</strong></div><div class="moat-bar"><span style="width:86%"></span></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>软件生态与开发者网络</span><strong>72/100</strong></div><div class="moat-bar"><span style="width:72%"></span></div></div>
+<div><div class="flex justify-between text-sm mb-1"><span>制造供应链自主性</span><strong>60/100</strong></div><div class="moat-bar"><span style="width:60%"></span></div></div>
+</div>
+<p class="text-xs text-gray-500 mt-3">研究者主观评分，用于比较能力维度，不代表量化估值模型或第三方评级。</p>
+</div>
+
+<div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">6. 主要风险提示</h3>
+<div class="space-y-4">
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-accent-900 dark:text-accent-100"><i data-lucide="alert-circle" class="inline w-4 h-4 mr-1"></i><strong>AI竞争与客户自研风险。</strong>英伟达拥有成熟的软件生态与系统产品能力，云厂商也在开发自研加速器。AMD必须持续提高产品性能、软件易用性和整体系统竞争力。</p>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100"><i data-lucide="alert-circle" class="inline w-4 h-4 mr-1"></i><strong>供应链及地缘政治风险。</strong>先进制程、先进封装及关键制造环节依赖外部供应商，出口管制、产能限制或供应中断均可能影响交付和收入。</p>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-accent-900 dark:text-accent-100"><i data-lucide="alert-circle" class="inline w-4 h-4 mr-1"></i><strong>高估值与预期兑现风险。</strong>AI资本开支增长不必然持续转化为AMD订单。若云客户投资回报不及预期，或新产品部署推迟，估值可能先于基本面调整。</p>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100"><i data-lucide="alert-circle" class="inline w-4 h-4 mr-1"></i><strong>并购整合与资本回报风险。</strong>Xilinx、Pensando及ZT Systems等资产需要持续整合。若收入协同、成本效率和自由现金流未达到预期，可能导致商誉减值或资本回报率下降。</p>
+</div>
+<div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-accent-900 dark:text-accent-100"><i data-lucide="alert-circle" class="inline w-4 h-4 mr-1"></i><strong>管理层继任与激励风险。</strong>苏姿丰对公司战略执行具有重要影响。未来CEO继任、关键技术人才流失、股权奖励稀释及薪酬治理质量，均需持续关注。</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-8 bg-primary-900 dark:bg-gray-950 rounded-xl shadow-md text-white">
+<h3 class="text-xl font-semibold text-primary-200 mb-4">投资研究结论</h3>
+<p class="leading-relaxed text-gray-100">AMD已从一家在CPU市场寻求生存空间的芯片公司，成长为具备CPU、GPU、FPGA、DPU和数据中心系统能力的综合计算平台企业。苏姿丰领导下的工程执行与产品路线图，是其经营复苏的关键；Xilinx等并购资产补齐了产品组合；机构投资者主导的分散股权结构和长期股票奖励机制，则构成其治理与人才基础。2026年第三季度数据中心收入同比增长97%，显示AI业务正在成为新的利润增长中心，但软件生态、供应链集中、客户自研及高估值预期仍是不可忽视的约束。</p>
+<p class="text-lg font-bold text-primary-200 mt-5">一句话总结：AMD的核心故事，是以工程执行和开放生态挑战既有AI计算平台，并将芯片竞争升级为数据中心系统竞争；未来价值取决于AI收入能否持续转化为高质量利润与每股自由现金流。</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div><h3 class="text-lg font-semibold text-primary-300 mb-4">关于本页面</h3><p class="text-sm text-gray-400 leading-relaxed">本页为超威半导体（AMD）公司治理与产业体系研究，覆盖创始人及管理层、股本变化、机构股东、并购与产业关系、员工激励及经营研判。研究基准日为2026年11月24日。</p></div>
+<div><h3 class="text-lg font-semibold text-primary-300 mb-4">研究范围与主要来源</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• AMD 2026 Q3业绩公告及10-Q</li>
+<li>• AMD年度10-K及股东大会Proxy Statement</li>
+<li>• SEC 8-K、13D/13G、13F及Form 4</li>
+<li>• Xilinx、Pensando及ZT Systems并购披露</li>
+<li>• AMD管理层、股权激励及公司治理文件</li>
+</ul></div>
+<div><h3 class="text-lg font-semibold text-primary-300 mb-4">免责声明</h3><p class="text-sm text-gray-400 leading-relaxed">本页面仅供教育、研究与信息参考，不构成证券投资建议、买卖推荐或收益承诺。财务数据按公司公开披露整理，部分股权和历史股本数据需以SEC原始文件逐项复核。分析评分为研究者主观判断。股票价格、市值及机构持仓可能发生变化，投资决策前请核实最新公告和行情。</p></div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700">
+<h4 class="text-sm font-semibold text-primary-300 mb-3">公开资料与来源索引</h4>
+<ol class="text-xs text-gray-400 space-y-2 leading-relaxed">
+<li id="ref1">[1] AMD, Reports Third Quarter 2026 Financial Results, 2026-11-03. <a class="source-link" href="https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results" target="_blank" rel="noopener">AMD Investor Relations</a></li>
+<li id="ref2">[2] AMD, Form 10-Q, quarter ended September 26, 2026, filed 2026-11-04. <a class="source-link" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000191/amd-20260926.htm" target="_blank" rel="noopener">SEC filing / AMD IR</a></li>
+<li id="ref3">[3] AMD, 2026 Proxy Statement and annual meeting materials. <a class="source-link" href="https://ir.amd.com/financial-information/sec-filings" target="_blank" rel="noopener">AMD SEC Filings</a></li>
+<li id="ref4">[4] AMD, Form 8-K dated June 26, 2026, executive compensation changes and long-term incentive awards. <a class="source-link" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000115/amd-20260626.htm" target="_blank" rel="noopener">AMD 8-K</a></li>
+<li id="ref5">[5] AMD, Annual Reports and SEC filings, including annual 10-K disclosures on stockholders' equity, stock-based compensation, subsidiaries, suppliers and customers. <a class="source-link" href="https://ir.amd.com/financial-information/annual-reports-and-proxy" target="_blank" rel="noopener">Annual Reports &amp; Proxy</a></li>
+<li id="ref6">[6] AMD, Xilinx acquisition completion and transaction disclosures. <a class="source-link" href="https://ir.amd.com/" target="_blank" rel="noopener">AMD Investor Relations</a></li>
+<li id="ref7">[7] SEC EDGAR, Advanced Micro Devices, Inc., CIK 0000002488: ownership filings, 13F, 13G/13D and Form 4. <a class="source-link" href="https://www.sec.gov/edgar/browse/?CIK=2488&amp;owner=exclude" target="_blank" rel="noopener">SEC EDGAR company filings</a></li>
+<li>[8] AMD corporate history and leadership information. <a class="source-link" href="https://www.amd.com/en/corporate.html" target="_blank" rel="noopener">AMD Corporate</a></li>
+</ol>
+<div class="mt-8 text-center text-sm text-gray-500"><p>© 2026 AMD体系全景研究 · AIPE Investment Research</p><p class="mt-1">研究基准日：2026年11月24日</p></div>
+</div>
+</div>
+</footer>
+
+<script>
+function updateProgress(){
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const p=h>0?(window.scrollY/h)*100:0;
+ document.getElementById('progressBar').style.width=p+'%';
+}
+window.addEventListener('scroll',updateProgress,{passive:true});
+document.addEventListener('DOMContentLoaded',function(){
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:800,once:true,offset:60});
+ document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',closeMobileMenu));
+ updateProgress();
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

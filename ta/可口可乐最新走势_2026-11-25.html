@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>可口可乐（KO）最新走势归因与操作指引_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        ink: '#101827',
+        panel: '#172235',
+        muted: '#8B9AAF',
+        line: '#26354A',
+        primary: '#E66B45',
+        accent: '#E9B66B',
+        up: '#16A67A',
+        down: '#E15D66',
+        blue2: '#65A8E8'
+      },
+      fontFamily: {
+        sans: ['Manrope','Noto Sans SC','sans-serif'],
+        mono: ['DM Mono','monospace']
+      }
+    }
+  }
+};
+</script>
+<style>
+:root{color-scheme:light;--bg:#f4f6f9;--surface:#fff;--surface2:#f8fafc;--text:#172235;--muted:#68778c;--line:#e3e8ef;--primary:#d95d3c;--green:#07845f;--red:#d34e5b;--blue:#347fc1;--shadow:0 12px 34px rgba(20,36,58,.055)}
+.dark{color-scheme:dark;--bg:#101827;--surface:#172235;--surface2:#1c2a40;--text:#e8edf5;--muted:#9aa9bd;--line:#2a3a51;--primary:#f0835f;--green:#37c69b;--red:#ff7882;--blue:#79b8f1;--shadow:0 12px 34px rgba(0,0,0,.16)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,"Noto Sans SC",sans-serif;transition:background .25s,color .25s}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.mono{font-family:"DM Mono",monospace;font-variant-numeric:tabular-nums}
+.topbar{background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.surface{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.surface2{background:var(--surface2);border:1px solid var(--line)}
+.muted{color:var(--muted)}
+.primary{color:var(--primary)}
+.positive{color:var(--green)}
+.negative{color:var(--red)}
+.progress-track{height:5px;background:var(--line);border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.navlink{color:var(--muted);font-size:13px;font-weight:600;transition:.2s}
+.navlink:hover,.navlink.active{color:var(--primary)}
+.section-kicker{font:500 11px "DM Mono",monospace;letter-spacing:.17em;color:var(--primary);text-transform:uppercase}
+.section-title{font-size:clamp(23px,3vw,32px);font-weight:800;letter-spacing:-.04em;line-height:1.25}
+.card-hover{transition:transform .25s,border-color .25s,box-shadow .25s}
+.card-hover:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--primary) 45%,var(--line));box-shadow:0 16px 40px rgba(20,36,58,.1)}
+.tag{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.02em}
+.tag-green{background:color-mix(in srgb,var(--green) 12%,transparent);color:var(--green)}
+.tag-red{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red)}
+.tag-orange{background:color-mix(in srgb,var(--primary) 12%,transparent);color:var(--primary)}
+.tag-blue{background:color-mix(in srgb,var(--blue) 12%,transparent);color:var(--blue)}
+.tag-neutral{background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.metric-label{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.04em}
+.metric-value{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.045em}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;min-width:620px;font-size:12px}
+th{background:var(--surface2);color:var(--muted);font-weight:700;text-align:left;white-space:nowrap}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:color-mix(in srgb,var(--primary) 4%,transparent)}
+.timeline{position:relative}
+.timeline:before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.timeline-item{position:relative;padding-left:30px;padding-bottom:22px}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-dot{position:absolute;left:3px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--surface);border:2px solid var(--primary);z-index:1}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar>span{display:block;height:100%;border-radius:99px}
+.price-chip{display:inline-flex;align-items:center;padding:5px 9px;border-radius:7px;font:500 12px "DM Mono",monospace;background:var(--surface2);border:1px solid var(--line)}
+.chart-box{position:relative;height:300px;width:100%}
+.chart-box.small{height:230px}
+#mobileMenu{display:none}
+#mobileMenu.open{display:block}
+#backTop{opacity:0;pointer-events:none;transition:.2s}
+#backTop.show{opacity:1;pointer-events:auto}
+details summary{cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details[open] .chevron{transform:rotate(180deg)}
+.chevron{transition:transform .2s}
+.disclaimer{border-left:3px solid var(--accent)}
+@media(max-width:767px){
+ .chart-box{height:260px}.chart-box.small{height:210px}
+ .hero-title{font-size:39px!important}
+ .desktop-nav{display:none}
+ .mobile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body>
+<div id="scrollProgress" class="fixed top-0 left-0 z-[100] h-[3px] bg-primary" style="width:0%"></div>
+
+<header class="topbar fixed top-0 z-50 w-full">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 h-[68px] flex items-center justify-between">
+    <a href="#overview" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-extrabold text-sm" style="background:linear-gradient(135deg,#e66b45,#b93e2b)">KO</div>
+      <div>
+        <div class="font-extrabold text-sm tracking-tight">EQUITY <span class="primary">FIELDNOTE</span></div>
+        <div class="muted text-[9px] tracking-[.19em] font-semibold">MARKET INTELLIGENCE</div>
+      </div>
+    </a>
+    <nav class="desktop-nav flex items-center gap-7">
+      <a class="navlink active" href="#overview">走势总览</a>
+      <a class="navlink" href="#phases">行情阶段</a>
+      <a class="navlink" href="#drivers">涨跌归因</a>
+      <a class="navlink" href="#technicals">技术结构</a>
+      <a class="navlink" href="#strategy">操作指引</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <span class="hidden sm:block muted text-[10px] mono">2026.11.25</span>
+      <button id="themeToggle" aria-label="切换深色模式" class="surface2 w-9 h-9 rounded-xl flex items-center justify-center hover:border-primary transition">
+        <i data-lucide="moon" class="w-4 h-4"></i>
+      </button>
+      <button id="menuToggle" aria-label="打开菜单" class="md:hidden surface2 w-9 h-9 rounded-xl flex items-center justify-center">
+        <i data-lucide="menu" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="md:hidden px-5 pb-4 border-t" style="border-color:var(--line)">
+    <div class="grid grid-cols-2 gap-3 pt-4">
+      <a class="navlink" href="#overview">走势总览</a><a class="navlink" href="#phases">行情阶段</a>
+      <a class="navlink" href="#drivers">涨跌归因</a><a class="navlink" href="#technicals">技术结构</a>
+      <a class="navlink" href="#strategy">操作指引</a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-5 lg:px-8 pt-28 pb-20">
+<section id="overview" class="mb-16">
+  <div class="flex flex-wrap items-center gap-2 mb-6" data-aos="fade-up">
+    <span class="tag tag-orange">MONTHLY EQUITY REVIEW</span>
+    <span class="tag tag-neutral">NYSE · KO</span>
+    <span class="tag tag-neutral">近一个月 · 2026.10.26—11.24</span>
+    <span class="tag tag-blue">数据截至 11 月 25 日</span>
+  </div>
+  <div class="grid lg:grid-cols-[1.35fr_.65fr] gap-8 items-end mb-8">
+    <div data-aos="fade-up">
+      <div class="muted text-sm font-semibold mb-3">THE COCA-COLA COMPANY / 可口可乐</div>
+      <h1 class="hero-title text-5xl lg:text-6xl font-extrabold tracking-[-.06em] leading-[1.08] mb-5">防御韧性<br><span class="primary">跑赢市场</span></h1>
+      <p class="muted max-w-2xl text-sm leading-7">
+        KO 近一个月录得约 <strong class="positive">+5.31%</strong> 的区间涨幅，而同期标普 500 约下跌
+        <strong class="negative">-6.20%</strong>。公司三季度业绩与全年指引上调提供基本面支撑；
+        股价冲高至 100 美元上方后回落，短线进入 95—100 美元区间的震荡消化阶段。
+      </p>
+    </div>
+    <div class="surface rounded-2xl p-5" data-aos="fade-left">
+      <div class="flex justify-between items-center mb-4">
+        <span class="metric-label">LATEST CLOSE · 11/24</span>
+        <span class="tag tag-green"><i data-lucide="trending-up" class="w-3 h-3"></i>当日反弹</span>
+      </div>
+      <div class="flex items-baseline gap-3">
+        <span class="mono text-4xl font-bold tracking-tight">$97.62</span>
+        <span class="positive mono text-sm font-bold">+1.81%</span>
+      </div>
+      <div class="muted text-xs mt-2">美元 / 股 · 最新完整美股交易日收盘价</div>
+      <div class="h-px my-5" style="background:var(--line)"></div>
+      <div class="grid grid-cols-2 gap-4">
+        <div><div class="metric-label mb-1">当日区间</div><div class="mono text-sm font-semibold">$95.65—98.30</div></div>
+        <div><div class="metric-label mb-1">成交量</div><div class="mono text-sm font-semibold">2,162 万股</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+    <div class="surface rounded-xl p-4 card-hover" data-aos="fade-up">
+      <div class="metric-label mb-2">近一个月涨跌幅</div>
+      <div class="metric-value positive mono">+5.31%</div>
+      <div class="muted text-[11px] mt-2">10/26 收盘 $92.70 起算</div>
+    </div>
+    <div class="surface rounded-xl p-4 card-hover" data-aos="fade-up" data-aos-delay="50">
+      <div class="metric-label mb-2">相对标普超额收益</div>
+      <div class="metric-value positive mono">+11.50<span class="text-base">pct</span></div>
+      <div class="muted text-[11px] mt-2">KO +5.31% / SPX -6.20%</div>
+    </div>
+    <div class="surface rounded-xl p-4 card-hover" data-aos="fade-up" data-aos-delay="100">
+      <div class="metric-label mb-2">月内最高 / 最低</div>
+      <div class="metric-value mono text-[23px]">$100.56</div>
+      <div class="muted text-[11px] mt-2">最低 $90.58 · 盘中价</div>
+    </div>
+    <div class="surface rounded-xl p-4 card-hover" data-aos="fade-up" data-aos-delay="150">
+      <div class="metric-label mb-2">22 个交易日平均成交量</div>
+      <div class="metric-value mono text-[23px]">1,987<span class="text-base">万</span></div>
+      <div class="muted text-[11px] mt-2">股 / 日，按所列日线统计</div>
+    </div>
+  </div>
+
+  <div class="surface rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:color-mix(in srgb,var(--green) 12%,transparent);color:var(--green)">
+        <i data-lucide="shield-check" class="w-5 h-5"></i>
+      </div>
+      <div><div class="font-bold text-sm">综合判断：中期偏强，短线震荡</div><div class="muted text-xs mt-1">基本面相对稳健；股价尚未重新站稳 99—100.56 美元压力区。</div></div>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <span class="tag tag-green">相对强势</span><span class="tag tag-orange">短线整理</span><span class="tag tag-neutral">等待方向确认</span>
+    </div>
+  </div>
+  <div class="mt-3 text-[10px] muted">口径说明：报告日期为北京时间 2026-11-25；美股 11 月 25 日常规交易尚未完成，因此最新完整交易日采用 11 月 24 日。收益率按 10 月 26 日至 11 月 24 日收盘价计算，不含股息。</div>
+</section>
+
+<section id="phases" class="mb-16">
+  <div class="flex flex-wrap justify-between items-end gap-4 mb-6">
+    <div><div class="section-kicker mb-2">01 / PRICE ACTION</div><h2 class="section-title">行情阶段与相对表现</h2></div>
+    <span class="tag tag-neutral">收盘价归一化 · 10/26 = 100</span>
+  </div>
+  <div class="surface rounded-2xl p-4 sm:p-6 mb-5">
+    <div class="flex flex-wrap justify-between gap-3 mb-4">
+      <div><div class="font-bold text-sm">KO vs S&P 500</div><div class="muted text-xs mt-1">区间累计收益率走势对比</div></div>
+      <div class="flex flex-wrap gap-4 text-xs">
+        <span class="flex items-center gap-2"><i class="w-3 h-[3px] rounded bg-primary"></i>KO</span>
+        <span class="flex items-center gap-2"><i class="w-3 h-[3px] rounded bg-blue2"></i>S&P 500</span>
+      </div>
+    </div>
+    <div class="chart-box"><canvas id="relativeChart"></canvas></div>
+    <div class="grid grid-cols-2 gap-3 mt-5">
+      <div class="surface2 rounded-xl p-3"><div class="metric-label">KO 区间表现</div><div class="positive mono text-xl font-bold mt-1">+5.31%</div></div>
+      <div class="surface2 rounded-xl p-3"><div class="metric-label">S&P 500 区间表现</div><div class="negative mono text-xl font-bold mt-1">-6.20%</div></div>
+    </div>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-5 mb-5">
+    <div class="surface rounded-2xl p-5">
+      <div class="font-bold text-sm mb-1">KO 收盘价与成交量</div>
+      <div class="muted text-xs mb-4">美元 / 股；成交量为百万股</div>
+      <div class="chart-box"><canvas id="priceVolumeChart"></canvas></div>
+    </div>
+    <div class="surface rounded-2xl p-5">
+      <div class="font-bold text-sm mb-1">关键阶段拆解</div>
+      <div class="muted text-xs mb-5">从业绩催化到高位回撤，观察价格行为的变化</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="flex justify-between gap-2"><b class="text-sm">10/27—11/04 · 业绩驱动上行</b><span class="tag tag-green">上涨</span></div>
+          <p class="muted text-xs leading-6 mt-2">三季度业绩超预期并上调全年指引，收盘价从 10/27 的 $91.18 升至 11/04 的 $95.80，累计约 +5.1%。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="flex justify-between gap-2"><b class="text-sm">11/05—11/16 · 趋势延续与冲高</b><span class="tag tag-green">偏强</span></div>
+          <p class="muted text-xs leading-6 mt-2">股价继续走高，11/16 收于 $99.48，盘中最高 $100.56，进入月内高位及 52 周高位附近。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="border-color:var(--red)"></div>
+          <div class="flex justify-between gap-2"><b class="text-sm">11/17—11/23 · 高位回撤</b><span class="tag tag-red">调整</span></div>
+          <p class="muted text-xs leading-6 mt-2">从 11/16 收盘 $99.48 回落至 11/23 的 $95.88。11/23 成交量约 3,011 万股，为观察区间内较高水平，显示分歧明显放大。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="border-color:var(--green)"></div>
+          <div class="flex justify-between gap-2"><b class="text-sm">11/24 · 反弹修复</b><span class="tag tag-green">反弹</span></div>
+          <p class="muted text-xs leading-6 mt-2">收盘反弹至 $97.62，单日上涨 1.81%；但仍低于 11/16 高点，尚未确认重返强势突破状态。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="surface rounded-2xl p-5">
+    <div class="flex justify-between items-center mb-4"><div class="font-bold text-sm">关键交易日数据</div><span class="muted text-[10px]">USD / 股 · 百万股</span></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>日期</th><th>收盘价</th><th>单日涨跌</th><th>成交量</th><th>观察</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">10/27</td><td class="mono">$91.18</td><td class="mono negative">-1.64%</td><td class="mono">17.67</td><td>业绩发布前后起点</td></tr>
+          <tr><td class="mono">10/28</td><td class="mono">$91.73</td><td class="mono positive">+0.60%</td><td class="mono">13.17</td><td>低位企稳</td></tr>
+          <tr><td class="mono">11/05</td><td class="mono">$95.73</td><td class="mono negative">-0.07%</td><td class="mono">31.05</td><td>高成交量换手</td></tr>
+          <tr><td class="mono">11/16</td><td class="mono">$99.48</td><td class="mono positive">+0.23%</td><td class="mono">19.15</td><td>盘中触及 $100.56</td></tr>
+          <tr><td class="mono">11/20</td><td class="mono">$96.99</td><td class="mono positive">+0.94%</td><td class="mono">26.05</td><td>回撤后的反弹</td></tr>
+          <tr><td class="mono">11/23</td><td class="mono">$95.88</td><td class="mono negative">-1.14%</td><td class="mono">30.11</td><td>放量下跌，短线分歧</td></tr>
+          <tr><td class="mono">11/24</td><td class="mono">$97.62</td><td class="mono positive">+1.81%</td><td class="mono">21.62</td><td>反弹修复，未突破前高</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="drivers" class="mb-16">
+  <div class="flex flex-wrap justify-between items-end gap-4 mb-6">
+    <div><div class="section-kicker mb-2">02 / CAUSAL ATTRIBUTION</div><h2 class="section-title">涨跌归因：基本面托底，估值与市场情绪定节奏</h2></div>
+    <span class="tag tag-orange">事件驱动框架</span>
+  </div>
+  <div class="grid lg:grid-cols-[1fr_1fr] gap-5 mb-5">
+    <div class="surface rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-4"><i data-lucide="trending-up" class="w-4 h-4 positive"></i><b class="text-sm">偏多因素</b></div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between gap-3 mb-2"><b class="text-sm">Q3 业绩与全年指引上调</b><span class="tag tag-green">核心催化</span></div>
+          <p class="muted text-xs leading-6">全球单箱销量增长 5%，净营收 134 亿美元、同比增长 7%，有机营收增长 7%，可比每股收益增长 11%。公司将全年可比 EPS 增长预期提高至至少 11%，自由现金流预期提高至至少 130 亿美元。业绩与指引共同强化盈利韧性预期。</p>
+        </div>
+        <div class="h-px" style="background:var(--line)"></div>
+        <div>
+          <div class="flex justify-between gap-3 mb-2"><b class="text-sm">产品组合与无糖品类增长</b><span class="tag tag-green">结构性支撑</span></div>
+          <p class="muted text-xs leading-6">可口可乐零糖销量同比增长 16%，商标可口可乐增长 5%，瓶装水增长 8%。产品组合改善有助于支撑长期需求与价格策略，但仍需关注不同区域的价格、销量贡献差异。</p>
+        </div>
+        <div class="h-px" style="background:var(--line)"></div>
+        <div>
+          <div class="flex justify-between gap-3 mb-2"><b class="text-sm">防御属性与相对收益</b><span class="tag tag-green">市场验证</span></div>
+          <p class="muted text-xs leading-6">观察区间内 KO 上涨而标普 500 下跌，反映资金在市场波动期间对稳定消费、品牌与现金流资产的相对偏好。该现象是价格结果，不代表已确认的机构净流入。</p>
+        </div>
+      </div>
+    </div>
+    <div class="surface rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-4"><i data-lucide="trending-down" class="w-4 h-4 negative"></i><b class="text-sm">偏空与风险因素</b></div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between gap-3 mb-2"><b class="text-sm">高位获利回吐与估值约束</b><span class="tag tag-red">短线压力</span></div>
+          <p class="muted text-xs leading-6">股价从月内高点 $100.56 回落，显示市场在利好兑现后对估值与进一步上涨空间进行再评估。高质量消费股并非没有估值风险，若盈利预期无法继续上修，估值扩张可能受限。</p>
+        </div>
+        <div class="h-px" style="background:var(--line)"></div>
+        <div>
+          <div class="flex justify-between gap-3 mb-2"><b class="text-sm">区域增长并不均衡</b><span class="tag tag-orange">经营观察</span></div>
+          <p class="muted text-xs leading-6">北美单箱销量持平；亚太价格组合贡献为负 2%；欧洲部分市场价值份额承压。全球收入增长包含汇率与区域组合影响，不能简单外推为所有市场同步改善。</p>
+        </div>
+        <div class="h-px" style="background:var(--line)"></div>
+        <div>
+          <div class="flex justify-between gap-3 mb-2"><b class="text-sm">高成交量下跌与市场风险</b><span class="tag tag-red">交易风险</span></div>
+          <p class="muted text-xs leading-6">11/23 股价下跌且成交量约 3,011 万股，明显高于 22 日均量约 1,987 万股。该组合说明抛压或换手增加，但单凭成交量无法判断卖方身份，也不能直接认定为机构出逃。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="surface rounded-2xl p-5 mb-5">
+    <div class="font-bold text-sm mb-1">关键事件时间线</div>
+    <div class="muted text-xs mb-5">公司公告优先；市场反应仅描述价格行为，不将同期相关性直接解释为因果关系。</div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="surface2 rounded-xl p-4">
+        <div class="flex justify-between items-center mb-2"><span class="mono primary font-bold text-xs">2026.10.27</span><span class="tag tag-green">重大利好</span></div>
+        <h3 class="font-bold text-sm mb-2">公布第三季度业绩并上调全年指引</h3>
+        <p class="muted text-xs leading-6">三季度营收 134 亿美元、同比增长 7%；有机营收增长 7%；可比 EPS 增长 11%。全年可比 EPS 增长指引提高至至少 11%，自由现金流指引提高至至少 130 亿美元。为本月最重要的基本面催化剂。</p>
+        <a class="text-xs primary font-semibold inline-flex items-center gap-1 mt-3" href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1176/coca-cola-reports-third-quarter-2026-results-and-raises-full-year-guidance" target="_blank" rel="noopener">公司业绩公告 <i data-lucide="external-link" class="w-3 h-3"></i></a>
+      </div>
+      <div class="surface2 rounded-xl p-4">
+        <div class="flex justify-between items-center mb-2"><span class="mono primary font-bold text-xs">2026.11.11</span><span class="tag tag-blue">后续关注</span></div>
+        <h3 class="font-bold text-sm mb-2">公布参加摩根士丹利全球消费与零售会议</h3>
+        <p class="muted text-xs leading-6">公司宣布将于 12 月 2 日参加相关投资者会议。该会议属于未来潜在信息增量，可能涉及消费需求、区域经营及资本配置讨论；截至报告日尚未举行，不应提前计入已发生的业绩催化。</p>
+        <a class="text-xs primary font-semibold inline-flex items-center gap-1 mt-3" href="https://investors.coca-colacompany.com/news-events/press-releases" target="_blank" rel="noopener">公司新闻与公告 <i data-lucide="external-link" class="w-3 h-3"></i></a>
+      </div>
+      <div class="surface2 rounded-xl p-4">
+        <div class="flex justify-between items-center mb-2"><span class="mono primary font-bold text-xs">2026.11.23</span><span class="tag tag-orange">管理层变动</span></div>
+        <h3 class="font-bold text-sm mb-2">任命 David Elkins 为下一任首席财务官</h3>
+        <p class="muted text-xs leading-6">David Elkins 将于 2027 年 4 月 2 日起出任执行副总裁兼 CFO，接替计划于 2027 年退休的 John Murphy。属于提前披露的管理层交接安排，重点观察资本配置、成本纪律与财务政策连续性。公告日 KO 股价下跌，不能据此认定公告导致股价回落。</p>
+        <a class="text-xs primary font-semibold inline-flex items-center gap-1 mt-3" href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1178/the-coca-cola-company-names-david-elkins-as-incoming-chief-financial-officer" target="_blank" rel="noopener">CFO 任命公告 <i data-lucide="external-link" class="w-3 h-3"></i></a>
+      </div>
+      <div class="surface2 rounded-xl p-4">
+        <div class="flex justify-between items-center mb-2"><span class="mono primary font-bold text-xs">2026.12.02</span><span class="tag tag-neutral">未来事件</span></div>
+        <h3 class="font-bold text-sm mb-2">摩根士丹利全球消费与零售会议</h3>
+        <p class="muted text-xs leading-6">观察管理层对北美需求、亚太价格组合、无糖产品增长、汇率与 2027 年经营展望的表述。若管理层确认需求韧性且指引保持稳定，可能改善市场对盈利持续性的信心。</p>
+        <a class="text-xs primary font-semibold inline-flex items-center gap-1 mt-3" href="https://investors.coca-colacompany.com/news-events/press-releases" target="_blank" rel="noopener">投资者关系公告页 <i data-lucide="external-link" class="w-3 h-3"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="surface rounded-2xl p-5">
+    <div class="font-bold text-sm mb-4">公司—行业—宏观三层传导</div>
+    <div class="grid md:grid-cols-3 gap-3">
+      <div class="surface2 rounded-xl p-4">
+        <div class="section-kicker mb-2">COMPANY</div><b class="text-sm">公司层：盈利质量</b>
+        <p class="muted text-xs leading-6 mt-2">销量、价格组合、品牌结构、汇率及装瓶体系变化共同影响收入与利润率。当前盈利指引上修是估值支撑核心。</p>
+      </div>
+      <div class="surface2 rounded-xl p-4">
+        <div class="section-kicker mb-2">INDUSTRY</div><b class="text-sm">行业层：消费与渠道</b>
+        <p class="muted text-xs leading-6 mt-2">饮料行业需跟踪消费者购买力、产品价格敏感度、无糖品类渗透及渠道库存。销量增长与提价之间的平衡决定增长可持续性。</p>
+      </div>
+      <div class="surface2 rounded-xl p-4">
+        <div class="section-kicker mb-2">MACRO</div><b class="text-sm">宏观层：利率与风险偏好</b>
+        <p class="muted text-xs leading-6 mt-2">利率变化影响股息型资产估值；美元走势影响海外收入折算；市场风险偏好变化会影响防御股相对表现，但不能替代公司基本面判断。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="technicals" class="mb-16">
+  <div class="flex flex-wrap justify-between items-end gap-4 mb-6">
+    <div><div class="section-kicker mb-2">03 / TECHNICAL STRUCTURE</div><h2 class="section-title">技术结构：反弹修复，仍需收复压力区</h2></div>
+    <span class="tag tag-orange">截至 11/24 收盘</span>
+  </div>
+  <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-5 mb-5">
+    <div class="surface rounded-2xl p-5">
+      <div class="font-bold text-sm mb-1">均线结构</div>
+      <div class="muted text-xs mb-5">基于截至 11/24 的日收盘价计算</div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between items-center mb-2"><span class="text-xs font-semibold">MA5</span><span class="mono text-sm font-bold">$96.93</span></div>
+          <div class="bar"><span style="width:72%;background:#e66b45"></span></div>
+          <div class="muted text-[10px] mt-1">收盘价高于 MA5，短线反弹修复</div>
+        </div>
+        <div>
+          <div class="flex justify-between items-center mb-2"><span class="text-xs font-semibold">MA10</span><span class="mono text-sm font-bold">$97.72</span></div>
+          <div class="bar"><span style="width:88%;background:#65a8e8"></span></div>
+          <div class="muted text-[10px] mt-1">收盘价低于 MA10，短线趋势尚未完全转强</div>
+        </div>
+        <div>
+          <div class="flex justify-between items-center mb-2"><span class="text-xs font-semibold">MA20</span><span class="mono text-sm font-bold">$96.33</span></div>
+          <div class="bar"><span style="width:65%;background:#16a67a"></span></div>
+          <div class="muted text-[10px] mt-1">收盘价高于 MA20，中短期结构仍有支撑</div>
+        </div>
+        <div class="surface2 rounded-xl p-3 mt-5">
+          <div class="metric-label mb-1">均线综合判断</div>
+          <div class="font-bold text-sm">MA5 ＞ MA20，MA10 暂时位于上方</div>
+          <p class="muted text-xs leading-5 mt-2">短期均线结构并非典型多头排列。价格回到 MA5 上方，但需要重新站上 MA10 并确认 MA5、MA10 同步向上，才更接近趋势恢复。</p>
+        </div>
+        <div class="muted text-[10px] leading-5">MA60 未列示：本报告展示的日线样本仅覆盖近一个月，不足以严谨计算 60 日均线，因此不以估算值替代。</div>
+      </div>
+    </div>
+    <div class="surface rounded-2xl p-5">
+      <div class="font-bold text-sm mb-1">关键价格区域</div>
+      <div class="muted text-xs mb-5">依据近一个月真实高低点与收盘密集区域划分，属于交易观察区而非保证有效的支撑阻力。</div>
+      <div class="space-y-4">
+        <div class="flex gap-3 items-center">
+          <div class="w-24 shrink-0"><span class="price-chip">$100.56</span></div>
+          <div class="flex-1"><div class="flex justify-between text-xs mb-1"><b>月内高点 / 突破确认位</b><span class="tag tag-red">强压力</span></div><div class="muted text-[11px]">11/16 盘中高点；有效突破并站稳才打开进一步上行空间。</div></div>
+        </div>
+        <div class="flex gap-3 items-center">
+          <div class="w-24 shrink-0"><span class="price-chip">$98.87—99.61</span></div>
+          <div class="flex-1"><div class="flex justify-between text-xs mb-1"><b>近端反压区</b><span class="tag tag-orange">压力</span></div><div class="muted text-[11px]">11/17—11/18 高点附近；需要放量收复。</div></div>
+        </div>
+        <div class="flex gap-3 items-center">
+          <div class="w-24 shrink-0"><span class="price-chip">$97.72</span></div>
+          <div class="flex-1"><div class="flex justify-between text-xs mb-1"><b>MA10 参考位</b><span class="tag tag-orange">短线分界</span></div><div class="muted text-[11px]">重新站上并保持，有助于确认反弹延续。</div></div>
+        </div>
+        <div class="flex gap-3 items-center">
+          <div class="w-24 shrink-0"><span class="price-chip">$95.65—96.00</span></div>
+          <div class="flex-1"><div class="flex justify-between text-xs mb-1"><b>第一支撑区</b><span class="tag tag-green">近端支撑</span></div><div class="muted text-[11px]">11/24 日内低点 $95.65、11/23 收盘 $95.88 一带。</div></div>
+        </div>
+        <div class="flex gap-3 items-center">
+          <div class="w-24 shrink-0"><span class="price-chip">$94.60—95.00</span></div>
+          <div class="flex-1"><div class="flex justify-between text-xs mb-1"><b>第二支撑区</b><span class="tag tag-green">次级支撑</span></div><div class="muted text-[11px]">11/23 盘中低点 $94.60 附近及前期价格区域。</div></div>
+        </div>
+        <div class="flex gap-3 items-center">
+          <div class="w-24 shrink-0"><span class="price-chip">$90.58—92.00</span></div>
+          <div class="flex-1"><div class="flex justify-between text-xs mb-1"><b>月内低位区</b><span class="tag tag-neutral">较强观察区</span></div><div class="muted text-[11px]">10/28 盘中低点 $90.58；若回落至此，需重新评估中期结构。</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-3 mb-5">
+    <div class="surface rounded-xl p-4"><div class="metric-label mb-2">收盘价 vs MA5</div><div class="positive mono text-xl font-bold">+0.71%</div><div class="muted text-xs mt-1">略高于短期均线</div></div>
+    <div class="surface rounded-xl p-4"><div class="metric-label mb-2">收盘价 vs MA10</div><div class="negative mono text-xl font-bold">-0.10%</div><div class="muted text-xs mt-1">接近但仍未收复</div></div>
+    <div class="surface rounded-xl p-4"><div class="metric-label mb-2">收盘价 vs MA20</div><div class="positive mono text-xl font-bold">+1.34%</div><div class="muted text-xs mt-1">仍处于 MA20 上方</div></div>
+  </div>
+
+  <div class="surface rounded-2xl p-5">
+    <div class="font-bold text-sm mb-2">量价信号解读</div>
+    <div class="grid md:grid-cols-3 gap-3">
+      <div class="surface2 rounded-xl p-4">
+        <span class="tag tag-red mb-2">放量下跌</span>
+        <b class="block text-sm">11 月 23 日</b>
+        <div class="mono text-xl font-bold mt-2">3,011 万股</div>
+        <p class="muted text-xs leading-5 mt-2">约为 22 日均量的 1.52 倍，且当日收跌 1.14%。短线抛压增加，需观察后续是否出现连续放量下行。</p>
+      </div>
+      <div class="surface2 rounded-xl p-4">
+        <span class="tag tag-green mb-2">反弹修复</span>
+        <b class="block text-sm">11 月 24 日</b>
+        <div class="mono text-xl font-bold mt-2">+1.81%</div>
+        <p class="muted text-xs leading-5 mt-2">股价收复部分失地，但成交量低于前一日，暂时更像下跌后的修复，尚不能确认新一轮主升浪。</p>
+      </div>
+      <div class="surface2 rounded-xl p-4">
+        <span class="tag tag-orange mb-2">待验证信号</span>
+        <b class="block text-sm">后续观察</b>
+        <div class="mono text-xl font-bold mt-2">$98—100.56</div>
+        <p class="muted text-xs leading-5 mt-2">若价格突破压力区且成交量同步改善，突破可信度提高；若缩量冲高回落，需防范再次进入区间震荡。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="strategy" class="mb-16">
+  <div class="flex flex-wrap justify-between items-end gap-4 mb-6">
+    <div><div class="section-kicker mb-2">04 / TRADE PLAYBOOK</div><h2 class="section-title">操作指引：分情景交易，不追逐单日反弹</h2></div>
+    <span class="tag tag-orange">以 $97.62 为参考价</span>
+  </div>
+  <div class="surface rounded-2xl p-5 mb-5">
+    <div class="font-bold text-sm mb-4">未来 1—4 周情景推演</div>
+    <div class="space-y-4">
+      <div>
+        <div class="flex justify-between gap-3 mb-2"><div><span class="tag tag-green mr-2">偏多情景</span><b class="text-sm">放量收复 98—100.56 美元</b></div><span class="mono text-xs positive">观察突破</span></div>
+        <div class="bar"><span style="width:35%;background:var(--green)"></span></div>
+        <p class="muted text-xs leading-5 mt-2">触发条件：收盘价有效站上 $98.87—99.61 压力带，成交量高于近期均量，随后进一步突破 $100.56。策略：等待突破确认后分批跟随，避免盘中瞬间突破后追高。</p>
+      </div>
+      <div>
+        <div class="flex justify-between gap-3 mb-2"><div><span class="tag tag-orange mr-2">基准情景</span><b class="text-sm">95.65—99 美元区间震荡</b></div><span class="mono text-xs primary">区间应对</span></div>
+        <div class="bar"><span style="width:45%;background:var(--primary)"></span></div>
+        <p class="muted text-xs leading-5 mt-2">触发条件：价格在第一支撑与近端反压之间反复，成交量逐渐回落。策略：轻仓观察，靠近支撑区再评估风险收益比；靠近压力区不盲目加仓。</p>
+      </div>
+      <div>
+        <div class="flex justify-between gap-3 mb-2"><div><span class="tag tag-red mr-2">偏空情景</span><b class="text-sm">有效跌破 94.60 美元</b></div><span class="mono text-xs negative">风险优先</span></div>
+        <div class="bar"><span style="width:20%;background:var(--red)"></span></div>
+        <p class="muted text-xs leading-5 mt-2">触发条件：收盘价跌破 $94.60 且放量，反弹无法快速收复。策略：降低短线仓位，观察 $90.58—92.00 区域；若公司盈利预期同步恶化，应重新评估中期持有逻辑。</p>
+      </div>
+    </div>
+    <div class="muted text-[10px] mt-4">情景权重条仅用于展示关注顺序，不代表统计模型概率或价格预测。以上价位是技术观察区间，不是确定性目标价。</div>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-5 mb-5">
+    <div class="surface rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-4"><i data-lucide="briefcase-business" class="w-4 h-4 primary"></i><b class="text-sm">已有持仓者</b></div>
+      <div class="space-y-4">
+        <div class="surface2 rounded-xl p-4">
+          <div class="flex justify-between items-center mb-2"><b class="text-sm">持仓成本低于 $94</b><span class="tag tag-green">持有为主</span></div>
+          <p class="muted text-xs leading-6">若持仓基于长期防御与股息逻辑，可考虑保留核心仓位。若短线仓位较重，可在 $98.87—100.56 压力区分批兑现部分浮盈，避免将长期配置与短线交易混为一体。</p>
+        </div>
+        <div class="surface2 rounded-xl p-4">
+          <div class="flex justify-between items-center mb-2"><b class="text-sm">持仓成本 $94—98</b><span class="tag tag-orange">观察管理</span></div>
+          <p class="muted text-xs leading-6">重点观察 $95.65—96.00 支撑能否守住。若守住并重新站上 MA10，可继续观察；若放量跌破 $94.60，短线结构转弱，应按预设风险预算减仓，而不是被动等待反弹。</p>
+        </div>
+        <div class="surface2 rounded-xl p-4">
+          <div class="flex justify-between items-center mb-2"><b class="text-sm">持仓成本高于 $99</b><span class="tag tag-red">控制风险</span></div>
+          <p class="muted text-xs leading-6">不宜仅因回本需求而在压力位盲目补仓。反弹至 $98.87—100.56 区域时，优先评估仓位与风险敞口；若价格重新站稳该区间，再讨论趋势性加仓。</p>
+        </div>
+      </div>
+    </div>
+    <div class="surface rounded-2xl p-5">
+      <div class="flex items-center gap-2 mb-4"><i data-lucide="target" class="w-4 h-4 primary"></i><b class="text-sm">空仓 / 计划建仓者</b></div>
+      <div class="space-y-4">
+        <div class="surface2 rounded-xl p-4">
+          <div class="flex justify-between items-center mb-2"><b class="text-sm">策略 A：支撑区分批观察</b><span class="tag tag-green">偏稳健</span></div>
+          <p class="muted text-xs leading-6">等待股价回踩 $95.65—96.00 后出现止跌信号，再考虑小比例试仓。若跌破 $94.60，暂停加仓并重新评估。避免在支撑尚未确认时一次性投入。</p>
+        </div>
+        <div class="surface2 rounded-xl p-4">
+          <div class="flex justify-between items-center mb-2"><b class="text-sm">策略 B：突破确认跟随</b><span class="tag tag-blue">趋势交易</span></div>
+          <p class="muted text-xs leading-6">等待日收盘有效站上 $99.61，并进一步突破 $100.56；同时观察成交量是否高于近期均值。突破后可分批参与，若快速跌回突破位下方，按交易计划退出。</p>
+        </div>
+        <div class="surface2 rounded-xl p-4">
+          <div class="flex justify-between items-center mb-2"><b class="text-sm">策略 C：等待更好赔率</b><span class="tag tag-orange">谨慎型</span></div>
+          <p class="muted text-xs leading-6">若股价持续在 $96—99 美元之间横盘，且没有新的基本面信息，不必为了参与而交易。等待方向、量能与风险收益比同时改善。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="surface rounded-2xl p-5 mb-5">
+    <div class="font-bold text-sm mb-4">交易执行参数参考</div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="surface2 rounded-xl p-3"><div class="metric-label">最新收盘参考</div><div class="mono font-bold text-lg mt-1">$97.62</div></div>
+      <div class="surface2 rounded-xl p-3"><div class="metric-label">近端风险观察</div><div class="mono font-bold text-lg mt-1">$94.60</div></div>
+      <div class="surface2 rounded-xl p-3"><div class="metric-label">突破确认参考</div><div class="mono font-bold text-lg mt-1">$100.56</div></div>
+      <div class="surface2 rounded-xl p-3"><div class="metric-label">单笔风险预算</div><div class="font-bold text-lg mt-1">自定上限</div></div>
+    </div>
+    <p class="muted text-xs leading-6 mt-4">建议根据个人组合波动承受能力确定仓位，而非机械使用固定仓位比例。止损应考虑价格波动、交易成本与隔夜跳空风险；对于长期股息配置，需区分基本面失效条件与短线价格止损条件。</p>
+  </div>
+
+  <div class="surface rounded-2xl p-5">
+    <div class="font-bold text-sm mb-3">接下来最值得跟踪的指标</div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="surface2 rounded-xl p-3"><i data-lucide="chart-no-axes-combined" class="w-4 h-4 primary mb-2"></i><b class="block text-xs">量价关系</b><span class="muted text-[11px] leading-5">突破时是否放量，回撤时是否缩量。</span></div>
+      <div class="surface2 rounded-xl p-3"><i data-lucide="glass-water" class="w-4 h-4 primary mb-2"></i><b class="block text-xs">区域销量与价格组合</b><span class="muted text-[11px] leading-5">北美销量、亚太价格组合及欧洲市场份额。</span></div>
+      <div class="surface2 rounded-xl p-3"><i data-lucide="wallet" class="w-4 h-4 primary mb-2"></i><b class="block text-xs">现金流与利润率</b><span class="muted text-[11px] leading-5">全年自由现金流指引兑现与利润率质量。</span></div>
+      <div class="surface2 rounded-xl p-3"><i data-lucide="calendar-days" class="w-4 h-4 primary mb-2"></i><b class="block text-xs">12 月 2 日投资者会议</b><span class="muted text-[11px] leading-5">管理层对 2027 年增长和经营环境的最新表述。</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-14">
+  <div class="surface rounded-2xl p-5 sm:p-6">
+    <div class="section-kicker mb-2">BOTTOM LINE</div>
+    <h2 class="text-2xl font-extrabold tracking-tight mb-3">核心结论</h2>
+    <p class="text-sm leading-7 muted mb-5">
+      可口可乐本轮相对强势有真实的业绩基础：三季度销量、收入与可比 EPS 增长，全年盈利和自由现金流指引上调，为估值提供了支撑。近一个月 KO 相对标普 500 的超额表现显著，显示其防御属性在市场波动期间受到认可。
+      但股价冲击 $100.56 后出现回撤，11 月 23 日放量下跌说明高位分歧仍在。11 月 24 日反弹尚不足以确认趋势重新加速。
+    </p>
+    <div class="grid md:grid-cols-3 gap-3">
+      <div class="surface2 rounded-xl p-4"><div class="metric-label mb-2">基本面判断</div><div class="font-bold positive">稳健偏正面</div><div class="muted text-xs mt-2">指引上修与现金流预期是主要支撑。</div></div>
+      <div class="surface2 rounded-xl p-4"><div class="metric-label mb-2">技术面判断</div><div class="font-bold primary">震荡修复</div><div class="muted text-xs mt-2">守住 $95.65—96.00 有利于修复；上方关注 $99—100.56。</div></div>
+      <div class="surface2 rounded-xl p-4"><div class="metric-label mb-2">策略判断</div><div class="font-bold">不追高，等待确认</div><div class="muted text-xs mt-2">支撑区观察或突破确认后分批执行。</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-10">
+  <div class="flex items-center justify-between mb-4">
+    <div><div class="section-kicker mb-2">DATA & SOURCES</div><h2 class="text-xl font-extrabold">数据来源与口径</h2></div>
+    <span class="tag tag-neutral">可追溯资料</span>
+  </div>
+  <div class="surface rounded-2xl p-5">
+    <div class="grid md:grid-cols-2 gap-4">
+      <div>
+        <b class="text-sm block mb-2">市场行情</b>
+        <ul class="space-y-2 text-xs muted leading-5">
+          <li>• <a class="primary underline" href="https://finance.yahoo.com/quote/KO/history/" target="_blank" rel="noopener">Yahoo Finance — KO 历史行情</a>：收盘价、日内高低价及成交量。</li>
+          <li>• <a class="primary underline" href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener">Yahoo Finance — S&P 500 历史行情</a>：标普 500 收盘价与区间比较。</li>
+          <li>• <a class="primary underline" href="https://www.marketwatch.com/investing/stock/ko" target="_blank" rel="noopener">MarketWatch — KO 报价与市场信息</a>：交叉核对近期行情信息。</li>
+        </ul>
+      </div>
+      <div>
+        <b class="text-sm block mb-2">公司基本面与公告</b>
+        <ul class="space-y-2 text-xs muted leading-5">
+          <li>• <a class="primary underline" href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1176/coca-cola-reports-third-quarter-2026-results-and-raises-full-year-guidance" target="_blank" rel="noopener">可口可乐 2026 年第三季度业绩公告</a>：经营数据与全年指引。</li>
+          <li>• <a class="primary underline" href="https://investors.coca-colacompany.com/news-events/press-releases/detail/1178/the-coca-cola-company-names-david-elkins-as-incoming-chief-financial-officer" target="_blank" rel="noopener">CFO 任命公告</a>：管理层交接安排。</li>
+          <li>• <a class="primary underline" href="https://investors.coca-colacompany.com/news-events/press-releases" target="_blank" rel="noopener">可口可乐投资者关系新闻公告</a>：会议与公司最新披露。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="h-px my-4" style="background:var(--line)"></div>
+    <div class="muted text-[11px] leading-6">
+      <b class="text-xs" style="color:var(--text)">计算与使用说明：</b><br>
+      1. 行情观察窗口为 2026-10-26 至 2026-11-24，共 22 个交易日；KO 区间收益率按 $97.62 / $92.70 - 1 计算，标普 500 按 7,201.09 / 7,676.77 - 1 计算。超额收益为两者收益率的算术差。<br>
+      2. 均线由所列 KO 日收盘价计算：MA5 = $96.93，MA10 = $97.72，MA20 = $96.33。MA60 因本报告样本长度不足未计算。<br>
+      3. 不同行情供应商的成交量可能存在统计口径差异；本报告成交量使用同一历史行情来源序列进行比较。成交量本身不能识别机构、散户或具体资金主体。<br>
+      4. 本报告未将未核实的资金流、期权仓位、空头数据或分析师调仓作为已证实的股价驱动因素。价格技术位是基于历史行情的观察区间，不是确定性预测。
+    </div>
+  </div>
+</section>
+
+<footer class="border-t pt-7" style="border-color:var(--line)">
+  <div class="flex flex-col md:flex-row justify-between gap-4">
+    <div>
+      <div class="font-extrabold text-sm">EQUITY <span class="primary">FIELDNOTE</span></div>
+      <div class="muted text-[10px] mt-1">Independent Market Research · KO / NYSE</div>
+    </div>
+    <div class="muted text-[10px] leading-5 md:text-right">
+      报告日期：2026 年 11 月 25 日<br>
+      本报告仅供信息交流与研究参考，不构成投资建议、证券买卖要约或收益承诺。
+    </div>
+  </div>
+  <div class="disclaimer surface2 rounded-lg p-4 mt-6 text-[11px] muted leading-6">
+    <b style="color:var(--text)">风险提示：</b>股票价格可能因市场波动、宏观经济、公司经营、汇率、利率及突发事件而快速变化。历史表现不代表未来收益。投资者应结合自身风险承受能力、投资期限、持仓成本与资产配置独立决策。
+  </div>
+</footer>
+</main>
+
+<button id="backTop" aria-label="返回顶部" class="fixed bottom-6 right-6 z-40 surface rounded-full w-11 h-11 flex items-center justify-center">
+  <i data-lucide="arrow-up" class="w-4 h-4"></i>
+</button>
+
+<script>
+const dates = ['10/26','10/27','10/28','10/29','10/30','11/02','11/03','11/04','11/05','11/06','11/09','11/10','11/11','11/12','11/13','11/16','11/17','11/18','11/19','11/20','11/23','11/24'];
+const koClose = [92.70,91.18,91.73,92.82,94.08,95.83,94.80,95.80,95.73,95.67,96.03,96.91,97.57,97.44,99.25,99.48,98.79,98.09,96.09,96.99,95.88,97.62];
+const koVolume = [20.5032,17.6690,13.1669,15.8721,18.3755,22.7073,16.1071,27.0883,31.0535,18.4201,16.6404,17.0375,15.0584,13.8692,18.0377,19.1546,19.0662,16.5540,23.0484,26.0469,30.1144,21.6224];
+const spxClose = [7676.77,7722.60,7743.98,7720.39,7580.07,7541.40,7568.92,7688.62,7353.73,7376.86,7549.94,7520.93,7619.38,7592.40,7561.67,7416.59,7340.53,7323.63,7175.83,6910.39,7237.17,7201.09];
+
+const root = document.documentElement;
+const savedTheme = localStorage.getItem('ko-report-theme');
+if(savedTheme === 'dark') root.classList.add('dark');
+function iconRefresh(){ if(window.lucide) lucide.createIcons(); }
+function chartColors(){
+  const dark = root.classList.contains('dark');
+  return {text:dark?'#9aa9bd':'#68778c',grid:dark?'#2a3a51':'#e3e8ef',surface:dark?'#172235':'#ffffff'};
+}
+let relativeChart, priceVolumeChart;
+function makeCharts(){
+  const c = chartColors();
+  if(relativeChart) relativeChart.destroy();
+  if(priceVolumeChart) priceVolumeChart.destroy();
+
+  const koIndexed = koClose.map(v => (v / koClose[0] - 1) * 100);
+  const spxIndexed = spxClose.map(v => (v / spxClose[0] - 1) * 100);
+
+  relativeChart = new Chart(document.getElementById('relativeChart'),{
+    type:'line',
+    data:{labels:dates,datasets:[
+      {label:'KO',data:koIndexed,borderColor:'#e66b45',backgroundColor:'rgba(230,107,69,.10)',borderWidth:2.5,pointRadius:0,pointHoverRadius:4,tension:.28,fill:true},
+      {label:'S&P 500',data:spxIndexed,borderColor:'#65a8e8',backgroundColor:'rgba(101,168,232,.06)',borderWidth:2,pointRadius:0,pointHoverRadius:4,tension:.28,fill:false}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{backgroundColor:c.surface,titleColor:c.text,bodyColor:c.text,borderColor:c.grid,borderWidth:1,callbacks:{label:x=>`${x.dataset.label}: ${x.parsed.y>=0?'+':''}${x.parsed.y.toFixed(2)}%`}}},
+      scales:{x:{ticks:{color:c.text,maxRotation:0,autoSkip:true,maxTicksLimit:11,font:{size:10}},grid:{display:false}},
+      y:{ticks:{color:c.text,font:{size:10},callback:v=>(v>0?'+':'')+v.toFixed(0)+'%'},grid:{color:c.grid}}}}
+  });
+
+  priceVolumeChart = new Chart(document.getElementById('priceVolumeChart'),{
+    data:{labels:dates,datasets:[
+      {type:'bar',label:'成交量（百万股）',data:koVolume,yAxisID:'y1',backgroundColor:koClose.map((v,i)=>i===0||v>=koClose[i-1]?'rgba(22,166,122,.35)':'rgba(225,93,102,.35)'),borderRadius:3,order:2},
+      {type:'line',label:'KO 收盘价',data:koClose,yAxisID:'y',borderColor:'#e66b45',borderWidth:2.5,pointRadius:0,pointHoverRadius:4,tension:.25,order:1}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{labels:{color:c.text,usePointStyle:true,boxWidth:8,font:{size:10}}},tooltip:{backgroundColor:c.surface,titleColor:c.text,bodyColor:c.text,borderColor:c.grid,borderWidth:1}},
+      scales:{x:{ticks:{color:c.text,maxRotation:0,autoSkip:true,maxTicksLimit:10,font:{size:10}},grid:{display:false}},
+      y:{position:'left',ticks:{color:c.text,font:{size:10},callback:v=>'$'+v},grid:{color:c.grid},min:89,max:102},
+      y1:{position:'right',ticks:{color:c.text,font:{size:10}},grid:{display:false},min:0}}}
+  });
+}
+makeCharts();
+
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  root.classList.toggle('dark');
+  localStorage.setItem('ko-report-theme',root.classList.contains('dark')?'dark':'light');
+  makeCharts();
+  iconRefresh();
+});
+document.getElementById('menuToggle').addEventListener('click',()=>{
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>{
+  document.getElementById('mobileMenu').classList.remove('open');
+}));
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('scrollProgress').style.width=(max>0?window.scrollY/max*100:0)+'%';
+  backTop.classList.toggle('show',window.scrollY>500);
+  let current='overview';
+  document.querySelectorAll('main section[id]').forEach(section=>{
+    if(window.scrollY>=section.offsetTop-150) current=section.id;
+  });
+  document.querySelectorAll('.navlink').forEach(link=>{
+    link.classList.toggle('active',link.getAttribute('href')==='#'+current);
+  });
+},{passive:true});
+backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+if(window.AOS) AOS.init({duration:650,once:true,offset:50});
+iconRefresh();
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1419">
+<title>微软（MSFT）最新动态全景追踪 · 截至 2026-11-23</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+          300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+          300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+          900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+section[id],article[id]{scroll-margin-top:90px}
+.card-interactive{transition:all .28s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.48)}
+.btn-interactive{transition:all .2s ease}
+.btn-interactive:hover{transform:scale(1.05)}
+.btn-interactive:active{transform:scale(.96)}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+table{width:100%;border-collapse:collapse;min-width:720px}
+th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#465365}
+.dark th{color:#e5e7eb}
+.dark td{color:#cbd5e1}
+.dark .table-head{background:#202d3c}
+.dark .surface{background:#161f2c;border-color:#344256}
+.dark .muted{color:#cbd5e1}
+.dark .subtle{color:#9ca3af}
+#mobileMenu{display:none}
+#mobileMenu.mobile-menu-open{display:block}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+.source-link{color:#c05b25;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#ffad7d}
+.source-link:hover{opacity:.75}
+.pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700}
+.metric{font-variant-numeric:tabular-nums}
+.timeline-line{border-left:2px solid #e5a17d;margin-left:8px;padding-left:20px}
+.dark .timeline-line{border-color:#99502f}
+details summary{cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details[open] .detail-arrow{transform:rotate(180deg)}
+.detail-arrow{transition:transform .2s}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+ html{scroll-behavior:auto}
+}
+</style>
+
+<script>
+(function initTheme(){
+ try{
+  if(window.self!==window.top||localStorage.getItem('msft-theme')==='dark'||
+  (!localStorage.getItem('msft-theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches)){
+   document.documentElement.classList.add('dark');
+  }
+ }catch(e){document.documentElement.classList.add('dark')}
+})();
+function syncThemeIcons(){
+ const dark=document.documentElement.classList.contains('dark');
+ const sun=document.getElementById('sunIcon');
+ const moon=document.getElementById('moonIcon');
+ if(sun)sun.style.display=dark?'block':'none';
+ if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ try{localStorage.setItem('msft-theme',document.documentElement.classList.contains('dark')?'dark':'light')}catch(e){}
+ syncThemeIcons();
+}
+function toggleMobileMenu(){
+ document.getElementById('mobileMenu')?.classList.toggle('mobile-menu-open');
+}
+function filterMatrix(category){
+ document.querySelectorAll('[data-category]').forEach(row=>{
+  row.style.display=category==='all'||row.dataset.category===category?'':'none';
+ });
+ document.querySelectorAll('[data-filter]').forEach(btn=>{
+  const active=btn.dataset.filter===category;
+  btn.classList.toggle('bg-primary-500',active);
+  btn.classList.toggle('text-white',active);
+  btn.classList.toggle('bg-gray-100',!active);
+  btn.classList.toggle('dark:bg-gray-800',!active);
+ });
+}
+function updateProgress(){
+ const scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+ const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ document.getElementById('progressBar').style.width=(height>0?scrollTop/height*100:0)+'%';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:500,offset:35,once:true});
+ updateProgress();
+});
+window.addEventListener('scroll',updateProgress,{passive:true});
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[70] transition-all duration-150" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-700">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+  <div class="flex items-center justify-between gap-3">
+   <div class="flex items-center gap-2.5 min-w-0">
+    <span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+    <h1 class="font-bold text-sm sm:text-lg text-primary-700 dark:text-primary-300 truncate">MICROSOFT · 最新动态</h1>
+   </div>
+   <nav class="hidden md:flex items-center gap-5">
+    <a href="#overview" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">总览</a>
+    <a href="#company" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">公司动态</a>
+    <a href="#industry" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">行业动态</a>
+    <a href="#macro" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">宏观政策</a>
+    <a href="#matrix" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">催化矩阵</a>
+   </nav>
+   <div class="flex items-center gap-2 shrink-0">
+    <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-300" aria-label="菜单">
+     <i data-lucide="menu" class="w-4 h-4"></i>
+    </button>
+    <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+   <nav class="flex flex-col gap-3 pb-2">
+    <a href="#overview" onclick="toggleMobileMenu()" class="text-sm py-1">总览</a>
+    <a href="#company" onclick="toggleMobileMenu()" class="text-sm py-1">公司动态</a>
+    <a href="#industry" onclick="toggleMobileMenu()" class="text-sm py-1">行业动态</a>
+    <a href="#macro" onclick="toggleMobileMenu()" class="text-sm py-1">宏观政策</a>
+    <a href="#matrix" onclick="toggleMobileMenu()" class="text-sm py-1">催化矩阵</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main class="pt-24 sm:pt-28 pb-16">
+
+<!-- HERO -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-700">
+  <div class="flex flex-wrap items-center gap-2 mb-5">
+   <span class="pill bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200">NASDAQ: MSFT</span>
+   <span class="pill bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200">软件与云计算</span>
+   <span class="pill bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-200">生成式AI · 企业智能体</span>
+   <span class="pill bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">近30日 · 截至 2026-11-23</span>
+  </div>
+
+  <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5">
+   <div>
+    <p class="text-xs font-semibold text-primary-600 dark:text-primary-400 tracking-widest mb-2">MICROSOFT CORPORATION</p>
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">微软公司</h2>
+    <p class="text-sm text-gray-500 dark:text-gray-400">全球企业软件、云基础设施、AI平台与生产力生态系统龙头</p>
+   </div>
+   <div class="lg:text-right">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">报告观察区间</div>
+    <div class="font-mono font-bold text-sm">2026-10-25 — 2026-11-23</div>
+    <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">北京时间 · 30个自然日</div>
+   </div>
+  </div>
+
+  <div class="mt-7 mb-7">
+   <h3 class="text-lg sm:text-xl font-bold mb-3">核心判断：AI商业化加速，云竞争与资本回报成为估值分水岭</h3>
+   <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-8">
+    近30日微软呈现<strong class="text-primary-600 dark:text-primary-400">“业绩强劲、AI产品商业化深化、基础设施竞争升温”</strong>格局。Azure增长与企业智能体生态提供盈利支撑，但算力投入、同行竞争及美国AI出口新规增加中长期成本与合规不确定性。
+   </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+   <div class="rounded-xl p-5 bg-primary-50 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700 card-interactive">
+    <div class="flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3">
+     <i data-lucide="gauge" class="w-4 h-4 text-primary-500"></i> 消息面总体基调
+    </div>
+    <div class="text-2xl font-bold text-primary-700 dark:text-primary-300">中性偏多</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">企业云与AI需求强劲，盈利增长明确；但估值需要等待AI投入转化为现金流的进一步验证。</p>
+   </div>
+   <div class="rounded-xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+    <div class="flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-3">
+     <i data-lucide="zap" class="w-4 h-4"></i> 本月最强单一催化剂
+    </div>
+    <div class="text-base font-bold text-emerald-800 dark:text-emerald-200 leading-relaxed">FY27 Q1营收923亿美元，Microsoft Cloud增长30%，Azure增长48%</div>
+    <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">2026-10-28 · 微软官方季度财报</p>
+   </div>
+   <div class="rounded-xl p-5 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/60 card-interactive">
+    <div class="flex items-center gap-2 text-xs font-semibold text-rose-700 dark:text-rose-300 mb-3">
+     <i data-lucide="shield-alert" class="w-4 h-4"></i> 本月最需警惕信号
+    </div>
+    <div class="text-base font-bold text-rose-800 dark:text-rose-200 leading-relaxed">AI基础设施资本投入与能源成本持续上升，叠加美国远程算力出口管制</div>
+    <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">2026-11-19 · 美国BIS正式规则生效</p>
+   </div>
+  </div>
+
+  <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+   <div class="rounded-xl p-3 bg-gray-50 dark:bg-gray-800/70">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">FY27 Q1总营收</div>
+    <div class="text-xl font-bold metric">$92.3B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400">同比 +19%</div>
+   </div>
+   <div class="rounded-xl p-3 bg-gray-50 dark:bg-gray-800/70">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Microsoft Cloud</div>
+    <div class="text-xl font-bold metric">$63.9B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400">同比 +30%</div>
+   </div>
+   <div class="rounded-xl p-3 bg-gray-50 dark:bg-gray-800/70">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Azure增长</div>
+    <div class="text-xl font-bold metric">+48%</div>
+    <div class="text-xs text-gray-500 dark:text-gray-400">同比 · 官方披露</div>
+   </div>
+   <div class="rounded-xl p-3 bg-gray-50 dark:bg-gray-800/70">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">商业剩余履约义务</div>
+    <div class="text-xl font-bold metric">$677B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400">同比 +73%</div>
+   </div>
+  </div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-4">
+   数据来源：微软FY27 Q1财报，2026-10-28。
+   <a class="source-link" href="https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast/" target="_blank" rel="noopener">查看官方财报原文</a>
+  </p>
+ </div>
+</section>
+
+<!-- COMPANY -->
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-2">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <h2 class="text-xl sm:text-2xl font-bold">一、微软最近一个月 Top 3 核心动态</h2>
+ </div>
+ <p class="text-xs text-gray-500 dark:text-gray-400 mb-6">按对收入增长、利润率、现金流和长期竞争优势的潜在影响排序。</p>
+
+ <!-- Company 1 -->
+ <article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 shadow-sm card-interactive">
+  <div class="flex flex-wrap justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="pill bg-primary-500 text-white">TOP 1</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-10-28</span>
+    <span class="pill bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">重大利好</span>
+   </div>
+   <span class="text-sm font-bold text-primary-600 dark:text-primary-400">影响力 9.8 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold mb-4">FY2027第一季度业绩超预期：Azure增长48%，云业务与AI订单储备持续扩张</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">季度营收</div>
+    <div class="font-bold text-xl metric">$92.3B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400">+19% YoY</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">营业利润</div>
+    <div class="font-bold text-xl metric">$45.9B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400">+21% YoY</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">GAAP EPS</div>
+    <div class="font-bold text-xl metric">$4.92</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400">+32% YoY</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">Azure收入增长</div>
+    <div class="font-bold text-xl metric">48%</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400">同比增长</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   微软于2026年10月28日公布截至9月30日的FY2027第一季度业绩。营收<strong>923亿美元</strong>，同比增长19%；营业利润459亿美元，同比增长21%；GAAP净利润366亿美元，同比增长32%。剔除OpenAI投资相关影响后的非GAAP净利润为364亿美元，同比增长18%，非GAAP EPS为4.89美元，同比增长18%。
+  </p>
+
+  <div class="rounded-xl p-4 bg-primary-50 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700 mb-4">
+   <h4 class="text-sm font-bold text-primary-700 dark:text-primary-300 mb-3">关键经营指标：AI商业化兑现程度</h4>
+   <div class="space-y-3">
+    <div>
+     <div class="flex justify-between text-xs mb-1"><span>Microsoft Cloud营收</span><strong>$63.9B · +30%</strong></div>
+     <div class="impact-bar"><div class="impact-fill" style="width:80%"></div></div>
+    </div>
+    <div>
+     <div class="flex justify-between text-xs mb-1"><span>商业剩余履约义务（RPO）</span><strong>$677B · +73%</strong></div>
+     <div class="impact-bar"><div class="impact-fill" style="width:93%"></div></div>
+    </div>
+    <div>
+     <div class="flex justify-between text-xs mb-1"><span>Azure收入增长</span><strong>+48%</strong></div>
+     <div class="impact-bar"><div class="impact-fill" style="width:88%"></div></div>
+    </div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   <strong>影响深度解析：</strong>
+   Azure增长48%说明企业AI训练、推理、数据管理和传统云迁移仍然具备强劲需求。Microsoft Cloud收入占公司季度营收约69%，是最重要的增长引擎。商业RPO升至6770亿美元，表明企业长期合同储备扩大，为未来收入提供可见度。
+  </p>
+  <div class="rounded-xl bg-emerald-50 dark:bg-emerald-950/25 p-4 border border-emerald-200 dark:border-emerald-800/50 mb-4">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-6">
+    <strong class="text-emerald-700 dark:text-emerald-300">投资者需要进一步验证：</strong>
+    RPO并不等于已实现收入或现金流，仍取决于履约能力和客户实际使用。AI基础设施建设带来的折旧、能源和融资成本可能滞后侵蚀利润率。下一阶段最重要的不是订单增长本身，而是Azure增长能否伴随经营利润和自由现金流同步扩张。
+   </p>
+  </div>
+  <div class="flex justify-between text-xs mb-2"><span class="text-gray-500 dark:text-gray-400">综合影响评分</span><strong>9.8 / 10</strong></div>
+  <div class="impact-bar"><div class="impact-fill" style="width:98%"></div></div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-4">
+   信源：Microsoft Investor Relations，2026-10-28。
+   <a class="source-link" href="https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast/" target="_blank" rel="noopener">财报原文</a>
+  </p>
+ </article>
+
+ <!-- Company 2 -->
+ <article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 shadow-sm card-interactive">
+  <div class="flex flex-wrap justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="pill bg-primary-500 text-white">TOP 2</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-17 / 11-18</span>
+    <span class="pill bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">温和利好</span>
+   </div>
+   <span class="text-sm font-bold text-primary-600 dark:text-primary-400">影响力 9.2 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold mb-4">Ignite 2026发布企业智能体新生态，并与Intel签订长期Azure基础设施合作协议</h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+   <div class="rounded-xl p-4 bg-blue-50 dark:bg-blue-950/25 border border-blue-200 dark:border-blue-800/50">
+    <div class="text-xs font-bold text-blue-700 dark:text-blue-300 mb-2">11月17日 · Microsoft Ignite</div>
+    <div class="font-bold text-base mb-2">Copilot与企业智能体平台升级</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     推出Copilot Workspaces、Autopilot、Copilot Code等能力，推动AI从问答工具转向能够持续执行任务、构建应用和协同工作的企业智能体。
+    </p>
+   </div>
+   <div class="rounded-xl p-4 bg-indigo-50 dark:bg-indigo-950/25 border border-indigo-200 dark:border-indigo-800/50">
+    <div class="text-xs font-bold text-indigo-700 dark:text-indigo-300 mb-2">11月18日 · Intel合作</div>
+    <div class="font-bold text-base mb-2">AI云基础设施纵向协同</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     长期协议确认多年度Xeon服务器CPU供应，采用Intel Foundry EMIB先进封装技术，推进Azure自研芯片、CXL内存和机密计算优化。
+    </p>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   Ignite大会展示微软企业智能体战略的进一步深化。微软强调Copilot不仅提供内容生成，还将成为连接企业数据、流程、权限和自动执行能力的工作入口。新推出的Copilot Workspaces允许员工与智能体协同工作；Autopilot支持持续运行任务；Copilot Code允许通过自然语言构建仪表板、追踪工具及应用。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   企业应用落地方面，微软披露大众汽车集团正在为超过<strong>330,000名员工</strong>配置Copilot，雅诗兰黛集团已将Copilot扩展至超过<strong>14,000名员工</strong>。微软与Salesforce同步推出Copilotforce合作方案，Salesforce in Copilot公开预览，并提供38项以上预置销售技能。
+  </p>
+
+  <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 mb-4">
+   <h4 class="font-bold text-sm mb-2">Intel合作的硬件经济学意义</h4>
+   <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-6">
+    <li>• 微软成为首家宣布将Intel Foundry EMIB先进封装技术用于Azure自有芯片的公司。</li>
+    <li>• Xeon 6配合CXL内存技术的部分Azure M系列v4虚拟机，官方披露特定负载性能最高可提升2.3倍。</li>
+    <li>• 启用Intel QAT技术的Azure虚拟机，在特定场景下SQL备份速度最高提升2.5倍。</li>
+    <li>• Intel TDX机密虚拟机技术加强运行中敏感工作负载的安全隔离。</li>
+   </ul>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   <strong>影响深度解析：</strong>
+   Copilot生态升级有望增加Microsoft 365、Dynamics 365和Azure的交叉销售，并提高企业客户续费黏性。Intel合作则有助于改善服务器供应保障、降低单位计算成本和提高系统性能，强化Azure的基础设施差异化。
+  </p>
+
+  <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50 mb-4">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-6">
+    <strong class="text-amber-700 dark:text-amber-300">需要警惕：</strong>
+    产品发布和合作协议不代表收入立即兑现。Copilot仍需观察企业付费席位、实际使用率和续费转化；Intel合作能否改善成本，取决于产品量产、实际部署规模与整体供应链交付。
+   </p>
+  </div>
+  <div class="flex justify-between text-xs mb-2"><span class="text-gray-500 dark:text-gray-400">综合影响评分</span><strong>9.2 / 10</strong></div>
+  <div class="impact-bar"><div class="impact-fill" style="width:92%"></div></div>
+
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-4 leading-6">
+   信源：
+   <a class="source-link" href="https://news.microsoft.com/source/2026/11/17/microsoft-ignite-2026-empowering-human-ambition-intelligence-and-trust/" target="_blank" rel="noopener">Microsoft Ignite，2026-11-17</a>；
+   <a class="source-link" href="https://news.microsoft.com/source/2026/11/17/microsoft-and-salesforce-announce-copilotforce-bringing-trusted-customer-context-and-action-into-microsoft-ai-experiences" target="_blank" rel="noopener">Microsoft与Salesforce公告，2026-11-17</a>；
+   <a class="source-link" href="https://news.microsoft.com/source/2026/11/18/microsoft-and-intel-deepen-collaboration-to-deliver-differentiated-azure-infrastructure" target="_blank" rel="noopener">Microsoft与Intel公告，2026-11-18</a>。
+  </p>
+ </article>
+
+ <!-- Company 3 -->
+ <article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 shadow-sm card-interactive">
+  <div class="flex flex-wrap justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="pill bg-primary-500 text-white">TOP 3</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-10-29</span>
+    <span class="pill bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中性偏多 · 需观察</span>
+   </div>
+   <span class="text-sm font-bold text-primary-600 dark:text-primary-400">影响力 7.2 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold mb-4">微软宣布债券发行：AI基础设施扩张背景下，长期融资与资本成本管理受到关注</h3>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   微软官方新闻档案显示，公司于2026年10月29日发布债券发行公告。该事项位于本次30日观察窗口内，值得结合AI基础设施投入进行跟踪。
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-xl bg-emerald-50 dark:bg-emerald-950/25 p-4 border border-emerald-200 dark:border-emerald-800/50">
+    <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">正面影响</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     债务融资可以补充长期资金，匹配数据中心、服务器、网络及其他基础设施建设的资本周期，减少短期现金管理压力。
+    </p>
+   </div>
+   <div class="rounded-xl bg-amber-50 dark:bg-amber-950/25 p-4 border border-amber-200 dark:border-amber-800/50">
+    <div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">潜在负面影响</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     债券融资成本、未来利息支出及资本开支规模共同影响自由现金流和投入资本回报率。若AI基础设施收入兑现速度慢于投资，资本效率将承压。
+    </p>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   <strong>影响深度解析：</strong>
+   单次债券发行本身不能直接判断公司财务恶化，也不能直接等同于AI项目融资缺口。微软需要在持续扩建AI算力的同时维持较高的资本回报率。投资者应重点核验债券规模、期限、票息及募集资金用途，并与季度资本支出、经营现金流和自由现金流结合评估。
+  </p>
+
+  <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 mb-4">
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+    <strong>数据完整性说明：</strong>
+    微软官方新闻档案确认了公告日期及债券发行事项，但本报告未取得可交叉验证的完整发行条款，因此不填写发行金额、票息及期限，避免将未核实数字作为事实。
+   </p>
+  </div>
+
+  <div class="flex justify-between text-xs mb-2"><span class="text-gray-500 dark:text-gray-400">综合影响评分</span><strong>7.2 / 10</strong></div>
+  <div class="impact-bar"><div class="impact-fill" style="width:72%"></div></div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-4">
+   信源：
+   <a class="source-link" href="https://news.microsoft.com/source/tag/press-releases/" target="_blank" rel="noopener">Microsoft官方新闻档案（2026-10-29公告记录）</a>。
+  </p>
+ </article>
+</section>
+
+<!-- INDUSTRY -->
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-2">
+  <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+   <i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+  </div>
+  <h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+ </div>
+ <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+  细分赛道界定：<strong>全球超大规模云服务（Hyperscale Cloud）、企业SaaS、生成式AI基础设施及企业智能体平台。</strong>
+  核心对标对象包括Amazon AWS、Google Cloud、NVIDIA及AI模型生态参与者。
+ </p>
+
+ <!-- Industry 1 -->
+ <article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="pill bg-accent-500 text-white">行业 TOP 1</span>
+   <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-10-28</span>
+   <span class="pill bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">竞争加剧 · 中性偏空</span>
+  </div>
+  <h3 class="text-lg font-bold mb-3">Google Cloud单季收入同比增长103%，AI云竞争由单纯算力扩张转向全栈商业化</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">Google Cloud营收</div>
+    <div class="font-bold text-lg">$30.7B</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">同比增长</div>
+    <div class="font-bold text-lg text-emerald-600 dark:text-emerald-400">103%</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">云业务营业利润</div>
+    <div class="font-bold text-lg">$11.1B</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">Google Cloud RPO</div>
+    <div class="font-bold text-lg">$561B</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   Alphabet于2026年10月28日公布第三季度财报。Google Cloud收入达到307亿美元，同比增长103%；云业务营业利润达到111亿美元，营业利润率升至36.2%。Google Cloud剩余履约义务约5610亿美元。公司同时披露，TPU系统销售成为重要收入贡献来源。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   <strong>对微软的横向映射：</strong>
+   这是本月最值得重视的竞争对手信号。Google Cloud增长速度明显高于微软Azure的48%，显示企业AI基础设施需求正在推动竞争对手加速抢占市场。但两者统计口径、业务基数、产品组合和收入确认结构不同，不能仅以增长率直接判断市场份额变化。
+  </p>
+
+  <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50 mb-4">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-6">
+    <strong class="text-amber-700 dark:text-amber-300">关键投资含义：</strong>
+    Google Cloud的高速增长说明AI云市场尚未形成单一赢家。微软必须通过Azure、Copilot、企业数据与开发工具生态建立更高客户迁移成本。若竞争对手依靠TPU和自有模型实现更低推理成本，微软未来可能面临云定价及利润率压力。
+   </p>
+  </div>
+  <div class="impact-bar"><div class="impact-fill" style="width:93%"></div></div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+   信源：
+   <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm" target="_blank" rel="noopener">Alphabet Q3 2026业绩公告，2026-10-28</a>；
+   <a class="source-link" href="https://abc.xyz/investor/events/event-details/2026/2026-Q3-Earnings-Call-2026-Ujou16CTw9/default.aspx" target="_blank" rel="noopener">Alphabet业绩说明会</a>。
+  </p>
+ </article>
+
+ <!-- Industry 2 -->
+ <article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="pill bg-accent-500 text-white">行业 TOP 2</span>
+   <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-17</span>
+   <span class="pill bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">需求强劲 · 利好</span>
+  </div>
+  <h3 class="text-lg font-bold mb-3">NVIDIA FY2027 Q3营收1158亿美元，数据中心业务增长110%，AI算力需求再获强验证</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">NVIDIA总营收</div>
+    <div class="text-xl font-bold">$115.8B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400">+103% YoY</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">数据中心营收</div>
+    <div class="text-xl font-bold">$107.6B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400">+110% YoY</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">环比总营收</div>
+    <div class="text-xl font-bold">+20%</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">非GAAP毛利率</div>
+    <div class="text-xl font-bold">74.9%</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   NVIDIA于2026年11月17日公布截至10月25日的FY2027第三季度业绩：营收1158亿美元，同比增长103%，环比增长20%；数据中心收入1076亿美元，同比增长110%；非GAAP毛利率74.9%。公司同时披露Vera Rubin NVL72计算平台已开始出货。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   <strong>对微软的横向映射：</strong>
+   NVIDIA的业绩证明AI算力需求仍处于高速扩张阶段，对Azure的AI服务器、模型训练和推理服务构成直接需求侧利好。微软作为大型云算力采购方与AI模型商业化平台，有望继续受益于算力基础设施需求增长。
+  </p>
+
+  <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 mb-4">
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+    <strong>风险传导：</strong>
+    GPU供给、网络互联、存储、机房建设和电力供应共同决定云厂商的实际交付能力。NVIDIA高增长不代表微软利润同步增长；如果算力采购价格和折旧上升速度超过Azure及AI服务的变现速度，微软的自由现金流仍可能承压。
+   </p>
+  </div>
+  <div class="impact-bar"><div class="impact-fill" style="width:91%"></div></div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+   信源：
+   <a class="source-link" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/" target="_blank" rel="noopener">NVIDIA官方财报，2026-11-17</a>。
+  </p>
+ </article>
+
+ <!-- Industry 3 -->
+ <article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="pill bg-accent-500 text-white">行业 TOP 3</span>
+   <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-17 — 11-18</span>
+   <span class="pill bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中性偏多 · 竞争分化</span>
+  </div>
+  <h3 class="text-lg font-bold mb-3">企业AI竞争从模型能力转向智能体生态、数据连接与系统级算力效率</h3>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   2026年11月17日Microsoft Ignite公布Copilot智能体及企业数据连接方案；11月18日微软和Intel宣布扩大长期合作。同期，Google Cloud凭借TPU及AI云服务实现高速增长，NVIDIA则继续推进Vera Rubin平台。
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-blue-50 dark:bg-blue-950/25">
+    <div class="text-xs font-bold text-blue-700 dark:text-blue-300 mb-2">软件与工作流</div>
+    <div class="text-sm font-bold mb-1">微软 Copilot</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-5">Office、Teams、Salesforce、企业数据和智能体协同。</p>
+   </div>
+   <div class="rounded-xl p-4 bg-purple-50 dark:bg-purple-950/25">
+    <div class="text-xs font-bold text-purple-700 dark:text-purple-300 mb-2">云与自研芯片</div>
+    <div class="text-sm font-bold mb-1">Google Cloud</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-5">TPU、Gemini和AI基础设施形成全栈竞争优势。</p>
+   </div>
+   <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/25">
+    <div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">算力与硬件</div>
+    <div class="text-sm font-bold mb-1">NVIDIA</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-5">新一代GPU平台和数据中心系统持续提高行业算力上限。</p>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   <strong>对微软的横向映射：</strong>
+   微软的优势是将AI直接嵌入现有企业软件、身份权限体系和数据工作流，而非仅销售模型或GPU。若智能体能够完成跨应用的实际业务任务，微软可通过软件订阅、Azure推理、数据服务和企业安全形成多层收入。
+  </p>
+  <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50 mb-4">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-6">
+    <strong class="text-amber-700 dark:text-amber-300">关键观察：</strong>
+    行业竞争的决定因素正在从模型参数规模转向推理成本、客户留存、智能体任务成功率和企业数据接入能力。微软需要证明Copilot付费渗透率能够转化为持续的每用户收入提升，而不是仅增加研发与算力开支。
+   </p>
+  </div>
+  <div class="impact-bar"><div class="impact-fill" style="width:84%"></div></div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+   信源：
+   <a class="source-link" href="https://news.microsoft.com/source/2026/11/17/microsoft-ignite-2026-empowering-human-ambition-intelligence-and-trust/" target="_blank" rel="noopener">Microsoft Ignite，2026-11-17</a>；
+   <a class="source-link" href="https://news.microsoft.com/source/2026/11/18/microsoft-and-intel-deepen-collaboration-to-deliver-differentiated-azure-infrastructure" target="_blank" rel="noopener">Microsoft与Intel，2026-11-18</a>。
+  </p>
+ </article>
+
+ <!-- Industry comparison -->
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+  <h3 class="font-bold text-base mb-4 flex items-center gap-2">
+   <i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i> 行业动态对标影响对比表
+  </h3>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead class="table-head">
+     <tr>
+      <th>行业事件</th>
+      <th>涉及主体</th>
+      <th>对微软的利弊传导</th>
+      <th>影响周期</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td class="font-semibold">Google Cloud增长103%</td>
+      <td>Google、微软、AWS</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">竞争承压。</span>AI云市场扩张同时强化同行份额争夺。</td>
+      <td>2026Q4—2027</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">NVIDIA数据中心收入增长110%</td>
+      <td>NVIDIA、微软及云厂商</td>
+      <td><span class="text-emerald-600 dark:text-emerald-400 font-bold">需求利好。</span>AI算力采购与云服务收入空间扩大。</td>
+      <td>2026Q4—2028</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">企业智能体生态竞争升级</td>
+      <td>微软、Google、AWS、Intel</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">结构性分化。</span>生态优势有望提升续费，但研发与基础设施投入增加。</td>
+      <td>中长期</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-2">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+ </div>
+ <p class="text-xs text-gray-500 dark:text-gray-400 mb-6">
+  重点观察出口合规、算力基础设施政策和利率环境对微软全球云业务、资本支出与估值的传导。
+ </p>
+
+ <!-- Macro 1 -->
+ <article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-rose-500 card-interactive">
+  <div class="flex flex-wrap justify-between gap-3 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="pill bg-rose-600 text-white">国际 · 美国出口管制</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-16 / 11-19</span>
+    <span class="pill bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300">短期承压</span>
+   </div>
+   <strong class="text-sm text-primary-600 dark:text-primary-400">影响力 9.5 / 10</strong>
+  </div>
+
+  <h3 class="text-lg font-bold mb-4">美国BIS出台先进算力远程访问新规：海外数据中心、芯片流向和AI云合规审查升级</h3>
+
+  <div class="rounded-xl p-4 bg-rose-50 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50 mb-4">
+   <div class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-2">政策时间线</div>
+   <div class="timeline-line space-y-3 text-xs text-gray-700 dark:text-gray-300">
+    <div><strong>2026-11-16：</strong>美国商务部工业与安全局（BIS）发布新闻公告，宣布针对先进超级智能芯片及服务器远程访问的临时最终规则。</div>
+    <div><strong>2026-11-19：</strong>规则正式刊载于《Federal Register》，文件编号2026-23529，生效实施。</div>
+    <div><strong>2027-01-19：</strong>规则修订意见提交截止日期，属于未来观察窗口之外的政策节点。</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   根据美国商务部BIS于11月16日发布、11月19日生效的规则，向特定海外数据中心提供先进算力、且可能使中国等受关注地区总部企业获得大量远程计算能力的交易，将受到新的许可及客户尽职调查要求约束。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   新规同时对向印度尼西亚、马来西亚、新加坡、泰国和巴西等指定地区出口先进半导体增加许可要求，并调整先进节点芯片代工厂和封装厂的出口审查推定机制。规则还正式撤销此前拜登政府AI Diffusion Rule的相关实施规定。
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70">
+    <div class="font-bold text-sm mb-2">1. 政策要点</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     监管对象从芯片实物出口延伸到通过海外数据中心远程使用先进算力，强化最终用户识别、所有权审查和供应链尽职调查。
+    </p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70">
+    <div class="font-bold text-sm mb-2">2. 盈利与估值传导</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     增加云服务跨境合规、客户筛查和数据中心运营管理成本；可能限制部分国际客户获取先进算力，增加区域业务扩张的不确定性。
+    </p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70">
+    <div class="font-bold text-sm mb-2">3. 业务敞口</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     Azure全球数据中心、AI算力租赁、跨境云服务及企业客户尽调均需关注。对美国本土和其他合规地区的普通企业云需求不构成全面禁令。
+    </p>
+   </div>
+  </div>
+
+  <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50 mb-4">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-6">
+    <strong class="text-amber-700 dark:text-amber-300">买方判断：</strong>
+    不能将该规则简单理解为微软全球Azure业务被禁止。真正的风险在于跨境客户识别、受限最终用户、第三国数据中心及先进算力远程访问的合规边界。政策对竞争对手同样适用，但微软的全球化云基础设施规模使其合规管理成本和业务连续性值得重点跟踪。
+   </p>
+  </div>
+
+  <div class="impact-bar"><div class="impact-fill" style="width:95%"></div></div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-4">
+   权威信源：
+   <a class="source-link" href="https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology" target="_blank" rel="noopener">美国BIS公告，2026-11-16</a>；
+   <a class="source-link" href="https://www.govinfo.gov/content/pkg/FR-2026-11-19/html/2026-23529.htm" target="_blank" rel="noopener">Federal Register，2026-11-19</a>。
+  </p>
+ </article>
+
+ <!-- Macro 2 -->
+ <article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive">
+  <div class="flex flex-wrap justify-between gap-3 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="pill bg-emerald-600 text-white">国内 · 算力基础设施政策</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-19</span>
+    <span class="pill bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">中长期利好 · 竞争加剧</span>
+   </div>
+   <strong class="text-sm text-primary-600 dark:text-primary-400">影响力 7.5 / 10</strong>
+  </div>
+
+  <h3 class="text-lg font-bold mb-4">江苏发布新型信息基础设施建设行动计划：2030年智能算力规模目标超过700 EFLOPS</h3>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   2026年11月19日，江苏省工业和信息化厅、通信管理局、发展改革委、数据局及广播电视局联合印发《江苏省新型信息基础设施建设发展行动计划》，明确推动算力网、通信网与AI应用协同发展。
+  </p>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3">
+    <div class="text-xs text-gray-500 dark:text-gray-400">2030智能算力</div>
+    <div class="font-bold text-lg">700+</div>
+    <div class="text-xs text-gray-500">EFLOPS</div>
+   </div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3">
+    <div class="text-xs text-gray-500 dark:text-gray-400">先进存力</div>
+    <div class="font-bold text-lg">200</div>
+    <div class="text-xs text-gray-500">EB</div>
+   </div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3">
+    <div class="text-xs text-gray-500 dark:text-gray-400">大型数据中心PUE</div>
+    <div class="font-bold text-lg">低于1.2</div>
+    <div class="text-xs text-gray-500">2030年目标</div>
+   </div>
+   <div class="rounded-lg bg-gray-50 dark:bg-gray-800 p-3">
+    <div class="text-xs text-gray-500 dark:text-gray-400">绿电占比</div>
+    <div class="font-bold text-lg">80%+</div>
+    <div class="text-xs text-gray-500">2030年目标</div>
+   </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70">
+    <strong class="text-sm block mb-2">1. 政策要点</strong>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     推进长三角算力枢纽协同、万卡级智算集群、算力资源调度、算电协同、绿色数据中心及AI推理基础设施建设。
+    </p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70">
+    <strong class="text-sm block mb-2">2. 传导路径</strong>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     国内AI产业基础设施扩张有望增加企业云服务、开发工具和混合云需求，但也会推动国产云服务及本土AI平台竞争。
+    </p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70">
+    <strong class="text-sm block mb-2">3. 微软业务敞口</strong>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     主要影响企业AI软件、Azure相关生态和跨国企业混合云场景。考虑中国市场云业务运营及数据合规限制，不能直接将国内算力目标等同于微软Azure收入增长。
+    </p>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   <strong>投资者判断：</strong>
+   该政策有利于AI应用渗透和算力服务需求的长期扩张，但也意味着国内云平台、算力运营商及国产AI技术的竞争能力将持续提高。对微软而言，更值得关注的是跨国企业在中国的混合云、数据治理和企业软件需求，而不是将区域算力投资规模直接映射为公司订单。
+  </p>
+
+  <div class="impact-bar"><div class="impact-fill" style="width:75%"></div></div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-4">
+   信源：
+   <a class="source-link" href="https://gxt.jiangsu.gov.cn/art/2026/11/19/art_6299_11862213.html" target="_blank" rel="noopener">江苏省工信厅政策原文，2026-11-19</a>。
+  </p>
+ </article>
+
+ <!-- Macro 3 -->
+ <article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap justify-between gap-3 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="pill bg-amber-600 text-white">国际 · 美国货币政策</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-10 / 11-18</span>
+    <span class="pill bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中性偏空 · 估值约束</span>
+   </div>
+   <strong class="text-sm text-primary-600 dark:text-primary-400">影响力 8.0 / 10</strong>
+  </div>
+
+  <h3 class="text-lg font-bold mb-4">美国通胀与美联储会议纪要强化利率不确定性：科技成长股估值面临折现率约束</h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2">美国10月CPI · 2026-11-10</div>
+    <div class="text-2xl font-bold metric">+0.4%</div>
+    <div class="text-xs text-gray-500 dark:text-gray-400">整体CPI月环比（季调）</div>
+    <div class="mt-3 text-sm font-bold metric">核心CPI +0.3%</div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">剔除食品和能源，月环比</p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs font-bold text-gray-500 dark:text-gray-400 mb-2">FOMC会议纪要 · 2026-11-18</div>
+    <div class="text-2xl font-bold metric">3.75%—4.00%</div>
+    <div class="text-xs text-gray-500 dark:text-gray-400">10月会议维持的联邦基金利率目标区间</div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">会议纪要显示通胀仍是重要政策约束，委员意见存在分歧。</p>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-7 mb-4">
+   美国劳工统计局于2026年11月10日公布10月CPI，整体CPI月环比上涨0.4%，核心CPI月环比上涨0.3%。11月18日，美联储公布10月27日至28日FOMC会议纪要。10月会议决定将联邦基金利率目标区间维持在3.75%—4.00%，但投票存在分歧，通胀仍被视为重要政策风险。
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70">
+    <strong class="text-sm block mb-2">1. 宏观态势</strong>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     通胀仍未完全回归政策目标，货币政策路径存在不确定性。12月8日至9日将召开下一次FOMC会议。
+    </p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70">
+    <strong class="text-sm block mb-2">2. 传导路径</strong>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     高利率持续时间延长将抬升长期现金流折现率，压制成长股估值；同时增加数据中心融资成本，影响AI投资回报率。
+    </p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70">
+    <strong class="text-sm block mb-2">3. 微软业务敞口</strong>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+     影响长期估值、债券融资成本、数据中心资本支出、广告需求及企业IT预算。若宏观需求放缓，企业云迁移及软件采购也可能延后。
+    </p>
+   </div>
+  </div>
+
+  <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50 mb-4">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-6">
+    <strong class="text-amber-700 dark:text-amber-300">买方判断：</strong>
+    对微软这种高现金流、高增长、长久期科技资产而言，利率对估值的影响不容忽视。但利率上升并不意味着盈利必然恶化。若Azure和企业软件的实际收入增长持续强于折现率上升的负面影响，基本面仍可支撑估值。
+   </p>
+  </div>
+
+  <div class="impact-bar"><div class="impact-fill" style="width:80%"></div></div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-4">
+   信源：
+   <a class="source-link" href="https://www.bls.gov/news.release/CPI.htm" target="_blank" rel="noopener">美国劳工统计局10月CPI，2026-11-10</a>；
+   <a class="source-link" href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261118a.htm" target="_blank" rel="noopener">美联储FOMC会议纪要公告，2026-11-18</a>；
+   <a class="source-link" href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">FOMC会议日历</a>。
+  </p>
+ </article>
+</section>
+
+<!-- MATRIX -->
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+ </div>
+
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-700 shadow-sm mb-8">
+  <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+   <h3 class="font-bold text-sm sm:text-base flex items-center gap-2">
+    <i data-lucide="list" class="w-4 h-4 text-primary-500"></i>
+    九大核心事件汇总（点击行查看详情）
+   </h3>
+   <div class="flex flex-wrap gap-2 text-xs">
+    <button data-filter="all" onclick="filterMatrix('all')" class="bg-primary-500 text-white px-3 py-1.5 rounded-full font-semibold">全部</button>
+    <button data-filter="company" onclick="filterMatrix('company')" class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full font-semibold">公司</button>
+    <button data-filter="industry" onclick="filterMatrix('industry')" class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full font-semibold">行业</button>
+    <button data-filter="macro" onclick="filterMatrix('macro')" class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-full font-semibold">宏观</button>
+   </div>
+  </div>
+
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead class="table-head">
+     <tr>
+      <th>类别</th>
+      <th>日期</th>
+      <th>核心事件</th>
+      <th>影响方向</th>
+      <th>强度</th>
+      <th>核心投资含义</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr data-category="company" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="pill bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td>
+      <td class="font-mono whitespace-nowrap">10-28</td>
+      <td class="font-semibold">FY27 Q1营收923亿美元，Azure增长48%</td>
+      <td><span class="text-emerald-600 dark:text-emerald-400 font-bold">重大利好</span></td>
+      <td class="font-bold">9.8</td>
+      <td>核心增长引擎强劲，订单储备持续扩张</td>
+     </tr>
+     <tr data-category="company" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="pill bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td>
+      <td class="font-mono whitespace-nowrap">11-17/18</td>
+      <td class="font-semibold">Ignite智能体升级与Intel长期合作</td>
+      <td><span class="text-emerald-600 dark:text-emerald-400 font-bold">温和利好</span></td>
+      <td class="font-bold">9.2</td>
+      <td>软件生态和云基础设施双重强化</td>
+     </tr>
+     <tr data-category="company" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="pill bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td>
+      <td class="font-mono whitespace-nowrap">10-29</td>
+      <td class="font-semibold">微软宣布债券发行</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">中性偏多</span></td>
+      <td class="font-bold">7.2</td>
+      <td>融资匹配资本扩张，需核验融资成本</td>
+     </tr>
+     <tr data-category="industry" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="pill bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td>
+      <td class="font-mono whitespace-nowrap">10-28</td>
+      <td class="font-semibold">Google Cloud营收增长103%</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">竞争承压</span></td>
+      <td class="font-bold">9.3</td>
+      <td>云市场扩张，但微软份额竞争加剧</td>
+     </tr>
+     <tr data-category="industry" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="pill bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td>
+      <td class="font-mono whitespace-nowrap">11-17</td>
+      <td class="font-semibold">NVIDIA数据中心收入增长110%</td>
+      <td><span class="text-emerald-600 dark:text-emerald-400 font-bold">需求利好</span></td>
+      <td class="font-bold">9.1</td>
+      <td>AI算力需求继续验证，利好Azure变现</td>
+     </tr>
+     <tr data-category="industry" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="pill bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td>
+      <td class="font-mono whitespace-nowrap">11-17/18</td>
+      <td class="font-semibold">企业智能体和系统级算力竞争升级</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">结构分化</span></td>
+      <td class="font-bold">8.4</td>
+      <td>生态差异化决定长期定价能力</td>
+     </tr>
+     <tr data-category="macro" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="pill bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">11-16/19</td>
+      <td class="font-semibold">美国BIS先进算力远程访问新规生效</td>
+      <td><span class="text-rose-600 dark:text-rose-400 font-bold">短期承压</span></td>
+      <td class="font-bold">9.5</td>
+      <td>全球云业务合规成本与地缘风险上升</td>
+     </tr>
+     <tr data-category="macro" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="pill bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">11-19</td>
+      <td class="font-semibold">江苏发布新型信息基础设施行动计划</td>
+      <td><span class="text-emerald-600 dark:text-emerald-400 font-bold">中长期利好</span></td>
+      <td class="font-bold">7.5</td>
+      <td>AI需求扩张，同时强化国内云竞争</td>
+     </tr>
+     <tr data-category="macro" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="pill bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">11-10/18</td>
+      <td class="font-semibold">美国CPI与FOMC会议纪要</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">估值约束</span></td>
+      <td class="font-bold">8.0</td>
+      <td>影响长期折现率与数据中心融资成本</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">说明：强度为研究分析师对事件潜在重要性的主观评分，不代表股价实际涨跌幅或事件发生概率。</p>
+ </div>
+
+ <!-- Forward watchlist -->
+ <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+  <i data-lucide="calendar-days" class="w-5 h-5 text-primary-500"></i>
+  未来30天重点跟踪日历（2026-11-24 — 2026-12-23）
+ </h3>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+   <div class="flex items-center justify-between gap-2 mb-3">
+    <span class="pill bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">11月30日—12月4日</span>
+    <i data-lucide="cloud" class="w-5 h-5 text-accent-500"></i>
+   </div>
+   <h4 class="font-bold mb-2">AWS re:Invent 2026</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+    地点：美国拉斯维加斯。重点关注AWS在Agentic AI、云计算、AI芯片、开发工具和数据服务方面的新产品及战略发布。
+   </p>
+   <p class="text-xs text-amber-600 dark:text-amber-400 mt-3 font-semibold">重点观察：AWS是否推出更具成本优势的AI算力和企业智能体方案。</p>
+   <a class="source-link text-xs inline-block mt-3" href="https://aws.amazon.com/events/reinvent/" target="_blank" rel="noopener">AWS官方会议日程</a>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+   <div class="flex items-center justify-between gap-2 mb-3">
+    <span class="pill bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">12月8日—9日</span>
+    <i data-lucide="landmark" class="w-5 h-5 text-primary-500"></i>
+   </div>
+   <h4 class="font-bold mb-2">美联储FOMC议息会议</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+    重点关注利率决议、经济预测、通胀判断及主席新闻发布会。利率路径将影响微软估值折现率、债务融资成本和资本开支回报预期。
+   </p>
+   <p class="text-xs text-amber-600 dark:text-amber-400 mt-3 font-semibold">重点观察：利率政策是否强化高利率持续时间预期。</p>
+   <a class="source-link text-xs inline-block mt-3" href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">美联储官方日历</a>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+   <div class="flex items-center justify-between gap-2 mb-3">
+    <span class="pill bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300">12月10日</span>
+    <i data-lucide="chart-line" class="w-5 h-5 text-amber-500"></i>
+   </div>
+   <h4 class="font-bold mb-2">美国11月CPI公布</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+    美国劳工统计局已将11月CPI发布时间安排在12月10日美国东部时间8:30。关注整体通胀、核心通胀及住房服务价格。
+   </p>
+   <p class="text-xs text-amber-600 dark:text-amber-400 mt-3 font-semibold">重点观察：通胀是否继续限制降息空间。</p>
+   <a class="source-link text-xs inline-block mt-3" href="https://www.bls.gov/cpi/" target="_blank" rel="noopener">BLS官方发布日历</a>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+   <div class="flex items-center justify-between gap-2 mb-3">
+    <span class="pill bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300">持续跟踪 · 未来30日</span>
+    <i data-lucide="activity" class="w-5 h-5 text-emerald-500"></i>
+   </div>
+   <h4 class="font-bold mb-2">Azure增长、AI变现与资本效率验证</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+    重点跟踪微软官方经营更新、AI产品商业化、Azure数据中心建设、服务器供应及资本开支信息。关注Google Cloud、AWS及NVIDIA后续披露。
+   </p>
+   <p class="text-xs text-emerald-600 dark:text-emerald-400 mt-3 font-semibold">重点观察：云收入增速、毛利率、自由现金流与资本支出之间的匹配关系。</p>
+   <a class="source-link text-xs inline-block mt-3" href="https://www.microsoft.com/en-us/investor/" target="_blank" rel="noopener">微软投资者关系网站</a>
+  </div>
+ </div>
+
+ <div class="rounded-xl bg-gray-100 dark:bg-gray-800/80 p-5 border border-gray-200 dark:border-gray-700">
+  <div class="flex items-center gap-2 mb-2">
+   <i data-lucide="info" class="w-4 h-4 text-primary-500"></i>
+   <strong class="text-sm">未来事件数据完整性说明</strong>
+  </div>
+  <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">
+   截至2026-11-23，微软投资者关系页面尚未公布下一次季度财报的具体发布日期，因此不预设FY2027 Q2财报日期。未检索到能够可靠核实且明确落在本次30日观察区间内的微软重大限售股解禁事项，不将未经确认的日期列入日历。以上日历仅列已公布的公开活动与宏观数据发布时间，以及持续性经营观察指标。
+  </p>
+ </div>
+</section>
+
+<!-- FINAL INVESTMENT JUDGMENT -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 mb-12" data-aos="fade-up">
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 border border-primary-100 dark:border-gray-700 shadow-sm">
+  <div class="flex items-center gap-3 mb-5">
+   <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+    <i data-lucide="brain-circuit" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+   </div>
+   <h2 class="text-xl font-bold">五、买方研究结论：决定微软下一阶段股价方向的三条主线</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+   <div class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50">
+    <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">第一主线 · 盈利增长</div>
+    <h3 class="font-bold text-sm mb-2">Azure能否维持高增长</h3>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">48%的Azure增长是基本面核心支撑。若企业AI推理、Copilot订阅和云迁移持续增长，微软盈利增长的确定性将进一步增强。</p>
+   </div>
+   <div class="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50">
+    <div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">第二主线 · 资本效率</div>
+    <h3 class="font-bold text-sm mb-2">AI投资能否转化为自由现金流</h3>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">关注资本开支、折旧、能源成本、云毛利率及自由现金流。若投资增长快于收入兑现，市场可能下调估值溢价。</p>
+   </div>
+   <div class="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50">
+    <div class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-2">第三主线 · 估值与竞争</div>
+    <h3 class="font-bold text-sm mb-2">云竞争和宏观政策是否恶化</h3>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6">Google Cloud、AWS的AI商业化速度，以及美国出口合规和利率政策，将影响微软未来增长空间和估值折现率。</p>
+   </div>
+  </div>
+
+  <h3 class="font-bold text-base mb-3">关键情景推演</h3>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead class="table-head">
+     <tr>
+      <th>情景</th>
+      <th>需要验证的条件</th>
+      <th>对微软的潜在影响</th>
+      <th>跟踪信号</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <td><span class="text-emerald-600 dark:text-emerald-400 font-bold">乐观情景</span></td>
+      <td>Azure维持高增长，Copilot付费渗透扩大，资本回报改善</td>
+      <td>盈利预期上修，估值获得成长溢价</td>
+      <td>Azure增速、商业RPO、AI订阅及自由现金流</td>
+     </tr>
+     <tr>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">基准情景</span></td>
+      <td>云业务持续增长，但AI投入和折旧同步上升</td>
+      <td>基本面稳健，股价更多受估值与利率波动影响</td>
+      <td>云毛利率、资本开支、经营现金流</td>
+     </tr>
+     <tr>
+      <td><span class="text-rose-600 dark:text-rose-400 font-bold">悲观情景</span></td>
+      <td>竞争对手抢占份额、AI货币化低于预期、合规成本上升</td>
+      <td>盈利预期与估值倍数可能同时承压</td>
+      <td>Azure增长放缓、云利润率下降、自由现金流走弱</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+
+  <div class="mt-6 border-t border-gray-200 dark:border-gray-700 pt-5">
+   <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">最终研究判断</div>
+   <p class="text-sm leading-7 text-gray-700 dark:text-gray-200">
+    微软当前最重要的投资逻辑，不是AI概念是否继续升温，而是其能否将企业智能体、Azure算力和现有企业软件客户基础，转化为可持续的收入、利润和自由现金流。现阶段基本面仍然偏强，但市场将逐渐从“AI投入规模”转向“AI投资回报率”定价。下一阶段应优先观察Azure增速、Copilot实际付费渗透率及自由现金流，而不是仅根据新品发布数量判断股价方向。
+   </p>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+   <div>
+    <h4 class="font-bold text-sm mb-3">主要数据来源</h4>
+    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-6">
+     <li>Microsoft Investor Relations：FY2027 Q1财报，2026-10-28。</li>
+     <li>Microsoft Source：Ignite 2026及Copilotforce，2026-11-17。</li>
+     <li>Microsoft与Intel长期合作公告，2026-11-18。</li>
+     <li>NVIDIA FY2027 Q3业绩公告，2026-11-17。</li>
+     <li>Alphabet FY2026 Q3业绩公告，2026-10-28。</li>
+     <li>美国商务部BIS及Federal Register，2026-11-16、11-19。</li>
+     <li>江苏省工业和信息化厅政策公告，2026-11-19。</li>
+     <li>美国BLS CPI及Federal Reserve，2026-11-10、11-18。</li>
+    </ul>
+   </div>
+
+   <div>
+    <h4 class="font-bold text-sm mb-3">覆盖区间与研究口径</h4>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-7">
+     主观察窗口：2026-10-25至2026-11-23，共30个自然日。所有动态按照公开披露或政策发生日期标注。报告以公司官方公告、政府监管文件、交易所披露及公开业绩资料为主要依据。
+     <br><br>
+     行业比较以各公司公开财报披露口径为准。Azure、Google Cloud和NVIDIA数据中心收入的业务定义不同，不可直接视为相同统计口径。
+     <br><br>
+     影响力评分为研究分析判断，不代表股价涨跌幅、事件发生概率或目标价。
+    </p>
+   </div>
+
+   <div>
+    <h4 class="font-bold text-sm mb-3">风险提示与免责声明</h4>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-7">
+     本报告仅用于公开信息研究、事件驱动分析及投资决策辅助，不构成证券买卖建议、投资收益承诺或个性化资产配置意见。
+     <br><br>
+     宏观政策、监管规则、企业经营状况及AI行业竞争均可能发生变化。历史财务数据不代表未来表现，公开披露的订单储备不等同于已实现收入或现金流。
+     <br><br>
+     投资者应结合最新财报、股价、估值、风险承受能力及自身投资纪律独立判断。
+    </p>
+   </div>
+  </div>
+
+  <div class="border-t border-gray-200 dark:border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+   <p class="text-xs text-gray-400 dark:text-gray-500">微软 Microsoft Corporation · NASDAQ: MSFT</p>
+   <p class="text-xs text-gray-400 dark:text-gray-500">最新动态全景追踪 · 截至 2026-11-23</p>
+   <p class="text-xs text-gray-400 dark:text-gray-500">AI · Cloud · Enterprise Software · Event-Driven Research</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ document.querySelectorAll('#mobileMenu a').forEach(link=>{
+  link.addEventListener('click',()=>{
+   document.getElementById('mobileMenu')?.classList.remove('mobile-menu-open');
+  });
+ });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101318">
+<title>特斯拉最新动态全景追踪_2026-11-24</title>
+<style>
+:root{
+ --bg:#0b0e13;--panel:#141922;--panel2:#1a202b;--line:#293241;
+ --text:#e8edf5;--muted:#929eae;--red:#e82127;--green:#35c48a;
+ --yellow:#e8b65a;--blue:#66a8ff;--purple:#ad91ff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:var(--bg);color:var(--text);
+ font-family:Inter,"Microsoft YaHei",Arial,sans-serif;line-height:1.7}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer}
+.topbar{height:62px;position:sticky;top:0;z-index:20;
+ background:rgba(11,14,19,.94);backdrop-filter:blur(14px);
+ border-bottom:1px solid var(--line);display:flex;align-items:center;
+ justify-content:space-between;padding:0 max(calc((100vw - 1380px)/2),24px)}
+.brand{font-weight:900;letter-spacing:2px;font-size:19px}
+.brand span{color:var(--red)}
+.topmeta{font-size:12px;color:var(--muted)}
+.layout{max-width:1380px;margin:auto;display:grid;
+ grid-template-columns:225px minmax(0,1fr);gap:30px;padding:28px 24px}
+.sidebar{position:sticky;top:88px;height:calc(100vh - 110px);
+ overflow:auto;border-right:1px solid var(--line);padding-right:18px}
+.sidebar h3{font-size:11px;color:var(--muted);letter-spacing:2px}
+.sidebar a{display:block;padding:9px 12px;margin:3px 0;
+ color:#aeb8c7;border-radius:7px;font-size:13px}
+.sidebar a:hover,.sidebar a.active{background:#222a37;color:white}
+.sidebar a.active{border-left:3px solid var(--red)}
+main{min-width:0}
+.hero{position:relative;overflow:hidden;border:1px solid #303846;
+ border-radius:15px;padding:45px 42px;
+ background:radial-gradient(ellipse at 90% 10%,#58242a 0,transparent 40%),
+ linear-gradient(130deg,#191d25,#11151d 70%)}
+.hero:after{content:"TESLA";position:absolute;right:-20px;bottom:-48px;
+ font-size:125px;font-weight:1000;color:rgba(255,255,255,.035);
+ letter-spacing:5px;pointer-events:none}
+.eyebrow{font-size:11px;color:#fa666a;letter-spacing:3px;font-weight:800}
+h1{font-size:clamp(30px,4vw,49px);line-height:1.2;margin:15px 0}
+.hero p{max-width:750px;color:#b4bdca;font-size:14px}
+.hero-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:23px}
+.tag{border:1px solid #454e5d;border-radius:4px;padding:4px 10px;
+ font-size:11px;color:#d0d7e2}
+.section{margin-top:38px;scroll-margin-top:80px}
+.section-head{display:flex;align-items:center;justify-content:space-between;
+ gap:12px;margin-bottom:18px}
+.section-head h2{font-size:21px;margin:0;letter-spacing:.5px}
+.section-head h2:before{content:"";display:inline-block;width:4px;height:19px;
+ background:var(--red);margin-right:12px;vertical-align:-3px}
+.sub{font-size:12px;color:var(--muted)}
+.grid{display:grid;gap:14px}
+.metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);
+ border-radius:10px;padding:19px;min-width:0}
+.metric-label{color:var(--muted);font-size:12px}
+.metric-value{font-size:27px;font-weight:800;margin:8px 0 2px;
+ letter-spacing:-1px}
+.metric-note{font-size:11px;color:var(--muted)}
+.red{color:#ff686e}.green{color:var(--green)}
+.yellow{color:var(--yellow)}.blue{color:var(--blue)}
+.purple{color:var(--purple)}
+.summary{background:#191c25;border-left:3px solid var(--red);
+ padding:19px 22px;border-radius:5px;margin:18px 0;color:#d3dbe6;font-size:14px}
+.summary strong{color:white}
+.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.event{position:relative;padding:20px 20px 18px 24px;
+ border-left:2px solid #384352;background:var(--panel);
+ border-radius:0 9px 9px 0;margin-bottom:13px}
+.event:before{content:"";position:absolute;left:-6px;top:25px;
+ width:10px;height:10px;background:var(--red);border-radius:50%}
+.event-date{font-size:11px;color:var(--red);font-weight:800;letter-spacing:1px}
+.event h3{font-size:16px;margin:6px 0}
+.event p{font-size:13px;color:#aeb8c7;margin:7px 0}
+.event-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{font-size:10px;padding:3px 8px;border-radius:4px;
+ background:#252e3b;color:#bac8d9}
+.pill.high{background:#492328;color:#ff9296}
+.pill.mid{background:#42351f;color:#e8c27b}
+.pill.low{background:#1e3b32;color:#77d7ad}
+.filterbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.filterbar button,.tabbar button{border:1px solid var(--line);
+ background:var(--panel);color:var(--muted);padding:7px 13px;
+ border-radius:5px;font-size:12px}
+.filterbar button.active,.tabbar button.active{
+ background:#492328;border-color:var(--red);color:white}
+.event.hidden{display:none}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:9px}
+table{border-collapse:collapse;width:100%;font-size:12px;min-width:570px}
+th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line)}
+th{background:#1b222e;color:#aebbd0;font-weight:600}
+td{color:#d0d8e4}
+tr:last-child td{border-bottom:0}
+.tabs{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px}
+.tabbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab-content{display:none;color:#b9c4d2;font-size:13px}
+.tab-content.active{display:block}
+.tab-content h3{color:white;font-size:16px}
+.bullet{padding-left:20px}
+.bullet li{margin:9px 0}
+.risk{border-top:3px solid var(--yellow)}
+.positive{border-top:3px solid var(--green)}
+.negative{border-top:3px solid var(--red)}
+.neutral{border-top:3px solid var(--blue)}
+.score{font-size:25px;font-weight:800;margin:8px 0}
+.bar-row{display:grid;grid-template-columns:115px 1fr 45px;
+ align-items:center;gap:10px;margin:15px 0;font-size:12px}
+.bar{height:8px;background:#293343;border-radius:10px;overflow:hidden}
+.bar span{display:block;height:100%;border-radius:10px;background:var(--red)}
+.chain{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap}
+.chain-item{flex:1;min-width:135px;background:var(--panel2);
+ border:1px solid var(--line);padding:15px;border-radius:8px;text-align:center}
+.chain-item b{display:block;color:#f1f3f8;font-size:13px}
+.chain-item small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
+.arrow{align-self:center;color:var(--red);font-size:20px}
+.scenario{border:1px solid var(--line);border-radius:9px;
+ background:var(--panel);padding:18px}
+.scenario h3{margin:0 0 10px;font-size:15px}
+.scenario .prob{font-size:24px;font-weight:800}
+.scenario p{font-size:12px;color:#aeb8c7}
+.checklist li{font-size:13px;margin:11px 0;color:#bac5d3}
+.source{border-bottom:1px solid var(--line);padding:13px 0}
+.source strong{font-size:13px}
+.source p{font-size:11px;color:var(--muted);margin:4px 0}
+.source a{font-size:12px}
+.footer{border-top:1px solid var(--line);padding:25px 0;
+ margin-top:45px;color:var(--muted);font-size:11px}
+.disclaimer{background:#191c22;padding:14px;border-radius:6px;
+ color:#8f9aab;font-size:11px;margin-top:16px}
+@media(max-width:900px){
+ .layout{grid-template-columns:1fr;padding:18px}
+ .sidebar{position:relative;top:0;height:auto;border:0;
+ display:flex;overflow-x:auto;gap:5px;padding:0 0 10px}
+ .sidebar h3{display:none}.sidebar a{white-space:nowrap}
+ .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+ .hero{padding:29px 22px}
+ .hero:after{font-size:70px}
+ .two,.three{grid-template-columns:1fr}
+ .metrics{gap:9px}
+ .metric-value{font-size:23px}
+ .topmeta{display:none}
+ .layout{padding:13px}
+}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body>
+<header class="topbar">
+ <div class="brand"><span>TESLA</span> / INTELLIGENCE</div>
+ <div class="topmeta">GLOBAL EQUITY RESEARCH · 2026.11.24</div>
+</header>
+
+<div class="layout">
+<nav class="sidebar">
+ <h3>REPORT NAVIGATION</h3>
+ <a href="#overview" class="active">01 · 核心结论</a>
+ <a href="#metrics">02 · 关键经营指标</a>
+ <a href="#timeline">03 · 近期事件追踪</a>
+ <a href="#technology">04 · 技术与产品</a>
+ <a href="#robotaxi">05 · Robotaxi商业化</a>
+ <a href="#energy">06 · 储能业务</a>
+ <a href="#industry">07 · 行业与宏观</a>
+ <a href="#transmission">08 · 三层传导框架</a>
+ <a href="#risks">09 · 风险与催化剂</a>
+ <a href="#scenarios">10 · 情景推演</a>
+ <a href="#watch">11 · 后续观察清单</a>
+ <a href="#sources">12 · 信息来源</a>
+</nav>
+
+<main>
+<section class="hero" id="overview">
+ <div class="eyebrow">MONTHLY INTELLIGENCE REPORT · 2026</div>
+ <h1>特斯拉<br>最新动态全景追踪</h1>
+ <p>TESLA, INC. · NASDAQ: TSLA</p>
+ <p>以公司经营、人工智能、自动驾驶、机器人、能源业务及宏观环境为主线，追踪过去一个月影响特斯拉基本面与长期估值预期的重要变化。</p>
+ <div class="hero-tags">
+  <span class="tag">研究区间：2026.10.24—2026.11.24</span>
+  <span class="tag">更新日期：2026.11.24</span>
+  <span class="tag">事件驱动研究</span>
+  <span class="tag">中长期视角</span>
+ </div>
+</section>
+
+<section class="section">
+ <div class="summary">
+  <strong>核心判断：</strong>特斯拉正在从传统电动汽车制造商向自动驾驶、Robotaxi、AI计算与人形机器人平台转型。过去一个月最重要的变化并非单纯的汽车销售，而是FSD v15进入早期推送阶段、意大利给予辅助驾驶系统阶段性批准，以及Cybercab和Robotaxi业务持续向商业化推进。与此同时，监管审查、硬件兼容性和商业化兑现仍是估值的关键约束。
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-head"><h2>01 / 投资核心结论</h2>
+ <span class="sub">Investment Thesis</span></div>
+ <div class="grid three">
+  <div class="card positive">
+   <div class="metric-label">技术竞争力</div>
+   <div class="score green">积极</div>
+   <p class="metric-note">FSD v15升级，统一视觉AI架构有望强化汽车、Robotaxi与Optimus之间的技术协同。</p>
+  </div>
+  <div class="card positive">
+   <div class="metric-label">自动驾驶商业化</div>
+   <div class="score green">改善</div>
+   <p class="metric-note">欧洲监管认可范围扩大，Cybercab开始进入实际运营和客户交付准备阶段。</p>
+  </div>
+  <div class="card risk">
+   <div class="metric-label">监管与执行风险</div>
+   <div class="score yellow">较高</div>
+   <p class="metric-note">美国监管调查持续，驾驶责任、无方向盘车型认证和跨区域部署仍有不确定性。</p>
+  </div>
+ </div>
+ <div class="grid two" style="margin-top:14px">
+  <div class="card">
+   <div class="metric-label">本月最重要的新增催化剂</div>
+   <h3 style="margin:8px 0">FSD v15 开始推送</h3>
+   <p style="font-size:12px;color:var(--muted)">2026年11月21日起向部分用户推送，新增Reality View等功能。其商业意义在于改善用户体验与订阅价值，但仍需通过真实事故率、接管率和使用数据验证。</p>
+  </div>
+  <div class="card">
+   <div class="metric-label">本月最重要的监管变化</div>
+   <h3 style="margin:8px 0">意大利阶段性批准TAD</h3>
+   <p style="font-size:12px;color:var(--muted)">2026年11月20日，意大利宣布对Tesla Assisted Driving给予临时性批准，为欧洲市场扩张增加一个重要节点，但不等同于整个欧盟统一批准。</p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="metrics">
+ <div class="section-head"><h2>02 / 关键经营指标</h2>
+ <span class="sub">Q3 2026 · 官方披露基准</span></div>
+ <div class="grid metrics">
+  <div class="card">
+   <div class="metric-label">第三季度交付量</div>
+   <div class="metric-value">486,532</div>
+   <div class="metric-note">辆 · 2026 Q3</div>
+  </div>
+  <div class="card">
+   <div class="metric-label">第三季度产量</div>
+   <div class="metric-value">464,391</div>
+   <div class="metric-note">辆 · 2026 Q3</div>
+  </div>
+  <div class="card">
+   <div class="metric-label">储能部署</div>
+   <div class="metric-value">13.7 GWh</div>
+   <div class="metric-note">2026 Q3</div>
+  </div>
+  <div class="card">
+   <div class="metric-label">FSD北美新车搭载率</div>
+   <div class="metric-value green">75%+</div>
+   <div class="metric-note">公司披露 · 2026 Q3</div>
+  </div>
+  <div class="card">
+   <div class="metric-label">GAAP营业利润</div>
+   <div class="metric-value">$0.7B</div>
+   <div class="metric-note">2026 Q3</div>
+  </div>
+  <div class="card">
+   <div class="metric-label">GAAP净利润</div>
+   <div class="metric-value">$0.8B</div>
+   <div class="metric-note">2026 Q3</div>
+  </div>
+  <div class="card">
+   <div class="metric-label">经营现金流</div>
+   <div class="metric-value">$6.3B</div>
+   <div class="metric-note">2026 Q3</div>
+  </div>
+  <div class="card">
+   <div class="metric-label">自由现金流</div>
+   <div class="metric-value">$1.5B</div>
+   <div class="metric-note">2026 Q3</div>
+  </div>
+ </div>
+ <div class="summary">
+  <strong>数据解读：</strong>第三季度交付量高于产量约22,141辆，反映库存与生产交付节奏存在差异。公司披露连续第二个季度过去12个月收入超过1,000亿美元。FSD北美新车搭载率超过75%，显示软件产品在成熟市场的渗透能力增强。但FSD搭载率不等于订阅收入，也不代表全部客户均采用相同付费模式。
+ </div>
+ <div class="table-wrap">
+ <table>
+  <thead><tr><th>指标</th><th>Q3 2026</th><th>研究意义</th></tr></thead>
+  <tbody>
+   <tr><td>Model 3/Y交付</td><td>478,237辆</td><td>核心车型仍是规模基础</td></tr>
+   <tr><td>其他车型交付</td><td>8,295辆</td><td>非主力车型规模仍小</td></tr>
+   <tr><td>总交付</td><td>486,532辆</td><td>观察需求和交付节奏</td></tr>
+   <tr><td>储能部署</td><td>13.7 GWh</td><td>能源业务持续扩张</td></tr>
+   <tr><td>Robotaxi无监督累计里程</td><td>接近200万英里</td><td>自动驾驶商业化的重要运营指标</td></tr>
+   <tr><td>FSD欧洲使用规模</td><td>超过10万用户</td><td>监管认可与市场拓展的基础</td></tr>
+  </tbody>
+ </table>
+ </div>
+ <p class="sub">注：上述财务与运营指标来自特斯拉2026年第三季度官方更新文件，属于季度基准数据，不是本月新增数据。</p>
+</section>
+
+<section class="section" id="timeline">
+ <div class="section-head"><h2>03 / 近期事件追踪</h2>
+ <span class="sub">Event Intelligence · 近一个月</span></div>
+ <div class="filterbar">
+  <button class="active" data-filter="all">全部事件</button>
+  <button data-filter="tech">技术与产品</button>
+  <button data-filter="business">商业化</button>
+  <button data-filter="regulation">监管</button>
+  <button data-filter="strategy">战略</button>
+ </div>
+
+ <div class="event" data-category="tech">
+  <div class="event-date">2026.11.23 · TECHNOLOGY</div>
+  <h3>FSD v15正式进入早期推送阶段，Reality View成为核心亮点</h3>
+  <p>特斯拉开始向部分用户推送FSD（Supervised）v15。新版本引入Reality View，以实时视觉场景重建方式呈现车辆周边道路、行人、建筑与交通环境。公司强调底层视觉编码器升级，并将新架构与FSD、Robotaxi和Optimus等业务联系起来。</p>
+  <p><strong>投资意义：</strong>软件体验升级可能提升订阅意愿、品牌差异化和用户黏性。如果新模型能够持续降低复杂道路场景中的错误率，将增强自动驾驶业务的长期竞争力。</p>
+  <p><strong>风险：</strong>25倍安全改善是公司宣传口径，不能直接视为已经得到独立验证的事故率改善。该版本主要面向AI4/HW4等新硬件平台，老款HW3车辆无法直接享有全部升级。</p>
+  <div class="event-meta"><span class="pill high">高重要性</span><span class="pill">FSD</span><span class="pill">AI4</span><span class="pill">软件订阅</span></div>
+  <p><a href="https://www.theverge.com/transportation/1039919/tesla-fsd-v15-reality-view-gta-nhtsa-safety-rollout" target="_blank">来源：The Verge · 11月23日</a></p>
+ </div>
+
+ <div class="event" data-category="regulation">
+  <div class="event-date">2026.11.20 · REGULATION</div>
+  <h3>意大利给予Tesla Assisted Driving阶段性批准</h3>
+  <p>意大利交通部门宣布对特斯拉辅助驾驶系统给予临时性批准。该系统此前称为Full Self-Driving，在欧洲称为Tesla Assisted Driving。此次批准经过技术可行性评估，发生在欧盟统一审批流程完成之前。</p>
+  <p><strong>投资意义：</strong>欧洲市场的可用范围扩大，有助于软件收入增长，也为其他欧洲国家的监管沟通提供参考。</p>
+  <p><strong>关键边界：</strong>该系统仍然属于需要驾驶员持续监督的辅助驾驶方案，不意味着特斯拉已经获得欧洲全域无人驾驶运营许可。</p>
+  <div class="event-meta"><span class="pill high">高重要性</span><span class="pill">欧洲市场</span><span class="pill">监管审批</span></div>
+  <p><a href="https://www.reuters.com/world/italy-gives-green-light-tesla-self-driving-system-ahead-eu-approval-2026-11-20/" target="_blank">来源：Reuters · 11月20日</a></p>
+ </div>
+
+ <div class="event" data-category="strategy">
+  <div class="event-date">2026.11.19 · STRATEGY</div>
+  <h3>马斯克提出无方向盘、无踏板的六至七座自动驾驶Model Y</h3>
+  <p>马斯克在DealBook Summit上表示，特斯拉计划开发可容纳六至七名乘客的自动驾驶Model Y，不配置传统方向盘和踏板。Cybercab主要服务两人出行场景，而更大容量的自动驾驶车型则针对家庭与多人出行需求。</p>
+  <p><strong>投资意义：</strong>若实现量产，特斯拉Robotaxi的可服务客群将进一步扩大，有望改善单位车辆运营收入和乘客覆盖范围。</p>
+  <p><strong>观察重点：</strong>目前仍属于管理层提出的产品规划，尚需明确认证路径、具体设计、投产时间与商业运营许可。</p>
+  <div class="event-meta"><span class="pill mid">中高重要性</span><span class="pill">Model Y</span><span class="pill">Robotaxi</span></div>
+  <p><a href="https://www.businessinsider.com/elon-musk-tesla-robotaxi-autonomous-model-y-more-seats-cybercab-2026-11" target="_blank">来源：Business Insider · 11月19日</a></p>
+ </div>
+
+ <div class="event" data-category="business">
+  <div class="event-date">2026.11 · ROBOTAXI</div>
+  <h3>Robotaxi运营网络继续扩张，服务范围逐步扩大</h3>
+  <p>11月上旬，特斯拉Robotaxi在美国圣安东尼奥扩展服务，相关报道将其列为公司Robotaxi网络的第八个运营城市。运营网络的扩展意味着公司正在积累不同城市的运营经验。</p>
+  <p><strong>投资意义：</strong>运营城市数量增长有利于积累真实道路数据、改善调度算法和扩大品牌认知，但城市数量本身不能代表商业盈利能力。</p>
+  <p><strong>跟踪重点：</strong>实际活跃车辆、每车日订单量、空驶率、平均票价、运营成本及人工远程支持比例。</p>
+  <div class="event-meta"><span class="pill high">高重要性</span><span class="pill">Robotaxi</span><span class="pill">运营规模</span></div>
+  <p><a href="https://www.teslaoracle.com/page/3/" target="_blank">参考：Tesla Oracle · 11月相关报道</a></p>
+ </div>
+
+ <div class="event" data-category="business">
+  <div class="event-date">2026.10—11 · CYBERCAB</div>
+  <h3>Cybercab从概念产品向交付与运营阶段迈进</h3>
+  <p>特斯拉在第三季度披露已经将Cybercab部署至奥斯汀Robotaxi车队。公司此前表示计划在2026年底前尝试向客户交付Cybercab，并从小规模开始积累交付、车辆所有权和自动驾驶车队管理经验。</p>
+  <p><strong>投资意义：</strong>Cybercab的价值不只是新增汽车销量，而是能否建立可复制的自动驾驶出行服务及车辆资产运营模式。</p>
+  <p><strong>风险：</strong>无传统人工驾驶控制装置的车型需要解决特殊车辆认证、道路安全和商业运营合规问题。</p>
+  <div class="event-meta"><span class="pill high">高重要性</span><span class="pill">Cybercab</span><span class="pill">量产交付</span></div>
+  <p><a href="https://www.investing.com/news/stock-market-news/tesla-aims-to-sell-cybercab-robotaxis-by-end-of-year-despite-federal-probe-4964518" target="_blank">来源：Reuters经Investing.com转载 · 10月21日</a></p>
+ </div>
+
+ <div class="event" data-category="strategy">
+  <div class="event-date">2026.11 · PRODUCT STRATEGY</div>
+  <h3>Cybertruck产品与产能资源重新配置受到市场关注</h3>
+  <p>市场报道关注特斯拉Cybertruck产能与Cybercab生产资源之间的调整可能性。若相关规划落地，将反映公司在产品需求、生产线利用率与自动驾驶战略之间进行重新配置。</p>
+  <p><strong>投资意义：</strong>产能向Cybercab转移可能强化长期战略，但同时也要求投资者评估Cybertruck的需求弹性、资产利用率和潜在产能转换成本。</p>
+  <div class="event-meta"><span class="pill mid">中等重要性</span><span class="pill">制造战略</span><span class="pill">产能配置</span></div>
+  <p><a href="https://www.teslaoracle.com/page/205/" target="_blank">参考：Tesla Oracle · 相关报道</a></p>
+ </div>
+</section>
+
+<section class="section" id="technology">
+ <div class="section-head"><h2>04 / 技术与产品竞争力</h2>
+ <span class="sub">AI · FSD · Optimus</span></div>
+ <div class="tabs">
+  <div class="tabbar">
+   <button class="active" data-tab="fsd">FSD v15</button>
+   <button data-tab="ai">AI计算与训练</button>
+   <button data-tab="optimus">Optimus</button>
+   <button data-tab="hardware">硬件生态</button>
+  </div>
+  <div class="tab-content active" id="fsd">
+   <h3>FSD v15：软件体验与驾驶决策能力同步升级</h3>
+   <ul class="bullet">
+    <li>Reality View：利用实时视觉重建方式展示车辆周边环境。</li>
+    <li>视觉编码器升级：增强模型对复杂道路环境的理解能力。</li>
+    <li>风险规避：针对坑洼、积水、小动物及交通摄像头等场景改进。</li>
+    <li>驾驶员监控：优化驾驶员注意力识别与提醒逻辑。</li>
+    <li>导航体验：更好地学习常用路线及停车偏好。</li>
+   </ul>
+   <p>投资判断：软件版本更新本身不是业绩，真正需要观察的是订阅转化、每英里接管次数、事故数据和跨城市泛化能力。</p>
+  </div>
+  <div class="tab-content" id="ai">
+   <h3>统一AI架构的潜在价值</h3>
+   <ul class="bullet">
+    <li>汽车：收集真实道路驾驶数据，持续改进端到端模型。</li>
+    <li>Robotaxi：将模型能力转化为无人驾驶出行服务。</li>
+    <li>Optimus：探索视觉感知、空间理解和动作规划的技术复用。</li>
+    <li>计算基础设施：训练算力、推理效率和芯片供应将影响模型迭代速度。</li>
+   </ul>
+   <p>核心判断：如果多业务共用基础模型与计算基础设施能够产生规模效应，特斯拉有机会建立跨产品的技术平台，而不是依靠单一车型盈利。</p>
+  </div>
+  <div class="tab-content" id="optimus">
+   <h3>Optimus：从技术演示走向生产力工具</h3>
+   <ul class="bullet">
+    <li>重点观察手部灵巧操作、移动稳定性和复杂任务完成率。</li>
+    <li>关注工厂内真实部署数量及单位机器人有效工作时间。</li>
+    <li>关注生产成本、维护费用和每小时有效劳动产出。</li>
+    <li>评估是否能够从内部工厂应用逐步扩展至外部客户。</li>
+   </ul>
+   <p>投资判断：人形机器人仍然具有较高技术与商业化不确定性，不宜将管理层的远期产量目标直接计入近期利润预测。</p>
+  </div>
+  <div class="tab-content" id="hardware">
+   <h3>AI4与历史硬件兼容性问题</h3>
+   <ul class="bullet">
+    <li>FSD v15面向AI4/HW4及更新硬件平台。</li>
+    <li>部分旧款HW3车辆无法享有全部新版本功能。</li>
+    <li>硬件代际差异可能推动新车升级需求。</li>
+    <li>同时需要关注旧车用户满意度、软件支持承诺和潜在升级成本。</li>
+   </ul>
+   <p>投资判断：硬件升级能够创造换车需求，但如果兼容性处理不当，也可能削弱品牌信任和存量用户的付费意愿。</p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="robotaxi">
+ <div class="section-head"><h2>05 / Robotaxi商业化进展</h2>
+ <span class="sub">Long-term Valuation Driver</span></div>
+ <div class="summary">
+  Robotaxi是特斯拉未来估值中最具弹性的业务之一。其长期价值来自车辆利用率提高、司机成本降低、软件调度效率和网络效应，而非简单的汽车销售收入。
+ </div>
+ <div class="grid two">
+  <div class="card">
+   <div class="metric-label">第三季度公司披露</div>
+   <div class="metric-value">~2M</div>
+   <div class="metric-note">累计无监督Robotaxi运营里程，Q3期末附近</div>
+  </div>
+  <div class="card">
+   <div class="metric-label">Cybercab</div>
+   <div class="metric-value">2座</div>
+   <div class="metric-note">专用自动驾驶车型，已进入奥斯汀运营车队</div>
+  </div>
+ </div>
+ <h3 style="font-size:15px;margin:22px 0 15px">Robotaxi商业化路径</h3>
+ <div class="chain">
+  <div class="chain-item"><b>FSD技术成熟</b><small>降低驾驶错误与接管频率</small></div>
+  <div class="arrow">→</div>
+  <div class="chain-item"><b>监管与认证</b><small>获得区域运营资格</small></div>
+  <div class="arrow">→</div>
+  <div class="chain-item"><b>车队部署</b><small>扩大车辆密度与服务覆盖</small></div>
+  <div class="arrow">→</div>
+  <div class="chain-item"><b>商业盈利</b><small>提高订单密度和单位经济效益</small></div>
+ </div>
+ <h3 style="font-size:15px;margin:24px 0 12px">需要建立的单位经济模型</h3>
+ <div class="table-wrap">
+ <table>
+  <thead><tr><th>经营变量</th><th>影响方向</th><th>关键问题</th></tr></thead>
+  <tbody>
+   <tr><td>每车每日订单量</td><td class="green">越高越好</td><td>实际乘车需求是否充足？</td></tr>
+   <tr><td>每单平均收入</td><td class="green">越高越好</td><td>能否保持价格竞争力？</td></tr>
+   <tr><td>空驶里程比例</td><td class="red">越低越好</td><td>调度与需求匹配效率如何？</td></tr>
+   <tr><td>远程人工干预</td><td class="red">越低越好</td><td>是否真正实现规模化无人运营？</td></tr>
+   <tr><td>车辆维护成本</td><td class="red">越低越好</td><td>高利用率下的维修与折旧如何？</td></tr>
+   <tr><td>保险与合规成本</td><td class="red">越低越好</td><td>事故责任与保险机制如何确定？</td></tr>
+  </tbody>
+ </table>
+ </div>
+ <div class="summary">
+  <strong>核心风险：</strong>Robotaxi服务城市数量、累计里程和实际盈利能力是不同维度。只有披露活跃车队、乘客付费订单、单车收入和运营成本，才能证明业务真正进入规模化盈利阶段。
+ </div>
+</section>
+
+<section class="section" id="energy">
+ <div class="section-head"><h2>06 / 储能与能源业务</h2>
+ <span class="sub">Megapack · Powerwall · Grid Storage</span></div>
+ <div class="grid two">
+  <div class="card">
+   <div class="metric-label">Q3 2026储能部署量</div>
+   <div class="metric-value green">13.7 GWh</div>
+   <p class="metric-note">特斯拉官方第三季度披露</p>
+  </div>
+  <div class="card">
+   <div class="metric-label">核心商业逻辑</div>
+   <div class="metric-value">电网级储能</div>
+   <p class="metric-note">以大型储能系统、家庭储能及能源软件参与电力基础设施投资。</p>
+  </div>
+ </div>
+ <div class="grid two" style="margin-top:14px">
+  <div class="card positive">
+   <h3 style="font-size:15px">潜在增长机会</h3>
+   <ul class="bullet" style="font-size:12px;color:#b9c4d2">
+    <li>AI数据中心用电需求增长。</li>
+    <li>可再生能源并网与电网调峰需求。</li>
+    <li>大型储能系统部署与长期服务收入。</li>
+    <li>电力基础设施升级和电网稳定性需求。</li>
+   </ul>
+  </div>
+  <div class="card risk">
+   <h3 style="font-size:15px">需要验证的风险</h3>
+   <ul class="bullet" style="font-size:12px;color:#b9c4d2">
+    <li>电池原材料价格与供应链约束。</li>
+    <li>大型储能项目交付周期。</li>
+    <li>行业竞争与项目价格压力。</li>
+    <li>部署量增长是否转化为毛利率和现金流增长。</li>
+   </ul>
+  </div>
+ </div>
+ <div class="summary">
+  储能业务有望成为特斯拉汽车业务之外的重要利润与现金流来源。特别是AI数据中心对电力供应和备用储能的需求增长，为Megapack等产品创造了长期市场空间。但需要区分行业需求增长和特斯拉实际获得的订单。
+ </div>
+</section>
+
+<section class="section" id="industry">
+ <div class="section-head"><h2>07 / 行业与宏观环境</h2>
+ <span class="sub">Industry & Macro Transmission</span></div>
+ <div class="grid two">
+  <div class="card">
+   <h3 style="font-size:15px">全球电动车竞争</h3>
+   <p style="font-size:12px;color:#afbac9">中国车企持续在价格、产品迭代和智能驾驶功能方面竞争。特斯拉需要在销量、售价、毛利率与软件差异化之间寻找平衡。</p>
+   <span class="pill mid">价格竞争</span>
+  </div>
+  <div class="card">
+   <h3 style="font-size:15px">自动驾驶监管</h3>
+   <p style="font-size:12px;color:#afbac9">欧洲批准进展提供积极信号，但各国交通法规、驾驶员责任和车辆认证制度仍存在差异。</p>
+   <span class="pill high">监管敏感</span>
+  </div>
+  <div class="card">
+   <h3 style="font-size:15px">利率与消费融资</h3>
+   <p style="font-size:12px;color:#afbac9">融资成本、汽车贷款利率和消费者购买力会影响汽车需求及价格竞争压力。</p>
+   <span class="pill mid">宏观敏感</span>
+  </div>
+  <div class="card">
+   <h3 style="font-size:15px">AI算力与能源需求</h3>
+   <p style="font-size:12px;color:#afbac9">AI训练与推理基础设施扩张，提高数据中心对电力、储能和高可靠供电系统的需求。</p>
+   <span class="pill low">长期机会</span>
+  </div>
+ </div>
+ <h3 style="font-size:15px;margin:22px 0 12px">外部变量的传导方向</h3>
+ <div class="bar-row"><span>汽车价格竞争</span><div class="bar"><span style="width:90%"></span></div><span class="red">高</span></div>
+ <div class="bar-row"><span>自动驾驶监管</span><div class="bar"><span style="width:95%"></span></div><span class="red">高</span></div>
+ <div class="bar-row"><span>融资利率</span><div class="bar"><span style="width:65%"></span></div><span class="yellow">中</span></div>
+ <div class="bar-row"><span>AI能源需求</span><div class="bar"><span style="width:80%"></span></div><span class="green">高</span></div>
+ <p class="sub">以上为研究重要性定性评分，不代表实际统计相关系数。</p>
+</section>
+
+<section class="section" id="transmission">
+ <div class="section-head"><h2>08 / 公司—行业—宏观三层传导</h2>
+ <span class="sub">Catalyst Transmission Framework</span></div>
+ <div class="card" style="margin-bottom:14px">
+  <h3 style="font-size:15px">传导一：FSD升级与欧洲市场扩张</h3>
+  <div class="chain">
+   <div class="chain-item"><b>公司层</b><small>FSD v15升级、欧洲TAD批准</small></div>
+   <div class="arrow">→</div>
+   <div class="chain-item"><b>行业层</b><small>辅助驾驶市场渗透、软件竞争</small></div>
+   <div class="arrow">→</div>
+   <div class="chain-item"><b>宏观层</b><small>欧洲交通监管、自动驾驶政策</small></div>
+  </div>
+  <p class="sub">潜在结果：订阅用户增长、软件收入提升、车辆品牌差异化增强。</p>
+  <span class="pill high">正向催化剂</span>
+  <span class="pill mid">安全与合规风险</span>
+ </div>
+ <div class="card" style="margin-bottom:14px">
+  <h3 style="font-size:15px">传导二：Robotaxi与Cybercab商业化</h3>
+  <div class="chain">
+   <div class="chain-item"><b>公司层</b><small>车型、算法、运营车队</small></div>
+   <div class="arrow">→</div>
+   <div class="chain-item"><b>行业层</b><small>网约车、自动驾驶出行</small></div>
+   <div class="arrow">→</div>
+   <div class="chain-item"><b>宏观层</b><small>劳动力成本、城市交通政策</small></div>
+  </div>
+  <p class="sub">潜在结果：提高车辆资产利用率，形成出行网络效应，改变传统汽车企业估值框架。</p>
+  <span class="pill high">长期估值催化剂</span>
+ </div>
+ <div class="card">
+  <h3 style="font-size:15px">传导三：AI基础设施与能源增长</h3>
+  <div class="chain">
+   <div class="chain-item"><b>公司层</b><small>Megapack、能源储能产品</small></div>
+   <div class="arrow">→</div>
+   <div class="chain-item"><b>行业层</b><small>数据中心、电网、储能</small></div>
+   <div class="arrow">→</div>
+   <div class="chain-item"><b>宏观层</b><small>电气化、AI资本开支、能源转型</small></div>
+  </div>
+  <p class="sub">潜在结果：降低汽车业务周期性对集团整体收入结构的影响，拓展利润来源。</p>
+  <span class="pill low">中长期增长驱动</span>
+ </div>
+</section>
+
+<section class="section" id="risks">
+ <div class="section-head"><h2>09 / 风险与催化剂矩阵</h2>
+ <span class="sub">Risk & Catalyst Assessment</span></div>
+ <div class="grid two">
+  <div class="card positive">
+   <h3 class="green" style="font-size:16px">正向催化剂</h3>
+   <ul class="bullet" style="font-size:12px;color:#bac5d3">
+    <li>FSD v15逐步扩大推送范围，验证软件体验和性能。</li>
+    <li>意大利TAD批准为欧洲扩张创造新节点。</li>
+    <li>Cybercab逐步进入交付与运营环节。</li>
+    <li>Robotaxi扩大运营网络与活跃车队规模。</li>
+    <li>能源储能业务持续获得新增订单。</li>
+    <li>Optimus进入真实工厂任务部署与验证。</li>
+   </ul>
+  </div>
+  <div class="card negative">
+   <h3 class="red" style="font-size:16px">主要风险因素</h3>
+   <ul class="bullet" style="font-size:12px;color:#bac5d3">
+    <li>FSD事故和监管调查可能限制产品推广。</li>
+    <li>HW3与HW4兼容性差异带来用户争议。</li>
+    <li>Robotaxi单位经济性尚需真实数据验证。</li>
+    <li>汽车业务可能继续承受价格竞争压力。</li>
+    <li>自动驾驶车辆认证与商业保险仍有不确定性。</li>
+    <li>高资本开支和技术投入可能影响自由现金流。</li>
+   </ul>
+  </div>
+ </div>
+ <h3 style="font-size:15px;margin:22px 0 12px">风险敏感度评估</h3>
+ <div class="table-wrap">
+ <table>
+  <thead><tr><th>风险类别</th><th>潜在影响</th><th>发生可能性判断</th><th>持续关注</th></tr></thead>
+  <tbody>
+   <tr><td>FSD监管与事故</td><td class="red">高</td><td>中高</td><td>是</td></tr>
+   <tr><td>汽车需求与价格竞争</td><td class="red">高</td><td>中高</td><td>是</td></tr>
+   <tr><td>Robotaxi盈利兑现</td><td class="red">高</td><td>中</td><td>是</td></tr>
+   <tr><td>AI硬件迭代</td><td class="yellow">中高</td><td>中</td><td>是</td></tr>
+   <tr><td>储能供应链</td><td class="yellow">中</td><td>中</td><td>是</td></tr>
+   <tr><td>宏观融资环境</td><td class="yellow">中</td><td>中</td><td>是</td></tr>
+  </tbody>
+ </table>
+ </div>
+ <p class="sub">风险概率为定性研究判断，非保险精算结果或统计预测。</p>
+</section>
+
+<section class="section" id="scenarios">
+ <div class="section-head"><h2>10 / 未来6—12个月情景推演</h2>
+ <span class="sub">Scenario Analysis</span></div>
+ <div class="summary">
+  由于缺少经过核实的实时股价、最新市场一致预期与完整估值模型，本报告不提供虚构目标价。以下概率为研究情景权重，仅用于建立观察框架，不是经过统计校准的收益预测。
+ </div>
+ <div class="grid three">
+  <div class="scenario positive">
+   <span class="pill low">乐观情景</span>
+   <div class="prob green">25%</div>
+   <h3>AI与自动驾驶加速兑现</h3>
+   <p>FSD v15安全与体验数据改善，欧洲批准范围扩大，Robotaxi车队及付费订单增长，Cybercab按计划进入客户交付，储能继续增长。</p>
+   <p><strong>估值逻辑：</strong>软件和自动驾驶业务的长期价值被市场进一步认可。</p>
+  </div>
+  <div class="scenario neutral">
+   <span class="pill">基准情景</span>
+   <div class="prob blue">50%</div>
+   <h3>业务持续进展但盈利兑现偏慢</h3>
+   <p>FSD持续迭代，Robotaxi在部分城市扩大运营，但人工支持、保险、监管与车辆成本仍然限制规模化盈利。</p>
+   <p><strong>估值逻辑：</strong>传统汽车业务提供基础，AI与自动驾驶预期提供估值溢价。</p>
+  </div>
+  <div class="scenario negative">
+   <span class="pill high">悲观情景</span>
+   <div class="prob red">25%</div>
+   <h3>监管及经营压力同时上升</h3>
+   <p>FSD安全争议扩大，Robotaxi部署受阻，汽车价格竞争压缩利润，资本开支上升但新业务现金流贡献有限。</p>
+   <p><strong>估值逻辑：</strong>市场重新按照汽车制造商的盈利能力评估企业价值。</p>
+  </div>
+ </div>
+ <div class="card" style="margin-top:15px">
+  <h3 style="font-size:15px">情景权重</h3>
+  <div class="bar-row"><span>乐观</span><div class="bar"><span style="width:25%;background:var(--green)"></span></div><span>25%</span></div>
+  <div class="bar-row"><span>基准</span><div class="bar"><span style="width:50%;background:var(--blue)"></span></div><span>50%</span></div>
+  <div class="bar-row"><span>悲观</span><div class="bar"><span style="width:25%;background:var(--red)"></span></div><span>25%</span></div>
+ </div>
+</section>
+
+<section class="section" id="watch">
+ <div class="section-head"><h2>11 / 后续观察清单</h2>
+ <span class="sub">Forward Monitoring Checklist</span></div>
+ <div class="card">
+  <h3 style="font-size:15px">未来30—90天重点跟踪指标</h3>
+  <ul class="checklist" id="checklist">
+   <li><label><input type="checkbox"> FSD v15是否在12月扩大正式推送范围。</label></li>
+   <li><label><input type="checkbox"> FSD v15的真实接管率、事故率和安全表现。</label></li>
+   <li><label><input type="checkbox"> HW3旧硬件用户的功能兼容性与升级安排。</label></li>
+   <li><label><input type="checkbox"> 欧洲TAD审批是否扩大到更多国家。</label></li>
+   <li><label><input type="checkbox"> 美国NHTSA对FSD及Robotaxi的调查进展。</label></li>
+   <li><label><input type="checkbox"> Cybercab年底客户交付是否实际落地。</label></li>
+   <li><label><input type="checkbox"> Robotaxi活跃车队规模和付费订单数量。</label></li>
+   <li><label><input type="checkbox"> Robotaxi每车每日收入与运营成本。</label></li>
+   <li><label><input type="checkbox"> 储能业务新增订单、毛利率及现金流表现。</label></li>
+   <li><label><input type="checkbox"> 下一季度汽车交付量与平均售价变化。</label></li>
+   <li><label><input type="checkbox"> Optimus在工厂中的实际任务完成率。</label></li>
+   <li><label><input type="checkbox"> AI基础设施投入与资本开支回报情况。</label></li>
+  </ul>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+   <span class="sub" id="progress">完成 0 / 12</span>
+   <button id="reset" style="background:#293343;color:white;border:0;border-radius:5px;padding:7px 13px;font-size:11px">重置清单</button>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="sources">
+ <div class="section-head"><h2>12 / 信息来源与研究依据</h2>
+ <span class="sub">Primary Sources & Independent Reporting</span></div>
+
+ <div class="source">
+  <strong>01 · Tesla Investor Relations</strong>
+  <p>特斯拉官方投资者关系网站，季度披露、财务报表与经营更新。</p>
+  <a href="https://ir.tesla.com/" target="_blank">https://ir.tesla.com/</a>
+ </div>
+ <div class="source">
+  <strong>02 · Tesla Q3 2026 Quarterly Update</strong>
+  <p>第三季度经营指标、FSD、Robotaxi、能源业务及财务数据。</p>
+  <a href="https://assets-ir.tesla.com/tesla-contents/IR/TSLA-Q3-2026-Update.pdf" target="_blank">查看官方PDF</a>
+ </div>
+ <div class="source">
+  <strong>03 · Tesla Q3 Production & Deliveries</strong>
+  <p>2026年第三季度汽车生产、交付与储能部署数据。</p>
+  <a href="https://ir.tesla.com/press-release/tesla-third-quarter-2026-production-deliveries-and-deployments" target="_blank">查看官方公告</a>
+ </div>
+ <div class="source">
+  <strong>04 · Reuters · Italy Gives Green Light to Tesla Self-Driving System</strong>
+  <p>2026年11月20日，意大利给予TAD阶段性批准的报道。</p>
+  <a href="https://www.reuters.com/world/italy-gives-green-light-tesla-self-driving-system-ahead-eu-approval-2026-11-20/" target="_blank">查看Reuters报道</a>
+ </div>
+ <div class="source">
+  <strong>05 · The Verge · Tesla FSD v15</strong>
+  <p>2026年11月23日，FSD v15与Reality View新功能及安全监管背景。</p>
+  <a href="https://www.theverge.com/transportation/1039919/tesla-fsd-v15-reality-view-gta-nhtsa-safety-rollout" target="_blank">查看原文</a>
+ </div>
+ <div class="source">
+  <strong>06 · Business Insider · Autonomous Model Y</strong>
+  <p>2026年11月19日，马斯克关于六至七座无方向盘自动驾驶Model Y的规划。</p>
+  <a href="https://www.businessinsider.com/elon-musk-tesla-robotaxi-autonomous-model-y-more-seats-cybercab-2026-11" target="_blank">查看原文</a>
+ </div>
+ <div class="source">
+  <strong>07 · Reuters via Investing.com · Cybercab</strong>
+  <p>2026年10月21日，Cybercab计划在年底开始客户交付及监管调查背景。</p>
+  <a href="https://www.investing.com/news/stock-market-news/tesla-aims-to-sell-cybercab-robotaxis-by-end-of-year-despite-federal-probe-4964518" target="_blank">查看原文</a>
+ </div>
+ <div class="source">
+  <strong>08 · Tesla Oracle</strong>
+  <p>用于辅助追踪Robotaxi、Cybercab和产品动态的行业新闻来源，非公司官方披露。</p>
+  <a href="https://www.teslaoracle.com/" target="_blank">查看网站</a>
+ </div>
+
+ <div class="disclaimer">
+  <strong>研究说明与风险提示：</strong><br>
+  1. 本报告以2026年11月24日为信息截点，重点追踪2026年10月24日至11月24日公开信息。季度经营数据作为背景基准引用。<br>
+  2. 区分公司正式公告、管理层规划、媒体报道及分析判断。未获得独立验证的数据不视为已实现业绩。<br>
+  3. 本报告未接入实时行情、完整卖方一致预期及实时估值数据库，因此不展示未经核实的最新股价、市盈率或目标价。<br>
+  4. 文中情景概率、风险等级和重要性评分均为定性研究假设，不构成统计预测。<br>
+  5. 本报告仅用于信息研究与投资决策辅助，不构成证券投资建议。股票投资存在本金损失风险。
+ </div>
+</section>
+
+<footer class="footer">
+ <div style="font-weight:800;letter-spacing:2px;color:#dbe2eb">TESLA · INTELLIGENCE RESEARCH</div>
+ <p>特斯拉最新动态全景追踪 · TSLA · 2026.11.24</p>
+ <p>研究框架：公司经营 × 技术创新 × 行业竞争 × 宏观环境</p>
+ <p>© 2026 AIPE Investment Research. All rights reserved.</p>
+</footer>
+</main>
+</div>
+
+<script>
+// 左侧导航高亮
+const navLinks=document.querySelectorAll('.sidebar a');
+const sections=[...navLinks].map(a=>document.querySelector(a.getAttribute('href')));
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   navLinks.forEach(a=>a.classList.toggle('active',
+    a.getAttribute('href')==='#'+entry.target.id));
+  }
+ });
+},{rootMargin:'-15% 0px -75% 0px'});
+sections.forEach(s=>s&&observer.observe(s));
+
+// 事件分类过滤
+document.querySelectorAll('[data-filter]').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('[data-filter]').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const type=btn.dataset.filter;
+  document.querySelectorAll('.event').forEach(item=>{
+   item.classList.toggle('hidden',type!=='all'&&item.dataset.category!==type);
+  });
+ });
+});
+
+// 技术业务切换
+document.querySelectorAll('[data-tab]').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('[data-tab]').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+ });
+});
+
+// 动态研究清单
+const checks=[...document.querySelectorAll('#checklist input')];
+function updateProgress(){
+ const done=checks.filter(c=>c.checked).length;
+ document.getElementById('progress').textContent=`完成 ${done} / ${checks.length}`;
+}
+checks.forEach(c=>c.addEventListener('change',updateProgress));
+document.getElementById('reset').addEventListener('click',()=>{
+ checks.forEach(c=>c.checked=false);
+ updateProgress();
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

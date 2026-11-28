@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Palantir Technologies Inc.（NASDAQ: PLTR）体系全景解析，涵盖创始人、核心管理层、股本结构、创始人投票权、子公司、关联交易与员工股权激励。">
+<title>Palantir体系全景解析_2026-11-25</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+          300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,15%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+          300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+          900:'hsl(30,85%,20%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ html{scroll-behavior:auto}
+}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.btn-interactive:active{transform:scale(.96)}
+.card-interactive{transition:all .3s ease-out;border:1px solid transparent}
+.dark .card-interactive{--border-lightness:60%}
+.card-interactive:hover{transform:translateY(-4px);box-shadow:0 20px 25px -5px rgba(0,0,0,.12);border-color:hsl(20,90%,65%)}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{text-align:left;padding:.85rem .75rem;border-bottom:1px solid hsl(0,0%,88%);vertical-align:top}
+th{font-weight:700;color:#7c2d12;background:rgba(251,146,60,.09);white-space:nowrap}
+.dark th,.dark td{border-bottom-color:hsl(0,0%,30%)}
+.dark th{color:#fdba74;background:rgba(194,65,12,.14)}
+.table-wrap{overflow-x:auto;border-radius:.8rem}
+#mobileMenu{display:none}
+#mobileMenu.mobile-menu-open{display:block}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){
+ header .max-w-7xl{padding-left:1rem;padding-right:1rem}
+ header .brand-title{font-size:.98rem;white-space:nowrap}
+ #mobileMenu{margin-top:1rem;padding:1rem 0 .5rem;border-top:1px solid rgba(20,20,20,.12);max-height:calc(100vh - 90px);overflow-y:auto}
+ .dark #mobileMenu{border-top-color:rgba(255,255,255,.15)}
+ #mobileMenu a{display:block;width:100%;padding:.7rem .5rem;border-radius:.5rem}
+}
+@media(min-width:768px){
+ header nav[aria-label="桌面端导航"] a{color:#374151}
+ .dark header nav[aria-label="桌面端导航"] a{color:#e5e7eb}
+ header nav[aria-label="桌面端导航"] a:hover,.dark header nav[aria-label="桌面端导航"] a:hover{color:hsl(20,90%,50%)}
+}
+header{overflow:visible}
+.section-kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#c2410c}
+.dark .section-kicker{color:#fdba74}
+.metric{font-variant-numeric:tabular-nums}
+.moat-bar{height:9px;border-radius:99px;background:#e5e7eb;overflow:hidden}
+.dark .moat-bar{background:#374151}
+.moat-bar>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#c2410c,#fb923c)}
+.timeline{border-left:2px solid rgba(234,88,12,.35);margin-left:.55rem;padding-left:1.35rem}
+.timeline-item{position:relative;padding-bottom:1.5rem}
+.timeline-item:before{content:"";position:absolute;left:-1.78rem;top:.35rem;width:10px;height:10px;border-radius:50%;background:#ea580c;border:2px solid #fff;box-shadow:0 0 0 2px rgba(234,88,12,.25)}
+.dark .timeline-item:before{border-color:#111827}
+.source-link{color:#c2410c;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#fdba74}
+.source-link:hover{opacity:.75}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:.22rem .65rem;font-size:.72rem;font-weight:700;background:rgba(234,88,12,.1);color:#9a3412}
+.dark .tag{background:rgba(251,146,60,.16);color:#fdba74}
+</style>
+
+<script>
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ const isDark=document.documentElement.classList.contains('dark');
+ document.getElementById('sunIcon').style.display=isDark?'block':'none';
+ document.getElementById('moonIcon').style.display=isDark?'none':'block';
+ localStorage.setItem('palantir-theme',isDark?'dark':'light');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+ <div class="max-w-7xl mx-auto px-6 py-4">
+  <div class="flex items-center justify-between gap-3">
+   <h1 class="brand-title text-xl font-bold text-primary-700 dark:text-primary-300">Palantir体系全景解析</h1>
+   <nav class="hidden md:flex space-x-5 flex-shrink-0" aria-label="桌面端导航">
+    <a href="#overview" class="text-sm font-medium transition-colors">总览</a>
+    <a href="#founder" class="text-sm font-medium transition-colors">管理层</a>
+    <a href="#capital" class="text-sm font-medium transition-colors">股本</a>
+    <a href="#equity" class="text-sm font-medium transition-colors">股权控制</a>
+    <a href="#companies" class="text-sm font-medium transition-colors">企业关系</a>
+    <a href="#employee" class="text-sm font-medium transition-colors">员工激励</a>
+    <a href="#summary" class="text-sm font-medium transition-colors">综合研判</a>
+   </nav>
+   <div class="flex items-center space-x-2 flex-shrink-0">
+    <button type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="打开或关闭导航菜单" aria-controls="mobileMenu" aria-expanded="false" id="mobileMenuButton">
+     <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+    </button>
+    <button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" aria-hidden="true">
+   <nav class="flex flex-col space-y-1">
+    <a href="#overview" class="text-sm font-medium">总览</a>
+    <a href="#founder" class="text-sm font-medium">创始人与核心管理层</a>
+    <a href="#capital" class="text-sm font-medium">股本数量变化</a>
+    <a href="#equity" class="text-sm font-medium">股权结构与控制权</a>
+    <a href="#companies" class="text-sm font-medium">子公司与关联企业</a>
+    <a href="#employee" class="text-sm font-medium">员工持股与激励</a>
+    <a href="#summary" class="text-sm font-medium">综合研判</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main class="min-h-screen">
+<section id="overview" class="pt-40 pb-20 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="section-kicker mb-4">Corporate structure · Governance · Ownership</div>
+  <div class="flex flex-wrap items-center gap-3 mb-5">
+   <span class="tag">NASDAQ: PLTR</span>
+   <span class="tag">研究基准日：2026-11-25</span>
+   <span class="tag">美国特拉华州注册</span>
+  </div>
+  <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">Palantir体系全景解析</h2>
+  <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed max-w-5xl">
+   Palantir Technologies Inc. 是一家以数据整合、决策工作流与人工智能平台为核心的软件公司。公司于2003年创立，2020年通过直接上市登陆纽约证券交易所，后转至纳斯达克交易。其治理结构的核心特征并非传统家族控股，而是由创始人投票协议、Founder Voting Trust 与 A/B/F 多类别股票共同构成的特殊控制体系。2026年第三季度，公司营收达到23.13亿美元，同比增长96%，美国商业收入首次超过美国政府收入，显示其业务结构正在从政府客户主导转向商业与政府双轮扩张。[1][2]
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-6 mt-10">
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="users" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i></div>
+     <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">创始人控制权</h3>
+    </div>
+    <div class="text-3xl font-bold metric text-primary-700 dark:text-primary-300">49.999999%</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">创始人投票安排通常可将创始人集团投票权维持在约49.999999%，并非经济持股比例。[3]</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+     <div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center"><i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i></div>
+     <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">最新总股本</h3>
+    </div>
+    <div class="text-3xl font-bold metric text-accent-700 dark:text-accent-300">24.09亿股</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">截至2026年10月26日，A/B/F三类普通股合计约24.09亿股。[2]</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="trending-up" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i></div>
+     <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">2026年前三季度营收</h3>
+    </div>
+    <div class="text-3xl font-bold metric text-primary-700 dark:text-primary-300">$58.81亿</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">同比增长约91.66%；GAAP净利润约30.77亿美元。[2]</p>
+   </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+   <div class="p-6 rounded-xl bg-primary-900 text-white">
+    <div class="flex items-center gap-2 mb-3"><i data-lucide="compass" class="w-5 h-5 text-orange-300"></i><h3 class="font-semibold text-lg">本报告核心判断</h3></div>
+    <p class="text-sm text-gray-200 leading-relaxed">Palantir的治理体系是“经济权益相对分散、投票权高度集中”的创始人治理结构。创始人控制力强化了战略连续性，但也降低普通股东对重大事项的实际影响力。</p>
+   </div>
+   <div class="p-6 rounded-xl bg-accent-50 dark:bg-gray-800 border border-accent-200 dark:border-gray-700">
+    <div class="flex items-center gap-2 mb-3"><i data-lucide="alert-circle" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i><h3 class="font-semibold text-lg text-accent-700 dark:text-accent-300">数据口径提示</h3></div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">财务数据以截至2026年9月30日的第三季度10-Q及公司股东信为主；股权受益所有权采用2026年4月6日代理声明披露口径；最新股本采用10-Q中2026年10月26日股数。市值为按公开股价与已发行股数估算的普通股市值，不等于完全摊薄企业价值。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="section-kicker mb-3">01 · Leadership</div>
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">创始人发展历程与核心管理层</h2>
+
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   Palantir于2003年由Peter Thiel、Alexander Karp与Stephen Cohen等人共同创立。公司最初聚焦政府与情报机构的数据分析需求，随后逐步将底层数据整合、权限治理和工作流能力产品化，扩展至金融、制造、能源、医疗、航空航天等商业场景。与典型SaaS公司从单一应用切入不同，Palantir长期强调将客户分散的数据源、业务规则和组织流程整合为可执行的操作系统。[4]
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-10">
+   <div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl">
+    <div class="flex items-center gap-3 mb-4"><i data-lucide="user-round" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i><h3 class="font-semibold text-primary-700 dark:text-primary-300">Alexander Karp</h3></div>
+    <div class="text-sm font-semibold mb-2">联合创始人、CEO、董事</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">自2005年起担任CEO，2003年起担任董事。长期主导公司战略、文化与客户定位，是公司经营方向的核心决策者。[5]</p>
+   </div>
+   <div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+    <div class="flex items-center gap-3 mb-4"><i data-lucide="brain" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i><h3 class="font-semibold text-accent-700 dark:text-accent-300">Peter Thiel</h3></div>
+    <div class="text-sm font-semibold mb-2">联合创始人、董事会主席</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">自2003年担任董事会主席。其长期战略影响力与创始人投票安排密切相关，同时通过创始人投票信托持有Class F股份。[5]</p>
+   </div>
+   <div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl">
+    <div class="flex items-center gap-3 mb-4"><i data-lucide="code-2" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i><h3 class="font-semibold text-primary-700 dark:text-primary-300">Stephen Cohen</h3></div>
+    <div class="text-sm font-semibold mb-2">联合创始人、总裁、秘书</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">2005年起担任董事，长期负责产品、技术与公司运营相关工作，是创始团队中持续参与经营的重要成员。[5]</p>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-5">核心管理层与职责分工</h3>
+  <div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm mb-8">
+   <table>
+    <thead><tr><th>管理人员</th><th>职务</th><th>公开披露的任职信息</th><th>治理角色</th></tr></thead>
+    <tbody>
+     <tr><td class="font-semibold">Alexander Karp</td><td>CEO、联合创始人、董事</td><td>CEO自2005年；董事自2003年</td><td>总体战略、组织文化、重大客户与资本市场沟通</td></tr>
+     <tr><td class="font-semibold">Peter Thiel</td><td>董事会主席、联合创始人</td><td>董事会主席自2003年</td><td>创始人治理、董事会层面战略影响</td></tr>
+     <tr><td class="font-semibold">Stephen Cohen</td><td>总裁、公司秘书、联合创始人</td><td>董事自2005年</td><td>产品与公司运营的创始团队延续</td></tr>
+     <tr><td class="font-semibold">Shyam Sankar</td><td>CTO、执行副总裁</td><td>2006年加入公司</td><td>技术战略、平台架构与工程组织</td></tr>
+     <tr><td class="font-semibold">David Glazer</td><td>CFO、财务主管</td><td>2013年加入公司</td><td>财务管理、资本配置、财务披露</td></tr>
+     <tr><td class="font-semibold">Ryan Taylor</td><td>CRO、首席法务官</td><td>2010年加入公司</td><td>商业拓展、销售体系与法律事务</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-8">资料来源：Palantir官方管理层页面及董事会披露。[5][6]</p>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-5">战略演进时间线</h3>
+  <div class="timeline">
+   <div class="timeline-item">
+    <div class="font-bold text-primary-700 dark:text-primary-300">2003—2010：政府与情报业务起步</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">围绕复杂数据整合、情报分析和安全决策场景形成早期产品能力，逐步建立Gotham平台与政府客户关系。</p>
+   </div>
+   <div class="timeline-item">
+    <div class="font-bold text-primary-700 dark:text-primary-300">2011—2019：Foundry商业化与平台化</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">将数据整合和业务操作能力扩展至商业客户，形成Gotham、Foundry等平台，并建设Apollo软件交付与持续部署能力。</p>
+   </div>
+   <div class="timeline-item">
+    <div class="font-bold text-primary-700 dark:text-primary-300">2020：直接上市</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">2020年9月30日完成纽约证券交易所直接上市，而非传统IPO增发融资。公司由私人企业转为公开市场公司。[4][7]</p>
+   </div>
+   <div class="timeline-item">
+    <div class="font-bold text-primary-700 dark:text-primary-300">2023：AIP成为AI商业化入口</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">Artificial Intelligence Platform（AIP）将大语言模型与企业数据、权限、工作流和行动机制连接，推动企业AI从试验走向实际生产环境。</p>
+   </div>
+   <div class="timeline-item">
+    <div class="font-bold text-primary-700 dark:text-primary-300">2024—2026：美国商业业务加速</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">公司持续强化AIP Bootcamp、行业解决方案与快速部署模式。2026年第三季度美国商业收入达到9.84亿美元，同比增长148%，首次超过美国政府收入。[1][2]</p>
+   </div>
+  </div>
+
+  <div class="mt-8 grid md:grid-cols-2 gap-6">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+    <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">管理哲学：以客户任务为中心</h3>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5"></i><span>强调与客户共同构建可落地的工作流，而不是单纯出售标准化软件席位。</span></li>
+     <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5"></i><span>通过Bootcamp与现场部署缩短从产品试用到生产应用的周期。</span></li>
+     <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary-500 flex-shrink-0 mt-0.5"></i><span>把数据权限、审计、治理与安全控制嵌入AI应用流程。</span></li>
+    </ul>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+    <h3 class="font-semibold text-lg text-accent-700 dark:text-accent-300 mb-3">2026年近期战略重点</h3>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li class="flex gap-2"><i data-lucide="target" class="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5"></i><span>扩大AIP在美国商业市场的渗透率，提升大客户扩张和续约贡献。</span></li>
+     <li class="flex gap-2"><i data-lucide="target" class="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5"></i><span>继续服务政府客户，拓展国防、情报及公共部门任务场景。</span></li>
+     <li class="flex gap-2"><i data-lucide="target" class="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5"></i><span>保持高毛利与现金流，同时控制快速增长带来的交付、云算力和人才成本。</span></li>
+    </ul>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-10 mb-4">管理层能力与组织护城河评估</h3>
+  <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm space-y-5">
+   <div><div class="flex justify-between text-sm mb-2"><span>创始团队稳定性</span><strong>9/10</strong></div><div class="moat-bar"><span style="width:90%"></span></div></div>
+   <div><div class="flex justify-between text-sm mb-2"><span>产品与技术战略连续性</span><strong>9/10</strong></div><div class="moat-bar"><span style="width:90%"></span></div></div>
+   <div><div class="flex justify-between text-sm mb-2"><span>商业化执行能力</span><strong>8/10</strong></div><div class="moat-bar"><span style="width:80%"></span></div></div>
+   <div><div class="flex justify-between text-sm mb-2"><span>治理透明度与外部制衡</span><strong>5/10</strong></div><div class="moat-bar"><span style="width:50%"></span></div></div>
+   <p class="text-xs text-gray-500 dark:text-gray-400">以上为本报告分析评分，并非第三方评级或公司披露指标。治理透明度得分相对较低，主要反映创始人投票权集中、公众股东制衡能力有限。</p>
+  </div>
+ </div>
+</section>
+
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="section-kicker mb-3">02 · Share capital</div>
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">股本数量变化：直接上市、股权激励与回购</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   Palantir于2020年采取直接上市方式进入公开市场。直接上市本身并不等同于传统IPO发行新股融资，因此不能把上市日的市场交易量简单理解为公司新增股本。上市后公司股本增长的主要来源包括员工期权行权、限制性股票单位（RSU）归属以及其他股权奖励；公司曾授权股票回购计划，但该计划于2026年1月终止。[7][8]
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-8">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">2020年直接上市参考价</div>
+    <div class="text-3xl font-bold text-primary-700 dark:text-primary-300 metric">$7.25</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">NYSE设定的参考价，不是发行价，也不代表投资者一定能以该价格成交。[7]</p>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">2026-10-26普通股总股数</div>
+    <div class="text-3xl font-bold text-accent-700 dark:text-accent-300 metric">24.09亿</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Class A、Class B与Class F合计约2,409,497,474股。[2]</p>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">2026-11-24参考收盘价</div>
+    <div class="text-3xl font-bold text-primary-700 dark:text-primary-300 metric">$160.80</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">按该价格乘以10月26日已发行股数，估算普通股市值约3,874亿美元；非完全摊薄市值。[9]</p>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">股本变化关键节点</h3>
+  <div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm mb-8">
+   <table>
+    <thead><tr><th>时间</th><th>事项</th><th>股本影响</th><th>治理与资本含义</th></tr></thead>
+    <tbody>
+     <tr><td>2003年</td><td>公司成立</td><td>私人公司阶段</td><td>创始团队与早期投资者建立资本结构。</td></tr>
+     <tr><td>2020-09-30</td><td>纽约证券交易所直接上市</td><td>Class A股票开始公开交易</td><td>不是传统IPO承销发行；NYSE参考价为7.25美元。[7]</td></tr>
+     <tr><td>2020年后</td><td>员工股权奖励持续归属、期权行权</td><td>普通股股数逐步增加</td><td>形成长期人才激励，同时产生潜在稀释。</td></tr>
+     <tr><td>2023-08</td><td>董事会授权最高10亿美元回购计划</td><td>回购并注销Class A股份</td><td>回购属于资本配置工具，不构成固定回购承诺。[8]</td></tr>
+     <tr><td>2025财年</td><td>回购约60.04万股Class A，金额约7,500万美元</td><td>减少已发行股份</td><td>回购规模相对股本总量有限。[8]</td></tr>
+     <tr><td>2026-01</td><td>终止上述回购计划</td><td>停止该计划项下后续回购</td><td>资本配置重点转向业务扩张与员工激励。[8]</td></tr>
+     <tr><td>2026-09-30</td><td>第三季度10-Q股本披露</td><td>约24.09亿股</td><td>A股约23.06亿、B股约1.02亿、F股约100.5万股。[2]</td></tr>
+     <tr><td>2026-10-26</td><td>10-Q披露最新股数</td><td>约24.095亿股</td><td>Class A 2,306,705,341股；Class B 101,787,133股；Class F 1,005,000股。[2]</td></tr>
+    </tbody>
+   </table>
+  </div>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">最新普通股股本结构</h3>
+  <div class="grid md:grid-cols-2 gap-6">
+   <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm">
+    <h4 class="font-semibold mb-5">截至2026年10月26日</h4>
+    <div class="space-y-5">
+     <div>
+      <div class="flex justify-between text-sm mb-2"><span>Class A普通股</span><strong>2,306,705,341股</strong></div>
+      <div class="moat-bar"><span style="width:95.73%"></span></div>
+      <div class="text-xs text-gray-500 mt-1">约占普通股总数95.73%</div>
+     </div>
+     <div>
+      <div class="flex justify-between text-sm mb-2"><span>Class B普通股</span><strong>101,787,133股</strong></div>
+      <div class="moat-bar"><span style="width:4.22%"></span></div>
+      <div class="text-xs text-gray-500 mt-1">约占普通股总数4.22%</div>
+     </div>
+     <div>
+      <div class="flex justify-between text-sm mb-2"><span>Class F普通股</span><strong>1,005,000股</strong></div>
+      <div class="moat-bar"><span style="width:.05%"></span></div>
+      <div class="text-xs text-gray-500 mt-1">约占普通股总数0.04%</div>
+     </div>
+    </div>
+   </div>
+   <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm">
+    <h4 class="font-semibold mb-4">经济权益与投票权并不对称</h4>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">Class A占普通股数量绝大多数，但每股只有1票；Class B每股10票；Class F的投票权则根据创始人投票安排动态计算。少量Class F股份可以与创始人持有的A/B股共同发挥控制权放大作用。</p>
+    <div class="p-4 rounded-lg bg-accent-50 dark:bg-accent-900/20">
+     <div class="text-sm font-semibold text-accent-700 dark:text-accent-300">核心结论</div>
+     <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">不能仅以Class F股份数量很少，推断其治理影响有限。真正重要的是Class F与Founder Voting Agreement组合后的投票机制。</p>
+    </div>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-10 mb-4">潜在稀释：未归属奖励与期权规模</h3>
+  <div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+   <table>
+    <thead><tr><th>截至2026-09-30</th><th>Class A</th><th>Class B</th><th>分析含义</th></tr></thead>
+    <tbody>
+     <tr><td>未行权股票期权</td><td>17,722,197股</td><td>129,119,109股</td><td>未来行权可能增加流通股数量，B股行权尤其关系创始人投票权结构。</td></tr>
+     <tr><td>RSU</td><td>17,450,316股</td><td>18,525,000股</td><td>归属后可能转化为普通股，需关注实际归属、税款净额结算与员工出售。</td></tr>
+     <tr><td>SAR</td><td>18,530,721股</td><td>—</td><td>股票增值权通常按增值部分结算，实际股份影响需结合结算规则计算。</td></tr>
+     <tr><td>P-RSU</td><td>139,562股</td><td>—</td><td>绩效条件达成后方可归属，实际数量取决于绩效结果。</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">上述为10-Q披露的奖励工具数量，不应直接简单相加后视为必然新增股数；不同工具的归属、行权、净额结算及稀释计算方法不同。[2]</p>
+
+  <div class="mt-8 pl-4 pr-4 py-4 border-l-4 border-accent-500 bg-accent-50/50 dark:bg-accent-900/20 rounded-r-lg">
+   <p class="text-sm text-accent-900 dark:text-accent-100 leading-relaxed"><strong>资本结构判断：</strong>Palantir当前并不存在持续进行大规模公开市场回购的计划。股本变化更值得关注的是股权薪酬、期权行权及RSU归属。对长期股东而言，评估每股价值时应同时观察收入增长、自由现金流、股权激励费用与稀释后股数。</p>
+  </div>
+ </div>
+</section>
+
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="section-kicker mb-3">03 · Ownership & voting</div>
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">股权结构与实际控制权：创始人投票权体系</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   Palantir不是典型由某一创始人通过家族信托持有绝大多数经济权益的家族企业。其治理核心是三位创始人及其关联方参与的Founder Voting Agreement，以及由创始人建立的Founder Voting Trust。Class F股份由该投票信托持有，Class A、Class B与Class F之间存在不同投票权安排。该结构的目的，是让创始团队在不必持有过半经济权益的情况下，仍能对重大股东事项保持高度影响力。[2][3]
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-8">
+   <div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+    <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">Class A</div>
+    <div class="text-3xl font-bold text-accent-700 dark:text-accent-300">1票</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">每股1票，主要面向公开市场投资者。</p>
+   </div>
+   <div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+    <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">Class B</div>
+    <div class="text-3xl font-bold text-accent-700 dark:text-accent-300">10票</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">每股10票，创始人及关联方持有比例较高。</p>
+   </div>
+   <div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+    <div class="text-sm text-gray-600 dark:text-gray-400 mb-2">Class F</div>
+    <div class="text-3xl font-bold text-accent-700 dark:text-accent-300">动态投票权</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">由创始人投票信托持有，按章程及创始人持股门槛动态计算。</p>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">主要创始人受益所有权（2026年4月6日口径）</h3>
+  <div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm mb-6">
+   <table>
+    <thead><tr><th>股东/管理人员</th><th>Class A</th><th>Class B</th><th>Class F</th><th>披露投票权占比</th></tr></thead>
+    <tbody>
+     <tr><td class="font-semibold">Alexander Karp</td><td>6,432,258</td><td>86,907,993</td><td>335,000</td><td>11.4%</td></tr>
+     <tr><td class="font-semibold">Stephen Cohen</td><td>592</td><td>36,048,506</td><td>335,000</td><td>3.0%</td></tr>
+     <tr><td class="font-semibold">Peter Thiel</td><td>68,871,556</td><td>29,128,444</td><td>335,000</td><td>7.9%</td></tr>
+     <tr><td class="font-semibold">Shyam Sankar</td><td>1,392,685</td><td>4,989,112</td><td>—</td><td>低于1%（披露表中以*表示）</td></tr>
+     <tr><td class="font-semibold">BlackRock</td><td>158,217,849</td><td>—</td><td>—</td><td>3.5%</td></tr>
+     <tr><td class="font-semibold">全体高管与董事（10人）</td><td>79,155,589</td><td>157,086,362</td><td>1,005,000</td><td>50.8%</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-8">来源：2026年年度股东大会代理声明，受益所有权统计日期为2026年4月6日。表中各创始人投票权百分比为该代理声明的披露口径，不能与后续10-Q中创始人集团的动态投票权计算直接混用。[10]</p>
+
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">Founder Voting Trust与控制权机制</h3>
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+   <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl">
+    <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">控制架构</h4>
+    <div class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <div class="p-3 rounded-lg bg-white dark:bg-gray-800 text-center font-semibold">创始人：Karp / Cohen / Thiel</div>
+     <div class="text-center text-accent-600"><i data-lucide="arrow-down" class="w-5 h-5 mx-auto"></i></div>
+     <div class="p-3 rounded-lg bg-white dark:bg-gray-800 text-center font-semibold">Founder Voting Agreement</div>
+     <div class="text-center text-accent-600"><i data-lucide="arrow-down" class="w-5 h-5 mx-auto"></i></div>
+     <div class="p-3 rounded-lg bg-white dark:bg-gray-800 text-center font-semibold">Founder Voting Trust（持有Class F）</div>
+     <div class="text-center text-accent-600"><i data-lucide="arrow-down" class="w-5 h-5 mx-auto"></i></div>
+     <div class="p-3 rounded-lg bg-white dark:bg-gray-800 text-center font-semibold">Palantir Technologies Inc.</div>
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">示意图表达治理关系，不代表全部法律持股链条或信托受益权结构。</p>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+    <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">Class F投票权的关键规则</h4>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5"></i><span>当创始人及特定关联方满足持股门槛时，Class F通常与协议覆盖的A/B股共同将创始人投票权调整至49.999999%。</span></li>
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5"></i><span>若不满足持股门槛，Class F通常按每股10票的机制投票。</span></li>
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5"></i><span>如果创始人协议覆盖的A/B股本身已超过相关事项49.999999%的投票权，Class F在该事项上可能为零票。</span></li>
+     <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5"></i><span>创始人退出投票协议、死亡或失能等情况，可能改变剩余创始人的投票安排与权力集中程度。</span></li>
+    </ul>
+   </div>
+  </div>
+
+  <div class="p-5 rounded-xl bg-primary-50/70 dark:bg-primary-900/20 border-l-4 border-primary-500 mb-8">
+   <p class="text-sm text-gray-800 dark:text-gray-200 leading-relaxed"><strong>重要治理细节：</strong>公司在2026年第三季度10-Q中披露，截至2026年10月26日，排除Class F投票权后，创始人及其关联方持有约22%的公司投票权；在满足章程门槛时，Class F及相关投票协议可使创始人投票权通常达到49.999999%。公司同时说明，若创始人及关联方在未来取得超过50%的投票权，公司可能符合Nasdaq“受控公司”定义，但截至该10-Q披露时，公司仍不被视为受控公司。[2][3]</p>
+  </div>
+
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">股权与控制权演变时间线</h3>
+  <div class="timeline">
+   <div class="timeline-item"><div class="font-bold">2003年：创始团队成立公司</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">创始团队以私人公司形式经营，控制权集中在创始人及早期投资人。</p></div>
+   <div class="timeline-item"><div class="font-bold">2020年：建立多类别股票结构并直接上市</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">公司在直接上市前修订公司章程，设立Class A、Class B与Class F普通股，构建差异化投票权安排。[4]</p></div>
+   <div class="timeline-item"><div class="font-bold">2020—2025年：员工股权激励扩大</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">员工期权、RSU等逐步归属，Class A与Class B流通股数量持续变化；创始人投票机制持续发挥作用。</p></div>
+   <div class="timeline-item"><div class="font-bold">2026年4月：年度代理声明披露创始人投票权</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">代理声明披露创始人及相关协议安排的持股和投票权明细，高管与董事整体投票权占比为50.8%。[10]</p></div>
+   <div class="timeline-item"><div class="font-bold">2026年9—10月：最新10-Q更新股本及门槛</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-1">公司披露Class A、B、F最新股数，并将创始人集团满足Class F控制安排的最低权益门槛披露为1亿股证券。[2]</p></div>
+  </div>
+
+  <div class="mt-8 grid md:grid-cols-2 gap-6">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+    <h4 class="font-semibold text-green-700 dark:text-green-400 mb-3"><i data-lucide="shield-check" class="inline w-5 h-5 mr-1"></i>控制权稳定因素</h4>
+    <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+     <li>• 创始人投票协议与Class F安排具有章程层面的制度基础。</li>
+     <li>• CEO、董事会主席与总裁均来自创始团队，战略连续性较强。</li>
+     <li>• 创始人及关联方持有大量Class B股份，投票权基础不只依赖Class F。</li>
+    </ul>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+    <h4 class="font-semibold text-red-700 dark:text-red-400 mb-3"><i data-lucide="alert-triangle" class="inline w-5 h-5 mr-1"></i>控制权潜在风险</h4>
+    <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+     <li>• 普通Class A股东对董事选举及重大事项的影响力有限。</li>
+     <li>• 创始人之间的意见分歧或成员退出可能改变投票安排。</li>
+     <li>• 控制权集中可能弱化外部股东对关联交易、薪酬与重大资本决策的制衡。</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="section-kicker mb-3">04 · Subsidiaries & related parties</div>
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">关联上市公司与企业关系：以全资子公司和平台生态为主</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   与拥有多个分拆上市主体的集团不同，Palantir目前没有类似“母公司—多个独立上市子公司”的公开上市矩阵。公司主要通过Palantir Technologies Inc.及其在美国、欧洲、亚洲和其他地区设立的子公司开展业务。其商业生态由政府机构、企业客户、云服务供应商、技术合作伙伴及投资组合公司构成。2025年年报披露了多家主要子公司，包括Palantir USG、Palantir GSC、Palantir International以及瑞士、德国、英国、日本、澳大利亚、加拿大、印度等地实体。[11]
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-8">
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-3"><i data-lucide="shield" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i><h3 class="font-semibold text-primary-700 dark:text-primary-300">Palantir USG</h3></div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">美国政府业务相关实体，服务政府、国防与公共部门客户。政府业务仍是集团重要收入来源。</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-3"><i data-lucide="globe" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i><h3 class="font-semibold text-accent-700 dark:text-accent-300">Palantir International</h3></div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">国际业务实体之一，配合各区域子公司承接客户合同、产品部署和本地化交付。</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-3"><i data-lucide="building-2" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i><h3 class="font-semibold text-primary-700 dark:text-primary-300">Palantir GSC</h3></div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">集团披露的美国子公司之一，纳入Palantir集团合并体系。</p>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">主要平台与业务分工</h3>
+  <div class="table-wrap bg-white dark:bg-gray-900 rounded-xl shadow-sm mb-8">
+   <table>
+    <thead><tr><th>平台/产品</th><th>主要应用场景</th><th>客户价值</th><th>商业化意义</th></tr></thead>
+    <tbody>
+     <tr><td class="font-semibold">Gotham</td><td>国防、情报、公共安全与复杂任务分析</td><td>整合多源数据，辅助任务规划、情报分析和行动决策</td><td>强化政府客户关系与高复杂度任务壁垒</td></tr>
+     <tr><td class="font-semibold">Foundry</td><td>企业数据运营、制造、能源、金融、医疗等</td><td>把分散数据、业务规则与运营流程连接起来</td><td>扩大商业客户覆盖与跨部门部署深度</td></tr>
+     <tr><td class="font-semibold">AIP</td><td>企业及政府生成式AI、智能体和自动化工作流</td><td>在数据权限和业务治理框架下连接模型、数据与行动</td><td>2026年商业收入快速增长的核心产品入口之一</td></tr>
+     <tr><td class="font-semibold">Apollo</td><td>软件交付、持续部署、跨环境运维</td><td>支持软件在云端、私有云及受限环境持续更新</td><td>提高部署黏性，支撑复杂客户环境中的长期服务</td></tr>
+    </tbody>
+   </table>
+  </div>
+
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">最新业务结构：政府与商业双轮驱动</h3>
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">2026年第三季度收入</h4>
+    <div class="text-4xl font-bold metric text-primary-700 dark:text-primary-300">$23.13亿</div>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">同比增长96%，环比增长约20%。</p>
+    <div class="mt-5 space-y-4">
+     <div><div class="flex justify-between text-sm mb-1"><span>美国商业收入</span><strong>$9.84亿</strong></div><div class="moat-bar"><span style="width:42.5%"></span></div><div class="text-xs text-gray-500 mt-1">同比增长148%，占总收入约42.5%</div></div>
+     <div><div class="flex justify-between text-sm mb-1"><span>美国政府收入</span><strong>$9.53亿</strong></div><div class="moat-bar"><span style="width:41.2%"></span></div><div class="text-xs text-gray-500 mt-1">同比增长96%，占总收入约41.2%</div></div>
+     <div><div class="flex justify-between text-sm mb-1"><span>其他地区及业务</span><strong>$3.76亿</strong></div><div class="moat-bar"><span style="width:16.3%"></span></div><div class="text-xs text-gray-500 mt-1">美国以外收入约占16.3%</div></div>
+    </div>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">2026年前三季度区域收入</h4>
+    <div class="text-4xl font-bold metric text-accent-700 dark:text-accent-300">$58.81亿</div>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">同比增长约91.7%。</p>
+    <div class="mt-5 space-y-4">
+     <div><div class="flex justify-between text-sm mb-1"><span>美国</span><strong>$47.92亿</strong></div><div class="moat-bar"><span style="width:81.5%"></span></div><div class="text-xs text-gray-500 mt-1">占前三季度总收入81%</div></div>
+     <div><div class="flex justify-between text-sm mb-1"><span>美国以外</span><strong>$10.89亿</strong></div><div class="moat-bar"><span style="width:18.5%"></span></div><div class="text-xs text-gray-500 mt-1">占前三季度总收入19%</div></div>
+    </div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">美国市场是当前增长主引擎，但收入地域集中度也相应提高。[2]</p>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">关联交易：CEO专机使用费用</h3>
+  <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 mb-8">
+   <div class="grid md:grid-cols-3 gap-5">
+    <div><div class="text-sm text-gray-500 dark:text-gray-400">2026年前三季度</div><div class="text-3xl font-bold text-accent-700 dark:text-accent-300 metric">$1,100万</div><p class="text-xs text-gray-500 mt-1">公司承担的CEO专机使用相关费用</p></div>
+    <div><div class="text-sm text-gray-500 dark:text-gray-400">2025年前三季度</div><div class="text-3xl font-bold metric">$1,400万</div><p class="text-xs text-gray-500 mt-1">同期比较口径</p></div>
+    <div><div class="text-sm text-gray-500 dark:text-gray-400">同比变化</div><div class="text-3xl font-bold text-green-600 dark:text-green-400 metric">-21.43%</div><p class="text-xs text-gray-500 mt-1">按披露金额计算</p></div>
+   </div>
+   <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-5">Palantir 2026年第三季度10-Q披露，CEO Alexander Karp使用其受益拥有的非商业飞机进行商务及个人旅行，公司在截至2026年9月30日的九个月内因此发生约1,100万美元费用，2025年同期约1,400万美元。该事项属于需要关注的关联方交易，投资者应结合公司费用政策、董事会审查程序、商务与个人使用分摊及披露透明度评估其治理质量。公开披露的费用本身并不能单独证明存在不当行为。[2]</p>
+  </div>
+
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">企业关系与风险分析</h3>
+  <div class="grid md:grid-cols-2 gap-6">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+    <h4 class="font-semibold text-green-700 dark:text-green-400 mb-3">协同优势</h4>
+    <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+     <li>• 政府客户长期项目形成高复杂度部署经验和可信任关系。</li>
+     <li>• Foundry与AIP复用底层数据模型、权限和治理架构。</li>
+     <li>• Apollo支持多云、私有云及受限网络环境，扩大部署场景。</li>
+     <li>• 跨区域子公司帮助支持本地合同、交付和合规运营。</li>
+    </ul>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-sm">
+    <h4 class="font-semibold text-red-700 dark:text-red-400 mb-3">主要风险</h4>
+    <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+     <li>• 美国市场收入占比高，政策、预算与采购节奏变化可能产生影响。</li>
+     <li>• 政府项目涉及安全、隐私、伦理及政治争议，声誉风险较高。</li>
+     <li>• 商业AI平台竞争加剧，客户可能选择云厂商或其他企业软件供应商。</li>
+     <li>• 关联方交易、创始人控制权与薪酬安排需要持续审视。</li>
+    </ul>
+   </div>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-5">注：截至本报告基准日，Palantir没有可与母公司并列的主要分拆上市公司矩阵。子公司名单参见2025年年报Exhibit 21.1；关联方飞机使用费用参见2026年第三季度10-Q。[2][11]</p>
+ </div>
+</section>
+
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="section-kicker mb-3">05 · Employee equity & incentives</div>
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">员工持股与激励机制：以股权薪酬绑定核心人才</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   Palantir的员工激励体系以股票期权、限制性股票单位（RSU）、股票增值权（SAR）和绩效限制性股票单位（P-RSU）等股权工具为主，并辅以现金薪酬、福利与绩效管理。与海底捞式师徒分红或门店合伙人制度不同，Palantir并未披露类似全员利润分红或门店虚拟股机制。其激励重点是吸引和留住软件工程、数据科学、产品、销售及高端客户交付人才。
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+   <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl">
+    <div class="flex items-center gap-3 mb-4"><i data-lucide="award" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i><h3 class="font-semibold text-primary-700 dark:text-primary-300">核心技术与管理人才</h3></div>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li>• 股票期权：以未来股价上涨分享长期价值。</li>
+     <li>• RSU：满足服务期限或归属条件后取得股票。</li>
+     <li>• P-RSU：将部分奖励与绩效条件挂钩。</li>
+     <li>• SAR：以股票增值为基础计算奖励价值。</li>
+    </ul>
+   </div>
+   <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl">
+    <div class="flex items-center gap-3 mb-4"><i data-lucide="briefcase-business" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i><h3 class="font-semibold text-accent-700 dark:text-accent-300">全体员工与业务团队</h3></div>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li>• 固定薪酬与现金福利构成基础保障。</li>
+     <li>• 销售及客户团队通过岗位目标和业绩机制管理。</li>
+     <li>• 股权奖励覆盖不同层级员工，但授予数量因岗位、绩效和留任安排而异。</li>
+     <li>• 公司强调人才招聘、保留、培训与员工反馈机制。</li>
+    </ul>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">2026年第三季度股权激励规模</h3>
+  <div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm mb-8">
+   <table>
+    <thead><tr><th>激励工具</th><th>Class A相关数量</th><th>Class B相关数量</th><th>经济与治理影响</th></tr></thead>
+    <tbody>
+     <tr><td class="font-semibold">股票期权</td><td>1,772.22万股</td><td>12,911.91万股</td><td>行权后增加股份；B股行权还可能影响投票权结构。</td></tr>
+     <tr><td class="font-semibold">RSU</td><td>1,745.03万股</td><td>1,852.50万股</td><td>归属后形成实际股票权益，存在股本稀释。</td></tr>
+     <tr><td class="font-semibold">SAR</td><td>1,853.07万股</td><td>—</td><td>按增值机制结算，最终股份影响取决于结算价格和方式。</td></tr>
+     <tr><td class="font-semibold">P-RSU</td><td>13.96万股</td><td>—</td><td>依赖绩效条件，激励与经营结果挂钩。</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-8">以上为截至2026年9月30日公司10-Q披露的相关未行权或未归属奖励数量。不同奖励类别的会计和稀释处理并不相同，不应直接视为确定新增股数。[2]</p>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">股权薪酬费用：增长与稀释的双重影响</h3>
+  <div class="grid md:grid-cols-3 gap-6 mb-8">
+   <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl">
+    <div class="text-sm text-gray-500 dark:text-gray-400">2026年前三季度SBC</div>
+    <div class="text-3xl font-bold text-primary-700 dark:text-primary-300 metric">$7.86亿</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">较2025年同期4.88亿美元增加约61%。</p>
+   </div>
+   <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl">
+    <div class="text-sm text-gray-500 dark:text-gray-400">2026年第三季度SBC</div>
+    <div class="text-3xl font-bold text-accent-700 dark:text-accent-300 metric">$3.19亿</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">较2025年同期1.72亿美元增加约85%。</p>
+   </div>
+   <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl">
+    <div class="text-sm text-gray-500 dark:text-gray-400">前三季度SBC/营收</div>
+    <div class="text-3xl font-bold text-primary-700 dark:text-primary-300 metric">13.36%</div>
+    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">股权薪酬占比仍是评估每股价值的重要指标。</p>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">高管薪酬：2025财年披露口径</h3>
+  <div class="table-wrap bg-white dark:bg-gray-800 rounded-xl shadow-sm mb-6">
+   <table>
+    <thead><tr><th>高管</th><th>职务</th><th>2025年薪酬总额</th><th>主要构成/说明</th></tr></thead>
+    <tbody>
+     <tr><td class="font-semibold">Alexander Karp</td><td>CEO</td><td>$862.30万</td><td>基本工资约110.16万美元；其他薪酬约752.14万美元；薪酬表中股票奖励及期权奖励列为零。</td></tr>
+     <tr><td class="font-semibold">Stephen Cohen</td><td>总裁、秘书</td><td>$100.40万</td><td>基本工资约27.36万美元，其他薪酬约73.04万美元。</td></tr>
+     <tr><td class="font-semibold">Shyam Sankar</td><td>CTO、执行副总裁</td><td>$120.93万</td><td>基本工资约50.94万美元，其他薪酬约69.98万美元。</td></tr>
+     <tr><td class="font-semibold">David Glazer</td><td>CFO</td><td>$2,797.19万</td><td>包括约2,117.04万美元股票奖励及约631.47万美元期权奖励。</td></tr>
+     <tr><td class="font-semibold">Ryan Taylor</td><td>CRO、首席法务官</td><td>$2,796.46万</td><td>包括约2,117.04万美元股票奖励及约631.47万美元期权奖励。</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="p-4 rounded-lg bg-accent-50 dark:bg-accent-900/20 mb-8">
+   <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed"><strong>薪酬口径特别说明：</strong>2025年代理声明另披露，Karp按SEC“实际支付薪酬”（Compensation Actually Paid，CAP）规则计算的金额约为110.94亿美元。该数值主要受到股权价值变动的会计调整影响，并不等于当年实际收到的现金薪酬，也不等于当年新授予的股票奖励。分析高管薪酬时应区分薪酬表总额与CAP口径。[10]</p>
+  </div>
+
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">员工规模与人力资本</h3>
+  <div class="grid md:grid-cols-2 gap-6">
+   <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+    <div class="text-sm text-gray-500 dark:text-gray-400">2025年12月31日全职员工</div>
+    <div class="text-4xl font-bold text-primary-700 dark:text-primary-300 metric">4,429人</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-3">其中约28%在美国以外地区工作。公司亦使用兼职员工、独立承包商及第三方人员补充团队。[12]</p>
+   </div>
+   <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
+    <div class="text-sm text-gray-500 dark:text-gray-400">2026年6月30日全职员工</div>
+    <div class="text-4xl font-bold text-accent-700 dark:text-accent-300 metric">4,401人</div>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-3">公司在2026年第二季度10-Q披露的最新可核验员工数量。该人数不包括兼职人员和外部承包商。[13]</p>
+   </div>
+  </div>
+
+  <div class="mt-8 grid md:grid-cols-2 gap-6">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+    <h4 class="font-semibold text-green-700 dark:text-green-400 mb-3">激励体系的积极作用</h4>
+    <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+     <li>• 股权奖励有助于留住稀缺的工程、产品和行业人才。</li>
+     <li>• 员工与股东共享长期价值，增强对公司长期发展的关注。</li>
+     <li>• 绩效型奖励可将部分激励与公司或个人目标挂钩。</li>
+     <li>• 相对精简的人力组织支持高人均收入和高毛利商业模式。</li>
+    </ul>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+    <h4 class="font-semibold text-red-700 dark:text-red-400 mb-3">激励体系的潜在矛盾</h4>
+    <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-2">
+     <li>• SBC规模增长会影响GAAP利润，并可能造成持续稀释。</li>
+     <li>• 股价波动会改变股权奖励的实际激励价值。</li>
+     <li>• 高管与普通员工获得的股权奖励可能存在较大差异。</li>
+     <li>• 高增长阶段对关键人才依赖较高，人才流失可能影响交付能力。</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="section-kicker mb-3">06 · Assessment & conclusions</div>
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">综合研判与关键结论</h2>
+
+  <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+   <div class="flex items-center gap-3 mb-4"><i data-lucide="landmark" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">1. 公司治理：创始人长期控制，战略连续性强</h3></div>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">Palantir通过Class A、Class B、Class F股票以及Founder Voting Agreement和Founder Voting Trust形成创始人投票权体系。其优势是管理层能够围绕长期技术路线持续投入，降低短期资本市场压力对战略的干扰；劣势是普通股东对董事选举、重大交易和治理安排的实际制衡能力有限。</p>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">投资者不应仅关注创始人持股比例，更应持续跟踪Class F控制门槛、创始人协议成员变化、Class B转换与股权奖励归属情况。</p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+   <div class="flex items-center gap-3 mb-4"><i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">2. 财务表现：高速增长与高股权薪酬并存</h3></div>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">2026年前三季度营收58.81亿美元，同比增长约91.66%；GAAP净利润约30.77亿美元；经营活动现金流约33.20亿美元。第三季度收入23.13亿美元，同比增长96%，GAAP营业利润率约47%，调整后营业利润率约62%。这些数据说明公司增长已转化为显著利润和现金流。[1][2]</p>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">但前三季度股权薪酬费用达到7.86亿美元，同比增长约61%，约占同期收入13.36%。公司盈利质量需要同时从GAAP利润、调整后利润、经营现金流与稀释后每股收益角度评估，不能只看调整后利润率。</p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+   <div class="flex items-center gap-3 mb-4"><i data-lucide="network" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3. 企业关系：子公司网络服务全球交付，没有多上市主体矩阵</h3></div>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">Palantir通过不同国家和地区的子公司服务政府与企业客户，核心价值仍集中在Gotham、Foundry、AIP与Apollo等平台。其增长依赖产品复用、复杂部署能力与客户工作流黏性，而不是通过多家关联上市公司之间的资本运作实现扩张。</p>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">关联方飞机使用费用是公开文件中明确披露的治理观察事项。未来应关注相关费用的审查程序、透明度及其他潜在关联交易披露。</p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+   <div class="flex items-center gap-3 mb-4"><i data-lucide="users" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4. 员工激励：股权绑定有效，但稀释与公平性需要持续观察</h3></div>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">Palantir通过期权、RSU、SAR和P-RSU等工具吸引并留住关键人才。公司高增长、高毛利与高现金流为人才激励提供了基础，但股权薪酬快速增长也意味着股东需要关注股份稀释、每股收益增长是否跟得上净利润增长，以及核心员工与高管之间的激励分配差异。</p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8">
+   <div class="flex items-center gap-3 mb-4"><i data-lucide="alert-triangle" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i><h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">5. 需要持续监测的五项结构性风险</h3></div>
+   <div class="space-y-4">
+    <div class="pl-4 py-2 border-l-4 border-red-500"><strong class="text-gray-900 dark:text-gray-100">创始人治理风险：</strong><span class="text-sm text-gray-700 dark:text-gray-300">多类别股票与创始人投票安排降低公众股东制衡能力，创始人之间的关系变化可能影响控制结构。</span></div>
+    <div class="pl-4 py-2 border-l-4 border-red-500"><strong class="text-gray-900 dark:text-gray-100">股权稀释风险：</strong><span class="text-sm text-gray-700 dark:text-gray-300">期权、RSU及其他股权奖励规模较大，若股本增长快于利润增长，每股价值提升可能受到稀释。</span></div>
+    <div class="pl-4 py-2 border-l-4 border-red-500"><strong class="text-gray-900 dark:text-gray-100">客户与地域集中：</strong><span class="text-sm text-gray-700 dark:text-gray-300">美国市场贡献前三季度收入的81%，政府采购、政策和美国商业景气变化对业绩影响较大。</span></div>
+    <div class="pl-4 py-2 border-l-4 border-red-500"><strong class="text-gray-900 dark:text-gray-100">竞争与产品替代：</strong><span class="text-sm text-gray-700 dark:text-gray-300">云厂商、模型供应商及企业软件公司持续扩展AI平台能力，Palantir必须证明其数据治理、工作流与部署优势具有持续差异化。</span></div>
+    <div class="pl-4 py-2 border-l-4 border-red-500"><strong class="text-gray-900 dark:text-gray-100">关联交易与声誉风险：</strong><span class="text-sm text-gray-700 dark:text-gray-300">政府和国防项目涉及敏感数据、隐私、伦理与政治争议；关联方费用及治理透明度也需持续关注。</span></div>
+   </div>
+  </div>
+
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">综合评价矩阵</h3>
+  <div class="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm space-y-5">
+   <div><div class="flex justify-between text-sm mb-2"><span>核心管理层稳定性</span><strong>9.0 / 10</strong></div><div class="moat-bar"><span style="width:90%"></span></div></div>
+   <div><div class="flex justify-between text-sm mb-2"><span>创始人控制权稳定性</span><strong>9.0 / 10</strong></div><div class="moat-bar"><span style="width:90%"></span></div></div>
+   <div><div class="flex justify-between text-sm mb-2"><span>产品与客户关系壁垒</span><strong>8.5 / 10</strong></div><div class="moat-bar"><span style="width:85%"></span></div></div>
+   <div><div class="flex justify-between text-sm mb-2"><span>股权激励与人才绑定</span><strong>8.0 / 10</strong></div><div class="moat-bar"><span style="width:80%"></span></div></div>
+   <div><div class="flex justify-between text-sm mb-2"><span>股东治理制衡能力</span><strong>5.0 / 10</strong></div><div class="moat-bar"><span style="width:50%"></span></div></div>
+   <p class="text-xs text-gray-500 dark:text-gray-400">本矩阵为研究者基于公开披露所作的定性评分，不是公司披露数据，也不构成证券评级。</p>
+  </div>
+
+  <div class="mt-10 p-6 md:p-8 rounded-xl bg-primary-900 text-white shadow-lg">
+   <div class="flex items-center gap-3 mb-4"><i data-lucide="compass" class="w-7 h-7 text-orange-300"></i><h3 class="text-xl md:text-2xl font-bold text-orange-200">一句话总结</h3></div>
+   <p class="text-lg leading-relaxed">Palantir是一家由创始人投票权机制维持长期战略控制、以Gotham与Foundry为基础并由AIP推动商业化加速的软件平台公司；其治理优势在于创始团队稳定和战略连续性，核心股东风险则在于投票权集中、股权薪酬稀释与关联交易透明度。理解Palantir，必须同时看懂它的产品平台、创始人投票结构和每股经济价值。</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="grid md:grid-cols-3 gap-8">
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">关于本页面</h3>
+    <p class="text-sm text-gray-400 leading-relaxed">本页系统梳理Palantir Technologies Inc.的创始人发展、核心管理层、股本数量、投票权结构、子公司网络、关联方交易与员工股权激励机制。研究基准日为2026年11月25日。</p>
+   </div>
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">研究范围与主要来源</h3>
+    <ul class="space-y-2 text-sm text-gray-400">
+     <li>• Palantir 2026年第三季度10-Q</li>
+     <li>• Palantir 2026年第三季度股东信</li>
+     <li>• Palantir 2025年年度报告及子公司清单</li>
+     <li>• 2026年年度股东大会代理声明</li>
+     <li>• 公司治理、管理层与市场公开资料</li>
+    </ul>
+   </div>
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">免责声明</h3>
+    <p class="text-sm text-gray-400 leading-relaxed">本页面仅供教育与信息参考，不构成投资建议、证券买卖邀约或法律意见。股权、投票权及股本数据按各自披露日期列示，不能将不同日期、不同统计口径的数据直接混用。市场价格与市值会持续变化，投资决策前应查阅公司最新SEC文件及交易所数据。</p>
+   </div>
+  </div>
+
+  <div class="mt-10 pt-8 border-t border-gray-700">
+   <h3 class="text-lg font-semibold text-primary-300 mb-4">参考资料与原始披露文件</h3>
+   <ol class="grid md:grid-cols-2 gap-x-10 gap-y-3 text-sm text-gray-400 list-decimal pl-5">
+    <li><a class="source-link" href="https://www.palantir.com/q3-2026-letter/en/" target="_blank" rel="noopener">Palantir Q3 2026 Letter to Shareholders，2026-11-02</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000048/pltr-20260930.htm" target="_blank" rel="noopener">Palantir Form 10-Q，季度截至2026-09-30</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000048/pltr-20260930.htm" target="_blank" rel="noopener">10-Q：多类别股票、Founder Voting Trust与控制权风险披露</a></li>
+    <li><a class="source-link" href="https://courts.delaware.gov/Opinions/Download.aspx?id=378630" target="_blank" rel="noopener">Delaware Court：Palantir直接上市与公司背景</a></li>
+    <li><a class="source-link" href="https://investors.palantir.com/governance/executive-management" target="_blank" rel="noopener">Palantir Investor Relations：Executive Management</a></li>
+    <li><a class="source-link" href="https://investors.palantir.com/governance/board-of-directors" target="_blank" rel="noopener">Palantir Investor Relations：Board of Directors</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000119312520249544/d904406ds1a.htm" target="_blank" rel="noopener">Palantir 2020 Form S-1/A注册文件</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/pltr-20251231.htm" target="_blank" rel="noopener">Palantir 2025 Form 10-K年度报告</a></li>
+    <li><a class="source-link" href="https://finance.yahoo.com/quote/PLTR/history/" target="_blank" rel="noopener">Yahoo Finance：PLTR历史行情</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000019/pltr-20260423.htm" target="_blank" rel="noopener">Palantir 2026 Proxy Statement（DEF 14A）</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/a2025fyexhibit211.htm" target="_blank" rel="noopener">Palantir 2025年报Exhibit 21.1：子公司清单</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/pltr-20251231.htm" target="_blank" rel="noopener">Palantir 2025年报：员工与人力资本披露</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165525000106/pltr-20250630.htm" target="_blank" rel="noopener">Palantir历史股本与回购计划披露（2025年中报）</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000019/pltr-20260423.htm" target="_blank" rel="noopener">Palantir 2025财年高管薪酬及股东投票权代理声明</a></li>
+    <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000041/pltr-20260630.htm" target="_blank" rel="noopener">Palantir 2026年第二季度10-Q：员工人数披露</a></li>
+   </ol>
+  </div>
+  <div class="mt-8 pt-6 border-t border-gray-700 text-center text-sm text-gray-500">
+   <p>© 2026 Palantir体系全景研究 · 基于公开资料整理</p>
+   <p class="mt-2">报告日期：2026年11月25日</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+function toggleMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ const button=document.getElementById('mobileMenuButton');
+ const icon=document.getElementById('mobileMenuIcon');
+ if(!menu)return;
+ const isOpen=menu.classList.toggle('mobile-menu-open');
+ menu.setAttribute('aria-hidden',isOpen?'false':'true');
+ if(button)button.setAttribute('aria-expanded',isOpen?'true':'false');
+ if(icon){icon.setAttribute('data-lucide',isOpen?'x':'menu');lucide.createIcons();}
+}
+function closeMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ const button=document.getElementById('mobileMenuButton');
+ const icon=document.getElementById('mobileMenuIcon');
+ if(!menu)return;
+ menu.classList.remove('mobile-menu-open');
+ menu.setAttribute('aria-hidden','true');
+ if(button)button.setAttribute('aria-expanded','false');
+ if(icon){icon.setAttribute('data-lucide','menu');lucide.createIcons();}
+}
+window.addEventListener('scroll',()=>{
+ const winScroll=document.body.scrollTop||document.documentElement.scrollTop;
+ const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const scrolled=height>0?(winScroll/height)*100:0;
+ document.getElementById('progressBar').style.width=scrolled+'%';
+});
+document.addEventListener('DOMContentLoaded',function(){
+ const savedTheme=localStorage.getItem('palantir-theme');
+ if(savedTheme==='dark'){
+  document.documentElement.classList.add('dark');
+  document.getElementById('sunIcon').style.display='block';
+  document.getElementById('moonIcon').style.display='none';
+ }
+ lucide.createIcons();
+ AOS.init({duration:800,once:true,offset:60});
+ document.querySelectorAll('#mobileMenu a').forEach(link=>link.addEventListener('click',closeMobileMenu));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileMenu();});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

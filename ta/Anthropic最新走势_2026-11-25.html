@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1220">
+<title>Anthropic（ANT）最新走势归因与操作指引_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: { DEFAULT: "hsl(20, 90%, 54%)", light: "hsl(20, 90%, 96%)", dark: "hsl(20, 75%, 35%)" },
+        accent: { DEFAULT: "hsl(30, 85%, 55%)", light: "hsl(30, 90%, 95%)" }
+      },
+      fontFamily: {
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Noto Sans SC", "sans-serif"],
+        serif: ["Georgia", "Noto Serif SC", "serif"]
+      },
+      boxShadow: {
+        soft: "0 8px 30px rgba(15,23,42,.07)",
+        glow: "0 0 35px rgba(249,115,22,.12)"
+      }
+    }
+  }
+};
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<style>
+:root{--bg:#f5f7fb;--surface:#fff;--surface2:#f8fafc;--text:#172033;--muted:#64748b;--line:#e5eaf1;--orange:#ea580c;--green:#059669;--red:#dc2626}
+html.dark{--bg:#0b1220;--surface:#111c2e;--surface2:#162338;--text:#e5edf8;--muted:#9aabc2;--line:#26364d;--orange:#fb923c;--green:#34d399;--red:#f87171}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;transition:background .25s,color .25s}
+.surface{background:var(--surface);border:1px solid var(--line)}
+.surface2{background:var(--surface2);border:1px solid var(--line)}
+.muted{color:var(--muted)}
+.line{border-color:var(--line)}
+.text-up{color:var(--green)}.text-down{color:var(--red)}
+.nav-link{color:var(--muted);transition:.2s}.nav-link:hover{color:var(--orange)}
+.card-hover{transition:transform .22s,box-shadow .22s,border-color .22s}
+.card-hover:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,23,42,.09);border-color:rgba(234,88,12,.35)}
+html.dark .card-hover:hover{box-shadow:0 12px 32px rgba(0,0,0,.25)}
+.progress-track{height:5px;background:var(--line);border-radius:20px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#ea580c,#f59e0b);transition:width .1s}
+.pill{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.pill-orange{background:rgba(234,88,12,.11);color:var(--orange)}
+.pill-green{background:rgba(5,150,105,.11);color:var(--green)}
+.pill-red{background:rgba(220,38,38,.11);color:var(--red)}
+.pill-gray{background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.section-kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);font-weight:800}
+.section-title{font-family:Georgia,"Noto Serif SC",serif;letter-spacing:-.035em}
+.metric-value{font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.bar-track{height:8px;background:var(--line);border-radius:20px;overflow:hidden}
+.bar-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#ea580c,#f59e0b)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{color:var(--muted);font-weight:600;background:var(--surface2);text-align:left}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.chart-grid{stroke:var(--line);stroke-width:1;stroke-dasharray:4 5}
+.chart-label{fill:var(--muted);font-size:11px}
+.chart-price{fill:var(--text);font-size:12px;font-weight:700}
+.level-line{stroke-width:1.4;stroke-dasharray:5 5}
+.timeline-dot{width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(234,88,12,.13);flex:none;margin-top:5px}
+.role-btn{border:1px solid var(--line);color:var(--muted);padding:8px 14px;border-radius:10px;font-size:12px;font-weight:700}
+.role-btn.active{background:var(--orange);color:white;border-color:var(--orange)}
+.strategy-panel{display:none}.strategy-panel.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+#mobileMenu{display:none}#mobileMenu.open{display:block}
+#backTop{opacity:0;pointer-events:none;transition:.2s}#backTop.show{opacity:1;pointer-events:auto}
+a.source-link{color:var(--orange);text-decoration:underline;text-decoration-color:rgba(234,88,12,.35);text-underline-offset:3px}
+a.source-link:hover{text-decoration-color:var(--orange)}
+@media(max-width:640px){.hero-number{font-size:42px}.section-title{font-size:27px}th,td{padding:10px 11px}.mobile-scroll{overflow-x:auto}}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body>
+<div class="fixed top-0 left-0 right-0 z-50">
+  <div class="progress-track rounded-none"><div id="progressBar" class="progress-fill"></div></div>
+</div>
+
+<header class="sticky top-0 z-40 backdrop-blur-xl border-b" style="background:color-mix(in srgb,var(--surface) 88%,transparent);border-color:var(--line)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-black text-sm" style="background:linear-gradient(135deg,#ea580c,#f59e0b)">A</div>
+      <div>
+        <div class="font-bold text-sm tracking-wide">AIPE <span style="color:var(--orange)">MARKET INSIGHT</span></div>
+        <div class="text-[10px] muted tracking-widest">EQUITY RESEARCH · US MARKET</div>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-7 text-xs font-semibold">
+      <a class="nav-link" href="#overview">核心结论</a>
+      <a class="nav-link" href="#performance">行情复盘</a>
+      <a class="nav-link" href="#drivers">涨跌归因</a>
+      <a class="nav-link" href="#fundamentals">基本面</a>
+      <a class="nav-link" href="#technical">技术分析</a>
+      <a class="nav-link" href="#strategy">操作策略</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button id="themeToggle" aria-label="切换深色模式" class="w-9 h-9 rounded-xl surface flex items-center justify-center"><i data-lucide="moon" class="w-4 h-4"></i></button>
+      <button id="mobileMenuBtn" aria-label="打开菜单" class="lg:hidden w-9 h-9 rounded-xl surface flex items-center justify-center"><i data-lucide="menu" class="w-4 h-4"></i></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="lg:hidden surface border-t px-5 py-4">
+    <div class="grid grid-cols-2 gap-4 text-sm font-semibold">
+      <a class="nav-link" href="#overview">核心结论</a><a class="nav-link" href="#performance">行情复盘</a>
+      <a class="nav-link" href="#drivers">涨跌归因</a><a class="nav-link" href="#fundamentals">基本面</a>
+      <a class="nav-link" href="#technical">技术分析</a><a class="nav-link" href="#strategy">操作策略</a>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+  <section class="pt-10 md:pt-16 pb-10">
+    <div class="flex flex-wrap items-center gap-2 mb-5">
+      <span class="pill pill-orange">IPO 后首周观察</span>
+      <span class="pill pill-gray">美股 · Nasdaq</span>
+      <span class="pill pill-gray">报告日期：2026.11.25</span>
+      <span class="pill pill-gray">数据截至：11.24 收盘</span>
+    </div>
+    <div class="grid lg:grid-cols-[1.35fr_.65fr] gap-8 items-end">
+      <div data-aos="fade-up">
+        <div class="section-kicker mb-3">LATEST PRICE ATTRIBUTION & TRADING PLAYBOOK</div>
+        <h1 class="section-title text-4xl md:text-6xl font-bold leading-tight mb-4">Anthropic <span style="color:var(--orange)">走势归因</span><br>与操作指引</h1>
+        <p class="muted max-w-2xl leading-7 text-sm md:text-base">ANT 上市后的价格发现仍处于剧烈波动阶段。首日高开冲顶后连续回落，最新收盘已跌破 IPO 发行价。当前核心矛盾不是单一利空，而是高估值预期、巨额算力承诺、上市供给释放与科技股风险偏好收缩的叠加。</p>
+      </div>
+      <div class="surface rounded-2xl p-5 shadow-soft" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex justify-between items-center mb-3"><span class="text-xs muted font-semibold">最新完整交易日收盘 · 11月24日</span><span class="pill pill-red">短线承压</span></div>
+        <div class="flex items-end gap-3">
+          <div class="metric-value hero-number text-5xl font-bold">$81.90</div>
+          <div class="text-down text-sm font-bold pb-2">−6.55%</div>
+        </div>
+        <div class="mt-4 pt-4 border-t line grid grid-cols-2 gap-4">
+          <div><div class="text-[11px] muted mb-1">IPO 发行价</div><div class="font-bold text-lg">$83.00</div></div>
+          <div><div class="text-[11px] muted mb-1">距发行价</div><div class="font-bold text-lg text-down">−1.33%</div></div>
+          <div><div class="text-[11px] muted mb-1">首日收盘价</div><div class="font-bold">$97.17</div></div>
+          <div><div class="text-[11px] muted mb-1">上市以来</div><div class="font-bold text-down">−15.71%</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[11px] muted">
+      <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> 观察窗口：2026.10.26—11.25</span>
+      <span class="flex items-center gap-1"><i data-lucide="database" class="w-3.5 h-3.5"></i> 实际可交易样本：11.19—11.24 共4个完整交易日</span>
+      <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 11月25日美股尚未形成完整收盘数据</span>
+    </div>
+  </section>
+
+  <section id="overview" class="py-8 scroll-mt-24">
+    <div class="flex items-end justify-between mb-5">
+      <div><div class="section-kicker mb-2">01 / INVESTMENT VIEW</div><h2 class="section-title text-3xl font-bold">核心判断</h2></div>
+      <span class="text-xs muted">研究结论 · 非投资建议</span>
+    </div>
+    <div class="grid md:grid-cols-3 gap-4">
+      <article class="surface rounded-2xl p-5 card-hover" data-aos="fade-up">
+        <div class="flex justify-between mb-4"><span class="text-xs muted font-bold">趋势判断</span><i data-lucide="trending-down" class="w-5 h-5 text-down"></i></div>
+        <div class="text-xl font-bold mb-2">弱势价格发现</div>
+        <p class="text-sm muted leading-6">上市四个完整交易日中，收盘价由 $97.17 降至 $81.90。价格低于 IPO 发行价，首日高开溢价已明显消退。</p>
+        <div class="mt-4"><span class="pill pill-red">短线偏空</span></div>
+      </article>
+      <article class="surface rounded-2xl p-5 card-hover" data-aos="fade-up" data-aos-delay="80">
+        <div class="flex justify-between mb-4"><span class="text-xs muted font-bold">核心驱动</span><i data-lucide="layers" class="w-5 h-5" style="color:var(--orange)"></i></div>
+        <div class="text-xl font-bold mb-2">估值与资本开支再定价</div>
+        <p class="text-sm muted leading-6">市场同时评估 AI 商业化空间与约 $900.9bn 算力基础设施承诺。收入增长仍强，但利润率和现金流兑现节奏受到关注。</p>
+        <div class="mt-4"><span class="pill pill-orange">基本面与估值拉锯</span></div>
+      </article>
+      <article class="surface rounded-2xl p-5 card-hover" data-aos="fade-up" data-aos-delay="160">
+        <div class="flex justify-between mb-4"><span class="text-xs muted font-bold">交易策略</span><i data-lucide="shield-check" class="w-5 h-5 text-up"></i></div>
+        <div class="text-xl font-bold mb-2">等待止跌确认</div>
+        <p class="text-sm muted leading-6">不宜仅因跌破发行价而机械抄底。优先观察 $75.61 低点能否守住，以及重回 $83 后是否出现放量站稳。</p>
+        <div class="mt-4"><span class="pill pill-green">控制仓位、分段验证</span></div>
+      </article>
+    </div>
+    <div class="surface rounded-2xl p-5 mt-4" data-aos="fade-up">
+      <div class="flex items-start gap-3">
+        <i data-lucide="lightbulb" class="w-5 h-5 mt-0.5" style="color:var(--orange)"></i>
+        <div><div class="font-bold text-sm mb-1">策略核心</div><p class="text-sm muted leading-6">ANT 是刚上市的新股，现有样本仅四个完整交易日，任何均线、RSI、MACD 或资金流指标都缺乏足够历史基础。当前应以真实成交价位、成交量变化、IPO 供给结构和公司经营数据为主，不应制造技术指标的精确感。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="performance" class="py-10 scroll-mt-24">
+    <div class="mb-6"><div class="section-kicker mb-2">02 / PRICE & VOLUME</div><h2 class="section-title text-3xl font-bold">行情复盘：上市溢价快速收敛</h2><p class="muted text-sm mt-2">ANT 于 2026 年 11 月 19 日开始在 Nasdaq 交易。下表仅列出截至 11 月 24 日的完整交易日。</p></div>
+    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-5">
+      <div class="surface rounded-xl p-4"><div class="text-xs muted mb-2">上市以来收盘跌幅</div><div class="text-2xl font-bold metric-value text-down">−15.71%</div><div class="text-[11px] muted mt-1">$97.17 → $81.90</div></div>
+      <div class="surface rounded-xl p-4"><div class="text-xs muted mb-2">首日盘中最高价</div><div class="text-2xl font-bold metric-value">$115.10</div><div class="text-[11px] muted mt-1">较 IPO 价高约 38.7%</div></div>
+      <div class="surface rounded-xl p-4"><div class="text-xs muted mb-2">观察期盘中最低价</div><div class="text-2xl font-bold metric-value text-down">$75.61</div><div class="text-[11px] muted mt-1">11月24日触及</div></div>
+      <div class="surface rounded-xl p-4"><div class="text-xs muted mb-2">11月24日成交量</div><div class="text-2xl font-bold metric-value">311.64M</div><div class="text-[11px] muted mt-1">约 3.12 亿股</div></div>
+    </div>
+
+    <div class="grid lg:grid-cols-[1.4fr_.6fr] gap-4">
+      <div class="surface rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4"><div><div class="font-bold">每日收盘价走势</div><div class="text-[11px] muted mt-1">美元 / 股 · 仅展示已完成交易日</div></div><span class="pill pill-gray">4 sessions</span></div>
+        <div class="w-full overflow-hidden">
+          <svg viewBox="0 0 680 300" role="img" aria-label="ANT 每日收盘价走势折线图" class="w-full">
+            <defs><linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#ea580c" stop-opacity=".22"/><stop offset="100%" stop-color="#ea580c" stop-opacity="0"/></linearGradient></defs>
+            <line x1="58" y1="35" x2="650" y2="35" class="chart-grid"/><line x1="58" y1="95" x2="650" y2="95" class="chart-grid"/><line x1="58" y1="155" x2="650" y2="155" class="chart-grid"/><line x1="58" y1="215" x2="650" y2="215" class="chart-grid"/>
+            <text x="8" y="39" class="chart-label">$100</text><text x="8" y="99" class="chart-label">$95</text><text x="8" y="159" class="chart-label">$90</text><text x="8" y="219" class="chart-label">$85</text>
+            <line x1="58" y1="239" x2="650" y2="239" stroke="#ea580c" stroke-dasharray="4 5" opacity=".8"/>
+            <text x="8" y="243" class="chart-label">$83</text>
+            <path d="M110 69 L275 168 L440 183 L605 252 L605 270 L110 270 Z" fill="url(#areaFill)"/>
+            <path d="M110 69 L275 168 L440 183 L605 252" fill="none" stroke="#ea580c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="110" cy="69" r="5" fill="#ea580c" stroke="var(--surface)" stroke-width="2"/><circle cx="275" cy="168" r="5" fill="#ea580c" stroke="var(--surface)" stroke-width="2"/><circle cx="440" cy="183" r="5" fill="#ea580c" stroke="var(--surface)" stroke-width="2"/><circle cx="605" cy="252" r="5" fill="#dc2626" stroke="var(--surface)" stroke-width="2"/>
+            <text x="110" y="51" text-anchor="middle" class="chart-price">$97.17</text><text x="275" y="148" text-anchor="middle" class="chart-price">$88.91</text><text x="440" y="163" text-anchor="middle" class="chart-price">$87.64</text><text x="605" y="232" text-anchor="middle" class="chart-price">$81.90</text>
+            <text x="110" y="290" text-anchor="middle" class="chart-label">11/19</text><text x="275" y="290" text-anchor="middle" class="chart-label">11/20</text><text x="440" y="290" text-anchor="middle" class="chart-label">11/23</text><text x="605" y="290" text-anchor="middle" class="chart-label">11/24</text>
+          </svg>
+        </div>
+        <div class="flex flex-wrap gap-4 mt-2 text-[11px] muted"><span class="flex items-center gap-2"><span class="w-5 h-0.5 bg-orange-600"></span>收盘价</span><span class="flex items-center gap-2"><span class="w-5 h-0 border-t border-dashed border-orange-600"></span>IPO 发行价 $83</span></div>
+      </div>
+      <div class="surface rounded-2xl p-5">
+        <div class="font-bold mb-1">成交量变化</div><div class="text-[11px] muted mb-5">单位：百万股</div>
+        <div class="space-y-5">
+          <div><div class="flex justify-between text-xs mb-2"><span>11/19</span><b>857.31</b></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+          <div><div class="flex justify-between text-xs mb-2"><span>11/20</span><b>400.46</b></div><div class="bar-track"><div class="bar-fill" style="width:46.7%;opacity:.85"></div></div></div>
+          <div><div class="flex justify-between text-xs mb-2"><span>11/23</span><b>254.10</b></div><div class="bar-track"><div class="bar-fill" style="width:29.6%;opacity:.7"></div></div></div>
+          <div><div class="flex justify-between text-xs mb-2"><span>11/24</span><b>311.64</b></div><div class="bar-track"><div class="bar-fill" style="width:36.4%;opacity:.8"></div></div></div>
+        </div>
+        <div class="surface2 rounded-xl p-3 mt-6"><div class="text-xs muted">四个交易日平均成交量</div><div class="font-bold text-xl mt-1">455.88M</div><p class="text-[11px] muted mt-1">样本极短，不能视为稳定的常态成交量基准。</p></div>
+      </div>
+    </div>
+
+    <div class="surface rounded-2xl mt-4 overflow-hidden">
+      <div class="p-5 border-b line flex items-center justify-between"><div class="font-bold">每日价格数据</div><span class="text-[11px] muted">数据源：Yahoo Finance 历史行情</span></div>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>日期</th><th>开盘</th><th>最高</th><th>最低</th><th>收盘</th><th>涨跌幅</th><th>成交量</th></tr></thead>
+          <tbody>
+            <tr><td>2026-11-19</td><td>$111.50</td><td>$115.10</td><td>$92.72</td><td><b>$97.17</b></td><td class="text-up">—*</td><td>857.31M</td></tr>
+            <tr><td>2026-11-20</td><td>$89.86</td><td>$92.56</td><td>$83.05</td><td><b>$88.91</b></td><td class="text-down">−8.50%</td><td>400.46M</td></tr>
+            <tr><td>2026-11-23</td><td>$93.65</td><td>$94.24</td><td>$84.61</td><td><b>$87.64</b></td><td class="text-down">−1.43%</td><td>254.10M</td></tr>
+            <tr><td>2026-11-24</td><td>$83.44</td><td>$83.49</td><td>$75.61</td><td><b>$81.90</b></td><td class="text-down">−6.55%</td><td>311.64M</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="px-5 py-3 text-[11px] muted">* 首个交易日没有前一交易日收盘价；相对 IPO 发行价 $83，首日收盘上涨约 17.07%。不同行情供应商的成交量统计可能略有差异。</div>
+    </div>
+  </section>
+
+  <section id="drivers" class="py-10 scroll-mt-24">
+    <div class="mb-6"><div class="section-kicker mb-2">03 / CAUSAL ATTRIBUTION</div><h2 class="section-title text-3xl font-bold">涨跌归因：四股力量共同作用</h2><p class="muted text-sm mt-2">将可核验的公司事件、上市供给和市场环境分开，避免把同期发生的新闻误判为单日价格的唯一原因。</p></div>
+    <div class="grid lg:grid-cols-2 gap-4">
+      <article class="surface rounded-2xl p-5 card-hover">
+        <div class="flex gap-3 items-start"><div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(234,88,12,.12);color:var(--orange)"><i data-lucide="landmark"></i></div><div><div class="font-bold">01 · IPO 供给与早期获利了结</div><div class="text-xs muted mt-1">短线直接压力 · 高相关</div></div></div>
+        <p class="text-sm muted leading-6 mt-4">ANT 首日开盘 $111.50，较 $83 发行价高出约 34.3%，盘中最高达到 $115.10，随后收于 $97.17。首日高溢价为早期获配和短线资金提供了兑现空间。IPO 最终发行 11.27 亿股，包含 1.47 亿股超额配售；此外还有面向战略投资者的同步私募配售，增加了市场对股本供给的关注。</p>
+        <div class="mt-4 pt-3 border-t line flex justify-between text-xs"><span class="muted">关键观察</span><b>首日冲高后未能守住高位</b></div>
+      </article>
+      <article class="surface rounded-2xl p-5 card-hover">
+        <div class="flex gap-3 items-start"><div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(220,38,38,.1);color:var(--red)"><i data-lucide="chart-no-axes-combined"></i></div><div><div class="font-bold">02 · AI 高估值与风险偏好降温</div><div class="text-xs muted mt-1">市场定价压力 · 高相关</div></div></div>
+        <p class="text-sm muted leading-6 mt-4">11 月 20 日美股科技股出现明显回撤，纳指与标普同步下跌。高成长 AI 公司对利率、估值折现和资本开支预期更敏感。ANT 作为刚上市的高关注度标的，缺乏长期价格锚，市场情绪变化容易放大日内波动。</p>
+        <div class="mt-4 pt-3 border-t line flex justify-between text-xs"><span class="muted">关键观察</span><b>个股弱势叠加科技股调整</b></div>
+      </article>
+      <article class="surface rounded-2xl p-5 card-hover">
+        <div class="flex gap-3 items-start"><div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(234,88,12,.12);color:var(--orange)"><i data-lucide="server"></i></div><div><div class="font-bold">03 · 算力承诺与盈利质量的权衡</div><div class="text-xs muted mt-1">中期基本面变量 · 高相关</div></div></div>
+        <p class="text-sm muted leading-6 mt-4">公司披露的算力及基础设施承诺规模约 $900.9bn，期限跨越多年。市场关注点在于：未来收入能否持续覆盖算力消耗、基础设施合同的刚性付款节奏，以及算力供给扩张是否会压低利润率。长期投入可支持增长，但也会提高现金流与执行风险。</p>
+        <div class="mt-4 pt-3 border-t line flex justify-between text-xs"><span class="muted">关键观察</span><b>增长潜力与资本强度并存</b></div>
+      </article>
+      <article class="surface rounded-2xl p-5 card-hover">
+        <div class="flex gap-3 items-start"><div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(5,150,105,.1);color:var(--green)"><i data-lucide="users"></i></div><div><div class="font-bold">04 · 高管减持与新增供给预期</div><div class="text-xs muted mt-1">供需情绪变量 · 中高相关</div></div></div>
+        <p class="text-sm muted leading-6 mt-4">Reuters 报道称，CEO Dario Amodei 与总裁 Daniela Amodei 各自出售超过 337 万股，相关股份价值超过 $280m，交易通过 IPO 承销安排完成。该事项属于上市交易结构中的股份出售，不等同于管理层对经营前景作出负面判断，但在上市初期会强化市场对可流通供给的敏感度。</p>
+        <div class="mt-4 pt-3 border-t line flex justify-between text-xs"><span class="muted">关键观察</span><b>需区分发行配售与二级市场抛售</b></div>
+      </article>
+    </div>
+
+    <div class="surface rounded-2xl p-5 mt-4">
+      <div class="font-bold mb-4">市场相对表现：ANT 明显跑输宽基指数</div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div><div class="text-xs muted mb-2">ANT · 11/19 收盘至 11/24 收盘</div><div class="text-2xl font-bold text-down">−15.71%</div><div class="bar-track mt-3"><div class="bar-fill" style="width:100%;background:#dc2626"></div></div></div>
+        <div><div class="text-xs muted mb-2">S&P 500 · 同期</div><div class="text-2xl font-bold text-up">+0.35%</div><div class="bar-track mt-3"><div class="bar-fill" style="width:2.2%;background:#059669"></div></div></div>
+        <div><div class="text-xs muted mb-2">Nasdaq Composite · 同期</div><div class="text-2xl font-bold text-down">−0.61%</div><div class="bar-track mt-3"><div class="bar-fill" style="width:3.9%;background:#dc2626"></div></div></div>
+      </div>
+      <p class="text-xs muted mt-5 leading-5">区间起点使用 11 月 19 日收盘，终点使用 11 月 24 日收盘。ANT 相对标普落后约 16.06 个百分点，相对纳指落后约 15.10 个百分点。该比较反映相对弱势，不代表市场指数是 ANT 下跌的唯一原因。</p>
+    </div>
+
+    <div class="surface rounded-2xl p-5 mt-4">
+      <div class="font-bold mb-4">事件时间线</div>
+      <div class="space-y-5">
+        <div class="flex gap-4"><div class="timeline-dot"></div><div><div class="text-xs muted">2026.10.26 前后</div><div class="font-semibold text-sm mt-1">模型训练安全与部署风险受到关注</div><p class="text-xs muted mt-1 leading-5">媒体报道公司曾因安全顾虑暂停下一代旗舰模型训练相关工作。此类事件构成长期风险背景，但不能据此断言其直接触发某一交易日下跌。</p></div></div>
+        <div class="flex gap-4"><div class="timeline-dot"></div><div><div class="text-xs muted">2026.11.18</div><div class="font-semibold text-sm mt-1">Anthropic 公布 IPO 定价</div><p class="text-xs muted mt-1 leading-5">发行价定为每股 $83，计划发行 9.8 亿股 A 类普通股，另有超额配售安排。</p></div></div>
+        <div class="flex gap-4"><div class="timeline-dot"></div><div><div class="text-xs muted">2026.11.19</div><div class="font-semibold text-sm mt-1">ANT 正式开始 Nasdaq 交易</div><p class="text-xs muted mt-1 leading-5">开盘 $111.50，盘中最高 $115.10，最终收盘 $97.17。首日高溢价之后，市场进入重新定价阶段。</p></div></div>
+        <div class="flex gap-4"><div class="timeline-dot"></div><div><div class="text-xs muted">2026.11.20—11.24</div><div class="font-semibold text-sm mt-1">连续回落，跌破 IPO 发行价</div><p class="text-xs muted mt-1 leading-5">11 月 24 日盘中最低 $75.61，收盘 $81.90。市场讨论焦点集中在估值、算力承诺、股份供给与 AI 行业资本开支。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fundamentals" class="py-10 scroll-mt-24">
+    <div class="mb-6"><div class="section-kicker mb-2">04 / FUNDAMENTAL CHECK</div><h2 class="section-title text-3xl font-bold">基本面：增长强劲，资本强度同样惊人</h2><p class="muted text-sm mt-2">上市初期的估值分歧，核心在于收入增长能否转化为持续、可兑现的自由现金流。</p></div>
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+      <div class="surface rounded-2xl p-5"><div class="text-xs muted">2026 Q3 收入</div><div class="text-3xl font-bold metric-value mt-2">约 $17bn</div><div class="text-xs muted mt-2">公司披露约 $16.96bn</div><div class="pill pill-green mt-3">规模快速扩张</div></div>
+      <div class="surface rounded-2xl p-5"><div class="text-xs muted">Q3 环比收入增长</div><div class="text-3xl font-bold metric-value mt-2">约 +47%</div><div class="text-xs muted mt-2">低于上一季度约 +144%</div><div class="pill pill-orange mt-3">增速边际放缓</div></div>
+      <div class="surface rounded-2xl p-5"><div class="text-xs muted">Q3 调整后经营利润</div><div class="text-3xl font-bold metric-value mt-2">约 $2.5bn</div><div class="text-xs muted mt-2">调整后经营利润口径</div><div class="pill pill-green mt-3">经营盈利能力显现</div></div>
+      <div class="surface rounded-2xl p-5"><div class="text-xs muted">算力及基础设施承诺</div><div class="text-3xl font-bold metric-value mt-2">约 $900.9bn</div><div class="text-xs muted mt-2">跨多年合同与承诺规模</div><div class="pill pill-red mt-3">资本开支约束突出</div></div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-4 mt-4">
+      <div class="surface rounded-2xl p-5">
+        <div class="font-bold mb-4">增长与利润率的拉锯</div>
+        <div class="space-y-4">
+          <div><div class="flex justify-between text-sm mb-2"><span>Q3 2026 收入环比增长</span><b>约 47%</b></div><div class="bar-track"><div class="bar-fill" style="width:47%"></div></div></div>
+          <div><div class="flex justify-between text-sm mb-2"><span>Q2 2026 收入环比增长</span><b>约 144%</b></div><div class="bar-track"><div class="bar-fill" style="width:100%;background:#94a3b8"></div></div></div>
+          <div class="surface2 rounded-xl p-4 mt-4"><div class="text-sm font-semibold">调整后经营利润率</div><div class="flex items-end gap-3 mt-2"><span class="text-3xl font-bold">15%</span><span class="text-xs muted mb-1">Q3 2026</span><span class="text-down text-xs font-bold mb-1">较 Q2 的 19% 回落</span></div><p class="text-xs muted mt-2 leading-5">收入扩张仍然可观，但利润率下降说明新增算力成本、短期计算资源采购及商业化投入需要持续跟踪。</p></div>
+        </div>
+      </div>
+      <div class="surface rounded-2xl p-5">
+        <div class="font-bold mb-4">算力承诺：长期机会与现金流风险</div>
+        <div class="text-4xl font-bold metric-value">$900.9bn</div>
+        <div class="text-xs muted mt-1">披露的算力及基础设施承诺规模，非当期已支付金额</div>
+        <div class="grid grid-cols-2 gap-3 mt-5">
+          <div class="surface2 rounded-xl p-3"><div class="text-xs muted">未来12个月到期</div><div class="text-xl font-bold mt-1">约 $70.7bn</div></div>
+          <div class="surface2 rounded-xl p-3"><div class="text-xs muted">2030年底前部分承诺</div><div class="text-xl font-bold mt-1">约 $451.6bn</div></div>
+        </div>
+        <p class="text-xs muted mt-4 leading-5">以上是合同承诺规模和期限口径，不应简单等同于年度现金资本开支。关键风险是算力付款与实际客户收入兑现节奏不完全匹配。</p>
+      </div>
+    </div>
+
+    <div class="surface rounded-2xl p-5 mt-4">
+      <div class="font-bold mb-4">未来需要持续验证的四项经营指标</div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="flex gap-3"><i data-lucide="trending-up" class="w-5 h-5 text-up flex-none"></i><div><div class="font-semibold text-sm">收入增长的可持续性</div><p class="text-xs muted mt-1 leading-5">关注企业客户扩张、合同续约、客户集中度，以及环比增速是否稳定。</p></div></div>
+        <div class="flex gap-3"><i data-lucide="gauge" class="w-5 h-5" style="color:var(--orange)"></i><div><div class="font-semibold text-sm">单位算力经济性</div><p class="text-xs muted mt-1 leading-5">观察模型推理成本下降能否抵消算力价格、容量和基础设施投入压力。</p></div></div>
+        <div class="flex gap-3"><i data-lucide="wallet" class="w-5 h-5" style="color:var(--orange)"></i><div><div class="font-semibold text-sm">经营现金流与合同付款</div><p class="text-xs muted mt-1 leading-5">核对现金流、租赁及采购承诺、短期高成本算力采购的变化。</p></div></div>
+        <div class="flex gap-3"><i data-lucide="shield-alert" class="w-5 h-5 text-down flex-none"></i><div><div class="font-semibold text-sm">竞争、监管与安全事件</div><p class="text-xs muted mt-1 leading-5">关注开源模型竞争、芯片供应限制、模型安全治理和企业客户部署风险。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="technical" class="py-10 scroll-mt-24">
+    <div class="mb-6"><div class="section-kicker mb-2">05 / TECHNICAL LEVELS</div><h2 class="section-title text-3xl font-bold">技术分析：以真实成交区间代替虚构指标</h2><p class="muted text-sm mt-2">ANT 目前只有四个完整交易日，尚不具备计算有意义的 5/10/20/60 日均线或常规 RSI、MACD 的历史长度。</p></div>
+    <div class="surface rounded-2xl p-5">
+      <div class="flex justify-between flex-wrap gap-2 items-center mb-5"><div class="font-bold">关键价格区间（美元）</div><span class="pill pill-gray">依据已发生交易价位</span></div>
+      <div class="relative pl-20 pr-2">
+        <div class="space-y-3">
+          <div class="flex items-center gap-3"><span class="w-16 text-right text-xs muted absolute left-0">$115.10</span><div class="flex-1"><div class="h-2 rounded-full" style="background:linear-gradient(90deg,#f59e0b,#ea580c)"></div><div class="text-xs mt-1 font-semibold">首日盘中高点 · 强压力</div></div></div>
+          <div class="flex items-center gap-3"><span class="w-16 text-right text-xs muted absolute left-0">$111.50</span><div class="flex-1"><div class="h-2 rounded-full" style="background:#f59e0b;width:93%"></div><div class="text-xs mt-1 font-semibold">首日开盘价 · 高位供给参考</div></div></div>
+          <div class="flex items-center gap-3"><span class="w-16 text-right text-xs muted absolute left-0">$97.17</span><div class="flex-1"><div class="h-2 rounded-full" style="background:#d97706;width:82%"></div><div class="text-xs mt-1 font-semibold">首日收盘价 · 中期修复观察位</div></div></div>
+          <div class="flex items-center gap-3"><span class="w-16 text-right text-xs muted absolute left-0">$94.24</span><div class="flex-1"><div class="h-2 rounded-full" style="background:#d97706;width:79%"></div><div class="text-xs mt-1 font-semibold">11/23 盘中高点 · 近端压力</div></div></div>
+          <div class="flex items-center gap-3"><span class="w-16 text-right text-xs muted absolute left-0">$88.91</span><div class="flex-1"><div class="h-2 rounded-full" style="background:#d97706;width:75%"></div><div class="text-xs mt-1 font-semibold">11/20 收盘价 · 反弹确认位</div></div></div>
+          <div class="flex items-center gap-3"><span class="w-16 text-right text-xs muted absolute left-0">$83.00</span><div class="flex-1"><div class="h-2 rounded-full" style="background:#ea580c;width:70%"></div><div class="text-xs mt-1 font-semibold" style="color:var(--orange)">IPO 发行价 · 心理与供需分界</div></div></div>
+          <div class="flex items-center gap-3"><span class="w-16 text-right text-xs muted absolute left-0">$81.90</span><div class="flex-1"><div class="h-2 rounded-full" style="background:#dc2626;width:69%"></div><div class="text-xs mt-1 font-semibold text-down">最新收盘价 · 当前价格</div></div></div>
+          <div class="flex items-center gap-3"><span class="w-16 text-right text-xs muted absolute left-0">$75.61</span><div class="flex-1"><div class="h-2 rounded-full" style="background:#059669;width:64%"></div><div class="text-xs mt-1 font-semibold text-up">11/24 盘中低点 · 关键支撑观察</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 mt-4">
+      <div class="surface rounded-2xl p-5"><div class="pill pill-green mb-3">第一支撑</div><div class="text-2xl font-bold">$75.61</div><div class="text-xs muted mt-2 leading-5">11月24日实际盘中低点。若再次回测，应观察是否缩量止跌、是否出现快速收复。</div></div>
+      <div class="surface rounded-2xl p-5"><div class="pill pill-orange mb-3">多空分界</div><div class="text-2xl font-bold">$83.00—84.00</div><div class="text-xs muted mt-2 leading-5">IPO 发行价与 11月24日开盘区间。重新站回并守稳，才有助于缓解破发压力。</div></div>
+      <div class="surface rounded-2xl p-5"><div class="pill pill-red mb-3">上方压力</div><div class="text-2xl font-bold">$88.91—94.24</div><div class="text-xs muted mt-2 leading-5">此前收盘及反弹高点密集区域。反弹到达此区需要成交量和收盘价共同确认。</div></div>
+    </div>
+    <div class="surface rounded-2xl p-5 mt-4">
+      <div class="font-bold mb-2">技术信号可信度说明</div>
+      <div class="grid sm:grid-cols-2 gap-4 text-sm">
+        <div><div class="flex justify-between mb-2"><span>价格区间 / IPO 锚点</span><span class="pill pill-green">可观察</span></div><p class="text-xs muted leading-5">基于已公布的实际成交价和发行价，适合制定短线观察条件。</p></div>
+        <div><div class="flex justify-between mb-2"><span>成交量结构</span><span class="pill pill-orange">初步参考</span></div><p class="text-xs muted leading-5">上市首日成交量异常放大，四日均值不能作为稳定的量能基准。</p></div>
+        <div><div class="flex justify-between mb-2"><span>移动平均线、RSI、MACD</span><span class="pill pill-gray">暂不适用</span></div><p class="text-xs muted leading-5">样本长度不足，不提供伪精确的数值或买卖交叉信号。</p></div>
+        <div><div class="flex justify-between mb-2"><span>机构资金净流入 / 主力净买入</span><span class="pill pill-gray">未核实</span></div><p class="text-xs muted leading-5">公开行情成交量不能直接拆分机构与散户净流向；不以成交量替代资金流结论。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="strategy" class="py-10 scroll-mt-24">
+    <div class="mb-6"><div class="section-kicker mb-2">06 / TRADING PLAYBOOK</div><h2 class="section-title text-3xl font-bold">操作指引：先确认，再交易</h2><p class="muted text-sm mt-2">选择不同交易角色，查看相应的入场纪律、确认条件与风险控制。</p></div>
+    <div class="surface rounded-2xl p-5">
+      <div class="flex flex-wrap gap-2 mb-5" role="tablist" aria-label="交易角色">
+        <button class="role-btn active" data-role="short" role="tab" aria-selected="true">短线交易者</button>
+        <button class="role-btn" data-role="swing" role="tab" aria-selected="false">波段投资者</button>
+        <button class="role-btn" data-role="long" role="tab" aria-selected="false">长期投资者</button>
+      </div>
+
+      <div id="panel-short" class="strategy-panel active">
+        <div class="grid lg:grid-cols-[1fr_1fr] gap-5">
+          <div><div class="font-bold mb-3">短线策略：不追跌，等待价格确认</div><div class="space-y-3">
+            <div class="surface2 rounded-xl p-4"><div class="flex justify-between"><b class="text-sm">观察买入条件</b><span class="pill pill-green">条件触发</span></div><p class="text-xs muted leading-5 mt-2">价格在 $75.61 上方形成止跌结构，随后收复 $83，并出现相对活跃的成交量；仅盘中瞬间刺穿不作为确认。</p></div>
+            <div class="surface2 rounded-xl p-4"><div class="flex justify-between"><b class="text-sm">反弹减仓观察</b><span class="pill pill-orange">压力区</span></div><p class="text-xs muted leading-5 mt-2">反弹至 $88.91—94.24 但量价背离、冲高回落时，优先考虑降低短线仓位。</p></div>
+            <div class="surface2 rounded-xl p-4"><div class="flex justify-between"><b class="text-sm">风险退出条件</b><span class="pill pill-red">纪律优先</span></div><p class="text-xs muted leading-5 mt-2">若有效跌破 $75.61 且收盘不能收回，短线止跌假设失效，应停止逆势加仓并重新评估。</p></div>
+          </div></div>
+          <div><div class="font-bold mb-3">短线执行纪律</div><ul class="space-y-3 text-sm muted">
+            <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-up flex-none"></i><span>先看收盘价是否站回 $83，再考虑参与反弹。</span></li>
+            <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-up flex-none"></i><span>观察成交量是否恢复，但不把上市初期的异常放量视为正常基准。</span></li>
+            <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-up flex-none"></i><span>单次试仓宜小，避免在连续下跌中不断摊平成本。</span></li>
+            <li class="flex gap-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-down flex-none"></i><span>上市初期价格跳空与波动幅度可能较大，限价单优于无保护追价。</span></li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div id="panel-swing" class="strategy-panel">
+        <div class="grid lg:grid-cols-2 gap-5">
+          <div><div class="font-bold mb-3">波段策略：等待底部结构形成</div><div class="space-y-3">
+            <div class="surface2 rounded-xl p-4"><b class="text-sm">第一阶段：守住低点</b><p class="text-xs muted mt-2 leading-5">观察 $75.61 附近是否出现连续交易日不再创新低，且收盘位置逐步改善。</p></div>
+            <div class="surface2 rounded-xl p-4"><b class="text-sm">第二阶段：收复发行价</b><p class="text-xs muted mt-2 leading-5">收盘价重新站上 $83，之后回踩不破，才说明发行价附近可能由压力转为支撑。</p></div>
+            <div class="surface2 rounded-xl p-4"><b class="text-sm">第三阶段：突破近端压力</b><p class="text-xs muted mt-2 leading-5">进一步关注 $88.91—94.24 区域。若有效突破并维持，才考虑提高波段参与度。</p></div>
+          </div></div>
+          <div><div class="font-bold mb-3">波段仓位管理</div><p class="text-sm muted leading-6">不建议在仅有四个交易日的情况下设定过于精确的波段胜率或目标价。可以把计划资金拆成多个阶段，只有价格结构改善、公司基本面未恶化时才逐步增加风险敞口。若公司经营数据或算力合同信息出现实质性负面变化，应重新评估估值框架，而非只看技术反弹。</p></div>
+        </div>
+      </div>
+
+      <div id="panel-long" class="strategy-panel">
+        <div class="grid lg:grid-cols-2 gap-5">
+          <div><div class="font-bold mb-3">长期策略：用经营兑现决定估值</div><p class="text-sm muted leading-6">长期投资者不应仅凭 IPO 发行价或首日高点决定价值。需要持续跟踪收入增长、客户留存、毛利与调整后经营利润率、算力采购成本、现金流和合同承诺。只有当收入扩张逐渐转化为更可持续的现金流，巨额算力投入才可能获得更稳定的估值支持。</p></div>
+          <div><div class="font-bold mb-3">长期跟踪清单</div><ul class="space-y-3 text-sm muted">
+            <li class="flex gap-2"><i data-lucide="check-square" class="w-4 h-4 text-up"></i>季度收入增长是否稳定，客户结构是否健康。</li>
+            <li class="flex gap-2"><i data-lucide="check-square" class="w-4 h-4 text-up"></i>调整后经营利润率能否企稳并改善。</li>
+            <li class="flex gap-2"><i data-lucide="check-square" class="w-4 h-4 text-up"></i>算力承诺实际付款节奏与收入回款是否匹配。</li>
+            <li class="flex gap-2"><i data-lucide="check-square" class="w-4 h-4 text-up"></i>竞争格局、模型能力和安全治理是否保持优势。</li>
+          </ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="surface rounded-2xl p-5 mt-4">
+      <div class="font-bold mb-4">未来交易情景推演</div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="surface2 rounded-xl p-4"><span class="pill pill-green mb-3">偏多情景</span><div class="font-bold text-lg">守住 $75.61，收复 $83</div><p class="text-xs muted leading-5 mt-2">低点不再下移，收盘重新站上发行价，反弹量能配合。后续观察 $88.91—94.24 压力区。</p><div class="text-xs font-bold mt-3 text-up">策略：小仓验证，逐步跟踪</div></div>
+        <div class="surface2 rounded-xl p-4"><span class="pill pill-orange mb-3">中性情景</span><div class="font-bold text-lg">$75.61—88.91 区间震荡</div><p class="text-xs muted leading-5 mt-2">上市初期供需继续消化，缺少持续催化剂，价格在发行价附近反复争夺。</p><div class="text-xs font-bold mt-3" style="color:var(--orange)">策略：降低频率，区间观察</div></div>
+        <div class="surface2 rounded-xl p-4"><span class="pill pill-red mb-3">偏空情景</span><div class="font-bold text-lg">有效跌破 $75.61</div><p class="text-xs muted leading-5 mt-2">低点失守且收盘无法收回，说明卖压仍在释放；若伴随行业风险偏好继续恶化，可能出现更大幅度价格探索。</p><div class="text-xs font-bold mt-3 text-down">策略：不抄底，优先控制风险</div></div>
+      </div>
+      <p class="text-[11px] muted mt-4">以上是条件情景，不是确定性价格预测；没有足够数据支持给出可靠目标价或精确概率。</p>
+    </div>
+  </section>
+
+  <section class="py-10">
+    <div class="mb-6"><div class="section-kicker mb-2">07 / RISK MONITOR</div><h2 class="section-title text-3xl font-bold">风险监控清单</h2></div>
+    <div class="surface rounded-2xl overflow-hidden">
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>风险维度</th><th>需要关注的信号</th><th>潜在市场影响</th><th>跟踪频率</th></tr></thead>
+          <tbody>
+            <tr><td><b>估值与情绪</b></td><td>AI 板块估值压缩、利率上行、成长股资金撤出</td><td class="text-down">估值倍数下修</td><td>每日</td></tr>
+            <tr><td><b>股本供给</b></td><td>解禁、配售、内部人出售及新增流通股</td><td class="text-down">短期供给增加</td><td>事件驱动</td></tr>
+            <tr><td><b>算力合同</b></td><td>承诺付款、供应商交付、采购成本和容量利用率</td><td class="text-down">现金流压力</td><td>季度 / 公告</td></tr>
+            <tr><td><b>经营质量</b></td><td>收入增速、利润率、客户续约与现金流</td><td class="text-up">决定中长期估值</td><td>季度</td></tr>
+            <tr><td><b>竞争与监管</b></td><td>模型替代、开源竞争、芯片出口与安全监管</td><td class="text-down">增长预期变化</td><td>持续</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8">
+    <div class="surface rounded-2xl p-6 md:p-8" style="background:linear-gradient(135deg,color-mix(in srgb,var(--surface) 94%,#ea580c 6%),var(--surface))">
+      <div class="section-kicker mb-3">FINAL TAKEAWAY</div>
+      <h2 class="section-title text-2xl md:text-3xl font-bold mb-4">ANT 仍在寻找上市后的合理价格锚</h2>
+      <p class="muted leading-7 text-sm md:text-base max-w-4xl">Anthropic 的业务增长和 AI 产业地位，为其长期价值提供了想象空间；但股票价格必须同时消化 IPO 初期供给、巨额算力承诺、利润率变化与市场风险偏好。最新收盘 $81.90 已低于 $83 发行价，且距离首日收盘 $97.17 下跌约 15.71%。在上市历史极短的情况下，最稳健的做法是尊重 $75.61 的实际低点、观察 $83 的收复情况，并用后续季度现金流和利润率验证长期投资逻辑。</p>
+      <div class="flex flex-wrap gap-2 mt-5"><span class="pill pill-red">短线：偏弱</span><span class="pill pill-orange">中线：等待确认</span><span class="pill pill-green">长期：跟踪经营兑现</span></div>
+    </div>
+  </section>
+
+  <section class="py-8 border-t line">
+    <div class="section-kicker mb-3">SOURCES & METHODOLOGY</div>
+    <h2 class="section-title text-2xl font-bold mb-4">数据来源与口径说明</h2>
+    <div class="grid md:grid-cols-2 gap-4 text-sm">
+      <div class="surface rounded-xl p-4">
+        <div class="font-bold mb-3">公司及监管文件</div>
+        <ul class="space-y-2 text-xs muted leading-5">
+          <li>• <a class="source-link" href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic 官方新闻与 IPO 公告</a>：发行价、上市安排、IPO 完成及发行规模。</li>
+          <li>• <a class="source-link" href="https://www.sec.gov/edgar/search/" target="_blank" rel="noopener">美国 SEC EDGAR</a>：最终招股书、发行文件、经营数据及算力承诺披露。</li>
+        </ul>
+      </div>
+      <div class="surface rounded-xl p-4">
+        <div class="font-bold mb-3">行情及新闻来源</div>
+        <ul class="space-y-2 text-xs muted leading-5">
+          <li>• <a class="source-link" href="https://finance.yahoo.com/quote/ANT/history/" target="_blank" rel="noopener">Yahoo Finance · ANT 历史行情</a>：日线 OHLC 与成交量。</li>
+          <li>• <a class="source-link" href="https://finance.yahoo.com/quote/%5EGSPC/history/" target="_blank" rel="noopener">S&P 500 历史行情</a>；<a class="source-link" href="https://finance.yahoo.com/quote/%5EIXIC/history/" target="_blank" rel="noopener">Nasdaq Composite 历史行情</a>：同期指数比较。</li>
+          <li>• <a class="source-link" href="https://www.reuters.com/" target="_blank" rel="noopener">Reuters</a>：IPO 首日交易、11月24日价格压力、管理层股份出售及市场背景。</li>
+          <li>• <a class="source-link" href="https://apnews.com/" target="_blank" rel="noopener">Associated Press</a>：上市首日表现及市场关注的经营与资本投入风险。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="surface2 rounded-xl p-4 mt-4">
+      <div class="font-bold text-sm mb-2">重要口径限制</div>
+      <p class="text-xs muted leading-6">本报告日期为 2026 年 11 月 25 日，但美股 11 月 25 日交易尚未形成完整收盘数据，因此行情分析截至 11 月 24 日收盘。报告观察窗口覆盖近一个月，但 ANT 于 11 月 19 日才开始交易，实际只有四个完整交易日，不能据此计算可靠的中长期技术指标。历史行情供应商之间可能存在小幅成交量差异。文中算力承诺不等于已支付现金；调整后经营利润不等于 GAAP 净利润或自由现金流。报告未获得可核验的机构净买入、散户净流入或实时订单簿数据，因此不对主力资金方向作未经证实的判断。</p>
+    </div>
+    <p class="text-[11px] muted mt-5 leading-5">免责声明：本报告仅用于信息研究与教育交流，不构成证券投资建议、买卖邀约或收益保证。新上市股票可能出现流动性变化、价格跳空及极端波动。投资者应结合自身风险承受能力、交易成本和最新公开披露独立决策。</p>
+  </section>
+
+  <footer class="py-6 border-t line flex flex-col sm:flex-row justify-between gap-3 text-[11px] muted">
+    <span>© 2026 AIPE Market Insight · Anthropic (ANT)</span>
+    <span>研究口径：截至 2026-11-25 可核验公开信息</span>
+  </footer>
+</main>
+
+<button id="backTop" class="fixed bottom-6 right-6 w-11 h-11 rounded-full text-white shadow-lg flex items-center justify-center z-30" style="background:var(--orange)" aria-label="返回顶部"><i data-lucide="arrow-up" class="w-5 h-5"></i></button>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.AOS) AOS.init({duration:650,once:true,offset:45});
+  if (window.lucide) lucide.createIcons();
+
+  const html = document.documentElement;
+  const themeToggle = document.getElementById("themeToggle");
+  const savedTheme = localStorage.getItem("ant-report-theme");
+  if (savedTheme === "dark") html.classList.add("dark");
+
+  function updateThemeIcon() {
+    if (!themeToggle) return;
+    themeToggle.innerHTML = html.classList.contains("dark")
+      ? '<i data-lucide="sun" class="w-4 h-4"></i>'
+      : '<i data-lucide="moon" class="w-4 h-4"></i>';
+    if (window.lucide) lucide.createIcons();
+  }
+  updateThemeIcon();
+
+  themeToggle.addEventListener("click", function () {
+    html.classList.toggle("dark");
+    localStorage.setItem("ant-report-theme", html.classList.contains("dark") ? "dark" : "light");
+    updateThemeIcon();
+  });
+
+  const menuBtn = document.getElementById("mobileMenuBtn");
+  const menu = document.getElementById("mobileMenu");
+  menuBtn.addEventListener("click", function () {
+    menu.classList.toggle("open");
+    menuBtn.innerHTML = menu.classList.contains("open")
+      ? '<i data-lucide="x" class="w-4 h-4"></i>'
+      : '<i data-lucide="menu" class="w-4 h-4"></i>';
+    if (window.lucide) lucide.createIcons();
+  });
+  menu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      menu.classList.remove("open");
+      menuBtn.innerHTML = '<i data-lucide="menu" class="w-4 h-4"></i>';
+      if (window.lucide) lucide.createIcons();
+    });
+  });
+
+  const roleButtons = document.querySelectorAll(".role-btn");
+  roleButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      const role = button.dataset.role;
+      roleButtons.forEach(function (b) {
+        const active = b === button;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      document.querySelectorAll(".strategy-panel").forEach(function (panel) {
+        panel.classList.toggle("active", panel.id === "panel-" + role);
+      });
+    });
+  });
+
+  const progress = document.getElementById("progressBar");
+  const backTop = document.getElementById("backTop");
+  function onScroll() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = max > 0 ? (window.scrollY / max) * 100 : 0;
+    progress.style.width = percent + "%";
+    backTop.classList.toggle("show", window.scrollY > 500);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
+  backTop.addEventListener("click", function () {
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

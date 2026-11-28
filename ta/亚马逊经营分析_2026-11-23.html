@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>亚马逊（AMZN）经营分析报告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+primary: {
+50: "hsl(20, 90%, 95%)",
+100: "hsl(20, 90%, 85%)",
+200: "hsl(20, 90%, 75%)",
+300: "hsl(20, 90%, 65%)",
+400: "hsl(20, 90%, 55%)",
+500: "hsl(20, 90%, 50%)",
+600: "hsl(20, 90%, 45%)",
+700: "hsl(20, 90%, 35%)",
+800: "hsl(20, 90%, 25%)",
+900: "hsl(20, 90%, 15%)",
+},
+accent: {
+50: "hsl(30, 85%, 95%)",
+100: "hsl(30, 85%, 85%)",
+200: "hsl(30, 85%, 75%)",
+300: "hsl(30, 85%, 65%)",
+400: "hsl(30, 85%, 60%)",
+500: "hsl(30, 85%, 55%)",
+600: "hsl(30, 85%, 50%)",
+700: "hsl(30, 85%, 40%)",
+800: "hsl(30, 85%, 30%)",
+900: "hsl(30, 85%, 20%)",
+},
+},
+},
+},
+};
+</script>
+<script
+defer
+src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html {
+scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html {
+scroll-behavior: auto;
+}
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow:
+0 10px 15px -3px rgba(0, 0, 0, 0.1),
+0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow:
+0 20px 25px -5px rgba(0, 0, 0, 0.1),
+0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th,
+td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th,
+.dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(
+90deg,
+hsl(20, 90%, 55%),
+hsl(30, 85%, 55%)
+);
+transition: width 1.2s ease-out;
+}
+.risk-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-width: 28px;
+height: 28px;
+border-radius: 8px;
+font-weight: 700;
+font-size: 13px;
+}
+Code
+/* ===== 暗色模式全局对比度增强 ===== */
+  .dark body {
+    color: #f3f4f6;
+  }
+  .dark header nav a {
+    color: #e5e7eb !important;
+  }
+  .dark header nav a:hover {
+    color: hsl(20, 90%, 65%) !important;
+  }
+  .dark .text-gray-400,
+  .dark .text-gray-500 {
+    color: #9ca3af !important;
+  }
+  .dark table th {
+    color: #f3f4f6;
+  }
+  .dark table td {
+    color: #e5e7eb;
+  }
+  .dark .text-gray-600 {
+    color: #d1d5db !important;
+  }
+  .dark .text-gray-700 {
+    color: #e5e7eb !important;
+  }
+
+  /* ===== 移动端菜单 ===== */
+  #mobileMenu {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    #mobileMenu {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    #mobileMenu.mobile-menu-open {
+      display: block !important;
+    }
+  }
+</style>
+<script>
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById("sunIcon").style.display = isDark
+      ? "block"
+      : "none";
+    document.getElementById("moonIcon").style.display = isDark
+      ? "none"
+      : "block";
+  }
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body
+class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen"
+>
+<!-- Progress Bar -->
+<div
+class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out"
+id="progressBar"
+style="width: 0%"
+></div>
+Code
+<!-- Floating Header -->
+<header
+  class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100"
+>
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+        亚马逊 AMZN 经营分析
+      </h1>
+      <!-- 桌面端导航 -->
+      <nav class="hidden md:flex space-x-5">
+        <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <!-- 移动端汉堡菜单按钮 -->
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300"
+          aria-label="菜单"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+        <!-- 暗色模式切换 -->
+        <button
+          onclick="toggleDarkMode()"
+          class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        >
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 移动端下拉菜单 -->
+    <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+      <nav class="flex flex-col space-y-3">
+        <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="min-h-screen">
+  <!-- Hero -->
+  <section
+    class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300"
+          >美股 · 云计算 · 零售科技</span
+        >
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300"
+          >NASDAQ: AMZN</span
+        >
+      </div>
+      <h2
+        class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300"
+      >
+        亚马逊公司（Amazon.com, Inc.）<br /><span
+          class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium"
+          >深度经营与投资分析报告（2026年11月）</span
+        >
+      </h2>
+      <p
+        class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl"
+      >
+        亚马逊已超越传统“在线零售商”范畴，演变为由北美/国际电商履约网、全球第一大公有云 AWS、760亿美元级数字广告生态以及低轨卫星通信共同构筑的数字基础设施帝国。2026年Q3公司营业利润率创下13.9%历史新高、AWS 同比增速加速至39.3%，但全年约2,200亿美元 AI 资本开支也使自由现金流阶段性深度转负。本报告从八个维度拆解其真实价值与风险回报比。
+      </p>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            7,169.2亿
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            2025年营收（美元，+12.4%）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            776.7亿
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            2025年净利润（美元，+31.1%）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            2.79万亿
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            当前总市值（美元，11月23日）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            +39.3%
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            2026 Q3 AWS 营收同比增速
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一、商业模式 -->
+  <section
+    id="model"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="store"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          一、商业模式
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          亚马逊的商业模式绝非简单的商品买卖差价，而是精密的<strong>“低毛利高频流量入口（1P/Prime零售）+ 高毛利基础设施与生态变现（3P佣金/FBA、数字广告、AWS云计算）”</strong>。公司借助零售低价和极致履约锁定全球海量消费者与中小企业，再通过全栈云计算与电商站内广告完成利润收割。2026年Q3（TTM）集团总销售额达7,974.6亿美元，其中毛利率攀升至53.2%、营业利润率达13.9%，正是高毛利服务收入占比持续抬升的直接结果。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEB5FqfA3idqqHhoNMtLnYmunEBsOF3ABub2GR1KJlkHGV_ate3uR2A-Mt1XkO9N2yZGCRC1u4pLIjJy7VCwL0s3_lxV4acyNtOfGzJ5VvokVWZYvv1fIShmzsv|1">（KlickAnalytics Q3数据）</span>
+        </p>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="package"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                1P自营 + 3P平台矩阵
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              占据美国电商37%–40%市场份额。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHIRM2JgAD49KKvpBOXmnkN5Qvt8Z-NXAleliNVXT0uQNPQtoFdsK-uLlg013e5_8S64p-H07my6l8-asd0r6N5JXZ4hPpYBywjUi6Utu5SqCPVCPMdWJL9qWfY16Jgpey8CCrg7h93p9Cmz0oILcjSPdIVtneL5C-M1e8a_KnwnE4=|2">（eMarketer 2025）</span>第三方卖家（3P）贡献逾60%售出件数，亚马逊向卖家收取交易佣金及 FBA 仓储配送费而无需承担存货减值风险，大幅优化零售单元经济性。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="megaphone"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+              <h3
+                class="font-semibold text-accent-700 dark:text-accent-300"
+              >
+                Prime 会员 + 760亿数字广告
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              Prime 会员以次日/当日达免邮、Prime Video 及体育直播捆绑高复购率客群；站内搜索广告（Sponsored Products）直接触达购买临门一脚的用户，2025年广告营收超680亿美元，TTM已突破760亿美元，稳居全球第三。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEh3S-D_oGR9xoH_scWMs_q_pEs3xohXGHOkIct8MyGrk-eA_4AJonuv-KMi7wBbzW0C7MStG9FxcJDVXBzuHCoFxkIy1QQVxnLGDz5uRuFi2S1_XNRGmxP2JtgPw-1I31XHRcjKJpNhBHJvohdR7IKBsW4t7eMGS186ENX6nBPXPdUp1LQ_KDDORMwsa-yNlqrB1IaHYbs9n1zXfTODTOwIg==|3">（ADWEEK）</span>
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="cloud"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                AWS 云与 AI 算力发动机
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              提供算力、存储、数据库及 Bedrock/Trainium AI 全栈服务。2026年Q3单季营收达459.84亿美元（年化1,840亿美元），单季营业利润177.73亿美元（利润率38.7%），贡献全集团63%的营业利润。
+            </p>
+          </div>
+        </div>
+        <div
+          class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6"
+        >
+          <p
+            class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+          >
+            <i
+              data-lucide="lightbulb"
+              class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+            ></i>
+            商业模式本质：零售是获客与数据采集飞轮，3P服务与站内广告是零售侧利润放大器，而 AWS 则是为全球企业数字化与 AI 算力提供“水电煤”的超级现金牛。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、竞争优势（护城河） -->
+  <section
+    id="moat"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="shield"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          二、竞争优势：护城河评估
+        </h2>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        Morningstar 给予亚马逊最高级别的<strong>“宽护城河（Wide Economic Moat）”</strong>评级。以下从五个核心维度对亚马逊进行1–10分打分，并与微软、谷歌母公司及沃尔玛横向对比。
+      </p>
+
+      <div class="space-y-6">
+        <!-- 品牌实力 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              品牌实力
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >9.0<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 90%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            在欧美消费者心中“Amazon/Prime”几乎是线上快速可靠购物的代名词，逾半数美国网购搜索直接始于亚马逊站内而非传统搜索引擎；B端领域 AWS 亦连续十余年稳居 Gartner 魔力象限领导者首位。
+          </p>
+        </div>
+
+        <!-- 网络效应 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              网络效应
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >9.0<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 90%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            具备极为罕见的“双生态网络效应”：消费端数亿活跃买家吸引数百万3P卖家与广告主，进而带来最全 SKU 与极致比价；云计算端庞大的开发者社区与第三方 SaaS 市场（AWS Marketplace）形成强者恒强循环。
+          </p>
+        </div>
+
+        <!-- 转换成本 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              转换成本
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8.5<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 85%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            AWS 企业客户一旦深度采用 S3、DynamoDB、IAM 权限及 Bedrock 工作流，数据出网费与系统重构停机风险使迁移成本极其高昂（目前多数客户签约期长达5年以上）；消费端则靠 Prime 会员与一键下单/极速退货锁定复购习惯（但仍略低于微软 Office 企业软件的刚性锁定）。
+          </p>
+        </div>
+
+        <!-- 成本优势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              成本优势
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8.5<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 85%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            全美“八大区域化（Regionalization）”履约网格搭配超75万台仓储机器人，构筑了千亿美元级资本才可复制的末端配送密度优势；同时 AWS 自研芯片（Graviton CPU、Trainium AI 芯片）年化营收已破百亿且大幅压低算力单元成本。
+          </p>
+        </div>
+
+        <!-- 专利或自有技术 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              专利或自有技术
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8.0<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            在云底层架构（Nitro 虚拟化系统）、自定义 AI 硅片、智能仓储算法及 Amazon Leo 卫星通信拥有深厚工程专利；但在基础前沿大模型（LLM）原始研发能力上，仍主要依赖与 Anthropic 的深度结盟及自研 Nova 系列追赶 OpenAI 与 Google Gemini。
+          </p>
+        </div>
+      </div>
+
+      <!-- 竞对对比 -->
+      <div class="mt-10">
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5"
+        >
+          与主要竞争对手的护城河对比（1–10分）
+        </h3>
+        <div
+          class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <table
+            class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+          >
+            <thead class="bg-primary-50 dark:bg-primary-900/30">
+              <tr>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">评估维度</th>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">亚马逊 (AMZN)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">微软 (MSFT)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">谷歌母公司 (GOOGL)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">沃尔玛 (WMT)</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr>
+                <td class="font-medium">品牌实力</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">9.0</td>
+                <td>9.0</td>
+                <td>9.0</td>
+                <td>8.0</td>
+              </tr>
+              <tr>
+                <td class="font-medium">网络效应</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">9.0</td>
+                <td>8.5</td>
+                <td>9.0</td>
+                <td>6.5</td>
+              </tr>
+              <tr>
+                <td class="font-medium">转换成本</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">8.5</td>
+                <td>9.5</td>
+                <td>8.0</td>
+                <td>5.0</td>
+              </tr>
+              <tr>
+                <td class="font-medium">成本/规模优势</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">8.5</td>
+                <td>7.5</td>
+                <td>8.0</td>
+                <td>8.5</td>
+              </tr>
+              <tr>
+                <td class="font-medium">专利/技术壁垒</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">8.0</td>
+                <td>9.0</td>
+                <td>9.5</td>
+                <td>5.0</td>
+              </tr>
+              <tr>
+                <td class="font-medium">2026 Q3 云份额/增速</td>
+                <td class="font-semibold">26% / +39%</td>
+                <td>19% / +48%</td>
+                <td>16% / +103%</td>
+                <td>无云业务（电商+23%）</td>
+              </tr>
+              <tr>
+                <td class="font-medium">营业利润率 (TTM)</td>
+                <td>13.3%（Q3 13.9%）</td>
+                <td>46.8%</td>
+                <td>32.1%</td>
+                <td>4.2%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+          数据来源：Synergy Research Group (Q3 2026)、公司2026年Q3财报及24/7 Wall St.对比整理。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFCDUBQMVZyAEEjCxbOKTPoMDRfg3immV22gRmVFrfVP5FqADjmqw-OzH-8mA2XNEF91cm-YL1Ov4TkFlGtfdb4ayt8VSr4I5DN5a1i99bK695mxJ1DwEOkyNT7Ue6oQZixeM86ITGlAjJfnJlSnPDYTuGk9SBtsnVyti0d8ZrDHIbB754ht9E1fBlbbSv_gI0Do4fIc_rC1k_5D562coDz1uVkmtahvp59XbA9SGlvsfo=|4">（Synergy Q3 2026）</span>
+        </p>
+      </div>
+
+      <div
+        class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed"
+        >
+          <i
+            data-lucide="award"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          综合护城河评分：<strong>8.6 / 10</strong>。亚马逊是全球唯一同时在“重物理履约零售网”与“顶尖公有云基础设施”两大万亿美元赛道均构筑极宽护城河的科技巨头，跨生态协同效应令单一赛道竞争对手难以正面撼动。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、行业趋势 -->
+  <section
+    id="industry"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="trending-up"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          三、行业趋势
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          亚马逊所处的两大核心赛道正呈现截然不同的周期律动：全球云计算市场在生成式 AI 驱动下正经历史无前例的<strong>“二次加速爆发”</strong>——2026年Q3全球云基础设施季度支出跃升至 **1,680亿美元**，同比暴涨 **55%**（连续12个季度增速走高，全年正冲向6,000亿美元）；<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhs71dSdYGWw4GIzeDJbrXhm0FkFj6N6upsdv1ozpyfcpjXJFf5jL1OSeE-0-aHupJldxIWpcQp5x3GJBgKbsV3aAOrse8_J2JaYhdqS3gVEmkv6r3LmRggDkppBhNPoi1le3TglSl_UapYebf9cIP1g9u8iH-ytfXKhCg04HWpdFrhUOXNeVxohl0c27CaKym9ca2ywr8-m7hRUxHT1_HMAM0unxKsyTVmgwkvui-dklozG-E-B0ysVSAw_-t|5">（CRN/Synergy）</span>而成熟期零售电商则进入全渠道深度整合与 AI 导购重构阶段。
+        </p>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="cpu" class="w-5 h-5"></i
+              >AI 云算力爆发与格局重构
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• 全球云基础设施市场规模在短短8个季度内翻倍，AI 推理与训练需求成为绝对增量引擎</li>
+              <li>• 三大巨头合计占61%份额，但 Anthropic 与 SpaceX 首次进入全球云服务前十，Neoclouds（如 CoreWeave）快速崛起</li>
+              <li>• 企业算力需求从“通用 GPU 囤积”转向“自研高性价比 ASIC（如 Trainium/TPU）+ 混合多云部署”</li>
+              <li>• AI 工作负载毛利率初期低于传统云服务，倒逼云厂商拼电力、芯片与规模摊薄能力</li>
+            </ul>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="shopping-cart" class="w-5 h-5"></i>全渠道零售与媒体化变现
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• 沃尔玛等实体巨头依靠门店前置仓全渠道反攻（WMT 电商增速+23%），跨境低价平台抢占白牌长尾市场</li>
+              <li>• 零售媒体网络（RMN）成为电商利润核心，广告形式正从传统搜索关键词向 Sponsored AI Prompts 演进</li>
+              <li>• 杂货生鲜与医疗健康数字化履约成为电商高粘性渗透的新前线</li>
+              <li>• 天地直连卫星宽带（Starlink vs Amazon Leo）开启全球未覆盖人群与企业物联网连接新蓝海</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="mt-4 p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            <strong class="text-gray-800 dark:text-gray-200"
+              >行业趋势启示：</strong
+            >云计算与 AI 基建的“军备竞赛”显著拉高了行业资金门槛——每年2,000亿美元级的资本开支将绝大多数中小厂商挡在门外，长期利好亚马逊等少数头部超大规模云商（Hyperscalers）；但在中短期内，Azure 与 Google Cloud 在 AI 原生模型绑定下的高增速，正倒逼 AWS 必须通过牺牲当期自由现金流来捍卫技术代差与市场份额。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、财务状况 -->
+  <section
+    id="financial"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="bar-chart-3"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          四、财务状况
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        以下结合亚马逊2021–2025年完整五年 SEC 10-K 财务报表及2026年 Q3（TTM）最新季报，系统拆解其收入、盈利质量、自由现金流、资产负债表及资本回报演变。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGUzp5QV5bQfgi_4zRtUEYf-xPQd0v7_FVcadWnR212kkXu9fYaErPZMtozgYIMJqJYDTdA_wxyzCOpQbUHnFO-mGT3YM2CSzsUoMHgNXkq6NpybERz0FcOKtUfrg==|6">（SEC 5年报表）</span>
+      </p>
+
+      <!-- 5年财务核心表 -->
+      <div
+        class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+      >
+        <table
+          class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+        >
+          <thead class="bg-accent-50 dark:bg-accent-900/30">
+            <tr>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">财务指标（亿美元）</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2021</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2022</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2023</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2024</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2025</th>
+              <th class="font-semibold text-primary-700 dark:text-primary-300">2026 Q3 (TTM)</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr>
+              <td class="font-medium">营业收入 (Revenue)</td>
+              <td>4,698.2</td>
+              <td>5,139.8</td>
+              <td>5,747.9</td>
+              <td>6,379.6</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">7,169.2</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">7,974.6</td>
+            </tr>
+            <tr>
+              <td class="font-medium">营收同比增速</td>
+              <td class="text-green-600 dark:text-green-400">+21.7%</td>
+              <td class="text-green-600 dark:text-green-400">+9.4%</td>
+              <td class="text-green-600 dark:text-green-400">+11.8%</td>
+              <td class="text-green-600 dark:text-green-400">+11.0%</td>
+              <td class="text-green-600 dark:text-green-400">+12.4%</td>
+              <td class="text-green-600 dark:text-green-400">+15.4%</td>
+            </tr>
+            <tr>
+              <td class="font-medium">净利润 (Net Income)</td>
+              <td>333.6</td>
+              <td class="text-red-600 dark:text-red-400">-27.2</td>
+              <td>304.3</td>
+              <td>592.5</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">776.7</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">1,347.8*</td>
+            </tr>
+            <tr>
+              <td class="font-medium">经营现金流 (OCF)</td>
+              <td>463.3</td>
+              <td>467.5</td>
+              <td>849.5</td>
+              <td>1,158.8</td>
+              <td>1,395.1</td>
+              <td>约1,720+</td>
+            </tr>
+            <tr>
+              <td class="font-medium">自由现金流 (FCF)</td>
+              <td class="text-red-600 dark:text-red-400">-90.7</td>
+              <td class="text-red-600 dark:text-red-400">-115.7</td>
+              <td>368.1</td>
+              <td>382.2</td>
+              <td>111.9</td>
+              <td class="text-red-600 dark:text-red-400 font-semibold">-424.0 ~ -468.9</td>
+            </tr>
+            <tr>
+              <td class="font-medium">毛利率 (Gross Margin)</td>
+              <td>42.0%</td>
+              <td>43.8%</td>
+              <td>47.0%</td>
+              <td>48.9%</td>
+              <td>50.3%</td>
+              <td>51.4%（Q3 53.2%）</td>
+            </tr>
+            <tr>
+              <td class="font-medium">营业利润率 (Op Margin)</td>
+              <td>5.3%</td>
+              <td>2.4%</td>
+              <td>6.4%</td>
+              <td>10.8%</td>
+              <td>11.2%</td>
+              <td>13.1%（Q3 13.9%）</td>
+            </tr>
+            <tr>
+              <td class="font-medium">股本回报率 (ROE)</td>
+              <td>24.1%</td>
+              <td class="text-red-600 dark:text-red-400">-1.9%</td>
+              <td>15.1%</td>
+              <td>20.7%</td>
+              <td>18.9%</td>
+              <td>27.4%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 dark:text-gray-400 -mt-5 mb-8">
+        注：*2026 Q3 TTM 净利润1,347.8亿美元包含2026 Q2 Anthropic 股权投资带来的约534亿美元非现金税前账面重估收益；FCF 按 SEC 经营现金流减资本开支口径统计。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtzaFdFCZEfIl8cEl4n_SUHsqkvFt2ahmAmr8eKeBWWprFHu23-VXMjgEtQVqvBZ0g6k0VttPH6bBI5SKKsdN2lEkFhz7p5U4Un6g3-T6kiRaIP9j2hukywMUT02uXZjhz7qaIcFL1L4R2FhM=|7">（利润率与ROE历年）</span>
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <!-- 收入增长分析 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="trending-up" class="w-5 h-5"></i
+            >收入增长：庞大体量下的罕见再加速
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            过去五年营收从4,698亿美元稳健攀升至7,169亿美元（5年 CAGR 约11.2%），并在2026 Q3 TTM 逼近8,000亿美元（+15.4%）。与常规巨企增速递减不同，AWS（2026 Q3 +39.3%）与广告（+26%）的高增长令集团整体在近8,000亿美元基数上依然维持双位数高弹性。
+          </p>
+        </div>
+        <!-- 净利润趋势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="award" class="w-5 h-5"></i
+            >净利润趋势：深V反转后需辨识投资收益噪声
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2022年因履约过剩及 Rivian 股权减值短暂亏损27.2亿美元；2023–2025年核心经营爆发带动净利润连跃三级至776.7亿美元。2026 Q3 TTM 虽高达1,347.8亿美元，但专业分析须剔除 Anthropic 公允价值巨额重估，其真实经营性净利稳定在约800亿–850亿美元高质量区间。
+          </p>
+        </div>
+        <!-- 自由现金流 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流：主动战略性“失血”
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            经营现金流（OCF）极其充沛，2025年达1,395亿美元。但公司选择将几乎全部现金流甚至举债投入 AI 数据中心——资本开支从2024年830亿增至2025年1,283亿，2026年Q3单季更飙至773亿美元，致使2026 Q3 TTM 自由现金流深度转负至约 -424亿至-469亿美元。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHCxib8kKxIKT5M4DYhJSzwtfLPw7F0LuLoaSJsc3PoPZEmjvUWP6GJ7dAxxFwj-pyd_udyXW_Uce2_Wv9AfjYHcuea6uT1oFsd1WGYCdzLZiUoAgffPGltacNXyrKkwQ==|8">（SEC 现金流）</span>
+          </p>
+        </div>
+        <!-- 利润率与债务 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="scale" class="w-5 h-5"></i>利润率飙升与加杠杆护航
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            毛利率五年内提升超11个百分点（42.0%→53.2%），2026 Q3 营业利润率创13.9%历史新高，盈利结构脱胎换骨。债务方面，标普维持 AA、穆迪维持 A1 高评级，但总债务在2026年9月末激增163%至1,800亿美元（Q3单季新发债481亿美元），债务/权益比约0.48，利息覆盖率仍达23.7倍。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFsJtyE0w7sKmNNcu5Er_Q0QL4sbu8Dfh582v7A8DpzxASjji-080k9BV5cisfwa6DMPPG3JdwKQqlBJKqpr8tU0cyvtBq76SxzUb239fq1YHFn7EAZBnfzFiov45XuRPeDiXkQwN78ZJXGLUfofrOO5T-xIMGzwXPMYfRoPpMPOIG72C9RAd2Ctdx8qsWfg4Z0_hGuJn7tiRsWR8_0TPtP44qJiNY=|9">（信用评级更新）</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- ROE 与财务稳健性判断 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+      >
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4"
+        >
+          股本回报率（ROE）与整体财务稳健性判断
+        </h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-4">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">
+              27.4%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              ROE (2026 Q3 TTM / 2025年为18.9%)
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">
+              15.2%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              ROIC (投入资本回报率)
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-green-600">0.99</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              流动比率（Altman Z-Score 4.06 安全）
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          综合判断：亚马逊的财务基本面<strong>极其稳健且盈利质量处于历史巅峰，但正处于一轮史无前例的主动战略投资失血期</strong>。与2022年“亏损+低效率”截然不同，2026年的负自由现金流完全由高确定性云算力订单驱动；公司账面现金及短期投资仍超千亿美元，且拥有逾1,590亿美元 Anthropic 股权作为流动性安全垫，偿债能力无虞，惟需严密追踪2027–2028年 ROIC 能否继续跑赢融资成本。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、估值分析 -->
+  <section
+    id="valuation"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calculator"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          五、估值分析
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <div
+          class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-primary-700 dark:text-primary-300 mb-4"
+          >
+            市盈率（P/E）与行业横向对比（2026年11月）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >亚马逊 AMZN（TTM P/E / Forward P/E）</span
+              >
+              <span class="font-bold text-primary-600 dark:text-primary-400"
+                >20.9x / 23.0–24.1x</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >亚马逊（剔除投资重估核心盈利 P/E）</span
+              >
+              <span class="font-semibold text-gray-700 dark:text-gray-300"
+                >约 30x–32x</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >微软 MSFT（TTM / Forward P/E）</span
+              >
+              <span class="font-semibold text-gray-600 dark:text-gray-400"
+                >27.7x / 26.5x</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >谷歌母公司 GOOGL（TTM / Forward P/E）</span
+              >
+              <span class="font-semibold text-gray-600 dark:text-gray-400"
+                >14.9x / 14.5x</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >沃尔玛 WMT（TTM P/E）</span
+              >
+              <span class="font-semibold text-gray-600 dark:text-gray-400"
+                >30.7x–39.0x</span
+              >
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span
+                class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                >亚马逊历史估值中枢（5年 / 10年均值）</span
+              >
+              <span class="font-semibold text-gray-700 dark:text-gray-300"
+                >66.4x / 104.3x</span
+              >
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">
+            亚马逊当前前瞻 PE 不仅远低于过去5年均值，甚至低于营业利润率仅4.2%的沃尔玛，PEG 低至0.78–0.90。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHV4jnMXDdTjePYaTuvKgxOPsOuRROkkvlo1V1L6H0XMAYHp4dc5sed89dD-r6oHVdjDXxsJDp4dzyymrbESJZCliHFoZrLwXx-6g_8yklSOvu3IN5X|10">（Finviz/同行对比）</span>
+          </p>
+        </div>
+
+        <div
+          class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-accent-700 dark:text-accent-300 mb-4"
+          >
+            华尔街机构共识目标价（截至2026年11月）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >华尔街最高目标价 / 24/7牛市情景</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >400.00 / 382.91 美元</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >24/7 Wall St. 基准目标价</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >332.03 美元</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >Benzinga（31家）一致均值</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >331.09 美元</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >61家机构综合一致目标价（59买/2持/0卖）</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >326.29 美元（+26.5%）</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >MarketBeat 一致目标价</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >320.73 美元</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >24/7 Wall St. 悲观情景目标价</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >285.34 美元</span
+              >
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span
+                class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                >当前股价（2026年11月23日）</span
+              >
+              <span class="font-semibold text-gray-700 dark:text-gray-300"
+                >约 257.36–257.89 美元</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DCF 参考 -->
+      <div
+        class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8"
+      >
+        <h3
+          class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"
+        >
+          <i data-lucide="line-chart" class="w-5 h-5"></i
+          >现金流折现（DCF）与分部加总（SOTP）估算参考
+        </h3>
+        <p
+          class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+        >
+          对亚马逊进行 DCF 估值需高度警惕“短期 CapEx 失真”：若以2026年负 FCF 机械外推，静态量化模型往往仅给出约260美元（如 GuruFocus GF Value 为260.18美元）的保守平价；<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0tIuolRtHt-spqAtig222NhTNtympyxtUICFTw9KnFhPIsfWRc4CetMlKTb6JO1vL6nW6cepzQGYL8pdBrCr1YN0qeBp77AMkca1ICccikXIgSgvJ5kcjKDh_d6yNhLSvxIm00dqYPFi7|11">（GuruFocus GF Value）</span>但按照投行标准两阶段 DCF 模型（假设2027年 CapEx 触顶后，2028–2035年资本开支占营收比逐步回落至11%–12%，自由现金流恢复至年均1,400亿–2,000亿美元以上，WACC 取8.5%、永续增长3.5%），叠加以2026年11月19日 Anthropic IPO 市值计价的约1,590亿美元股权及 Rivian 持仓，分部加总与正常化 DCF 公允价值区间位于 <strong>315–345美元/股</strong>。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGJxmZfBLKmBhXcwEhFTWXfD7MC8V8KxXKtbtaT1OWW4jMORPYuSUWFcLh1jwhqhxKLNqZGXGroYtlL6MCtezHR2IW1o-EM-dwd6CMiN7RF63VQhs5WPZ7rPeL1awucRWfqOVlwjvgEJJs_RO2mn1QEC-dutLzauwpgBz0t0F2A9pUM1IFEWsc3lDigFW8L7qKYU0qn_jU6DYdgzZSgjg==|12">（分析师一致预测）</span>
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-primary-600 dark:text-primary-400"
+            >
+              260.18 美元
+            </div>
+            <div class="text-xs text-gray-500">静态量化 GF Value（当前价位附近）</div>
+          </div>
+          <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-accent-600 dark:text-accent-400"
+            >
+              326.29 美元
+            </div>
+            <div class="text-xs text-gray-500">61家投行一致目标价（+26.5%）</div>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div class="text-lg font-bold text-gray-700 dark:text-gray-300">
+              315–345 美元
+            </div>
+            <div class="text-xs text-gray-500">正常化 DCF + SOTP 权益重估区间</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="search"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          <strong>估值结论：</strong
+          >以2026年11月下旬约257美元股价测算，亚马逊 EV/EBITDA 约16倍、Forward P/E 约23–24倍、PEG 低于1，相对于其核心营业利润扩张斜率与 Anthropic 1,590亿美元隐含权益资产而言，<strong>当前股票处于“实质性温和低估”状态</strong>。市场之所以未立即给予320美元以上定价，是因为对2,200亿美元巨额资本开支下的短期自由现金流折价；随着2027年 AWS 40%+ 增速兑现，估值修复空间明确。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、经营展望 -->
+  <section
+    id="outlook"
+    class="py-20 bg-accent-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calendar"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          六、经营展望（12–24个月）
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            AWS 云计算：近5,000亿积压订单驱动40%+增长周期
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            AWS 积压订单已接近4,960亿美元，管理层明确表示2027年绝大部分新增算力已被至少5年期的长期合同锁定，且 Meta 与 NVIDIA 相继签署重大 AWS 合作协议、Bedrock 调用 Token 量暴涨近17倍。CEO 贾西预期2027–2028年 AWS 年增速有望继续保持在40%以上，支撑2027年集团总营收突破9,590亿美元。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHyD4x6xIHsC-pS9WMPvvpyZjanH2QM5OsJ3ciqwep45IrMPE8oyWsBza184B6lSCAeGMTgiXE6_DGX6OOcMp6Y8lLf7YbX05R6cx_TYpCsJn3yqjt-lNFUKGJlM-xjq4bBZbWpEa0OJ5PUmUnnxyylFHm_PpLXVJQDRprHfkC0NHwU5gUZyomYIGjDjiLXmZI_8kxlBQnty3o4|13">（AWS 积压订单）</span>
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            零售与履约效率：组织精简红利继续兑现利润率
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2025–2026年累计约3万名企业白领精简叠加“去官僚化”及全美区域化分拣、AI 购物导购 Rufus 渗透，未来12–24个月北美零售营业利润率有望由7.7%稳步向8.5%–9.5%靠拢，国际业务持续稳定盈利，为重资产 AI 投资提供源源不断的内部现金弹药。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            数字广告：向千亿美元体量冲击的“AI 提示词广告”
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            Amazon Ads 延续25%左右高速扩张（TTM 760亿美元），未来两年将加速通过 Prime Video 流媒体插播广告与站内 Sponsored AI Prompts 实现全场景变现，向千亿美元年度广告营收迈进。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            太空连接：Amazon Leo 组网与 Globalstar 115.7亿并购落地
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            继2026年10月底获 FCC 频谱牌照批复后，亚马逊预计于2027年完成对 Globalstar 的115.7亿美元收购，并借助与苹果的长期直连卫星（D2D）合作协议与低轨星座组网，在2027–2028年开启天地一体化商用服务，切分全球移动与企业卫星通信蛋糕。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、风险识别 -->
+  <section
+    id="risk"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="alert-triangle"
+            class="w-5 h-5 text-red-600 dark:text-red-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">
+          七、风险识别
+        </h2>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        按对企业长期内在价值与盈利能力的危险程度从高到低排序：
+      </p>
+
+      <div class="space-y-4">
+        <!-- 风险1 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0"
+            >
+              1
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2"
+              >
+                行业颠覆 — 2,200亿 AI 资本开支过剩与 AI 购物代理重构
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                当前最大结构性威胁在于<strong>AI 算力投资与回报错配</strong>：2026年约2,200亿美元级 CapEx 将自2027年起形成巨额折旧刚性支出，若 AI 算力芯片快速换代导致老旧服务器提前贬值，或算力租借陷入价格战，ROIC 将大幅承压；同时在消费端，若未来外部 AI 购物代理（Agent）绕过亚马逊站内比价直接完成跨平台下单，将动摇其零售搜索流量与广告根基。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险2 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0"
+            >
+              2
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2"
+              >
+                监管威胁 — FTC 广告竞价诉讼（200亿美元索赔）与2027垄断案庭审
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                2026年8月31日美国 FTC 联合22个州正式起诉亚马逊，并于11月5日解封细节，指控其自2018年起在广告竞价中秘密设置“软底价”并人为加价（大促日高出竞拍价达250%），涉嫌向120万广告主多收逾200亿美元。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGsh0cTTGKhqkQl98b-7jRHooKaMlFyyQ7WvXxadbU6NDTjD_9u7uefFayQWKGMG4tZ8EvEMM2RoHaWFMKpFwH952IQbdzAx-jn8ROGr3oR1Wl4-by6b-cQfXewf6WU70Cs8b2B_b4WwCHmtFGtu_qhDX8sxHvJ1qXsLSqJO0X9XO_3cXCUQ9YLkufDv_NIZJ9anIE=|14">（FTC 11月诉状）</span>继2025年因 Prime 诉讼支付25亿美元和解后，这起直击760亿美元高毛利广告业务的案件与2027年全面反垄断庭审叠加，不仅面临百亿级罚金风险，更可能被迫重塑广告竞价及3P商家收费规则。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8W7J4Uk3MXJcTuVxe3-1_AZmplk0st3v4SOaTqYOlHNAzI-SF7TuE9BQqYErUeX4qRgoxi6OKNyDaSRuNNYXq_m3sbiZxyGc0AKFa3AMw8zCFRbYZ5oWWolQDgiIGB0hRQdna5oxQd7bsM68HWuW5GfEcXA25kHz_O8QltOYk3OYaEvkvIE82Meoo0HDDhwnRGBVk5zTwGjDpS0OC0dcPmm5E8NAzZfnobcyPRDmyNcmFY4XJe2hdn3KHvly9ERsJ-5TdWVxuqq8kpztWqq4sVoU=|15">（TradingKey 诉讼追踪）</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险3 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0"
+            >
+              3
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2"
+              >
+                竞争风险 — 云市场份额微降与全渠道零售夹击
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                云战场方面，2026年Q3 AWS 全球市占率同比下降3个百分点至26%，而 Google Cloud 飙升103%（占16%）、Microsoft Azure 增长48%（占19%），且独立 AI 实验室（Anthropic、OpenAI）与 Neoclouds 正崛起为新云极客。零售战场则面对沃尔玛（电商+23%）与跨境直供平台的价格侵蚀。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险4 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0"
+            >
+              4
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2"
+              >
+                经济风险 — 宏观通胀关税与企业 IT 支出周期
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                作为全球最大实物电商之一，欧美高利率余波、关税壁垒及中低收入家庭消费降级会压制高毛利可选消费品（Electronics/Apparel）销量；若宏观经济意外陷入滞胀，企业也会放缓非 AI 传统云迁移与品牌广告投放节奏。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险5 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0"
+            >
+              5
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2"
+              >
+                债务或财务风险 — 债务翻倍但仍具 AA/A1 顶级信用锚
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                2026年9月末总债务激增至1,800亿美元（Q3单季举债481亿美元）及 TTM FCF 转负，虽拉高了财务杠杆并挤压利息覆盖边际，但依托1,700亿美元级年化经营现金流、S&P AA / Moody's A1 信用评级以及近1,590亿美元 Anthropic 可变现股权，短期偿债与流动性危机概率极低。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、多空视角 -->
+  <section
+    id="longshort"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="scale"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          八、多空视角：机构投资组合经理评估
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- 可能买入的原因 -->
+        <div
+          class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800"
+        >
+          <h3
+            class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因（Bull Case）
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>AWS 再加速且需求锁定度极高</strong>：Q3 增速跳升至39.3%，积压订单逼近5,000亿美元且2027年新增产能几乎售罄，AI 算力商业化非空头泡沫而是真实合同收入。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>前瞻估值处于历史低位</strong>：当前约23–24倍 Forward P/E（PEG &lt; 1）不仅远低于5年均值（66x），甚至低于沃尔玛，61位华尔街分析师中59位看多且零卖出评级。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>巨额隐含权益资产安全垫</strong>：2026年11月19日 Anthropic 1.5万亿美元 IPO 后，亚马逊14.7%股权价值约1,590亿美元（成本仅180亿），大幅增厚长期分部估值底线。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>组织瘦身+高毛利生态驱动盈利弹性</strong>：3万白领优化、760亿美元广告现金牛及自研 Trainium 芯片协同，将营业利润率推升至13.9%且仍有上探空间。</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 可能回避的原因 -->
+        <div
+          class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800"
+        >
+          <h3
+            class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因（Bear Case）
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>自由现金流深度转负且无分红回购</strong>：2,200亿美元年 CapEx 令 TTM FCF 跌至-424亿美元、总债务倍增至1,800亿美元，注重现金股东回报的基金短期缺乏耐心。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>FTC 200亿美元广告竞价诉讼直击命门</strong>：若广告“软底价”机制被法院强制禁止并遭百亿级罚款，高毛利广告业务增速与盈利中枢将实质下移。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>云市场竞争份额持续微降</strong>：AWS（+39%）虽快，但仍落后于 Google Cloud（+103%）与 Azure（+48%），且面临 Anthropic 自身分流企业级云支出的微妙博弈。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>2027年折旧爬坡与高基数盈利回落</strong>：剔除2026年 Anthropic 账面收益后，市场一致预期2027年 GAAP EPS（约10.7美元）将较2026年表观 EPS 回落，折旧压力显现。</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 关键因素与投资论点 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6"
+      >
+        <h3
+          class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4"
+        >
+          关键因素：投资组合经理需紧盯的3个核心指标
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div
+            class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="cloud-lightning"
+              class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-primary-700 dark:text-primary-300"
+            >
+              AWS 增速与营业利润率
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              能否稳守38%–40%+增速且维持35%以上利润率，验证2,200亿 CapEx 的投入资本回报（ROIC）
+            </p>
+          </div>
+          <div
+            class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="activity"
+              class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-accent-700 dark:text-accent-300"
+            >
+              CapEx 峰值与 FCF 拐点
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              观察2027年资本开支增速是否见顶回落，推动 TTM 自由现金流重回正值轨道
+            </p>
+          </div>
+          <div
+            class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center"
+          >
+            <i
+              data-lucide="gavel"
+              class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-gray-700 dark:text-gray-300"
+            >
+              FTC 诉讼抗辩与和解边界
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              追踪2026年12月答辩及2027年庭审走势，评估广告业务利润率是否遭遇永久性制度约束
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投资论点 -->
+      <div
+        class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="target"
+            class="inline-block w-5 h-5 mr-2 -mt-0.5"
+          ></i>
+          <strong>机构投资论点：</strong
+          >亚马逊正处于典型的<strong>“主业盈利巅峰与战略重资产投入期错配”</strong>所创造的长期配置窗口。当营业利润率创13.9%新高、AWS 订单近5,000亿美元并重回39.3%高增长时，2,200亿美元 AI 资本开支导致短期自由现金流深度转负，把前瞻市盈率压低至23–24倍这一罕见低位（且几乎未充分计入1,590亿美元 Anthropic 上市股权安全垫）。对于视野跨越3–5年的机构长期组合而言，只要 AI 企业级算力需求与自研芯片成本优势在2027–2028年按期兑现现金流回收，当前价位（约257美元）具备<strong>“业绩高增长 + 估值向320美元以上修复”</strong>的高赔率机会；短期交易策略上，则建议分批建仓以平滑2027年折旧爬坡与 FTC 监管诉讼噪声带来的波段回撤。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          关于本报告
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告基于亚马逊（NASDAQ: AMZN）公开 SEC 财务报告、机构一致预期、Synergy 云市场追踪及司法监管文件，从商业模式、护城河、财务状况、估值、风险与多空视角等八个维度进行深度剖析。
+        </p>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          核心数据来源
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>• 亚马逊 FY2021–FY2025 10-K 年报</li>
+          <li>• 亚马逊 2026年 Q3 10-Q 季报及电话会</li>
+          <li>• Synergy Research Group (Q3 2026)</li>
+          <li>• Anthropic 2026年11月 IPO 招股文件</li>
+          <li>• 美国 FTC 2026年11月诉讼公开卷宗</li>
+        </ul>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          免责声明
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告仅供金融研究、教育与信息参考，不构成任何证券买卖建议或投资收益承诺。数据均源自公开资料校验整理，投资需结合自身风险承受能力审慎决策。
+        </p>
+      </div>
+    </div>
+    <div
+      class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500"
+    >
+      <p>© 2026 亚马逊（AMZN）经营分析报告 · 生成日期：2026-11-23</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    if (!menu) return;
+
+    menu.classList.toggle("mobile-menu-open");
+  }
+
+  window.addEventListener("scroll", () => {
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    lucide.createIcons();
+    AOS.init({ duration: 800, once: true });
+
+    // Citation System
+    let i = 1, map = new Map();
+    document.querySelectorAll("[data-ref]").forEach((el) => {
+      if (el.dataset.citationProcessed) return;
+      const raw = (el.getAttribute("data-ref") || "").trim();
+      if (!raw) return;
+      const parts = raw.split("|");
+      const url = parts[0].trim();
+      const idx =
+        (parts[1] || "").trim() ||
+        map.get(raw) ||
+        (map.set(raw, String(i)), String(i++));
+      if (!el.textContent || !el.textContent.trim()) {
+        el.dataset.citationProcessed = "true";
+        return;
+      }
+      const btn = document.createElement("sup");
+      btn.textContent = String(idx);
+      Object.assign(btn.style, {
+        fontSize: "8px",
+        color: "#fff",
+        cursor: "pointer",
+        top: "1px",
+        fontWeight: "bold",
+        backgroundColor: "#0284c7",
+        borderRadius: "50%",
+        transition: "all .15s",
+        userSelect: "none",
+        minWidth: "19px",
+        height: "19px",
+        marginLeft: "6px",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        boxShadow: "0 1px 3px rgba(0,0,0,.2)",
+        lineHeight: "1",
+      });
+      btn.addEventListener("mouseenter", () =>
+        Object.assign(btn.style, {
+          backgroundColor: "#0369a1",
+          transform: "scale(1.12)",
+        })
+      );
+      btn.addEventListener("mouseleave", () =>
+        Object.assign(btn.style, {
+          backgroundColor: "#0284c7",
+          transform: "scale(1)",
+        })
+      );
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(url, "_blank");
+      });
+      el.appendChild(btn);
+      el.dataset.citationProcessed = "true";
+    });
+  });
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

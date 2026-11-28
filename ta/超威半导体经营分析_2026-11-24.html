@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>超威半导体（AMD）经营分析报告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+primary: {
+50: "hsl(20, 90%, 95%)",
+100: "hsl(20, 90%, 85%)",
+200: "hsl(20, 90%, 75%)",
+300: "hsl(20, 90%, 65%)",
+400: "hsl(20, 90%, 55%)",
+500: "hsl(20, 90%, 50%)",
+600: "hsl(20, 90%, 45%)",
+700: "hsl(20, 90%, 35%)",
+800: "hsl(20, 90%, 25%)",
+900: "hsl(20, 90%, 15%)",
+},
+accent: {
+50: "hsl(30, 85%, 95%)",
+100: "hsl(30, 85%, 85%)",
+200: "hsl(30, 85%, 75%)",
+300: "hsl(30, 85%, 65%)",
+400: "hsl(30, 85%, 60%)",
+500: "hsl(30, 85%, 55%)",
+600: "hsl(30, 85%, 50%)",
+700: "hsl(30, 85%, 40%)",
+800: "hsl(30, 85%, 30%)",
+900: "hsl(30, 85%, 20%)",
+},
+},
+},
+},
+};
+</script>
+<script
+defer
+src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html {
+scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html {
+scroll-behavior: auto;
+}
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow:
+0 10px 15px -3px rgba(0, 0, 0, 0.1),
+0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow:
+0 20px 25px -5px rgba(0, 0, 0, 0.1),
+0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th,
+td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th,
+.dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(
+90deg,
+hsl(20, 90%, 55%),
+hsl(30, 85%, 55%)
+);
+transition: width 1.2s ease-out;
+}
+.risk-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-width: 28px;
+height: 28px;
+border-radius: 8px;
+font-weight: 700;
+font-size: 13px;
+}
+Code
+/* ===== 暗色模式全局对比度增强 ===== */
+  .dark body {
+    color: #f3f4f6;
+  }
+  .dark header nav a {
+    color: #e5e7eb !important;
+  }
+  .dark header nav a:hover {
+    color: hsl(20, 90%, 65%) !important;
+  }
+  .dark .text-gray-400,
+  .dark .text-gray-500 {
+    color: #9ca3af !important;
+  }
+  .dark table th {
+    color: #f3f4f6;
+  }
+  .dark table td {
+    color: #e5e7eb;
+  }
+  .dark .text-gray-600 {
+    color: #d1d5db !important;
+  }
+  .dark .text-gray-700 {
+    color: #e5e7eb !important;
+  }
+
+  /* ===== 移动端菜单 ===== */
+  #mobileMenu {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    #mobileMenu {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    #mobileMenu.mobile-menu-open {
+      display: block !important;
+    }
+  }
+</style>
+<script>
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById("sunIcon").style.display = isDark
+      ? "block"
+      : "none";
+    document.getElementById("moonIcon").style.display = isDark
+      ? "none"
+      : "block";
+  }
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body
+class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen"
+>
+<!-- Progress Bar -->
+<div
+class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out"
+id="progressBar"
+style="width: 0%"
+></div>
+Code
+<!-- Floating Header -->
+<header
+  class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100"
+>
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+        超威半导体 AMD 经营分析
+      </h1>
+      <!-- 桌面端导航 -->
+      <nav class="hidden md:flex space-x-5">
+        <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <!-- 移动端汉堡菜单按钮 -->
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300"
+          aria-label="菜单"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+        <!-- 暗色模式切换 -->
+        <button
+          onclick="toggleDarkMode()"
+          class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        >
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 移动端下拉菜单 -->
+    <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+      <nav class="flex flex-col space-y-3">
+        <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="min-h-screen">
+  <!-- Hero -->
+  <section
+    class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300"
+          >美股 · 半导体 · AI算力芯片</span
+        >
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300"
+          >NASDAQ: AMD</span
+        >
+      </div>
+      <h2
+        class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300"
+      >
+        超威半导体（AMD）<br /><span
+          class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium"
+          >深度经营与投资分析报告（2026年11月）</span
+        >
+      </h2>
+      <p
+        class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl"
+      >
+        2026年，超威半导体（AMD）已正式完成从“x86追赶者”向“全球AI机柜级算力第二极”的历史性跃迁，年内股价累计翻倍有余并在10月一度触及1万亿美元市值。Q3 2026公司单季营收飙升至创纪录的133.77亿美元（同比+45%），数据中心业务几乎翻倍至85.46亿美元，Q4营收指引更看高至170亿美元（同比+66%）。当前投资者的核心焦点正从“订单叙事”转向“Helios 机柜量产交付、488亿美元采购承诺现金流兑现、3.2亿股客户认股权证稀释及中国区22.4%合规敞口”的硬核验证。
+      </p>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            346.4亿
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            2025年营收（美元，+34.3%）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            133.8亿
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            2026 Q3 单季营收（数据中心+97%）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            6,960亿+
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            当前市值（美元，11月20日口径）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            53.7%
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            最新 TTM GAAP 毛利率
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一、商业模式 -->
+  <section
+    id="model"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="cpu"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          一、商业模式
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          自2009年剥离晶圆制造（格罗方德）转型为纯 Fabless（无晶圆厂芯片设计）架构以来，AMD 的商业模式已演化为<strong>“台积电先进制程代工 + 数据中心 CPU/GPU 双引擎 + 开放式机柜级系统（Helios）+ 资本绑定制大客户扩展”</strong>。2026年Q3，数据中心板块单季贡献了85.46亿美元营收，占公司总销售比重的 <strong>64%</strong>（2025年同期为47%），彻底重塑了公司的盈利模型。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGNrBXKQFwic8dtSkQXAtm0jGfhBlfb_8DFo8K89vsi_UXkTIq7k58VrHR7aqR4B9-8DInkeYdo9p4cmna4u80HjjPi7QIMBbGkeDTEAtWA-K03vHQk2bI1EwoBC2W301-4fE2ZED6YzSs_cIrOv9JAT9iq8BXZs-1Ke_zdJ7ThRq4eZLAGlRU2RgykcsTbqsLMgTUOIUId9McRRUxZr7oa|1">（AMD Q3 2026 财报）</span>
+        </p>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="server"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                数据中心全栈系统化
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              从单纯出售 EPYC 服务器 CPU（Q3 47.6亿美元，+103%）与 Instinct GPU（Q3 36.8亿美元，+97.6%），升级为结合 ZT Systems 交付 <strong>Helios 整机柜级（Rack-Scale）AI 方案</strong>，集成 MI450 GPU 与第6代 EPYC“Venice”。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEat7cb3OuKJMNFW8ETMwRFohEo6QKvhuCYtbv5lgk-PibkDLKXTt9z7e5-mIl0YlhjojUnI96PdmslVON8EWHEX6bWROWViNarKSQm1VvwhbRtp140W7VaKOE2WCzJ98dK7IfMTPj20wHwIF7qrFwtPflvMj_PibX44dPncT-uFBvcj_3VzK-JySR5VKfiHPzqN2xSk_Pzus1j93XmQDYLS7f8DyOjMVEStU7yeYB-dZ3Qyxg=|2">（S&P Global 拆解）</span>
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="handshake"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+              <h3
+                class="font-semibold text-accent-700 dark:text-accent-300"
+              >
+                “认股权证/入股”大客户绑定
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              为撬动百亿美元级大单，AMD 先后授予 OpenAI 与 Meta 各至多1.6亿股（1美分行权价、挂钩6 GW 部署与600美元股价目标）业绩认股权证；2026年7月签 Anthropic 2 GW 协议则进化为最高50亿美元现金战略入股。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGlCyHiVbLGYqETO9tLSmztH3tjMUUIOFC6f0F_UHntWYVKvBx5PqquuxC2ub9Bvh_vwDNrfuB17KXMKvVdub94vFxNnfj6w-7SKcEJjMKzo9JesPIC-1XFF1VLdeoAN7xPhmGIn3Yo5mvOnGmfXhhDAqgpNzEK80YWTsh1AifOFofevuz_3R3p1pSiFTQP_sUbFgkV4yP_WoBf7w5k53mNRvxoTNwwb5QX|3">（CRN Asia）</span>
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="layers"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                客户端、嵌入式与游戏现金流
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              Ryzen AI PC 处理器（Q3 29亿美元，+7%）与高毛利、长生命周期的赛灵思嵌入式 FPGA（Q3 11亿美元，+29%，面向航空航天/工业/车载）及半定制游戏业务（7.73亿美元）共同托底研发现金流。
+            </p>
+          </div>
+        </div>
+        <div
+          class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6"
+        >
+          <p
+            class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+          >
+            <i
+              data-lucide="lightbulb"
+              class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+            ></i>
+            商业模式本质：用 Chiplet 模块化设计与开放互联标准打破英伟达软硬件封闭垄断，并以战略级股权/资本捆绑强行切入全球头部 AI 实验室的机柜集群供应链。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、竞争优势（护城河） -->
+  <section
+    id="moat"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="shield"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          二、竞争优势：护城河评估
+        </h2>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        Morningstar 赋予 AMD<strong>“窄护城河（Narrow Economic Moat）”</strong>评级——其在 x86 架构与 FPGA 具备极高壁垒，但在 AI GPU 领域仍需持续追赶 CUDA 生态。以下从五个维度对 AMD 打分（1–10分）并与英伟达、博通及英特尔对比。
+      </p>
+
+      <div class="space-y-6">
+        <!-- 品牌实力 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              品牌实力
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8.0<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            苏姿丰十年磨一剑重塑了 AMD 的高性能计算口碑：EPYC 已成为云厂商采购服务器 CPU 的首选标杆，Instinct 系列在 OpenAI、Meta、Anthropic、微软及 Oracle 全面上线，确立了“全球唯二规模级商用 AI 算力品牌”的心智地位。
+          </p>
+        </div>
+
+        <!-- 网络效应 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              网络效应
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >7.0<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 70%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            虽联合 Meta 等主导 UALink/UEC 开放机柜标准并加速迭代 ROCm 开源软件生态，但在开发者社区基数、底层数学库优化与工具链成熟度上，仍显著弱于英伟达 CUDA 二十年积累的绝对生态网络效应。
+          </p>
+        </div>
+
+        <!-- 转换成本 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              转换成本
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >7.5<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 75%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            数据中心 EPYC 服务器平台验证周期漫长、嵌入式 FPGA（原赛灵思）产品生命周期动辄10年以上，均具极高转换壁垒；但 AI GPU 领域，超大客户普遍实行多供应商均衡配置策略（同时采购 NVDA、AMD 与自研 ASIC），客户单边锁死程度较弱。
+          </p>
+        </div>
+
+        <!-- 成本优势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              成本优势
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >7.5<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 75%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            领先行业率先落地 Chiplet（小芯片）模块化封装，大幅提升了台积电先进制程的良率与裸片复用度，使其在 CPU 核心密度与 TCO 上建立成本优势；但 Fabless 模式使其完全受制于台积电 CoWoS 产能与 HBM 供应商议价权，毛利率（~54%）仍明显低于英伟达（~75%）。
+          </p>
+        </div>
+
+        <!-- 专利或自有技术 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              专利或自有技术
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8.5<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 85%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            拥有全球仅有的两张高性能 x86 架构交叉授权牌照之一（与 Intel 形成双寡头护城河）、3D V-Cache 堆叠技术、CDNA5（2nm级 MI450X）/Zen 6（Venice）先进架构，以及并购赛灵思所获的全球第一自适应计算与 FPGA 专利矩阵。
+          </p>
+        </div>
+      </div>
+
+      <!-- 竞对对比 -->
+      <div class="mt-10">
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5"
+        >
+          与主要竞争对手的护城河对比（1–10分）
+        </h3>
+        <div
+          class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <table
+            class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+          >
+            <thead class="bg-primary-50 dark:bg-primary-900/30">
+              <tr>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">评估维度</th>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">超威半导体 (AMD)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">英伟达 (NVDA)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">博通 (AVGO)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">英特尔 (INTC)</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr>
+                <td class="font-medium">品牌实力</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">8.0</td>
+                <td>10.0</td>
+                <td>8.0</td>
+                <td>7.0</td>
+              </tr>
+              <tr>
+                <td class="font-medium">生态/网络效应</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">7.0</td>
+                <td>10.0</td>
+                <td>7.5</td>
+                <td>6.0</td>
+              </tr>
+              <tr>
+                <td class="font-medium">转换成本</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">7.5</td>
+                <td>9.5</td>
+                <td>9.0</td>
+                <td>7.0</td>
+              </tr>
+              <tr>
+                <td class="font-medium">专利/自有技术</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">8.5</td>
+                <td>9.5</td>
+                <td>9.0</td>
+                <td>7.0</td>
+              </tr>
+              <tr>
+                <td class="font-medium">Q3 数据中心表现</td>
+                <td class="font-semibold">85.5亿美元 (+97%)</td>
+                <td>AI算力绝对龙头</td>
+                <td>定制ASIC+网络领跑</td>
+                <td>73.0亿美元 (+78%)</td>
+              </tr>
+              <tr>
+                <td class="font-medium">GAAP 毛利率</td>
+                <td>54.0%（TTM 53.7%）</td>
+                <td>74.9%</td>
+                <td>66.5%</td>
+                <td>40.3%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+          数据来源：各公司 2026 Q3 财报、ServeTheHome 及 Morningstar/Motley Fool 2026年11月同行对比整理。
+        </p>
+      </div>
+
+      <div
+        class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed"
+        >
+          <i
+            data-lucide="award"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          综合护城河评分：<strong>7.7 / 10</strong>。AMD 在 x86 服务器架构与 Chiplet 工程领域具备对 Intel 的明显代差优势，但在 AI 加速器生态护城河仍逊于英伟达 CUDA 与博通定制 ASIC，整体处于“稳固窄护城河并向宽护城河冲刺”的演进期。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、行业趋势 -->
+  <section
+    id="industry"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="trending-up"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          三、行业趋势
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          全球半导体行业正处于以 AI 基础设施为核心驱动的结构性超级周期中，机构预计到2028年仅 AI GPU 单一市场规模就将达到 <strong>4,000亿美元</strong>，四大云巨头2026年合计资本开支预算亦突破6,300亿美元。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHX0lm2wEVN28gwggmXknrpRFd9lybrclJKuDfubrZj3_nY7FvPdgY-4ksmI25QOYqJcwmIvRjujJ2GihdzeZmdar93lBs1nTYaw1Xa5s4cSV5wVCLCKuRzG4DJayNPREFcxLE83I5grc=|4">（Public 行业预测）</span>但行业内部正经历三大深刻分化，直接决定 AMD 未来两年的爆发上限。
+        </p>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="zap" class="w-5 h-5"></i
+              >推理与 Agentic AI 时代降临
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• AI 负载重心正由“集群预训练”加速转向大规模“推理（Inference）与多步骤智能体（Agentic AI）”</li>
+              <li>• 推理对单卡显存容量、带宽与每 Token 总体成本高度敏感，AMD MI450 的大显存设计正中下怀</li>
+              <li>• 代理型 AI 伴随大量通用计算调度需求，意外引爆服务器 CPU（EPYC）的二次替换潮</li>
+              <li>• 2026 Q4 起 AMD AI GPU 营收预计将史上首次超越服务器 CPU</li>
+            </ul>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="alert-circle" class="w-5 h-5"></i>供应链瓶颈与去单一化博弈
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• 超大规模云商极力避免被英伟达 75% 高毛利生态单一锁定，催生 Helios/UALink 开放标准大单</li>
+              <li>• 同时云商自研 ASIC（TPU/Trainium）崛起，与独立 GPU 厂商争夺推理预算</li>
+              <li>• 高端 HBM 内存及台积电 2nm/CoWoS 先进封装交期紧缺，成为限制交付上限的硬约束</li>
+              <li>• 消费级 PC 端因高内存价格抑制换机，AMD 已将 FY26 客户端收入预测由136亿微调至129亿美元</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="mt-4 p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            <strong class="text-gray-800 dark:text-gray-200"
+              >行业趋势启示：</strong
+            >2026–2027年市场不再缺少对 AI 芯片的需求，真正稀缺的是“高性价比推理算力 + 稳定产能交付 + 开放互联生态”。谁能顺利爬坡机柜级产品并兑现算力承诺，谁就能分享4,000亿美元赛道中至关重要的第二把交椅红利。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、财务状况 -->
+  <section
+    id="financial"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="bar-chart-3"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          四、财务状况
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        以下结合 AMD 2021–2025年完整五年 SEC 10-K 财务报表及2026年 Q3（截至2026年9月26日 TTM）最新季报，解析其“高增长、低杠杆、并购摊销收敛与现金流测试”的真实财务图谱。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGtJoN1GKxWPeqKzH58UKQFMDzNOrUG7CMO2MtlK1RX3hTEu2GXTokZmC4EbDfc-iJPG98RYSxB3STXJtqb2K7BrPTENAAzBkIQPp-WgEJb1TkhOU71WhSqGDzAOYZ3HU4gSeA34gQ=|5">（SEC 5年报表）</span>
+      </p>
+
+      <!-- 收入与利润表 -->
+      <div
+        class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+      >
+        <table
+          class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+        >
+          <thead class="bg-accent-50 dark:bg-accent-900/30">
+            <tr>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">财务指标（亿美元）</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2021</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2022</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2023</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2024</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">2025</th>
+              <th class="font-semibold text-primary-700 dark:text-primary-300">2026 Q3 (TTM)</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr>
+              <td class="font-medium">营业收入 (Revenue)</td>
+              <td>164.3</td>
+              <td>236.0</td>
+              <td>226.8</td>
+              <td>257.9</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">346.4</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">454.4</td>
+            </tr>
+            <tr>
+              <td class="font-medium">营收同比增速</td>
+              <td class="text-green-600 dark:text-green-400">+68.3%</td>
+              <td class="text-green-600 dark:text-green-400">+43.6%</td>
+              <td class="text-red-600 dark:text-red-400">-3.9%</td>
+              <td class="text-green-600 dark:text-green-400">+13.7%</td>
+              <td class="text-green-600 dark:text-green-400">+34.3%</td>
+              <td class="text-green-600 dark:text-green-400">+41.9%</td>
+            </tr>
+            <tr>
+              <td class="font-medium">GAAP 净利润</td>
+              <td>31.6</td>
+              <td>13.2</td>
+              <td>8.5</td>
+              <td>16.4</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">43.4</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">76.2</td>
+            </tr>
+            <tr>
+              <td class="font-medium">自由现金流 (FCF)</td>
+              <td>32.2</td>
+              <td>31.2</td>
+              <td>11.2</td>
+              <td>24.1</td>
+              <td>67.0</td>
+              <td>70.2（Q3单季仅5.5）</td>
+            </tr>
+            <tr>
+              <td class="font-medium">GAAP 毛利率</td>
+              <td>48.3%</td>
+              <td>44.9%</td>
+              <td>46.1%</td>
+              <td>49.4%</td>
+              <td>49.5%</td>
+              <td>53.7%（Q3 54.0%）</td>
+            </tr>
+            <tr>
+              <td class="font-medium">GAAP 营业利润率</td>
+              <td>22.2%</td>
+              <td>5.4%</td>
+              <td>1.8%</td>
+              <td>8.1%</td>
+              <td>10.8%</td>
+              <td>17.8%（Q3 21.2%）</td>
+            </tr>
+            <tr>
+              <td class="font-medium">GAAP 净利率</td>
+              <td>19.2%</td>
+              <td>5.6%</td>
+              <td>3.8%</td>
+              <td>6.4%</td>
+              <td>12.5%</td>
+              <td>16.8%（Q3 18.1%）</td>
+            </tr>
+            <tr>
+              <td class="font-medium">股本回报率 (ROE)</td>
+              <td>42.2%</td>
+              <td>2.4%</td>
+              <td>1.5%</td>
+              <td>2.9%</td>
+              <td>6.9%</td>
+              <td>11.6%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <!-- 收入增长分析 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="trending-up" class="w-5 h-5"></i
+            >收入增长：跨越式斜率再加速
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            5年营收实现近2.8倍扩张（2021年164亿→2026 Q3 TTM 454亿美元），仅2023年因 PC 去库存微跌3.9%，此后伴随 AI GPU 与 EPYC 爆发一路加速：2024年+13.7% → 2025年+34.3% → 2026 Q3单季+45%（Q4指引更跳升至+66%）。
+          </p>
+        </div>
+        <!-- 净利润趋势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="layers" class="w-5 h-5"></i
+            >净利润趋势：穿透“并购摊销与权证噪声”
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2022–2023年 GAAP 净利暴跌主因是490亿美元并购赛灵思带来每年逾20亿美元无形资产非现金摊销（而非业务恶化）。随着收入体量膨胀跨过固定摊销拐点，2025年净利跃升164%至43.4亿美元，TTM 达76.2亿；但 Q3 2026 计提了约11亿–12亿美元 OpenAI 认股权证公允价值重估非现金费用，导致 GAAP EPS（1.46美元）显著低于 Non-GAAP（2.09美元）。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEsJ9QpKk6xXzSkbDToWsY9Fw-l4UcZpFoe7oa8a955TSrtstRlURIjnJNXRX03rNnW1AmZXT8Kd6g29fYL41-EeXc5NjtIJjIrHzfD8J3h6FWaNpEVDDd7rbJM4HcJAbPuPLul-WaPSvqzlO0KldeJL38MyB6yyNePxgFsOpyayMiSJB1wsEWg64Iam5i8NziVVgh4aCfAb1PO6DQTvg==|6">（Q3 Non-GAAP 差异）</span>
+          </p>
+        </div>
+        <!-- 自由现金流 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流：年度高增下的单季骤降预警
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2025年 FCF 飙升178.5%至67.0亿美元，2026 Q3 TTM 亦达70.2亿美元（+28.8%）。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8ZMOdZqi1i1-CP-vOe5kmCjbcKqHRs9QPEhhwKllwyTrrbKwiu78p_Tt4IQwfvEpNf7L6u1wfthlX0bTgV3_QgLjhiVGHu9NnJyPVxD9DMBofGREuagMIVYiJsgH5C9p3VNbHmvZYY7u3|7">（Business Quant FCF）</span>但必须高度警惕 <strong>Q3 2026 单季 FCF 骤降至仅5.54亿美元</strong>（低于市场预期55.5%），缘于公司为保 Helios 备货单季资本开支暴增151%至6.48亿及营运资金占用急升，表外采购承诺已膨胀至488亿美元。
+          </p>
+        </div>
+        <!-- 利润率与债务 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="scale" class="w-5 h-5"></i>利润率稳步扩张，现金远超债务
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            高毛利数据中心占比升至64%，推动毛利率五年内由44.9%爬坡至 TTM 53.7%（Q3 Non-GAAP 56%），营业利润率更实现十倍跳跃（1.8%→Q3单季21.2%，Non-GAAP 29%）。资产负债表极为强健：2026年8月新发47.5亿美元票据后，截至9月末在手现金及短期投资仍高达 <strong>158亿美元</strong>，净现金近百亿、Debt/Assets 仅0.07，毫无偿债压力。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEGBvdp6pao6EHcd14fxPqkRxoNVn62YfWSoc_tAxmc_iGyv1bGEkYg1bhkofIF2-p2JHhA8zkmJplSU_g8EqG_TPavpkbeUK5GfBxsW5mwYu4GCb7-wJFJ5pQR3ujsyDzId7UFp7pMWlSYqXKwK4mnj0d5uBERYmEgPqZs0DgD|8">（资产负债表）</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- ROE 与财务稳健性判断 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+      >
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4"
+        >
+          股本回报率（ROE）与整体财务稳健性判断
+        </h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-4">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">
+              11.6%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              GAAP ROE (2026 Q3 TTM / 2025年6.9%)
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">
+              158亿
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              现金与短期投资（美元，远超总债务）
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-green-600">0.07x</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              总债务 / 总资产（净现金极充裕）
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          <strong>财务结论：整体处于“业绩加速扩张、资产负债表极度稳健”的上升周期，但单季 FCF 测试刚刚开始。</strong>表观 GAAP ROE（11.6%）受赛灵思并购产生的高额商誉与权益基数（逾630亿美元）拉低，不能与轻资产原生的英伟达简单对比，当前真实经营杠杆（Non-GAAP 营业利润率29%）正迅速释放。未来12个月财务观察的唯一核心是：488亿美元采购承诺能否顺利转化为回款现金流，避免重演备货积压。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、估值分析 -->
+  <section
+    id="valuation"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calculator"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          五、估值分析
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <div
+          class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-primary-700 dark:text-primary-300 mb-4"
+          >
+            市盈率（P/E）与行业横向对比（2026年11月）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >超威半导体 AMD（GAAP TTM / Forward P/E）</span
+              >
+              <span class="font-bold text-primary-600 dark:text-primary-400"
+                >92.2x / 39.5x</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >英伟达 NVDA（GAAP TTM / 毛利率74.9%）</span
+              >
+              <span class="font-semibold text-gray-600 dark:text-gray-400"
+                >13.5x–15.0x</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >博通 AVGO（TTM / Forward P/E）</span
+              >
+              <span class="font-semibold text-gray-600 dark:text-gray-400"
+                >38.9x–44.3x / 19.4x</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >英特尔 INTC（GAAP TTM / Forward P/E）</span
+              >
+              <span class="font-semibold text-gray-600 dark:text-gray-400"
+                >亏损(-21.5x) / 30.1x</span
+              >
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span
+                class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                >半导体龙头平均 Forward P/E（AMD 8年TTM均值）</span
+              >
+              <span class="font-semibold text-gray-700 dark:text-gray-300"
+                >22–30x（170.3x）</span
+              >
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">
+            即使排除并购摊销与权证扣减，AMD 当前近40倍 Forward P/E 仍明显贵于博通（19.4x）与年内回调后的英伟达（13.5x），溢价全系2027年80%+增长预期。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFuWN1PQjyQjVGBfF2LoYna4WixtjnWwsv-lj5Zx1WiS52WQx1HX1ACiTu9D-lpFZX86Ai8SMlf9qZpMmOzZ9KNxRfHsxYgtQ_FHYNyAAU4gYgEH2ok-lvhAKqJlcmZqHMYGFmwQLipwNY6BVWh|9">（PE 数据对比）</span>
+          </p>
+        </div>
+
+        <div
+          class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-accent-700 dark:text-accent-300 mb-4"
+          >
+            华尔街卖方目标价 vs 谨慎独立评级
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >花旗 (Citi) / Aletheia Capital</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >800.00 美元</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >美银 (BofA) / KeyBanc / UBS</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >700–725 美元</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >StoneX（11月23日最新重申买入）</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >685.00 美元</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >55–56位华尔街分析师一致均值</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >640–658 美元（0卖出）</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >Morningstar 晨星公允价值（11月4日上调）</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >570.00 美元</span
+              >
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >摩根士丹利 / 摩根大通（相对审慎）</span
+              >
+              <span
+                class="font-semibold text-accent-600 dark:text-accent-400"
+                >550 / 575 美元</span
+              >
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span
+                class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                >11月20日收盘 / 11月23日早盘反抽</span
+              >
+              <span class="font-semibold text-gray-700 dark:text-gray-300"
+                >424.39 / ~456–460 美元</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DCF 参考 -->
+      <div
+        class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8"
+      >
+        <h3
+          class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"
+        >
+          <i data-lucide="line-chart" class="w-5 h-5"></i
+          >现金流折现（DCF）估算与情景分化
+        </h3>
+        <p
+          class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+        >
+          AMD 的 DCF 估值存在全市场最大的“情景分歧”：偏保守定量模型（如 Alpha Spread 基于5年26.7%复合增速、10.3%折现率测算）给出纯现金流估值仅 <strong>220–232美元</strong>（相对估值法约334美元），Seeking Alpha 11月23日最新评级下调报告亦指出若考虑488亿采购承诺风险与11%要求回报率，内在价值仅约 <strong>350美元</strong>；<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFoWGSXsASln6lc0IrKWBmlivAFSC-zJTaVdbK4AhtDlXDZMD9mUQeI2O1WERJd60RBi_ZEGSPM2uts_Wyiqan5NeLo8ceVxm-rvtZ_qcjY838nLxe5iABByvHwz-_DkzPqvP2QvHVsh6fNLrXuGrJCCoZW1Ncx2W_Rpnk6fJC0wn2CtRVOW9P9AkVrRtcmk33rUA2phRgSGW8ve5Qm-LU4L1WJ7ag=|10">（Seeking Alpha DCF）</span>反之，晨星（Morningstar）将 Helios 放量纳入长期预测后给予 <strong>570美元</strong>公允价值，而计入2027年80%+暴增及20美元远期 EPS 的机构乐观模型则看高至650–800美元。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFv01C44cO6CRxBk5endoyBmHKARQVnLjVYUyIkUMP6pqleEjZDCtCyO7S9vW-gldWbTcAzFkUUGEe-1ZXNTcOA-1Zv-0Wtp2VjRjx4rRygi8D3i7Wf7O0DObnnLE5jUcvXMOYmnvo=|11">（晨星公允价值）</span>
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-primary-600 dark:text-primary-400"
+            >
+              220–350 美元
+            </div>
+            <div class="text-xs text-gray-500">保守现金流折现 / 卖空审慎区间</div>
+          </div>
+          <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-accent-600 dark:text-accent-400"
+            >
+              570.00 美元
+            </div>
+            <div class="text-xs text-gray-500">Morningstar 两阶段 DCF 基准</div>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div class="text-lg font-bold text-gray-700 dark:text-gray-300">
+              640–658 美元
+            </div>
+            <div class="text-xs text-gray-500">55+家卖方机构一致目标价均值</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="search"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          <strong>估值结论：</strong
+          >按静态财务倍数（TTM 92x / Forward 39.5x）对比盈利能力更强的博通与英伟达，<strong>AMD 当前股价（424–460美元）绝不便宜，存在明显的“成长预支溢价”</strong>；但若将其置于2027年80%+营收爆炸与6,500亿美元级超级云开支的动态 PEG 语境下，自10月658美元高点回调逾30%后已进入<strong>“高预期合理区间”</strong>——容错空间极低，唯有2027年 Helios 如期兑现方能消化高倍数。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、经营展望 -->
+  <section
+    id="outlook"
+    class="py-20 bg-accent-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calendar"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          六、经营展望（12–24个月）
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            MI450 与 Helios 机柜爬坡：2027年总营收增速冲刺 80%+
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            Q4 2026 营收指引已上调至170亿美元（同比+66%，远超此前163亿一致预期），AI GPU 收入将史上首次超过服务器 CPU。随着 OpenAI（6 GW）、Meta（6 GW）与 Anthropic（2027上半年起首批1 GW MI450 部署）陆续放量，管理层已将2027年总营收增速预期抬升至80%以上，可视度直达2028上半年。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            EPYC “Venice” 服务器 CPU 延续性能统治（靶向+100%）
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            在 Intel PCIe Gen6 平台 Diamond Rapids 延至2027下半年的竞争窗口期，基于2nm先进制程的第6代 EPYC“Venice”于2026 Q4起全面上量。公司预计2027年服务器 CPU 营收有望实现近100%增长，成为平滑 GPU 交付波动的压舱石。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            毛利率稳守 55% 与 2027 年现金流兑现大考
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            虽然机柜级硬件集成通常比单卖裸芯片毛利率略低（Q4 Non-GAAP 毛利率指引由 Q3 56% 微调至55%），但规模摊薄效应足以维持55%左右的强劲盈利水平。市场未来12–24个月最紧盯的不是订单量，而是488亿美元采购承诺能否转化为2027年突破150亿美元的自由现金流。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            客户结构去风险与权证稀释权衡
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            数据中心预计在2027年占据 AMD 总营收80%以上，大幅弱化 PC 疲软及中国区合规变动的影响；但随着吉瓦级大单逐步达标，OpenAI 与 Meta 合计3.2亿份认股权证的归属解锁也将进入实操期，对 EPS 稀释与 GAAP 损益波动的财务管理考验正式到来。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、风险识别 -->
+  <section
+    id="risk"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="alert-triangle"
+            class="w-5 h-5 text-red-600 dark:text-red-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">
+          七、风险识别
+        </h2>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        按对公司内在价值与股价的危险程度从高到低排序：
+      </p>
+
+      <div class="space-y-4">
+        <!-- 风险1 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0"
+            >
+              1
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2"
+              >
+                竞争风险 — 黄仁勋重掌英伟达反扑、CUDA 壁垒与自研 ASIC 挤压
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                2026年11月23日英伟达董事会火速恢复黄仁勋 CEO 职务，彻底终结了此前流向 AMD 的部分“对手内乱替代红利”。与此同时，ROCm 软件栈在复杂训练与生态广度上仍落后 CUDA；谷歌 TPU、AWS Trainium 与 Meta 自研 ASIC 亦在加速蚕食推理芯片份额，AMD 面临两头夹击。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险2 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0"
+            >
+              2
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2"
+              >
+                监管威胁 — 22.4%中国区高敞口、BIS 管制与 Hunterbrook 固件审查
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                FY2025 AMD 在中国/香港开票营收达77.5亿美元（占总营收 <strong>22.4%–22.5%</strong>，是英伟达9.1%的两倍多），另有42.8亿美元开票至新加坡。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGjG7uMxJkZvq_Dz8v0iJ60Y2RVvW3Wj3c6v5pRnzFhuCt9Hbs5hLYlKyYfRWOdySIUsmkfi02OaqPi7OYzxjOlTpUt4nceRBbBOCVtYzpFGDm1n1mhC5m6IKlcDOUAH5lEqSLDoIrq2kIVrxQ3C0BHT88_i14SBOoJ4GCLRLakiS22kXen7G9YIjjq1b--JCYQPv4shgIouzTYpbLyOdoQ-o89bGucX4T76Z3RaiKpwMU38XtEcXwPds4=|12">（TIKR 合规分析）</span>2025年曾因 MI308 出口禁令被迫计提8亿美元存货损失；2026年11月19日美 BIS 收紧东南亚转口许可同日，做空机构 Hunterbrook 指控受制裁中企浪潮信息（IEIT）仍持续更新 AMD 固件（致当日跌近8%、20日跌13%）。尽管 AMD 予以否认且尚未构成违法实证，但任何商务部追加处罚或出口冻结都将引发剧震。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险3 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0"
+            >
+              3
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2"
+              >
+                行业颠覆 — 488亿美元采购承诺的交付错配与前沿客户放缓
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                AMD 的吉瓦级增长极度依赖 OpenAI、Anthropic 与 Meta 的激进资本支出。如果 AI 应用商业化变现滞后导致客户削减后续机柜订单，或遭遇台积电 CoWoS 封装、电力配套及 HBM4 良率卡脖子，高达 <strong>488亿美元的硬性供应链采购承诺</strong>与合作伙伴41亿美元数据中心租约担保将瞬间转化为沉重现金流反噬。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险4 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0"
+            >
+              4
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2"
+              >
+                经济风险 — 高利率、内存通胀与消费/PC端疲软
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                内存与组件价格飙涨已迫使 AMD 下调2026年客户端 PC 业务预测，Q3 游戏业务亦重挫40%；若美债收益率持续盘旋于5%高位导致宏观步入衰退，非 AI 企业级服务器换机与嵌入式工业市场将面临需求降温。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险5 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0"
+            >
+              5
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2"
+              >
+                债务或财务风险 — 债务极安全，但存 19.6% 权证稀释与现金流波动
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                158亿美元现金远超债务，违约风险微乎其微。真正的财务隐患在于：① 向 OpenAI 与 Meta 授予的总计 <strong>3.2亿股认股权证（约占总股本19.6%）</strong>若全部触发行权将实质性稀释老股东权益，且每季带来十亿美元级 GAAP 利润表波动；② Q3 单季 FCF 急跌至5.54亿美元的流动性紧缩信号需持续跟踪。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、多空视角 -->
+  <section
+    id="longshort"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="scale"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          八、多空视角：机构投资组合经理评估
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- 可能买入的原因 -->
+        <div
+          class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800"
+        >
+          <h3
+            class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因（Bull Case）
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>罕见的 80%+ 增速确定性</strong>：Q3 数据中心+97%、Q4 营收指引170亿（+66%）及2027年增速超80%的可见度，使其成为全球超大型科技股中增长斜率最陡峭的标的之一。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>吉瓦级顶流客户矩阵成势</strong>：OpenAI、Meta、Anthropic、Microsoft、Oracle 集体部署 Helios 整机柜系统，完成了商业闭环从0到1的决定性突破。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>EPYC 统治服务器 CPU 市场</strong>：服务器 CPU 单季+103%且 Venice 领先 Intel 至2027下半年，稳固的高毛利底盘提供强经营杠杆（Non-GAAP 营业利润率29%）。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>35%深度回调后赔率显著改善</strong>：自10月658.52美元高点大幅回撤至424–460美元区间，FY28一致 EPS 预期反而上修，距华尔街640–658美元一致目标价存在逾40%修复空间。<span data-ref="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFVArVgUsVf58u9Ndt6tZf8Xnn9mRJp9gy_N080TQ9_9AUxuXoJwDrneIL3W0iQd8FPRLY6cI-ryQs2x1FjG1eWTNfegHgG8CMH6hHYbl_QH50B8vcV66pwI0IPBh_3Ah48deg0S_yOjUKLoyZ3knzuuQKjsur6JLuyEEgvdPR_D52qljfcAOTtak9wk2ZJOx8=|13">（StoneX 11月23日报告）</span></span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 可能回避的原因 -->
+        <div
+          class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800"
+        >
+          <h3
+            class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因（Bear Case）
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>绝对估值远高于核心可比巨头</strong>：Forward P/E 约39.5x（TTM 92.2x），显著贵于博通（19.4x）及经历回调的英伟达（13.5x），且无分红托底。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>3.2亿股认股权证的潜在股权稀释</strong>：向 OpenAI 与 Meta 送出近20%股本的1美分认股权证实质上是“卖方融资补贴订单”，摊薄长期老股东每股内在价值。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>单季 FCF 骤降与488亿美元承兑风险</strong>：Q3 2026 FCF 仅5.54亿美元，同时肩负488亿美元采购承诺，若2027年交付或回款略有延迟即触发现金流估值下杀。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>高比例中国业务暴露与监管做空阴云</strong>：中国/香港22.4%营收比重叠加 Hunterbrook 固件指控与 BIS 新规，随时可能引发类似2025年8亿美元存货减值的黑天鹅冲击。</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 关键因素与投资论点 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6"
+      >
+        <h3
+          class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4"
+        >
+          关键因素：投资组合经理需紧盯的3个核心指标
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div
+            class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="cpu"
+              class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-primary-700 dark:text-primary-300"
+            >
+              MI450 / Helios 爬坡与毛利率
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              Q4 170亿营收兑现及2027上半 Helios 机柜交付期间 Non-GAAP 毛利率能否稳守55%以上
+            </p>
+          </div>
+          <div
+            class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="wallet"
+              class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-accent-700 dark:text-accent-300"
+            >
+              单季 FCF 修复与库存周转
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              观察488亿美元采购承诺是否顺利出货变现，单季 FCF 能否重返15亿–25亿美元健康水平
+            </p>
+          </div>
+          <div
+            class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center"
+          >
+            <i
+              data-lucide="shield-alert"
+              class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-gray-700 dark:text-gray-300"
+            >
+              BIS 管制与中国合规走势
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              追踪美国商务部对固件做空指控及东南亚转口规则的最新执法口径，严防22.4%营收突发封锁
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投资论点 -->
+      <div
+        class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="target"
+            class="inline-block w-5 h-5 mr-2 -mt-0.5"
+          ></i>
+          <strong>机构投资论点：</strong
+          >AMD 是一家已经跨过“商业验证奇点”、正全速迈向千亿美元营收俱乐部的 AI 算力核心二号位，但绝非传统意义上的“低估值安全边际资产”。以424–460美元价位衡量，其39.5倍前瞻 PE 仍显著贵于英伟达与博通，且背负着 <strong>488亿美元采购承诺、Q3单季 FCF 回落以及高达19.6%的潜在认股权证稀释</strong> 三重约束；但与此同时，Q4 170亿美元高指引与2027年80%+的罕见高增长又赋予了极强的进攻弹性。站在机构组合管理视角，<strong>AMD 适合作为成长型科技组合的“高 Beta 卫星进攻仓位”而非压舱基石</strong>——在纳指波动或监管情绪杀跌窗口（400–430美元一带）分批布局，以 Helios 机柜交付节奏与单季自由现金流修复作为加减仓核心触发器。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          关于本报告
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告基于超威半导体（NASDAQ: AMD）FY2021–FY2025 SEC 10-K 年报、2026年 Q3 10-Q 季报、卖方机构研报及监管披露，从商业模式、护城河、财务状况、估值、风险与多空视角等八个维度进行深度评估。
+        </p>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          核心数据来源
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>• AMD FY2021–FY2025 10-K 年报</li>
+          <li>• AMD 2026年 Q3 财报（截至9月26日）</li>
+          <li>• S&amp;P Global / Business Quant 财务拆解</li>
+          <li>• Morningstar / StoneX / Seeking Alpha 估值报告</li>
+          <li>• BIS 出口管制与 Hunterbrook 调查披露</li>
+        </ul>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          免责声明
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告仅供金融研究、教育与信息参考，不构成任何证券买卖建议或投资收益承诺。数据均源自公开信息校验整理，投资需结合自身风险承受能力审慎决策。
+        </p>
+      </div>
+    </div>
+    <div
+      class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500"
+    >
+      <p>© 2026 超威半导体（AMD）经营分析报告 · 生成日期：2026-11-24</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    if (!menu) return;
+
+    menu.classList.toggle("mobile-menu-open");
+  }
+
+  window.addEventListener("scroll", () => {
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    lucide.createIcons();
+    AOS.init({ duration: 800, once: true });
+
+    // Citation System
+    let i = 1, map = new Map();
+    document.querySelectorAll("[data-ref]").forEach((el) => {
+      if (el.dataset.citationProcessed) return;
+      const raw = (el.getAttribute("data-ref") || "").trim();
+      if (!raw) return;
+      const parts = raw.split("|");
+      const url = parts[0].trim();
+      const idx =
+        (parts[1] || "").trim() ||
+        map.get(raw) ||
+        (map.set(raw, String(i)), String(i++));
+      if (!el.textContent || !el.textContent.trim()) {
+        el.dataset.citationProcessed = "true";
+        return;
+      }
+      const btn = document.createElement("sup");
+      btn.textContent = String(idx);
+      Object.assign(btn.style, {
+        fontSize: "8px",
+        color: "#fff",
+        cursor: "pointer",
+        top: "1px",
+        fontWeight: "bold",
+        backgroundColor: "#0284c7",
+        borderRadius: "50%",
+        transition: "all .15s",
+        userSelect: "none",
+        minWidth: "19px",
+        height: "19px",
+        marginLeft: "6px",
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        boxShadow: "0 1px 3px rgba(0,0,0,.2)",
+        lineHeight: "1",
+      });
+      btn.addEventListener("mouseenter", () =>
+        Object.assign(btn.style, {
+          backgroundColor: "#0369a1",
+          transform: "scale(1.12)",
+        })
+      );
+      btn.addEventListener("mouseleave", () =>
+        Object.assign(btn.style, {
+          backgroundColor: "#0284c7",
+          transform: "scale(1)",
+        })
+      );
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(url, "_blank");
+      });
+      el.appendChild(btn);
+      el.dataset.citationProcessed = "true";
+    });
+  });
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f9fafb">
+<title>Meta Platforms体系全景解析_2026-11-23</title>
+<meta name="description" content="Meta Platforms公司治理、创始人控制权、双重股权结构、股本变化、关联企业、AI战略及员工股权激励全景研究。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: { extend: {
+    colors: {
+      primary: {
+        50:'hsl(215, 90%, 96%)',100:'hsl(215, 90%, 90%)',
+        200:'hsl(215, 85%, 80%)',300:'hsl(215, 80%, 68%)',
+        400:'hsl(215, 80%, 58%)',500:'hsl(215, 85%, 48%)',
+        600:'hsl(215, 85%, 40%)',700:'hsl(215, 85%, 32%)',
+        800:'hsl(215, 75%, 24%)',900:'hsl(215, 70%, 16%)'
+      },
+      accent: {
+        50:'hsl(190, 85%, 95%)',100:'hsl(190, 80%, 86%)',
+        200:'hsl(190, 75%, 76%)',300:'hsl(190, 75%, 65%)',
+        400:'hsl(190, 75%, 55%)',500:'hsl(190, 80%, 45%)',
+        600:'hsl(190, 80%, 38%)',700:'hsl(190, 75%, 30%)',
+        800:'hsl(190, 70%, 23%)',900:'hsl(190, 65%, 16%)'
+      }
+  }}}
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.btn-interactive:active{transform:scale(.96)}
+.card-interactive{transition:all .3s ease-out;border:1px solid transparent}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 20px 25px -5px rgba(0,0,0,.1);border-color:hsl(215,85%,65%)}
+.dark .card-interactive:hover{border-color:hsl(190,75%,55%)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.8rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#374151}
+th{font-weight:650;background:rgba(59,130,246,.07)}
+.dark th{background:rgba(59,130,246,.13)}
+.mobile-menu-open{display:block!important}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){
+ header .max-w-7xl{padding-left:1rem;padding-right:1rem}
+ #mobileMenu{margin-top:1rem;padding:1rem 0 .5rem;border-top:1px solid rgba(20,20,20,.12);max-height:calc(100vh - 90px);overflow-y:auto}
+ .dark #mobileMenu{border-top-color:rgba(255,255,255,.15)}
+ #mobileMenu a{display:block;width:100%;padding:.7rem .5rem;border-radius:.5rem}
+ .report-table{overflow-x:auto}
+ .report-table table{min-width:650px}
+}
+header{overflow:visible}
+.moat-bar{height:9px;border-radius:99px;background:#e5e7eb;overflow:hidden}
+.dark .moat-bar{background:#374151}
+.moat-bar>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#2563eb,#06b6d4)}
+.metric-number{font-variant-numeric:tabular-nums}
+.source-link{color:#2563eb;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#67e8f9}
+.section-kicker{font-size:.72rem;letter-spacing:.16em;font-weight:700;text-transform:uppercase;color:#0d9488}
+</style>
+<script>
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ const d=document.documentElement.classList.contains('dark');
+ document.getElementById('sunIcon').style.display=d?'block':'none';
+ document.getElementById('moonIcon').style.display=d?'none':'block';
+ try{localStorage.setItem('meta-report-dark',d?'1':'0')}catch(e){}
+}
+function toggleMobileMenu(){
+ const m=document.getElementById('mobileMenu'),b=document.getElementById('mobileMenuButton');
+ const open=m.classList.toggle('mobile-menu-open');
+ m.setAttribute('aria-hidden',open?'false':'true');
+ b.setAttribute('aria-expanded',open?'true':'false');
+ const i=document.getElementById('mobileMenuIcon');
+ i.setAttribute('data-lucide',open?'x':'menu');lucide.createIcons();
+}
+function closeMobileMenu(){
+ const m=document.getElementById('mobileMenu'),b=document.getElementById('mobileMenuButton');
+ m.classList.remove('mobile-menu-open');m.setAttribute('aria-hidden','true');
+ b.setAttribute('aria-expanded','false');
+ document.getElementById('mobileMenuIcon').setAttribute('data-lucide','menu');lucide.createIcons();
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-accent-400 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20">
+ <div class="max-w-7xl mx-auto px-6 py-4">
+  <div class="flex items-center justify-between gap-3">
+   <h1 class="text-lg md:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">Meta Platforms体系全景解析</h1>
+   <nav class="hidden md:flex space-x-5 flex-shrink-0" aria-label="桌面端导航">
+    <a href="#overview" class="text-sm font-medium hover:text-primary-600">总览</a>
+    <a href="#founder" class="text-sm font-medium hover:text-primary-600">管理层</a>
+    <a href="#capital" class="text-sm font-medium hover:text-primary-600">股本</a>
+    <a href="#equity" class="text-sm font-medium hover:text-primary-600">股权</a>
+    <a href="#companies" class="text-sm font-medium hover:text-primary-600">关联企业</a>
+    <a href="#employee" class="text-sm font-medium hover:text-primary-600">员工激励</a>
+    <a href="#summary" class="text-sm font-medium hover:text-primary-600">综合研判</a>
+   </nav>
+   <div class="flex items-center gap-2 flex-shrink-0">
+    <button id="mobileMenuButton" type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300" aria-label="导航菜单" aria-controls="mobileMenu" aria-expanded="false"><i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i></button>
+    <button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="hidden" aria-hidden="true">
+   <nav class="flex flex-col space-y-1">
+    <a href="#overview">总览</a><a href="#founder">创始人/管理层</a><a href="#capital">股本变化</a><a href="#equity">股权结构</a><a href="#companies">关联企业</a><a href="#employee">员工持股与激励</a><a href="#summary">综合研判</a>
+   </nav>
+  </div>
+ </div>
+</header>
+<main class="min-h-screen">
+<section id="overview" class="pt-36 pb-20 bg-primary-50/60 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-4">CORPORATE GOVERNANCE · OWNERSHIP · CAPITAL</div>
+  <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-800 dark:text-primary-300">Meta Platforms体系全景解析</h2>
+  <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+   本报告以Meta Platforms, Inc.（NASDAQ: META）为核心，拆解其由Mark Zuckerberg主导的创始人控制体系、A/B双重股权结构、股本与资本回报政策、Family of Apps与Reality Labs业务矩阵，以及员工股权激励和AI基础设施投资。研究重点不仅是“谁拥有股份”，更是“谁掌握投票权、谁决定资本配置、谁承担长期投资风险”。
+  </p>
+  <div class="text-sm text-gray-500 dark:text-gray-400 mb-8">研究基准日：2026年11月23日｜财务最新口径：2026年第三季度（截至2026年9月30日）｜证券代码：NASDAQ: META</div>
+  <div class="grid md:grid-cols-3 gap-6 mt-10">
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center gap-4 mb-4"><div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/40 rounded-lg flex items-center justify-center"><i data-lucide="user-round" class="w-6 h-6 text-primary-600"></i></div><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">创始人控制权</h3></div>
+    <div class="text-3xl font-bold text-primary-700 dark:text-primary-300 metric-number">60.6%</div>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Zuckerberg截至2026年10月1日的公司总投票权，经济持股与控制权显著分离。[1]</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center gap-4 mb-4"><div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/40 rounded-lg flex items-center justify-center"><i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-accent-600"></i></div><h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">最新季度营收</h3></div>
+    <div class="text-3xl font-bold text-accent-700 dark:text-accent-300 metric-number">646.01亿美元</div>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">2026年第三季度同比增长26%；经营利润率受一次性法律费用显著压低。[2]</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center gap-4 mb-4"><div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/40 rounded-lg flex items-center justify-center"><i data-lucide="cpu" class="w-6 h-6 text-primary-600"></i></div><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">资本配置主线</h3></div>
+    <div class="text-3xl font-bold text-primary-700 dark:text-primary-300 metric-number">AI优先</div>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">AI模型、数据中心、算力与广告推荐系统构成新一轮长期资本开支核心。</p>
+   </div>
+  </div>
+  <div class="mt-8 p-5 rounded-xl bg-accent-50/70 dark:bg-accent-900/20 border-l-4 border-accent-500">
+   <p class="text-sm leading-relaxed text-accent-900 dark:text-accent-100"><i data-lucide="info" class="inline w-4 h-4 mr-2"></i><strong>本报告的重要口径说明：</strong>2026年10月公司披露设立新Class C普通股的安排，并在相关披露中讨论潜在财富税、创始人投票权与股权融资影响。该事项与现有A/B股结构并非同一概念，须区分“董事会提出/安排”“股东批准”“实际发行及生效”各阶段；本文不会把尚未确认完成的安排当作已发行股本。[3]</p>
+  </div>
+ </div>
+</section>
+
+
+
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">01 · LEADERSHIP & STRATEGY</div>
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">创始人及核心管理层：Mark Zuckerberg的长期控制与战略演进</h2>
+  <div class="space-y-6">
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    Meta的治理体系具有典型的创始人主导特征。Mark Zuckerberg不仅是公司创始人、董事长和CEO，也是产品路线、核心技术投资与长期资本配置的最终主导者。与传统职业经理人主导的上市公司不同，Meta的战略决策高度集中于创始人，董事会与管理团队在其战略框架下分工执行。2026年进一步推动Class C无投票权股票安排，更明确体现了公司希望长期保留创始人控制权的治理取向。[1][3]
+   </p>
+   <div class="grid md:grid-cols-2 gap-6">
+    <div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow-md">
+     <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">Mark Zuckerberg｜创始人、董事长兼CEO</h3>
+     <div class="text-3xl font-bold text-primary-700 dark:text-primary-300 mb-2">2004—至今</div>
+     <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">2004年创立Facebook，2012年推动上市，2014年完成WhatsApp等重要收购，2021年推动公司更名Meta，战略重心从社交网络扩展至AI、虚拟现实和下一代计算平台。</p>
+     <div class="mt-4 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+      <div class="flex justify-between"><span>CEO年基本工资</span><strong>$1美元</strong></div>
+      <div class="flex justify-between"><span>2025年公司披露的投票权</span><strong>约60.8%</strong></div>
+      <div class="flex justify-between"><span>2026年10月1日投票权</span><strong>60.6%</strong></div>
+     </div>
+    </div>
+    <div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow-md">
+     <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">核心管理团队</h3>
+     <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+      <li><strong>Susan Li：</strong>首席财务官，负责财务管理、资本配置及财务战略。</li>
+      <li><strong>Christopher Cox：</strong>首席产品官，负责核心产品与用户体验。</li>
+      <li><strong>Javier Olivan：</strong>首席运营官，负责全球业务运营与组织协调。</li>
+      <li><strong>Andrew Bosworth：</strong>首席技术官，长期负责Reality Labs及技术产品体系。</li>
+     </ul>
+     <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">以上职务依据公司2026年公开管理层及高管披露；具体职务调整以公司官网为准。[4]</p>
+    </div>
+   </div>
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-8 mb-4">一、创业历程与战略演进</h3>
+   <div class="relative border-l-2 border-primary-300 dark:border-primary-700 ml-3 pl-7 space-y-7">
+    <div class="relative"><span class="absolute -left-[35px] w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-gray-900"></span><div class="font-semibold text-primary-700 dark:text-primary-300">2004—2011：社交网络平台形成</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-2">从大学校园社交网络发展为全球平台，逐步建立Facebook、News Feed、广告系统及移动端生态。核心竞争力是用户关系网络、社交图谱和数据驱动的广告分发。</p></div>
+    <div class="relative"><span class="absolute -left-[35px] w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-gray-900"></span><div class="font-semibold text-primary-700 dark:text-primary-300">2012—2018：上市与移动生态整合</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-2">2012年IPO；2012年收购Instagram，2014年收购WhatsApp与Oculus。公司从单一社交平台转变为拥有多入口、多产品、多广告场景的数字平台集团。</p></div>
+    <div class="relative"><span class="absolute -left-[35px] w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-gray-900"></span><div class="font-semibold text-primary-700 dark:text-primary-300">2019—2021：隐私监管与元宇宙转型</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-2">在隐私政策、平台监管和广告追踪限制下，公司加速布局虚拟现实，并于2021年10月更名Meta，正式提出建设元宇宙的长期愿景。</p></div>
+    <div class="relative"><span class="absolute -left-[35px] w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-gray-900"></span><div class="font-semibold text-primary-700 dark:text-primary-300">2022—2023：效率优先与组织重构</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-2">2022年启动大规模裁员与成本控制，2023年提出效率之年。管理重心从无限扩张转向精简层级、提高人均产出、压缩非核心项目开支。</p></div>
+    <div class="relative"><span class="absolute -left-[35px] w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-gray-900"></span><div class="font-semibold text-primary-700 dark:text-primary-300">2024—2025：AI重新定义公司战略</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-2">Llama开源模型、Meta AI助手、广告推荐系统与智能眼镜成为重点。AI逐渐从单纯研发投入转变为广告变现、内容推荐、创作者工具和终端产品的共同底层能力。</p></div>
+    <div class="relative"><span class="absolute -left-[35px] w-4 h-4 rounded-full bg-accent-500 border-4 border-white dark:border-gray-900"></span><div class="font-semibold text-accent-700 dark:text-accent-300">2026：个人超级智能与创始人长期治理</div><p class="text-sm text-gray-700 dark:text-gray-300 mt-2">公司将Personal Superintelligence（个人超级智能）作为战略方向，推进新一代AI模型、算力设施和AI产品。10月公布Class C资本结构调整方案，强化创始人长期领导与融资灵活性。[2][3]</p></div>
+   </div>
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-8 mb-4">二、管理哲学变化：从增长至上到AI效率与长期控制</h3>
+   <div class="grid md:grid-cols-2 gap-5">
+    <div class="card-interactive p-5 bg-white dark:bg-gray-800 rounded-xl shadow">
+     <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">组织管理</h4>
+     <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+      <li>• 减少管理层级，强调高密度人才组织。</li>
+      <li>• 通过裁员和业务重组控制固定成本。</li>
+      <li>• AI工具嵌入工程、产品和运营流程。</li>
+      <li>• 以小团队承担更完整的产品责任。</li>
+     </ul>
+    </div>
+    <div class="card-interactive p-5 bg-white dark:bg-gray-800 rounded-xl shadow">
+     <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">资本与技术管理</h4>
+     <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+      <li>• AI基础设施成为优先资本开支领域。</li>
+      <li>• 广告推荐模型与生成式AI相互协同。</li>
+      <li>• 以开源模型扩大开发者生态影响力。</li>
+      <li>• 以Class C股份拓展股权融资和并购工具。</li>
+     </ul>
+    </div>
+   </div>
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-8 mb-4">三、管理层能力与战略护城河评价</h3>
+   <p class="text-sm text-gray-500 dark:text-gray-400 mb-5">研究判断性评分，非公司披露指标，满分100分。</p>
+   <div class="space-y-5">
+    <div><div class="flex justify-between text-sm mb-2"><span>产品战略与长期愿景</span><strong>95</strong></div><div class="moat-bar"><span style="width:95%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>商业模式与广告变现</span><strong>94</strong></div><div class="moat-bar"><span style="width:94%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>AI研发与技术整合</span><strong>92</strong></div><div class="moat-bar"><span style="width:92%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>组织执行与成本控制</span><strong>86</strong></div><div class="moat-bar"><span style="width:86%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>治理制衡与少数股东保护</span><strong>58</strong></div><div class="moat-bar"><span style="width:58%"></span></div></div>
+   </div>
+   <div class="mt-7 p-5 rounded-xl bg-primary-50/60 dark:bg-primary-900/20 border-l-4 border-primary-500">
+    <p class="text-sm leading-relaxed text-primary-900 dark:text-primary-100"><strong>核心判断：</strong>Meta最大的管理优势是创始人愿景、工程文化与资源调动能力高度统一；最大的治理代价是战略决策权高度集中。投资者必须同时评价创始人带来的执行效率与缺乏外部制衡所产生的代理风险。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">02 · CAPITAL STRUCTURE</div>
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">股本数量变化：IPO、股票回购与2027年Class C资本重构</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Meta于2012年5月18日在纳斯达克上市。上市以来，公司的资本结构主要通过A/B双重股权、员工限制性股票、公开市场回购和现金股息进行调整。2026年10月，公司完成Class C新股类别的股东书面批准，计划于2027年1月19日生效，并向每一股现有A股和B股派发一股无投票权C股。这是理解Meta未来股本变化的最重要事件。[3]</p>
+  <div class="grid md:grid-cols-3 gap-5">
+   <div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow">
+    <div class="text-sm text-gray-500">A类普通股</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300 mt-2">22.14亿股</div><div class="text-xs text-gray-500 mt-2">2026年10月1日</div>
+   </div>
+   <div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow">
+    <div class="text-sm text-gray-500">B类普通股</div><div class="text-2xl font-bold text-accent-700 dark:text-accent-300 mt-2">3.42亿股</div><div class="text-xs text-gray-500 mt-2">2026年10月1日</div>
+   </div>
+   <div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow">
+    <div class="text-sm text-gray-500">A+B合计股本</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300 mt-2">25.56亿股</div><div class="text-xs text-gray-500 mt-2">未计未来Class C股息</div>
+   </div>
+  </div>
+  <div class="mt-8 p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+   <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">截至2026年11月20日的市场估值参考</h3>
+   <div class="grid md:grid-cols-3 gap-6">
+    <div><div class="text-sm text-gray-500">最近交易日收盘价</div><div class="text-2xl font-bold metric-number">$560.84</div></div>
+    <div><div class="text-sm text-gray-500">估算股权市值</div><div class="text-2xl font-bold metric-number">$1.43万亿美元</div></div>
+    <div><div class="text-sm text-gray-500">52周价格区间</div><div class="text-lg font-bold metric-number">$520.26—$779.82</div></div>
+   </div>
+   <p class="text-xs text-gray-500 mt-4">估算市值以2026年10月1日A+B股总数乘以2026年11月20日收盘价计算，未计未归属股权奖励及未来Class C派发；不等于交易所实时总市值。[5]</p>
+  </div>
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-4">一、资本结构发展时间线</h3>
+  <div class="report-table rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow">
+   <table>
+    <thead><tr><th>时间</th><th>关键事件</th><th>股本与资本影响</th><th>治理意义</th></tr></thead>
+    <tbody>
+     <tr><td>2012年5月</td><td>Facebook IPO</td><td>发行A类普通股，建立公开交易市场</td><td>创始人保留B类高投票权股份</td></tr>
+     <tr><td>2016年</td><td>拟议双重股权调整</td><td>曾提出C类股票方案，后撤回</td><td>创始人控制权议题首次受到高度关注</td></tr>
+     <tr><td>2017年1月</td><td>启动A类股票回购计划</td><td>持续授权回购，无固定到期日</td><td>回购与员工股权稀释相互抵消</td></tr>
+     <tr><td>2021年10月</td><td>Facebook更名Meta</td><td>股票代码由FB变更为META</td><td>品牌变化，不代表发行新股</td></tr>
+     <tr><td>2022—2023年</td><td>员工裁员与股权薪酬调整</td><td>员工RSU持续归属和发行</td><td>提高组织效率并优化人力成本</td></tr>
+     <tr><td>2025年5月</td><td>2025 Equity Incentive Plan生效</td><td>接替2012计划</td><td>统一员工股权奖励制度</td></tr>
+     <tr><td>2026年10月19—20日</td><td>Class C资本重构获批</td><td>设立无投票权C类普通股</td><td>拓展未来融资、员工激励和并购空间</td></tr>
+     <tr><td>2027年1月19日（计划）</td><td>Restated Charter生效</td><td>计划实施1:1 Class C股票股息</td><td>预计形成A/B/C多类别结构</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-4">二、2026年Class C安排：最重要的股本变化</h3>
+  <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+   <div class="flex items-center gap-3 mb-4"><i data-lucide="layers-3" class="w-7 h-7 text-primary-600"></i><h3 class="text-lg font-semibold">一股A/B对应一股C：经济权益扩展，投票权不变</h3></div>
+   <div class="grid md:grid-cols-2 gap-6">
+    <div class="bg-primary-50 dark:bg-primary-900/20 rounded-lg p-5">
+     <div class="text-sm text-gray-500">现有结构（示意）</div>
+     <div class="flex items-center gap-2 mt-4"><div class="bg-primary-600 text-white rounded-lg p-3 text-center flex-1"><strong>A股</strong><div class="text-xs">1票/股</div></div><div class="bg-accent-600 text-white rounded-lg p-3 text-center flex-1"><strong>B股</strong><div class="text-xs">10票/股</div></div></div>
+    </div>
+    <div class="bg-accent-50 dark:bg-accent-900/20 rounded-lg p-5">
+     <div class="text-sm text-gray-500">计划实施后（示意）</div>
+     <div class="grid grid-cols-3 gap-2 mt-4">
+      <div class="bg-primary-600 text-white rounded-lg p-3 text-center"><strong>A股</strong><div class="text-xs">1票</div></div>
+      <div class="bg-accent-600 text-white rounded-lg p-3 text-center"><strong>B股</strong><div class="text-xs">10票</div></div>
+      <div class="bg-gray-500 text-white rounded-lg p-3 text-center"><strong>C股</strong><div class="text-xs">0票</div></div>
+     </div>
+    </div>
+   </div>
+   <ul class="mt-5 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+    <li>• 公司已提交修订后的公司注册证书，计划生效日期为2027年1月19日。</li>
+    <li>• 在生效及派发后，每股A股和B股将对应获得一股C股。</li>
+    <li>• C股原则上享有与A/B股相同的经济权益，但不享有一般投票权。</li>
+    <li>• 公司预期派发后A股价格将体现类似二比一拆股的调整；这不是股东凭空获得双倍财富。</li>
+    <li>• C股可用于未来融资、员工薪酬、并购对价及一般公司用途。</li>
+   </ul>
+   <p class="text-xs text-gray-500 mt-4">截至本报告基准日，Class C安排已获股东书面批准并完成注册证书提交，但尚未到2027年1月19日的生效日期，实际派发日仍由董事会确定。[3]</p>
+  </div>
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-4">三、回购、分红与股本稀释</h3>
+  <div class="report-table rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow">
+   <table>
+    <thead><tr><th>项目</th><th>最新披露</th><th>研究解读</th></tr></thead>
+    <tbody>
+     <tr><td>股票回购</td><td>2026年前九个月未回购A股；剩余授权250.30亿美元</td><td>公司保留回购能力，但在AI资本开支扩张期，回购并非必然优先事项</td></tr>
+     <tr><td>现金股息</td><td>2026年第三季度每股0.525美元</td><td>持续现金回报，但相较AI投资规模仍属次要资本用途</td></tr>
+     <tr><td>2026年前九个月股息</td><td>约40.60亿美元</td><td>体现现金流实力和股东回报政策</td></tr>
+     <tr><td>员工股权奖励</td><td>2026年前九个月RSU相关股份薪酬费用约65.00亿美元</td><td>员工持股持续带来会计费用及潜在股份稀释</td></tr>
+     <tr><td>长期未确认RSU费用</td><td>755.90亿美元</td><td>未来约三年逐步确认，构成重要薪酬成本储备</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <div class="mt-7 p-5 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl border-l-4 border-accent-500">
+   <p class="text-sm text-accent-900 dark:text-accent-100 leading-relaxed"><strong>关键判断：</strong>Class C的本质不是传统意义上的拆股，而是将经济权益与投票权进一步分离。它能让Meta在不直接稀释创始人投票权的情况下扩大融资、员工奖励和并购工具箱，但也会带来A股与C股流动性、估值折价及治理公平性问题。[6]</p>
+  </div>
+ </div>
+</section>
+
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">03 · OWNERSHIP & CONTROL</div>
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">股权结构与实际控制权：创始人家族信托、双重股权与Class C新安排</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+   Meta的核心治理特征是经济权益与投票权分离。普通A股每股1票，B股每股10票。Mark Zuckerberg持有几乎全部B类股份，因此尽管其经济持股比例远低于50%，却可以控制超过60%的公司投票权。2026年10月的信息声明进一步披露，相关创始人关联实体通过书面同意批准了新的Class C架构。[1][3]
+  </p>
+  <div class="grid md:grid-cols-2 gap-6">
+   <div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow-md">
+    <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">经济权益：创始人持股</h3>
+    <div class="text-4xl font-bold text-accent-700 dark:text-accent-300">约13.4%</div>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-3">按2026年10月1日披露的直接及受益持股口径估算，Zuckerberg持有约3.42亿股B股及约122万股A股。由于受益所有权、可行权奖励及分母口径不同，比例与单纯已发行股份计算可能存在细微差异。</p>
+   </div>
+   <div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow-md">
+    <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">投票控制权</h3>
+    <div class="text-4xl font-bold text-primary-700 dark:text-primary-300">60.6%</div>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mt-3">截至2026年10月1日，Zuckerberg拥有约60.6%的总投票权。该控制权使其能够主导股东层面的重要决议与公司长期方向。</p>
+   </div>
+  </div>
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-4">一、主要股东持股结构</h3>
+  <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">以下数据采用2026年10月1日公司披露的受益持股资料。机构持股以A股为主，持股比例及投票权不是同一概念。</p>
+  <div class="report-table rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow">
+   <table>
+    <thead><tr><th>股东/机构</th><th>A股持股</th><th>B股持股</th><th>总投票权</th><th>治理定位</th></tr></thead>
+    <tbody>
+     <tr><td><strong>Mark Zuckerberg</strong></td><td>约122.07万股</td><td>约3.41亿股</td><td><strong>60.6%</strong></td><td>创始人、董事长、CEO及实际控制人</td></tr>
+     <tr><td>Vanguard关联实体</td><td>约1.64亿股</td><td>无披露B股</td><td>约2.9%</td><td>大型机构投资者</td></tr>
+     <tr><td>BlackRock关联实体</td><td>约1.58亿股</td><td>无披露B股</td><td>约2.8%</td><td>大型机构投资者</td></tr>
+     <tr><td>Susan Li</td><td>约3.14万股</td><td>无</td><td>不足1%</td><td>首席财务官</td></tr>
+     <tr><td>Christopher Cox</td><td>约25.60万股</td><td>无</td><td>不足1%</td><td>首席产品官</td></tr>
+     <tr><td>Javier Olivan</td><td>约11.52万股</td><td>无</td><td>不足1%</td><td>首席运营官</td></tr>
+     <tr><td>Andrew Bosworth</td><td>约8.64万股</td><td>无</td><td>不足1%</td><td>首席技术官</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 mt-3">Vanguard、BlackRock等机构的股份通常由基金及受托账户持有，投资管理人的申报持股不代表其自有资本全部承担相同经济风险。具体投票权可能受客户授权、基金结构及证券借贷影响。[1][7]</p>
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-4">二、家族信托与控股平台架构</h3>
+  <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+   <p class="text-sm text-gray-700 dark:text-gray-300 mb-5">公开文件显示，Zuckerberg通过CZI Holdings及Chan Zuckerberg Holdings系列实体参与公司股权与资本结构安排。应当区分个人直接持股、实体持股、受益所有权以及投票权授权，不能简单把所有相关实体视为具有独立经济利益的普通机构股东。</p>
+   <div class="flex flex-col items-center gap-2 text-center">
+    <div class="w-full md:w-3/4 p-4 rounded-lg bg-primary-100 dark:bg-primary-900/40 border border-primary-300 dark:border-primary-700">
+     <strong class="text-primary-800 dark:text-primary-200">Mark Zuckerberg及相关家族财富安排</strong>
+     <p class="text-xs mt-1 text-gray-600 dark:text-gray-300">创始人控制与家族资产管理层</p>
+    </div>
+    <i data-lucide="arrow-down" class="text-primary-500"></i>
+    <div class="w-full md:w-3/4 p-4 rounded-lg bg-accent-50 dark:bg-accent-900/30 border border-accent-300 dark:border-accent-700">
+     <strong class="text-accent-800 dark:text-accent-200">CZI Holdings, LLC及Chan Zuckerberg Holdings系列实体</strong>
+     <p class="text-xs mt-1 text-gray-600 dark:text-gray-300">2026年Class C事项书面同意股东</p>
+    </div>
+    <i data-lucide="arrow-down" class="text-primary-500"></i>
+    <div class="w-full md:w-3/4 p-4 rounded-lg bg-primary-50 dark:bg-primary-900/30 border border-primary-300 dark:border-primary-700">
+     <strong class="text-primary-800 dark:text-primary-200">Meta Platforms, Inc.</strong>
+     <p class="text-xs mt-1 text-gray-600 dark:text-gray-300">纳斯达克上市控股公司</p>
+    </div>
+    <i data-lucide="arrow-down" class="text-primary-500"></i>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 w-full">
+     <div class="p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-sm font-semibold">Family of Apps</div>
+     <div class="p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-sm font-semibold">Reality Labs</div>
+     <div class="p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-sm font-semibold">AI研发体系</div>
+     <div class="p-3 rounded-lg bg-gray-100 dark:bg-gray-700 text-sm font-semibold">全球运营实体</div>
+    </div>
+   </div>
+   <p class="text-xs text-gray-500 mt-4">以上为控制与业务关系示意，不代表完整法律股权链条。公开材料没有充分披露所有家族财富安排的最终受益人和每层实体的精确比例，不应将未公开信息推定为事实。[3]</p>
+  </div>
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-4">三、股权结构演变时间线</h3>
+  <div class="space-y-4">
+   <div class="flex gap-4"><div class="w-24 flex-shrink-0 text-sm font-bold text-primary-700 dark:text-primary-300">2012年</div><div class="text-sm text-gray-700 dark:text-gray-300">IPO时建立A/B双重股权结构，创始人持有高投票权股份。</div></div>
+   <div class="flex gap-4"><div class="w-24 flex-shrink-0 text-sm font-bold text-primary-700 dark:text-primary-300">2016年</div><div class="text-sm text-gray-700 dark:text-gray-300">曾推动无投票权C股方案，后因股东诉讼与公司决定撤回。</div></div>
+   <div class="flex gap-4"><div class="w-24 flex-shrink-0 text-sm font-bold text-primary-700 dark:text-primary-300">2021—2025年</div><div class="text-sm text-gray-700 dark:text-gray-300">B股转让通常触发转换为A股，创始人投票权相对集中；员工股权奖励持续发行。</div></div>
+   <div class="flex gap-4"><div class="w-24 flex-shrink-0 text-sm font-bold text-accent-700 dark:text-accent-300">2026年2月</div><div class="text-sm text-gray-700 dark:text-gray-300">董事会成立独立特别委员会，研究资本结构及融资替代方案。</div></div>
+   <div class="flex gap-4"><div class="w-24 flex-shrink-0 text-sm font-bold text-accent-700 dark:text-accent-300">2026年10月</div><div class="text-sm text-gray-700 dark:text-gray-300">股东书面同意通过修订章程及2025股权激励计划修订，建立Class C框架。</div></div>
+   <div class="flex gap-4"><div class="w-24 flex-shrink-0 text-sm font-bold text-accent-700 dark:text-accent-300">2027年1月（计划）</div><div class="text-sm text-gray-700 dark:text-gray-300">新章程计划生效，实施C股股息派发及多类别股权结构。</div></div>
+  </div>
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-4">四、Founder Alignment Agreement：创始人流动性与控制权的平衡</h3>
+  <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+   <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">Class C安排的核心配套文件是Founder Alignment Agreement（创始人利益一致性协议）。协议并非简单授予创始人自由出售的无投票权股票，而是对其收到的C股出售设定约束。</p>
+   <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+    <li>• Zuckerberg获得的C股中，部分股份可按协议规定不受Stapling Condition约束。</li>
+    <li>• 其余受约束C股出售时，通常需要同步出售相应A/B股，或将相应B股转换为A股，或使用协议认可的Stapling Credits。</li>
+    <li>• 若违反出售条件，相关B股可能自动转换为A股，以保护投票权安排。</li>
+    <li>• 部分限制股份按季度逐步释放，释放条件与持续领导服务及协议规定相关。</li>
+    <li>• 在达到特定股价倍增与股东回报条件时，协议还规定后续C股股息机制。</li>
+   </ul>
+   <p class="text-xs text-gray-500 mt-4">协议包含复杂的转让限制、释放条件和计算规则，以上为简化说明，实际权利义务应以SEC信息声明附件C为准。[3]</p>
+  </div>
+  <div class="mt-7 p-5 rounded-xl border-l-4 border-accent-500 bg-accent-50/60 dark:bg-accent-900/20">
+   <p class="text-sm leading-relaxed text-accent-900 dark:text-accent-100"><strong>控制权研判：</strong>Meta已从传统双重股权进一步迈向多类别股权。其优势是保持创始人长期决策连续性，避免融资和员工奖励直接冲击控制权；其风险是控制权与外部股东问责机制进一步分离，少数股东对重大资本配置决策的影响能力有限。</p>
+  </div>
+ </div>
+</section>
+
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <div class="section-kicker mb-3">04 · BUSINESS ECOSYSTEM</div>
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">关联上市公司与企业关系：从社交平台到AI科技生态</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">与海底捞通过分拆上市形成多上市主体不同，Meta的核心业务主要集中在同一个上市控股主体内。Instagram、WhatsApp、Facebook、Messenger和Reality Labs并非独立上市公司，而是Meta合并报表中的业务、产品和组织体系。公司的报告分部为Family of Apps和Reality Labs。AI研发则横跨两个业务板块，并逐步成为全公司的基础能力。[8]</p>
+  <div class="grid md:grid-cols-2 gap-6">
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4"><div class="w-11 h-11 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"><i data-lucide="users" class="w-6 h-6 text-primary-600"></i></div><h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">Family of Apps</h3></div>
+    <div class="text-3xl font-bold text-primary-700 dark:text-primary-300">1,804.36亿美元</div>
+    <p class="text-xs text-gray-500 mt-1">2026年前九个月收入</p>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-4">包括Facebook、Instagram、Messenger、WhatsApp及其他服务。以广告为核心收入来源，具有强大的全球用户网络和商业化能力。</p>
+    <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">2026年前九个月经营利润：674.10亿美元</div>
+   </div>
+   <div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4"><div class="w-11 h-11 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"><i data-lucide="glasses" class="w-6 h-6 text-accent-600"></i></div><h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">Reality Labs</h3></div>
+    <div class="text-3xl font-bold text-accent-700 dark:text-accent-300">12.76亿美元</div>
+    <p class="text-xs text-gray-500 mt-1">2026年前九个月收入</p>
+    <p class="text-sm text-gray-700 dark:text-gray-300 mt-4">包括虚拟现实和增强现实硬件、软件与内容。重点产品涉及Quest设备、智能眼镜及相关技术平台。</p>
+    <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">2026年前九个月经营亏损：127.75亿美元</div>
+   </div>
+  </div>
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-4">一、Meta核心企业及产品矩阵</h3>
+  <div class="report-table rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow">
+   <table>
+    <thead><tr><th>业务/主体</th><th>核心产品</th><th>收入模式</th><th>战略价值</th><th>主要风险</th></tr></thead>
+    <tbody>
+     <tr><td><strong>Facebook</strong></td><td>动态消息、视频、社群、Marketplace</td><td>广告、商业推广</td><td>全球社交网络及广告流量基础</td><td>用户年龄结构、内容治理与竞争</td></tr>
+     <tr><td><strong>Instagram</strong></td><td>Reels、Stories、Feed、Direct</td><td>广告、商业内容及购物</td><td>年轻用户、短视频和创作者生态</td><td>短视频竞争及监管压力</td></tr>
+     <tr><td><strong>WhatsApp</strong></td><td>即时通信、Channels、Business</td><td>商业消息、企业服务及相关商业化</td><td>全球通信网络与企业客户入口</td><td>隐私、数据合规与商业化效率</td></tr>
+     <tr><td><strong>Messenger</strong></td><td>即时通信、语音视频及社交互动</td><td>广告及平台生态协同</td><td>提高用户留存和跨产品连接</td><td>独立变现能力有限</td></tr>
+     <tr><td><strong>Reality Labs</strong></td><td>Quest、智能眼镜、VR/AR平台</td><td>硬件销售、软件与内容</td><td>下一代人机交互入口</td><td>持续亏损、硬件普及和研发风险</td></tr>
+     <tr><td><strong>Meta AI</strong></td><td>Meta AI、Llama、生成式AI产品</td><td>广告效率提升、服务与生态变现</td><td>重塑推荐系统、产品体验及开发者生态</td><td>算力成本、模型竞争和安全监管</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-4">二、最新财务结构：2026年前九个月</h3>
+  <div class="report-table rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow">
+   <table>
+    <thead><tr><th>指标</th><th>Family of Apps</th><th>Reality Labs</th><th>Meta合计</th></tr></thead>
+    <tbody>
+     <tr><td>营业收入</td><td>1,804.36亿美元</td><td>12.76亿美元</td><td>1,817.12亿美元</td></tr>
+     <tr><td>员工薪酬成本</td><td>388.43亿美元</td><td>69.82亿美元</td><td>458.25亿美元</td></tr>
+     <tr><td>其他经营成本</td><td>741.83亿美元</td><td>70.69亿美元</td><td>812.52亿美元</td></tr>
+     <tr><td>经营利润/亏损</td><td><strong>674.10亿美元</strong></td><td><strong>-127.75亿美元</strong></td><td><strong>546.35亿美元</strong></td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 mt-3">单位：亿美元；数据为2026年1月1日至9月30日累计口径。各分部成本包含员工薪酬、股份支付、基础设施及其他经营费用。[8]</p>
+  <div class="grid md:grid-cols-3 gap-5 mt-7">
+   <div class="card-interactive p-5 rounded-xl bg-white dark:bg-gray-900 shadow">
+    <div class="text-sm text-gray-500">Family of Apps经营利润率</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300 mt-2">37.36%</div><p class="text-xs text-gray-500 mt-2">前九个月口径</p>
+   </div>
+   <div class="card-interactive p-5 rounded-xl bg-white dark:bg-gray-900 shadow">
+    <div class="text-sm text-gray-500">Reality Labs经营亏损率</div><div class="text-2xl font-bold text-accent-700 dark:text-accent-300 mt-2">约-1001%</div><p class="text-xs text-gray-500 mt-2">硬件研发与商业化仍处于高投入阶段</p>
+   </div>
+   <div class="card-interactive p-5 rounded-xl bg-white dark:bg-gray-900 shadow">
+    <div class="text-sm text-gray-500">集团经营利润率</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300 mt-2">30.07%</div><p class="text-xs text-gray-500 mt-2">前九个月口径</p>
+   </div>
+  </div>
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-4">三、关联交易与集团内部协同</h3>
+  <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-5">Meta与传统产业集团不同，其核心关联关系更多体现为母子公司之间的技术、知识产权、品牌、云基础设施和全球服务安排。公司通过内部法律实体分工处理国际运营、知识产权、研发、广告服务及数据中心业务。关联实体之间的交易在合并财务报表中通常抵销，因此不能将内部结算金额简单视为集团新增收入。</p>
+  <div class="grid md:grid-cols-2 gap-5">
+   <div class="p-5 rounded-xl bg-primary-50/60 dark:bg-primary-900/20">
+    <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">内部协同机制</h4>
+    <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+     <li>• 全球广告系统共享统一的技术和投放基础设施。</li>
+     <li>• Instagram、Facebook和WhatsApp之间存在商业化及用户连接协同。</li>
+     <li>• AI模型服务多个产品线，提升推荐、广告排序和内容生成效率。</li>
+     <li>• 全球数据中心和网络设施支撑跨地区业务运营。</li>
+    </ul>
+   </div>
+   <div class="p-5 rounded-xl bg-accent-50/60 dark:bg-accent-900/20">
+    <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">外部合作与供应链关系</h4>
+    <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+     <li>• 与芯片厂商合作，获得GPU、服务器及网络设备。</li>
+     <li>• 与云服务、能源和数据中心供应商签订长期采购协议。</li>
+     <li>• 与开发者、内容创作者及商业客户形成生态合作。</li>
+     <li>• 通过硬件合作伙伴扩大智能眼镜等终端产品触达。</li>
+    </ul>
+   </div>
+  </div>
+  <div class="mt-6 p-5 bg-white dark:bg-gray-900 rounded-xl shadow">
+   <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">资本承诺与基础设施供应链风险</h4>
+   <div class="text-3xl font-bold text-accent-700 dark:text-accent-300">$4,545.20亿美元</div>
+   <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">截至2026年9月30日，公司披露的不可取消合同承诺总额，主要涉及第三方云容量、服务器和网络基础设施、数据中心能源服务及Reality Labs消费硬件产品。其中2026年和2027年预计到期金额分别约458.50亿美元和1,214.10亿美元。[9]</p>
+   <p class="text-xs text-gray-500 mt-3">该数据为合同承诺总额，并非全部属于资本开支，也不代表同一期间必须一次性支付。</p>
+  </div>
+  <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mt-9 mb-4">四、AI生态的商业传导链条</h3>
+  <div class="grid md:grid-cols-4 gap-3">
+   <div class="p-4 bg-primary-100 dark:bg-primary-900/40 rounded-lg text-center"><i data-lucide="database" class="w-7 h-7 mx-auto text-primary-600 mb-2"></i><strong class="text-sm">数据与用户</strong><p class="text-xs mt-2">全球社交关系和内容行为</p></div>
+   <div class="p-4 bg-primary-100 dark:bg-primary-900/40 rounded-lg text-center"><i data-lucide="brain-circuit" class="w-7 h-7 mx-auto text-primary-600 mb-2"></i><strong class="text-sm">AI模型</strong><p class="text-xs mt-2">推荐、生成和智能助手</p></div>
+   <div class="p-4 bg-accent-100 dark:bg-accent-900/40 rounded-lg text-center"><i data-lucide="target" class="w-7 h-7 mx-auto text-accent-600 mb-2"></i><strong class="text-sm">广告变现</strong><p class="text-xs mt-2">投放效率与广告定价</p></div>
+   <div class="p-4 bg-primary-100 dark:bg-primary-900/40 rounded-lg text-center"><i data-lucide="trending-up" class="w-7 h-7 mx-auto text-primary-600 mb-2"></i><strong class="text-sm">现金流再投资</strong><p class="text-xs mt-2">算力、人才与终端产品</p></div>
+  </div>
+  <div class="mt-7 p-5 rounded-xl border-l-4 border-accent-500 bg-accent-50/60 dark:bg-accent-900/20">
+   <p class="text-sm text-accent-900 dark:text-accent-100 leading-relaxed"><strong>核心判断：</strong>Meta并不是多个独立上市公司组成的控股集团，而是一个高度整合的科技平台。其核心协同来自用户数据、广告分发、AI技术和基础设施的复用。最大风险则是广告业务现金流对Reality Labs长期亏损与AI资本开支的持续补贴能力。</p>
+  </div>
+ </div>
+</section>
+
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">05 · EMPLOYEE EQUITY & INCENTIVES</div>
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">员工持股与激励机制：RSU、期权与高密度人才组织</h2>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">Meta员工激励体系以限制性股票单位（RSU）为核心，辅以股票期权、年度奖金、现金薪酬和福利。与传统企业通过员工持有子公司股权或利润分红绑定利益不同，Meta主要通过母公司A类普通股奖励，使全球员工分享上市公司长期价值增长。2026年Class C安排还将为未来股权奖励提供新的股票类别选择。[10]</p>
+  <div class="grid md:grid-cols-3 gap-5">
+   <div class="card-interactive p-5 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow">
+    <i data-lucide="award" class="w-7 h-7 text-primary-600 mb-3"></i><div class="text-sm text-gray-500">2026年前九个月RSU薪酬费用</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300">$65.00亿美元</div>
+   </div>
+   <div class="card-interactive p-5 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow">
+    <i data-lucide="wallet" class="w-7 h-7 text-accent-600 mb-3"></i><div class="text-sm text-gray-500">未来未确认RSU费用</div><div class="text-2xl font-bold text-accent-700 dark:text-accent-300">$755.90亿美元</div>
+   </div>
+   <div class="card-interactive p-5 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow">
+    <i data-lucide="users" class="w-7 h-7 text-primary-600 mb-3"></i><div class="text-sm text-gray-500">2026年9月员工总数</div><div class="text-2xl font-bold text-primary-700 dark:text-primary-300">66,775人</div>
+    <p class="text-xs text-gray-500 mt-1">同比减少15%</p>
+   </div>
+  </div>
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-4">一、主要股权激励工具</h3>
+  <div class="report-table rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow">
+   <table>
+    <thead><tr><th>激励形式</th><th>基本机制</th><th>员工收益</th><th>公司目的</th></tr></thead>
+    <tbody>
+     <tr><td><strong>RSU限制性股票单位</strong></td><td>按服务期限及归属条件分期归属，通常以四年期为主要安排</td><td>满足归属条件后取得公司股份</td><td>长期留才、共享股东价值</td></tr>
+     <tr><td><strong>股票期权</strong></td><td>员工在规定期限内按行权价购买股票</td><td>股价超过行权价时获得潜在收益</td><td>激励长期价值创造</td></tr>
+     <tr><td><strong>年度现金奖金</strong></td><td>结合公司优先事项及管理层综合评价确定</td><td>获得年度浮动现金收入</td><td>促进战略目标执行</td></tr>
+     <tr><td><strong>董事会RSU</strong></td><td>非雇员董事按规定获得年度RSU奖励</td><td>与公司长期股价表现建立联系</td><td>吸引和留住专业治理人才</td></tr>
+     <tr><td><strong>Class C股权奖励（未来）</strong></td><td>修订后的2025计划允许符合条件的奖励以A股或C股交付</td><td>未来可获得无投票权但具有经济权益的股票</td><td>降低员工股权奖励对创始人投票权的稀释</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-4">二、2026年股权奖励数据</h3>
+  <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+   <div class="flex justify-between items-center mb-4"><h4 class="font-semibold text-primary-700 dark:text-primary-300">RSU与期权安排</h4><span class="text-xs text-gray-500">截至2026年9月30日</span></div>
+   <div class="space-y-4">
+    <div><div class="flex justify-between text-sm mb-2"><span>未确认RSU股份薪酬费用</span><strong>$755.90亿</strong></div><div class="moat-bar"><span style="width:100%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>未确认股票期权薪酬费用</span><strong>$3.99亿</strong></div><div class="moat-bar"><span style="width:5%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>2026年前九个月已确认RSU薪酬费用</span><strong>$65.00亿</strong></div><div class="moat-bar"><span style="width:9%"></span></div></div>
+   </div>
+   <p class="text-xs text-gray-500 mt-4">进度条仅表示金额相对比例，不表示归属完成率。公司预计RSU未确认费用在约三年内按照归属条件逐步确认。[10]</p>
+  </div>
+  <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md mt-6">
+   <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">股票期权：2026年前九个月</h4>
+   <div class="grid md:grid-cols-3 gap-4">
+    <div><div class="text-xs text-gray-500">新授予期权数量</div><div class="text-xl font-bold">2,000万股</div></div>
+    <div><div class="text-xs text-gray-500">加权平均行权价</div><div class="text-xl font-bold">$2,788</div></div>
+    <div><div class="text-xs text-gray-500">剩余合同期限</div><div class="text-xl font-bold">约4年</div></div>
+   </div>
+   <p class="text-xs text-gray-500 mt-3">该批期权的归属及可行权条件由薪酬委员会或其授权委员会决定。[10]</p>
+  </div>
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-4">三、薪酬与绩效考核体系</h3>
+  <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-5">Meta高管薪酬体系由基本工资、年度现金奖金和长期股权奖励组成，但各部分并非简单按照某个财务指标自动结算。公司薪酬委员会对高管奖金进行综合判断，结合公司战略优先事项、经营成果和管理表现。2025年薪酬披露显示，奖金计划没有设置明确的单一财务指标权重，收入表现是委员会参考的重要因素之一。[11]</p>
+  <div class="grid md:grid-cols-2 gap-5">
+   <div class="p-5 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl">
+    <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">高管薪酬治理</h4>
+    <ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300">
+     <li>• 薪酬委员会监督CEO及其他高管薪酬安排。</li>
+     <li>• CEO对其他高管薪酬提供建议。</li>
+     <li>• 高管不得参与自身薪酬最终决定。</li>
+     <li>• CEO主动要求基本工资维持每年1美元，不领取奖金及股权激励。</li>
+    </ul>
+   </div>
+   <div class="p-5 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+    <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-3">普通员工激励</h4>
+    <ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300">
+     <li>• 基本工资与岗位市场水平挂钩。</li>
+     <li>• RSU构成长期总薪酬的重要组成部分。</li>
+     <li>• 年度奖金结合公司优先事项和个人贡献。</li>
+     <li>• 医疗、退休、保险等福利形成综合报酬。</li>
+    </ul>
+   </div>
+  </div>
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-4">四、2026年员工结构调整：高效率组织的另一面</h3>
+  <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+   <div class="grid md:grid-cols-2 gap-6">
+    <div><div class="text-sm text-gray-500">2026年9月员工人数</div><div class="text-4xl font-bold text-primary-700 dark:text-primary-300">66,775</div><p class="text-sm text-gray-600 dark:text-gray-300 mt-2">同比下降15%。</p></div>
+    <div><div class="text-sm text-gray-500">2026年5月裁员</div><div class="text-4xl font-bold text-accent-700 dark:text-accent-300">约8,000人</div><p class="text-sm text-gray-600 dark:text-gray-300 mt-2">相关遣散费用约11.80亿美元，已计入2026年前九个月员工薪酬成本。[8]</p></div>
+   </div>
+   <p class="text-sm text-gray-700 dark:text-gray-300 mt-5 leading-relaxed">这说明Meta的组织策略并非单纯扩充AI人才，而是通过减少部分岗位、重新配置技术和产品资源，提高单位员工产出。未来人员增长将更多集中在AI基础设施、核心模型、产品商业化及关键技术岗位。</p>
+  </div>
+  <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mt-9 mb-4">五、激励效果与潜在矛盾</h3>
+  <div class="space-y-4">
+   <div class="p-5 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl">
+    <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2"><i data-lucide="check-circle" class="inline w-4 h-4 mr-2"></i>正向效果</h4>
+    <p class="text-sm text-gray-700 dark:text-gray-300">长期RSU有助于降低核心人才流失率，使员工与股东共享公司市值增长。对于AI领域高竞争环境，股权奖励也是吸引顶级工程师、研究人员和产品负责人的重要工具。</p>
+   </div>
+   <div class="p-5 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+    <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-2"><i data-lucide="alert-triangle" class="inline w-4 h-4 mr-2"></i>潜在矛盾</h4>
+    <p class="text-sm text-gray-700 dark:text-gray-300">大量RSU会形成持续股份稀释及薪酬费用。股价下跌时，员工奖励的实际吸引力可能下降，进而产生补充授予压力。Class C虽然降低投票权稀释，但不意味着经济权益稀释消失。</p>
+   </div>
+   <div class="p-5 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl">
+    <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2"><i data-lucide="scale" class="inline w-4 h-4 mr-2"></i>治理平衡</h4>
+    <p class="text-sm text-gray-700 dark:text-gray-300">CEO本人不依赖传统薪酬激励，但其巨额持股和控制权形成了不同于职业经理人的激励模式。对员工和外部股东而言，如何确保公司长期价值增长与创始人控制权安排保持一致，是长期治理的重要议题。</p>
+   </div>
+  </div>
+  <div class="mt-7 p-5 rounded-xl border-l-4 border-primary-500 bg-primary-50/60 dark:bg-primary-900/20">
+   <p class="text-sm text-primary-900 dark:text-primary-100 leading-relaxed"><strong>核心判断：</strong>Meta员工激励是典型的上市公司股权资本激励，而不是门店分红或合伙人制度。其优势是全球人才共享集团价值，代价是长期股权成本和潜在稀释。Class C可能成为未来员工奖励的新工具，但最终效果取决于股价、归属政策和员工对无投票权股票的接受程度。</p>
+  </div>
+ </div>
+</section>
+
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="section-kicker mb-3">06 · INVESTMENT & GOVERNANCE CONCLUSION</div>
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">综合研判与关键结论：创始人控制、AI资本周期与现金流再投资</h2>
+  <div class="space-y-6">
+   <div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">1. 组织与战略进入AI基础设施驱动的新阶段</h3>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">Meta正在从传统社交媒体公司向AI驱动的全球数字平台转型。Facebook、Instagram和WhatsApp提供用户、流量与商业化基础，AI模型和推荐系统负责提升内容匹配及广告转化，数据中心和算力基础设施则决定未来模型能力与服务规模。2026年第三季度Family of Apps日均活跃人数达到36.40亿，同比增长3%；广告展示量增长10%，平均广告价格增长14%。这说明核心广告业务仍具有较强商业化能力。[2][8]</p>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">但AI战略的投资周期远长于广告收入的短期兑现周期。Meta需要持续投入GPU、数据中心、能源和人才，未来竞争优势不仅取决于模型能力，也取决于资本效率、能源供应及基础设施建设速度。</p>
+   </div>
+   <div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">2. 财务表现：收入高速增长，但利润率与现金流承压</h3>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-5">2026年第三季度收入达到646.01亿美元，同比增长26%；但经营利润同比下降37%至129.88亿美元，经营利润率从上年同期40%降至20%。这一表面变化不能简单解释为核心广告业务恶化，因为当季计入了与美国52州及地区总检察长相关协议的98.90亿美元法律费用。剔除该项费用后，经营利润约228.78亿美元，经营利润率约35.4%。[2]</p>
+    <div class="report-table rounded-lg overflow-hidden">
+     <table>
+      <thead><tr><th>财务指标</th><th>2025年全年</th><th>2026年第三季度</th><th>变化与解读</th></tr></thead>
+      <tbody>
+       <tr><td>营业收入</td><td>2,009.66亿美元</td><td>646.01亿美元</td><td>第三季度同比增长26%</td></tr>
+       <tr><td>经营利润</td><td>832.76亿美元</td><td>129.88亿美元</td><td>法律费用及投资成本影响</td></tr>
+       <tr><td>经营利润率</td><td>41.44%</td><td>20.10%</td><td>剔除法律费用后约35.4%</td></tr>
+       <tr><td>净利润</td><td>公开年报口径</td><td>98.60亿美元</td><td>税费及法律费用影响</td></tr>
+       <tr><td>经营现金流</td><td>年度口径</td><td>327.90亿美元</td><td>经营现金流保持较强</td></tr>
+       <tr><td>自由现金流</td><td>年度口径</td><td>-21.20亿美元</td><td>资本开支和投资支出压力明显</td></tr>
+       <tr><td>现金及有价证券</td><td>年度口径</td><td>824.50亿美元</td><td>仍具较强资金储备</td></tr>
+      </tbody>
+     </table>
+    </div>
+    <p class="text-xs text-gray-500 mt-3">2025年全年数字采用2025年10-K；2026年第三季度数字采用2026年10月21日业绩公告。法律费用及现金流口径请结合非GAAP调整和现金流量表阅读。[2][12]</p>
+   </div>
+   <div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">3. Class C是公司治理和资本市场结构的重大转折</h3>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">2026年Class C安排体现了Meta对未来资本需求的前瞻性设计。公司希望在创始人继续保持控制权的同时，扩大股票融资、员工激励和并购支付能力。通过向A/B股股东派发无投票权C股，建立C股流通基础，也让未来新增经济权益不必完全依赖A股发行。</p>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li><strong>积极方面：</strong>资本融资工具增加；员工激励和并购安排更灵活；创始人战略连续性得到保障。</li>
+     <li><strong>消极方面：</strong>无投票权股份可能出现流动性折价；A股与C股可能形成不同市场价格；控制权与经济权益可能进一步分离。</li>
+     <li><strong>关键观察：</strong>2027年实际派发后的交易价格、成交量、机构持仓接受度及后续C股融资定价。</li>
+    </ul>
+   </div>
+   <div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">4. 关联业务与员工激励：集团内部的稳定器</h3>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Meta拥有强大的Family of Apps广告现金流，可为AI基础设施、Reality Labs和新产品开发提供资金支持。全球用户规模、广告客户、内容生态和技术平台形成相互强化的网络效应。员工RSU和期权体系则帮助公司争夺稀缺的AI人才，减少核心研发团队与企业长期利益之间的脱节。</p>
+    <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mt-4">但Reality Labs仍是重要的亏损来源。2026年前九个月经营亏损127.75亿美元，说明集团尚未证明虚拟现实业务可以在合理资本回报率下实现规模化盈利。AI业务也必须接受同样的资本回报检验，而不能仅凭技术领先就无限增加投入。</p>
+   </div>
+   <div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">5. 核心风险矩阵</h3>
+    <div class="report-table rounded-lg overflow-hidden">
+     <table>
+      <thead><tr><th>风险类别</th><th>核心问题</th><th>潜在影响</th><th>持续观察指标</th></tr></thead>
+      <tbody>
+       <tr><td><strong>创始人治理风险</strong></td><td>投票权高度集中，董事会制衡空间有限</td><td>少数股东无法有效影响重大决策</td><td>投票权比例、董事会独立性、Class C条款</td></tr>
+       <tr><td><strong>AI资本开支风险</strong></td><td>数据中心、GPU及能源投资规模巨大</td><td>自由现金流下降，资本回报周期拉长</td><td>资本开支、自由现金流、AI收入贡献</td></tr>
+       <tr><td><strong>广告业务风险</strong></td><td>广告预算受经济周期、竞争和监管影响</td><td>收入增长放缓及广告定价承压</td><td>广告展示量、平均广告价格、广告收入</td></tr>
+       <tr><td><strong>监管与诉讼风险</strong></td><td>未成年人保护、隐私、反垄断和平台责任</td><td>法律费用、罚款及产品限制</td><td>重大诉讼进展、监管裁决及费用准备</td></tr>
+       <tr><td><strong>Reality Labs风险</strong></td><td>VR/AR普及速度与商业化不确定</td><td>长期经营亏损和资源错配</td><td>分部收入、经营亏损和硬件销量</td></tr>
+       <tr><td><strong>员工股权稀释风险</strong></td><td>RSU及期权持续发行</td><td>每股收益被稀释，薪酬费用增加</td><td>股份支付费用、流通股数、净回购额</td></tr>
+       <tr><td><strong>资本结构风险</strong></td><td>Class C与A股可能存在价格差异</td><td>流动性折价及投资者分层</td><td>C股成交量、A/C价差、机构持仓变化</td></tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="card-interactive p-7 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">6. 综合竞争优势评价</h3>
+    <p class="text-sm text-gray-500 mb-5">以下评分为研究判断，不是公司披露的量化指标。</p>
+    <div class="space-y-5">
+     <div><div class="flex justify-between text-sm mb-2"><span>全球用户网络与社交关系</span><strong>98/100</strong></div><div class="moat-bar"><span style="width:98%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>广告商业化及推荐算法</span><strong>96/100</strong></div><div class="moat-bar"><span style="width:96%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>现金流与融资能力</span><strong>93/100</strong></div><div class="moat-bar"><span style="width:93%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>AI技术与产品整合</span><strong>91/100</strong></div><div class="moat-bar"><span style="width:91%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>硬件及下一代计算生态</span><strong>77/100</strong></div><div class="moat-bar"><span style="width:77%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>少数股东治理保护</span><strong>55/100</strong></div><div class="moat-bar"><span style="width:55%"></span></div></div>
+    </div>
+   </div>
+   <div class="mt-8 p-6 rounded-xl bg-primary-50/70 dark:bg-primary-900/30 border-l-4 border-primary-500">
+    <h3 class="text-lg font-bold text-primary-800 dark:text-primary-200 mb-3"><i data-lucide="lightbulb" class="inline w-5 h-5 mr-2"></i>最终结论</h3>
+    <p class="text-base font-medium leading-relaxed text-primary-900 dark:text-primary-100">Meta是一家由创始人高度控制、由全球社交网络提供现金流、以AI为核心资本投入方向的超级科技平台。其核心竞争力并非单一社交产品，而是用户网络、广告商业化、算法、数据和算力之间形成的复合型生态。2026年Class C资本重构进一步巩固了创始人控制模式，也把公司治理与资本效率之间的矛盾推向新的阶段。</p>
+    <p class="text-sm leading-relaxed text-primary-800 dark:text-primary-200 mt-4"><strong>一句话总结：</strong>Meta正在从“社交网络与广告平台”进化为“创始人长期控制下的AI基础设施与智能终端生态”，未来真正决定其估值高度的，不只是AI技术领先，而是能否将巨额AI投资持续转化为可验证的现金流和每股股东价值。</p>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="grid md:grid-cols-3 gap-8">
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">关于本页面</h3>
+    <p class="text-sm text-gray-400 leading-relaxed">本页面系统梳理Meta Platforms的创始人治理、股本变化、股权结构、关联业务矩阵、员工股权激励与AI资本配置。通过SEC申报文件、公司年报、季度报告、公司公告和公开市场数据交叉验证，构建公司治理与资本运作全景分析。</p>
+   </div>
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">研究范围</h3>
+    <ul class="space-y-2 text-sm text-gray-400">
+     <li>• 创始人及核心管理团队</li>
+     <li>• IPO以来股本及回购变化</li>
+     <li>• A/B/C多类别股权结构</li>
+     <li>• 家族控制与机构股东</li>
+     <li>• Family of Apps及Reality Labs</li>
+     <li>• 员工RSU、期权和薪酬制度</li>
+     <li>• AI资本投入与治理风险</li>
+    </ul>
+   </div>
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">免责声明</h3>
+    <p class="text-sm text-gray-400 leading-relaxed">本页面仅用于金融研究、公司治理分析和教育参考，不构成任何证券买卖建议。市场价格及市值可能随时变化。公司公告中的前瞻性陈述具有不确定性。部分评分及定性判断属于研究分析，不是公司官方指标。投资者应结合最新SEC文件、公司公告及自身风险承受能力独立判断。</p>
+   </div>
+  </div>
+  <div class="mt-10 pt-8 border-t border-gray-700">
+   <h3 class="text-sm font-semibold text-primary-300 mb-4">主要资料来源与参考文件</h3>
+   <ol class="space-y-3 text-xs text-gray-400 leading-relaxed">
+    <li>[1] Meta Platforms, 2026 Definitive Information Statement / Beneficial Ownership，SEC，2026-11-02。<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026068935/meta-20261102.htm" target="_blank" rel="noopener noreferrer">SEC原始文件</a></li>
+    <li>[2] Meta Platforms, Third Quarter 2026 Results，2026-10-21。<a class="source-link" href="https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/" target="_blank" rel="noopener noreferrer">公司业绩公告</a></li>
+    <li>[3] Meta Platforms, 2026 Information Statement及Class C Recapitalization、Founder Alignment Agreement，SEC，2026-11。<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026068935/meta-20261102.htm" target="_blank" rel="noopener noreferrer">SEC原始文件</a></li>
+    <li>[4] Meta Platforms, Leadership & Governance。<a class="source-link" href="https://investor.atmeta.com/leadership-and-governance/default.aspx" target="_blank" rel="noopener noreferrer">公司管理层及董事会资料</a></li>
+    <li>[5] Meta Platforms, Stock Information，2026年11月20日市场数据。<a class="source-link" href="https://investor.atmeta.com/stock-info/default.aspx?section=stockdata" target="_blank" rel="noopener noreferrer">公司投资者关系股票数据</a></li>
+    <li>[6] Meta Platforms, Quarterly Report on Form 10-Q，2026-09-30，股本、Class C后续事项及股份薪酬披露。<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm" target="_blank" rel="noopener noreferrer">SEC原始文件</a></li>
+    <li>[7] Meta Platforms, 2026 Information Statement，机构股东及受益所有权披露。<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026066710/meta-20261021.htm" target="_blank" rel="noopener noreferrer">SEC相关文件</a></li>
+    <li>[8] Meta Platforms, 2026 Q3 Form 10-Q，Segment Information及员工人数数据。<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm" target="_blank" rel="noopener noreferrer">SEC季度报告</a></li>
+    <li>[9] Meta Platforms, 2026 Q3 Form 10-Q，Contractual Commitments及Infrastructure披露。<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm" target="_blank" rel="noopener noreferrer">SEC季度报告</a></li>
+    <li>[10] Meta Platforms, 2026 Q3 Form 10-Q，Share-based Compensation。<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm" target="_blank" rel="noopener noreferrer">SEC季度报告</a></li>
+    <li>[11] Meta Platforms, 2026 Definitive Information Statement，2025 Executive Compensation Discussion & Analysis。<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026068935/meta-20261102.htm" target="_blank" rel="noopener noreferrer">SEC薪酬披露</a></li>
+    <li>[12] Meta Platforms, 2025 Annual Report on Form 10-K，2026年提交。<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm" target="_blank" rel="noopener noreferrer">SEC年度报告</a></li>
+   </ol>
+  </div>
+  <div class="mt-8 pt-6 border-t border-gray-700 text-center text-sm text-gray-500">
+   <p>© 2026 Meta Platforms体系全景研究 · Research Date: 2026-11-23</p>
+   <p class="mt-2">数据基准：2026年11月23日｜财务数据：2026年第三季度及2025年完整财年</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+function updateProgress(){
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const y=window.scrollY||document.documentElement.scrollTop;
+ document.getElementById('progressBar').style.width=(h>0?Math.min(100,y/h*100):0)+'%';
+}
+window.addEventListener('scroll',updateProgress,{passive:true});
+document.addEventListener('DOMContentLoaded',function(){
+ try{
+  if(localStorage.getItem('meta-report-dark')==='1'){
+   document.documentElement.classList.add('dark');
+   document.getElementById('sunIcon').style.display='block';
+   document.getElementById('moonIcon').style.display='none';
+  }
+ }catch(e){}
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:800,once:true,offset:60});
+ document.querySelectorAll('#mobileMenu a').forEach(function(link){
+  link.addEventListener('click',closeMobileMenu);
+ });
+ document.querySelectorAll('a[href^="#"]').forEach(function(link){
+  link.addEventListener('click',function(){
+   const target=document.querySelector(this.getAttribute('href'));
+   if(target){
+    setTimeout(function(){target.setAttribute('tabindex','-1');},300);
+   }
+  });
+ });
+ updateProgress();
+});
+window.addEventListener('resize',function(){
+ if(window.innerWidth>=768)closeMobileMenu();
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

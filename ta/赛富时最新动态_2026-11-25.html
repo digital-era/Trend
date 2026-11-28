@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赛富时（CRM）最新动态全景追踪_2026-11-25</title>
+<meta name="description" content="赛富时 Salesforce 最新30日公司、AI CRM行业及宏观政策事件驱动研究报告，截至2026年11月25日。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={
+ darkMode:'class',
+ theme:{extend:{colors:{
+  primary:{50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'},
+  accent:{50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'}
+ }}
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:88px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+.btn-interactive{transition:all .2s ease}
+.btn-interactive:hover{transform:scale(1.05)}
+.card-interactive{transition:all .28s ease}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.5)}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#465264}
+.dark th{color:#f3f4f6}
+.dark td{color:#d1d5db}
+.dark .table-head{background:#263244}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.source{font-size:11px;line-height:1.65;overflow-wrap:anywhere}
+.source a{color:#c45b24;text-decoration:underline;text-underline-offset:2px}
+.dark .source a{color:#f5a36d}
+.kpi{background:rgba(249,115,22,.055)}
+.dark .kpi{background:rgba(255,255,255,.045)}
+</style>
+<script>
+(function(){if(window.self!==window.top||window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.classList.add('dark')})();
+function syncThemeIcons(){
+ const d=document.documentElement.classList.contains('dark');
+ const s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+ if(s)s.style.display=d?'block':'none';
+ if(m)m.style.display=d?'none':'block';
+}
+function toggleDarkMode(){document.documentElement.classList.toggle('dark');syncThemeIcons()}
+function toggleMobileMenu(){const e=document.getElementById('mobileMenu');if(e)e.classList.toggle('mobile-menu-open')}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[70] transition-all duration-300" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-700">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+  <div class="flex items-center justify-between gap-3">
+   <div class="flex items-center gap-2.5 min-w-0">
+    <span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+    <h1 class="font-bold text-sm sm:text-lg text-primary-700 dark:text-primary-300 truncate">Salesforce · 动态全景追踪</h1>
+   </div>
+   <nav class="hidden md:flex items-center gap-5 text-sm font-medium">
+    <a href="#overview" class="hover:text-primary-500">总览</a>
+    <a href="#company" class="hover:text-primary-500">公司动态</a>
+    <a href="#industry" class="hover:text-primary-500">行业动态</a>
+    <a href="#macro" class="hover:text-primary-500">宏观政策</a>
+    <a href="#matrix" class="hover:text-primary-500">催化矩阵</a>
+   </nav>
+   <div class="flex items-center gap-2">
+    <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="打开菜单"><i data-lucide="menu" class="w-4 h-4"></i></button>
+    <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+   <nav class="flex flex-col gap-3 text-sm font-medium">
+    <a href="#overview" onclick="toggleMobileMenu()">总览</a>
+    <a href="#company" onclick="toggleMobileMenu()">公司动态</a>
+    <a href="#industry" onclick="toggleMobileMenu()">行业动态</a>
+    <a href="#macro" onclick="toggleMobileMenu()">宏观政策</a>
+    <a href="#matrix" onclick="toggleMobileMenu()">催化矩阵</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-14">
+
+<!-- 0. HERO -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-12" data-aos="fade-up">
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 border border-primary-100 dark:border-gray-700 shadow-sm">
+  <div class="flex flex-wrap gap-2 mb-4">
+   <span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 text-xs font-bold">NYSE: CRM</span>
+   <span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-200 text-xs font-bold">企业SaaS · AI CRM · Agentic Enterprise</span>
+   <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold">近30日 · 2026-10-27 至 2026-11-25</span>
+  </div>
+  <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+   <div>
+    <p class="text-xs font-semibold tracking-widest text-primary-600 dark:text-primary-400 mb-2">LATEST EVENT-DRIVEN INTELLIGENCE</p>
+    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">赛富时 Salesforce</h2>
+    <p class="text-sm text-gray-500 dark:text-gray-400">客户关系管理平台 · 企业云软件 · 数据云与自主AI智能体</p>
+   </div>
+   <div class="text-left lg:text-right">
+    <div class="text-xs text-gray-500 dark:text-gray-400">报告基准日</div>
+    <div class="text-2xl font-bold font-mono">2026.11.25</div>
+   </div>
+  </div>
+  <div class="mt-6 p-4 sm:p-5 rounded-xl bg-primary-50/70 dark:bg-gray-800/70 border border-primary-100 dark:border-gray-700">
+   <div class="text-xs font-bold text-primary-700 dark:text-primary-300 mb-2">核心判断</div>
+   <p class="text-sm sm:text-base leading-7 text-gray-700 dark:text-gray-200">
+    近30日赛富时的核心变量从传统CRM订阅增长转向<strong class="text-primary-700 dark:text-primary-300">Agentforce商业化兑现与AI资产整合</strong>：连续收购强化客户交互和垂直场景能力，Agentforce使用量快速增长；但AI变现、整合成本及企业软件竞争仍是估值验证关键。
+   </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
+   <div class="kpi rounded-xl p-5 border border-primary-100 dark:border-gray-700 card-interactive">
+    <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-3"><i data-lucide="gauge" class="w-4 h-4 text-primary-500"></i>消息面总体基调</div>
+    <div class="text-2xl font-extrabold text-amber-600 dark:text-amber-400">中性偏多</div>
+    <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">AI产品采用率和并购补强偏正面，短期估值仍需等待业绩和现金流兑现。</p>
+   </div>
+   <div class="kpi rounded-xl p-5 border border-primary-100 dark:border-gray-700 card-interactive">
+    <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-3"><i data-lucide="zap" class="w-4 h-4 text-emerald-500"></i>本月最强单一催化剂</div>
+    <div class="text-lg font-extrabold text-emerald-600 dark:text-emerald-400">Agentforce使用量三个月增长21倍</div>
+    <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">2026-11-04 Salesforce官方披露；产品采用速度有望扩大AI增量收入池。</p>
+   </div>
+   <div class="kpi rounded-xl p-5 border border-primary-100 dark:border-gray-700 card-interactive">
+    <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-3"><i data-lucide="alert-triangle" class="w-4 h-4 text-rose-500"></i>本月最需警惕信号</div>
+    <div class="text-lg font-extrabold text-rose-600 dark:text-rose-400">AI采用增长尚不等于收入与利润同步增长</div>
+    <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">推理成本、定价折扣、部署周期及并购整合可能拖慢利润兑现。</p>
+   </div>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5">
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-3"><div class="text-[11px] text-gray-500 dark:text-gray-400">下一财报</div><div class="font-bold text-sm mt-1">12月2日</div><div class="text-[10px] text-gray-500">FY2027 Q3</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-3"><div class="text-[11px] text-gray-500 dark:text-gray-400">Agentforce</div><div class="font-bold text-sm mt-1">21倍</div><div class="text-[10px] text-gray-500">三个月使用量增幅</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-3"><div class="text-[11px] text-gray-500 dark:text-gray-400">11月23日收盘</div><div class="font-bold text-sm mt-1">$185.46</div><div class="text-[10px] text-gray-500">NYSE延迟行情来源</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-3"><div class="text-[11px] text-gray-500 dark:text-gray-400">并购动作</div><div class="font-bold text-sm mt-1">Cresta / Rune</div><div class="text-[10px] text-gray-500">AI客服与行业智能体</div></div>
+  </div>
+  <p class="source text-gray-500 dark:text-gray-400 mt-4">行情数据：Salesforce Investor Relations 页面（2026-11-23收盘，至少延迟20分钟）；Agentforce数据：Salesforce官方新闻（2026-11-04）。行情非2026-11-25实时价。<a href="https://investor.salesforce.com/overview/default.aspx" target="_blank" rel="noopener">官方投资者关系</a> · <a href="https://www.salesforce.com/news/" target="_blank" rel="noopener">官方新闻中心</a></p>
+ </div>
+</section>
+
+<!-- 1. COMPANY -->
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div>
+  <div><h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">按对CRM营收、利润、竞争位置及估值影响排序</p></div>
+ </div>
+
+ <article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive">
+  <div class="flex flex-wrap justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span><span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-04</span><span class="text-xs px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 font-bold">温和利好</span></div>
+   <span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 9.2 / 10</span>
+  </div>
+  <h3 class="text-xl font-bold mb-3">Agentforce Coworker三个月使用量增长21倍，企业从试用走向真实工作流委派</h3>
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+   <div class="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-3 border border-emerald-100 dark:border-emerald-900"><div class="text-xs text-gray-500 dark:text-gray-400">使用量增幅</div><div class="text-xl font-extrabold text-emerald-700 dark:text-emerald-300">21×</div><div class="text-[10px] text-gray-500">三个月</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3"><div class="text-xs text-gray-500 dark:text-gray-400">产品</div><div class="text-base font-bold mt-1">Agentforce Coworker</div><div class="text-[10px] text-gray-500">AI智能体工作协作</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3"><div class="text-xs text-gray-500 dark:text-gray-400">披露日期</div><div class="text-base font-bold mt-1">11月4日</div><div class="text-[10px] text-gray-500">Salesforce官方</div></div>
+  </div>
+  <p class="text-sm leading-7 text-gray-700 dark:text-gray-300 mb-4">
+   Salesforce于2026-11-04发布消息称，Agentforce Coworker使用量在三个月内增长21倍，企业客户正将更多实际工作交给AI智能体处理。该数据是产品使用指标，并非合同额、付费席位、ARR或收入增幅；官方公告没有在该披露中给出可直接换算的收入数字。
+  </p>
+  <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 mb-4">
+   <div class="font-bold text-xs text-primary-700 dark:text-primary-300 mb-2 flex items-center gap-2"><i data-lucide="git-branch" class="w-4 h-4"></i>影响深度：从使用量到利润的传导链</div>
+   <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs leading-6">
+    <div><strong>收入端</strong><br>更多工作流调用提升Agentforce付费转化、用量计费及Data Cloud交叉销售机会。</div>
+    <div><strong>竞争端</strong><br>若智能体能调用CRM数据并执行跨应用任务，客户迁移成本和平台粘性有望提升。</div>
+    <div><strong>利润端</strong><br>推理调用量上升也会增加模型和云算力成本，必须观察单位任务毛利及客户付费覆盖率。</div>
+   </div>
+  </div>
+  <div class="flex justify-between text-xs text-gray-500 mb-2"><span>投资影响强度</span><strong>9.2 / 10</strong></div><div class="impact-bar"><div class="impact-fill" style="width:92%"></div></div>
+  <p class="source text-gray-500 dark:text-gray-400 mt-4">信源：Salesforce News，2026-11-04，<a href="https://www.salesforce.com/news/" target="_blank" rel="noopener">Salesforce官方新闻中心（Agentforce Coworker使用量公告）</a>。指标口径：使用量增长，不应误读为营收增长。</p>
+ </article>
+
+ <article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive">
+  <div class="flex flex-wrap justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span><span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-02</span><span class="text-xs px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 font-bold">温和利好</span></div>
+   <span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 8.7 / 10</span>
+  </div>
+  <h3 class="text-xl font-bold mb-3">签署收购Cresta最终协议，补强联络中心AI与客户服务智能体能力</h3>
+  <div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700 mb-4">
+   <div class="text-xs text-primary-700 dark:text-primary-300 font-bold mb-1">战略定位</div>
+   <p class="text-sm leading-6">把客服交互、实时辅助与自动化能力更深地嵌入Salesforce客户服务及Agentforce生态，扩大从CRM记录系统向AI客户运营执行平台的覆盖。</p>
+  </div>
+  <p class="text-sm leading-7 text-gray-700 dark:text-gray-300 mb-4">
+   Salesforce于2026-11-02宣布签署收购Cresta的最终协议。Cresta专注于联络中心AI，包括实时客服辅助、质量管理和自动化客户交互。此次交易属于已签署协议的并购事项；在没有进一步交割公告前，不应将其写作已完成收购。官方新闻列表未在摘要中披露交易金额、具体交割日期或对FY2027收入的量化贡献。
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-lg bg-emerald-50 dark:bg-emerald-950/25 p-4 border border-emerald-100 dark:border-emerald-900"><strong class="text-xs text-emerald-700 dark:text-emerald-300">协同机会</strong><p class="text-xs leading-6 mt-1">客服数据、对话上下文和智能体执行形成闭环，增强Service Cloud产品价值及客户扩容空间。</p></div>
+   <div class="rounded-lg bg-amber-50 dark:bg-amber-950/25 p-4 border border-amber-100 dark:border-amber-900"><strong class="text-xs text-amber-700 dark:text-amber-300">执行风险</strong><p class="text-xs leading-6 mt-1">整合、产品重叠、人才留存和推理成本可能抬高费用；并购协同仍需后续合同及留存数据验证。</p></div>
+  </div>
+  <div class="flex justify-between text-xs text-gray-500 mb-2"><span>投资影响强度</span><strong>8.7 / 10</strong></div><div class="impact-bar"><div class="impact-fill" style="width:87%"></div></div>
+  <p class="source text-gray-500 dark:text-gray-400 mt-4">信源：Salesforce官方新闻中心，2026-11-02，<a href="https://www.salesforce.com/news/" target="_blank" rel="noopener">Salesforce News · Mergers and Acquisitions · Cresta</a>。</p>
+ </article>
+
+ <article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2"><span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span><span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-10-29</span><span class="text-xs px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 font-bold">中性偏多</span></div>
+   <span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 8.1 / 10</span>
+  </div>
+  <h3 class="text-xl font-bold mb-3">签署收购Rune Technologies最终协议，切入国防物流与任务运营智能体</h3>
+  <p class="text-sm leading-7 text-gray-700 dark:text-gray-300 mb-4">
+   Salesforce于2026-10-29宣布签署收购Rune Technologies最终协议。Rune面向国防领域提供AI驱动的物流和运营能力。该交易有助于Missionforce拓展国防及政府客户场景，将CRM、数据平台和智能体能力延伸至供应链、任务规划及运营支持。
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3"><div class="text-xs text-gray-500">新市场</div><div class="font-bold text-sm mt-1">国防与政府</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3"><div class="text-xs text-gray-500">协同产品</div><div class="font-bold text-sm mt-1">Missionforce</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3"><div class="text-xs text-gray-500">交易状态</div><div class="font-bold text-sm mt-1">最终协议已签署</div></div>
+  </div>
+  <div class="bg-gray-50 dark:bg-gray-800/80 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+   <strong class="text-xs text-primary-700 dark:text-primary-300">投资传导</strong>
+   <p class="text-xs leading-6 mt-2 text-gray-700 dark:text-gray-300">国防业务有机会带来较长周期合同和更高场景壁垒，降低对商业软件预算周期的单一依赖；但政府采购、认证、数据安全和部署周期较长，短期收入贡献不能提前计入估值。</p>
+  </div>
+  <div class="flex justify-between text-xs text-gray-500 mb-2"><span>投资影响强度</span><strong>8.1 / 10</strong></div><div class="impact-bar"><div class="impact-fill" style="width:81%"></div></div>
+  <p class="source text-gray-500 dark:text-gray-400 mt-4">信源：Salesforce官方新闻中心，2026-10-29，<a href="https://www.salesforce.com/news/" target="_blank" rel="noopener">Salesforce News · Rune Technologies收购公告</a>。</p>
+ </article>
+
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+  <h3 class="font-bold mb-3 flex items-center gap-2"><i data-lucide="calendar-clock" class="w-4 h-4 text-primary-500"></i>近期公司重要日程及补充动态</h3>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+   <div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs font-mono text-primary-700 dark:text-primary-300">2026-11-10</div>
+    <h4 class="font-bold text-sm mt-1">正式公布FY2027 Q3财报日期</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6 mt-2">公司确认12月2日美股收盘后发布第三财季业绩，并召开投资者电话会。此公告本身不是业绩结果，而是重要的预期管理节点。</p>
+    <p class="source mt-2"><a href="https://investor.salesforce.com/news/news-details/2026/Salesforce-Announces-Date-of-Third-Quarter-Fiscal-2027-Earnings-Release-and-Webcast/" target="_blank" rel="noopener">Salesforce Investor Relations · 2026-11-10</a></p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs font-mono text-gray-500">2026-11-19</div>
+    <h4 class="font-bold text-sm mt-1">牵头组建可信美国系统集成联盟</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-6 mt-2">Salesforce宣布牵头联盟，将可信美国系统集成能力推向全球市场，强化企业AI落地、系统集成与合作伙伴生态。实际商业贡献取决于项目落地和合作伙伴订单。</p>
+    <p class="source mt-2"><a href="https://investor.salesforce.com/overview/default.aspx" target="_blank" rel="noopener">Salesforce Investor Relations · 2026-11-19新闻列表</a></p>
+   </div>
+  </div>
+ </div>
+
+ <div class="mt-5 bg-white dark:bg-[#161f2c] rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+  <h3 class="font-bold mb-3">机构评级：近期目标价调整呈现明显分歧</h3>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">下表为公开评级汇总平台记录的分析师动作，目标价是机构观点而非公司指引；不同平台及更新时间可能存在差异。</p>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm min-w-[650px]">
+    <thead><tr class="table-head"><th>日期</th><th>机构</th><th>评级</th><th>目标价变化</th><th>解读</th></tr></thead>
+    <tbody>
+     <tr><td>2026-11-23</td><td>TD Cowen</td><td class="text-emerald-600 font-bold">Buy</td><td>$300 → $275</td><td>维持买入但下修估值锚</td></tr>
+     <tr><td>2026-11-23</td><td>Morgan Stanley</td><td class="font-bold">Hold</td><td>$235维持</td><td>等待AI商业化兑现</td></tr>
+     <tr><td>2026-11-23</td><td>Citi</td><td class="font-bold">Hold</td><td>$263 → $198</td><td>显著下调目标价</td></tr>
+     <tr><td>2026-11-20</td><td>Oppenheimer</td><td class="text-emerald-600 font-bold">Buy</td><td>$275维持</td><td>保持积极判断</td></tr>
+     <tr><td>2026-11-18</td><td>BTIG</td><td class="text-emerald-600 font-bold">Buy</td><td>$300 → $250</td><td>下修目标价但未转空</td></tr>
+     <tr><td>2026-11-18</td><td>Jefferies</td><td class="text-emerald-600 font-bold">Buy</td><td>$300维持</td><td>维持积极预期</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="source text-gray-500 dark:text-gray-400 mt-3">信源：StockAnalysis / TipRanks评级历史，更新至2026-11-23。<a href="https://stockanalysis.com/stocks/crm/ratings/" target="_blank" rel="noopener">评级历史</a> · <a href="https://www.tipranks.com/stocks/crm/forecast" target="_blank" rel="noopener">TipRanks CRM Forecast</a>。分析师评级为第三方汇总，并非公司公告。</p>
+ </div>
+</section>
+
+<!-- 2. INDUSTRY -->
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-2">
+  <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i></div>
+  <div><h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">细分赛道：企业SaaS、CRM、客户服务软件、数据云与Agentic AI平台</p></div>
+ </div>
+ <p class="text-xs text-gray-500 dark:text-gray-400 mb-6">排序原则：对企业软件预算、AI竞争格局和Salesforce平台议价能力的影响。行业事件以可核验公开资料为基础；未获得可靠日期或数据的市场传闻不纳入。</p>
+
+ <article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-7 mb-5 border border-gray-200 dark:border-gray-700 card-interactive">
+  <div class="flex flex-wrap gap-2 items-center mb-3"><span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span><span class="text-xs font-mono text-gray-500">2026-11-04</span><span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">AI智能体需求加速验证</span></div>
+  <h3 class="font-bold text-lg mb-3">企业软件竞争从Copilot辅助转向Agent执行，实际工作流使用成为新的竞争指标</h3>
+  <p class="text-sm leading-7 text-gray-700 dark:text-gray-300 mb-4">Salesforce于11月4日公布Agentforce Coworker使用量三个月增长21倍，显示市场关注点正在由生成式AI问答转向能够调用企业数据、完成多步骤任务的智能体。该案例属于厂商自身产品披露，不等于整个行业的统一增长率，但对企业级Agent落地具有直接示范意义。</p>
+  <div class="rounded-xl p-4 bg-accent-50/70 dark:bg-accent-900/20 border border-accent-100 dark:border-accent-800/50">
+   <strong class="text-xs text-accent-800 dark:text-accent-300">对Salesforce横向映射</strong>
+   <p class="text-xs leading-6 mt-2 text-gray-700 dark:text-gray-300">Salesforce拥有CRM业务上下文、客户权限和工作流入口，具备把Agent嵌入业务流程的天然优势；但Microsoft Copilot、ServiceNow及其他垂直Agent厂商同样争夺企业工作流入口。最终竞争指标应是付费渗透率、任务成功率、客户续约及单位调用毛利，而不是单一使用量。</p>
+  </div>
+  <p class="source mt-3">信源：Salesforce News，2026-11-04，<a href="https://www.salesforce.com/news/" target="_blank" rel="noopener">官方产品公告</a>。</p>
+ </article>
+
+ <article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-7 mb-5 border border-gray-200 dark:border-gray-700 card-interactive">
+  <div class="flex flex-wrap gap-2 items-center mb-3"><span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span><span class="text-xs font-mono text-gray-500">2026-10-28</span><span class="text-xs font-bold text-amber-600 dark:text-amber-400">平台化竞争加剧</span></div>
+  <h3 class="font-bold text-lg mb-3">Slack开放Code API，企业协作入口进一步向智能体和开发工作流开放</h3>
+  <p class="text-sm leading-7 text-gray-700 dark:text-gray-300 mb-4">Salesforce于2026-10-28发布Slack Code API，强化智能体、团队协作与代码工作流之间的连接。该动作反映企业软件的竞争边界从单一应用功能向跨应用编排和协作接口延伸。</p>
+  <div class="rounded-xl p-4 bg-accent-50/70 dark:bg-accent-900/20 border border-accent-100 dark:border-accent-800/50">
+   <strong class="text-xs text-accent-800 dark:text-accent-300">对Salesforce横向映射</strong>
+   <p class="text-xs leading-6 mt-2 text-gray-700 dark:text-gray-300">Slack与Salesforce CRM、Agentforce及数据平台结合，有望增加平台内交互频次并降低工作流流失；但Microsoft Teams、GitHub、Atlassian等生态掌握大量开发者和协作入口，API开放也会提高互操作竞争与安全治理要求。</p>
+  </div>
+  <p class="source mt-3">信源：Salesforce News，2026-10-28，<a href="https://www.salesforce.com/news/" target="_blank" rel="noopener">Introducing the Slack Code API</a>。</p>
+ </article>
+
+ <article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-7 mb-5 border border-gray-200 dark:border-gray-700 card-interactive">
+  <div class="flex flex-wrap gap-2 items-center mb-3"><span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span><span class="text-xs font-mono text-gray-500">2026-10-27</span><span class="text-xs font-bold text-amber-600 dark:text-amber-400">利好平台治理能力，成本仍待验证</span></div>
+  <h3 class="font-bold text-lg mb-3">Agent Fabric增强智能体失效与成本控制能力，企业级Agent治理成为产品竞争点</h3>
+  <p class="text-sm leading-7 text-gray-700 dark:text-gray-300 mb-4">Salesforce于2026-10-27宣布扩展Agent Fabric，强调自动识别并停止失控成本及智能体故障，避免影响客户业务。随着Agent从试点走向生产，调用成本、权限、安全、审计和故障恢复逐渐成为企业采购的必要条件。</p>
+  <div class="rounded-xl p-4 bg-accent-50/70 dark:bg-accent-900/20 border border-accent-100 dark:border-accent-800/50">
+   <strong class="text-xs text-accent-800 dark:text-accent-300">对Salesforce横向映射</strong>
+   <p class="text-xs leading-6 mt-2 text-gray-700 dark:text-gray-300">若治理工具降低企业部署风险，可加快Agentforce从试点到生产的转化，并形成平台差异化；反之，若客户发现Agent运维复杂或总体拥有成本过高，采购预算可能流向更轻量的模型/API和专业Agent平台。</p>
+  </div>
+  <p class="source mt-3">信源：Salesforce News，2026-10-27，<a href="https://www.salesforce.com/news/" target="_blank" rel="noopener">Salesforce Expands Agent Fabric</a>。</p>
+ </article>
+
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+  <h3 class="font-bold mb-4 flex items-center gap-2"><i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i>行业动态对标影响对比表</h3>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm min-w-[700px]">
+    <thead><tr class="table-head"><th>行业事件</th><th>涉及主体</th><th>对CRM利弊传导</th><th>影响周期</th></tr></thead>
+    <tbody>
+     <tr><td class="font-semibold">Agent由辅助转向执行</td><td>Salesforce、Microsoft及Agent平台</td><td><span class="text-emerald-600 font-bold">偏利好。</span>CRM业务上下文有利于Agent执行，但需证明付费转化。</td><td>2026Q4—2027</td></tr>
+     <tr><td class="font-semibold">协作API开放及工作流融合</td><td>Slack、Teams、GitHub等</td><td><span class="text-amber-600 font-bold">中性偏多。</span>生态整合提升粘性，同时增加跨平台竞争。</td><td>中长期</td></tr>
+     <tr><td class="font-semibold">智能体成本与安全治理</td><td>Salesforce、企业AI平台</td><td><span class="text-emerald-600 font-bold">结构性利好。</span>治理能力可降低部署门槛，但研发与算力成本仍需监控。</td><td>短中期</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-3">说明：本节为可验证产品事件与竞争机制分析，并非对全行业市场份额或整体增长率的统计推断。</p>
+ </div>
+</section>
+
+<!-- 3. MACRO -->
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div>
+  <div><h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">聚焦企业IT预算、政府采购、AI合规和估值折现率</p></div>
+ </div>
+
+ <article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3"><div class="flex flex-wrap gap-2 items-center"><span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国际 · 货币政策</span><span class="text-xs font-mono text-gray-500">2026-11-25跟踪窗口</span><span class="text-xs font-bold text-amber-600 dark:text-amber-400">估值敏感项</span></div><span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 8.5 / 10</span></div>
+  <h3 class="font-bold text-lg mb-4">美联储利率路径与美债收益率：决定高估值软件股现金流折现率</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs leading-6">
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700"><strong class="block text-gray-900 dark:text-white mb-2">1. 政策要点</strong>本报告基准日为2026-11-25。美联储联邦公开市场委员会（FOMC）政策利率及会议声明是CRM估值的关键外生变量。由于本次检索未取得可核验的2026年11月会议利率决定原文及具体利率区间，本报告不填入未经确认的利率数字，也不将市场预测写成政策事实。</div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700"><strong class="block text-gray-900 dark:text-white mb-2">2. 传导路径</strong>分子端：利率通过融资条件与企业预算影响软件采购、续约和扩容。分母端：无风险利率上行会提高长期现金流折现率，压缩成长型SaaS估值倍数；利率下降则可能改善估值风险偏好。</div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700"><strong class="block text-gray-900 dark:text-white mb-2">3. 业务敞口</strong>CRM具有全球企业订阅收入和较强现金流属性，利率变化并非直接决定产品需求，但会影响企业IT预算审批、并购融资成本及市场给予AI增长的估值溢价。</div>
+  </div>
+  <p class="source mt-3">权威跟踪入口：<a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">Federal Reserve · FOMC日历及声明</a>。本条为宏观敏感性分析，不声称发生了未经核实的11月政策变动。</p>
+ </article>
+
+ <article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-rose-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3"><div class="flex flex-wrap gap-2 items-center"><span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · AI监管与数据治理</span><span class="text-xs font-mono text-gray-500">2026-10-27至11-25持续观察</span><span class="text-xs font-bold text-rose-600 dark:text-rose-400">成本与合规双向影响</span></div><span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 8.0 / 10</span></div>
+  <h3 class="font-bold text-lg mb-4">企业AI进入生产环境后，数据保护、自动化决策与智能体权限治理成为采购约束</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs leading-6">
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700"><strong class="block text-gray-900 dark:text-white mb-2">1. 政策与监管框架</strong>欧盟AI Act、GDPR以及美国各州隐私和自动化决策监管构成企业AI产品的重要合规环境。它们不是本月新发布的单一政策；本窗口内未核实到足以列为Top事件的统一新规，因此作为持续有效的制度约束纳入风险分析。</div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700"><strong class="block text-gray-900 dark:text-white mb-2">2. 传导路径</strong>分子端：审计、数据驻留、权限隔离和风险控制提高研发及部署成本，也可能拉长采购周期。反向看，合规能力强的平台更容易进入大型企业与政府采购名单。分母端：监管不确定性会提高市场对AI业务收入质量的折价。</div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700"><strong class="block text-gray-900 dark:text-white mb-2">3. 业务敞口</strong>Salesforce处理客户身份、销售记录、客服对话和企业运营数据，Agentforce可触发实际业务操作，因而对数据访问控制、可解释性、日志审计和人工监督具有直接敞口。</div>
+  </div>
+  <p class="source mt-3">制度原文：<a href="https://artificial-intelligence-act.ec.europa.eu/" target="_blank" rel="noopener">欧盟AI Act官方门户</a> · <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" target="_blank" rel="noopener">GDPR法规文本</a>。日期说明：属于持续生效框架，非本月新发布事件。</p>
+ </article>
+
+ <article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3"><div class="flex flex-wrap gap-2 items-center"><span class="px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">中国 · 数字经济与AI采购</span><span class="text-xs font-mono text-gray-500">2026-10-27至11-25持续观察</span><span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">中长期需求机会</span></div><span class="text-xs font-bold text-primary-600 dark:text-primary-400">影响力 6.8 / 10</span></div>
+  <h3 class="font-bold text-lg mb-4">中国企业数字化与生成式AI治理并行推进，跨国SaaS面临市场机会与数据合规边界</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs leading-6">
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700"><strong class="block text-gray-900 dark:text-white mb-2">1. 政策要点</strong>中国《生成式人工智能服务管理暂行办法》及《促进和规范数据跨境流动规定》等制度，分别涉及生成式AI服务治理、个人信息和重要数据跨境传输。它们属于既有政策框架；本次检索未核实到2026-10-27至11-25期间对Salesforce构成直接新增约束的具体新规，故不虚构发布日或政策变化。</div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700"><strong class="block text-gray-900 dark:text-white mb-2">2. 传导路径</strong>分子端：企业数字化和AI工作流建设可创造CRM、数据治理及客户运营需求；数据本地化、跨境评估与合规部署要求则增加销售成本和交付复杂度。分母端：区域监管与地缘风险可能影响跨国SaaS在中国业务的风险折价。</div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700"><strong class="block text-gray-900 dark:text-white mb-2">3. 业务敞口</strong>中国及亚太客户对CRM和AI营销存在潜在需求，但跨境数据、云部署及本地服务要求决定商业化边界。评估时应区分全球产品能力与中国境内可交付、可合规的实际收入。</div>
+  </div>
+  <p class="source mt-3">制度原文：<a href="https://www.cac.gov.cn/" target="_blank" rel="noopener">国家互联网信息办公室</a> · <a href="https://www.gov.cn/zhengce/" target="_blank" rel="noopener">中国政府网政策文件库</a>。日期说明：既有制度持续影响，不作为本月新政事实。</p>
+ </article>
+ <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900 text-xs text-gray-700 dark:text-gray-300 leading-6">
+  <strong class="text-amber-800 dark:text-amber-300">宏观数据完整性说明：</strong>本窗口可核实的公司及产品事件较明确，但本次检索未取得可交叉核验的2026年11月最新FOMC政策利率、美国通胀读数及中国企业软件采购统计。因此不填造宏观数字，也不将旧制度包装成当月新政策。投资者应以官方最新原文更新。
+ </div>
+</section>
+
+<!-- 4. MATRIX -->
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-12" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div>
+  <div><h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2><p class="text-xs text-gray-500 dark:text-gray-400 mt-1">九项核心事件按对CRM的影响强度排序</p></div>
+ </div>
+ <div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-700 mb-8">
+  <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+   <h3 class="font-bold text-sm flex items-center gap-2"><i data-lucide="list-filter" class="w-4 h-4 text-primary-500"></i>九大事件催化矩阵</h3>
+   <div class="flex flex-wrap gap-2 text-xs">
+    <button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full">全部</button>
+    <button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full">公司</button>
+    <button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full">行业</button>
+    <button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full">宏观</button>
+   </div>
+  </div>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm min-w-[850px]">
+    <thead><tr class="table-head"><th>类别</th><th>日期</th><th>核心事件</th><th>影响方向</th><th>强度</th><th>核心投资含义</th></tr></thead>
+    <tbody>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td><span class="text-primary-600 font-bold">公司</span></td><td>11-04</td><td>Agentforce Coworker使用量三个月增长21倍</td><td class="text-emerald-600 font-bold">温和利好</td><td class="font-bold">9.2</td><td>AI商业化漏斗扩大，待付费与毛利验证</td></tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td><span class="text-primary-600 font-bold">公司</span></td><td>11-02</td><td>签署收购Cresta最终协议</td><td class="text-emerald-600 font-bold">温和利好</td><td class="font-bold">8.7</td><td>强化客服Agent能力及Service Cloud协同</td></tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td><span class="text-primary-600 font-bold">公司</span></td><td>10-29</td><td>签署收购Rune Technologies最终协议</td><td class="text-amber-600 font-bold">中性偏多</td><td class="font-bold">8.1</td><td>拓展国防政府场景，等待订单兑现</td></tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td><span class="text-accent-600 font-bold">行业</span></td><td>11-04</td><td>企业Agent从辅助走向真实工作流执行</td><td class="text-emerald-600 font-bold">结构利好</td><td class="font-bold">8.0</td><td>平台价值提升，付费转化是核心检验</td></tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td><span class="text-rose-600 font-bold">宏观</span></td><td>11-25观察</td><td>美联储利率路径与长端收益率</td><td class="text-amber-600 font-bold">双向影响</td><td class="font-bold">8.5</td><td>决定成长型软件现金流折现率</td></tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td><span class="text-accent-600 font-bold">行业</span></td><td>10-28</td><td>Slack Code API强化协作与开发工作流</td><td class="text-amber-600 font-bold">中性偏多</td><td class="font-bold">7.6</td><td>提高生态粘性，正面迎战协作平台竞争</td></tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td><span class="text-accent-600 font-bold">行业</span></td><td>10-27</td><td>Agent Fabric加强智能体成本及故障控制</td><td class="text-emerald-600 font-bold">温和利好</td><td class="font-bold">7.3</td><td>治理能力可提升生产环境部署率</td></tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td><span class="text-rose-600 font-bold">宏观</span></td><td>持续生效</td><td>欧盟AI Act及GDPR企业AI合规要求</td><td class="text-amber-600 font-bold">利弊并存</td><td class="font-bold">8.0</td><td>提高交付成本，也构成大型客户准入壁垒</td></tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800"><td><span class="text-rose-600 font-bold">宏观</span></td><td>持续生效</td><td>中国AI治理与数据跨境合规框架</td><td class="text-amber-600 font-bold">中性偏空</td><td class="font-bold">6.8</td><td>数字化需求提供机会，数据合规限制交付模式</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-3">注：宏观政策行标注“持续生效”或“观察”，表示长期制度/敏感性变量，不代表其在近30日内新发布。</p>
+ </div>
+
+ <h3 class="font-bold text-lg mb-4 flex items-center gap-2"><i data-lucide="calendar-days" class="w-5 h-5 text-primary-500"></i>未来30天前瞻观察清单（11月26日—12月25日）</h3>
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-emerald-200 dark:border-emerald-900 card-interactive">
+   <div class="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 mb-2">2026-12-02 · 最高优先级</div>
+   <h4 class="font-bold mb-2">FY2027 Q3财报与电话会</h4>
+   <p class="text-xs leading-6 text-gray-600 dark:text-gray-300">公司已于11月10日确认财报在美股收盘后发布。重点观察订阅与支持收入增速、RPO/cRPO、Agentforce付费客户及合同金额、经营现金流、利润率和FY2027指引。重点区分使用量增长与真实收入贡献。</p>
+   <p class="source mt-2"><a href="https://investor.salesforce.com/news/news-details/2026/Salesforce-Announces-Date-of-Third-Quarter-Fiscal-2027-Earnings-Release-and-Webcast/" target="_blank" rel="noopener">官方日程公告 · 2026-11-10</a></p>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-primary-200 dark:border-primary-900 card-interactive">
+   <div class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400 mb-2">2026-11-26至12-25 · 持续</div>
+   <h4 class="font-bold mb-2">Cresta与Rune交易审批及交割进展</h4>
+   <p class="text-xs leading-6 text-gray-600 dark:text-gray-300">追踪交易监管审批、预计交割时点、整合计划、产品路线图及人才留存。特别关注收购是否形成可量化的Agentforce交叉销售，而非仅增加产品数量与无形资产。</p>
+   <p class="source mt-2"><a href="https://www.salesforce.com/news/" target="_blank" rel="noopener">Salesforce官方新闻中心</a></p>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-amber-200 dark:border-amber-900 card-interactive">
+   <div class="text-xs font-mono font-bold text-amber-600 dark:text-amber-400 mb-2">2026-12月 · 宏观窗口</div>
+   <h4 class="font-bold mb-2">美联储12月议息与美债收益率变化</h4>
+   <p class="text-xs leading-6 text-gray-600 dark:text-gray-300">关注FOMC声明、利率点阵图、通胀与就业数据。对CRM的核心意义是折现率和企业IT预算的双重变化。会议具体日期及结果以美联储日历、声明原文为准。</p>
+   <p class="source mt-2"><a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">Federal Reserve · FOMC日历</a></p>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-sky-200 dark:border-sky-900 card-interactive">
+   <div class="text-xs font-mono font-bold text-sky-600 dark:text-sky-400 mb-2">2026-11-26至12-25 · 行业观察</div>
+   <h4 class="font-bold mb-2">企业AI采购与竞品产品更新</h4>
+   <p class="text-xs leading-6 text-gray-600 dark:text-gray-300">跟踪Microsoft、ServiceNow、Oracle及专业Agent平台的企业级产品发布、价格策略和客户案例；重点比较实际部署、付费席位、任务完成率、推理成本和客户续约，而非单纯模型参数或演示效果。</p>
+   <p class="source mt-2"><a href="https://news.microsoft.com/" target="_blank" rel="noopener">Microsoft News</a> · <a href="https://www.servicenow.com/company/media/press-room.html" target="_blank" rel="noopener">ServiceNow Press Room</a></p>
+  </div>
+ </div>
+</section>
+
+<!-- INVESTMENT CONCLUSION -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 mb-12" data-aos="fade-up">
+ <div class="rounded-2xl p-6 sm:p-8 bg-[#172334] text-white border border-gray-700">
+  <div class="flex items-center gap-2 mb-4"><i data-lucide="target" class="w-5 h-5 text-orange-400"></i><h2 class="text-xl font-bold">五、买方研究结论：股价方向由AI变现而非AI叙事决定</h2></div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+   <div><div class="text-xs text-emerald-300 font-bold mb-2">多头逻辑</div><p class="text-sm text-gray-200 leading-7">Agentforce使用量加速，Cresta补强联络中心、Rune拓展政府场景；CRM数据和工作流入口为智能体商业化提供分发优势。</p></div>
+   <div><div class="text-xs text-rose-300 font-bold mb-2">空头逻辑</div><p class="text-sm text-gray-200 leading-7">使用量尚未证明收入增量；模型推理成本、并购整合、传统SaaS竞争及企业采购周期可能使利润兑现落后于产品热度。</p></div>
+   <div><div class="text-xs text-amber-300 font-bold mb-2">关键验证指标</div><p class="text-sm text-gray-200 leading-7">12月2日重点看Agentforce付费转化与合同金额、cRPO、订阅增速、经营现金流、营业利润率，以及管理层对AI收入贡献的量化说明。</p></div>
+  </div>
+  <div class="mt-6 pt-5 border-t border-gray-600">
+   <div class="text-xs text-gray-400 mb-2">事件驱动策略判断</div>
+   <p class="text-base sm:text-lg font-bold leading-7">中性偏多，等待财报确认。若AI订单、cRPO与现金流同步改善，估值修复才具备基本面支撑；若只有使用量增长而利润率承压，则更可能出现“利好兑现”而非趋势性重估。</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+   <div>
+    <h4 class="font-bold text-sm mb-3">核心数据来源</h4>
+    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-5">
+     <li>Salesforce官方新闻中心：Agentforce、Cresta、Rune、Slack Code API、Agent Fabric公告。</li>
+     <li>Salesforce Investor Relations：11月10日Q3 FY2027财报日程、11月19日公司动态。</li>
+     <li>StockAnalysis / TipRanks：2026年11月分析师评级及目标价汇总。</li>
+     <li>Federal Reserve：FOMC会议日历与政策声明。</li>
+     <li>欧盟AI Act、GDPR及中国网信办政策原文。</li>
+    </ul>
+   </div>
+   <div>
+    <h4 class="font-bold text-sm mb-3">覆盖时间与口径</h4>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-6">主窗口：2026-10-27至2026-11-25，共30个自然日。事件按公开披露日期标注。宏观板块中持续有效的监管制度单独注明，不伪装成当月新政。部分公司公告摘要未披露交易金额或财务贡献，报告不自行推算。行情仅引用可核验的2026-11-23收盘数据，不冒充11月25日实时价格。</p>
+   </div>
+   <div>
+    <h4 class="font-bold text-sm mb-3">研究限制与免责声明</h4>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-6">本报告根据截至基准日可检索的公开资料整理，部分行业竞争及宏观判断属于分析推演而非公司已确认事实。并购公告与交易交割、产品使用量与收入、机构目标价与实际价值必须严格区分。本报告仅供信息研究参考，不构成投资建议、证券买卖邀约或收益保证。</p>
+   </div>
+  </div>
+  <div class="border-t border-gray-200 dark:border-gray-800 pt-5 flex flex-col sm:flex-row justify-between gap-2">
+   <p class="text-xs text-gray-400">赛富时 Salesforce（NYSE: CRM）· 最新动态全景追踪 · 2026-11-25</p>
+   <p class="text-xs text-gray-400">Event-Driven Equity Research · Public Information Only</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const y=document.documentElement.scrollTop||document.body.scrollTop;
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const p=document.getElementById('progressBar');
+ if(p)p.style.width=(h>0?y/h*100:0)+'%';
+});
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:480,offset:35,once:true});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f9fafb">
+<title>微软体系全景解析｜MSFT｜2026-11-23</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',
+          200:'hsl(20,90%,75%)',300:'hsl(20,90%,65%)',
+          400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',
+          800:'hsl(20,90%,25%)',900:'hsl(20,90%,15%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',
+          200:'hsl(30,85%,75%)',300:'hsl(30,85%,65%)',
+          400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',
+          800:'hsl(30,85%,30%)',900:'hsl(30,85%,20%)'
+        }
+      }
+    }
+  }
+};
+</script>
+
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+html {scroll-behavior:smooth}
+body {font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.btn-interactive:active{transform:scale(.95)}
+.card-interactive{transition:all .3s ease-out;border:1px solid transparent;--border-lightness:40%}
+.dark .card-interactive{--border-lightness:60%}
+.card-interactive:hover{box-shadow:0 20px 25px -5px rgba(0,0,0,.1);filter:brightness(.98);transform:translateY(-3px)}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover{border-color:hsl(20,90%,var(--border-lightness))}
+.card-interactive[class*="accent"]:hover{border-color:hsl(30,85%,var(--border-lightness))}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{text-align:left;padding:.8rem;border-bottom:1px solid hsl(0,0%,90%);font-size:.875rem;vertical-align:top}
+th{font-weight:650;background:rgba(249,115,22,.055)}
+.dark th,.dark td{border-bottom-color:hsl(0,0%,30%)}
+.dark th{background:rgba(249,115,22,.1)}
+.table-wrap{width:100%;overflow-x:auto;border-radius:.75rem}
+#mobileMenu{display:none}
+#mobileMenu.mobile-menu-open{display:block}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){
+header .max-w-7xl{padding-left:1rem;padding-right:1rem}
+header h1{font-size:1rem;white-space:nowrap;margin-right:.5rem}
+#mobileMenu{margin-top:1rem;padding:1rem 0 .5rem;border-top:1px solid rgba(20,20,20,.12);max-height:calc(100vh - 90px);overflow-y:auto}
+.dark #mobileMenu{border-top-color:rgba(255,255,255,.15)}
+#mobileMenu a{display:block;padding:.7rem .5rem;border-radius:.5rem}
+}
+@media(min-width:768px){
+header nav[aria-label="桌面端导航"] a{color:#374151}
+.dark header nav[aria-label="桌面端导航"] a{color:#e5e7eb}
+header nav[aria-label="桌面端导航"] a:hover{color:hsl(20,90%,45%)}
+.dark header nav[aria-label="桌面端导航"] a:hover{color:hsl(20,90%,55%)}
+}
+header{overflow:visible}
+.moat-bar{height:9px;background:#e5e7eb;border-radius:99px;overflow:hidden}
+.dark .moat-bar{background:#374151}
+.moat-bar>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#f97316,#fbbf24)}
+.section-anchor{scroll-margin-top:100px}
+.reference{font-size:.72em;vertical-align:super;margin-left:3px;color:#0284c7;font-weight:700;text-decoration:none}
+.reference:hover{text-decoration:underline}
+.timeline{border-left:2px solid rgba(249,115,22,.35);margin-left:9px;padding-left:22px}
+.timeline-item{position:relative;padding-bottom:23px}
+.timeline-item:before{content:"";position:absolute;left:-29px;top:5px;width:12px;height:12px;border-radius:50%;background:#f97316;border:3px solid white;box-shadow:0 0 0 2px rgba(249,115,22,.2)}
+.dark .timeline-item:before{border-color:#111827}
+.metric{font-variant-numeric:tabular-nums}
+.source-item{overflow-wrap:anywhere}
+</style>
+
+<script>
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ const dark=document.documentElement.classList.contains('dark');
+ document.getElementById('sunIcon').style.display=dark?'block':'none';
+ document.getElementById('moonIcon').style.display=dark?'none':'block';
+ localStorage.setItem('msft-theme',dark?'dark':'light');
+}
+function toggleMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ const button=document.getElementById('mobileMenuButton');
+ const icon=document.getElementById('mobileMenuIcon');
+ if(!menu)return;
+ const opened=menu.classList.toggle('mobile-menu-open');
+ menu.setAttribute('aria-hidden',opened?'false':'true');
+ button.setAttribute('aria-expanded',opened?'true':'false');
+ icon.setAttribute('data-lucide',opened?'x':'menu');
+ lucide.createIcons();
+}
+function closeMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ if(!menu)return;
+ menu.classList.remove('mobile-menu-open');
+ menu.setAttribute('aria-hidden','true');
+ document.getElementById('mobileMenuButton').setAttribute('aria-expanded','false');
+ document.getElementById('mobileMenuIcon').setAttribute('data-lucide','menu');
+ lucide.createIcons();
+}
+function updateProgress(){
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const p=h>0?(window.scrollY/h)*100:0;
+ document.getElementById('progressBar').style.width=p+'%';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ if(localStorage.getItem('msft-theme')==='dark'){
+  document.documentElement.classList.add('dark');
+  document.getElementById('sunIcon').style.display='block';
+  document.getElementById('moonIcon').style.display='none';
+ }
+ lucide.createIcons();
+ AOS.init({duration:800,once:true,offset:60});
+ document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',closeMobileMenu));
+ document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',()=>closeMobileMenu());
+ });
+ updateProgress();
+});
+window.addEventListener('scroll',updateProgress,{passive:true});
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300" id="progressBar" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+ <div class="max-w-7xl mx-auto px-6 py-4">
+  <div class="flex items-center justify-between gap-3">
+   <h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">微软体系全景解析</h1>
+   <nav class="hidden md:flex space-x-5 flex-shrink-0" aria-label="桌面端导航">
+    <a href="#overview" class="text-sm font-medium">总览</a>
+    <a href="#founder" class="text-sm font-medium">管理层</a>
+    <a href="#capital" class="text-sm font-medium">股本</a>
+    <a href="#equity" class="text-sm font-medium">股权</a>
+    <a href="#companies" class="text-sm font-medium">关联企业</a>
+    <a href="#employee" class="text-sm font-medium">员工激励</a>
+    <a href="#summary" class="text-sm font-medium">综合研判</a>
+   </nav>
+   <div class="flex items-center space-x-2 flex-shrink-0">
+    <button type="button" onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="打开导航菜单" aria-controls="mobileMenu" aria-expanded="false" id="mobileMenuButton">
+     <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+    </button>
+    <button type="button" onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" aria-hidden="true">
+   <nav class="flex flex-col space-y-1">
+    <a href="#overview" class="text-sm">总览</a>
+    <a href="#founder" class="text-sm">管理层</a>
+    <a href="#capital" class="text-sm">股本</a>
+    <a href="#equity" class="text-sm">股权</a>
+    <a href="#companies" class="text-sm">关联企业</a>
+    <a href="#employee" class="text-sm">员工激励</a>
+    <a href="#summary" class="text-sm">综合研判</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section id="overview" class="section-anchor py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="flex flex-wrap items-center gap-3 mb-5">
+   <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-200">公司治理研究</span>
+   <span class="px-3 py-1 rounded-full text-xs font-semibold bg-accent-100 text-accent-800 dark:bg-accent-900/40 dark:text-accent-200">NASDAQ: MSFT</span>
+   <span class="text-xs text-gray-500 dark:text-gray-400">研究基准日：2026年11月23日</span>
+  </div>
+  <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">微软体系全景解析</h2>
+  <p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+   从比尔·盖茨与保罗·艾伦创立的软件公司，到萨提亚·纳德拉领导下的云计算与人工智能平台，微软已经演变为一家以企业软件、云基础设施、生产力平台和AI生态为核心的全球科技集团。本报告围绕创始人及管理层、股本变化、股权控制、重要子公司和战略投资、员工激励与关联交易，梳理微软的资本结构和组织运行机制。
+  </p>
+  <div class="grid md:grid-cols-3 gap-6 mt-12">
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+      <i data-lucide="users" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+     </div>
+     <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">管理层与战略</h3>
+    </div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">纳德拉领导下的云优先、AI优先战略，以及2026年商业业务组织重构。</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+     <div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+      <i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+     </div>
+     <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与股权</h3>
+    </div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">约74.26亿股流通股本，机构投资者分散持有，无创始人家族控制权结构。</p>
+   </div>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <div class="flex items-center space-x-4 mb-4">
+     <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+      <i data-lucide="brain-circuit" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+     </div>
+     <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">AI生态与激励</h3>
+    </div>
+    <p class="text-sm text-gray-700 dark:text-gray-300">OpenAI战略合作、全球子公司体系，以及RSU、PSU和员工购股计划。</p>
+   </div>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+   <div class="p-4 rounded-xl bg-white/80 dark:bg-gray-800 shadow-sm">
+    <p class="text-xs text-gray-500">FY2026营业收入</p>
+    <p class="text-2xl font-bold text-primary-700 dark:text-primary-300 metric">$3,318.39亿</p>
+    <p class="text-xs text-green-600 mt-1">同比 +18%</p>
+   </div>
+   <div class="p-4 rounded-xl bg-white/80 dark:bg-gray-800 shadow-sm">
+    <p class="text-xs text-gray-500">FY2026净利润</p>
+    <p class="text-2xl font-bold text-primary-700 dark:text-primary-300 metric">$1,337.49亿</p>
+    <p class="text-xs text-green-600 mt-1">同比 +31%</p>
+   </div>
+   <div class="p-4 rounded-xl bg-white/80 dark:bg-gray-800 shadow-sm">
+    <p class="text-xs text-gray-500">最新已披露股本</p>
+    <p class="text-2xl font-bold text-accent-700 dark:text-accent-300 metric">74.26亿股</p>
+    <p class="text-xs text-gray-500 mt-1">截至2026-10-22</p>
+   </div>
+   <div class="p-4 rounded-xl bg-white/80 dark:bg-gray-800 shadow-sm">
+    <p class="text-xs text-gray-500">最新收盘市值</p>
+    <p class="text-2xl font-bold text-accent-700 dark:text-accent-300 metric">$3.60万亿</p>
+    <p class="text-xs text-gray-500 mt-1">2026-11-20收盘</p>
+   </div>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">注：财年截至6月30日。FY2026指2025年7月1日至2026年6月30日。市值采用11月20日美股最近一个完整交易日数据。来源：[1][2][3][4]</p>
+ </div>
+</section>
+
+<!-- SECTION 1 -->
+<section id="founder" class="section-anchor py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">一、创始人、核心管理层发展与战略演进</h2>
+  <div class="space-y-6">
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软的治理模式经历了从创始人主导、职业经理人接班，到云计算与AI时代平台型管理的转变。与仍由创始人家族掌握控制权的企业不同，微软已经形成成熟的公众公司治理架构：创始人退出日常经营，职业经理人负责战略和经营，董事会及机构股东承担监督与资本配置约束。
+   </p>
+
+   <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+     <i data-lucide="info" class="inline-block w-4 h-4 mr-1"></i>
+     核心判断：微软的控制权并未随着创始人退出而转移给某个新的家族或单一股东，而是由分散股东持股、董事会监督和职业管理层经营共同构成。
+    </p>
+   </div>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">1.1 创业历程与权力交接</h3>
+   <div class="timeline">
+    <div class="timeline-item">
+     <h4 class="font-semibold text-gray-900 dark:text-gray-100">1975年：比尔·盖茨与保罗·艾伦创立微软</h4>
+     <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">公司从个人计算机软件起步，逐步建立MS-DOS、Windows和Office等核心产品。创始人通过技术、产品和商业模式创新，奠定了微软在PC操作系统和办公软件领域的长期地位。</p>
+    </div>
+    <div class="timeline-item">
+     <h4 class="font-semibold text-gray-900 dark:text-gray-100">1986年：纳斯达克上市</h4>
+     <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">微软于1986年3月13日完成IPO，成为公众公司。上市扩大了融资和员工股权激励能力，也逐渐推动公司治理由创始人个人决策转向董事会制度。</p>
+    </div>
+    <div class="timeline-item">
+     <h4 class="font-semibold text-gray-900 dark:text-gray-100">2000—2014年：鲍尔默接任，企业软件与服务扩张</h4>
+     <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">史蒂夫·鲍尔默于2000年接任CEO。微软在Windows、Office、服务器和企业软件领域持续扩大规模，同时推进Xbox、搜索等新业务。移动互联网转型不足成为这一阶段的重要战略教训。</p>
+    </div>
+    <div class="timeline-item">
+     <h4 class="font-semibold text-gray-900 dark:text-gray-100">2014年：萨提亚·纳德拉出任CEO</h4>
+     <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">纳德拉此前负责服务器与云业务，2014年2月接任CEO。他将微软的核心发展方向从Windows中心主义转向云服务、跨平台软件和开发者生态。</p>
+    </div>
+    <div class="timeline-item">
+     <h4 class="font-semibold text-gray-900 dark:text-gray-100">2021年：纳德拉兼任董事长</h4>
+     <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">纳德拉于2021年6月获任董事长，成为董事会与经营管理层之间的重要战略协调者。董事会同时设置首席独立董事，保持独立监督机制。</p>
+    </div>
+    <div class="timeline-item">
+     <h4 class="font-semibold text-gray-900 dark:text-gray-100">2023—2025年：生成式AI战略深化</h4>
+     <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">微软通过OpenAI合作、Azure AI、Copilot、GitHub Copilot和自研模型能力，将AI嵌入云基础设施、开发工具、办公软件与企业服务。2025年10月，微软与OpenAI签署新的最终协议，延续并调整长期合作关系。</p>
+    </div>
+    <div class="timeline-item">
+     <h4 class="font-semibold text-gray-900 dark:text-gray-100">2026年：商业业务重组，组织转向Agent与基础设施</h4>
+     <p class="text-sm text-gray-700 dark:text-gray-300 mt-2">微软调整财务报告分部，将应用、智能体、Azure基础设施等整合进Agents and Infra业务板块，同时设置Devices and Consumer板块。Judson Althoff担任Microsoft Commercial Business CEO，强化商业业务经营责任。<a class="reference" href="https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm" target="_blank">[1]</a></p>
+    </div>
+   </div>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">1.2 核心管理层结构</h3>
+   <div class="grid md:grid-cols-2 gap-6">
+    <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+     <div class="flex items-center gap-3 mb-3">
+      <i data-lucide="user-round" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+      <h4 class="font-semibold text-primary-700 dark:text-primary-300">Satya Nadella</h4>
+     </div>
+     <p class="text-sm font-medium">董事长兼首席执行官</p>
+     <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">2014年出任CEO，2021年出任董事长。负责集团总体战略、资本配置、技术方向与组织文化。</p>
+    </div>
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+     <div class="flex items-center gap-3 mb-3">
+      <i data-lucide="briefcase-business" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+      <h4 class="font-semibold text-accent-700 dark:text-accent-300">Amy Hood</h4>
+     </div>
+     <p class="text-sm font-medium">执行副总裁兼首席财务官</p>
+     <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">负责财务战略、预算、资本回报、投资纪律和财务风险控制，是微软AI基础设施投入与利润管理的关键决策者。</p>
+    </div>
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+     <div class="flex items-center gap-3 mb-3">
+      <i data-lucide="building-2" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+      <h4 class="font-semibold text-accent-700 dark:text-accent-300">Judson Althoff</h4>
+     </div>
+     <p class="text-sm font-medium">Microsoft Commercial Business CEO</p>
+     <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">2025年10月获任商业业务CEO，推动全球企业客户销售、商业云、行业解决方案和客户服务协同。</p>
+    </div>
+    <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+     <div class="flex items-center gap-3 mb-3">
+      <i data-lucide="shield-check" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+      <h4 class="font-semibold text-primary-700 dark:text-primary-300">Brad Smith</h4>
+     </div>
+     <p class="text-sm font-medium">副董事长兼总裁</p>
+     <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">负责公共政策、法律事务、监管关系及全球社会责任议题，在AI治理、反垄断和国际监管协调方面发挥重要作用。</p>
+    </div>
+   </div>
+   <p class="text-xs text-gray-500 dark:text-gray-400">以上管理层信息以FY2026年报披露的2026年7月29日高管名单为基础。公司官方高管资料：[5]</p>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">1.3 管理哲学：从Windows中心转向云、AI与平台协同</h3>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>阶段</th><th>核心管理理念</th><th>组织与考核重点</th><th>战略结果</th></tr></thead>
+     <tbody>
+      <tr><td>盖茨时代</td><td>软件平台控制力</td><td>产品迭代、技术标准、生态锁定</td><td>Windows与Office建立全球优势</td></tr>
+      <tr><td>鲍尔默时代</td><td>企业软件规模化</td><td>产品线经营、销售规模、市场份额</td><td>企业服务、服务器及Xbox扩张</td></tr>
+      <tr><td>纳德拉早期</td><td>移动优先、云优先</td><td>跨平台、订阅收入、云业务增长</td><td>Azure与Microsoft 365成为增长引擎</td></tr>
+      <tr><td>纳德拉AI时代</td><td>AI优先、平台生态协同</td><td>模型能力、算力利用率、Copilot商业化、客户留存</td><td>AI嵌入云、办公、开发与安全产品</td></tr>
+      <tr><td>2026年组织阶段</td><td>Agents and Infra</td><td>智能体部署、算力供给、商业化效率</td><td>从软件订阅向AI平台与智能体服务拓展</td></tr>
+     </tbody>
+    </table>
+   </div>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">1.4 董事会与管理监督</h3>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软采用董事长兼CEO与首席独立董事并存的治理模式。2026年代理声明显示，Sandra E. Peterson担任首席独立董事，负责主持独立董事会议、CEO年度绩效评估、继任计划监督，并有权协调独立董事与管理层的沟通。董事会独立成员还负责CEO继任安排和风险监督。
+   </p>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md">
+    <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">治理机制的关键安排</h4>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>董事长与CEO由同一人担任，但首席独立董事拥有明确的独立监督权限。</li>
+     <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>薪酬委员会负责高管薪酬制度和绩效激励审核。</li>
+     <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>审计委员会监督财务报告、内部控制、审计及风险管理。</li>
+     <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>股东每年选举董事，并对高管薪酬进行非约束性Say-on-Pay投票。</li>
+    </ul>
+    <p class="text-xs text-gray-500 mt-3">来源：[6] 2026 Proxy Statement，Board Leadership及Governance章节。</p>
+   </div>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">1.5 管理层能力与战略执行评价</h3>
+   <div class="space-y-4">
+    <div><div class="flex justify-between text-sm mb-2"><span>云计算战略执行</span><strong>95/100</strong></div><div class="moat-bar"><span style="width:95%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>AI商业化与生态整合</span><strong>91/100</strong></div><div class="moat-bar"><span style="width:91%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>资本配置与财务管理</span><strong>88/100</strong></div><div class="moat-bar"><span style="width:88%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>组织转型与人才管理</span><strong>87/100</strong></div><div class="moat-bar"><span style="width:87%"></span></div></div>
+    <p class="text-xs text-gray-500">研究者主观评价，并非公司官方评分或外部评级。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 2 -->
+<section id="capital" class="section-anchor py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">二、股本数量变化：IPO、股票拆分与持续回购</h2>
+  <div class="space-y-6">
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软1986年上市后经历过九次股票拆分。2003年2月是最后一次拆股，此后公司主要通过员工股权激励发行新股，并通过持续回购减少流通股数量。微软没有采用创始人控制型双重股权结构，普通股实行一股一票。股本变化的核心是员工奖励发行与回购之间的动态平衡，而不是大规模增发融资。
+   </p>
+
+   <div class="grid md:grid-cols-3 gap-5">
+    <div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <p class="text-sm text-gray-500">2026年9月30日总股本</p>
+     <p class="text-3xl font-bold text-primary-700 dark:text-primary-300 metric mt-2">74.26亿股</p>
+     <p class="text-xs text-gray-500 mt-2">10-Q最新股数披露日为2026年10月22日</p>
+    </div>
+    <div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <p class="text-sm text-gray-500">FY2026回购</p>
+     <p class="text-3xl font-bold text-accent-700 dark:text-accent-300 metric mt-2">167.19亿美元</p>
+     <p class="text-xs text-gray-500 mt-2">回购约3,600万股</p>
+    </div>
+    <div class="card-interactive p-5 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <p class="text-sm text-gray-500">2026年11月20日市值</p>
+     <p class="text-3xl font-bold text-primary-700 dark:text-primary-300 metric mt-2">3.60万亿美元</p>
+     <p class="text-xs text-gray-500 mt-2">收盘价484.52美元</p>
+    </div>
+   </div>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">2.1 IPO与股票拆分历史</h3>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软1986年3月13日在纳斯达克上市。根据公司投资者关系网站披露，上市后共进行九次股票拆分，最近一次为2003年2月的2拆1。九次拆股累计使一股原始股票对应288股拆分后股票。股票拆分不创造公司价值，也不直接改变股东持股总市值。
+   </p>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>日期</th><th>拆分比例</th><th>累计拆分倍数</th></tr></thead>
+     <tbody>
+      <tr><td>1986-03-13</td><td>IPO上市</td><td>1.00倍</td></tr>
+      <tr><td>1987-09-18</td><td>2拆1</td><td>2.00倍</td></tr>
+      <tr><td>1990-04-12</td><td>2拆1</td><td>4.00倍</td></tr>
+      <tr><td>1991-06-26</td><td>3拆2</td><td>6.00倍</td></tr>
+      <tr><td>1992-06-12</td><td>3拆2</td><td>9.00倍</td></tr>
+      <tr><td>1994-05-20</td><td>2拆1</td><td>18.00倍</td></tr>
+      <tr><td>1996-12-06</td><td>2拆1</td><td>36.00倍</td></tr>
+      <tr><td>1998-02-20</td><td>2拆1</td><td>72.00倍</td></tr>
+      <tr><td>1999-03-26</td><td>2拆1</td><td>144.00倍</td></tr>
+      <tr><td>2003-02-14</td><td>2拆1</td><td>288.00倍</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-gray-500">来源：[7] Microsoft Investor Relations – Stock Splits FAQ。</p>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">2.2 近年股本变化：发行与回购</h3>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>财年</th><th>期初股数</th><th>新发行</th><th>回购</th><th>期末股数</th></tr></thead>
+     <tbody>
+      <tr><td>FY2024</td><td>74.32亿股</td><td>0.34亿股</td><td>0.32亿股</td><td>74.34亿股</td></tr>
+      <tr><td>FY2025</td><td>74.34亿股</td><td>0.31亿股</td><td>0.31亿股</td><td>74.34亿股</td></tr>
+      <tr><td>FY2026</td><td>74.34亿股</td><td>0.29亿股</td><td>0.36亿股</td><td>74.27亿股</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-sm text-gray-600 dark:text-gray-400">微软FY2026发行约2,900万股、回购约3,600万股，净减少约700万股。股本变动反映公司在员工长期激励与回馈股东之间保持动态平衡。<a class="reference" href="https://www.microsoft.com/investor/reports/ar26/" target="_blank">[8]</a></p>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">2.3 回购计划及资本回报</h3>
+   <div class="grid md:grid-cols-2 gap-6">
+    <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">600亿美元回购计划</h4>
+     <div class="space-y-3 text-sm">
+      <div class="flex justify-between"><span>授权金额</span><strong>600亿美元</strong></div>
+      <div class="flex justify-between"><span>批准时间</span><strong>2024年9月16日</strong></div>
+      <div class="flex justify-between"><span>启动时间</span><strong>2025年4月</strong></div>
+      <div class="flex justify-between"><span>截至FY2026已用</span><strong>约194亿美元</strong></div>
+      <div class="flex justify-between"><span>截至2026-06-30剩余</span><strong>406亿美元</strong></div>
+      <div class="flex justify-between"><span>截至2026-09-30剩余</span><strong>377亿美元</strong></div>
+     </div>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <h4 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">股东现金回报</h4>
+     <div class="space-y-3 text-sm">
+      <div class="flex justify-between"><span>FY2026股票回购</span><strong>167.19亿美元</strong></div>
+      <div class="flex justify-between"><span>FY2026现金股息</span><strong>270.00亿美元</strong></div>
+      <div class="flex justify-between"><span>FY2026合计</span><strong>437.19亿美元</strong></div>
+      <div class="flex justify-between"><span>FY2027 Q1回购+股息</span><strong>102.00亿美元</strong></div>
+     </div>
+    </div>
+   </div>
+   <p class="text-xs text-gray-500">FY2026回购金额及股息金额来自年报；FY2027第一季度向股东返还约102亿美元。来源：[8][9][10]</p>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">2.4 最新股价与市值</h3>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+     <div><p class="text-xs text-gray-500">最近收盘日</p><p class="text-lg font-bold mt-1">11月20日</p></div>
+     <div><p class="text-xs text-gray-500">收盘价</p><p class="text-lg font-bold mt-1">$484.52</p></div>
+     <div><p class="text-xs text-gray-500">单日涨跌</p><p class="text-lg font-bold text-red-600 mt-1">-2.77%</p></div>
+     <div><p class="text-xs text-gray-500">市值</p><p class="text-lg font-bold mt-1">$3.60万亿</p></div>
+    </div>
+    <div class="mt-5 p-4 bg-accent-50/60 dark:bg-accent-900/20 rounded-lg">
+     <p class="text-sm text-gray-700 dark:text-gray-300">市值估算：7,426,194,552股 × 484.52美元，约3.60万亿美元。采用最近可核验的完整交易日收盘价，不将盘后价格当作正式收盘价。</p>
+    </div>
+    <p class="text-xs text-gray-500 mt-3">价格及市值来源：[11][12]。市值随股价变化，非公司公告中的固定数据。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 3 -->
+<section id="equity" class="section-anchor py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">三、股权结构变化：分散持股与职业经理人治理</h2>
+  <div class="space-y-6">
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软不存在海底捞式的创始人家族控股平台，也不存在通过家族信托维持的单一实际控制人结构。公司为美国华盛顿州注册的上市公司，普通股在纳斯达克交易，采用一股一票制度。创始人比尔·盖茨和保罗·艾伦早已退出公司的日常经营；保罗·艾伦于2018年去世，比尔·盖茨于2020年退出微软董事会。
+   </p>
+   <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-accent-900 dark:text-accent-100">
+     <i data-lucide="info" class="inline-block w-4 h-4 mr-1"></i>
+     治理结论：微软没有可认定的单一实际控制人。纳德拉是公司董事长和CEO，但其经营管理权来自董事会授权，并非来自个人控股或创始人家族的绝对投票权。
+    </p>
+   </div>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3.1 主要股东结构</h3>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    根据微软2026年代理声明，以下为截至2026年9月30日持股超过5%的机构股东。相关披露反映SEC规则下的受益所有权，并不意味着这些资产管理机构以自有资本承担了全部经济权益。部分股票可能由其管理的基金、客户或机构投资组合持有。
+   </p>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>股东名称</th><th>持股数量</th><th>持股比例</th><th>披露说明</th></tr></thead>
+     <tbody>
+      <tr><td>Vanguard Capital Management</td><td>555,988,240股</td><td>7.48%</td><td>基于2026年4月30日Schedule 13G披露</td></tr>
+      <tr><td>BlackRock, Inc.</td><td>540,020,228股</td><td>7.30%</td><td>代理声明引用2024年2月13日Schedule 13G/A</td></tr>
+      <tr><td>其他机构及公众投资者</td><td>其余股份</td><td>约85.22%</td><td>包括基金、养老金、个人及其他投资机构</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-gray-500">来源：[6] Microsoft 2026 Proxy Statement，Principal Shareholders。需注意，BlackRock引用的申报日期早于代理声明基准日，不能将该数字理解为实时持仓。</p>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3.2 股权与控制权架构</h3>
+   <div class="card-interactive p-6 bg-accent-50/40 dark:bg-accent-900/20 rounded-xl">
+    <div class="space-y-3 text-center">
+     <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+      <p class="font-semibold text-accent-700 dark:text-accent-300">全球公众投资者</p>
+      <p class="text-xs text-gray-500 mt-1">个人投资者、养老金、共同基金及机构投资者</p>
+     </div>
+     <div class="text-accent-500"><i data-lucide="arrow-down" class="w-6 h-6 mx-auto"></i></div>
+     <div class="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
+      <p class="font-semibold text-accent-700 dark:text-accent-300">Microsoft Corporation</p>
+      <p class="text-xs text-gray-500 mt-1">美国华盛顿州注册公众公司 · NASDAQ: MSFT</p>
+     </div>
+     <div class="text-accent-500"><i data-lucide="arrow-down" class="w-6 h-6 mx-auto"></i></div>
+     <div class="grid md:grid-cols-3 gap-3">
+      <div class="p-4 bg-white dark:bg-gray-800 rounded-lg">
+       <i data-lucide="cloud" class="w-6 h-6 mx-auto text-primary-500"></i>
+       <p class="font-semibold text-sm mt-2">云与AI平台</p>
+       <p class="text-xs text-gray-500">Azure、AI、GitHub</p>
+      </div>
+      <div class="p-4 bg-white dark:bg-gray-800 rounded-lg">
+       <i data-lucide="briefcase-business" class="w-6 h-6 mx-auto text-primary-500"></i>
+       <p class="font-semibold text-sm mt-2">生产力与企业服务</p>
+       <p class="text-xs text-gray-500">Microsoft 365、LinkedIn、Dynamics</p>
+      </div>
+      <div class="p-4 bg-white dark:bg-gray-800 rounded-lg">
+       <i data-lucide="gamepad-2" class="w-6 h-6 mx-auto text-primary-500"></i>
+       <p class="font-semibold text-sm mt-2">消费与设备</p>
+       <p class="text-xs text-gray-500">Windows、Xbox、Surface</p>
+      </div>
+     </div>
+    </div>
+    <p class="text-xs text-gray-500 mt-4">简化业务控制结构示意图，不代表全部法律实体的逐层持股比例。</p>
+   </div>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3.3 创始人持股与家族信托：与家族控股公司有本质区别</h3>
+   <div class="grid md:grid-cols-2 gap-6">
+    <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+     <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">比尔·盖茨</h4>
+     <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+      <li>• 1975年联合创始人</li>
+      <li>• 2000年退出CEO职位</li>
+      <li>• 2008年退出全职日常管理</li>
+      <li>• 2020年退出微软董事会</li>
+      <li>• 不再承担微软日常经营管理职责</li>
+     </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+     <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">保罗·艾伦</h4>
+     <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+      <li>• 1975年联合创始人</li>
+      <li>• 1983年离开微软日常经营</li>
+      <li>• 后续主要从事投资和慈善事业</li>
+      <li>• 2018年去世</li>
+      <li>• 不存在其继续控制微软的治理安排</li>
+     </ul>
+    </div>
+   </div>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软并未通过创始人家族信托维持特殊投票权。公司股权结构更接近美国大型公众公司的典型模式：机构持股分散，董事会监督管理层，股东通过投票参与治理。创始人的历史地位与当前实际控制权应当严格区分。
+   </p>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3.4 股权结构演变时间线</h3>
+   <div class="timeline">
+    <div class="timeline-item"><strong>1986年</strong><p class="text-sm text-gray-600 dark:text-gray-400">IPO上市，创始人持股和公众投资者共同构成股东基础。</p></div>
+    <div class="timeline-item"><strong>2000—2014年</strong><p class="text-sm text-gray-600 dark:text-gray-400">创始人逐渐退出经营，鲍尔默、纳德拉等职业经理人接管公司。</p></div>
+    <div class="timeline-item"><strong>2020年</strong><p class="text-sm text-gray-600 dark:text-gray-400">比尔·盖茨退出董事会，创始人治理影响进一步淡化。</p></div>
+    <div class="timeline-item"><strong>2021年</strong><p class="text-sm text-gray-600 dark:text-gray-400">纳德拉兼任董事长，首席独立董事制度继续发挥制衡作用。</p></div>
+    <div class="timeline-item"><strong>2024—2026年</strong><p class="text-sm text-gray-600 dark:text-gray-400">持续回购与员工股权激励共同影响总股本，机构投资者仍为重要股东。</p></div>
+   </div>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3.5 控制权稳定性评价</h3>
+   <div class="space-y-4">
+    <div><div class="flex justify-between text-sm mb-2"><span>股权分散程度</span><strong>高</strong></div><div class="moat-bar"><span style="width:94%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>管理层经营连续性</span><strong>高</strong></div><div class="moat-bar"><span style="width:90%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>创始人控制风险</span><strong>低</strong></div><div class="moat-bar"><span style="width:18%"></span></div></div>
+    <div><div class="flex justify-between text-sm mb-2"><span>董事会独立监督机制</span><strong>较高</strong></div><div class="moat-bar"><span style="width:86%"></span></div></div>
+    <p class="text-xs text-gray-500">研究者定性评价。股权分散有助于降低单一股东控制风险，但也意味着董事会、CEO绩效监督及机构投资者参与治理的重要性提高。</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 4 -->
+<section id="companies" class="section-anchor py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-6xl mx-auto px-6">
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">四、关联上市公司与企业关系：子公司矩阵、战略投资及关联交易</h2>
+  <div class="space-y-6">
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软与海底捞、颐海国际式的独立上市关联公司矩阵不同。微软的主要经营业务集中在同一上市主体及其合并子公司之内，核心资产包括Azure、Microsoft 365、LinkedIn、GitHub、Xbox和Windows等。与此同时，微软通过战略投资、技术授权、云服务采购和长期商业协议构建外部生态。其中OpenAI是最值得关注的战略投资及关联方关系。
+   </p>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4.1 主要业务板块与财务贡献</h3>
+   <p class="text-sm text-gray-600 dark:text-gray-400">FY2026年报沿用三个报告分部；2026年9月起公司调整了报告结构，FY2027第一季度采用新的Agents and Infra与Devices and Consumer分部。不同期间的分部名称及分类口径不可直接机械比较。</p>
+   <div class="grid md:grid-cols-3 gap-6 mt-6">
+    <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <div class="flex items-center gap-3 mb-4">
+      <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="briefcase-business" class="w-5 h-5 text-primary-600"></i></div>
+      <h3 class="font-semibold text-primary-700 dark:text-primary-300">生产力与业务流程</h3>
+     </div>
+     <p class="text-2xl font-bold metric">$1,399.96亿</p>
+     <p class="text-xs text-green-600 mt-1">FY2026收入同比 +16%</p>
+     <ul class="text-sm text-gray-600 dark:text-gray-400 mt-4 space-y-2">
+      <li>Microsoft 365</li><li>LinkedIn</li><li>Dynamics 365</li><li>企业生产力与业务应用</li>
+     </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <div class="flex items-center gap-3 mb-4">
+      <div class="w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center"><i data-lucide="cloud" class="w-5 h-5 text-accent-600"></i></div>
+      <h3 class="font-semibold text-accent-700 dark:text-accent-300">智能云</h3>
+     </div>
+     <p class="text-2xl font-bold metric">$1,377.91亿</p>
+     <p class="text-xs text-green-600 mt-1">FY2026收入同比 +30%</p>
+     <ul class="text-sm text-gray-600 dark:text-gray-400 mt-4 space-y-2">
+      <li>Azure云服务</li><li>服务器产品</li><li>企业云基础设施</li><li>数据库与开发工具</li>
+     </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <div class="flex items-center gap-3 mb-4">
+      <div class="w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center"><i data-lucide="monitor-smartphone" class="w-5 h-5 text-primary-600"></i></div>
+      <h3 class="font-semibold text-primary-700 dark:text-primary-300">更多个人计算</h3>
+     </div>
+     <p class="text-2xl font-bold metric">$540.52亿</p>
+     <p class="text-xs text-red-600 mt-1">FY2026收入同比 -1%</p>
+     <ul class="text-sm text-gray-600 dark:text-gray-400 mt-4 space-y-2">
+      <li>Windows</li><li>Xbox游戏业务</li><li>Surface设备</li><li>搜索与广告</li>
+     </ul>
+    </div>
+   </div>
+
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>FY2026业务分部</th><th>收入</th><th>营业利润</th><th>收入同比</th><th>营业利润同比</th></tr></thead>
+     <tbody>
+      <tr><td>生产力与业务流程</td><td>1,399.96亿美元</td><td>838.79亿美元</td><td>+16%</td><td>+20%</td></tr>
+      <tr><td>智能云</td><td>1,377.91亿美元</td><td>569.72亿美元</td><td>+30%</td><td>+28%</td></tr>
+      <tr><td>更多个人计算</td><td>540.52亿美元</td><td>143.86亿美元</td><td>-1%</td><td>+2%</td></tr>
+      <tr><td><strong>集团合计</strong></td><td><strong>3,318.39亿美元</strong></td><td><strong>1,552.37亿美元</strong></td><td><strong>+18%</strong></td><td><strong>+21%</strong></td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-gray-500">来源：[8] Microsoft FY2026 Annual Report。金额单位均为美元，分部营业利润合计与集团营业利润一致。</p>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4.2 主要子公司与战略业务平台</h3>
+   <div class="grid md:grid-cols-2 gap-6">
+    <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2">LinkedIn</h4>
+     <p class="text-sm text-gray-600 dark:text-gray-400">职业社交网络、招聘、企业销售与职业学习平台。通过人才数据、企业关系网络与广告业务，增强微软企业软件及AI产品的客户触达能力。</p>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2">GitHub</h4>
+     <p class="text-sm text-gray-600 dark:text-gray-400">全球开发者协作与代码托管平台。GitHub Copilot使其成为微软AI开发者生态的重要入口，并与Azure形成技术和客户协同。</p>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2">Activision Blizzard</h4>
+     <p class="text-sm text-gray-600 dark:text-gray-400">微软完成对动视暴雪的收购后，将其纳入Xbox游戏业务生态。核心价值在于游戏IP、内容供给、订阅服务与跨平台分发。</p>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+     <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-2">Nuance Communications</h4>
+     <p class="text-sm text-gray-600 dark:text-gray-400">语音识别、医疗文书自动化及行业AI技术，为微软医疗健康和企业行业解决方案提供技术能力。</p>
+    </div>
+   </div>
+   <p class="text-xs text-gray-500">以上均为微软控制或并入集团业务体系的重要企业和业务平台，不是与微软平行上市、具有独立股东结构的关联上市公司。</p>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4.3 OpenAI：最重要的战略投资与关联方关系</h3>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软与OpenAI的关系同时包含战略投资、算力基础设施、云服务商业安排和收入分成。2025年10月双方签署新的最终协议，延长并调整合作关系。微软FY2026年报披露其对OpenAI的权益法投资在完全转换口径下约占25%；随着OpenAI重组及后续融资，微软在2026年9月30日的季度申报中披露该比例约为24%。这两个比例分别对应不同披露时点，不应混为同一时点数据。
+   </p>
+   <div class="grid md:grid-cols-3 gap-5">
+    <div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+     <p class="text-xs text-gray-500">2026年9月30日权益比例</p>
+     <p class="text-3xl font-bold text-accent-700 dark:text-accent-300">约24%</p>
+     <p class="text-xs text-gray-500 mt-2">完全转换口径</p>
+    </div>
+    <div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+     <p class="text-xs text-gray-500">FY2026商业安排收入</p>
+     <p class="text-3xl font-bold text-primary-700 dark:text-primary-300">$241亿</p>
+     <p class="text-xs text-gray-500 mt-2">含收入分成</p>
+    </div>
+    <div class="card-interactive p-5 bg-white dark:bg-gray-900 rounded-xl shadow-md">
+     <p class="text-xs text-gray-500">已作出的资金承诺</p>
+     <p class="text-3xl font-bold text-accent-700 dark:text-accent-300">$130亿</p>
+     <p class="text-xs text-gray-500 mt-2">其中已投入约120亿美元</p>
+    </div>
+   </div>
+
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>指标</th><th>FY2026年报</th><th>FY2027 Q1披露</th></tr></thead>
+     <tbody>
+      <tr><td>权益法投资比例</td><td>约25%</td><td>约24%</td></tr>
+      <tr><td>商业安排收入</td><td>全年241亿美元</td><td>当季100亿美元</td></tr>
+      <tr><td>应收账款</td><td>60亿美元（2026-06-30）</td><td>72亿美元（2026-09-30）</td></tr>
+      <tr><td>总资金承诺</td><td>130亿美元</td><td>130亿美元</td></tr>
+      <tr><td>已投入资金</td><td>119亿美元</td><td>120亿美元</td></tr>
+      <tr><td>会计处理</td><td>权益法投资</td><td>权益法投资</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-gray-500">来源：[8][9]。FY2027 Q1数据为截至2026年9月30日的最新披露。OpenAI是微软的权益法被投资方及ASC 850意义上的关联方，微软并未将其作为普通全资子公司合并报表。</p>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4.4 关联交易的经济实质与风险</h3>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">微软与OpenAI的双向商业关系</h4>
+    <div class="grid md:grid-cols-2 gap-4">
+     <div class="p-4 rounded-lg bg-primary-50 dark:bg-primary-900/20">
+      <h5 class="font-semibold text-primary-700 dark:text-primary-300 mb-2">微软提供</h5>
+      <ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300">
+       <li>• Azure云基础设施与GPU算力</li>
+       <li>• 模型训练及部署环境</li>
+       <li>• 企业客户销售渠道</li>
+       <li>• 资金与长期技术合作</li>
+      </ul>
+     </div>
+     <div class="p-4 rounded-lg bg-accent-50 dark:bg-accent-900/20">
+      <h5 class="font-semibold text-accent-700 dark:text-accent-300 mb-2">微软获得</h5>
+      <ul class="text-sm space-y-2 text-gray-700 dark:text-gray-300">
+       <li>• AI模型与产品技术协同</li>
+       <li>• 云服务商业收入</li>
+       <li>• AI企业客户拓展</li>
+       <li>• OpenAI权益法投资收益或损失</li>
+      </ul>
+     </div>
+    </div>
+   </div>
+   <div class="space-y-3">
+    <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+     <p class="text-sm text-accent-900 dark:text-accent-100"><strong>风险一：客户与供应关系集中。</strong>微软既是OpenAI的重要投资方，又是其算力与云服务提供者。商业收入、应收账款和投资价值相互关联，需要持续关注交易定价、信用风险与合同履行情况。</p>
+    </div>
+    <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+     <p class="text-sm text-primary-900 dark:text-primary-100"><strong>风险二：投资收益波动。</strong>权益法核算意味着OpenAI经营表现及资本结构变化可能影响微软投资收益。FY2026微软GAAP净利润受到OpenAI投资相关损益影响，调整后非GAAP净利润为1,287.86亿美元，低于GAAP净利润1,337.49亿美元。</p>
+    </div>
+    <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+     <p class="text-sm text-accent-900 dark:text-accent-100"><strong>风险三：AI技术路线与合作边界变化。</strong>随着微软自研模型、其他第三方模型及企业客户自有模型生态发展，微软需要避免对单一模型供应方形成过度依赖。</p>
+    </div>
+   </div>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4.5 FY2027第一季度：AI业务增长与资本开支</h3>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>指标</th><th>FY2027 Q1</th><th>同比变化</th></tr></thead>
+     <tbody>
+      <tr><td>集团营业收入</td><td>922.79亿美元</td><td>+19%</td></tr>
+      <tr><td>营业利润</td><td>459.15亿美元</td><td>+21%</td></tr>
+      <tr><td>净利润</td><td>366.29亿美元</td><td>+32%</td></tr>
+      <tr><td>Microsoft Cloud收入</td><td>639亿美元</td><td>+30%</td></tr>
+      <tr><td>Azure收入</td><td>同比增长48%</td><td>高增长</td></tr>
+      <tr><td>商业剩余履约义务</td><td>6,770亿美元</td><td>+73%</td></tr>
+      <tr><td>资本开支</td><td>452亿美元</td><td>AI基础设施投入高位</td></tr>
+      <tr><td>经营现金流</td><td>580亿美元</td><td>+29%</td></tr>
+      <tr><td>自由现金流</td><td>186亿美元</td><td>受到资本开支影响</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-sm text-gray-600 dark:text-gray-400">
+    2026年10月28日公布的FY2027 Q1业绩显示，Azure与云业务仍然保持较强增长，但452亿美元季度资本开支表明AI算力建设已成为集团最重要的资金使用方向之一。微软需要证明新增GPU、数据中心和能源投入能够转化为可持续的云收入及自由现金流。<a class="reference" href="https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast" target="_blank">[9]</a>
+   </p>
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 5 -->
+<section id="employee" class="section-anchor py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">五、员工持股与激励机制：以长期股权激励连接人才和股东</h2>
+  <div class="space-y-6">
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软的员工激励体系以限制性股票、绩效股票、员工购股计划和现金绩效奖金为核心。与海底捞的师徒制、门店虚拟分红不同，微软主要通过资本市场工具让员工分享长期股价与经营成果。研发人员、核心管理人员和关键技术人才是股权激励的重要受益群体。
+   </p>
+
+   <div class="grid md:grid-cols-2 gap-6">
+    <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+     <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">核心管理层与关键人才</h3>
+     <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+      <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>限制性股票奖励（RSU）</li>
+      <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>绩效股票奖励（PSU/PSA）</li>
+      <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>与长期业绩和股东回报挂钩</li>
+      <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-primary-500 flex-shrink-0"></i>通过多年归属周期鼓励人才留任</li>
+     </ul>
+    </div>
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+     <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">普通员工与长期储备人才</h3>
+     <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+      <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-accent-500 flex-shrink-0"></i>符合资格员工参与员工购股计划（ESPP）</li>
+      <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-accent-500 flex-shrink-0"></i>股票奖励与长期服务年限绑定</li>
+      <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-accent-500 flex-shrink-0"></i>年度绩效评估与现金奖励</li>
+      <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-accent-500 flex-shrink-0"></i>职业培训、内部转岗与技术人才发展</li>
+     </ul>
+    </div>
+   </div>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">5.1 股权激励工具</h3>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>激励工具</th><th>对象</th><th>归属周期</th><th>主要作用</th></tr></thead>
+     <tbody>
+      <tr><td>RSU限制性股票单位</td><td>员工及高管</td><td>一般4年，部分计划为5年</td><td>将员工长期服务与股东价值联系起来</td></tr>
+      <tr><td>PSU/PSA绩效股票</td><td>高管及部分高级管理人员</td><td>通常3年绩效周期</td><td>以预设业绩目标决定最终归属数量</td></tr>
+      <tr><td>ESPP员工购股计划</td><td>符合资格的员工</td><td>按照购股计划周期</td><td>鼓励员工持有公司股票，分享公司成长</td></tr>
+      <tr><td>现金年度激励</td><td>高管及关键员工</td><td>年度</td><td>兼顾短期经营目标和个人贡献</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-sm text-gray-600 dark:text-gray-400">微软年报披露，股票奖励通常在4年或5年服务期内归属；高管RSU通常4年归属，PSU通常采用3年绩效周期。公司通过发行新股满足部分股票奖励归属，并设有面向符合资格员工的ESPP。<a class="reference" href="https://www.microsoft.com/investor/reports/ar26/index.html" target="_blank">[8]</a></p>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">5.2 股权激励成本与稀释效应</h3>
+   <div class="grid md:grid-cols-3 gap-5">
+    <div class="card-interactive p-5 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+     <p class="text-xs text-gray-500">FY2026股权激励费用</p>
+     <p class="text-2xl font-bold text-primary-700 dark:text-primary-300 mt-2">$124.05亿</p>
+     <p class="text-xs text-gray-500 mt-2">同比约 +3.60%</p>
+    </div>
+    <div class="card-interactive p-5 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+     <p class="text-xs text-gray-500">FY2025股权激励费用</p>
+     <p class="text-2xl font-bold text-accent-700 dark:text-accent-300 mt-2">$119.74亿</p>
+     <p class="text-xs text-gray-500 mt-2">上一财年</p>
+    </div>
+    <div class="card-interactive p-5 bg-white dark:bg-gray-800 rounded-xl shadow-md">
+     <p class="text-xs text-gray-500">FY2024股权激励费用</p>
+     <p class="text-2xl font-bold text-primary-700 dark:text-primary-300 mt-2">$107.34亿</p>
+     <p class="text-xs text-gray-500 mt-2">持续增加</p>
+    </div>
+   </div>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    FY2026股票薪酬费用为124.05亿美元，约占当年收入的3.74%。股权激励费用并非全部以当期现金支付，但其经济成本不能忽略：新股发行会稀释现有股东持股比例，回购则可以部分抵消这种稀释。FY2026微软发行约2,900万股、回购约3,600万股，最终总股本略有下降。
+   </p>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">5.3 高管薪酬：绩效导向与长期股权绑定</h3>
+   <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    微软2026年代理声明显示，纳德拉FY2026年度总薪酬约9,062.90万美元，其中基本工资250万美元、股票奖励约7,757.08万美元、年度现金激励约1,029.90万美元，其他薪酬约25.92万美元。股票奖励是其薪酬的主要组成部分。
+   </p>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>纳德拉FY2026薪酬项目</th><th>金额</th><th>结构说明</th></tr></thead>
+     <tbody>
+      <tr><td>基本工资</td><td>250.00万美元</td><td>固定薪酬</td></tr>
+      <tr><td>股票奖励</td><td>7,757.08万美元</td><td>长期股权激励</td></tr>
+      <tr><td>年度现金激励</td><td>1,029.90万美元</td><td>年度财务与运营绩效</td></tr>
+      <tr><td>其他薪酬</td><td>25.92万美元</td><td>其他披露项目</td></tr>
+      <tr><td><strong>总薪酬</strong></td><td><strong>9,062.90万美元</strong></td><td>SEC薪酬披露口径</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-xs text-gray-500">来源：[6] 2026 Proxy Statement，Summary Compensation Table。</p>
+
+   <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl">
+    <h4 class="font-semibold text-primary-700 dark:text-primary-300 mb-3">纳德拉绩效薪酬机制</h4>
+    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+     <li>• 年度目标薪酬机会中，超过95%与绩效挂钩。</li>
+     <li>• FY2026目标绩效股票奖励金额为5,000万美元，连续多年保持该目标水平。</li>
+     <li>• 年度现金激励中，70%与财务表现挂钩，30%与运营表现挂钩。</li>
+     <li>• FY2026财务绩效部分的实际支付率为目标的129.03%，运营绩效部分为156.67%。</li>
+     <li>• CEO年度目标股权激励全部以绩效股票形式交付，其他部分Named Executives的相应比例为50%。</li>
+    </ul>
+   </div>
+
+   <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300">5.4 员工权益保障与薪酬治理</h3>
+   <div class="table-wrap">
+    <table>
+     <thead><tr><th>治理制度</th><th>具体安排</th><th>治理目的</th></tr></thead>
+     <tbody>
+      <tr><td>股票长期归属</td><td>4—5年服务归属机制</td><td>提高员工留任率</td></tr>
+      <tr><td>绩效股票</td><td>3年绩效考核周期</td><td>避免单纯追求短期收入</td></tr>
+      <tr><td>高管持股要求</td><td>CEO持股要求为基本工资的15倍</td><td>强化股东利益一致性</td></tr>
+      <tr><td>薪酬追回制度</td><td>财务重述或不当行为时可追回激励</td><td>强化管理责任</td></tr>
+      <tr><td>禁止对冲及质押</td><td>限制高管对冲、质押和衍生品交易</td><td>降低利益冲突</td></tr>
+      <tr><td>年度Say-on-Pay</td><td>股东对高管薪酬进行咨询性投票</td><td>增强股东监督</td></tr>
+     </tbody>
+    </table>
+   </div>
+   <p class="text-sm text-gray-600 dark:text-gray-400">2026年代理声明显示，微软2025年股东大会上，超过91%的投票支持公司高管薪酬方案。2026财年公司还与代表约50%流通股的股东开展沟通。<a class="reference" href="https://www.sec.gov/Archives/edgar/data/789019/000119312526427849/d61756ddef14a.htm" target="_blank">[6]</a></p>
+
+   <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+    <p class="text-sm text-accent-900 dark:text-accent-100">
+     <strong>值得关注的分配问题：</strong>2026财年CEO年度总薪酬约9,062.90万美元，而公司非CEO员工年度薪酬中位数为215,057美元，薪酬比率约421:1。这反映了大型科技公司核心管理层薪酬与普通员工薪酬之间的显著差距。该比率是监管披露口径，不等于公司所有员工的平均收入差距。
+    </p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- SECTION 6 -->
+<section id="summary" class="section-anchor py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">六、综合研判与关键结论</h2>
+  <div class="space-y-6">
+
+   <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4">
+     <i data-lucide="network" class="w-6 h-6 text-accent-600"></i>
+     <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">1. 组织与战略：从软件公司进化为AI基础设施与智能体平台</h3>
+    </div>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+     微软的组织形态已经从传统Windows与Office产品矩阵，逐渐演变为以云基础设施、企业软件、AI模型、开发者生态和智能体服务为核心的平台型集团。2026年将Agents and Infra纳入新的报告分部，体现出公司正在把AI应用、模型和基础设施作为同一商业体系经营。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+     这种组织方式有利于打通从底层算力到上层Copilot应用的价值链，但也提高了跨部门协调、算力供给、资本投入和产品商业化的管理难度。
+    </p>
+   </div>
+
+   <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4">
+     <i data-lucide="chart-no-axes-combined" class="w-6 h-6 text-accent-600"></i>
+     <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">2. 财务表现：高速增长，但AI投入正在改变利润结构</h3>
+    </div>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+     FY2026微软实现营业收入3,318.39亿美元，同比增长18%；营业利润1,552.37亿美元，同比增长21%；净利润1,337.49亿美元，同比增长31%。整体仍保持强劲盈利能力。FY2027第一季度营业收入继续增长19%，Microsoft Cloud收入同比增长30%，Azure收入增长48%。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+     但AI业务并非没有成本。FY2026营业成本增长21%，高于收入增长18%；微软云毛利率降至66%，主要受到AI基础设施建设和AI产品使用量增长的影响。FY2027 Q1资本开支达到452亿美元，季度自由现金流为186亿美元。
+    </p>
+    <div class="table-wrap">
+     <table>
+      <thead><tr><th>关键指标</th><th>FY2026</th><th>FY2027 Q1</th><th>研究判断</th></tr></thead>
+      <tbody>
+       <tr><td>营业收入</td><td>3,318.39亿美元</td><td>922.79亿美元</td><td>保持增长</td></tr>
+       <tr><td>净利润</td><td>1,337.49亿美元</td><td>366.29亿美元</td><td>盈利能力强</td></tr>
+       <tr><td>云业务增长</td><td>智能云+30%</td><td>Microsoft Cloud +30%</td><td>核心增长引擎</td></tr>
+       <tr><td>AI资本开支</td><td>持续扩大</td><td>452亿美元</td><td>资金投入压力上升</td></tr>
+       <tr><td>自由现金流</td><td>全年约强劲水平</td><td>186亿美元</td><td>关注投资回报周期</td></tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+
+   <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4">
+     <i data-lucide="shield-check" class="w-6 h-6 text-accent-600"></i>
+     <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">3. 股权与公司治理：结构稳定，缺乏单一控制人风险</h3>
+    </div>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+     微软拥有分散的公众股东结构，Vanguard和BlackRock是重要机构股东，但均不构成单一控股股东。纳德拉兼任董事长和CEO，首席独立董事承担独立监督职责。股权激励、年度薪酬投票、薪酬追回政策和高管持股要求共同形成了相对成熟的治理体系。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
+     需要注意的是，董事长兼CEO的权力集中会提高首席独立董事和董事会监督机制的重要性。微软治理质量的关键，不在于创始人控制权是否稳定，而在于董事会能否有效监督职业经理人并管理长期战略风险。
+    </p>
+   </div>
+
+   <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4">
+     <i data-lucide="workflow" class="w-6 h-6 text-accent-600"></i>
+     <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">4. 关联企业：OpenAI协同是增长机会，也是集中风险</h3>
+    </div>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+     LinkedIn、GitHub、Xbox和Nuance等业务形成了微软内部的生态协同。OpenAI则是微软最重要的外部AI战略合作伙伴之一。FY2026微软来自OpenAI商业安排的收入达到241亿美元，显示双方合作已经具有重大商业规模。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+     然而，投资、云供应、商业收入和应收账款同时集中于同一合作伙伴，也提高了交易对手风险。未来应持续跟踪OpenAI的融资能力、客户需求、云资源使用、收入分成以及双方合作边界的变化。
+    </p>
+   </div>
+
+   <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="flex items-center gap-3 mb-4">
+     <i data-lucide="award" class="w-6 h-6 text-accent-600"></i>
+     <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">5. 员工激励：长期股权机制强化人才绑定，但稀释成本不能忽略</h3>
+    </div>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+     微软采用RSU、PSU、ESPP和现金绩效奖金组合，使核心人才与普通员工均有机会分享公司发展成果。高管薪酬中长期股票奖励占比较高，有助于将管理层决策与股东长期价值联系起来。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+     但FY2026股票薪酬费用达到124.05亿美元，CEO与员工薪酬中位数比率约421:1。高额股权激励在留住AI人才方面具有必要性，但也需要持续评估人才回报、员工公平感和股东稀释之间的平衡。
+    </p>
+   </div>
+
+   <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">6. 未来需要重点跟踪的六项风险</h3>
+    <div class="space-y-4">
+     <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+      <p class="text-sm font-semibold text-accent-900 dark:text-accent-100">AI资本开支回报率</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">数据中心、GPU、网络和电力投入持续扩大。如果AI商业收入增长无法跟上折旧、能源和运维成本，云业务毛利率可能继续承压。</p>
+     </div>
+     <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+      <p class="text-sm font-semibold text-primary-900 dark:text-primary-100">OpenAI合作集中风险</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">投资收益、云收入及应收账款与OpenAI关联。合作协议变化、对手方融资和技术路线调整可能影响微软的收益与资产价值。</p>
+     </div>
+     <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+      <p class="text-sm font-semibold text-accent-900 dark:text-accent-100">AI商业化兑现风险</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">Copilot和智能体需要从试用、企业部署转化为持续付费和客户生产率提升。技术领先并不必然意味着利润同步增长。</p>
+     </div>
+     <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+      <p class="text-sm font-semibold text-primary-900 dark:text-primary-100">监管与反垄断风险</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">AI模型、云服务、操作系统、办公软件及收购业务均可能面临美国、欧盟及其他市场的竞争监管和数据合规审查。</p>
+     </div>
+     <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+      <p class="text-sm font-semibold text-accent-900 dark:text-accent-100">组织执行与人才竞争</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">AI业务重组需要协调基础设施、模型、应用和商业销售团队。组织边界不清或核心人才流失可能降低创新和执行效率。</p>
+     </div>
+     <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+      <p class="text-sm font-semibold text-primary-900 dark:text-primary-100">股权激励与薪酬公平</p>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mt-1">高额股票薪酬有助于争夺AI人才，但持续发行新股会稀释股东权益，回购对冲又会消耗现金，需要综合考量资本效率。</p>
+     </div>
+    </div>
+   </div>
+
+   <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300">7. 微软核心护城河综合评价</h3>
+   <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+    <div class="space-y-5">
+     <div><div class="flex justify-between text-sm mb-2"><span>企业客户与软件生态</span><strong>96/100</strong></div><div class="moat-bar"><span style="width:96%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>云计算基础设施</span><strong>94/100</strong></div><div class="moat-bar"><span style="width:94%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>开发者与技术生态</span><strong>93/100</strong></div><div class="moat-bar"><span style="width:93%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>AI商业化潜力</span><strong>91/100</strong></div><div class="moat-bar"><span style="width:91%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>品牌与渠道能力</span><strong>95/100</strong></div><div class="moat-bar"><span style="width:95%"></span></div></div>
+     <div><div class="flex justify-between text-sm mb-2"><span>资本配置灵活性</span><strong>89/100</strong></div><div class="moat-bar"><span style="width:89%"></span></div></div>
+    </div>
+    <p class="text-xs text-gray-500 mt-5">上述分数为研究者定性评估，不代表市场机构评级、财务模型估值或投资收益预测。</p>
+   </div>
+
+   <div class="mt-8 pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-base font-semibold text-primary-900 dark:text-primary-100 leading-relaxed">
+     <i data-lucide="trending-up" class="inline-block w-5 h-5 mr-1 -mt-1"></i>
+     一句话总结：微软已经从创始人驱动的软件公司，进化为由职业经理人治理、机构投资者持股、企业云与AI基础设施驱动的全球科技平台。它的核心优势是软件生态、云基础设施和企业客户关系，而未来估值能否继续提升，最终取决于AI巨额资本投入能否持续转化为高质量收入、自由现金流和股东回报。
+    </p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- SOURCES -->
+<section id="sources" class="py-16 bg-white dark:bg-gray-900" data-aos="fade-up">
+ <div class="max-w-5xl mx-auto px-6">
+  <h2 class="text-2xl font-bold text-primary-700 dark:text-primary-300 mb-6">研究来源与数据核验</h2>
+  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+   本报告优先使用微软官方年报、SEC法定申报、投资者关系资料及最新季度业绩公告。市场价格和市值采用2026年11月20日最近完整交易日数据。不同财年、季度及披露基准日的数据已分别标示，避免将不同时间口径混用。
+  </p>
+  <div class="space-y-4 text-sm">
+   <div class="source-item">
+    <strong>[1] Microsoft FY2026 Form 10-K</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">2026年6月30日财年年报：管理层、业务分部、财务报表、股票薪酬、回购及关联方披露。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm" target="_blank">SEC官方原始文件</a>
+   </div>
+   <div class="source-item">
+    <strong>[2] Microsoft FY2026 Results</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">FY2026收入、营业利润、净利润及非GAAP调整数据。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/msft-ex99_1.htm" target="_blank">SEC业绩公告</a>
+   </div>
+   <div class="source-item">
+    <strong>[3] Microsoft FY2027 Q1 Form 10-Q</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">截至2026年9月30日季度申报，股本数量、财务报表、OpenAI关系、回购及风险因素。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm" target="_blank">SEC官方原始文件</a>
+   </div>
+   <div class="source-item">
+    <strong>[4] Microsoft FY2027 Q1 Investor Metrics</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">云业务、商业剩余履约义务及增长指标。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/metrics" target="_blank">微软投资者关系</a>
+   </div>
+   <div class="source-item">
+    <strong>[5] Microsoft Executive Officers</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">微软官方高管及董事会资料。</p>
+    <a class="text-sky-600 hover:underline" href="https://news.microsoft.com/Leadership/" target="_blank">微软领导层资料</a>
+   </div>
+   <div class="source-item">
+    <strong>[6] Microsoft 2026 Proxy Statement – DEF 14A</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">2026年代理声明：股东持股、董事会治理、薪酬、股票奖励、CEO薪酬及股东投票。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.sec.gov/Archives/edgar/data/789019/000119312526427849/d61756ddef14a.htm" target="_blank">SEC官方原始文件</a>
+   </div>
+   <div class="source-item">
+    <strong>[7] Microsoft Investor Relations – Stock Splits</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">1986年上市以来的九次拆股历史。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.microsoft.com/en-us/investor/faq" target="_blank">微软投资者关系FAQ</a>
+   </div>
+   <div class="source-item">
+    <strong>[8] Microsoft Annual Report 2026</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">FY2026完整年报：业务分部收入、营业利润、股票薪酬、回购和股息。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.microsoft.com/investor/reports/ar26/" target="_blank">微软官方年报</a>
+   </div>
+   <div class="source-item">
+    <strong>[9] Microsoft FY2027 Q1 Earnings Release</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">2026年10月28日公布的季度业绩公告。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast" target="_blank">微软官方季度业绩</a>
+   </div>
+   <div class="source-item">
+    <strong>[10] Microsoft FY2027 Q1 Earnings Conference Call</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">资本开支、经营现金流、自由现金流及管理层经营讨论。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1" target="_blank">微软官方业绩电话会</a>
+   </div>
+   <div class="source-item">
+    <strong>[11] Microsoft Historical Stock Price</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">2026年11月20日MSFT收盘价484.52美元。</p>
+    <a class="text-sky-600 hover:underline" href="https://stockanalysis.com/stocks/msft/history/" target="_blank">历史价格数据</a>
+   </div>
+   <div class="source-item">
+    <strong>[12] Microsoft Market Capitalization</strong>
+    <p class="text-gray-600 dark:text-gray-400 mt-1">2026年11月20日市值约3.60万亿美元。</p>
+    <a class="text-sky-600 hover:underline" href="https://www.financecharts.com/stocks/MSFT/summary/market-cap" target="_blank">市值数据</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+ <div class="max-w-5xl mx-auto px-6">
+  <div class="grid md:grid-cols-3 gap-8">
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">关于本页面</h3>
+    <p class="text-sm text-gray-400 leading-relaxed">
+     本页围绕Microsoft Corporation（NASDAQ: MSFT）构建公司治理与资本结构研究框架，梳理创始人发展、核心管理层、股本变化、主要股东、关联企业、战略投资和员工股权激励机制。
+    </p>
+   </div>
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">研究范围</h3>
+    <ul class="space-y-2 text-sm text-gray-400">
+     <li>• 创始人及核心管理层</li>
+     <li>• IPO、股票拆分及回购</li>
+     <li>• 机构股东与控制权</li>
+     <li>• 子公司及OpenAI战略关系</li>
+     <li>• 股权激励与高管薪酬</li>
+     <li>• AI投资回报与治理风险</li>
+    </ul>
+   </div>
+   <div>
+    <h3 class="text-lg font-semibold text-primary-300 mb-4">免责声明</h3>
+    <p class="text-sm text-gray-400 leading-relaxed">
+     本页面仅供教育、研究及信息参考，不构成证券投资建议、买卖邀约或收益保证。历史业绩不代表未来表现。市场价格、持股比例及财务数据可能随披露和交易发生变化。投资者应以公司最新公告、SEC文件及正式监管披露为准。
+    </p>
+   </div>
+  </div>
+  <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+   <p>© 2026 Microsoft Corporation System Research · 微软体系全景解析</p>
+   <p class="mt-2">研究基准日：2026年11月23日 · 数据截至最新可核验公开披露</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.refresh();
+});
+</script>
+
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

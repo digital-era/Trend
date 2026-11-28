@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>苹果（AAPL）最新动态全景追踪 · 截至 2026-11-23</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: 'hsl(20, 90%, 95%)', 100: 'hsl(20, 90%, 85%)', 200: 'hsl(20, 90%, 75%)',
+          300: 'hsl(20, 90%, 65%)', 400: 'hsl(20, 90%, 55%)', 500: 'hsl(20, 90%, 50%)',
+          600: 'hsl(20, 90%, 45%)', 700: 'hsl(20, 90%, 35%)', 800: 'hsl(20, 90%, 25%)', 900: 'hsl(20, 90%, 15%)', 950: 'hsl(20, 90%, 10%)'
+        },
+        accent: {
+          50: 'hsl(30, 85%, 95%)', 100: 'hsl(30, 85%, 85%)', 200: 'hsl(30, 85%, 75%)',
+          300: 'hsl(30, 85%, 65%)', 400: 'hsl(30, 85%, 60%)', 500: 'hsl(30, 85%, 55%)',
+          600: 'hsl(30, 85%, 50%)', 700: 'hsl(30, 85%, 40%)', 800: 'hsl(30, 85%, 30%)', 900: 'hsl(30, 85%, 20%)', 950: 'hsl(30, 85%, 10%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+section[id], article[id], div[id^="card-"] { scroll-margin-top: 84px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}
+.btn-interactive { transition: all 0.2s ease-out; }
+.btn-interactive:hover { transform: scale(1.05); }
+.btn-interactive:active { transform: scale(0.95); }
+.card-interactive { transition: all 0.28s ease-out; }
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.14);
+}
+.dark .card-interactive:hover {
+  box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.48);
+}
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 0.75rem 0.85rem; border-bottom: 1px solid hsl(0, 0%, 90%); }
+.dark th, .dark td { border-bottom-color: rgba(255, 255, 255, 0.08); }
+.impact-bar { height: 8px; border-radius: 999px; background: hsl(0, 0%, 90%); overflow: hidden; }
+.dark .impact-bar { background: rgba(255, 255, 255, 0.12); }
+.impact-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#mobileMenu { display: none; }
+@media (min-width: 768px) { #mobileMenu { display: none !important; } }
+@media (max-width: 767px) { #mobileMenu.mobile-menu-open { display: block !important; } }
+</style>
+<script>
+(function initTheme() {
+  const inIframe = window.self !== window.top;
+  if (inIframe || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+
+function syncThemeIcons() {
+  const isDark = document.documentElement.classList.contains('dark');
+  const sun = document.getElementById('sunIcon');
+  const moon = document.getElementById('moonIcon');
+  if (sun) sun.style.display = isDark ? 'block' : 'none';
+  if (moon) moon.style.display = isDark ? 'none' : 'block';
+}
+
+function toggleDarkMode() {
+  document.documentElement.classList.toggle('dark');
+  syncThemeIcons();
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur-md bg-white/90 dark:bg-[#111827]/90 border-b border-primary-500/20 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+        <h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">苹果 · 最新动态</h1>
+      </div>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+        <a href="#company" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">公司Top3</a>
+        <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业Top3</a>
+        <a href="#macro" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">宏观政策Top3</a>
+        <a href="#matrix" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">催化矩阵</a>
+      </nav>
+      <div class="flex items-center space-x-2">
+        <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300 border border-transparent dark:border-gray-700" aria-label="菜单">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+        <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300 border border-transparent dark:border-gray-700" aria-label="切换暗色模式">
+          <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-4 h-4" style="display:block"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800 max-h-[calc(100vh-80px)] overflow-y-auto">
+      <nav class="flex flex-col space-y-2.5">
+        <a href="#overview" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">总览</a>
+        <a href="#company" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">公司Top3</a>
+        <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">行业Top3</a>
+        <a href="#macro" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">宏观政策Top3</a>
+        <a href="#matrix" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">催化矩阵</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-16">
+
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+  <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+    <div class="flex flex-wrap items-center gap-2.5 mb-4">
+      <span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-semibold font-mono">AAPL.US</span>
+      <span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300 text-xs font-semibold">消费电子 · 智能手机/服务</span>
+      <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-semibold flex items-center gap-1 border border-transparent dark:border-gray-700">
+        <i data-lucide="calendar" class="w-3 h-3"></i> 近30日 · 截至 2026-11-23
+      </span>
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">苹果公司（Apple Inc.）</h2>
+    <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed mb-6 max-w-4xl">
+      近30日消息面呈<strong class="text-primary-600 dark:text-primary-400">“业绩超预期、新品催化与存储成本压制并存”</strong>格局。新CEO John Ternus首份财报（Q4 FY2026）营收/EPS双双破纪录，iPhone Duo需求超预期；但AI驱动的DRAM/NAND价格飙升已明确压制12月季度毛利率指引至45%—46%。强劲产品周期与结构性成本压力的角力，决定短期估值弹性。
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+      <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700/80">
+        <div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">Q4 FY2026 营收</div>
+        <div class="text-lg sm:text-xl font-bold font-mono text-gray-900 dark:text-white">114.5亿 <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">+12%</span></div>
+      </div>
+      <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700/80">
+        <div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">Q4 稀释EPS</div>
+        <div class="text-lg sm:text-xl font-bold font-mono text-primary-600 dark:text-primary-400">$2.10 <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">+14%</span></div>
+      </div>
+      <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700/80">
+        <div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">Q4 毛利率</div>
+        <div class="text-lg sm:text-xl font-bold font-mono text-amber-600 dark:text-amber-400">47.9% <span class="text-xs font-normal text-gray-500 dark:text-gray-400">含关税退税</span></div>
+      </div>
+      <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700/80">
+        <div class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">FY2026全年营收</div>
+        <div class="text-lg sm:text-xl font-bold font-mono text-cyan-600 dark:text-cyan-400">478.8亿 <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">+15%</span></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+        <div class="flex items-center gap-2 mb-2.5">
+          <i data-lucide="gauge" class="w-4 h-4 text-primary-500"></i>
+          <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">消息面总体基调</span>
+        </div>
+        <p class="text-xl font-bold text-primary-600 dark:text-primary-300">中性偏多</p>
+        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1.5 leading-relaxed">新品与业绩提供支撑，但存储成本与毛利率指引回落约束上行空间</p>
+      </div>
+      <div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+        <div class="flex items-center gap-2 mb-2.5">
+          <i data-lucide="zap" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-wide">本月最强单一催化剂</span>
+        </div>
+        <p class="text-sm font-bold text-emerald-800 dark:text-emerald-200 leading-snug">Q4营收/EPS双双破纪录，iPhone收入达9月季度纪录，Services创历史新高，新CEO首份财报超预期</p>
+        <p class="text-xs text-emerald-700/70 dark:text-emerald-400/80 mt-2">2026-11-02 苹果官方财报 / 业绩电话会</p>
+      </div>
+      <div class="bg-rose-50/70 dark:bg-rose-950/30 rounded-xl p-5 border border-rose-200 dark:border-rose-800/60 card-interactive">
+        <div class="flex items-center gap-2 mb-2.5">
+          <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-500"></i>
+          <span class="text-xs font-semibold text-rose-700 dark:text-rose-300 uppercase tracking-wide">本月最需警惕信号</span>
+        </div>
+        <p class="text-sm font-bold text-rose-800 dark:text-rose-200 leading-snug">CEO明确称存储定价“前所未有”，采购义务环比+330亿美元，12月季度毛利率指引降至45%—46%</p>
+        <p class="text-xs text-rose-700/70 dark:text-rose-400/80 mt-2">2026-11-02 业绩电话会 / TechInsights 等</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+      <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+  </div>
+
+  <article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <div class="flex flex-wrap items-center gap-2.5">
+        <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+        <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-02</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大利好</span>
+      </div>
+      <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.5 / 10</span>
+    </div>
+    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Q4 FY2026营收114.5亿美元、EPS 2.10美元双双破纪录，新CEO Ternus首份财报超预期</h3>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4 text-xs">
+      <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg px-3 py-2 border border-gray-100 dark:border-gray-700/70">
+        <span class="text-gray-500 dark:text-gray-400 block">iPhone收入</span>
+        <span class="font-bold font-mono text-sm text-emerald-600 dark:text-emerald-400">575.8亿 (+17.5%)</span>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg px-3 py-2 border border-gray-100 dark:border-gray-700/70">
+        <span class="text-gray-500 dark:text-gray-400 block">Services收入</span>
+        <span class="font-bold font-mono text-sm text-gray-900 dark:text-white">315.7亿（历史新高）</span>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg px-3 py-2 border border-gray-100 dark:border-gray-700/70">
+        <span class="text-gray-500 dark:text-gray-400 block">Mac收入</span>
+        <span class="font-bold font-mono text-sm text-primary-600 dark:text-primary-400">107.9亿 (+24%)</span>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800/80 rounded-lg px-3 py-2 border border-gray-100 dark:border-gray-700/70">
+        <span class="text-gray-500 dark:text-gray-400 block">FY2026全年净利</span>
+        <span class="font-bold font-mono text-sm text-gray-700 dark:text-gray-300">1322亿 (+18%)</span>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      苹果于2026年11月2日公布截至9月26日的第四财季结果：营收<strong>1145亿美元</strong>（同比+12%），稀释EPS <strong>2.10美元</strong>（同比+14%），均创9月季度纪录；Services达历史新高。全年营收4788亿美元、净利润1322亿美元亦创纪录。新任CEO John Ternus（9月1日接任）首份财报，毛利率47.9%（含约1个百分点关税退税贡献，EPS中约0.05美元来自退税）。信源：苹果官方新闻稿及10-Q。
+    </p>
+
+    <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700/60">
+      <div class="flex items-start gap-2.5">
+        <i data-lucide="trending-up" class="w-4 h-4 text-primary-500 mt-0.5 shrink-0"></i>
+        <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+          <strong>影响深度：</strong>产品组合（iPhone Duo + 18 Pro系列）与高毛利Services双轮驱动验证需求韧性；但公司已明确指引12月季度毛利率回落至45%—46%，主因存储成本，经营杠杆释放空间被成本端对冲。
+        </p>
+      </div>
+    </div>
+    <div class="impact-bar"><div class="impact-fill" style="width: 95%;"></div></div>
+  </article>
+
+  <article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive" data-aos="fade-up" data-aos-delay="80">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <div class="flex flex-wrap items-center gap-2.5">
+        <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+        <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-10-23</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">温和利好（需求验证）</span>
+      </div>
+      <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.5 / 10</span>
+    </div>
+    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">iPhone Duo（折叠屏）正式开售，预购热潮推动12个月出货目标上修至1400万台</h3>
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      2026年10月23日iPhone Duo（起售价1999美元）正式到店。DigiTimes等供应链消息称，苹果将12个月出货目标从约970万台上修至<strong>1400万台</strong>（+44%），预购迅速售罄，部分交付延期至2027年。业绩电话会上Ternus亦确认供给紧张。信源：DigiTimes、苹果官方、多家财经媒体。
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+      <div class="bg-emerald-50/60 dark:bg-emerald-950/25 rounded-xl p-3.5 border border-emerald-200/70 dark:border-emerald-800/40">
+        <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-1 flex items-center gap-1"><i data-lucide="plus-circle" class="w-3.5 h-3.5"></i> 正面传导（ASP + 产品周期）</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">高价位折叠新品验证定价权与差异化能力，贡献高ASP收入并强化“最强iPhone”叙事，支撑短期情绪与份额。</p>
+      </div>
+      <div class="bg-amber-50/60 dark:bg-amber-950/25 rounded-xl p-3.5 border border-amber-200/70 dark:border-amber-800/40">
+        <div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-1 flex items-center gap-1"><i data-lucide="minus-circle" class="w-3.5 h-3.5"></i> 潜在约束（供给与体验）</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">供应受限可能推迟收入确认；早期有显示相关退货反馈，软件/应用适配仍需时间，影响出货爬坡斜率。</p>
+      </div>
+    </div>
+    <div class="impact-bar"><div class="impact-fill" style="width: 85%;"></div></div>
+  </article>
+
+  <article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 card-interactive" data-aos="fade-up" data-aos-delay="120">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <div class="flex flex-wrap items-center gap-2.5">
+        <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+        <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-10-13 / 11-13</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300 text-xs font-bold">中性偏多（新品类别）</span>
+      </div>
+      <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.0 / 10</span>
+    </div>
+    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">HomeView智能家居中枢发布并上市（299美元），切入智能家居新赛道</h3>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      10月13日苹果发布HomeView（7英寸Liquid Retina显示、Siri AI、面部识别、HomeKit中枢），10月13日开启预购，11月13日正式上市，价格299美元。同步推出与LG、Schneider合作的Apple Home Collection配件。欧盟因Siri AI监管暂不上市。信源：苹果官方新闻稿。
+    </p>
+    <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4 border border-gray-100 dark:border-gray-700/60">
+      <div class="flex items-start gap-2.5">
+        <i data-lucide="scale" class="w-4 h-4 text-primary-500 mt-0.5 shrink-0"></i>
+        <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+          <strong>影响深度：</strong>拓展硬件入口与服务粘性，长期有利于Services与生态闭环；短期收入贡献有限，且面临Amazon/Google竞争，欧盟缺席亦限制全球规模。
+        </p>
+      </div>
+    </div>
+    <div class="impact-bar"><div class="impact-fill" style="width: 70%;"></div></div>
+  </article>
+</section>
+
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+  <div class="flex items-center gap-3 mb-2">
+    <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+      <i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+  </div>
+  <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6 pl-13">细分赛道界定：<strong>智能手机（含折叠屏）+ 消费电子存储（DRAM/NAND）+ 智能家居硬件</strong>。</p>
+
+  <div class="space-y-5 mb-8">
+    <div id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex flex-wrap items-center gap-2.5 mb-3">
+        <span class="px-2.5 py-0.5 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+        <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-02 / 11-17</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">结构性承压</span>
+      </div>
+      <h3 class="font-bold text-gray-900 dark:text-white mb-2">AI数据中心抢夺存储产能，DRAM/NAND价格飙升，苹果采购义务环比大增330亿美元</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+        苹果CEO在11月2日电话会上称内存定价“前所未有”，制造采购义务从6月到9月增加<strong>330亿美元</strong>。TechInsights等显示LPDDR5/NAND价格自年中持续上行；TrendForce指出内存已占Pro机BOM约34%。11月17日韩媒报道苹果接近与三星签署4—5年长期DRAM协议（自2027年起）。信源：苹果业绩会、TechInsights、Maeil Business Newspaper。
+      </p>
+      <div class="bg-accent-50/70 dark:bg-accent-900/30 rounded-lg p-3.5 border border-accent-200/70 dark:border-accent-700/40">
+        <p class="text-xs text-accent-900 dark:text-gray-200 leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">横向映射：</strong>直接冲击苹果毛利率与成本结构，公司已下调12月季度指引；长期协议锁定供应但价格随行就市，无法完全对冲涨价。行业贝塔偏空，苹果作为最大买方议价力仍存但边际减弱。</p>
+      </div>
+    </div>
+
+    <div id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex flex-wrap items-center gap-2.5 mb-3">
+        <span class="px-2.5 py-0.5 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+        <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-10-23起</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">结构性利好</span>
+      </div>
+      <h3 class="font-bold text-gray-900 dark:text-white mb-2">折叠屏赛道迎来苹果入局，Duo需求超预期，推动高端机ASP与份额预期上修</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+        苹果首款折叠iPhone正式销售，供应链上修目标；Counterpoint等此前数据显示iPhone 17系列首年批发收入已超1700亿美元。折叠形态差异化有望巩固高端份额。信源：DigiTimes、Counterpoint、苹果。
+      </p>
+      <div class="bg-accent-50/70 dark:bg-accent-900/30 rounded-lg p-3.5 border border-accent-200/70 dark:border-accent-700/40">
+        <p class="text-xs text-accent-900 dark:text-gray-200 leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">横向映射：</strong>苹果凭借生态与品牌溢价抢占折叠高端，利好自身ASP与产品周期；对三星等先行者形成直接竞争，行业整体高端化趋势对苹果净利好。</p>
+      </div>
+    </div>
+
+    <div id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex flex-wrap items-center gap-2.5 mb-3">
+        <span class="px-2.5 py-0.5 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+        <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-18</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏多</span>
+      </div>
+      <h3 class="font-bold text-gray-900 dark:text-white mb-2">摩根士丹利预计2027年iPhone出货约2.7亿部，全球份额有望达26%</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+        11月18日相关报道援引摩根士丹利观点，预期2027年iPhone出货同比增长约7%至约2.7亿部，全球份额有望升至26%；部分因标准版iPhone 18延至2027年春季导致需求跨年。信源：AppleInsider等。
+      </p>
+      <div class="bg-accent-50/70 dark:bg-accent-900/30 rounded-lg p-3.5 border border-accent-200/70 dark:border-accent-700/40">
+        <p class="text-xs text-accent-900 dark:text-gray-200 leading-relaxed"><strong class="text-accent-700 dark:text-accent-300">横向映射：</strong>支持中长期出货与份额叙事，但短期（2026Q4—2027Q1）标准机型空窗可能平滑收入节奏，需关注换机周期兑现。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+    <h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 text-sm sm:text-base"><i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i> 行业动态对标影响对比表</h3>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm">
+        <thead>
+          <tr class="bg-gray-50 dark:bg-gray-800/80">
+            <th class="font-semibold text-gray-700 dark:text-gray-300">行业事件</th>
+            <th class="font-semibold text-gray-700 dark:text-gray-300">涉及主体</th>
+            <th class="font-semibold text-gray-700 dark:text-gray-300">对苹果利弊传导</th>
+            <th class="font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">影响周期</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 dark:text-gray-300">
+          <tr>
+            <td class="font-medium text-gray-900 dark:text-gray-100">AI驱动存储涨价与供应紧张</td>
+            <td>三星/SK海力士/美光 + 超大规模云厂商</td>
+            <td><span class="text-rose-600 dark:text-rose-400 font-semibold">偏空。</span>直接抬升BOM，压制毛利率；长期协议仅锁定量而非价。</td>
+            <td class="whitespace-nowrap font-mono">2026Q4—2027+</td>
+          </tr>
+          <tr>
+            <td class="font-medium text-gray-900 dark:text-gray-100">折叠屏市场苹果入局</td>
+            <td>苹果 vs 三星等</td>
+            <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">偏利好。</span>高端差异化与ASP提升，份额与叙事受益。</td>
+            <td class="whitespace-nowrap">短期—中期</td>
+          </tr>
+          <tr>
+            <td class="font-medium text-gray-900 dark:text-gray-100">2027年iPhone出货/份额乐观预期</td>
+            <td>智能手机全行业</td>
+            <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">偏利好。</span>支持中长期成长叙事，但短期产品节奏需观察。</td>
+            <td class="whitespace-nowrap font-mono">2027</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+      <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+  </div>
+
+  <div class="space-y-5">
+    <div id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · 存储供应链</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-02起持续</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">利空（成本/毛利率）</span>
+        </div>
+        <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.0 / 10</span>
+      </div>
+      <h3 class="font-bold text-gray-900 dark:text-white mb-3">AI资本开支潮导致存储供需结构性错配，价格与采购义务大幅上升</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+          <strong class="text-gray-900 dark:text-white block mb-1.5">1. 态势要点</strong>
+          超大规模云厂商对HBM/DRAM/NAND的抢夺使消费电子可用产能收紧；苹果采购义务显著上升，CEO公开警示“前所未有”的定价。
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+          <strong class="text-gray-900 dark:text-white block mb-1.5">2. 传导路径（分子端）</strong>
+          直接抬升iPhone/Mac/iPad BOM，毛利率指引已下调；部分通过提价与库存结转对冲，但结转效益递减。
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+          <strong class="text-gray-900 dark:text-white block mb-1.5">3. 业务敞口评估</strong>
+          全产品线均受影响，高端机型内存占比更高，利润弹性受损；长期协议可稳供应但无法锁定低价。
+        </div>
+      </div>
+    </div>
+
+    <div id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">国际 · 关税退税</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-02确认</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">利好（一次性）</span>
+        </div>
+        <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 6.5 / 10</span>
+      </div>
+      <h3 class="font-bold text-gray-900 dark:text-white mb-3">IEEPA关税被推翻后苹果已收回绝大部分退税，Q4仍贡献约1个百分点毛利率</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+          <strong class="text-gray-900 dark:text-white block mb-1.5">1. 政策要点</strong>
+          最高法院推翻部分紧急关税后，CBP处理退税；苹果累计已确认约22亿美元量级退税，Q4仍有残余贡献。
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+          <strong class="text-gray-900 dark:text-white block mb-1.5">2. 传导路径</strong>
+          一次性增厚毛利率与EPS，但CFO确认“绝大部分”已入账，后续贡献趋零。
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+          <strong class="text-gray-900 dark:text-white block mb-1.5">3. 业务敞口评估</strong>
+          历史退税已基本兑现，对未来盈利无持续支撑；Section 301等其他关税仍存。
+        </div>
+      </div>
+    </div>
+
+    <div id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div class="flex flex-wrap items-center gap-2.5">
+          <span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国际 · 美中贸易</span>
+          <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1 font-mono"><i data-lucide="calendar" class="w-3 h-3"></i> 2026-11-09前后</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性（风险缓释）</span>
+        </div>
+        <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 6.0 / 10</span>
+      </div>
+      <h3 class="font-bold text-gray-900 dark:text-white mb-3">美中贸易休战延长至2027年1月10日，关税与相关行动暂停</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+          <strong class="text-gray-900 dark:text-white block mb-1.5">1. 态势要点</strong>
+          双方延长贸易行动暂停，维持较低互惠税率与部分排除清单，降低短期供应链冲击。
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+          <strong class="text-gray-900 dark:text-white block mb-1.5">2. 传导路径</strong>
+          减少关税不确定性对成本与定价的扰动，有利于中国供应链与大中华区销售环境稳定。
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 border border-gray-100 dark:border-gray-700/60">
+          <strong class="text-gray-900 dark:text-white block mb-1.5">3. 业务敞口评估</strong>
+          苹果中国生产与销售敞口大，休战延长属风险缓释而非根本解决；长期仍需多元化。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-10" data-aos="fade-up">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+      <i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来 30 天跟踪日历</h2>
+  </div>
+
+  <div x-data="{ filter: 'all' }" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-8">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+      <h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-2 text-sm sm:text-base">
+        <i data-lucide="list" class="w-4 h-4 text-primary-500"></i> 九大动态催化矩阵（点击行可跳转详情）
+      </h3>
+      <div class="flex flex-wrap gap-1.5 text-xs">
+        <button @click="filter = 'all'" :class="filter === 'all' ? 'bg-primary-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold transition-colors">全部 (9)</button>
+        <button @click="filter = 'company'" :class="filter === 'company' ? 'bg-primary-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold transition-colors">公司 (3)</button>
+        <button @click="filter = 'industry'" :class="filter === 'industry' ? 'bg-accent-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold transition-colors">行业 (3)</button>
+        <button @click="filter = 'macro'" :class="filter === 'macro' ? 'bg-rose-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold transition-colors">宏观 (3)</button>
+      </div>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm">
+        <thead>
+          <tr class="bg-gray-50 dark:bg-gray-800/80">
+            <th class="font-semibold text-gray-700 dark:text-gray-300">类别</th>
+            <th class="font-semibold text-gray-700 dark:text-gray-300">日期</th>
+            <th class="font-semibold text-gray-700 dark:text-gray-300">核心事件</th>
+            <th class="font-semibold text-gray-700 dark:text-gray-300">影响方向</th>
+            <th class="font-semibold text-gray-700 dark:text-gray-300">强度</th>
+            <th class="font-semibold text-gray-700 dark:text-gray-300">核心投资含义</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 dark:text-gray-300">
+          <tr x-show="filter === 'all' || filter === 'company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+            <td><span class="px-2 py-0.5 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 font-semibold text-xs">公司</span></td>
+            <td class="whitespace-nowrap font-mono">2026-11-02</td>
+            <td class="font-medium text-gray-900 dark:text-gray-100">Q4营收/EPS破纪录，新CEO首份财报超预期</td>
+            <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold whitespace-nowrap">重大利好</span></td>
+            <td class="font-bold font-mono">9.5</td>
+            <td>基本面验证，产品+服务双轮驱动，盈利底板上移</td>
+          </tr>
+          <tr x-show="filter === 'all' || filter === 'macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+            <td><span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold text-xs">宏观</span></td>
+            <td class="whitespace-nowrap font-mono">2026-11-02起</td>
+            <td class="font-medium text-gray-900 dark:text-gray-100">存储定价“前所未有”，采购义务+330亿美元</td>
+            <td><span class="text-rose-600 dark:text-rose-400 font-semibold whitespace-nowrap">成本压制</span></td>
+            <td class="font-bold font-mono">9.0</td>
+            <td>毛利率指引下调，成本端成为核心约束变量</td>
+          </tr>
+          <tr x-show="filter === 'all' || filter === 'company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+            <td><span class="px-2 py-0.5 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 font-semibold text-xs">公司</span></td>
+            <td class="whitespace-nowrap font-mono">2026-10-23</td>
+            <td class="font-medium text-gray-900 dark:text-gray-100">iPhone Duo开售，出货目标上修至1400万台</td>
+            <td><span class="text-amber-600 dark:text-amber-400 font-semibold whitespace-nowrap">温和利好</span></td>
+            <td class="font-bold font-mono">8.5</td>
+            <td>高端新品需求验证，ASP与产品周期叙事强化</td>
+          </tr>
+          <tr x-show="filter === 'all' || filter === 'industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+            <td><span class="px-2 py-0.5 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold text-xs">行业</span></td>
+            <td class="whitespace-nowrap font-mono">2026-11-17</td>
+            <td class="font-medium text-gray-900 dark:text-gray-100">接近与三星签署4—5年长期DRAM协议</td>
+            <td><span class="text-amber-600 dark:text-amber-400 font-semibold whitespace-nowrap">中性偏多</span></td>
+            <td class="font-bold font-mono">7.5</td>
+            <td>锁定供应缓解断供风险，但价格随行就市</td>
+          </tr>
+          <tr x-show="filter === 'all' || filter === 'company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+            <td><span class="px-2 py-0.5 rounded bg-primary-100 dark:bg-primary-900/60 text-primary-700 dark:text-primary-300 font-semibold text-xs">公司</span></td>
+            <td class="whitespace-nowrap font-mono">2026-11-13</td>
+            <td class="font-medium text-gray-900 dark:text-gray-100">HomeView智能家居中枢正式上市</td>
+            <td><span class="text-sky-600 dark:text-sky-400 font-semibold whitespace-nowrap">中性偏多</span></td>
+            <td class="font-bold font-mono">7.0</td>
+            <td>新硬件入口与生态延伸，短期收入贡献有限</td>
+          </tr>
+          <tr x-show="filter === 'all' || filter === 'industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+            <td><span class="px-2 py-0.5 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold text-xs">行业</span></td>
+            <td class="whitespace-nowrap font-mono">2026-10-23起</td>
+            <td class="font-medium text-gray-900 dark:text-gray-100">折叠屏赛道苹果入局，需求超预期</td>
+            <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold whitespace-nowrap">结构利好</span></td>
+            <td class="font-bold font-mono">7.0</td>
+            <td>高端差异化与份额叙事受益</td>
+          </tr>
+          <tr x-show="filter === 'all' || filter === 'macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+            <td><span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold text-xs">宏观</span></td>
+            <td class="whitespace-nowrap font-mono">2026-11-02</td>
+            <td class="font-medium text-gray-900 dark:text-gray-100">关税退税绝大部分已入账，Q4残余贡献</td>
+            <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold whitespace-nowrap">一次性利好</span></td>
+            <td class="font-bold font-mono">6.5</td>
+            <td>历史退税兑现完毕，无持续支撑</td>
+          </tr>
+          <tr x-show="filter === 'all' || filter === 'industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+            <td><span class="px-2 py-0.5 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold text-xs">行业</span></td>
+            <td class="whitespace-nowrap font-mono">2026-11-18</td>
+            <td class="font-medium text-gray-900 dark:text-gray-100">摩企预计2027年iPhone出货~2.7亿、份额26%</td>
+            <td><span class="text-emerald-600 dark:text-emerald-400 font-semibold whitespace-nowrap">偏利好</span></td>
+            <td class="font-bold font-mono">6.5</td>
+            <td>中长期出货与份额叙事支持</td>
+          </tr>
+          <tr x-show="filter === 'all' || filter === 'macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-colors">
+            <td><span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold text-xs">宏观</span></td>
+            <td class="whitespace-nowrap font-mono">2026-11-09前后</td>
+            <td class="font-medium text-gray-900 dark:text-gray-100">美中贸易休战延长至2027年1月10日</td>
+            <td><span class="text-amber-600 dark:text-amber-400 font-semibold whitespace-nowrap">风险缓释</span></td>
+            <td class="font-bold font-mono">6.0</td>
+            <td>短期关税与供应链不确定性下降</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" data-aos="fade-up" data-aos-delay="80">
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex items-center gap-2 mb-2.5">
+        <i data-lucide="file-text" class="w-4 h-4 text-primary-500"></i>
+        <span class="text-xs font-bold text-primary-600 dark:text-primary-300 font-mono">2027年1月下旬</span>
+      </div>
+      <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Q1 FY2027财报窗口</h4>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">跟踪12月季度（假日季）收入、毛利率是否落在45%—46%指引，以及存储成本实际冲击。</p>
+    </div>
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex items-center gap-2 mb-2.5">
+        <i data-lucide="cpu" class="w-4 h-4 text-accent-500"></i>
+        <span class="text-xs font-bold text-accent-600 dark:text-accent-300">未来30日持续跟踪</span>
+      </div>
+      <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">存储价格与长期协议落地</h4>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">关注三星/SK海力士合约价走势及苹果长期DRAM协议正式公告，决定2027年成本可见度。</p>
+    </div>
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex items-center gap-2 mb-2.5">
+        <i data-lucide="smartphone" class="w-4 h-4 text-rose-500"></i>
+        <span class="text-xs font-bold text-rose-600 dark:text-rose-400">未来30日持续跟踪</span>
+      </div>
+      <h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">iPhone Duo供给与标准版节奏</h4>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">Duo供应爬坡与退货率，以及标准版iPhone 18是否按预期2027年春季发布，影响换机周期。</p>
+    </div>
+  </div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-4">注：近30日内无重大限售解禁或股东增减持需特别标注的事件。下一关注点主要为假日季销售数据与存储成本兑现。</p>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">数据来源</h4>
+        <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-1.5 leading-relaxed">
+          <li>苹果官方Q4 FY2026财报与新闻稿（2026-11-02）</li>
+          <li>苹果业绩电话会纪要（CEO/CFO关于存储与指引）</li>
+          <li>TechInsights、TrendForce、DigiTimes等供应链与存储报告</li>
+          <li>Maeil Business Newspaper等关于三星长期协议报道</li>
+          <li>ProPublica关税退税数据库、美中贸易休战官方文件</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">覆盖时间区间</h4>
+        <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">主窗口为 2026-10-24 至 2026-11-23（30个自然日）；HomeView发布与iPhone Duo开售追溯至10月中下旬，所有实际发生日期均已明确标注。</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">免责声明</h4>
+        <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">本报告基于公开信息整理，仅供研究参考，不构成任何投资建议。消费电子与科技硬件受供应链、地缘与周期多重影响，请独立判断并承担风险。</p>
+      </div>
+    </div>
+    <div class="border-t border-gray-100 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-gray-400 dark:text-gray-500">苹果（AAPL.US）· 最新动态全景追踪 · 截至 2026-11-23</p>
+      <p class="text-xs text-gray-400 dark:text-gray-500">Generated for event-driven research purposes</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('progressBar').style.width = (height > 0 ? (winScroll / height) * 100 : 0) + '%';
+});
+document.addEventListener('DOMContentLoaded', () => {
+  syncThemeIcons();
+  if (window.lucide) lucide.createIcons();
+  if (window.AOS) AOS.init({ duration: 450, offset: 30, once: true });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

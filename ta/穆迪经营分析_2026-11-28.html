@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>穆迪（MCO）经营分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "hsl(20, 90%, 95%)",
+                100: "hsl(20, 90%, 85%)",
+                200: "hsl(20, 90%, 75%)",
+                300: "hsl(20, 90%, 65%)",
+                400: "hsl(20, 90%, 55%)",
+                500: "hsl(20, 90%, 50%)",
+                600: "hsl(20, 90%, 45%)",
+                700: "hsl(20, 90%, 35%)",
+                800: "hsl(20, 90%, 25%)",
+                900: "hsl(20, 90%, 15%)",
+              },
+              accent: {
+                50: "hsl(30, 85%, 95%)",
+                100: "hsl(30, 85%, 85%)",
+                200: "hsl(30, 85%, 75%)",
+                300: "hsl(30, 85%, 65%)",
+                400: "hsl(30, 85%, 60%)",
+                500: "hsl(30, 85%, 55%)",
+                600: "hsl(30, 85%, 50%)",
+                700: "hsl(30, 85%, 40%)",
+                800: "hsl(30, 85%, 30%)",
+                900: "hsl(30, 85%, 20%)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        html { scroll-behavior: auto; }
+      }
+      .btn-interactive { transition: all 0.2s ease-out; }
+      .btn-interactive:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .btn-interactive:active { transform: scale(0.95); }
+      .card-interactive {
+        transition: all 0.3s ease-out;
+        border: 1px solid transparent;
+        --border-lightness: 40%;
+      }
+      .dark .card-interactive { --border-lightness: 60%; }
+      .card-interactive:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        filter: brightness(0.98);
+      }
+      .card-interactive[class*="primary"]:hover,
+      .card-interactive[class*="white"]:hover,
+      .card-interactive[class*="gray-"]:hover {
+        border-color: hsl(20, 90%, var(--border-lightness));
+      }
+      .card-interactive[class*="accent"]:hover {
+        border-color: hsl(30, 85%, var(--border-lightness));
+      }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid hsl(0, 0%, 90%); }
+      .dark th, .dark td { border-bottom-color: hsl(0, 0%, 30%); }
+      .moat-bar { height: 10px; border-radius: 5px; background: hsl(0, 0%, 90%); overflow: hidden; }
+      .dark .moat-bar { background: hsl(0, 0%, 30%); }
+      .moat-fill {
+        height: 100%;
+        border-radius: 5px;
+        background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+        transition: width 1.2s ease-out;
+      }
+      .risk-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .dark body { color: #f3f4f6; }
+      .dark header nav a { color: #e5e7eb !important; }
+      .dark header nav a:hover { color: hsl(20, 90%, 65%) !important; }
+      .dark .text-gray-400, .dark .text-gray-500 { color: #9ca3af !important; }
+      .dark table th { color: #f3f4f6; }
+      .dark table td { color: #e5e7eb; }
+      .dark .text-gray-600 { color: #d1d5db !important; }
+      .dark .text-gray-700 { color: #e5e7eb !important; }
+      #mobileMenu { display: none; }
+      @media (min-width: 768px) { #mobileMenu { display: none !important; } }
+      @media (max-width: 767px) {
+        #mobileMenu.mobile-menu-open { display: block !important; }
+      }
+    </style>
+    <script>
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        document.getElementById("sunIcon").style.display = isDark ? "block" : "none";
+        document.getElementById("moonIcon").style.display = isDark ? "none" : "block";
+      }
+    </script>
+  <style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">穆迪 MCO 经营分析</h1>
+          <nav class="hidden md:flex space-x-5">
+            <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+              <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+            <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all">
+              <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+              <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+            </button>
+          </div>
+        </div>
+        <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+          <nav class="flex flex-col space-y-3">
+            <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen">
+      <!-- Hero -->
+      <section class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300">美股 · 金融数据 · 信用评级</span>
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300">NYSE: MCO</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+            穆迪公司<br /><span class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium">经营分析报告</span>
+          </h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl">
+            穆迪是全球两大信用评级机构之一，与标普共同构成近乎双寡头格局。公司通过“评级+分析”双引擎运营，2025年营收77.2亿美元、净利润24.6亿美元，自由现金流稳健。本报告从八个维度系统评估其投资价值。
+          </p>
+          <div class="grid md:grid-cols-4 gap-4">
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">77.2亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2025年营收（美元）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">24.6亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2025年净利润</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">~29x</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">TTM市盈率</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">~840亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">市值（美元）</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 一、商业模式 -->
+      <section id="model" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="store" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">一、商业模式</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              穆迪的核心商业模式可概括为<strong>“信用评级双寡头+数据与风险分析订阅”</strong>。公司运营两大报告分部：穆迪评级（Moody's Ratings）向发行人收取评级费用并提供持续监测；穆迪分析（Moody's Analytics）通过数据、软件与决策工具提供高粘性经常性收入。评级业务与全球发债规模高度相关，分析业务则提供稳定增长与高客户留存。
+            </p>
+            <div class="grid md:grid-cols-3 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="shield" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">评级业务（MIS）</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  覆盖公司债、金融机构、主权、结构化金融等。收入来自新发债评级费与存量监测费，毛利率与定价权极高，是公司利润的重要来源。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="database" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+                  <h3 class="font-semibold text-accent-700 dark:text-accent-300">分析业务（MA）</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  提供信用风险、经济研究、合规与决策软件。经常性收入占比接近99%，客户留存率约95%，是增长与估值溢价的主要支撑。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="link" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">协同与闭环</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  评级数据与方法论反哺分析产品，分析工具强化客户对穆迪生态的依赖，形成“评级—数据—决策”闭环，提升整体粘性与定价能力。
+                </p>
+              </div>
+            </div>
+            <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6">
+              <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+                <i data-lucide="lightbulb" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+                穆迪的商业模式本质是“资本市场基础设施型收费站”——评级提供高壁垒与高利润，分析提供可扩展的经常性收入，两者共同构成难以复制的护城河。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 二、竞争优势 -->
+      <section id="moat" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="shield" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">二、竞争优势：护城河评估</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            穆迪与标普形成近乎双寡头的信用评级格局，护城河被普遍视为“宽护城河”。以下从五个维度打分（1–10分），并与主要竞争对手对比。
+          </p>
+
+          <div class="space-y-6">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">品牌实力</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9.5<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 95%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                穆迪品牌与“信用意见”几乎等同。全球投资者、发行人和监管机构对其评级的认可构成极高的声誉壁垒，新进入者几乎无法在短期内建立同等信任。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">网络效应</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 90%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                投资者越依赖穆迪评级，发行人越有动力寻求穆迪评级以降低融资成本，形成双边网络效应。存量评级规模进一步强化这一正向循环。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">转换成本</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">8.5<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 85%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                分析业务嵌入银行、保险与合规工作流，多年度订阅与数据迁移成本高；评级业务则因市场惯例与监管认可而具有极高转换摩擦。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">成本优势</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">7.5<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 75%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                规模效应体现在数据积累、模型验证与全球分析师网络。评级业务边际成本极低，分析业务随订阅规模扩大而摊薄固定成本。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">专利或自有技术</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">8<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 80%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                核心优势在于专有数据库、经过验证的信用模型与方法论，而非单纯专利。这些无形资产构成分析业务的决策级智能壁垒。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">与主要竞争对手的护城河对比</h3>
+            <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+              <table class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+                <thead class="bg-primary-50 dark:bg-primary-900/30">
+                  <tr>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">穆迪 (MCO)</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">标普全球 (SPGI)</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">MSCI</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr>
+                    <td class="font-medium">品牌/声誉</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9.5</td>
+                    <td>9.5</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">网络效应</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9</td>
+                    <td>9</td>
+                    <td>8.5</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">转换成本</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">8.5</td>
+                    <td>8.5</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">经营利润率（约）</td>
+                    <td>43–46%</td>
+                    <td>约44%</td>
+                    <td>约40%+</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">TTM市盈率（约）</td>
+                    <td>29x</td>
+                    <td>27x</td>
+                    <td>33x</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">核心护城河来源</td>
+                    <td>评级双寡头+分析</td>
+                    <td>评级+指数+数据</td>
+                    <td>指数与ESG数据</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">数据来源：公司财报、市场公开估值与护城河研究整理。</p>
+          </div>
+
+          <div class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="award" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              综合护城河评分：<strong>8.7/10（宽护城河）</strong>。穆迪的护城河核心来自“监管认可+市场惯例+双边网络+专有数据模型”的组合，与标普共同构成极高的进入壁垒。分析业务的订阅粘性进一步强化了整体优势。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三、行业趋势 -->
+      <section id="industry" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="trending-up" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">三、行业趋势</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              全球信用评级与金融数据行业呈现“高集中度、高监管、高数据密度”特征。AI基础设施融资、私人信贷扩张与再融资浪潮是当前主要增量来源；同时，监管对评级机构的审视与对数据隐私/模型可解释性的要求持续提升。
+            </p>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                  <i data-lucide="zap" class="w-5 h-5"></i>结构性机会
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• AI与数据中心相关融资持续支撑发债规模</li>
+                  <li>• 私人信贷与另类资产需要更精细的信用评估工具</li>
+                  <li>• 再融资高峰（未来数年数万亿美元到期债务）提供评级需求</li>
+                  <li>• 分析业务向决策智能与工作流嵌入深化</li>
+                </ul>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2">
+                  <i data-lucide="alert-circle" class="w-5 h-5"></i>主要挑战
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 发债活动对利率与信用利差高度敏感</li>
+                  <li>• 监管与诉讼风险始终存在</li>
+                  <li>• 分析领域面临MSCI、标普等数据/指数巨头竞争</li>
+                  <li>• AI可能改变信用研究的生产方式与成本结构</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-4 p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <strong class="text-gray-800 dark:text-gray-200">对穆迪的影响：</strong>评级业务仍具周期属性，但分析业务的经常性收入占比提升降低了整体波动。公司正积极将AI能力嵌入评级流程与客户产品，以巩固决策级智能优势。行业趋势整体有利于具备数据与品牌壁垒的龙头。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四、财务状况 -->
+      <section id="financial" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="bar-chart-3" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">四、财务状况</h2>
+          </div>
+
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            以下分析穆迪2021–2025年五年财务表现，数据来源于公司年报及公开财务数据库。整体财务状况稳健，利润率与自由现金流处于行业领先水平。
+          </p>
+
+          <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8">
+            <table class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+              <thead class="bg-accent-50 dark:bg-accent-900/30">
+                <tr>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">指标（亿美元）</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2021</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2022</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2023</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2024</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">2025</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr>
+                  <td class="font-medium">营业收入</td>
+                  <td>62.18</td>
+                  <td>54.68</td>
+                  <td>59.16</td>
+                  <td>70.88</td>
+                  <td class="font-semibold text-primary-600 dark:text-primary-400">77.18</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">营收同比</td>
+                  <td>+15.8%</td>
+                  <td class="text-red-600 dark:text-red-400">-12.1%</td>
+                  <td class="text-green-600 dark:text-green-400">+8.2%</td>
+                  <td class="text-green-600 dark:text-green-400">+19.8%</td>
+                  <td class="text-green-600 dark:text-green-400">+8.9%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">净利润</td>
+                  <td>22.14</td>
+                  <td>13.74</td>
+                  <td>16.07</td>
+                  <td>20.58</td>
+                  <td class="font-semibold text-primary-600 dark:text-primary-400">24.59</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">净利润同比</td>
+                  <td>—</td>
+                  <td class="text-red-600 dark:text-red-400">-37.9%</td>
+                  <td class="text-green-600 dark:text-green-400">+17.0%</td>
+                  <td class="text-green-600 dark:text-green-400">+28.1%</td>
+                  <td class="text-green-600 dark:text-green-400">+19.5%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">自由现金流</td>
+                  <td>18.7</td>
+                  <td>11.9</td>
+                  <td>18.8</td>
+                  <td>25.2</td>
+                  <td>25.8</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">经营利润率</td>
+                  <td>45.7%</td>
+                  <td>34.4%</td>
+                  <td>36.1%</td>
+                  <td>40.6%</td>
+                  <td>43.4%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">净利率</td>
+                  <td>35.6%</td>
+                  <td>25.1%</td>
+                  <td>27.2%</td>
+                  <td>29.0%</td>
+                  <td>31.9%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>收入增长：周期后复苏
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2022年受发债市场降温影响营收下滑约12%，随后连续三年恢复增长。2025年营收77.2亿美元，同比增长8.9%。TTM（至2026年9月）营收约81.8亿美元，同比增长约9%。分析业务经常性收入占比提升，降低了整体对单一周期的敏感度。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>净利润与利润率
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2025年净利润24.6亿美元，同比增长约19.5%。经营利润率回升至43%以上，净利率约32%。高利润率来自评级业务的低边际成本与分析业务的规模效应，体现了商业模式的质量。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2025年自由现金流约25.8亿美元，TTM进一步升至约30亿美元。高FCF支撑持续股票回购与稳定分红，是公司资本回报政策的核心基石。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="scale" class="w-5 h-5"></i>债务与杠杆
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                公司保持适中杠杆，债务水平可控。Fitch将穆迪长期发行人评级维持在BBB+，展望正面。持续回购使股本收缩，ROE维持高位（约50–60%区间）。
+              </p>
+            </div>
+          </div>
+
+          <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">整体财务判断</h3>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4">
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">~55%+</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">ROE水平</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">~32%</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">净利率</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-green-600">稳健</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">财务健康度</div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              综合来看，穆迪财务状况<strong>高度稳健</strong>。收入与利润在经历2022年周期低点后持续修复并创出新高，自由现金流充沛，利润率行业领先，资本回报政策清晰。核心问题不是“是否安全”，而是“当前高估值是否充分反映了未来增长与周期风险”。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五、估值分析 -->
+      <section id="valuation" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="calculator" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">五、估值分析</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">市盈率（P/E）对比</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">穆迪（TTM）</span>
+                  <span class="font-bold text-primary-600 dark:text-primary-400">约29x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">标普全球（TTM）</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">约27x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">MSCI（TTM）</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">约33x</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3">
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">同业平均（约）</span>
+                  <span class="font-semibold text-gray-700 dark:text-gray-300">26–30x</span>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 mt-3">穆迪当前估值略高于标普，低于MSCI，处于优质金融数据/评级公司合理区间上沿。</p>
+            </div>
+
+            <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">分析师目标价（约）</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">一致目标价</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">约554美元</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">隐含上行空间</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">约14%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">当前股价区间</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">约480–490美元</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3">
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Forward P/E（约）</span>
+                  <span class="font-semibold text-gray-700 dark:text-gray-300">26–27x</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8">
+            <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2">
+              <i data-lucide="line-chart" class="w-5 h-5"></i>DCF与内在价值参考
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+              第三方DCF模型对穆迪的公允价值估算差异较大，部分模型给出低于当前市价的结论，部分则认为存在温和上行空间。核心分歧在于对长期发债增速、分析业务增长与利润率的假设。以当前约29倍TTM PE与约26–27倍Forward PE来看，市场已充分定价“高利润率+稳定增长”的优质属性。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+                <div class="text-lg font-bold text-primary-600 dark:text-primary-400">~29x</div>
+                <div class="text-xs text-gray-500">TTM P/E</div>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+                <div class="text-lg font-bold text-accent-600 dark:text-accent-400">~26–27x</div>
+                <div class="text-xs text-gray-500">Forward P/E</div>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div class="text-lg font-bold text-gray-700 dark:text-gray-300">约14%</div>
+                <div class="text-xs text-gray-500">分析师平均上行空间</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="search" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>估值结论：</strong>穆迪当前估值处于合理偏高区间。相较于历史与部分同业，溢价主要来自宽护城河、高利润率与分析业务经常性收入属性。股票既非明显低估，也未到极端泡沫。若发债活动与分析增长符合中期指引，估值有望维持；若周期显著下行，则存在估值压缩风险。综合判断：<strong>合理定价，略偏乐观。</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 六、经营展望 -->
+      <section id="outlook" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="calendar" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">六、经营展望（12–24个月）</h2>
+          </div>
+
+          <div class="space-y-5">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">评级业务：发债节奏决定短期弹性</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                公司维持中期指引：评级业务高个位数有机增长、中高60%区间经营利润率。AI基础设施与再融资需求仍是支撑因素，但利率与利差波动可能带来季度波动。管理层对2027年持建设性态度，前提是信用利差保持相对稳定。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">分析业务：经常性收入引擎</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                ARR持续高个位数增长，留存率维持在95%左右。分析业务目标中期经营利润率中30%区间。产品向决策智能与工作流嵌入深化，是公司估值溢价与增长确定性的主要来源。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">资本回报与成本纪律</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                公司持续执行股票回购，目标在维持投资与分红的同时提升EPS。费用控制保持纪律，调整后经营利润率指引约52–53%。整体资本配置偏向股东回报与核心能力建设。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">中期算法（至2027）</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                管理层重申中期算法：评级业务高个位数有机增长与中高60%利润率；分析业务高个位数有机增长与中30%利润率。2027年被视为“符合算法”的正常年份（假设信用环境不过度恶化）。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 七、风险识别 -->
+      <section id="risk" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+              <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">七、风险识别</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">按危险程度从高到低排序：</p>
+
+          <div class="space-y-4">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0">1</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2">经济与发债周期风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    评级收入与全球发债规模高度相关。利率上升、信用利差扩大或经济放缓可能导致发行量显著下降，直接冲击短期业绩与估值。这是穆迪最核心的周期性风险。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0">2</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2">监管与声誉风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    信用评级行业始终面临监管审视与潜在诉讼。任何重大评级失误或监管政策变化都可能影响公信力与业务模式，虽属低频但影响巨大。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0">3</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2">竞争与技术颠覆</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    分析业务面临标普、MSCI等数据与指数巨头竞争。AI可能改变信用研究的成本结构与客户获取方式，虽目前更可能强化龙头，但长期需持续投入以维持优势。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0">4</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2">估值压缩风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    当前约29倍TTM PE已反映较高质量溢价。若增长不及预期或宏观风险上升，可能导致估值倍数回落，即使基本面稳定也可能出现股价调整。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0">5</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2">债务与财务风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    公司杠杆适中，现金流强劲，财务风险相对较低。Fitch展望正面。主要关注点是若大规模债务融资收购导致杠杆显著上升，需重新评估。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 八、多空视角 -->
+      <section id="longshort" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="scale" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">八、多空视角：机构投资组合经理评估</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800">
+              <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>宽护城河与高定价权</strong>：评级双寡头地位与分析业务高留存率，提供长期超额回报基础。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>财务质量优异</strong>：净利率超30%，FCF充沛，ROE高，资本回报政策清晰。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>分析业务提供增长确定性</strong>：经常性收入占比高，降低周期波动，支撑估值溢价。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>AI与再融资浪潮</strong>：结构性发债需求与技术投入可能延续中期增长。</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800">
+              <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>估值已不便宜</strong>：约29倍TTM PE对增长与周期的容错空间有限。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>发债周期不确定性</strong>：利率与利差波动可能使评级收入显著回落。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>监管与诉讼尾部风险</strong>：虽低频但一旦发生影响巨大。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>增长预期较高</strong>：若分析业务增速放缓或利润率不及预期，估值可能压缩。</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+            <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">关键因素：需要密切跟踪的3个指标</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+                <i data-lucide="activity" class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"></i>
+                <div class="font-semibold text-sm text-primary-700 dark:text-primary-300">发债规模与利差</div>
+                <p class="text-xs text-gray-500 mt-1">直接决定评级业务短期弹性</p>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+                <i data-lucide="repeat" class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"></i>
+                <div class="font-semibold text-sm text-accent-700 dark:text-accent-300">分析业务ARR与留存率</div>
+                <p class="text-xs text-gray-500 mt-1">验证经常性收入质量与增长持续性</p>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center">
+                <i data-lucide="percent" class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"></i>
+                <div class="font-semibold text-sm text-gray-700 dark:text-gray-300">经营利润率与回购节奏</div>
+                <p class="text-xs text-gray-500 mt-1">反映成本纪律与资本回报兑现能力</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="target" class="inline-block w-5 h-5 mr-2 -mt-0.5"></i>
+              <strong>投资论点：</strong>穆迪是一家具备宽护城河、高利润率与清晰资本回报政策的优质复合型公司。评级业务提供高壁垒与高利润，分析业务提供增长与稳定性。当前估值已充分反映其质量，适合作为长期核心持仓，但不宜以“低估”逻辑重仓追高。对于能够接受发债周期波动的投资者，穆迪提供了稀缺的“资本市场基础设施”敞口；关键在于持续验证分析业务增长与利润率，以及宏观环境是否支持合理的发债活动。若出现显著估值回撤而基本面未恶化，将是更优的加仓窗口。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本报告</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告基于穆迪公司（NYSE: MCO）公开财务报告、市场估值数据及行业研究，从商业模式、护城河、财务状况、估值、风险与多空视角等八个维度进行系统分析。
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">数据来源</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>• 穆迪2021–2025年年报与2026年中期/季度业绩</li>
+              <li>• 公开财务数据库与估值平台</li>
+              <li>• 同业对比（SPGI、MSCI等）</li>
+              <li>• 评级机构与市场公开信息</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告仅供教育与信息参考，不构成投资建议或买卖推荐。数据基于公开信息整理，分析观点仅代表研究判断。投资有风险，决策需谨慎。
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+          <p>© 2026 穆迪经营分析报告 · 生成日期：2026-11-28</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (!menu) return;
+        menu.classList.toggle("mobile-menu-open");
+      }
+      window.addEventListener("scroll", () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+        AOS.init({ duration: 800, once: true });
+      });
+    </script>
+  <script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<title>西方石油 OXY｜最新动态全景追踪报告｜2026-11-25</title>
+<style>
+:root{
+  --bg:#080e19;--panel:#101a2a;--panel2:#142238;--line:#263750;
+  --text:#e8eef8;--muted:#91a2ba;--gold:#e8bd70;--green:#42c99a;
+  --red:#ff7777;--blue:#78aef7;--purple:#b49af7;--cyan:#6dd5df;
+  --shadow:0 12px 35px rgba(0,0,0,.22)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 15% 0%,#182a43 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit}
+.wrap{max-width:1240px;margin:auto;padding:28px 24px 70px}
+header{padding:34px 0 25px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:2px;color:var(--gold);font-weight:700}
+h1{font-size:clamp(28px,4vw,43px);line-height:1.25;margin:12px 0}
+.subtitle{color:var(--muted);font-size:14px}
+.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.tag{display:inline-block;padding:5px 10px;border:1px solid var(--line);border-radius:20px;color:var(--muted);font-size:12px;margin:4px 5px 0 0}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:24px 0}
+.metric,.card{background:linear-gradient(145deg,var(--panel),#0e1725);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.metric{padding:17px 18px}
+.metric .label{font-size:12px;color:var(--muted)}
+.metric .value{font-size:26px;font-weight:750;margin-top:5px}
+.metric .note{font-size:12px;color:var(--muted);margin-top:2px}
+.negative{color:var(--red)!important}.positive{color:var(--green)!important}.gold{color:var(--gold)!important}
+.layout{display:grid;grid-template-columns:245px minmax(0,1fr);gap:22px;margin-top:24px}
+nav{position:sticky;top:18px;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px}
+nav strong{display:block;color:var(--gold);font-size:13px;margin:0 0 10px}
+nav a{display:block;color:var(--muted);padding:7px 9px;border-radius:7px;font-size:13px}
+nav a:hover{background:var(--panel2);color:var(--text);text-decoration:none}
+main{min-width:0}
+section{margin:0 0 24px;scroll-margin-top:20px}
+.section-title{font-size:22px;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.section-title:before{content:"";width:4px;height:22px;background:var(--gold);border-radius:5px}
+.card{padding:20px;margin-bottom:14px}
+.card h3{font-size:16px;margin:0 0 10px}
+.card p{margin:7px 0;color:#c6d2e3;font-size:14px}
+.muted{color:var(--muted)!important}
+.small{font-size:12px!important}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.callout{border-left:3px solid var(--gold);background:#1b2635;padding:14px 16px;border-radius:0 9px 9px 0;margin:12px 0;color:#dbe5f2;font-size:14px}
+.callout.red{border-color:var(--red)}.callout.green{border-color:var(--green)}.callout.blue{border-color:var(--blue)}
+.pill{font-size:11px;border-radius:20px;padding:3px 8px;display:inline-block;background:#26364c;color:#b7c9e2}
+.pill.red{color:#ffaaaa;background:#482a35}.pill.green{color:#83e3bd;background:#173b36}.pill.gold{color:#f0d19a;background:#453922}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--gold);font-weight:650;background:#172438}
+tr:last-child td{border-bottom:0}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.timeline{position:relative;padding-left:23px}
+.timeline:before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:#40536c}
+.event{position:relative;padding:0 0 20px 15px}
+.event:before{content:"";position:absolute;left:-21px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px #26364c}
+.event .date{font-size:12px;color:var(--gold);font-weight:700}
+.event h3{margin:3px 0 5px;font-size:15px}
+.event p{margin:0;font-size:13px;color:#bdcadd}
+.barline{height:9px;background:#26364c;border-radius:10px;overflow:hidden;margin:8px 0}
+.barline span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#c3944e,#e8bd70)}
+.risk{padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin:9px 0;background:#111d2d}
+.risk b{display:block;margin-bottom:4px;font-size:14px}
+.risk p{font-size:13px;color:#b9c7d9;margin:0}
+.chartbox{background:#0b1422;border:1px solid var(--line);border-radius:12px;padding:16px}
+.chartbox canvas{width:100%;height:230px;display:block}
+.chart-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+.scenario{padding:15px;border-radius:11px;border:1px solid var(--line);background:#111d2d}
+.scenario h3{font-size:15px;margin:0 0 6px}
+.scenario .range{font-size:22px;font-weight:750;margin:5px 0}
+.score{font-size:34px;font-weight:800;color:var(--gold)}
+.action{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.action:last-child{border-bottom:0}
+.action strong{font-size:13px;color:var(--gold)}
+.action p{margin:0;font-size:13px;color:#c4d0e0}
+.source-list li{margin:9px 0;font-size:13px;color:#c1cede}
+footer{border-top:1px solid var(--line);padding-top:20px;margin-top:30px;color:var(--muted);font-size:12px}
+.disclaimer{background:#171f2c;border:1px solid #39465a;border-radius:10px;padding:15px;font-size:12px;color:#aebbd0}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap}
+.toolbar button{background:#1b2b42;color:var(--text);border:1px solid var(--line);padding:7px 12px;border-radius:8px;cursor:pointer;font-size:12px}
+.toolbar button:hover{border-color:var(--gold)}
+@media(max-width:900px){.layout{grid-template-columns:1fr}nav{position:relative;top:0;display:grid;grid-template-columns:repeat(2,1fr)}nav strong{grid-column:1/-1}.price-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.wrap{padding:18px 13px 45px}.grid2,.grid3{grid-template-columns:1fr}.price-grid{gap:8px}.metric{padding:12px}.metric .value{font-size:22px}.card{padding:15px}nav{grid-template-columns:1fr 1fr}.action{grid-template-columns:85px 1fr}}
+@media print{body{background:#fff;color:#111}.card,.metric,nav{box-shadow:none;background:#fff;color:#111;border-color:#ccc}.layout{display:block}nav{display:none}.card p,.event p,.action p{color:#333}.wrap{max-width:none}.toolbar{display:none}}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="topline">
+    <div class="eyebrow">AIPE INVESTMENT RESEARCH · EVENT-DRIVEN EQUITY INTELLIGENCE</div>
+    <div class="toolbar">
+      <button onclick="window.print()">打印 / 导出 PDF</button>
+      <button onclick="document.documentElement.classList.toggle('focus-mode')">阅读模式</button>
+    </div>
+  </div>
+  <h1>西方石油 OXY<br>最新动态全景追踪</h1>
+  <div class="subtitle">Occidental Petroleum Corporation · NYSE: OXY · 研究基准日：2026年11月25日</div>
+  <div style="margin-top:13px">
+    <span class="tag">近一个月动态</span><span class="tag">财报与资本结构</span>
+    <span class="tag">原油价格敏感性</span><span class="tag">事件驱动研究</span>
+    <span class="tag">交易情景推演</span>
+  </div>
+</header>
+
+<div class="price-grid">
+  <div class="metric"><div class="label">最新收盘价 · 11月24日</div><div class="value">$53.38</div><div class="note positive">+1.29% · 当日涨幅</div></div>
+  <div class="metric"><div class="label">近一个月价格变化</div><div class="value negative">约 -16.7%</div><div class="note">10月26日 $64.07 → 11月24日 $53.38</div></div>
+  <div class="metric"><div class="label">第三季度调整后 EPS</div><div class="value">$1.91</div><div class="note positive">高于市场预期约 $1.46</div></div>
+  <div class="metric"><div class="label">本金债务余额里程碑</div><div class="value">$10.0B</div><div class="note positive">年内已偿还约 $10.4B</div></div>
+</div>
+
+<div class="layout">
+<nav>
+  <strong>报告导航</strong>
+  <a href="#summary">01｜核心结论</a>
+  <a href="#market">02｜近月股价表现</a>
+  <a href="#events">03｜重大事件时间轴</a>
+  <a href="#earnings">04｜第三季度财报</a>
+  <a href="#debt">05｜债务与资本配置</a>
+  <a href="#business">06｜业务与行业传导</a>
+  <a href="#valuation">07｜估值与催化剂</a>
+  <a href="#scenarios">08｜未来情景推演</a>
+  <a href="#strategy">09｜操作策略</a>
+  <a href="#risks">10｜风险清单</a>
+  <a href="#sources">11｜数据来源</a>
+</nav>
+
+<main>
+<section id="summary">
+<h2 class="section-title">01｜核心结论</h2>
+<div class="card">
+  <div class="topline">
+    <h3>研究判断：基本面改善与股价调整并存</h3>
+    <span class="pill gold">中性偏谨慎</span>
+  </div>
+  <p>截至2026年11月25日，OXY呈现出较为明显的“经营现金流强、资产负债表改善、股价短期走弱”特征。第三季度公司交出超预期的调整后盈利表现，并将本金债务降至100亿美元；但股价从10月下旬约64美元的水平回落至11月24日53.38美元，说明市场并未仅凭财务改善就持续给予估值溢价。</p>
+  <div class="callout">
+    <b>核心投资逻辑：</b>OXY的中期价值取决于油价环境、Permian产量与成本控制，以及持续去杠杆后资本回报能力的兑现。短期股价则需要消化油价预期变化、近期下跌形成的技术压力，以及债务要约相关的不确定性。
+  </div>
+  <div class="grid3">
+    <div><div class="label muted small">基本面</div><div class="positive"><b>改善</b></div><p class="small">Q3现金流和去杠杆进展突出</p></div>
+    <div><div class="label muted small">短期趋势</div><div class="negative"><b>偏弱</b></div><p class="small">10月高位以来连续回落</p></div>
+    <div><div class="label muted small">交易策略</div><div class="gold"><b>等待确认</b></div><p class="small">关注52.5–53美元支撑区</p></div>
+  </div>
+</div>
+<div class="grid2">
+  <div class="card">
+    <h3>正向变量</h3>
+    <p>✓ 本金债务降至100亿美元，财务弹性改善。</p>
+    <p>✓ Q3持续经营经营现金流41亿美元。</p>
+    <p>✓ Q3全球产量142.7万桶油当量/日，高于指引中点。</p>
+    <p>✓ 长期CO₂供应安排有望支持二次采油业务。</p>
+  </div>
+  <div class="card">
+    <h3>主要压制因素</h3>
+    <p>! Q3实现油价环比下降，油气板块税前利润承压。</p>
+    <p>! 近期股价从64美元附近显著回撤。</p>
+    <p>! 产量同比下降，部分海上设施受到临时限制及检修影响。</p>
+    <p>! 债务要约的实际成本、规模和资本分配影响仍需观察。</p>
+  </div>
+</div>
+</section>
+
+<section id="market">
+<h2 class="section-title">02｜近月股价表现与走势归因</h2>
+<div class="card">
+  <h3>近期关键交易日</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>日期</th><th>收盘价</th><th>日涨跌</th><th>成交量</th><th>市场观察</th></tr></thead>
+    <tbody>
+      <tr><td>10月26日</td><td>$64.07</td><td>—</td><td>约730万股</td><td>阶段高位参考</td></tr>
+      <tr><td>10月30日</td><td>$64.00</td><td>+0.16%</td><td>约911万股</td><td>高位震荡</td></tr>
+      <tr><td>11月2日</td><td>$60.72</td><td>-5.13%</td><td>约1,268万股</td><td>明显回撤</td></tr>
+      <tr><td>11月4日</td><td>$57.33</td><td>-5.13%</td><td>约1,307万股</td><td>抛压加剧</td></tr>
+      <tr><td>11月10日</td><td>$56.90</td><td>+2.04%</td><td>约1,679万股</td><td>财报后反弹</td></tr>
+      <tr><td>11月12日</td><td>$58.40</td><td>+2.03%</td><td>约1,869万股</td><td>反弹延续</td></tr>
+      <tr><td>11月18日</td><td>$53.76</td><td>-4.88%</td><td>约1,312万股</td><td>债务要约公告当日大跌</td></tr>
+      <tr><td>11月23日</td><td>$52.70</td><td>-2.23%</td><td>约1,277万股</td><td>再度测试低位</td></tr>
+      <tr><td>11月24日</td><td>$53.38</td><td>+1.29%</td><td>约977万股</td><td>低位小幅反弹</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="muted small">价格及成交量为公开市场历史行情数据；不同行情平台成交量可能存在小幅差异。</p>
+</div>
+
+<div class="card">
+  <h3>近月收盘价走势（美元）</h3>
+  <div class="chartbox">
+    <canvas id="priceChart" aria-label="OXY近期股价走势"></canvas>
+    <div class="chart-legend">
+      <span><i class="dot" style="background:#e8bd70"></i>收盘价</span>
+      <span><i class="dot" style="background:#ff7777"></i>阶段回撤</span>
+    </div>
+  </div>
+  <p class="muted small">图表使用报告列示的代表性交易日收盘价，不代表完整逐日行情序列。</p>
+</div>
+
+<div class="card">
+  <h3>走势归因：三个阶段</h3>
+  <div class="timeline">
+    <div class="event">
+      <div class="date">阶段一｜10月下旬至11月初</div>
+      <h3>高位回落：风险偏好与能源价格预期重新定价</h3>
+      <p>股价从10月26日约64.07美元附近回落，11月2日和11月4日出现较大幅度下跌。仅凭价格走势不能把跌幅归因于单一事件；更合理的解释是油价预期、板块风险偏好和前期涨幅兑现共同影响估值。</p>
+    </div>
+    <div class="event">
+      <div class="date">阶段二｜11月9日至11月12日</div>
+      <h3>财报窗口：超预期盈利带来短暂修复</h3>
+      <p>11月9日公布Q3业绩，调整后EPS为1.91美元，高于市场预期。11月10日及11月12日出现反弹，但反弹并未恢复至10月高位，显示市场对经营改善的认可仍受到油价、产量及估值因素制约。</p>
+    </div>
+    <div class="event">
+      <div class="date">阶段三｜11月16日至11月24日</div>
+      <h3>债务要约公告与技术性抛压：低位寻找平衡</h3>
+      <p>11月18日公司公布部分优先票据及债券现金收购要约和同意征求，当日股价下跌4.88%。事件与下跌在时间上重合，但不能据此断定公告是跌幅的唯一原因。11月24日收于53.38美元，仍处于近期回撤后的低位区域。</p>
+    </div>
+  </div>
+</div>
+
+<div class="callout red">
+  <b>价格结构判断：</b>10月26日至11月24日，股价约下跌16.7%。11月18日单日跌幅显著，11月23日又下探52.70美元。短期趋势尚未形成明确反转；53美元附近的企稳质量，以及能否重新站上55–56美元，是观察反弹是否具有持续性的关键。
+</div>
+</section>
+
+<section id="events">
+<h2 class="section-title">03｜近一个月重大事件时间轴</h2>
+<div class="card">
+  <div class="timeline">
+    <div class="event">
+      <div class="date">2026年11月18日｜资本结构事件</div>
+      <h3>Occidental启动部分优先票据及债券现金收购要约</h3>
+      <p>公司宣布针对若干系列未偿还优先票据及债券启动现金收购要约，同时发起相关同意征求。该事项属于主动管理债务结构的资本操作。投资者需要关注各债券系列的接受优先级、要约上限、提前提交奖励、最终接受规模及资金来源。</p>
+      <p><a href="https://www.oxy.com/news/news-releases/occidental-announces-cash-tender-offers-and-consent-solicitations-for-certain-of-its-senior-notes-and-debentures2/" target="_blank" rel="noopener">查看公司公告原文 ↗</a></p>
+    </div>
+    <div class="event">
+      <div class="date">2026年11月9日｜经营与财务事件</div>
+      <h3>公布2026年第三季度业绩</h3>
+      <p>公司披露净利润16亿美元、报告EPS 1.61美元、持续经营调整后EPS 1.91美元；持续经营经营现金流41亿美元，营运资本变动前自由现金流28亿美元。全球产量142.7万桶油当量/日。</p>
+      <p><a href="https://www.oxy.com/news/news-releases/occidental-announces-3rd-quarter-2026-results" target="_blank" rel="noopener">查看第三季度财报 ↗</a></p>
+    </div>
+    <div class="event">
+      <div class="date">2026年11月9日｜业务与技术事件</div>
+      <h3>签署长期CO₂供应协议，支持提高采收率</h3>
+      <p>公司与两家项目开发商签署长期协议，拟从特拉华盆地天然气处理设施获取捕集的CO₂，用于二叠纪盆地提高采收率业务。两个项目预计合计每年捕集和运输约200万吨CO₂，具备扩展至约400万吨/年的潜力；初始交付预计于2029年开始，项目仍受最终投资决策等条件约束。</p>
+      <p><a href="https://www.oxy.com/news/news-releases/" target="_blank" rel="noopener">查看公司新闻与公告 ↗</a></p>
+    </div>
+    <div class="event">
+      <div class="date">2026年10月26日｜股东回报</div>
+      <h3>公司宣布季度股息</h3>
+      <p>公司在10月26日发布股息公告。投资者应以公司公告列示的除息日、登记日和支付日为准，评估股息收益率时应以实际买入价格及后续公告为依据。</p>
+      <p><a href="https://www.oxy.com/investors/" target="_blank" rel="noopener">查看投资者关系页面 ↗</a></p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="earnings">
+<h2 class="section-title">04｜第三季度财报：盈利质量与经营韧性</h2>
+<div class="card">
+  <h3>Q3 2026核心数据</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>指标</th><th>Q3 2026</th><th>解读</th></tr></thead>
+    <tbody>
+      <tr><td>净利润（归属于普通股股东）</td><td>$16亿</td><td>盈利规模较强</td></tr>
+      <tr><td>报告EPS</td><td>$1.61</td><td>包含衍生品损失等影响</td></tr>
+      <tr><td>持续经营调整后EPS</td><td>$1.91</td><td class="positive">高于市场预期约$1.46</td></tr>
+      <tr><td>持续经营经营现金流</td><td>$41亿</td><td class="positive">现金创造能力强</td></tr>
+      <tr><td>营运资本变动前自由现金流</td><td>$28亿</td><td>资本开支约$13亿</td></tr>
+      <tr><td>全球产量</td><td>142.7万桶油当量/日</td><td>高于公司指引中点</td></tr>
+      <tr><td>本金债务</td><td>$100亿</td><td class="positive">达到阶段性目标</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="muted small">数据来源：Occidental 2026年11月9日第三季度业绩公告。金额均为美元。</p>
+</div>
+
+<div class="grid2">
+  <div class="card">
+    <h3>盈利超预期：油价贡献仍是核心</h3>
+    <div class="score">$1.91</div>
+    <p>持续经营调整后EPS，高于市场预期约1.46美元。超预期体现了较好的油气业务盈利能力及中游营销业务贡献，但不能简单外推为未来每季度均可维持该盈利水平。</p>
+    <div class="callout green">调整后EPS高于预期，是财报最直接的积极信号。</div>
+  </div>
+  <div class="card">
+    <h3>现金流：为降债和股东回报提供基础</h3>
+    <div class="score">$4.1B</div>
+    <p>Q3持续经营经营现金流约41亿美元；营运资本变动前自由现金流约28亿美元。资本开支约13亿美元，说明公司在维持运营投资的同时仍具有较强现金流生成能力。</p>
+    <div class="callout green">现金流质量是OXY当前投资逻辑中比单季EPS更重要的观察点。</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>油气板块：实现油价环比下降</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>价格指标</th><th>Q3 2026</th><th>Q2 2026</th><th>环比变化</th></tr></thead>
+    <tbody>
+      <tr><td>WTI基准油价</td><td>$85.79/桶</td><td>$92.79/桶</td><td class="negative">下降</td></tr>
+      <tr><td>Brent基准油价</td><td>$91.62/桶</td><td>$97.06/桶</td><td class="negative">下降</td></tr>
+      <tr><td>全球实现原油价格</td><td>$85.91/桶</td><td>$96.78/桶</td><td class="negative">约下降11%</td></tr>
+      <tr><td>全球NGL实现价格</td><td>$24.63/桶</td><td>$24.64/桶</td><td>基本持平</td></tr>
+      <tr><td>国内天然气实现价格</td><td>$1.61/Mcf</td><td>-$1.48/Mcf</td><td class="positive">明显改善</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>油气板块Q3税前利润约26亿美元，低于Q2约28亿美元。主要原因是实现原油价格环比下降，国内天然气价格改善部分抵消了这一影响。</p>
+</div>
+
+<div class="card">
+  <h3>产量：高于指引中点，但仍需观察同比变化</h3>
+  <p>Q3全球产量为142.7万桶油当量/日，高于公司指引中点。Permian与Rockies业务单元表现较好，抵消了部分墨西哥湾设施临时减产及检修影响。</p>
+  <p>Reuters报道，Q3全球产量同比下降约2.6%，国际产量同比下降约5.8%；公司对Q4给出的全球产量指引约为143万至147万桶油当量/日，其中Permian约82万至84万桶油当量/日。</p>
+  <div class="callout">投资判断：短期产量稳定性和单位成本控制，决定油价上涨能否充分转化为自由现金流。不能只看总产量，还要跟踪Permian产量、海上设施恢复进度和运营成本。</div>
+</div>
+</section>
+
+<section id="debt">
+<h2 class="section-title">05｜债务与资本配置：从去杠杆进入新阶段</h2>
+<div class="card">
+  <h3>资产负债表修复是公司最重要的中期主线之一</h3>
+  <div class="grid3">
+    <div><div class="label muted small">Q3末本金债务</div><div class="value">$10.0B</div></div>
+    <div><div class="label muted small">2026年以来偿还债务</div><div class="value">$10.4B</div></div>
+    <div><div class="label muted small">现金及现金等价物</div><div class="value">$3.9B</div></div>
+  </div>
+  <p>公司在Q3末达到100亿美元本金债务里程碑。第三季度业绩电话会进一步提出新的本金债务目标：60亿美元。管理层表示，在中周期油价情景下，公司有机会继续降低债务，并为2029年8月优先股赎回及扩大股东回报创造财务空间。</p>
+  <div class="callout green">积极意义：债务下降有望降低利息负担、提高资产负债表韧性，并逐步释放未来股东回报空间。</div>
+</div>
+
+<div class="card">
+  <h3>11月18日债券现金收购要约：如何理解？</h3>
+  <p>这次要约针对部分未偿还优先票据和债券，并配套同意征求。它是公司主动管理债务结构的一部分，但并不意味着所有债务都会被立即偿还，也不应把公告本身理解为经营恶化的直接证据。</p>
+  <div class="grid2">
+    <div class="risk">
+      <b class="positive">潜在正面影响</b>
+      <p>若以合理价格回购债务，可能降低未来利息负担、减少到期压力，并优化债务期限结构。</p>
+    </div>
+    <div class="risk">
+      <b class="negative">需要审慎评估</b>
+      <p>回购价格可能高于账面价值；实际资金来源、接受规模及交易费用会影响净收益和现金储备。</p>
+    </div>
+  </div>
+  <p><b>后续重点核查：</b>最终接受的债券规模、回购价格、提前提交奖励、债务账面价值变化、现金余额变化，以及是否影响资本开支和股东回报计划。</p>
+</div>
+</section>
+
+<section id="business">
+<h2 class="section-title">06｜业务结构与行业传导</h2>
+<div class="card">
+  <h3>三条业务线的投资意义</h3>
+  <div class="grid3">
+    <div class="risk">
+      <b>油气业务</b>
+      <p>决定公司主要收入和利润弹性。WTI、Brent、天然气价格、差价、产量及单位成本是核心变量。</p>
+    </div>
+    <div class="risk">
+      <b>中游与营销</b>
+      <p>受运输能力、地区价差、销售时点及营销优化影响，部分季度可能显著改善现金流。</p>
+    </div>
+    <div class="risk">
+      <b>低碳与碳管理</b>
+      <p>包括碳捕集、利用与封存及相关技术。长期价值存在，但项目兑现周期和资本回报仍需验证。</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>CO₂长期供应协议：业务协同而非短期利润催化</h3>
+  <p>11月9日公布的两项协议预计合计每年提供约200万吨CO₂，项目存在扩展空间。对OXY而言，CO₂是提高采收率业务的重要投入。若供应稳定、成本合理，可以支持成熟油田延长生产周期，并改善资源采收效率。</p>
+  <p>但初始交付预计在2029年开始，且项目仍需最终投资决策。因此，这项安排更适合被视为中长期运营保障和资源战略，而非当前季度利润的直接增量。</p>
+  <div class="callout blue">观察重点：项目最终投资决策、CO₂交付成本、基础设施建设进度、提高采收率项目的增量产量与资本回报率。</div>
+</div>
+
+<div class="card">
+  <h3>宏观传导链：油价如何影响OXY估值</h3>
+  <div class="risk"><b>第一层：宏观供需</b><p>全球需求增长、OPEC+供应政策、地缘政治、库存变化和美国页岩油供给共同决定原油价格方向。</p></div>
+  <div style="text-align:center;color:var(--gold)">↓</div>
+  <div class="risk"><b>第二层：公司实现价格</b><p>WTI和Brent基准价格经地区价差、产品结构、套期保值及销售时点影响公司实际实现价格。</p></div>
+  <div style="text-align:center;color:var(--gold)">↓</div>
+  <div class="risk"><b>第三层：经营现金流</b><p>实现油价与产量共同影响油气板块利润；资本开支、税费、运输成本和营运资本影响自由现金流。</p></div>
+  <div style="text-align:center;color:var(--gold)">↓</div>
+  <div class="risk"><b>第四层：估值与股东回报</b><p>现金流用于偿债、投资和股东回报。债务下降可能降低风险溢价，但股价仍受油价预期和市场估值影响。</p></div>
+</div>
+</section>
+
+<section id="valuation">
+<h2 class="section-title">07｜估值框架与未来催化剂</h2>
+<div class="card">
+  <h3>估值应关注现金流情景，而不是单一季度EPS</h3>
+  <p>OXY属于周期性能源公司，盈利会随原油价格、天然气价格、产量和成本显著波动。单季调整后EPS不能直接年化作为估值依据。更合理的方法是以中周期油价下的可持续自由现金流、净债务下降速度、资本开支纪律和股东回报能力作为核心估值变量。</p>
+  <div class="grid2">
+    <div class="risk"><b>估值上修条件</b><p>油价保持韧性；产量稳定或增长；运营成本受控；去杠杆持续；资本回报兑现。</p></div>
+    <div class="risk"><b>估值下修条件</b><p>油价持续回落；产量低于指引；成本上升；债务回购消耗现金；资本开支增加而现金流走弱。</p></div>
+  </div>
+  <p class="muted small">本报告不提供未经验证的实时远期市盈率、企业价值倍数或精确目标价；这些指标需要统一的股价时点、净债务口径、股数及一致预期数据。</p>
+</div>
+
+<div class="card">
+  <h3>未来1–3个月值得跟踪的催化剂</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>催化剂</th><th>潜在方向</th><th>关键验证指标</th></tr></thead>
+    <tbody>
+      <tr><td>债券要约最终结果</td><td><span class="pill gold">双向</span></td><td>接受规模、回购价格、现金使用情况</td></tr>
+      <tr><td>原油价格走势</td><td><span class="pill gold">双向</span></td><td>WTI/Brent、库存、供需及地缘风险</td></tr>
+      <tr><td>Q4产量兑现</td><td><span class="pill green">偏正面</span></td><td>全球产量143–147万桶油当量/日指引</td></tr>
+      <tr><td>60亿美元债务目标进展</td><td><span class="pill green">偏正面</span></td><td>本金债务、利息支出、现金余额</td></tr>
+      <tr><td>股东回报政策</td><td><span class="pill gold">双向</span></td><td>股息增长、回购安排及优先股赎回准备</td></tr>
+      <tr><td>CO₂项目建设与审批</td><td><span class="pill gold">长期正面</span></td><td>最终投资决策、2029年交付准备</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</section>
+
+<section id="scenarios">
+<h2 class="section-title">08｜未来股价情景推演</h2>
+<p class="muted small">以下价格区间是基于近期行情结构的情景分析区间，不是券商一致预期，也不是保证实现的目标价。</p>
+<div class="grid3">
+  <div class="scenario">
+    <span class="pill green">乐观情景</span>
+    <h3>油价韧性 + 技术反转</h3>
+    <div class="range positive">$58–62</div>
+    <p class="small">假设油价保持强势、产量指引兑现，债务管理得到市场认可，股价有效收复55–56美元并向前期压力区反弹。</p>
+  </div>
+  <div class="scenario">
+    <span class="pill gold">基准情景</span>
+    <h3>低位震荡 + 等待验证</h3>
+    <div class="range gold">$51–57</div>
+    <p class="small">假设油价没有明显趋势性突破，市场等待债务要约结果及下一季度经营数据，股价围绕近期低位反复震荡。</p>
+  </div>
+  <div class="scenario">
+    <span class="pill red">悲观情景</span>
+    <h3>油价回落 + 支撑失守</h3>
+    <div class="range negative">$45–50</div>
+    <p class="small">假设原油价格明显走弱、产量或成本不及预期，且52美元附近支撑失守，市场可能进一步下调现金流预期。</p>
+  </div>
+</div>
+<div class="card">
+  <h3>情景切换的关键确认条件</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>观察区域</th><th>价格行为</th><th>策略含义</th></tr></thead>
+    <tbody>
+      <tr><td>$52.5–53.0</td><td>近期低位支撑观察区</td><td>观察是否缩量止跌、低点抬高</td></tr>
+      <tr><td>$54.5–55.0</td><td>短线反弹确认区域</td><td>站稳后观察反弹延续性</td></tr>
+      <tr><td>$55.5–57.0</td><td>前期密集交易与压力区</td><td>放量收复才有助于改善趋势结构</td></tr>
+      <tr><td>$58.0–59.0</td><td>更强压力区域</td><td>突破后才进一步讨论趋势反转</td></tr>
+      <tr><td>跌破$52.5</td><td>近期低位支撑失守</td><td>防范下行空间扩大，重新评估风险</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="muted small">上述区间依据近期公开日线高低点及收盘价整理，不是基于完整历史逐笔数据计算的专业支撑阻力模型。</p>
+</div>
+</section>
+
+<section id="strategy">
+<h2 class="section-title">09｜操作策略与交易计划</h2>
+<div class="card">
+  <div class="topline">
+    <h3>当前操作基调</h3><span class="pill gold">不追涨，等待确认</span>
+  </div>
+  <p>在股价从64美元附近回撤至53美元附近、且短期趋势尚未扭转的情况下，不宜仅凭单日反弹就认定底部成立。更稳妥的方式是分层观察支撑有效性、反弹量能和关键压力位收复情况。</p>
+  <div class="action"><strong>已有持仓</strong><p>先评估组合中能源股敞口和可承受回撤。若52.5美元附近有效失守且原油同步走弱，应重新评估持仓风险；若股价重新站上55–56美元并保持稳定，可观察趋势修复，但不应把反弹自动视为新一轮主升浪。</p></div>
+  <div class="action"><strong>计划建仓</strong><p>避免一次性重仓抄底。可将52.5–53美元作为观察区，等待止跌形态和成交量确认；若未能企稳，不必为了买在最低点而提前承担下行风险。</p></div>
+  <div class="action"><strong>短线交易</strong><p>重点观察53美元附近支撑与55–56美元压力。只有在反弹伴随成交量改善、且价格能够收复关键压力区域时，短线多头信号才更有说服力。</p></div>
+  <div class="action"><strong>中期投资</strong><p>持续跟踪60亿美元债务目标、可持续自由现金流和资本回报计划。若公司在中周期油价下仍能稳定产生现金流，去杠杆逻辑才更可能转化为估值支撑。</p></div>
+</div>
+
+<div class="card">
+  <h3>交易前检查清单</h3>
+  <div id="checklist">
+    <label style="display:block;padding:8px 0;border-bottom:1px solid var(--line)"><input type="checkbox"> 已确认最新WTI与Brent走势，而非只看OXY股价</label>
+    <label style="display:block;padding:8px 0;border-bottom:1px solid var(--line)"><input type="checkbox"> 已确认52.5–53美元附近是否出现有效止跌</label>
+    <label style="display:block;padding:8px 0;border-bottom:1px solid var(--line)"><input type="checkbox"> 已观察55–56美元区域能否被有效收复</label>
+    <label style="display:block;padding:8px 0;border-bottom:1px solid var(--line)"><input type="checkbox"> 已核查债务要约最终结果及现金影响</label>
+    <label style="display:block;padding:8px 0;border-bottom:1px solid var(--line)"><input type="checkbox"> 已计算仓位、最大亏损和止损执行条件</label>
+    <label style="display:block;padding:8px 0"><input type="checkbox"> 已考虑能源板块集中度和组合相关性</label>
+  </div>
+</div>
+</section>
+
+<section id="risks">
+<h2 class="section-title">10｜主要风险清单</h2>
+<div class="risk"><b class="negative">1. 原油价格风险</b><p>OXY的盈利和现金流对原油价格高度敏感。若全球需求低于预期、供应增加或地缘风险溢价消退，实际实现油价可能下降。</p></div>
+<div class="risk"><b class="negative">2. 产量与运营风险</b><p>海上设施检修、管道约束、极端天气和运营事故均可能影响产量。Q4产量指引能否兑现是重要验证点。</p></div>
+<div class="risk"><b class="negative">3. 成本与资本开支风险</b><p>劳动力、设备、服务成本及项目建设费用上涨，可能削弱自由现金流，影响偿债速度和股东回报。</p></div>
+<div class="risk"><b class="negative">4. 债务管理与流动性风险</b><p>债券回购要约需要结合价格、资金来源和到期结构评估。若回购成本较高或现金使用不当，可能削弱短期财务灵活性。</p></div>
+<div class="risk"><b class="negative">5. 地缘政治与监管风险</b><p>国际业务面临地区政策、制裁、税收和安全风险；能源及碳管理项目还受到环境政策与许可审批影响。</p></div>
+<div class="risk"><b class="negative">6. 低碳项目兑现风险</b><p>CO₂捕集、运输和利用项目周期较长，存在技术、基础设施、融资、许可和商业回报不确定性。</p></div>
+<div class="risk"><b class="negative">7. 股价波动与估值风险</b><p>即使基本面改善，市场仍可能因油价预期、利率、板块轮动和风险偏好变化而下调估值。</p></div>
+</section>
+
+<section id="sources">
+<h2 class="section-title">11｜信息来源与研究口径</h2>
+<div class="card">
+  <h3>一手资料与市场数据</h3>
+  <ol class="source-list">
+    <li><b>Occidental｜2026年第三季度业绩公告，2026-11-09。</b><br><a href="https://www.oxy.com/news/news-releases/occidental-announces-3rd-quarter-2026-results" target="_blank" rel="noopener">公司新闻稿</a> · <a href="https://www.oxy.com/siteassets/documents/investors/quarterly-earnings/oxy3q26earningspressrelease.pdf" target="_blank" rel="noopener">业绩公告PDF</a></li>
+    <li><b>Occidental｜2026年第三季度业绩电话会文字稿。</b><br><a href="https://www.oxy.com/siteassets/documents/investors/quarterly-earnings/oxy3q26transcript.pdf" target="_blank" rel="noopener">电话会文字稿PDF</a></li>
+    <li><b>Occidental｜债券现金收购要约及同意征求，2026-11-18。</b><br><a href="https://www.oxy.com/news/news-releases/occidental-announces-cash-tender-offers-and-consent-solicitations-for-certain-of-its-senior-notes-and-debentures2/" target="_blank" rel="noopener">公司公告</a></li>
+    <li><b>Occidental｜CO₂长期供应协议，2026-11-09。</b><br><a href="https://www.oxy.com/news/news-releases/" target="_blank" rel="noopener">公司新闻公告列表</a></li>
+    <li><b>SEC｜Occidental 2026年第三季度10-Q及相关披露。</b><br><a href="https://www.sec.gov/Archives/edgar/data/797468/000162828026072198/oxy-20260930.htm" target="_blank" rel="noopener">SEC季度报告</a></li>
+    <li><b>Reuters｜Occidental Q3业绩报道，2026-11-09。</b><br><a href="https://www.reuters.com/business/energy/occidental-petroleum-beats-quarterly-profit-estimates-2026-11-09/" target="_blank" rel="noopener">Reuters报道</a></li>
+    <li><b>历史行情｜OXY每日价格与成交量。</b><br><a href="https://stockanalysis.com/stocks/oxy/history/" target="_blank" rel="noopener">Stock Analysis历史行情</a> · <a href="https://ycharts.com/companies/OXY/price" target="_blank" rel="noopener">YCharts价格数据</a></li>
+  </ol>
+</div>
+<div class="disclaimer">
+  <b>重要说明：</b>本报告依据截至2026年11月25日可获得的公开资料整理。市场价格采用2026年11月24日收盘数据；财务数据以公司Q3 2026公告为主。不同数据平台的成交量可能存在差异。报告中的情景价格区间及技术观察位属于研究推演，不构成保证性预测。本文不构成个性化投资建议，也不构成买卖证券的要约或招揽。投资者应结合自身风险承受能力、实时行情及最新公司披露独立决策。
+</div>
+</section>
+</main>
+</div>
+
+<footer>
+  <div>AIPE Investment Research · Occidental Petroleum Corporation (NYSE: OXY)</div>
+  <div>报告生成日期：2026-11-25 · 数据截止：2026-11-24收盘 · 研究类型：事件驱动与基本面追踪</div>
+</footer>
+</div>
+
+<script>
+const priceData = [
+  ["10/26",64.07],["10/27",62.73],["10/28",62.86],["10/29",63.01],
+  ["10/30",64.00],["11/02",60.72],["11/03",60.43],["11/04",57.33],
+  ["11/05",56.36],["11/06",56.38],["11/09",55.76],["11/10",56.90],
+  ["11/11",57.24],["11/12",58.40],["11/13",58.75],["11/16",57.36],
+  ["11/17",56.52],["11/18",53.76],["11/19",53.81],["11/20",53.90],
+  ["11/23",52.70],["11/24",53.38]
+];
+
+function drawPriceChart(){
+  const canvas=document.getElementById("priceChart");
+  if(!canvas)return;
+  const rect=canvas.getBoundingClientRect();
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=Math.max(300,rect.width*dpr);
+  canvas.height=230*dpr;
+  const ctx=canvas.getContext("2d");
+  ctx.scale(dpr,dpr);
+  const w=canvas.width/dpr,h=230;
+  const pad={l:42,r:14,t:15,b:30};
+  const vals=priceData.map(x=>x[1]);
+  const min=48,max=67;
+  const x=i=>pad.l+i*(w-pad.l-pad.r)/(vals.length-1);
+  const y=v=>pad.t+(max-v)*(h-pad.t-pad.b)/(max-min);
+  ctx.clearRect(0,0,w,h);
+  ctx.font="11px sans-serif";
+  ctx.fillStyle="#91a2ba";
+  ctx.strokeStyle="#263750";
+  ctx.lineWidth=1;
+  [50,55,60,65].forEach(v=>{
+    const yy=y(v);
+    ctx.beginPath();ctx.moveTo(pad.l,yy);ctx.lineTo(w-pad.r,yy);ctx.stroke();
+    ctx.fillText("$"+v,5,yy+4);
+  });
+  const gradient=ctx.createLinearGradient(0,pad.t,0,h-pad.b);
+  gradient.addColorStop(0,"rgba(232,189,112,.28)");
+  gradient.addColorStop(1,"rgba(232,189,112,0)");
+  ctx.beginPath();
+  vals.forEach((v,i)=>i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v)));
+  ctx.lineTo(x(vals.length-1),h-pad.b);
+  ctx.lineTo(x(0),h-pad.b);
+  ctx.closePath();ctx.fillStyle=gradient;ctx.fill();
+  ctx.beginPath();
+  vals.forEach((v,i)=>i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v)));
+  ctx.strokeStyle="#e8bd70";ctx.lineWidth=2.5;ctx.stroke();
+  vals.forEach((v,i)=>{
+    ctx.beginPath();ctx.arc(x(i),y(v),i===vals.length-1?4:2.2,0,Math.PI*2);
+    ctx.fillStyle=i>=17?"#ff7777":"#e8bd70";ctx.fill();
+  });
+  const labels=[0,4,8,12,16,20,21];
+  labels.forEach(i=>{
+    ctx.fillStyle="#91a2ba";
+    ctx.textAlign="center";
+    ctx.fillText(priceData[i][0],x(i),h-8);
+  });
+  ctx.textAlign="left";
+  ctx.fillStyle="#e8bd70";
+  ctx.font="bold 12px sans-serif";
+  ctx.fillText("$53.38",Math.max(pad.l,x(vals.length-1)-40),y(vals[vals.length-1])-12);
+}
+window.addEventListener("load",drawPriceChart);
+window.addEventListener("resize",drawPriceChart);
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

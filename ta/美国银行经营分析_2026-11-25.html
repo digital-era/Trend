@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>美国银行（NYSE: BAC）经营分析报告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+primary: {
+50: "hsl(20, 90%, 95%)",
+100: "hsl(20, 90%, 85%)",
+200: "hsl(20, 90%, 75%)",
+300: "hsl(20, 90%, 65%)",
+400: "hsl(20, 90%, 55%)",
+500: "hsl(20, 90%, 50%)",
+600: "hsl(20, 90%, 45%)",
+700: "hsl(20, 90%, 35%)",
+800: "hsl(20, 90%, 25%)",
+900: "hsl(20, 90%, 15%)",
+},
+accent: {
+50: "hsl(30, 85%, 95%)",
+100: "hsl(30, 85%, 85%)",
+200: "hsl(30, 85%, 75%)",
+300: "hsl(30, 85%, 65%)",
+400: "hsl(30, 85%, 60%)",
+500: "hsl(30, 85%, 55%)",
+600: "hsl(30, 85%, 50%)",
+700: "hsl(30, 85%, 40%)",
+800: "hsl(30, 85%, 30%)",
+900: "hsl(30, 85%, 20%)",
+},
+},
+},
+},
+};
+</script>
+<script
+defer
+src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html {
+scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html {
+scroll-behavior: auto;
+}
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow:
+0 10px 15px -3px rgba(0, 0, 0, 0.1),
+0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow:
+0 20px 25px -5px rgba(0, 0, 0, 0.1),
+0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th,
+td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th,
+.dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(
+90deg,
+hsl(20, 90%, 55%),
+hsl(30, 85%, 55%)
+);
+transition: width 1.2s ease-out;
+}
+.risk-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-width: 28px;
+height: 28px;
+border-radius: 8px;
+font-weight: 700;
+font-size: 13px;
+}
+Code
+/* ===== 暗色模式全局对比度增强 ===== */
+  .dark body {
+    color: #f3f4f6;
+  }
+  .dark header nav a {
+    color: #e5e7eb !important;
+  }
+  .dark header nav a:hover {
+    color: hsl(20, 90%, 65%) !important;
+  }
+  .dark .text-gray-400,
+  .dark .text-gray-500 {
+    color: #9ca3af !important;
+  }
+  .dark table th {
+    color: #f3f4f6;
+  }
+  .dark table td {
+    color: #e5e7eb;
+  }
+  .dark .text-gray-600 {
+    color: #d1d5db !important;
+  }
+  .dark .text-gray-700 {
+    color: #e5e7eb !important;
+  }
+
+  /* ===== 移动端菜单 ===== */
+  #mobileMenu {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    #mobileMenu {
+      display: none !important;
+    }
+  }
+  @media (max-width: 767px) {
+    #mobileMenu.mobile-menu-open {
+      display: block !important;
+    }
+  }
+</style>
+<script>
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById("sunIcon").style.display = isDark
+      ? "block"
+      : "none";
+    document.getElementById("moonIcon").style.display = isDark
+      ? "none"
+      : "block";
+  }
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body
+class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen"
+>
+<!-- Progress Bar -->
+<div
+class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out"
+id="progressBar"
+style="width: 0%"
+></div>
+Code
+<!-- Floating Header -->
+<header
+  class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100"
+>
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+        美国银行 BAC 经营分析
+      </h1>
+      <!-- 桌面端导航 -->
+      <nav class="hidden md:flex space-x-5">
+        <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <!-- 移动端汉堡菜单按钮 -->
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300"
+          aria-label="菜单"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+        <!-- 暗色模式切换 -->
+        <button
+          onclick="toggleDarkMode()"
+          class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+          aria-label="切换暗色模式"
+        >
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 移动端下拉菜单 -->
+    <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+      <nav class="flex flex-col space-y-3">
+        <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="min-h-screen">
+  <!-- Hero -->
+  <section
+    class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300"
+          >美股 · 综合银行 · G-SIB</span
+        >
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300"
+          >NYSE: BAC · 2026-11-25</span
+        >
+      </div>
+      <h2
+        class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300"
+      >
+        美国银行（Bank of America）<br /><span
+          class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium"
+          >深度经营与投资价值分析报告</span
+        >
+      </h2>
+      <p
+        class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl"
+      >
+        美国银行（NYSE: BAC）是美国资产规模第二大、个人储蓄存款基底最为深厚的全球系统重要性银行（总资产逾 3.44 万亿美元、总存款逾 2.02 万亿美元）。2026 年前三季度公司核心净利息收入重拾 +8% 加速增长、调整后 ROTCE 跃上 16.0% 里程碑；但受 10 月创纪录的 12.10 亿美元反洗钱监管罚单与伯克希尔连续九个季度减持压制，股价自 52 周高点 65.23 美元回落约 25% 至 48.56 美元。本报告从八大维度为您全景评估其投资赔率。
+      </p>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            1,131.0亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            FY2025 总营收（TTM 1,164亿$）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            305.1亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            FY2025 净利润（+12.5%）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            16.0%
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            9M 2026 调整后 ROTCE
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            1.67x
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            有形市净率 P/TBV（现价 48.56$）
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一、商业模式 -->
+  <section
+    id="model"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="landmark"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          一、商业模式
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          美国银行的商业模式核心可以凝练为<strong>“万亿级超低成本零售存款底座 + 投行财富双轮轻资本手续费赋能”</strong>。全行通过四大板块、八条业务线协同运转：<strong>53%–55%</strong> 的收入源自净利息收入（NII，即把低成本存款投向个人消费贷、企业信贷及国债/MBS 赚取的息差），其余 <strong>45%–47%</strong> 源自非利息手续费收入（美林财富管理费、投行承销、全球做市交易与银行卡手续费），形成了高度平衡的全天候金融飞轮[reference:1]。
+        </p>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="piggy-bank"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                低息活期存款发动机
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              拥有全美规模领先的零售支票与小微活期账户体系（总存款逾 2.02 万亿美元），在 3,500 家网点、15,000 台 ATM 与 <em>BofA Rewards</em> 支撑下，核心存款成本显著低于地区银行与互联网银行。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="briefcase"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+              <h3
+                class="font-semibold text-accent-700 dark:text-accent-300"
+              >
+                美林财富与机构投行协同
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              GWIM（美林 + 私人银行）管理逾 4.7 万亿美元客户资产，Q3 2026 资管费大增 17% 并吸金 410 亿美元；全球市场与投行（由联席总裁 DeMare 领衔）将交易营收在三年内推升 35%，成为非息收入支柱。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="cpu"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                AI 规模化与“负责任增长”
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              严禁次级高风险放贷，贷存比（LDR）长期克制在仅约 60%（贷款约 1.23 万亿 vs 存款 2.02 万亿）；同时借 <strong>Erica</strong>（Q3 交互 1.91 亿次）与 300+ 内部 AI 工具推动网点与运营人员持续瘦身至 209,911 人。
+            </p>
+          </div>
+        </div>
+        <div
+          class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6"
+        >
+          <p
+            class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+          >
+            <i
+              data-lucide="lightbulb"
+              class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+            ></i>
+            商业模式本质：用全美最庞大的低息零售支票账户网“吸收便宜弹药”，一方面以审慎标准放贷赚取净息差，另一方面顺势向上输送至美林高净值理财与企业投行收取无风险手续费。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、竞争优势（护城河） -->
+  <section
+    id="moat"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="shield"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          二、竞争优势：护城河评估
+        </h2>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        Morningstar 长期赋予美国银行“宽护城河（Wide Moat）”评级。以下从五个维度打分（1–10分），并与摩根大通（JPM）、富国银行（WFC）及花旗集团（C）进行横向对标。
+      </p>
+
+      <div class="space-y-6">
+        <!-- 品牌实力 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              品牌实力（美国家庭与美林双品牌）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >9<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 90%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            “Bank of America”与“Merrill Lynch”分别统治美国大众中产金融与高净值财富管理两大心智高地，系统重要性（G-SIB）赋予的“隐性主权安全背书”在 2023 年硅谷银行倒闭危机中已转化为源源不断的避险存款回流。
+          </p>
+        </div>
+
+        <!-- 网络效应 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              网络效应（Zelle 生态 + “One Company”交叉协同）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            全美覆盖 3,500 家网点、Zelle® 即时转账联盟及全球证券做市流动性形成显著网络黏性——资金在 BofA 零售户、美林证券户与 BofA 企业账务间流转越密集，全行单位客户留存价值越高。
+          </p>
+        </div>
+
+        <!-- 转换成本 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              转换成本（极高的主账户与财富顾问粘性）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >9<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 90%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            美国消费者一旦将工资代发、房贷扣款、信用卡自动还款及美林家庭信托账户绑定于美国银行（叠加 <em>Preferred Rewards</em> / <em>BofA Rewards</em> 资产阶梯返利），迁移至其他银行的繁琐度与失误风险极高，主支票账户年流失率长期处于极低水平。
+          </p>
+        </div>
+
+        <!-- 成本优势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              成本优势（全美最便宜核心存款底座之一）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >9<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 90%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            银行最大的护城河就是“拿钱的成本”。依托庞大的无息及低息个人活期存款池，即使在美联储 5%+ 高利率周期，美国银行的总存款平均付息率仍显著低于绝大多数地区银行与资本市场融资成本，铸就极深的利差安全垫。
+          </p>
+        </div>
+
+        <!-- 专利或自有技术 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              专利或自有技术（每年 40 亿美元级 IT 与 Erica AI）
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >7<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 70%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            银行软件虽难以靠专利形成绝对封锁，但 BAC 每年高达约 40 亿美元的技术研发投入已令中小地区银行望尘莫及。旗舰 AI 助手 <strong>Erica</strong>、CashPro 企业财务门户及数百项内部 AI 辅助系统正在稳步拉宽科技代差。
+          </p>
+        </div>
+      </div>
+
+      <!-- 竞对对比 -->
+      <div class="mt-10">
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5"
+        >
+          美国四大综合银行护城河与财务质量对比（2026年11月）
+        </h3>
+        <div
+          class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <table
+            class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+          >
+            <thead class="bg-primary-50 dark:bg-primary-900/30">
+              <tr>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">美国银行 (BAC)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">摩根大通 (JPM)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">富国银行 (WFC)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">花旗集团 (C)</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr>
+                <td class="font-medium">存款成本与零售壁垒</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">极优（2.02万亿$+存款）</td>
+                <td>极优（全美第一大行）</td>
+                <td>优（资产上限解除发力）</td>
+                <td>偏重机构跨境结算存款</td>
+              </tr>
+              <tr>
+                <td class="font-medium">GAAP ROE / 调整 ROTCE</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">10.8% / 16.0% (9M26)</td>
+                <td>16.0%–18.0% / ~20%+</td>
+                <td>12.9% / ~15%</td>
+                <td>8.2% / ~9%–10%</td>
+              </tr>
+              <tr>
+                <td class="font-medium">市净率 (P/B) / 有形 P/TBV</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">1.24x / 1.67x</td>
+                <td>2.20x–2.33x / ~2.8x</td>
+                <td>1.54x / ~1.8x</td>
+                <td>0.94x / ~1.1x</td>
+              </tr>
+              <tr>
+                <td class="font-medium">TTM P/E / 远期 P/E</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">11.6–11.8x / 9.6–10.7x</td>
+                <td>14.1–14.8x / 13.0–13.4x</td>
+                <td>12.6–13.0x / ~11.0x</td>
+                <td>11.5–12.7x / ~9.5–10.4x</td>
+              </tr>
+              <tr>
+                <td class="font-medium">最新市值 / 股息率 (2026-11)</td>
+                <td>~3,351亿$ / 2.31%</td>
+                <td>~7,920–8,310亿$ / 1.9%</td>
+                <td>~2,550–2,680亿$ / 2.1%</td>
+                <td>~1,940–1,990亿$ / 2.2%</td>
+              </tr>
+              <tr>
+                <td class="font-medium">综合护城河</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">8.4 / 10</td>
+                <td>9.3 / 10</td>
+                <td>8.0 / 10</td>
+                <td>7.2 / 10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+          数据来源：四大行 Q3 2026 季报、Yahoo Finance、GuruFocus 及 Investing.com 截至 2026 年 11 月公开市场数据。
+        </p>
+      </div>
+
+      <div
+        class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed"
+        >
+          <i
+            data-lucide="award"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          综合护城河评分：<strong>8.4 / 10</strong>。美国银行的存款成本优势与美林高净值护城河在全美稳居前二（仅次于全能霸主摩根大通），其当前相对 JPM 高达 46% 的 P/B 估值折价，使它成为兼顾护城河宽度与性价比的稀有标的。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、行业趋势 -->
+  <section
+    id="industry"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="trending-up"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          三、行业趋势
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          2026 年美国银行业正经历“固定资产高息重定价红利 + 资本监管边际放松 + AI 与私人信贷（Private Credit）跨界分流”三大深层变局。在经历 2023 年区域银行危机与 2024 年存款抢人大战后，拥有万亿存款规模和顶级科技预算的“四大超级大行”正在持续收割全行业市场份额。
+        </p>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="arrow-up-right" class="w-5 h-5"></i>固定资产重定价与放松管制顺风
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>旧低息债券到期置换：</strong>过去几年拖累大行收益率的 2% 低息长久期按揭与国债正逐步到期，并按 4%–5%+ 当前市场收益率重新配置，驱动净息差（NIM）在 2026–2027 年逐季走阔。</li>
+              <li>• <strong>Basel III Endgame 温和化与并购复兴：</strong>监管层对资本补充要求软化及投行审批松绑，既利好全行业股票回购空间，也催化投行并购咨询费用回暖。</li>
+            </ul>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="zap" class="w-5 h-5"></i>AI 生产力革命与私人信贷分流
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>大小银行科技鸿沟拉大：</strong>每年 40 亿美元级 AI 与云端改造让四大行实现“降员工不降网点服务”，中小银行难以承受同样 IT 军备成本。</li>
+              <li>• <strong>私人信贷抢夺中型企业贷：</strong>Apollo、Blackstone 等万亿级非银私募信贷机构绕过银行巴塞尔资本束缚，对企业杠杆贷款与高息利差业务构成长期分流。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、财务状况 -->
+  <section
+    id="financial"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="bar-chart-3"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          四、财务状况（2021–2025 五年报表与 2026 TTM 诊断）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        以下汇整美国银行 FY2021–FY2025 五个完整财年（SEC 10-K）及截至 2026 年 9 月 30 日（Q3 2026 10-Q）滚动十二个月（TTM）核心财报数据（单位：亿美元）[reference:2][reference:3]。
+      </p>
+
+      <!-- 5年财务表 -->
+      <div
+        class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+      >
+        <table
+          class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+        >
+          <thead class="bg-accent-50 dark:bg-accent-900/30">
+            <tr>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">指标（亿美元）</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2021</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2022</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2023</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2024</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2025</th>
+              <th class="font-semibold text-primary-700 dark:text-primary-300">TTM (至26-09)</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr>
+              <td class="font-medium">总营收（扣减利息支出后）</td>
+              <td>891.13</td>
+              <td>949.50</td>
+              <td>985.81</td>
+              <td>1,018.87</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">1,131.00</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">1,164.30</td>
+            </tr>
+            <tr>
+              <td class="font-medium">营收同比增速</td>
+              <td class="text-green-600 dark:text-green-400">+4.2%</td>
+              <td class="text-green-600 dark:text-green-400">+6.6%</td>
+              <td class="text-green-600 dark:text-green-400">+3.8%</td>
+              <td class="text-green-600 dark:text-green-400">+3.4%</td>
+              <td class="text-green-600 dark:text-green-400">+11.0%</td>
+              <td class="text-green-600 dark:text-green-400">+4%–5%</td>
+            </tr>
+            <tr>
+              <td class="font-medium">GAAP 合并净利润</td>
+              <td>319.78</td>
+              <td>275.28</td>
+              <td>265.15</td>
+              <td>271.32</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">305.09</td>
+              <td class="text-amber-600 dark:text-amber-400">294.00–302.00 (含Q3 12亿罚金)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">摊薄每股收益（EPS，美元）</td>
+              <td>3.57</td>
+              <td>3.19</td>
+              <td>3.08</td>
+              <td>3.21</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">3.81 (+18.7%)</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">4.11–4.20</td>
+            </tr>
+            <tr>
+              <td class="font-medium">净利率（GAAP 合并口径）</td>
+              <td>35.9%</td>
+              <td>29.0%</td>
+              <td>26.9%</td>
+              <td>26.6%</td>
+              <td>27.0%</td>
+              <td>25.3%–25.9%</td>
+            </tr>
+            <tr>
+              <td class="font-medium">经营性现金流 (OCF，注银行口径)</td>
+              <td>-71.90</td>
+              <td>-63.10</td>
+              <td>449.60</td>
+              <td>-88.00</td>
+              <td>487.00</td>
+              <td>~340.00</td>
+            </tr>
+            <tr>
+              <td class="font-medium">GAAP ROE / 调整后 ROTCE</td>
+              <td>12.2% / ~17%</td>
+              <td>10.8% / ~15%</td>
+              <td>9.8% / ~13.5%</td>
+              <td>9.5% / 13.0%</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">10.8% / 14.0%</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">10.9% / 16.0% (9M26)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <!-- 收入增长 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="trending-up" class="w-5 h-5"></i
+            >收入增长：跨越 1,100 亿美元大关且息差加速
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            五年营收由 FY2021 的 891.13 亿美元逐年抬升至 FY2025 的 1,131.00 亿美元（未曾出现一年倒退），TTM 更攀升至 1,164.30 亿美元。进入 2026 年，Q3 净利息收入（FTE）同比加速增长 <strong>8%</strong> 至 166.00 亿美元，净利息收益率回升至 <strong>2.16%</strong>，美林资管费大增 <strong>17%</strong>，营收结构健康且富有后劲。
+          </p>
+        </div>
+
+        <!-- 净利润趋势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="award" class="w-5 h-5"></i
+            >净利润趋势：核心向上，仅遭 Q3 一次性罚单扰动
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            经历 2022–2024 年因存款成本攀升与拨备常态化导致的利润横盘（265亿–275亿美元）后，FY2025 净利润强势跳升 12.5% 至 <strong>305.09 亿美元</strong>（EPS $3.81）。2026 年 Q3 表观净利看似下滑 17% 至 69 亿美元，实则全因计入 <strong>12.00 亿美元不可抵税的 FinCEN/OCC 反洗钱罚金</strong>；剔除该一次性处罚后调整后 EPS 达 1.08 美元，依然稳步创高。
+          </p>
+        </div>
+
+        <!-- 自由现金流 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流：看懂银行现金流的专业视角
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            通俗提醒：在商业银行财报里，买卖交易性证券与客户待交割货款全数计入“经营性现金流（OCF）”，导致 OCF 在正负数百亿美元间剧烈摇摆（如 FY24 为 -88 亿、FY25 达 +487 亿、TTM 约 +340 亿）。评估银行真正可自由支配现金流的黄金标尺是<strong>“普通股净利润 + 超额 CET1 资本释放”</strong>——BAC 过去五年向股东实打实分派与回购了 <strong>1,141 亿美元</strong>（Q3 2026 单季再返还 83 亿美元），证明其造血极强。
+          </p>
+        </div>
+
+        <!-- 利润率与债务 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="scale" class="w-5 h-5"></i>利润率与资本债务安全垫
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            扣减拨备前后的净利率长期保持在 <strong>26%–27%</strong> 优异水平；效率比（费用/营收）改善至 ~62%–63%。负债端（银行天然高负债商业模式）：总资产约 3.44 万亿–3.55 万亿美元，核心由 <strong>2.02 万亿美元以上客户存款</strong>支撑（贷存比仅约 60%），另有 ~3,150亿–3,210 亿美元长期债券与高达 <strong>9,140 亿美元</strong>全局流动资金储备（GLS）；Q3 CET1 资本率为 <strong>10.90%</strong>（安全高出监管最低要求）。
+          </p>
+        </div>
+      </div>
+
+      <!-- ROE 与财务稳健性判断 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+      >
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4"
+        >
+          股本回报率（ROE / ROTCE）与整体财务稳健性判断
+        </h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-4">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">
+              16.0%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              9M 2026 调整后有形股本回报率 ROTCE
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">
+              10.8%–11.5%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              GAAP 账面 ROE（含近700亿商誉分母）
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-400">
+              10.90%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              CET1 资本充足率（高于 10.5% 底线）
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          由于早年并购美林与全美银行留存了近 700 亿美元商誉与无形资产，分析美国银行的资本效率应重点观察剔除商誉后的<strong>有形股本回报率（ROTCE）</strong>：已由 2024 年的 13.0% 逐年攀升至 2025 年的 14.0%，并在 2026 年前九个月（剔除罚金）成功站上 <strong>16.0%</strong>！综合近五年完整财报，美国银行的财务状况属于<strong>非常稳健且核心盈利能力正加速释放</strong>，信贷净核销率（Q3 仅 13 亿美元）更是处于极其健康的周期低位。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、估值分析 -->
+  <section
+    id="valuation"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calculator"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          五、估值分析（投行可比法 + 超额收益/DCF 估算）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+        截至 2026 年 11 月 24 日收盘，美国银行股价报 <strong>48.56 美元</strong>（总市值约 <strong>3,350.7 亿美元</strong>，较 52 周高点 65.23 美元深度回撤约 25.6%），每股账面价值（BVPS）为 39.26 美元，有形账面价值（TBVPS）为 29.14 美元[reference:4]。
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <div
+          class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-primary-700 dark:text-primary-300 mb-4"
+          >
+            市盈率（P/E）与市净率（P/B）同业对比
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">美国银行 (BAC，现价 48.56$)</span>
+              <span class="font-bold text-primary-600 dark:text-primary-400">TTM 11.6–11.8x | 远期 9.6–10.7x | P/B 1.24x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">摩根大通 (JPM)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 14.1–14.8x | 远期 ~13.2x | P/B 2.20–2.33x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">富国银行 (WFC)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 12.6–13.0x | 远期 ~11.0x | P/B 1.54x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">花旗集团 (C)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 11.5–12.7x | 远期 ~10.0x | P/B 0.94x</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">BAC 10 年远期 P/E 中枢 / 美国大行均值</span>
+              <span class="font-semibold text-gray-700 dark:text-gray-300">11.4–12.0x / 12.5–14.0x</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">
+            注：按 2026 年一致预期 EPS ~4.18–4.20 美元与 2027 年预期 ~4.80–5.05 美元计算，BAC 当前远期 P/E 仅 9.6x–10.7x，不仅在四大行中处于最低梯队，P/B 较 JPM 折价高达 46%。
+          </p>
+        </div>
+
+        <div
+          class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-accent-700 dark:text-accent-300 mb-4"
+          >
+            华尔街机构最新目标价汇总（2026年Q4）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Truist Securities / Argus / Wells Fargo</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">66.00 / 65.00 / 65.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Oppenheimer / Goldman Sachs</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">64.00 / 63.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Barclays（10月15日维持买入）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">62.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Piper Sandler（中性）</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">56.00 美元</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">MarketBeat (30位) / TipRanks (19位) 一致目标价</span>
+              <span class="font-bold text-primary-600 dark:text-primary-400">61.36 – 64.05 美元（+26%~32%）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DCF / 超额收益模型参考 -->
+      <div
+        class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8"
+      >
+        <h3
+          class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"
+        >
+          <i data-lucide="line-chart" class="w-5 h-5"></i
+          >现金流折现（DCF）与银行超额收益模型（Excess Return）估值
+        </h3>
+        <p
+          class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+        >
+          投行评估商业银行的核心模型是<strong>超额有形收益折现模型（Gordon P/TBV 与 Excess Return DCF）</strong>：取当前有形净资产 TBVPS = <strong>29.14 美元</strong>，股权资本成本 Ke = 9.5%，永续增长率 g = 3.0%；若 BAC 能稳步实现 16.0% 的可持续 ROTCE（管理层中期目标为 16%–18%），理论公允市净率倍数 = (16.0% - 3.0%) / (9.5% - 3.0%) = <strong>2.00x TBV</strong>，对应每股内在价值 <strong>58.28 美元</strong>！此外，第三方定量模型 GuruFocus GF Value 给出 <strong>57.99 美元</strong>，Alpha Spread DCF 相对估值给出 <strong>52.27 美元</strong>[reference:5]。
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-primary-600 dark:text-primary-400"
+            >
+              58.00–62.00$
+            </div>
+            <div class="text-xs text-gray-500">基准超额收益 DCF（按 16% ROTCE）</div>
+          </div>
+          <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-accent-600 dark:text-accent-400"
+            >
+              52.27–57.99$
+            </div>
+            <div class="text-xs text-gray-500">Alpha Spread / GuruFocus 第三方估值</div>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div
+              class="text-lg font-bold text-gray-700 dark:text-gray-300"
+            >
+              38.00–42.00$
+            </div>
+            <div class="text-xs text-gray-500">悲观衰退情境（ROTCE 跌回 11%–12%）</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="search"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          <strong>估值结论：股票处于“明显低估（Undervalued）”区间，具备约 15%–25% 修复空间。</strong><br />
+          当前 48.56 美元的股价仅对应 <strong>9.6x–10.7x 远期市盈率</strong>与 <strong>1.67x 有形市净率</strong>，远低于 16% 调整后 ROTCE 应享有的 2.00x 有形市净率公允锚（约 58.28 美元），也明显落后于华尔街 61–64 美元的一致目标价。年内 25% 的深幅回撤已将伯克希尔减持供给压力与 12.1 亿美元 AML 罚金冲击较为充分地计价。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、经营展望 -->
+  <section
+    id="outlook"
+    class="py-20 bg-accent-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calendar"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          六、经营展望（未来 12–24 个月）
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            1. 2027 年净利息收入（NII）指引提速至 +8% 以上
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            管理层在 Q3 业绩电话会上将 2027 年 NII 同比增速指引积极上调至 <strong>8% 以上</strong>。随着早期低收益率固定利率按揭及长期国债资产持续自然到期并置换为高息新资产，净利息收益率有望由 Q3 2026 的 2.16% 稳步向中期 2.30% 目标推进，推动一致预期营收由 FY26E ~1,177 亿美元迈向 FY27E 1,250亿–1,270亿美元、EPS 迈向 <strong>4.80–5.05 美元</strong>[reference:6]。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            2. 费用杠杆修复与 AI 裁员红利兑现
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            针对 Q3 2026 费用增速（+7%）短时反超营收的瑕疵，管理层承诺将于 Q4 2026 至 2027 年收紧开支增速，力争重新恢复 200–300bps 的全年正向经营杠杆，并依托内部 AI 自动化把员工精简红利真正转化为 55%–59% 效率比目标的达标动能。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            3. 资本返还节奏校准与合规体系重建
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            鉴于 Q3 CET1 资本率微降至 10.90%，未来几个季度管理层或把回购强度从超额派发（Q3 返还 83 亿超净利）温和校准为“与盈利匹配”的 50 亿–60 亿美元/季常态水平，优先确保资本充足率稳守 10.5%–11.0% 安全线；同时全力执行 FinCEN/OCC 同意令项下的全行反洗钱系统升级工程。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、风险识别 -->
+  <section
+    id="risk"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="alert-triangle"
+            class="w-5 h-5 text-red-600 dark:text-red-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">
+          七、风险识别（按危险程度从高到低排序）
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- 风险1 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0"
+            >
+              1
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2"
+              >
+                经济风险（危险度：高）— 宏观硬着陆引发信贷拨备骤增与净息差收缩
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                作为拥有 1.23 万亿美元贷款盘口的顺周期银行龙头，一旦 2027 年美国经济步入硬着陆衰退、失业率攀升或商业地产（尤其是核心写字楼贷款）违约蔓延，信用卡及商业贷款核销率将显著抬升，迫使银行大额增提拨备；同时若美联储被迫恐慌性大幅降息 100bps，BAC 未来 12 个月净利息收入（NII）将缩水约 <strong>19 亿美元</strong>。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险2 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0"
+            >
+              2
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2"
+              >
+                监管威胁（危险度：中高）— 12.1 亿美元 AML 罚单后的合规升级与增长受限隐患
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                2026年10月13日美国财政部 FinCEN 与 OCC 联合开出 <strong>12.10 亿美元</strong>史诗级罚单，直指 BAC 未能切实落实 2024 年旧同意令整改、漏报超 50 亿美元可疑交易[reference:2]。若后续独立监管审查再度发现重大合规缺口，不仅持续抬高合规刚性支出，更有潜在概率招致类似富国银行当年式的业务或资本返还上限限制；此外 Zelle 欺诈赔付监管及信用卡费率法案仍构成制度压力。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险3 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0"
+            >
+              3
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2"
+              >
+                竞争风险（危险度：中）— 摩根大通强势碾压与“解禁后”富国银行反扑
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                在资产端和高端客户争夺上，摩根大通（ROTCE 超 20%）的霸主优势不断拉大；同时美联储解除资产上限后的富国银行（WFC）在 2026 年正全力重抢存款、投行与财富管理市场份额，加上高收益在线存款账户与券商现金管理对银行活期存款的长期竞争，倒逼 BAC 不得不维持高营销与技术投入。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险4 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0"
+            >
+              4
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2"
+              >
+                行业颠覆风险（危险度：中）— 私人信贷（Private Credit）替代与稳定币/AI 金融冲击
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                以 Apollo、Blackstone 为首的非银私人信贷巨头正加速承接中型企业融资与杠杆收购贷款，绕过银行监管直接抢夺高收益企业贷份额；同时链上稳定币跨境即时结算与 AI 智能理财代理长期可能压缩部分支付与财富顾问费率空间。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险5 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0"
+            >
+              5
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2"
+              >
+                债务、财务与筹码供给风险（危险度：中低）— 债券浮亏敏感度 + 伯克希尔持续抛压
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                依托 9,140 亿美元流动储备与 10.90% CET1 资本率，银行绝无传统债务违约风险。真正的财务及交易层隐患在于：若长端美债收益率因通胀粘性意外飙升，将再次扩大长久期证券投资组合浮亏（如 Q3 已出现 32 亿美元对冲/债券市值损耗拖累 CET1）；此外伯克希尔手里仍余 <strong>4.56 亿股（6.6%）</strong>，其持续减持节奏会在中短期压制股价弹性。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、多空视角 -->
+  <section
+    id="longshort"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="scale"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          八、多空视角：机构投资组合经理评估
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- 可能买入的原因 -->
+        <div
+          class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800"
+        >
+          <h3
+            class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>25% 回调后赔率极具吸引力</strong>：48.56 美元仅对应 9.6x–10.7x 远期 P/E 与 1.67x 有形市净率，相对 JPM（2.2x+ P/B）折价巨大，而调整后 ROTCE 已爬升至 16.0%。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>2027 年 NII 增速确定性提速（+8%+）</strong>：低息老债券自然到期重定价是数学级别的确定性盈利扩张，净利息收益率向 2.30% 迈进。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>强悍的财富管理与信贷基本盘</strong>：美林资管费大增 17% 叠加极低核销率（13 亿美元/季），非息手续费平滑周期波动，华尔街一致看多至 61–64 美元。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>强力缩股 + 稳健股息护航</strong>：十年回购超 32% 股本，配合 ~2.35% 股息率及每年高额回购，为长线持有人提供扎实底仓复合收益。</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 可能回避的原因 -->
+        <div
+          class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800"
+        >
+          <h3
+            class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>伯克希尔连续九个季度抛售的信号压制</strong>：格雷格·阿贝尔掌舵下 Q3 再度减持 2,750 万股，尚余 4.56 亿股随时可能继续形成上方筹码卖压。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>12.1 亿美元反洗钱重罚暴露合规裂痕</strong>：且发生在 2024 年旧整改令之后，令人担忧其未来合规费用投入超支甚至触发更严监管介入。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>Q3 费用失控与 CET1 下降掣肘回购</strong>：Q3 费用同比增 7% 跑赢营收（+3%），且 CET1 降至 10.90%，明年超额回购能力或将趋于收敛。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>盈利效率仍落后于龙头摩根大通</strong>：若配置银行板块龙头溢价，部分机构倾向直接持有 ROTCE 逾 20% 且内控纪录更优的 JPM。</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 关键因素 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6"
+      >
+        <h3
+          class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4"
+        >
+          关键因素：机构组合需要密切跟踪的 3 个指标
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div
+            class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="percent"
+              class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-primary-700 dark:text-primary-300"
+            >
+              净利息收益率 &amp; 2027 NII 兑现
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              净息差能否由 2.16% 如期升向 2.30%，以及 2027 年 NII 能否兑现 +8% 以上加速增长
+            </p>
+          </div>
+          <div
+            class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="scale"
+              class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-accent-700 dark:text-accent-300"
+            >
+              正向经营杠杆与 CET1 资本率
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              Q4 起费用增速能否压回营收增速下方（恢复 +200bps 杠杆）且 CET1 稳住 10.9%+
+            </p>
+          </div>
+          <div
+            class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center"
+          >
+            <i
+              data-lucide="trending-down"
+              class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-gray-700 dark:text-gray-300"
+            >
+              伯克希尔 13F 减持止步信号
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              一旦伯克希尔在未来季报停止抛售或持股比例稳于 5% 附近，压制估值修复的最大筹码头顶将瞬间解除
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投资论点 -->
+      <div
+        class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="target"
+            class="inline-block w-5 h-5 mr-2 -mt-0.5"
+          ></i>
+          <strong>机构投资论点：</strong
+          >站在机构投资组合经理的视角，美国银行（BAC）在当前 <strong>48.56 美元</strong>价位是一只极佳的<strong>“深度价值与盈利复苏共振型（Deep Value-GARP）长期核心配置标的”</strong>。经过年内逾 25% 的深幅回调，市场已把伯克希尔九连季抛售的压力以及 10 月一次性 12.1 亿美元反洗钱罚单过度计价；而剥开噪声后，投资者实际能以<strong>不足 10.5 倍的远期市盈率与 1.67 倍有形市净率</strong>，买下一座拥有 2.02 万亿美元超低息存款护城河、调整后 ROTCE 已实质突破 16%、且明年净利息收入即将加速增长 8%+ 的金融巨头（对比摩根大通逾 2.2x P/B 极具安全边际）。<br /><br />
+          因此，我们认为 BAC <strong>非常值得作为金融价值底仓逢低分批长期配置</strong>，目标估值锚向 58–62 美元（~2.0x TBV）看齐。该论点成立的核心风控前提是：<strong>美国经济不出现全面硬着陆信用危机，且新任 AML 合规整改不演变为资产增长限制</strong>——只要上述底线守住，时间与 NII 重定价复利站在多头一边。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          关于本报告
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告基于美国银行（NYSE: BAC）公开 SEC 财务报告、Q3 2026 业绩发布、美国财政部及 OCC 监管公告、伯克希尔 13F 披露及华尔街机构研报，从商业模式、护城河、行业趋势、五年财务、投行估值、未来展望、风险排序及多空视角八个维度提供系统分析。
+        </p>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          数据来源
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>• 美国银行 FY2025 10-K 年报及 Q3 2026 10-Q / 业绩幻灯片</li>
+          <li>• 美国财政部 FinCEN / OCC 2026年10月13日执法公告</li>
+          <li>• Berkshire Hathaway Q3 2026 13F 及 13G/A 披露</li>
+          <li>• Truist、Wells Fargo、Barclays、Goldman Sachs 2026年Q4研报</li>
+          <li>• JPMorgan、Wells Fargo、Citigroup 2026 Q3 公开财务对比</li>
+        </ul>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          免责声明
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告仅供教育与金融研究参考，不构成任何证券买卖或投资建议。所有财务及估值数据均基于截至 2026 年 11 月 25 日（北京时间）的公开披露信息整理，市场有风险，投资需独立判断。
+        </p>
+      </div>
+    </div>
+    <div
+      class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500"
+    >
+      <p>© 2026 美国银行（BAC）经营分析报告 · 生成日期：2026-11-25</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    if (!menu) return;
+    menu.classList.toggle("mobile-menu-open");
+  }
+
+  window.addEventListener("scroll", () => {
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    lucide.createIcons();
+    AOS.init({ duration: 800, once: true });
+  });
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

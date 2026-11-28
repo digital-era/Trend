@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpaceX体系全景解析</title>
+<!-- Essential CDN Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)',
+100: 'hsl(20, 90%, 85%)',
+200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)',
+400: 'hsl(20, 90%, 55%)',
+500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)',
+700: 'hsl(20, 90%, 35%)',
+800: 'hsl(20, 90%, 25%)',
+900: 'hsl(20, 90%, 15%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)',
+100: 'hsl(30, 85%, 85%)',
+200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)',
+400: 'hsl(30, 85%, 60%)',
+500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)',
+700: 'hsl(30, 85%, 40%)',
+800: 'hsl(30, 85%, 30%)',
+900: 'hsl(30, 85%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Micro-interactions & Custom Styles -->
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+.btn-interactive {
+  transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+  transform: scale(0.95);
+}
+.card-interactive {
+  transition: all 0.3s ease-out;
+  border: 1px solid transparent;
+  --border-lightness: 40%;
+}
+.dark .card-interactive {
+  --border-lightness: 60%;
+}
+.card-interactive:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+  border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+  border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th, .dark td {
+  border-bottom-color: hsl(0, 0%, 30%);
+}
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+  display: none;
+}
+
+#mobileMenu.mobile-menu-open {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  #mobileMenu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  header .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  header .flex.items-center.justify-between > h1 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    white-space: nowrap;
+    margin-right: 0.5rem;
+  }
+
+  #mobileMenu {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid rgba(20, 20, 20, 0.12);
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dark #mobileMenu {
+    border-top-color: rgba(255, 255, 255, 0.15);
+  }
+
+  #mobileMenu a {
+    display: block;
+    width: 100%;
+    padding: 0.7rem 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  #mobileMenu a:active {
+    background: rgba(20, 20, 20, 0.06);
+  }
+
+  .dark #mobileMenu a:active {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* 桌面端导航：明确指定亮色/暗色文字，避免 dark 模式下依赖继承导致不可见 */
+@media (min-width: 768px) {
+  header nav[aria-label="桌面端导航"] a {
+    color: #374151;
+  }
+
+  .dark header nav[aria-label="桌面端导航"] a {
+    color: #e5e7eb;
+  }
+
+  header nav[aria-label="桌面端导航"] a:hover {
+    color: hsl(20, 90%, 45%);
+  }
+
+  .dark header nav[aria-label="桌面端导航"] a:hover {
+    color: hsl(20, 90%, 55%);
+  }
+}
+
+/* 防止固定 Header 在展开移动菜单时被内容裁剪 */
+header {
+  overflow: visible;
+}
+</style>
+<script>
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<!-- Floating Header -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">SpaceX体系全景解析</h1>
+    <!-- 桌面端导航 -->
+    <nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+      <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+      <a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">创始人</a>
+      <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+      <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+      <a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+      <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+      <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+    </nav>
+
+    <!-- 右侧按钮 -->
+    <div class="flex items-center space-x-2 flex-shrink-0">
+      <!-- 移动端汉堡菜单 -->
+      <button
+        type="button"
+        onclick="toggleMobileMenu()"
+        class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        aria-label="打开或关闭导航菜单"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+        id="mobileMenuButton"
+      >
+        <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+      </button>
+
+      <!-- 暗色模式 -->
+      <button
+        type="button"
+        onclick="toggleDarkMode()"
+        class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+        aria-label="切换暗色模式"
+      >
+        <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+        <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 移动端导航菜单 -->
+  <div id="mobileMenu" aria-hidden="true">
+    <nav class="flex flex-col space-y-1">
+      <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+      <a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">创始人</a>
+      <a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+      <a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+      <a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联企业</a>
+      <a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工持股</a>
+      <a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+    </nav>
+  </div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+SpaceX体系全景解析
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+本页系统梳理了围绕SpaceX的核心议题：创始人埃隆·马斯克的创业与战略演进、公司从私募到2026年纳斯达克上市的股本与估值变化、双层股权架构与控制权、业务矩阵（发射、星链、超级智能）及关联协同，以及员工股权激励。通过把公司治理、资本运作、经营表现与组织文化放在同一框架内，帮助你快速理解“SpaceX”这家企业的全貌。
+</p>
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+            <i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">创始人发展</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">
+          马斯克从创业到AI整合与上市的战略迭代
+        </p>
+      </div>
+      <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+            <i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本与股权</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">
+          IPO、双层股权与约82%投票权控制
+        </p>
+      </div>
+      <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+            <i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">关联与激励</h3>
+        </div>
+        <p class="text-sm text-gray-700 dark:text-gray-300">
+          业务矩阵协同与员工股权绑定
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 1: 创始人发展 -->
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+      创始人埃隆·马斯克的发展历程与战略重心迁移
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        埃隆·马斯克于2002年以约1亿美元PayPal收益创立SpaceX，目标是降低太空发射成本并最终实现火星殖民。公司从Falcon 1的早期失败，到Falcon 9可回收、Dragon载人、Starship超重型火箭，再到Starlink星座与AI业务整合，战略路径高度非线性，始终围绕“降低进入太空门槛”与“多行星物种”愿景迭代。
+      </p>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          关键转折：2026年2月完成与xAI的全股票合并，将Grok、Colossus算力与X平台纳入；6月12日以约1.77–1.8万亿美元估值登陆纳斯达克（SPCX），成为史上最大规模IPO之一；同年8月以约600亿美元收购Cursor。
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">早期：发射与可回收</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2002年创立，2008年Falcon 1首次成功</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Falcon 9可回收与发射节奏引领行业</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Dragon与NASA、商业载人任务建立壁垒</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">中期：星链与资本化</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Starlink从概念到千万级用户与高利润</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">私募估值从数百亿跃升至2025年末约8000亿美元</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Starship持续测试，为重型载荷与火星铺路</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+          近年：AI整合、IPO与超级智能
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          2026年2月，SpaceX以全股票方式合并xAI，将Grok模型、Colossus超算与X平台纳入体系，随后形成“Space（发射）、Connectivity（星链）、Super Intelligence（超级智能）”三大报告分部。6月12日IPO以每股135美元发行约6.39亿股A类股，募资约857亿美元，估值约1.77–1.8万亿美元，成为史上最大IPO之一。同年8月完成对Cursor（AI编程平台）约600亿美元收购。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          2026年第三季度，公司营收达146亿美元，同比增长约161%，其中超级智能分部贡献约52%（约75.6亿美元），星链约52.5亿美元，发射约17.7亿美元；当季净利润约44亿美元。星链消费用户达1360万，ARPU约69美元/月。公司同时推进大规模AI芯片融资（约320–440亿美元规模的芯片相关债务与租赁安排），用于算力扩张。
+        </p>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md mt-6">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">管理哲学与组织特征</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>高度集中决策与愿景驱动。</strong>马斯克同时担任CEO、CTO与董事长，投票权约82.4%，重大战略（AI并购、算力投资、火星时间表）由创始人强力推动。</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>Gwynne Shotwell作为运营核心。</strong>长期担任总裁兼COO，负责日常运营与客户关系，与马斯克形成“愿景+执行”分工。</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300"><strong>绩效挂钩的长期激励。</strong>马斯克本人获得与市值里程碑（最高至7.5万亿美元）及火星永久定居目标挂钩的受限股份与期权安排。</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 2: 股本数量变化 -->
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+      股本数量变化过程：从私募到史上最大IPO
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        SpaceX在2026年6月12日完成IPO前长期为私人公司，通过多轮股权融资与内部要约（tender offer）提升估值并提供流动性。IPO以每股135美元发行约6.39亿股A类股，募资约857亿美元（扣除费用后），估值约1.77–1.8万亿美元。IPO后总股本约135.8亿股（约82.5亿A类+53.3亿B类）。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">关键节点</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2025年12月内部要约估值约8000亿美元</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2026年2月xAI合并后估值跃升至约1万亿美元量级</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">2026年6月12日IPO，募资约857亿美元，估值约1.8万亿美元</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">当前股本与市值概览（约2026年11月）</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">总股本（约）</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">135.8亿股</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">A类 / B类</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约82.5亿 / 53.3亿</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">近期收盘价区间</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约128–138美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-700 dark:text-gray-300">市值区间（约）</span>
+              <span class="text-base font-semibold text-accent-600 dark:text-accent-400">1.7–1.88万亿美元</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          市场反应：IPO后股价曾冲高后回落，部分时段跌破发行价，反映投资者对AI算力资本开支、债务融资规模与利润转化节奏的分歧。公司同时进行大规模芯片相关债务融资（约320亿美元级别的债券/结构融资），以支撑超级智能分部扩张。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 3: 股权结构变化 -->
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+      股权结构变化：双层股权与高度集中控制权
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        SpaceX采用双层股权结构：A类股1股1票，B类股1股10票。马斯克通过信托、受限股份与期权合计约48.4%经济权益，并控制约82.4%投票权，形成事实上的绝对控制。IPO后公众股东持有A类流通股，但投票权仍高度集中于创始人。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">实际控制人</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">埃隆·马斯克：约48.4%经济权益，约82.4%投票权</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">主要通过信托持有A类与B类股份，并持有大量受限B类与期权</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">控制权在IPO后保持稳固，锁定与业绩挂钩安排进一步绑定长期利益</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">主要机构股东（公开披露）</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Alphabet（谷歌）：约5.5–7%量级A类权益</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">Valor Equity Partners（Antonio Gracias）：约5%+量级</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">其他早期VC与长期投资者（含Fidelity等历史参与方）</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          控制权稳定性与治理特征
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          双层股权结构使经济权益与投票权显著分离。即使公众持股比例提升，B类超投票权仍保障创始人在董事会选举与重大决策上的主导地位。董事会成员多与马斯克长期合作网络相关（包括Gwynne Shotwell、Antonio Gracias、早期PayPal/VC背景董事等），治理上呈现“愿景集中+运营专业化”特征。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          马斯克的受限股份与业绩期权与高市值里程碑及火星定居目标挂钩，进一步强化了长期战略与个人激励的一致性，但也可能在市场波动时放大股价与治理预期的联动。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 4: 关联上市公司/企业关系 -->
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+      业务矩阵与关联关系：发射、星链与超级智能
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        SpaceX自身为上市主体（SPCX）。核心业务分部包括Space（发射与开发）、Connectivity（Starlink）与Super Intelligence（xAI、X、Cursor、算力基础设施）。与特斯拉存在技术与人才协同，但财务与股权相互独立；星链与xAI相关业务已整合进报告分部。
+      </p>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="rocket" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">Space（发射）</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">Falcon与Starship发射及开发</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>2025年分部营收约40.9亿美元</li>
+            <li>Q3 2026约17.7亿美元</li>
+            <li>行业领先的发射节奏与成本优势</li>
+            <li>为星链与重型载荷提供底层能力</li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="satellite" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">Connectivity（星链）</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">卫星互联网与企业/政府服务</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>2025年营收约113.9亿美元，高利润</li>
+            <li>Q3 2026约52.5亿美元，用户约1360万</li>
+            <li>经营利润率显著高于其他分部</li>
+            <li>当前利润与现金流的主要贡献者</li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+              <i data-lucide="brain" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">Super Intelligence</h3>
+          </div>
+          <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">xAI、Grok、Cursor、算力与X</p>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li>Q3 2026营收约75.6亿美元（约52%总营收）</li>
+            <li>增长最快但利润率与资本开支压力显著</li>
+            <li>大规模GPU与数据中心投资</li>
+            <li>与Anthropic等客户有重要算力合约</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          协同与风险
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          发射能力为星链提供低成本入轨通道，星链产生的稳定现金流与利润支撑超级智能的高资本开支。AI分部在短时间内成为收入主力，但利润率显著低于星链，且依赖可终止的客户合约与持续算力投入。与特斯拉在电池、AI、制造与人才方面存在协同讨论，但当前为独立上市公司，合并预期更多停留在市场叙事层面。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          主要风险包括：AI资本开支与债务融资节奏、星链ARPU与用户增长平衡、发射与Starship技术里程碑延迟，以及双层股权下的治理集中度对外部投资者预期的影响。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 5: 员工持股与激励 -->
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+      员工持股与激励机制：股权绑定与长期愿景
+    </h2>
+    <div class="space-y-6">
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+        SpaceX长期以股权激励吸引和保留人才。上市前通过期权与RSU提供潜在上行空间；IPO后股权计划（含期权、受限股票、RSU等）延续，并叠加员工持股计划元素。激励逻辑是将员工利益与公司长期估值及任务（发射、星链、AI、火星）深度绑定。
+      </p>
+      <div class="grid md:grid-cols-2 gap-6 mt-8">
+        <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">核心激励工具</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">股票期权（ISO/NSO）与受限股票/RSU</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">典型4年归属（1年cliff + 后续分期）</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">上市前二次市场与内部要约提供部分流动性</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+          <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">层级与特点</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">工程师与核心岗位股权占比高</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">高级别与关键岗位获得显著更大授予</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+              <span class="text-sm text-gray-700 dark:text-gray-300">上市后锁定期与分阶段解禁安排</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8">
+        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+          激励效果与潜在矛盾
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          股权激励帮助SpaceX在高风险、高强度环境下吸引顶尖人才，并与公司长期愿景（可重复发射、全球连接、超级智能、火星）对齐。IPO为早期员工与期权持有人提供了重要的价值实现窗口，但也带来锁定期、税务与减持节奏管理问题。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          潜在矛盾包括：AI与算力业务资本开支巨大可能稀释短期利润预期；双层股权下公众股东对治理与战略透明度的要求上升；以及高强度工作文化与股权价值波动对员工留存的双重影响。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section 6: 综合研判 -->
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+      综合研判与关键结论
+    </h2>
+    <div class="space-y-6">
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          1. 组织与战略进入“三引擎”阶段
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          SpaceX已从单一发射公司演变为“发射+星链+超级智能”三引擎架构。星链贡献稳定高利润现金流，超级智能成为收入增长主力，发射则提供底层成本与能力壁垒。2026年IPO与xAI整合标志着公司正式进入公开市场与AI基础设施双叙事并行的新阶段。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          挑战在于如何在保持发射与星链执行力的同时，消化AI业务的高资本开支与利润率压力。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          2. 财务上“高增长与高投入并存”
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          2025年公司仍录得净亏损，2026年第三季度已实现单季高额净利润，但全年与九个月口径仍受AI资本开支与整合影响。星链利润率强劲，超级智能收入占比快速上升但利润率显著偏低，资本开支与债务融资规模巨大，市场对“增长故事”与“利润兑现”的定价存在分歧。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          市值从IPO时约1.8万亿美元波动至约1.7–1.9万亿美元区间，反映投资者对AI投入回报与整体盈利能力的再评估。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          3. 控制权与激励是“稳定器”
+        </h3>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          双层股权与约82%投票权保障了战略连续性；员工与管理层股权激励则绑定了执行层利益。星链的现金牛角色为高风险高投入的AI与Starship提供缓冲。
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          未来需重点观察超级智能利润率改善、星链用户与ARPU平衡、Starship商业化进度，以及公开市场对治理透明度的持续要求。
+        </p>
+      </div>
+      <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+        <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+          4. 风险提示
+        </h3>
+        <div class="space-y-4">
+          <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>AI资本开支与债务风险。</strong>大规模芯片与数据中心投入依赖债务与经营现金流，若客户合约或算力需求不及预期，可能对利润与资产负债表造成压力。
+            </p>
+          </div>
+          <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>治理集中与市场预期。</strong>高度集中的投票权保障效率，但也可能放大市场对单一决策者风险的定价，尤其在股价波动期。
+            </p>
+          </div>
+          <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>业务结构转换考验。</strong>从“发射+星链”向“AI驱动”转型的速度与质量，将决定公司能否在公开市场维持高估值溢价。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          一句话总结：SpaceX的故事已从“降低进入太空的成本”扩展为“连接地球与构建超级智能”，IPO只是新篇章的开始；能否把星链的利润引擎与AI的增长引擎成功耦合，将决定它能否穿越下一个十年的估值周期。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合公司公告、公开财务数据、SEC文件与市场公开信息，系统梳理SpaceX的创始人历程、股本与股权变化、业务矩阵与员工激励机制。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 创始人战略演进</li>
+<li>• 股本数量变化</li>
+<li>• 股权结构与控制权</li>
+<li>• 业务矩阵与关联关系</li>
+<li>• 员工持股与激励</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供教育与信息参考，不构成投资建议。数据基于公开信息整理，分析观点仅供参考。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 SpaceX体系全景研究。保留所有权利。</p>
+</div>
+</div>
+</footer>
+<!-- Scripts -->
+<script>
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+
+  if (!menu) return;
+
+  const isOpen = menu.classList.toggle('mobile-menu-open');
+
+  menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+
+  if (button) {
+    button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  if (icon) {
+    icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+    lucide.createIcons();
+  }
+}
+
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const button = document.getElementById('mobileMenuButton');
+  const icon = document.getElementById('mobileMenuIcon');
+
+  if (!menu) return;
+
+  menu.classList.remove('mobile-menu-open');
+  menu.setAttribute('aria-hidden', 'true');
+
+  if (button) {
+    button.setAttribute('aria-expanded', 'false');
+  }
+
+  if (icon) {
+    icon.setAttribute('data-lucide', 'menu');
+    lucide.createIcons();
+  }
+}
+
+// Progress Bar
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+});
+// Initialize AOS & Lucide
+document.addEventListener('DOMContentLoaded', function() {
+  lucide.createIcons();
+  AOS.init({ duration: 800, once: true });
+
+  // 点击移动端导航后自动收起菜单
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  });
+
+  // Citation System
+  let i = 1, map = new Map();
+  document.querySelectorAll('[data-ref]').forEach(el => {
+    if (el.dataset.citationProcessed) return;
+    const raw = (el.getAttribute('data-ref')||'').trim();
+    if (!raw) return;
+    const parts = raw.split('|');
+    const url = parts[0].trim();
+    const idx = (parts[1]||'').trim() || map.get(raw) || (map.set(raw, String(i)), String(i++));
+    if (!el.textContent || !el.textContent.trim()) { el.dataset.citationProcessed = 'true'; return; }
+    const btn = document.createElement('sup'); btn.textContent = String(idx);
+    Object.assign(btn.style, { fontSize:'8px', color:'#fff', cursor:'pointer', top: '1px', fontWeight:'bold', backgroundColor:'#0284c7', borderRadius:'50%', transition:'all .15s', userSelect:'none', minWidth:'19px', height:'19px', marginLeft:'6px', display:'inline-flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 3px rgba(0,0,0,.2)', lineHeight:'1'});
+    btn.addEventListener('mouseenter', ()=> Object.assign(btn.style, { backgroundColor:'#0369a1', transform:'scale(1.12)' }));
+    btn.addEventListener('mouseleave', ()=> Object.assign(btn.style, { backgroundColor:'#0284c7', transform:'scale(1)' }));
+    btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(url, '_blank'); });
+    el.appendChild(btn); el.dataset.citationProcessed = 'true';
+  });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

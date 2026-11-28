@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>美国运通（NYSE: AXP）经营分析报告</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+primary: {
+50: "hsl(20, 90%, 95%)",
+100: "hsl(20, 90%, 85%)",
+200: "hsl(20, 90%, 75%)",
+300: "hsl(20, 90%, 65%)",
+400: "hsl(20, 90%, 55%)",
+500: "hsl(20, 90%, 50%)",
+600: "hsl(20, 90%, 45%)",
+700: "hsl(20, 90%, 35%)",
+800: "hsl(20, 90%, 25%)",
+900: "hsl(20, 90%, 15%)",
+},
+accent: {
+50: "hsl(30, 85%, 95%)",
+100: "hsl(30, 85%, 85%)",
+200: "hsl(30, 85%, 75%)",
+300: "hsl(30, 85%, 65%)",
+400: "hsl(30, 85%, 60%)",
+500: "hsl(30, 85%, 55%)",
+600: "hsl(30, 85%, 50%)",
+700: "hsl(30, 85%, 40%)",
+800: "hsl(30, 85%, 30%)",
+900: "hsl(30, 85%, 20%)",
+},
+},
+},
+},
+};
+</script>
+<script
+defer
+src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html {
+scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html {
+scroll-behavior: auto;
+}
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow:
+0 10px 15px -3px rgba(0, 0, 0, 0.1),
+0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow:
+0 20px 25px -5px rgba(0, 0, 0, 0.1),
+0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th,
+td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th,
+.dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(
+90deg,
+hsl(20, 90%, 55%),
+hsl(30, 85%, 55%)
+);
+transition: width 1.2s ease-out;
+}
+.risk-badge {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-width: 28px;
+height: 28px;
+border-radius: 8px;
+font-weight: 700;
+font-size: 13px;
+}
+Code
+/* ===== 暗色模式全局对比度增强 ===== */
+  .dark body {
+    color: #f3f4f6;
+  }
+  .dark header nav a {
+    color: #e5e7eb !important;
+  }
+  .dark header nav a:hover {
+    color: hsl(20, 90%, 65%) !important;
+  }
+  .dark .text-gray-400,
+  .dark .text-gray-500 {
+    color: #9ca3af !important;
+  }
+  .dark table th {
+    color: #f3f4f6;
+  }
+  .dark table td {
+    color: #e5e7eb;
+  }
+  .dark .text-gray-600 {
+    color: #d1d5db !important;
+  }
+  .dark .text-gray-700 {
+    color: #e5e7eb !important;
+  }
+
+  /* ===== 移动端菜单 ===== */
+  #mobileMenu {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    #mobileMenu {
+      display: none !important;
+    }
+  }
+  @media (max-width: 767px) {
+    #mobileMenu.mobile-menu-open {
+      display: block !important;
+    }
+  }
+</style>
+<script>
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById("sunIcon").style.display = isDark
+      ? "block"
+      : "none";
+    document.getElementById("moonIcon").style.display = isDark
+      ? "none"
+      : "block";
+  }
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body
+class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen"
+>
+<!-- Progress Bar -->
+<div
+class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out"
+id="progressBar"
+style="width: 0%"
+></div>
+Code
+<!-- Floating Header -->
+<header
+  class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100"
+>
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+        美国运通 AXP 经营分析
+      </h1>
+      <!-- 桌面端导航 -->
+      <nav class="hidden md:flex space-x-5">
+        <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+
+      <div class="flex items-center space-x-2">
+        <!-- 移动端汉堡菜单按钮 -->
+        <button
+          onclick="toggleMobileMenu()"
+          class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300"
+          aria-label="菜单"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
+        <!-- 暗色模式切换 -->
+        <button
+          onclick="toggleDarkMode()"
+          class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+          aria-label="切换暗色模式"
+        >
+          <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 移动端下拉菜单 -->
+    <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+      <nav class="flex flex-col space-y-3">
+        <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+        <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+        <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+        <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+        <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+        <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+        <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+        <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="min-h-screen">
+  <!-- Hero -->
+  <section
+    class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300"
+          >美股 · 支付网络 · 消费金融</span
+        >
+        <span
+          class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300"
+          >NYSE: AXP · 2026-11-25</span
+        >
+      </div>
+      <h2
+        class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300"
+      >
+        美国运通公司（American Express）<br /><span
+          class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium"
+          >经营分析报告</span
+        >
+      </h2>
+      <p
+        class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl"
+      >
+        美国运通（NYSE: AXP）是全球唯一横跨“发卡行、清算网络、商户收单与高净值消费信贷”的闭环会员生态巨头，并连续 7 年蝉联 J.D. Power 美国信用卡客户满意度第一。2026 年前三季度公司录得 586.06 亿美元营收（+10% YoY）并上调全年 EPS 指引至 18.30–18.60 美元，但受刷卡增速小幅放缓（Q3 +8%）、3.50 亿美元反洗钱罚单及大盘风格切换影响，股价自 52 周高点 387.49 美元回调至 2026 年 11 月 24 日的 308.61 美元。本报告从八个维度系统评估其长期投资价值。
+      </p>
+      <div class="grid md:grid-cols-4 gap-4">
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            722.29亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            FY2025 营收（TTM 775.86亿$）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            108.33亿$
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            FY2025 净利润（TTM 122.56亿$）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+          >
+            32.4%+
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            FY25 ROE（Q3 TTM 35%–42%）
+          </div>
+        </div>
+        <div
+          class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center"
+        >
+          <div
+            class="text-2xl font-bold text-accent-600 dark:text-accent-400"
+          >
+            1.80%
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+            Q3 2026 净核销率（行业最优）
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一、商业模式 -->
+  <section
+    id="model"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="credit-card"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          一、商业模式
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          不同于 Visa、Mastercard 充当“纯跨行过路费管道（四方开放模式）”以及摩根大通、Capital One 充当“纯粹发卡银行”，美国运通运行的是全球罕见的<strong>“三方闭环付费会员模型（Closed-Loop Membership Model）”</strong>。它将发卡、交易清算、商户收单与高净值消费信贷集于一身，构建了由<strong>商户折扣费（Discount Revenue，FY2025 达 374.00 亿美元，占比过半）、刚性年费订阅（Net Card Fees，年化破百亿美元且 Q3 2026 76% 新增账户为付费卡）与净利息收入（NII，FY2025 达 174.00 亿美元）</strong>三轮驱动的复合变现体系[reference:1.3.1][reference:2.2.7]。
+        </p>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="repeat"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                闭环双向一手数据
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              同时直连刷卡端与商户端（全球受理网点突破 <strong>1.90 亿个</strong>，海外网点四年翻倍），实时掌握完整 SKU 级消费画像，既能精准发放无预设额度的灵活授信，又将不良核销率压低至 1.80%[reference:1.1.4]。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="crown"
+                class="w-5 h-5 text-accent-600 dark:text-accent-400"
+              ></i>
+              <h3
+                class="font-semibold text-accent-700 dark:text-accent-300"
+              >
+                高端权益与年费飞轮
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              因运通持卡人单卡年均消费远超同业，商户愿意支付更高刷卡扣率；运通将收益反哺白金卡（年费 895 美元）、33 座百夫长机场贵宾厅、Airbnb 超百万房源与 Resy 高端餐饮，持续吸纳千禧与 Z 世代优质客群。
+            </p>
+          </div>
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <i
+                data-lucide="briefcase"
+                class="w-5 h-5 text-primary-600 dark:text-primary-400"
+              ></i>
+              <h3
+                class="font-semibold text-primary-700 dark:text-primary-300"
+              >
+                B2B 商业与数字银行协同
+              </h3>
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+            >
+              依托 American Express National Bank 吸纳逾 1,525 亿–1,540 亿美元个人及企业储蓄存款提供低成本融资，并在 2026 年 Q3 全面推出新一代 <em>Amex Corporate</em> 报销软件与企业储蓄账户，强化企业端渗透[reference:1.1.4][reference:1.3.1]。
+            </p>
+          </div>
+        </div>
+        <div
+          class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6"
+        >
+          <p
+            class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+          >
+            <i
+              data-lucide="lightbulb"
+              class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+            ></i>
+            美国运通的商业模式本质上是“高净值生活方式订阅俱乐部 + 闭环支付网络 + 精品储蓄银行”的三位一体——用年费锁住优质现金流，用闭环数据降维打击风控损耗。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 二、竞争优势（护城河） -->
+  <section
+    id="moat"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="shield"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          二、竞争优势：护城河评估
+        </h2>
+      </div>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        支付清算与消费金融是护城河分化极为显著的赛道。以下从五个维度对美国运通进行评估打分（1–10分），并与 Visa、Mastercard 及吞并 Discover 后的 Capital One 横向对比。
+      </p>
+
+      <div class="space-y-6">
+        <!-- 品牌实力 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              品牌实力
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >9<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 90%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            拥有 176 年历史积淀，是金融界极少数具备“社交身份溢价”的品牌。连续 7 年高居 J.D. Power 美国信用卡满意度第一，2025 年白金卡提价后客户留存率与付费开卡占比（76%）反创新高，品牌定价权极强[reference:1.1.4][reference:1.1.6]。
+          </p>
+        </div>
+
+        <!-- 网络效应 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              网络效应
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            通过 1.90 亿全球商户网点与达美航空、万豪酒店、Airbnb、Resy 等顶级生态盟友形成双边消费正循环——高净值会员越多，高端航旅商户越愿提供独家礼遇，进而吸引更多优质新会员。
+          </p>
+        </div>
+
+        <!-- 转换成本 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              转换成本
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >8<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 80%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            个人端依托 Membership Rewards 积分蓄水池、航空里程兑换体系及自动订阅扣款形成高粘性；B2B 企业端依托全球差旅报销软件与财务 ERP 深度集成，客户更换成本远高于普通银行信用卡。
+          </p>
+        </div>
+
+        <!-- 成本优势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              成本优势
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >7<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 70%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            在信贷风险成本端优势突出，Q3 2026 净核销率仅 <strong>1.80%</strong>（行业最优级），且 1,525 亿+ 美元个人存款降低了发债融资成本；但受制于必须自掏腰包兑付高昂会员积分、贵宾厅与达美航空分成，整体利润率不及纯过路费型的 Visa/Mastercard。
+          </p>
+        </div>
+
+        <!-- 专利或自有技术 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3
+              class="font-semibold text-lg text-primary-700 dark:text-primary-300"
+            >
+              专利或自有技术
+            </h3>
+            <span
+              class="text-2xl font-bold text-primary-600 dark:text-primary-400"
+              >7<span class="text-sm font-normal text-gray-400"
+                >/10</span
+              ></span
+            >
+          </div>
+          <div class="moat-bar mb-3">
+            <div class="moat-fill" style="width: 70%"></div>
+          </div>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            核心技术壁垒建立在独一无二的闭环实时大数据风控引擎与 AI 欺诈识别系统之上；2026 年 Q3 更率先携手 OpenAI 推出面向智能体商务的 <em>Intent Intelligence</em> 可信框架，并同步推进约 5% 全球岗位 AI 效能重组[reference:1.1.3][reference:1.1.4]。
+          </p>
+        </div>
+      </div>
+
+      <!-- 竞对对比 -->
+      <div class="mt-10">
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5"
+        >
+          与主要竞争对手的护城河对比（2026年11月）
+        </h3>
+        <div
+          class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <table
+            class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+          >
+            <thead class="bg-primary-50 dark:bg-primary-900/30">
+              <tr>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                <th class="font-semibold text-primary-700 dark:text-primary-300">美国运通 (AXP)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">Visa (V)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">Mastercard (MA)</th>
+                <th class="font-semibold text-gray-600 dark:text-gray-400">Capital One (COF)</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr>
+                <td class="font-medium">网络商业架构</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">三方闭环自营（网络+发卡+信贷）</td>
+                <td>四方开放纯网络（无坏账风险）</td>
+                <td>四方开放纯网络（无坏账风险）</td>
+                <td>整合 Discover 打造新闭环</td>
+              </tr>
+              <tr>
+                <td class="font-medium">品牌溢价与客群</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">9 / 10（高端与商旅）</td>
+                <td>9 / 10（全球普惠基建）</td>
+                <td>9 / 10（全球普惠基建）</td>
+                <td>6 / 10（大众及次优占比较高）</td>
+              </tr>
+              <tr>
+                <td class="font-medium">TTM ROE（股本回报率）</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">32.4%–42.4%</td>
+                <td>~64.6%</td>
+                <td>极高（低账面权益基数）</td>
+                <td>~11%–12%</td>
+              </tr>
+              <tr>
+                <td class="font-medium">TTM 市盈率 (2026-11)</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">17.3x–18.0x</td>
+                <td>31.4x–33.2x</td>
+                <td>32.2x–32.7x</td>
+                <td>10.5x</td>
+              </tr>
+              <tr>
+                <td class="font-medium">市值规模 (2026-11)</td>
+                <td>约 2,074 亿美元</td>
+                <td>约 7,515 亿美元</td>
+                <td>约 5,450 亿美元</td>
+                <td>约 1,174 亿美元</td>
+              </tr>
+              <tr>
+                <td class="font-medium">综合护城河</td>
+                <td class="text-primary-600 dark:text-primary-400 font-semibold">7.8 / 10</td>
+                <td>9.5 / 10</td>
+                <td>9.3 / 10</td>
+                <td>7.0 / 10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">
+          数据来源：公司 Q3 2026 季报、GNG Research、Stockrow、Investing.com 截至 2026 年 11 月公开数据。
+        </p>
+      </div>
+
+      <div
+        class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed"
+        >
+          <i
+            data-lucide="award"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          综合护城河评分：<strong>7.8 / 10</strong>。在无信用风险的纯粹管道上，Visa 与 Mastercard 拥有接近完美的垄断优势；但在所有自行承接发卡与信贷资产的金融机构中，美国运通凭借品牌号召力、闭环数据风控与高净值年费会员网络，构筑了最宽广且极难复制的结构性护城河。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、行业趋势 -->
+  <section
+    id="industry"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="trending-up"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          三、行业趋势
+        </h2>
+      </div>
+      <div class="space-y-6">
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          2026 年全球电子支付与消费信贷呈现显著的“K 型消费分化 + 新闭环卡组织洗牌 + 智能体与稳定币技术重塑”格局。尽管美欧高利率环境持续考验中低收入群体偿债能力，但高净值群体在旅游、航空与高端餐饮上的支出仍极具韧性，为差异化定位的头部发卡机构留出了可观增量。
+        </p>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div
+            class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="split" class="w-5 h-5"></i>“K 型分化”与卡组织三足重构
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>优质体验消费领跑：</strong>2026 年 Q3 运通账单消费达 4,540 亿美元（+8%），其中高端旅游餐饮（T&amp;E）同比劲增 10%，大幅跑赢行业大众借记/普通信贷增速[reference:1.1.3]。</li>
+              <li>• <strong>Capital One 并购 Discover 改写本土格局：</strong>新合并体正全力建设自有闭环网络，在高端商旅与小微企业卡赛道发起进攻。</li>
+            </ul>
+          </div>
+          <div
+            class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+          >
+            <h3
+              class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2"
+            >
+              <i data-lucide="zap" class="w-5 h-5"></i>AI 代理商业与新清算轨道竞争
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>• <strong>Agentic Commerce 兴起：</strong>大模型代理正接管机票酒店预订与日常采购，卡组织竞相制定 MCP/AI 授权安全标准以防止支付接口被去中介化。</li>
+              <li>• <strong>稳定币与监管降费压力：</strong>大型卡组织已陆续接入稳定币结算试点（如 Visa 接入多条链），同时反垄断诉讼与商户降费呼声促使行业向高附加值软件服务要利润。</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="mt-4 p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            <strong class="text-gray-800 dark:text-gray-200"
+              >对美国运通的影响：</strong
+            >消费“K 型分化”与商户覆盖扩围是运通的顺风局（千禧及 Z 世代新客持续涌入且信用违约极低）；但与此同时，Q3 网络交易额增速从 Q2 的 9% 小幅放缓至 8%，以及行业向无卡直付和 AI 代理演进，要求运通必须持续用独家生活特权（如 Airbnb、Resy）证明其高额商户费率物有所值[reference:1.4.4]。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、财务状况 -->
+  <section
+    id="financial"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="bar-chart-3"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          四、财务状况（近五年财报与 2026 TTM 诊断）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        以下汇整美国运通 2021–2025 年完整财年（SEC Form 10-K）及截至 2026 年 9 月 30 日（Q3 2026 10-Q）滚动十二个月（TTM）核心财务数据（单位：亿美元）[reference:1.3.1][reference:1.3.7][reference:2.2.4]。
+      </p>
+
+      <!-- 5年财务表 -->
+      <div
+        class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8"
+      >
+        <table
+          class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+        >
+          <thead class="bg-accent-50 dark:bg-accent-900/30">
+            <tr>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">指标（亿美元）</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2021</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2022</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2023</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2024</th>
+              <th class="font-semibold text-accent-700 dark:text-accent-300">FY2025</th>
+              <th class="font-semibold text-primary-700 dark:text-primary-300">TTM (至26-09)</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr>
+              <td class="font-medium">总营收（扣减利息支出后）</td>
+              <td>423.80</td>
+              <td>528.62</td>
+              <td>605.15</td>
+              <td>659.49</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">722.29</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">775.86</td>
+            </tr>
+            <tr>
+              <td class="font-medium">营收同比增速</td>
+              <td class="text-green-600 dark:text-green-400">+17.4%</td>
+              <td class="text-green-600 dark:text-green-400">+24.7%</td>
+              <td class="text-green-600 dark:text-green-400">+14.5%</td>
+              <td class="text-green-600 dark:text-green-400">+9.0%</td>
+              <td class="text-green-600 dark:text-green-400">+9.5%</td>
+              <td class="text-green-600 dark:text-green-400">~+10.0%</td>
+            </tr>
+            <tr>
+              <td class="font-medium">合并净利润（Net Income）</td>
+              <td>80.60</td>
+              <td>75.14</td>
+              <td>83.74</td>
+              <td>101.29</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">108.33</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">122.56</td>
+            </tr>
+            <tr>
+              <td class="font-medium">摊薄每股收益（EPS，美元）</td>
+              <td>10.02</td>
+              <td>9.85</td>
+              <td>11.21</td>
+              <td>14.01</td>
+              <td>15.38</td>
+              <td class="font-semibold text-primary-600 dark:text-primary-400">17.73–17.80</td>
+            </tr>
+            <tr>
+              <td class="font-medium">经营性现金流 (OCF)</td>
+              <td>146.45</td>
+              <td>210.79</td>
+              <td>185.59</td>
+              <td>140.50</td>
+              <td>184.28</td>
+              <td>~176.26</td>
+            </tr>
+            <tr>
+              <td class="font-medium">自由现金流 (FCF)</td>
+              <td>130.95</td>
+              <td>192.24</td>
+              <td>169.96</td>
+              <td>121.39</td>
+              <td class="font-semibold text-green-600 dark:text-green-400">160.03</td>
+              <td>139.84</td>
+            </tr>
+            <tr>
+              <td class="font-medium">净利率（按总营收口径）</td>
+              <td>19.0%</td>
+              <td>14.2%</td>
+              <td>13.8%</td>
+              <td>15.4%</td>
+              <td>15.0%</td>
+              <td>15.8%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <!-- 收入增长 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="trending-up" class="w-5 h-5"></i
+            >收入增长：连续五年稳步创历史新高
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            通俗来说，美国运通是一家极其稳健的“长跑型”印钞机。营收从 FY2021 的 423.80 亿美元连续攀升至 FY2025 的 722.29 亿美元（4 年复合增速 <strong>14.25%</strong>），至 2026 年 Q3 TTM 已达 775.86 亿美元。其中 2026 年前三季度实现 586.06 亿美元（+10% YoY），年费收入与净利息收入均维持两位数增长，有效平滑了刷卡消费额的温和波动。
+          </p>
+        </div>
+
+        <!-- 净利润趋势 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="award" class="w-5 h-5"></i
+            >净利润与 EPS 趋势：缩股效应放大盈利曲线
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            净利润由 FY2022 的 75.14 亿美元一路抬升至 FY2025 的 108.33 亿美元，TTM 达 122.56 亿美元（含 2026 Q3 出售 GBTG 股权获得的税后 7.51 亿美元一次性收益，扣除 3.36 亿美元重组费后单季调整后 EPS 仍大增 13% 至 4.68 美元）。得益于持续回购注销股本，五年间摊薄 EPS 从 10.02 美元跃至 TTM 的 17.80 美元（增幅超 77%），盈利含金量极高。
+          </p>
+        </div>
+
+        <!-- 自由现金流 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流：每年逾百亿级充沛造血
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            由于运通将大部分利润以现金形式沉淀，FY2021–FY2025 期间每年自由现金流（OCF 减 Capex）均稳守在 <strong>121 亿至 192 亿美元</strong>（FY2025 为 160.03 亿美元，占营收 22.2%；TTM 为 139.84 亿美元，FCF 收益率约 <strong>6.80%</strong>）。2025 年向股东返还 80.9 亿美元（58.1 亿回购 + 22.7 亿分红），2026 Q3 单季又返还 22 亿美元[reference:1.3.3][reference:1.3.7][reference:2.1.8]。
+          </p>
+        </div>
+
+        <!-- 利润率与债务 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2"
+          >
+            <i data-lucide="scale" class="w-5 h-5"></i>利润率稳健与银行级负债结构
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            扣减利息支出后的净利率长年稳居 <strong>14%–16%</strong>（TTM 为 15.8%），并未因高年费权益成本而失控。截至 FY2025 末，总资产 3,000.52 亿美元，短期借款 13.71 亿美元、长期债务 563.87 亿美元，账面长期债务/权益比为 <strong>1.68x</strong>——看似高于普通制造业，但考虑到其受美联储监管的银行属性且坐拥 <strong>1,524.88 亿美元</strong>客户低息存款作为稳定底盘，真实净金融风险极低[reference:1.3.1][reference:1.3.3]。
+          </p>
+        </div>
+      </div>
+
+      <!-- ROE 与财务稳健性判断 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+      >
+        <h3
+          class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4"
+        >
+          股本回报率（ROE）与整体财务稳健性判断
+        </h3>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-4">
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">
+              32.4%–42.4%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              FY25 期末 ROE 32.4% / Q3 TTM 口径 42.38%
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">
+              3.6%–4.8%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              ROA（大幅优于商业银行均值 ~1.1%）
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl sm:text-4xl font-bold text-green-600 dark:text-green-400">
+              10.90%
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              CET1 一级资本充足率（Q3 2026）
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          根据 SEC 10-K 统计，FY2025 美国运通 32.4% 的 ROE 在逾 500 家金融服务同业中排名前 5%（同业中位数仅 <strong>9.7%</strong>），Q3 2026 滚动口径更走高至 35%–42.38%[reference:1.3.3][reference:1.3.8]。综合最近五年完整报表，美国运通的财务状况属于<strong>高度稳健且资本效率持续优化</strong>——既无短期流动性隐患，又保持了极低净坏账率（1.80%）与充裕资本缓冲（CET1 10.90%）。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、估值分析 -->
+  <section
+    id="valuation"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calculator"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          五、估值分析（投行可比估值 + DCF 估算）
+        </h2>
+      </div>
+
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+        截至 2026 年 11 月 24 日美股收盘，AXP 报 <strong>308.61 美元</strong>（总市值约 <strong>2,074.0 亿美元</strong>，较 2025 年 12 月历史高点 387.49 美元回撤约 20.4%，年内市值缩水约 18.6%）[reference:1.2.3][reference:2.1.3][reference:2.1.7]。以下从可比市盈率、华尔街目标价与现金流折现模型展开投行视角定价。
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
+        <div
+          class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-primary-700 dark:text-primary-300 mb-4"
+          >
+            市盈率（P/E）与行业均值对比（2026年11月）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">美国运通 (AXP，现价 308.61$)</span>
+              <span class="font-bold text-primary-600 dark:text-primary-400">TTM 17.3–18.0x | 远期 ~15.3x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Visa (V) / Mastercard (MA)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM ~31.4–33.2x | 远期 26.7–30.8x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Capital One (COF) / PayPal (PYPL)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 10.5x / 10.1x</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Synchrony (SYF) / Ally (ALLY)</span>
+              <span class="font-semibold text-gray-600 dark:text-gray-400">TTM 7.0x / 8.2x</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">信贷服务业 / 金融板块中位数</span>
+              <span class="font-semibold text-gray-700 dark:text-gray-300">TTM 8.3–11.1x / 11.4x</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">
+            注：AXP 当前 TTM P/E（18.03x）仅高出其自身 10 年均值（17.11x）5.4%，远低于 2025 年底的 24.0x；按 2026 年调整后 EPS 预期约 17.60–17.98 美元及 2027 年预期 ~20.20 美元计，远期 P/E 已回落至 ~15.3x[reference:1.2.1][reference:1.2.2][reference:2.4.6]。
+          </p>
+        </div>
+
+        <div
+          class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-accent-700 dark:text-accent-300 mb-4"
+          >
+            华尔街机构最新目标价汇总（2026年Q4）
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">KBW / Wells Fargo（11月12日上调，买入）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">425.00 / 415.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Piper Sandler / RBC Capital / Goldman</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">405.00 / 400.00 / 400.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">Morgan Stanley / BMO Capital</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">380.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">J.P. Morgan（10月26日上调，超配）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">365.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">UBS / Barclays / Citigroup（中性）</span>
+              <span class="font-semibold text-accent-600 dark:text-accent-400">346.00 / 340.00 / 335.00 美元</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-600 dark:text-gray-400">BTIG Research（9月7日下调，卖出）</span>
+              <span class="font-semibold text-red-600 dark:text-red-400">230.00 美元</span>
+            </div>
+            <div
+              class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3"
+            >
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300">S&amp;P Global 29位分析师一致平均目标价</span>
+              <span class="font-bold text-primary-600 dark:text-primary-400">364.79 美元（+18.2%空间）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DCF 参考 -->
+      <div
+        class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8"
+      >
+        <h3
+          class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2"
+        >
+          <i data-lucide="line-chart" class="w-5 h-5"></i
+          >现金流折现（DCF）与超额收益模型估算
+        </h3>
+        <p
+          class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
+        >
+          在严谨投行建模中，对金融类公司除观察传统自由现金流（近五年均值 ~155 亿美元、TTM 139.84 亿美元，对应当前 FCF 收益率 <strong>6.80%</strong>）外，还须辅以超额收益模型（Excess Return / Residual Income）交叉验证：若假设未来十年权益成本 Ke=9.0%、ROE 从当前 33%–35% 温和收敛至 25%、永续增长 3.5%，配合每年约 2.5%–3% 股本缩容，测算内在价值落于 <strong>340–375 美元</strong>；第三方平台 GuruFocus GF Value 亦给出 <strong>330.26 美元</strong>（合理略偏低估）[reference:1.4.7][reference:2.1.8]。
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-primary-600 dark:text-primary-400"
+            >
+              340.00–375.00$
+            </div>
+            <div class="text-xs text-gray-500">基准超额收益 / DCF 模型区间</div>
+          </div>
+          <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+            <div
+              class="text-lg font-bold text-accent-600 dark:text-accent-400"
+            >
+              330.26$
+            </div>
+            <div class="text-xs text-gray-500">GuruFocus GF Value 估值</div>
+          </div>
+          <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div
+              class="text-lg font-bold text-gray-700 dark:text-gray-300"
+            >
+              230.00–255.00$
+            </div>
+            <div class="text-xs text-gray-500">悲观情景（若 ROE 跌破 20% 回归银行均值）</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="search"
+            class="inline-block w-4 h-4 mr-1.5 -mt-0.5"
+          ></i>
+          <strong>估值结论：结构性温和低估（相比自身成长质量具备高性价比，但非纯银行深度折价）。</strong><br />
+          AXP 现价 308.61 美元对应的 17.3x–18.0x TTM P/E 高于普通消费信贷银行（8.3x–11.4x），体现了市场对其 35% ROE 与年费抗周期属性的合理溢价；但相较于 Visa 与 Mastercard（31x–33x），其估值折价高达四成以上，且已从去年末 24.0x 的高热状态回落至 10 年均值附近。对照 330–365 美元的公允价值与卖方共识区间，当前股价<strong>被温和低估约 7%–18%</strong>。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、经营展望 -->
+  <section
+    id="outlook"
+    class="py-20 bg-accent-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="calendar"
+            class="w-5 h-5 text-accent-600 dark:text-accent-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">
+          六、经营展望（未来 12–24 个月）
+        </h2>
+      </div>
+
+      <div class="space-y-5">
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            1. 营收与盈利确定性高：稳步跨入 20 美元 EPS 时代
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            管理层在 Q3 2026 业绩会上将全年营收增速预期锁定在约 <strong>10%</strong>，上调全年 GAAP EPS 指引至 18.30–18.60 美元（调整后 17.60–17.90 美元）。进入 2027–2028 年，随着 895 美元美区白金卡新费率在存量持卡人续费中全面落地，净卡费有望延续双位数增长，叠加年均 3% 的回购缩股，预计 2027 年 EPS 有望向 20 美元以上迈进[reference:1.1.4]。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            2. 权益成本拐点与 AI 重组降本增效
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            CFO 在 Q3 电话会明确指出，随着公司度过白金卡改版一周年基数期，可变持卡人权益成本（VCE）的同比增速将在 Q4 起显著回落至改版前常态水平。叠加 Q3 计提 3.36 亿美元裁撤约 <strong>5% 全球员工</strong>以推进 AI 自动化流程落地，2027 年营业费用杠杆有望迎来实质性释放[reference:1.1.3][reference:1.1.6]。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            3. 旅游、餐饮与国际版图持续扩围
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            2026 年 1 月完成 Swisscard 收购后，运通在欧洲高净值市场整合提速；同时借助 <strong>Airbnb 独家协议</strong>（逾 100 万房源上线 Amex Travel）、<strong>万豪国际联名续约</strong>、纽瓦克等 4 座百夫长贵宾厅扩建及 1.90 亿商户网点铺设，国际卡与商旅消费有望继续充当未来两年的增速引擎[reference:1.1.3][reference:1.1.4]。
+          </p>
+        </div>
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md"
+        >
+          <h3
+            class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3"
+          >
+            4. 监管整改不影响 2027 年增长承诺
+          </h3>
+          <p
+            class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+          >
+            针对 2026 年 10 月浮出水面的 3.50 亿美元反洗钱（AML）监管罚单，管理层已迅速计提处置并公开重申 OCC 后续系统合规投入“不会干扰 2027 年盈利指引”，扫除了市场对其明年额外利润漏损的担忧[reference:1.1.3]。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 七、风险识别 -->
+  <section
+    id="risk"
+    class="py-20 bg-white/80 dark:bg-gray-900"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="alert-triangle"
+            class="w-5 h-5 text-red-600 dark:text-red-400"
+          ></i>
+        </div>
+        <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">
+          七、风险识别（按危险程度从高到低排序）
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <!-- 风险1 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0"
+            >
+              1
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2"
+              >
+                经济风险（危险度：高）— 消费放缓与信贷周期恶化的双向夹击
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                这是投资运通最核心的风险。Q3 2026 账单消费增速由 Q2 的 9% 放缓至 8%（网络交易额 5,179 亿美元略低于市场预期，曾致股价单日下跌 3.7%）已引发市场对高端消费疲软的警觉[reference:1.4.4]。一旦美国高利率粘性引发白领裁员潮或经济硬着陆，不仅旅游餐饮刷卡费大幅缩水，且运通资产负债表上逾 1,500 亿美元贷款组合（即使客户质量优异）也必然遭遇坏账拨备上升，重创盈利与估值。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险2 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0"
+            >
+              2
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2"
+              >
+                竞争风险（危险度：中高）— “Capital One + Discover”合体与高年费内卷
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                Capital One 合并 Discover 后已形成直接对标运通的新型三方闭环网络，正加速切入高端旅行与企业服务；与此同时，摩根大通（Chase Sapphire）与花旗不断加码机场贵宾厅和返现补贴，迫使运通在会员奖励与营销上维持高投入，稍有不慎便会挤压利润率或丢失年轻客群份额。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险3 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0"
+            >
+              3
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2"
+              >
+                监管威胁（危险度：中）— 反洗钱合规严管与商户费率政策施压
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                2026 年 10 月因反洗钱（AML）合规缺陷被开出 <strong>3.50 亿美元</strong>罚单，凸显银行控股公司在高压合规下的经营容错率极低[reference:1.1.3]。同时，美欧反垄断及立法机构持续盯防大型卡组织的高额刷卡费率（例如美国《信用卡竞争法案》及商户附加费诉讼），若未来强制压低高净值卡片扣率或放开自由引导拒收，将直接冲击运通核心利润池。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险4 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0"
+            >
+              4
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2"
+              >
+                行业颠覆（危险度：中）— 智能体商务绕行与账户直付/稳定币分流
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                当 AI 代理（Agentic Commerce）、FedNow 即时银行账户直付（Pay-by-Bank）及合规稳定币结算（如 Visa/Stripe 积极接入链上结算）在电商大盘逐步普及，大型商家可能引导 AI 代理优先选择几乎零手续费的账户直付轨道，绕开传统 2%–3% 费率的信用卡体系。尽管运通已联合 OpenAI 布局防绕行协议，但长期商业逻辑仍需持续迭代[reference:1.1.4][reference:2.4.9]。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 风险5 -->
+        <div
+          class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0"
+            >
+              5
+            </div>
+            <div>
+              <h3
+                class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2"
+              >
+                债务或财务风险（危险度：中低）— 存款资金成本与联名伙伴续约集中度
+              </h3>
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed"
+              >
+                运通当前 CET1 资本率达 10.90%、拥有逾 1,525 亿美元个人存款与充沛现金流，短期流动性及偿债风险极低。潜在的财务中线变量在于：一方面若联储维持高利率更久，高息储蓄存款付息率粘性或小幅压制净息差；另一方面 2029 年与达美航空（Delta）超级联名合约到期前的分润重谈，或带来类似当年 Costco 的让利阵痛。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 八、多空视角 -->
+  <section
+    id="longshort"
+    class="py-20 bg-primary-50/50 dark:bg-gray-800"
+    data-aos="fade-up"
+  >
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-8">
+        <div
+          class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"
+        >
+          <i
+            data-lucide="scale"
+            class="w-5 h-5 text-primary-600 dark:text-primary-400"
+          ></i>
+        </div>
+        <h2
+          class="text-3xl font-bold text-primary-700 dark:text-primary-300"
+        >
+          八、多空视角：机构投资组合经理评估
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <!-- 可能买入的原因 -->
+        <div
+          class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800"
+        >
+          <h3
+            class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>估值回撤提供难得的 GARP 买点</strong>：2026 年股价自高点回撤约 20%，TTM P/E 从去年底 24x 降至 17.3–18.0x（远期仅 ~15.3x，贴近十年历史中枢），在保持 32%–42% 超高 ROE 和双位数 EPS 增长下，相对 Visa/Mastercard（31x+）极具配置吸引力。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>年费订阅化与 76% 付费开卡率构建抗脆弱壁垒</strong>：卡费收入已达百亿级规模且持续高增，高净值及年轻千禧/Z世代客群不断注入，令运通比普通银行更具抗周期基因。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>优异的信贷质量与股东回报飞轮</strong>：1.80% 净核销率冠绝行业，加上每季逾 20 亿美元的回购+提息返还，为 EPS 提供持续复利托底。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="check-circle"
+                class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>Q4 权益成本增速拐点 + AI 降本催化</strong>：白金卡改版满一年后，Q4 持卡人权益成本增速将显著放缓，叠加 5% 组织重构释放 2027 年盈利弹性。</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 可能回避的原因 -->
+        <div
+          class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800"
+        >
+          <h3
+            class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2"
+          >
+            <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>交易额增速边际放缓</strong>：Q3 2026 总网络交易量与账单消费同比增速放缓至 8%（低于 Q2 的 9% 且略逊预期），且年内股价已跑输标普 500 与金融板块 ETF（XLF）逾 20 个百分点，动能偏弱[reference:1.4.4]。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>本质上仍带信贷顺周期尾巴</strong>：部分空头（如 BTIG 给予卖出评级及 230 美元目标价）认为，其当前 18x P/E 仍明显高于普通信贷银行均值（8x–11x），若美国消费或就业在 2027 年走弱，面临杀业绩兼杀估值风险。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>合规阴影与 3.50 亿美元反洗钱罚单</strong>：表明银行内控体系承压，且未来围绕刷卡手续费的欧美立法与诉讼长期扰动估值上限。</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <i
+                data-lucide="x-circle"
+                class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"
+              ></i>
+              <span
+                ><strong>高管减持与外部竞争升级</strong>：Capital One-Discover 整合后在高端及商旅闭环市场发起挑战，卖方机构中近半数（14–15家）当前仍仅给予“持有”中性评级[reference:1.4.4][reference:1.4.7]。</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 关键因素 -->
+      <div
+        class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6"
+      >
+        <h3
+          class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4"
+        >
+          关键因素：机构组合需要密切跟踪的 3 个指标
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div
+            class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="activity"
+              class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-primary-700 dark:text-primary-300"
+            >
+              账单消费增速（Billed Business）
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              能否止住 9%→8% 的放缓趋势并稳守 8%–10% 增长区间，是验证高端消费韧性的核心风向标
+            </p>
+          </div>
+          <div
+            class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center"
+          >
+            <i
+              data-lucide="shield-check"
+              class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-accent-700 dark:text-accent-300"
+            >
+              净核销率与信贷拨备率
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              净核销率能否继续保持在 1.8%–2.2% 极低水平，决定 ROE 30%+ 的护城河是否稳固
+            </p>
+          </div>
+          <div
+            class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center"
+          >
+            <i
+              data-lucide="percent"
+              class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"
+            ></i>
+            <div
+              class="font-semibold text-sm text-gray-700 dark:text-gray-300"
+            >
+              Q4 VCE 增速拐点与 2027 指引
+            </div>
+            <p class="text-xs text-gray-500 mt-1">
+              2027 年 1 月公布的全年业绩展望中，VCE 权益成本缓和及 AI 裁员省费能否兑现为利润率扩张
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投资论点 -->
+      <div
+        class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg"
+      >
+        <p
+          class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed"
+        >
+          <i
+            data-lucide="target"
+            class="inline-block w-5 h-5 mr-2 -mt-0.5"
+          ></i>
+          <strong>机构投资论点：</strong
+          >站在机构投资组合经理的视角，美国运通（AXP）是一只<strong>“用消费品订阅心态经营银行牌照、以 15.3 倍远期市盈率提供 35% ROE 与 14% 复合 EPS 增长”的稀缺蓝筹核心资产，值得作为金融/价值成长底仓长期配置</strong>。2026 年股价从 387.49 美元高点回撤约两成至 308.61 美元，实质上是市场对去年高估值的正常消化以及对 Q3 消费增速微降至 8% 和 AML 罚单的阶段性折价定价。随着 Q4 持卡人权益成本增速拐点向下、AI 重组降本以及 2027 年业绩向 20 美元 EPS 迈进，当前价位提供了显著优于去年底的长期风险回报比。该多头论点成立的关键前提是：<strong>美国高净值就业与商旅需求不出现深度衰退，净核销率受控于 2.3% 以下；</strong>若宏观硬着陆导致信贷恶化并伴随刷卡额降至低个位数，则其仍可能下探 12–13 倍银行均值倍数（约 230–250 美元支撑带），因此建议采取“逢回调分批买入、长期持有复利”策略。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          关于本报告
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告基于美国运通公司（NYSE: AXP）公开 SEC 财务报告、Q3 2026 业绩发布材料、华尔街机构最新研报及行业数据，从商业模式、护城河、行业趋势、五年财务、投行估值、未来展望、风险识别及多空视角八个维度进行系统研究。
+        </p>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          数据来源
+        </h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>• 美国运通 FY2025 10-K 年报及 Q3 2026 业绩公告 / 演示文稿</li>
+          <li>• Wells Fargo、J.P. Morgan、UBS、Citigroup、BTIG 2026年Q4研报</li>
+          <li>• Macrotrends、GuruFocus、StockAnalysis 及 GNG Research</li>
+          <li>• OCC 2026年10月监管处罚公告 &amp; J.D. Power 2026 满意度研究</li>
+          <li>• Visa、Mastercard、Capital One 2026年11月公开估值数据</li>
+        </ul>
+      </div>
+      <div>
+        <h3
+          class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4"
+        >
+          免责声明
+        </h3>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          本报告仅供教育与信息参考，不构成任何证券买卖或投资建议。数据基于截至 2026 年 11 月 25 日（北京时间）的公开信息整理，分析观点仅代表研究判断。投资有风险，决策需谨慎。
+        </p>
+      </div>
+    </div>
+    <div
+      class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500"
+    >
+      <p>© 2026 美国运通公司（AXP）经营分析报告 · 生成日期：2026-11-25</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById("mobileMenu");
+    if (!menu) return;
+    menu.classList.toggle("mobile-menu-open");
+  }
+
+  window.addEventListener("scroll", () => {
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progressBar").style.width = scrolled + "%";
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    lucide.createIcons();
+    AOS.init({ duration: 800, once: true });
+  });
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

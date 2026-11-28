@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>美国运通（AXP）最新动态全景追踪_2026-11-25</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',
+          200:'hsl(20,90%,75%)',300:'hsl(20,90%,65%)',
+          400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',
+          800:'hsl(20,90%,25%)',900:'hsl(20,90%,15%)',
+          950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',
+          200:'hsl(30,85%,75%)',300:'hsl(30,85%,65%)',
+          400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',
+          800:'hsl(30,85%,30%)',900:'hsl(30,85%,20%)',
+          950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+:root {
+  color-scheme:light;
+  --surface:#ffffff;
+  --line:#e5e7eb;
+}
+html.dark {
+  color-scheme:dark;
+  --surface:#161f2c;
+  --line:#344155;
+}
+html {scroll-behavior:smooth}
+body {font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+section[id],article[id] {scroll-margin-top:90px}
+#progressBar {width:0;transition:width .12s linear}
+.btn-interactive {transition:all .2s ease}
+.btn-interactive:hover {transform:scale(1.05)}
+.btn-interactive:active {transform:scale(.96)}
+.card-interactive {transition:all .28s ease}
+.card-interactive:hover {transform:translateY(-3px);box-shadow:0 18px 35px -12px rgba(0,0,0,.16)}
+.dark .card-interactive:hover {box-shadow:0 18px 35px -12px rgba(0,0,0,.6)}
+.impact-bar {height:8px;border-radius:99px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar {background:#374151}
+.impact-fill {height:100%;border-radius:99px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%));transition:width 1s ease}
+table {width:100%;border-collapse:collapse}
+th,td {padding:13px 14px;text-align:left;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td {border-bottom-color:#3a4759}
+.dark th {color:#e5e7eb;background:#202b3a}
+.dark td {color:#d1d5db}
+.dark .text-gray-900 {color:#f9fafb!important}
+.dark .text-gray-800 {color:#f3f4f6!important}
+.dark .text-gray-700 {color:#e5e7eb!important}
+.dark .text-gray-600 {color:#d1d5db!important}
+.dark .text-gray-500 {color:#aeb9c9!important}
+.dark .text-gray-400 {color:#a3afbf!important}
+.dark .border-gray-200,.dark .border-gray-100 {border-color:#344155!important}
+.dark .bg-gray-50 {background-color:#202b3a!important}
+.dark .bg-gray-100 {background-color:#273447!important}
+.dark .bg-white {background-color:#161f2c!important}
+.dark .bg-primary-50\/70 {background-color:rgba(55,65,81,.7)!important}
+.dark .bg-accent-50\/70 {background-color:rgba(55,65,81,.7)!important}
+.dark .bg-emerald-50\/70,.dark .bg-emerald-50\/60 {background-color:rgba(6,78,59,.25)!important}
+.dark .bg-amber-50\/70,.dark .bg-amber-50\/60 {background-color:rgba(120,53,15,.24)!important}
+.dark .bg-rose-50\/70 {background-color:rgba(136,19,55,.25)!important}
+.dark .bg-sky-50\/70 {background-color:rgba(7,89,133,.25)!important}
+.dark .bg-accent-50\/70 {background-color:rgba(120,53,15,.2)!important}
+.dark .bg-primary-100 {background-color:rgba(124,45,18,.35)!important}
+.dark .bg-accent-100 {background-color:rgba(120,53,15,.35)!important}
+.dark .bg-emerald-100 {background-color:rgba(6,78,59,.4)!important}
+.dark .bg-amber-100 {background-color:rgba(120,53,15,.4)!important}
+.dark .bg-rose-100 {background-color:rgba(136,19,55,.4)!important}
+.dark .bg-sky-100 {background-color:rgba(7,89,133,.4)!important}
+.dark .text-primary-700 {color:#fdba9b!important}
+.dark .text-primary-600 {color:#fdba9b!important}
+.dark .text-accent-700 {color:#fed7aa!important}
+.dark .text-accent-900 {color:#ffedd5!important}
+.dark .text-emerald-700,.dark .text-emerald-800 {color:#86efac!important}
+.dark .text-amber-700,.dark .text-amber-800 {color:#fcd34d!important}
+.dark .text-rose-700,.dark .text-rose-800 {color:#fda4af!important}
+.dark .text-sky-700 {color:#7dd3fc!important}
+.dark .border-primary-100,.dark .border-accent-200 {border-color:#574337!important}
+#mobileMenu {display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.source-link {color:#c65b2c;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link {color:#fdba9b}
+.source-link:hover {opacity:.75}
+.tag {display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+ html{scroll-behavior:auto}
+}
+</style>
+
+<script>
+(function initTheme(){
+  try{
+    if(window.self!==window.top || localStorage.getItem('axp-theme')==='dark' ||
+      (!localStorage.getItem('axp-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+      document.documentElement.classList.add('dark');
+    }
+  }catch(e){}
+})();
+function syncThemeIcons(){
+  const d=document.documentElement.classList.contains('dark');
+  const s=document.getElementById('sunIcon');
+  const m=document.getElementById('moonIcon');
+  if(s)s.style.display=d?'block':'none';
+  if(m)m.style.display=d?'none':'block';
+}
+function toggleDarkMode(){
+  document.documentElement.classList.toggle('dark');
+  try{localStorage.setItem('axp-theme',document.documentElement.classList.contains('dark')?'dark':'light')}catch(e){}
+  syncThemeIcons();
+}
+function toggleMobileMenu(){
+  const el=document.getElementById('mobileMenu');
+  if(el)el.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[70]"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+        <span class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">AMEX · AXP 最新动态</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-5">
+        <a href="#overview" class="text-sm hover:text-primary-500">总览</a>
+        <a href="#company" class="text-sm hover:text-primary-500">公司动态</a>
+        <a href="#industry" class="text-sm hover:text-primary-500">行业动态</a>
+        <a href="#macro" class="text-sm hover:text-primary-500">宏观政策</a>
+        <a href="#matrix" class="text-sm hover:text-primary-500">催化矩阵</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleMobileMenu()" aria-label="菜单" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+        <button onclick="toggleDarkMode()" aria-label="切换暗色模式" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300">
+          <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800">
+      <nav class="flex flex-col gap-3">
+        <a href="#overview" onclick="toggleMobileMenu()" class="text-sm py-1">总览</a>
+        <a href="#company" onclick="toggleMobileMenu()" class="text-sm py-1">公司动态</a>
+        <a href="#industry" onclick="toggleMobileMenu()" class="text-sm py-1">行业动态</a>
+        <a href="#macro" onclick="toggleMobileMenu()" class="text-sm py-1">宏观政策</a>
+        <a href="#matrix" onclick="toggleMobileMenu()" class="text-sm py-1">催化矩阵</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="pt-24 pb-16">
+
+<!-- HERO -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+  <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+
+    <div class="flex flex-wrap items-center gap-2 mb-5">
+      <span class="tag bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">NYSE: AXP</span>
+      <span class="tag bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">全球支付网络 · 高端信用卡 · 消费金融</span>
+      <span class="tag bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">近30日 · 2026-10-27 至 11-25</span>
+      <span class="tag bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">研究截止：2026-11-25</span>
+    </div>
+
+    <div class="flex flex-col lg:flex-row lg:items-center gap-6 mb-7">
+      <div class="flex-1">
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">美国运通</h1>
+        <p class="text-primary-600 dark:text-primary-300 text-sm font-semibold tracking-widest mb-4">AMERICAN EXPRESS COMPANY</p>
+        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl">
+          美国运通近30日的核心变化，是以<strong class="text-primary-600 dark:text-primary-400">700百万美元级TheFork收购</strong>加速欧洲餐饮生态布局，并通过Resy Rewards强化消费闭环。支付行业交易量保持增长，但美国通胀与利率预期反弹，可能同时抬高资金成本和信用风险。
+        </p>
+      </div>
+      <div class="lg:w-56 shrink-0 bg-gray-50 dark:bg-gray-800/70 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
+        <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">投资研究判断</div>
+        <div class="text-2xl font-bold text-primary-600 dark:text-primary-300">中性偏多</div>
+        <div class="text-xs text-gray-500 dark:text-gray-400 mt-2">消费韧性与会员生态扩张支撑基本面，利率与信用风险限制估值弹性</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+        <div class="flex items-center gap-2 mb-3">
+          <i data-lucide="gauge" class="w-4 h-4 text-primary-500"></i>
+          <span class="text-xs font-bold text-gray-500 dark:text-gray-400">消息面总体基调</span>
+        </div>
+        <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">中性偏多</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 mt-2">交易规模扩张、会员消费黏性及欧洲餐饮平台整合构成正向支撑；信用成本和利率环境是主要约束。</p>
+      </div>
+
+      <div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+        <div class="flex items-center gap-2 mb-3">
+          <i data-lucide="zap" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+          <span class="text-xs font-bold text-emerald-700 dark:text-emerald-300">本月最强单一催化剂</span>
+        </div>
+        <div class="text-base font-bold text-emerald-800 dark:text-emerald-200">TheFork收购完成</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 mt-2">2026-11-02完成欧洲餐饮预订平台收购，强化Resy、Tock与TheFork组成的全球餐饮生态。</p>
+      </div>
+
+      <div class="bg-rose-50/70 dark:bg-rose-950/30 rounded-xl p-5 border border-rose-200 dark:border-rose-800/60 card-interactive">
+        <div class="flex items-center gap-2 mb-3">
+          <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600 dark:text-rose-400"></i>
+          <span class="text-xs font-bold text-rose-700 dark:text-rose-300">本月最需警惕信号</span>
+        </div>
+        <div class="text-base font-bold text-rose-800 dark:text-rose-200">美联储鹰派预期升温</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 mt-2">2026-11-18公布的会议纪要显示多数决策者担忧通胀持续，部分官员支持12月进一步加息。</p>
+      </div>
+    </div>
+
+    <div class="mt-7 border-t border-gray-200 dark:border-gray-700 pt-5">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-xs font-bold text-gray-500 dark:text-gray-400">本期研究重点</span>
+        <span class="text-xs text-gray-400">按对AXP基本面影响排序</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div>
+          <div class="text-xs text-gray-500 dark:text-gray-400">TheFork交易金额</div>
+          <div class="text-lg font-bold font-mono">$700M</div>
+        </div>
+        <div>
+          <div class="text-xs text-gray-500 dark:text-gray-400">Resy奖励机制</div>
+          <div class="text-lg font-bold font-mono">+4 pts/$</div>
+        </div>
+        <div>
+          <div class="text-xs text-gray-500 dark:text-gray-400">美国10月零售销售</div>
+          <div class="text-lg font-bold font-mono">+0.2%</div>
+        </div>
+        <div>
+          <div class="text-xs text-gray-500 dark:text-gray-400">Q3全球信用卡消费信贷</div>
+          <div class="text-lg font-bold font-mono">+4.1%年化</div>
+        </div>
+      </div>
+      <p class="text-[10px] text-gray-400 mt-3">说明：$700M为TheFork交易约定现金对价；+4 pts/$为符合条件的Resy Rewards额外积分；宏观数据分别来自美国人口普查局和美联储，非AXP自身财务指标。</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+  <div class="flex items-center gap-3 mb-2">
+    <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+      <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-6">时间口径：2026-10-27—2026-11-25。按对营收、利润、战略竞争力及估值的综合影响排序。</p>
+
+  <!-- COMPANY 1 -->
+  <article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+    <div class="flex flex-wrap justify-between gap-3 mb-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="tag bg-primary-500 text-white">TOP 1</span>
+        <span class="text-xs font-mono text-gray-500">2026-11-02</span>
+        <span class="tag bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">温和利好 · 战略性利好</span>
+      </div>
+      <span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 9.2 / 10</span>
+    </div>
+
+    <h3 class="text-lg sm:text-xl font-bold mb-4">完成收购欧洲餐饮预订平台TheFork，700百万美元交易落地</h3>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500">交易约定对价</div>
+        <div class="text-lg font-bold font-mono">$700M</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500">餐厅覆盖</div>
+        <div class="text-lg font-bold font-mono">50,000+</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500">覆盖国家</div>
+        <div class="text-lg font-bold font-mono">11</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500">平台业务</div>
+        <div class="text-lg font-bold">餐饮预订</div>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      美国运通于<strong>2026-11-02</strong>宣布完成从Tripadvisor收购TheFork。TheFork是欧洲餐饮预订与餐厅管理平台，连接超过50,000家餐厅，业务覆盖11个欧洲国家，拥有消费者端餐厅发现、预订应用及餐厅经营管理系统。
+    </p>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      根据Tripadvisor于2026-11-02提交的SEC Form 8-K，交易于11月1日完成，约定现金对价为<strong>7亿美元，另按协议进行交易调整</strong>。Tripadvisor另披露其最终净现金对价约7.41亿美元，属于卖方结算口径，不应与AXP最初约定购买价混为一谈。
+    </p>
+
+    <div class="rounded-xl p-4 bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50 mb-4">
+      <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">影响深度：从信用卡支付升级为餐饮消费入口</div>
+      <ul class="text-xs text-gray-700 dark:text-gray-300 space-y-2 leading-relaxed">
+        <li><strong>营收端：</strong>将餐厅预订、会员导流、商户管理和信用卡支付结合，增加高端餐饮交易频次及会员消费场景。</li>
+        <li><strong>竞争端：</strong>与美国Resy、Tock形成跨区域餐饮平台组合，增强会员权益的独特性和商户网络价值。</li>
+        <li><strong>利润端：</strong>平台可形成预订及商户服务收入，但需要承担整合、技术投入、客户获取及运营费用。</li>
+        <li><strong>现金流端：</strong>7亿美元级现金收购意味着短期投资现金流流出，未来回报取决于交叉销售和平台变现。</li>
+      </ul>
+    </div>
+
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+      关键验证指标：TheFork用户增长、商户留存、AXP卡会员预订渗透率、餐饮交易额及收购后的利润贡献。
+    </div>
+    <div class="impact-bar"><div class="impact-fill" style="width:92%"></div></div>
+
+    <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+      信源：
+      <a class="source-link" href="https://www.americanexpress.com/en-us/newsroom/company-financial-news/amex-thefork-acquisition-completed/" target="_blank" rel="noopener">American Express官方公告 · 2026-11-02</a>；
+      <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1526520/000119312526442627/trip-20261101.htm" target="_blank" rel="noopener">Tripadvisor SEC Form 8-K · 2026-11-02</a>。
+    </div>
+  </article>
+
+  <!-- COMPANY 2 -->
+  <article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up" data-aos-delay="70">
+    <div class="flex flex-wrap justify-between gap-3 mb-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="tag bg-primary-500 text-white">TOP 2</span>
+        <span class="text-xs font-mono text-gray-500">2026-11-17</span>
+        <span class="tag bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">温和利好</span>
+      </div>
+      <span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 8.6 / 10</span>
+    </div>
+
+    <h3 class="text-lg sm:text-xl font-bold mb-4">推出Resy Rewards：餐饮消费与Membership Rewards积分体系打通</h3>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-5">
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500">额外奖励积分</div>
+        <div class="text-xl font-bold text-emerald-600 dark:text-emerald-400">4倍</div>
+        <div class="text-[10px] text-gray-500">每符合条件消费1美元</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500">首发市场</div>
+        <div class="text-xl font-bold">纽约市</div>
+        <div class="text-[10px] text-gray-500">美国市场先行</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 col-span-2 sm:col-span-1">
+        <div class="text-xs text-gray-500">平台</div>
+        <div class="text-xl font-bold">Resy</div>
+        <div class="text-[10px] text-gray-500">餐饮预订与会员权益</div>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      2026-11-17，Resy正式推出Resy Rewards。符合条件的美国运通持卡人，通过Resy Rewards预订并在参与活动的餐厅就餐，可在符合条件的消费金额上每消费1美元额外获得4个Membership Rewards积分。该项目首先在纽约市推出。
+    </p>
+
+    <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+      <div class="font-bold text-sm mb-2">商业模式传导：预订 → 到店 → 刷卡 → 积分 → 复购</div>
+      <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600 dark:text-gray-300">
+        <span class="rounded-lg bg-primary-100 dark:bg-gray-700 px-3 py-2">Resy预约</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-primary-500"></i>
+        <span class="rounded-lg bg-primary-100 dark:bg-gray-700 px-3 py-2">餐饮消费</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-primary-500"></i>
+        <span class="rounded-lg bg-primary-100 dark:bg-gray-700 px-3 py-2">卡片支付</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-primary-500"></i>
+        <span class="rounded-lg bg-emerald-100 dark:bg-emerald-900/40 px-3 py-2">积分激励</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+      <div class="rounded-lg bg-emerald-50/70 dark:bg-emerald-950/25 p-4 border border-emerald-200 dark:border-emerald-800/40">
+        <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">正面影响</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">提高高端餐饮消费场景的卡片使用率，形成预订入口与支付入口协同，提升会员留存和交易频率，并增强餐厅合作伙伴价值。</p>
+      </div>
+      <div class="rounded-lg bg-amber-50/70 dark:bg-amber-950/25 p-4 border border-amber-200 dark:border-amber-800/40">
+        <div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">成本约束</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">额外积分会产生奖励成本。若新增消费不足以覆盖积分费用和平台运营成本，收入增长不一定同步转化为利润率改善。</p>
+      </div>
+    </div>
+
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+      <strong>投资判断：</strong>这不是单纯的营销活动，而是美国运通将奖励体系嵌入消费决策链条的战略试验。真正的催化剂在于后续能否复制至其他城市、提升非美国运通用户转化及餐饮支付份额。
+    </p>
+    <div class="impact-bar"><div class="impact-fill" style="width:86%"></div></div>
+    <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+      信源：
+      <a class="source-link" href="https://www.americanexpress.com/en-us/newsroom/products-services/resy-rewards-earn-membership-rewards-points/" target="_blank" rel="noopener">American Express / Resy官方公告 · 2026-11-17</a>。
+    </div>
+  </article>
+
+  <!-- COMPANY 3 -->
+  <article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 card-interactive" data-aos="fade-up" data-aos-delay="120">
+    <div class="flex flex-wrap justify-between gap-3 mb-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="tag bg-primary-500 text-white">TOP 3</span>
+        <span class="text-xs font-mono text-gray-500">2026-10-29</span>
+        <span class="tag bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300">中性偏多 · 管理层变动</span>
+      </div>
+      <span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 7.2 / 10</span>
+    </div>
+
+    <h3 class="text-lg sm:text-xl font-bold mb-4">任命Jodi Richard为新任首席风险官，强化全球风险与合规管理</h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500">新任首席风险官</div>
+        <div class="text-base font-bold">Jodi Richard</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500">此前任职</div>
+        <div class="text-base font-bold">U.S. Bank</div>
+        <div class="text-[10px] text-gray-500">副董事长兼首席风险官</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+        <div class="text-xs text-gray-500">正式履职日期</div>
+        <div class="text-base font-bold font-mono">2027-01-25</div>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      美国运通CEO Stephen J. Squeri于2026-10-29发布内部管理层公告，宣布Jodi Richard将于2027-01-25正式加入公司，担任American Express及American Express National Bank首席风险官，并领导Global Risk & Compliance团队，直接向CEO汇报并进入执行委员会。
+    </p>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      Richard此前自2018年起担任U.S. Bank副董事长兼首席风险官，具有超过30年的金融风险管理经验，涉及信用风险、运营风险、合规、欺诈、网络安全、技术风险和隐私保护等领域。
+    </p>
+
+    <div class="bg-sky-50/70 dark:bg-sky-950/25 rounded-xl p-4 border border-sky-200 dark:border-sky-800/50 mb-4">
+      <div class="text-xs font-bold text-sky-700 dark:text-sky-300 mb-2">对经营与估值的影响</div>
+      <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+        <li>信用卡业务规模扩大后，风险定价、坏账识别和客户分层直接影响信用损失拨备。</li>
+        <li>强化欺诈、网络安全与合规能力，有助于控制跨境支付和数字化业务的非信用风险。</li>
+        <li>短期不会直接增加营收，但可通过风险控制和运营效率改善长期风险调整后回报。</li>
+      </ul>
+    </div>
+
+    <p class="text-xs text-gray-600 dark:text-gray-300 mb-3"><strong>观察重点：</strong>新任风险官上任后的信用审批政策、拨备水平、逾期率、欺诈损失率及风险资产增长速度。</p>
+    <div class="impact-bar"><div class="impact-fill" style="width:72%"></div></div>
+    <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+      信源：
+      <a class="source-link" href="https://www.americanexpress.com/en-us/newsroom/company-financial-news/new-chief-risk-officer/" target="_blank" rel="noopener">American Express官方管理层公告 · 2026-10-29</a>。
+    </div>
+  </article>
+
+  <div class="bg-gray-100 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="flex items-center gap-2 mb-2">
+      <i data-lucide="info" class="w-4 h-4 text-primary-500"></i>
+      <span class="text-sm font-bold">时间窗口径说明</span>
+    </div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+      AXP于2026-10-23公布的Q3财报不属于本报告严格的30日窗口（起点为2026-10-27），因此未列入三大动态排名。该财报可作为后续经营分析的基准，但不能冒充本月新事件。公司11月2日还宣布扩大全球NBA/WNBA合作，进一步加强品牌和会员体验，作为次级催化剂跟踪。
+      <a class="source-link" href="https://www.americanexpress.com/en-us/newsroom/company-financial-news/nba-wnba-global-partnership-expansion-2026/" target="_blank" rel="noopener">官方公告 · 2026-11-02</a>。
+    </p>
+  </div>
+</section>
+
+<!-- INDUSTRY -->
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+  <div class="flex items-center gap-3 mb-2">
+    <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center">
+      <i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+  </div>
+
+  <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6">
+    <strong>细分赛道界定：</strong>全球支付网络与高端信用卡发行、消费金融、会员奖励和跨境支付服务。美国运通采用整合式闭环模式，既管理持卡人关系，也拥有支付网络和商户合作体系，与Visa、Mastercard以开放式支付网络为主的模式存在差异。
+  </p>
+
+  <!-- INDUSTRY 1 -->
+  <article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+    <div class="flex flex-wrap justify-between gap-2 mb-3">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="tag bg-accent-500 text-white">行业 TOP 1</span>
+        <span class="text-xs font-mono text-gray-500">2026-10-27</span>
+        <span class="tag bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">行业景气偏多</span>
+      </div>
+      <span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 9.0 / 10</span>
+    </div>
+
+    <h3 class="text-lg font-bold mb-3">Visa FY2026第四季度营收增长13%，全球支付交易需求保持韧性</h3>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">季度营收</div>
+        <div class="text-xl font-bold">$12.1B</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">营收同比</div>
+        <div class="text-xl font-bold text-emerald-600">+13%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">全年营收</div>
+        <div class="text-xl font-bold">$45.9B</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">全年营收同比</div>
+        <div class="text-xl font-bold text-emerald-600">+15%</div>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      Visa于2026-10-27公布FY2026第四季度及全年业绩。第四季度GAAP净利润60亿美元，GAAP每股收益3.19美元；非GAAP净利润66亿美元，每股收益3.48美元。季度净营收121亿美元，同比增长13%。全年净营收459亿美元，同比增长15%。公司指出支付量、跨境交易量及处理交易数量保持强劲增长。
+    </p>
+
+    <div class="bg-emerald-50/70 dark:bg-emerald-950/25 p-4 rounded-xl border border-emerald-200 dark:border-emerald-800/40 mb-4">
+      <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">对美国运通的横向映射</div>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+        Visa业绩为支付网络交易需求提供外部验证。支付行业增长并非只来自低价日常消费，跨境旅游、商业支付及数字交易同样重要。对AXP而言，若高端客户支出与旅行消费继续跑赢整体消费，闭环模式有机会获得更高的交易收入和客户黏性。但Visa与AXP的客户结构、商户覆盖及收入确认方式不同，不能直接用Visa的营收增速推算AXP。
+      </p>
+    </div>
+
+    <div class="impact-bar"><div class="impact-fill" style="width:90%"></div></div>
+    <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+      信源：
+      <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1403161/000140316126000126/q42026earningsrelease.htm" target="_blank" rel="noopener">Visa SEC披露及业绩公告 · 2026-10-27</a>。
+    </div>
+  </article>
+
+  <!-- INDUSTRY 2 -->
+  <article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+    <div class="flex flex-wrap justify-between gap-2 mb-3">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="tag bg-accent-500 text-white">行业 TOP 2</span>
+        <span class="text-xs font-mono text-gray-500">2026-10-29</span>
+        <span class="tag bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">跨境支付利好</span>
+      </div>
+      <span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 8.7 / 10</span>
+    </div>
+
+    <h3 class="text-lg font-bold mb-3">Mastercard Q3营收增长14%，跨境交易量增长11%</h3>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">季度营收</div>
+        <div class="text-xl font-bold">$9.8B</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">营收同比</div>
+        <div class="text-xl font-bold text-emerald-600">+14%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">跨境交易量</div>
+        <div class="text-xl font-bold text-emerald-600">+11%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">购买交易量</div>
+        <div class="text-xl font-bold">+9%</div>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      Mastercard于2026-10-29发布2026年第三季度财报：季度净营收98亿美元，同比增长14%；净利润46亿美元，摊薄每股收益5.28美元；调整后每股收益5.31美元。当地货币口径下，总支付金额增长7%，购买交易量增长9%，跨境交易量增长11%，处理交易量增长9%。
+    </p>
+
+    <div class="bg-accent-50/70 dark:bg-accent-900/20 rounded-xl p-4 border border-accent-200 dark:border-accent-800/50 mb-4">
+      <div class="text-xs font-bold text-accent-700 dark:text-accent-300 mb-2">对AXP的影响：旅行消费是共同增长引擎</div>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+        跨境交易量增长通常反映国际旅行、境外购物和商业支付活动。美国运通的高端会员与商务客户对旅行和国际消费具有较高关联度，因此跨境支付景气改善有望提升其账单交易额及相关费用收入。另一方面，Mastercard的增长也意味着支付网络之间的竞争持续加剧，AXP需要依靠高端客户权益和会员生态保持差异化，而非仅依赖支付网络规模。
+      </p>
+    </div>
+
+    <div class="impact-bar"><div class="impact-fill" style="width:87%"></div></div>
+    <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+      信源：
+      <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1141391/000114139126000122/ma09302026-exx991xearnings.htm" target="_blank" rel="noopener">Mastercard SEC Q3 2026业绩公告 · 2026-10-29</a>。
+    </div>
+  </article>
+
+  <!-- INDUSTRY 3 -->
+  <article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+    <div class="flex flex-wrap justify-between gap-2 mb-3">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="tag bg-accent-500 text-white">行业 TOP 3</span>
+        <span class="text-xs font-mono text-gray-500">2026-11-12</span>
+        <span class="tag bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">温和利好但结构分化</span>
+      </div>
+      <span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 8.2 / 10</span>
+    </div>
+
+    <h3 class="text-lg font-bold mb-3">美国消费者10月信用卡支出增长5.8%，但消费偏好趋于谨慎</h3>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">总卡消费/家庭</div>
+        <div class="text-xl font-bold text-emerald-600">+5.8%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">剔除汽油消费</div>
+        <div class="text-xl font-bold">+4.6%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">低收入家庭消费增长</div>
+        <div class="text-xl font-bold">+5.9%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">统计月份</div>
+        <div class="text-xl font-bold">2026-10</div>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      Bank of America Institute于2026-11-12发布《Consumer Checkpoint: Spending season》。其内部银行卡数据表明，2026年10月每户银行卡总消费同比增长5.8%，剔除汽油后增长4.6%。服务消费仍是增长的重要推动力。低收入家庭消费增速达到5.9%，但假日消费增长同时伴随平均交易金额下降，反映消费者更加注重价格和价值。
+    </p>
+
+    <div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800/40 mb-4">
+      <div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">对美国运通的横向映射</div>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+        卡消费增长为AXP账单交易额和商户手续费收入提供需求基础，但Bank of America数据并不代表AXP持卡人的实际消费增速。美国运通的核心客户偏向高收入与高消费能力群体，因此必须进一步观察高收入客群、旅行、餐饮、娱乐和商务支出的增长，而不是简单套用全市场平均数据。
+      </p>
+      <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
+        若消费者将支出转向高性价比商品、减少奢侈品和高端旅行，AXP的高端会员消费增速可能低于整体卡消费增速；若服务与餐饮继续表现强劲，则Resy及TheFork生态有机会强化消费份额。
+      </p>
+    </div>
+
+    <div class="impact-bar"><div class="impact-fill" style="width:82%"></div></div>
+    <div class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+      信源：
+      <a class="source-link" href="https://institute.bankofamerica.com/economic-insights/consumer-checkpoint-november-2026.html" target="_blank" rel="noopener">Bank of America Institute · 2026-11-12</a>。
+    </div>
+  </article>
+
+  <!-- Industry comparison -->
+  <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+    <h3 class="font-bold text-base mb-4 flex items-center gap-2">
+      <i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i>
+      行业动态对标影响对比表
+    </h3>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm min-w-[650px]">
+        <thead>
+          <tr class="bg-gray-50 dark:bg-gray-800">
+            <th>行业事件</th>
+            <th>涉及主体</th>
+            <th>对AXP利弊传导</th>
+            <th>影响周期</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-semibold">全球支付交易增长</td>
+            <td>Visa、全球商户及发卡机构</td>
+            <td><span class="text-emerald-600 font-semibold">利好。</span>支付需求扩大，提升AXP账单规模及商户手续费潜力。</td>
+            <td>短中期</td>
+          </tr>
+          <tr>
+            <td class="font-semibold">跨境交易量增长11%</td>
+            <td>Mastercard、国际旅行及支付市场</td>
+            <td><span class="text-emerald-600 font-semibold">偏利好。</span>国际旅行和跨境消费有助于AXP高端会员交易额增长。</td>
+            <td>中期</td>
+          </tr>
+          <tr>
+            <td class="font-semibold">假日消费增长但更重视价值</td>
+            <td>美国发卡行、零售商、消费者</td>
+            <td><span class="text-amber-600 font-semibold">结构性影响。</span>总消费扩张有利，但高端消费与普通消费可能出现增速分化。</td>
+            <td>短期</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+  <div class="flex items-center gap-3 mb-2">
+    <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+      <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-6">重点考察美国本土信用卡利率、通胀、消费能力，以及中国消费市场对美国运通国际业务的间接影响。</p>
+
+  <!-- MACRO 1 -->
+  <article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+    <div class="flex flex-wrap justify-between gap-2 mb-3">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="tag bg-rose-500 text-white">国际宏观 · 货币政策</span>
+        <span class="text-xs font-mono text-gray-500">2026-11-18</span>
+        <span class="tag bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300">短期承压</span>
+      </div>
+      <span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 9.5 / 10</span>
+    </div>
+
+    <h3 class="text-lg font-bold mb-4">美联储会议纪要显示鹰派倾向升温，12月加息预期强化</h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+      <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl">
+        <div class="text-xs text-gray-500">10月会议政策利率</div>
+        <div class="text-2xl font-bold font-mono">3.9%</div>
+        <div class="text-[10px] text-gray-500">会议期间维持不变</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl">
+        <div class="text-xs text-gray-500">12月加息预期</div>
+        <div class="text-xl font-bold text-rose-600 dark:text-rose-400">显著升温</div>
+        <div class="text-[10px] text-gray-500">AP报道所引市场定价接近95%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-xl">
+        <div class="text-xs text-gray-500">核心通胀观察</div>
+        <div class="text-xl font-bold">约3.5%</div>
+        <div class="text-[10px] text-gray-500">官员所述近三个月年化水平</div>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      美国联邦储备委员会于2026-11-18公布2026-10-27至10-28会议纪要。根据Associated Press对会议纪要的报道，几乎所有官员预计12月可能需要加息25个基点，部分官员在10月会议上就支持加息，另有两位官员提出12月可以考虑加息50个基点。绝大多数决策者担忧通胀持续性，即使能源价格回落以及关税和AI基础设施相关成本压力减弱，通胀仍可能保持高位。
+    </p>
+
+    <div class="bg-rose-50/70 dark:bg-rose-950/25 rounded-xl p-4 border border-rose-200 dark:border-rose-800/50 mb-4">
+      <div class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-3">传导路径：分子端盈利与分母端估值同时受到影响</div>
+      <div class="space-y-3 text-xs text-gray-600 dark:text-gray-300">
+        <div>
+          <strong class="text-gray-900 dark:text-white">1. 净利息收入：</strong>
+          AXP持有大量循环信用卡贷款。利率上行可能提升部分浮动利率贷款收益，但同时推高存款、批发融资和其他资金成本，最终取决于资产负债重定价速度及融资结构。
+        </div>
+        <div>
+          <strong class="text-gray-900 dark:text-white">2. 信用风险：</strong>
+          较高借款成本会挤压部分消费者偿债能力，可能抬高逾期、核销和信用损失拨备。
+        </div>
+        <div>
+          <strong class="text-gray-900 dark:text-white">3. 估值：</strong>
+          利率预期走高可能抬高股票贴现率，压缩金融股估值倍数，并对高估值消费金融资产形成压力。
+        </div>
+      </div>
+    </div>
+
+    <div class="text-xs text-gray-600 dark:text-gray-300 mb-3">
+      <strong>业务敞口评估：</strong>美国发卡和循环信贷是直接敞口；高端消费、旅行及商户支付是间接敞口。利率变化不能简单等同于AXP利润增加或减少，必须同时跟踪存款利率、资金成本、循环余额及净核销率。
+    </div>
+
+    <div class="impact-bar"><div class="impact-fill" style="width:95%"></div></div>
+    <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+      信源：
+      <a class="source-link" href="https://www.federalreserve.gov/newsevents/2026-november.htm" target="_blank" rel="noopener">Federal Reserve · 2026年11月政策日历</a>；
+      <a class="source-link" href="https://apnews.com/article/9e72f3b6e3484173471cc382d6918de0" target="_blank" rel="noopener">Associated Press · 2026-11-18会议纪要报道</a>。
+      <br>注：12月加息概率是报道所引用的当时市场定价，并非美联储官方承诺或政策决定。
+    </div>
+  </article>
+
+  <!-- MACRO 2 -->
+  <article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+    <div class="flex flex-wrap justify-between gap-2 mb-3">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="tag bg-amber-500 text-white">美国宏观 · 通胀与消费</span>
+        <span class="text-xs font-mono text-gray-500">2026-11-10 / 11-17</span>
+        <span class="tag bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中性偏空</span>
+      </div>
+      <span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 8.7 / 10</span>
+    </div>
+
+    <h3 class="text-lg font-bold mb-4">美国10月CPI环比上涨0.4%，零售销售增长仅0.2%</h3>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">10月CPI环比</div>
+        <div class="text-xl font-bold text-rose-600">+0.4%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">9月CPI环比</div>
+        <div class="text-xl font-bold">+0.6%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">10月零售额</div>
+        <div class="text-xl font-bold">$748.2B</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">零售销售环比</div>
+        <div class="text-xl font-bold text-amber-600">+0.2%</div>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      美国劳工统计局于2026-11-10公布10月CPI，消费者价格指数环比上涨0.4%，低于9月的0.6%。住房指数环比上涨0.3%，食品指数上涨0.5%，能源指数上涨0.7%。通胀环比增速虽然放缓，但食品、住房等生活成本仍然上涨。
+    </p>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      美国人口普查局于2026-11-17公布10月零售销售初值，零售及餐饮服务销售额为7,482亿美元，环比增长0.2%。9月修正后增长0.8%。官方特别指出，10月零售销售环比变化的90%置信区间包含零，因此不足以确认实际增长与零存在统计显著差异。
+    </p>
+
+    <div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800/50 mb-4">
+      <div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">对AXP的分子端与分母端传导</div>
+      <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+        <li><strong>消费需求：</strong>零售增长温和意味着交易规模扩张，但消费增长速度可能放缓，需重点观察AXP高收入客户是否保持更强的消费韧性。</li>
+        <li><strong>商户手续费：</strong>名义消费额上涨有利于交易金额，但若增长主要由价格上涨驱动，实际交易数量和消费量未必同步增加。</li>
+        <li><strong>信用风险：</strong>生活成本压力可能影响部分持卡人的还款能力，增加未来信用损失的不确定性。</li>
+        <li><strong>估值：</strong>通胀反复使美联储政策路径更难确定，利率敏感型金融股面临更高的估值折现压力。</li>
+      </ul>
+    </div>
+
+    <p class="text-xs text-gray-600 dark:text-gray-300 mb-3">
+      <strong>业务敞口：</strong>美国消费信贷、信用卡支付、餐饮及旅行消费。应将名义消费增长与真实消费量、客群结构和AXP自身账单增长分开观察。
+    </p>
+    <div class="impact-bar"><div class="impact-fill" style="width:87%"></div></div>
+
+    <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+      信源：
+      <a class="source-link" href="https://www.bls.gov/news.release/cpi.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics · 2026-11-10</a>；
+      <a class="source-link" href="https://www.census.gov/retail/marts/www/marts_current.pdf?release=20261117" target="_blank" rel="noopener">U.S. Census Bureau · 2026-11-17</a>。
+    </div>
+  </article>
+
+  <!-- MACRO 3 -->
+  <article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 card-interactive">
+    <div class="flex flex-wrap justify-between gap-2 mb-3">
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="tag bg-sky-600 text-white">中国宏观 · 消费市场</span>
+        <span class="text-xs font-mono text-gray-500">2026-11-17</span>
+        <span class="tag bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300">间接影响 · 中性</span>
+      </div>
+      <span class="text-sm font-bold text-primary-600 dark:text-primary-300">影响力 6.5 / 10</span>
+    </div>
+
+    <h3 class="text-lg font-bold mb-4">中国10月社零同比仅增长0.4%，服务消费保持相对韧性</h3>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">10月社零总额</div>
+        <div class="text-xl font-bold">4.65万亿</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">社零同比</div>
+        <div class="text-xl font-bold text-amber-600">+0.4%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">餐饮收入同比</div>
+        <div class="text-xl font-bold">+0.7%</div>
+      </div>
+      <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+        <div class="text-xs text-gray-500">网上商品零售同比</div>
+        <div class="text-xl font-bold">+2.9%</div>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+      中国国家统计局于2026-11-17发布2026年1—10月社会消费品零售总额数据。1—10月社零总额为41.6464万亿元，同比增长1.0%；10月单月社零总额为4.6463万亿元，同比增长0.4%。10月餐饮收入同比增长0.7%，网上商品零售额1—10月同比增长2.9%。
+    </p>
+
+    <div class="bg-sky-50/70 dark:bg-sky-950/25 rounded-xl p-4 border border-sky-200 dark:border-sky-800/50 mb-4">
+      <div class="text-xs font-bold text-sky-700 dark:text-sky-300 mb-2">传导路径与AXP业务敞口</div>
+      <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+        <li><strong>跨境消费：</strong>中国消费景气改善有机会带动国际旅行、境外餐饮和购物消费，对AXP全球商户支付网络形成间接支持。</li>
+        <li><strong>商户网络：</strong>若中国餐饮和服务消费回暖，可能提升国际商户合作及跨境消费场景价值。</li>
+        <li><strong>现实限制：</strong>美国运通在中国市场的业务结构、支付准入、合作网络和当地竞争环境，与美国本土并不相同，中国社零不是AXP账单交易额的直接代理变量。</li>
+      </ul>
+    </div>
+
+    <p class="text-xs text-gray-600 dark:text-gray-300 mb-3">
+      <strong>投资判断：</strong>中国消费数据对AXP主要属于国际旅行及跨境消费的间接变量，当前增速并未显示强劲复苏，不宜将其视为公司短期盈利的核心催化剂。
+    </p>
+    <div class="impact-bar"><div class="impact-fill" style="width:65%"></div></div>
+
+    <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+      信源：
+      <a class="source-link" href="https://www.stats.gov.cn/english/PressRelease/202611/t20261117_1965878.html" target="_blank" rel="noopener">国家统计局 · 2026-11-17</a>。
+    </div>
+  </article>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800">
+    <h3 class="font-bold text-sm mb-4 flex items-center gap-2">
+      <i data-lucide="git-branch" class="w-4 h-4 text-primary-500"></i>
+      三层传导框架：公司 → 行业 → 宏观
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div class="rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800 border border-primary-100 dark:border-gray-700">
+        <div class="font-bold text-primary-700 dark:text-primary-300 text-sm mb-2">公司层：经营分子</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">TheFork、Resy、Tock的整合程度决定会员生态变现；核心指标是账单额、交易收入、净利息收入、信用损失和奖励费用。</p>
+      </div>
+      <div class="rounded-xl p-4 bg-accent-50/70 dark:bg-gray-800 border border-accent-200 dark:border-gray-700">
+        <div class="font-bold text-accent-700 dark:text-accent-300 text-sm mb-2">行业层：份额与竞争</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">Visa和Mastercard交易增长验证行业需求；AXP必须依靠高端客户、会员奖励、旅行餐饮权益和闭环网络实现差异化。</p>
+      </div>
+      <div class="rounded-xl p-4 bg-rose-50/70 dark:bg-gray-800 border border-rose-200 dark:border-gray-700">
+        <div class="font-bold text-rose-700 dark:text-rose-300 text-sm mb-2">宏观层：估值分母</div>
+        <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">美联储利率与通胀影响融资成本和折现率；消费景气决定账单规模；信用周期决定贷款资产的风险调整后收益。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATRIX -->
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-10" data-aos="fade-up">
+  <div class="flex items-center gap-3 mb-6">
+    <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+      <i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+    </div>
+    <h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+  </div>
+
+  <div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 border border-gray-200 dark:border-gray-800 mb-8">
+    <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+      <h3 class="font-bold text-sm flex items-center gap-2">
+        <i data-lucide="list" class="w-4 h-4 text-primary-500"></i>
+        九大动态催化矩阵
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="rounded-full px-3 py-1.5 text-xs font-semibold">全部 9</button>
+        <button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="rounded-full px-3 py-1.5 text-xs font-semibold">公司 3</button>
+        <button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="rounded-full px-3 py-1.5 text-xs font-semibold">行业 3</button>
+        <button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="rounded-full px-3 py-1.5 text-xs font-semibold">宏观 3</button>
+      </div>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-[900px] text-xs sm:text-sm">
+        <thead>
+          <tr>
+            <th>类别</th>
+            <th>日期</th>
+            <th>核心事件</th>
+            <th>影响方向</th>
+            <th>强度</th>
+            <th>核心投资含义</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+            <td><span class="tag bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td>
+            <td class="font-mono whitespace-nowrap">11-02</td>
+            <td class="font-semibold">完成TheFork收购，交易约定对价7亿美元</td>
+            <td class="text-emerald-600 font-bold">战略性利好</td>
+            <td class="font-mono font-bold">9.2</td>
+            <td>构建欧洲餐饮入口，扩大会员生态及商户网络</td>
+          </tr>
+          <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+            <td><span class="tag bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td>
+            <td class="font-mono whitespace-nowrap">11-17</td>
+            <td class="font-semibold">Resy Rewards推出，符合条件消费额外获得4积分/美元</td>
+            <td class="text-emerald-600 font-bold">温和利好</td>
+            <td class="font-mono font-bold">8.6</td>
+            <td>提升餐饮消费频率、会员留存和支付闭环</td>
+          </tr>
+          <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+            <td><span class="tag bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td>
+            <td class="font-mono whitespace-nowrap">10-29</td>
+            <td class="font-semibold">任命Jodi Richard为新任首席风险官</td>
+            <td class="text-sky-600 font-bold">中性偏多</td>
+            <td class="font-mono font-bold">7.2</td>
+            <td>强化风险控制、信用质量与全球合规能力</td>
+          </tr>
+          <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+            <td><span class="tag bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td>
+            <td class="font-mono whitespace-nowrap">10-27</td>
+            <td class="font-semibold">Visa FY26 Q4营收增长13%</td>
+            <td class="text-emerald-600 font-bold">利好</td>
+            <td class="font-mono font-bold">9.0</td>
+            <td>验证全球支付需求与交易规模的增长韧性</td>
+          </tr>
+          <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+            <td><span class="tag bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td>
+            <td class="font-mono whitespace-nowrap">10-29</td>
+            <td class="font-semibold">Mastercard Q3营收增长14%，跨境交易量增长11%</td>
+            <td class="text-emerald-600 font-bold">利好</td>
+            <td class="font-mono font-bold">8.7</td>
+            <td>跨境消费扩张利于AXP旅行及高端支付业务</td>
+          </tr>
+          <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+            <td><span class="tag bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td>
+            <td class="font-mono whitespace-nowrap">11-12</td>
+            <td class="font-semibold">BofA数据显示10月银行卡消费同比增长5.8%</td>
+            <td class="text-amber-600 font-bold">结构性利好</td>
+            <td class="font-mono font-bold">8.2</td>
+            <td>消费韧性支撑账单规模，但高端客群需独立验证</td>
+          </tr>
+          <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+            <td><span class="tag bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td>
+            <td class="font-mono whitespace-nowrap">11-18</td>
+            <td class="font-semibold">美联储会议纪要强化12月加息预期</td>
+            <td class="text-rose-600 font-bold">短期承压</td>
+            <td class="font-mono font-bold">9.5</td>
+            <td>融资成本、信用质量和估值折现率均面临压力</td>
+          </tr>
+          <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+            <td><span class="tag bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td>
+            <td class="font-mono whitespace-nowrap">11-10 / 11-17</td>
+            <td class="font-semibold">美国CPI环比+0.4%，零售销售环比+0.2%</td>
+            <td class="text-amber-600 font-bold">中性偏空</td>
+            <td class="font-mono font-bold">8.7</td>
+            <td>消费增速温和、通胀反复，影响交易增长及融资成本</td>
+          </tr>
+          <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+            <td><span class="tag bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td>
+            <td class="font-mono whitespace-nowrap">11-17</td>
+            <td class="font-semibold">中国10月社零同比增长0.4%</td>
+            <td class="text-sky-600 font-bold">间接中性</td>
+            <td class="font-mono font-bold">6.5</td>
+            <td>影响跨境旅游、境外餐饮和国际支付场景</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-[10px] text-gray-400 mt-3">点击任意行跳转至对应事件详情。影响强度为研究判断评分，并非市场实际收益或统计概率。</p>
+  </div>
+
+  <!-- 30 day watch -->
+  <div class="flex items-center gap-3 mb-5">
+    <div class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center">
+      <i data-lucide="calendar-days" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i>
+    </div>
+    <h3 class="text-lg font-bold">未来30天重点跟踪日历</h3>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-7">
+
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="tag bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300">宏观 · 高优先级</span>
+        <span class="text-xs font-mono text-primary-600 dark:text-primary-300">2026-12-09</span>
+      </div>
+      <h4 class="font-bold mb-2">美联储12月FOMC会议决议</h4>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+        12月8—9日召开会议，12月9日发布决议及新闻发布会。重点观察政策利率、通胀判断、未来政策路径及金融条件变化。
+      </p>
+      <div class="text-xs text-gray-500">跟踪指标：政策利率、点阵图、融资成本、市场利率预期。</div>
+      <a class="source-link text-xs mt-3 inline-block" href="https://www.federalreserve.gov/newsevents/2026-december.htm" target="_blank" rel="noopener">美联储官方日历</a>
+    </div>
+
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="tag bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">宏观 · 高优先级</span>
+        <span class="text-xs font-mono text-primary-600 dark:text-primary-300">2026-12-04</span>
+      </div>
+      <h4 class="font-bold mb-2">美国11月就业报告</h4>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+        美国劳工统计局计划于12月4日公布11月就业情况。就业增长、工资增速及失业率将影响消费能力和美联储利率判断。
+      </p>
+      <div class="text-xs text-gray-500">跟踪指标：非农就业、失业率、平均时薪、劳动参与率。</div>
+      <a class="source-link text-xs mt-3 inline-block" href="https://www.bls.gov/schedule/2026/home.htm" target="_blank" rel="noopener">BLS官方发布日历</a>
+    </div>
+
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="tag bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">宏观 · 高优先级</span>
+        <span class="text-xs font-mono text-primary-600 dark:text-primary-300">2026-12-10</span>
+      </div>
+      <h4 class="font-bold mb-2">美国11月CPI通胀数据</h4>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+        11月CPI计划于12月10日公布。重点判断通胀是否继续扩散，以及是否进一步改变12月货币政策预期。
+      </p>
+      <div class="text-xs text-gray-500">跟踪指标：核心CPI、服务通胀、住房及食品价格。</div>
+      <a class="source-link text-xs mt-3 inline-block" href="https://www.bls.gov/schedule/news_release/cpi.htm" target="_blank" rel="noopener">BLS CPI官方日历</a>
+    </div>
+
+    <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-gray-200 dark:border-gray-800 card-interactive">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <span class="tag bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">行业 · 高优先级</span>
+        <span class="text-xs font-mono text-primary-600 dark:text-primary-300">2026-12-16</span>
+      </div>
+      <h4 class="font-bold mb-2">美国11月零售销售公布</h4>
+      <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+        美国人口普查局计划于12月16日公布11月零售及餐饮服务销售数据，覆盖感恩节及黑色星期五消费窗口。
+      </p>
+      <div class="text-xs text-gray-500">跟踪指标：零售总额、非汽车零售、餐饮销售、线上消费。</div>
+      <a class="source-link text-xs mt-3 inline-block" href="https://www.census.gov/retail/release_schedule.html" target="_blank" rel="noopener">美国人口普查局官方日历</a>
+    </div>
+
+  </div>
+
+  <!-- Trading focus -->
+  <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 border border-gray-200 dark:border-gray-800 mb-7">
+    <h3 class="font-bold mb-4 flex items-center gap-2">
+      <i data-lucide="target" class="w-4 h-4 text-primary-500"></i>
+      AXP未来30天交易与基本面验证清单
+    </h3>
+    <div class="overflow-x-auto">
+      <table class="text-xs sm:text-sm min-w-[650px]">
+        <thead>
+          <tr>
+            <th>观察维度</th>
+            <th>关键指标</th>
+            <th>正向信号</th>
+            <th>负向信号</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-semibold">账单交易额</td>
+            <td>全球Billed Business同比</td>
+            <td class="text-emerald-600">增长加速</td>
+            <td class="text-rose-600">持续减速</td>
+          </tr>
+          <tr>
+            <td class="font-semibold">信用质量</td>
+            <td>30天逾期率、净核销率</td>
+            <td class="text-emerald-600">稳定或改善</td>
+            <td class="text-rose-600">持续上升</td>
+          </tr>
+          <tr>
+            <td class="font-semibold">净利息收入</td>
+            <td>融资成本、净利差、循环余额</td>
+            <td class="text-emerald-600">净息差改善</td>
+            <td class="text-rose-600">资金成本侵蚀收益</td>
+          </tr>
+          <tr>
+            <td class="font-semibold">会员生态</td>
+            <td>Resy/TheFork用户及交易渗透</td>
+            <td class="text-emerald-600">会员复购增加</td>
+            <td class="text-rose-600">奖励费用增长快于收入</td>
+          </tr>
+          <tr>
+            <td class="font-semibold">国际业务</td>
+            <td>跨境支付量、旅游及餐饮消费</td>
+            <td class="text-emerald-600">持续强劲</td>
+            <td class="text-rose-600">国际消费降温</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Final verdict -->
+  <div class="rounded-2xl p-6 sm:p-8 bg-gray-900 dark:bg-[#0b1220] text-white border border-gray-700" data-aos="fade-up">
+    <div class="flex items-center gap-2 mb-4">
+      <i data-lucide="brain-circuit" class="w-5 h-5 text-primary-400"></i>
+      <span class="text-xs font-bold tracking-widest text-primary-300">BUY-SIDE INVESTMENT CONCLUSION</span>
+    </div>
+    <h3 class="text-xl sm:text-2xl font-bold mb-5">最终判断：会员生态持续扩张，但利率与信用质量决定估值上限</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="rounded-xl p-4 bg-emerald-950/50 border border-emerald-800/70">
+        <div class="flex items-center gap-2 mb-3 text-emerald-300 font-bold text-sm">
+          <i data-lucide="trending-up" class="w-4 h-4"></i> 多头逻辑
+        </div>
+        <ul class="text-xs text-gray-300 space-y-2 leading-relaxed">
+          <li>1. TheFork并入扩大欧洲餐饮生态，Resy与Tock形成全球平台组合。</li>
+          <li>2. 高端会员奖励体系与餐饮预订场景深度结合，有利于提高消费黏性。</li>
+          <li>3. Visa和Mastercard业绩验证全球支付交易需求仍然具有韧性。</li>
+          <li>4. 高收入客群、旅行及服务消费的结构性优势有望支撑AXP差异化增长。</li>
+        </ul>
+      </div>
+      <div class="rounded-xl p-4 bg-rose-950/40 border border-rose-800/70">
+        <div class="flex items-center gap-2 mb-3 text-rose-300 font-bold text-sm">
+          <i data-lucide="trending-down" class="w-4 h-4"></i> 空头逻辑
+        </div>
+        <ul class="text-xs text-gray-300 space-y-2 leading-relaxed">
+          <li>1. 美联储鹰派倾向可能提高融资成本及股票折现率。</li>
+          <li>2. 高利率持续时间延长，可能加剧信用卡客户偿债压力。</li>
+          <li>3. 积分奖励、平台并购和营销支出增加，可能压缩经营利润率。</li>
+          <li>4. 美国消费增长放缓，可能影响账单额及高端消费的持续扩张。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-6 pt-5 border-t border-gray-700">
+      <div class="text-xs text-gray-400 mb-2">未来30天最重要的方向性变量</div>
+      <p class="text-sm sm:text-base leading-relaxed font-semibold">
+        不要只看AXP的消费交易增长，更要看交易增长能否转化为扣除积分奖励、融资成本与信用损失后的风险调整后利润。若12月利率预期继续上升，而AXP信用质量没有同步改善，市场可能优先交易估值压缩；若账单额与高端会员消费保持韧性、信用损失稳定，则会员生态扩张有机会重新成为股价的主要驱动力。
+      </p>
+    </div>
+    <div class="mt-5 flex flex-wrap gap-2">
+      <span class="tag bg-emerald-900/70 text-emerald-200">基本面：中性偏多</span>
+      <span class="tag bg-amber-900/70 text-amber-200">宏观环境：谨慎</span>
+      <span class="tag bg-sky-900/70 text-sky-200">核心策略：等待信用质量与消费数据验证</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h4 class="font-bold text-sm mb-3">一、公司数据来源</h4>
+        <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+          <li><a class="source-link" href="https://www.americanexpress.com/en-us/newsroom/company-financial-news/" target="_blank" rel="noopener">American Express官方新闻中心</a></li>
+          <li>2026-11-02 · TheFork收购完成公告</li>
+          <li>2026-11-17 · Resy Rewards官方公告</li>
+          <li>2026-10-29 · 新任首席风险官公告</li>
+          <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/4962/000000496226000405/q326exhibit991.htm" target="_blank" rel="noopener">SEC · AXP 2026 Q3业绩公告</a>（窗口外参考）</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-sm mb-3">二、行业与宏观来源</h4>
+        <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+          <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1403161/000140316126000126/q42026earningsrelease.htm" target="_blank" rel="noopener">Visa · 2026-10-27</a></li>
+          <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1141391/000114139126000122/ma09302026-exx991xearnings.htm" target="_blank" rel="noopener">Mastercard · 2026-10-29</a></li>
+          <li><a class="source-link" href="https://institute.bankofamerica.com/economic-insights/consumer-checkpoint-november-2026.html" target="_blank" rel="noopener">BofA Institute · 2026-11-12</a></li>
+          <li><a class="source-link" href="https://www.federalreserve.gov/" target="_blank" rel="noopener">Federal Reserve</a></li>
+          <li><a class="source-link" href="https://www.bls.gov/" target="_blank" rel="noopener">美国劳工统计局</a></li>
+          <li><a class="source-link" href="https://www.census.gov/" target="_blank" rel="noopener">美国人口普查局</a></li>
+          <li><a class="source-link" href="https://www.stats.gov.cn/" target="_blank" rel="noopener">中国国家统计局</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-sm mb-3">三、研究口径与免责声明</h4>
+        <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
+          主覆盖区间为2026-10-27至2026-11-25，共30个自然日。公司、行业及宏观事件按照对AXP基本面和估值的综合影响排序。财务及统计数字按原始来源口径引用，影响力评分属于研究判断。
+        </p>
+        <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+          本报告根据可检索的公司公告、SEC文件、政府统计数据及公开财经资料整理。不同机构的消费统计样本和计算方法存在差异，不应直接等同于AXP自身经营数据。未来日期为官方计划日程，若发布机构调整，以最新官方公告为准。
+        </p>
+        <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3">
+          本报告仅供投资研究与信息参考，不构成证券买卖建议、收益承诺或个性化投资意见。投资者应结合最新财报、股价、估值、风险偏好及市场流动性独立判断。
+        </p>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-100 dark:border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-xs text-gray-400">美国运通（NYSE: AXP）· 最新动态全景追踪 · 截至2026-11-25</p>
+      <p class="text-xs text-gray-400">BUY-SIDE RESEARCH · EVENT-DRIVEN ANALYSIS</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement.scrollTop||document.body.scrollTop;
+  const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  const p=document.getElementById('progressBar');
+  if(p)p.style.width=(h>0?s/h*100:0)+'%';
+},{passive:true});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  syncThemeIcons();
+  if(window.lucide)lucide.createIcons();
+  if(window.AOS)AOS.init({
+    duration:500,
+    offset:35,
+    once:true,
+    easing:'ease-out-cubic',
+    disable:'mobile'
+  });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

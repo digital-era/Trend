@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台积电（TSM）最新走势归因与操作指引｜截至 2026-11-24</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)', 100: 'hsl(20, 90%, 85%)', 200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)', 400: 'hsl(20, 90%, 55%)', 500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)', 700: 'hsl(20, 90%, 35%)', 800: 'hsl(20, 90%, 25%)',
+900: 'hsl(20, 90%, 15%)', 950: 'hsl(20, 90%, 10%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)', 100: 'hsl(30, 85%, 85%)', 200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)', 400: 'hsl(30, 85%, 60%)', 500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)', 700: 'hsl(30, 85%, 40%)', 800: 'hsl(30, 85%, 30%)',
+900: 'hsl(30, 85%, 20%)', 950: 'hsl(30, 85%, 10%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 84px; }
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+html { scroll-behavior: auto; }
+}
+.btn-interactive { transition: all 0.2s ease-out; }
+.btn-interactive:hover { transform: scale(1.05); }
+.btn-interactive:active { transform: scale(0.95); }
+.card-interactive { transition: all 0.28s ease-out; }
+.card-interactive:hover {
+transform: translateY(-2px);
+box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.14);
+}
+.dark .card-interactive:hover {
+box-shadow: 0 18px 28px -8px rgba(0, 0, 0, 0.45);
+}
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; padding: 0.7rem 0.75rem; border-bottom: 1px solid hsl(0, 0%, 90%); white-space: nowrap; }
+td { text-align: left; padding: 0.75rem; border-bottom: 1px solid hsl(0, 0%, 90%); vertical-align: top; line-height: 1.5; }
+.dark th, .dark td { border-bottom-color: rgba(255, 255, 255, 0.08); }
+.driver-bar { height: 9px; border-radius: 999px; background: hsl(0, 0%, 90%); overflow: hidden; }
+.dark .driver-bar { background: rgba(255, 255, 255, 0.12); }
+.driver-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%)); }
+#mobileMenu { display: none; }
+@media (min-width: 768px) { #mobileMenu { display: none !important; } }
+@media (max-width: 767px) { #mobileMenu.mobile-menu-open { display: block !important; } }
+.price-tag { font-variant-numeric: tabular-nums; }
+.bg-grid { background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.06) 1px, transparent 0); background-size: 24px 24px; }
+.dark .bg-grid { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0); }
+.ref-tag { font-size: 10px; opacity: 0.6; margin-left: 2px; font-family: monospace; }
+</style>
+<script>
+// 若被嵌入看盘弹窗 iframe 中，自动开启暗黑模式
+(function initTheme() {
+const inIframe = window.self !== window.top;
+if (inIframe || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+document.documentElement.classList.add('dark');
+}
+})();
+function syncThemeIcons() {
+const isDark = document.documentElement.classList.contains('dark');
+const sun = document.getElementById('sunIcon');
+const moon = document.getElementById('moonIcon');
+if (sun) sun.style.display = isDark ? 'block' : 'none';
+if (moon) moon.style.display = isDark ? 'none' : 'block';
+}
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+syncThemeIcons();
+}
+function toggleMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+if (menu) menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen bg-grid transition-colors duration-200">
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<header class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur-md bg-white/90 dark:bg-[#111827]/90 border-b border-primary-500/20 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+<h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+台积电 <span class="text-xs sm:text-sm font-mono text-gray-400 dark:text-gray-500">TSM.N (NYSE)</span>
+</h1>
+</div>
+<nav class="hidden md:flex space-x-6">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">走势总览</a>
+<a href="#phases" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">阶段复盘</a>
+<a href="#drivers" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">涨跌根因</a>
+<a href="#technicals" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">量价结构</a>
+<a href="#strategy" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">操作指引</a>
+</nav>
+<div class="flex items-center space-x-2">
+<button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300 border border-transparent dark:border-gray-700" aria-label="菜单">
+<i data-lucide="menu" class="w-4 h-4"></i>
+</button>
+<button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300 border border-transparent dark:border-gray-700" aria-label="切换暗色模式">
+<i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-4 h-4" style="display:block"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800 max-h-[calc(100vh-80px)] overflow-y-auto">
+<nav class="flex flex-col space-y-2.5">
+<a href="#overview" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">走势总览</a>
+<a href="#phases" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">阶段复盘</a>
+<a href="#drivers" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">涨跌根因</a>
+<a href="#technicals" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">量价结构</a>
+<a href="#strategy" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 py-1">操作指引</a>
+</nav>
+</div>
+</div>
+</header>
+<main class="pt-20 sm:pt-24 pb-16 max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+<section id="overview" data-aos="fade-up">
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-800">
+<div class="flex flex-wrap items-start justify-between gap-4">
+<div>
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="text-xs font-semibold tracking-wider uppercase text-primary-600 dark:text-primary-400">量价归因 · 买方策略视角</span>
+<span class="text-[11px] px-2 py-0.5 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 font-mono">USD · NYSE ADR</span>
+<span class="text-[11px] px-2.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-mono border border-transparent dark:border-gray-700">2026-10-23 → 2026-11-24 (北京时间)</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white">台积电（TSMC · TSM）</h2>
+</div>
+<div class="flex flex-col sm:items-end gap-1">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+<i data-lucide="zap" class="w-3.5 h-3.5"></i> 恐慌错杀后暴力反抽 · 震荡筑底
+</span>
+<span class="text-[11px] text-gray-400 dark:text-gray-500">基本面创纪录高增 vs 政策管制与AI情绪极端博弈</span>
+</div>
+</div>
+Code
+<p class="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300 max-w-4xl">
+  近一个月台积电上演了极端“情绪杀估值与基本面硬核托底”的剧烈拉锯：10 月末摸高 <strong class="text-gray-900 dark:text-white">440.88 美元</strong>后，受美国中期选举监管担忧、黄仁勋 11 月 12 日意外辞任英伟达 CEO 以及 11 月 19 日美国 BIS 收紧中国 16nm 及以下代工管制三重连击，股价在 11 月 20 日下砸至 <strong class="text-rose-500 dark:text-rose-400">318.71 美元</strong>（RSI 跌入 28.3 深度超卖区）；然而，10 月合并营收同比暴增 59.7% 至创纪录的 5,868.9 亿新台币印证基本面毫无瑕疵，北京时间 11 月 23 日晚间美股开盘伴随黄仁勋火速回归英伟达及台积电高层“无客户砍单”表态，股价单日暴力飙涨 <strong class="text-emerald-600 dark:text-emerald-400">+16.84%</strong> 至 <strong>372.40 美元</strong>（盘中最高 386.90 美元），创 2008 年以来最强单日反抽。
+</p>
+
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
+  <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700/80">
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">最新收盘 / 盘中实时价</p>
+    <p class="text-xl sm:text-2xl font-black price-tag text-gray-900 dark:text-white">318.71 <span class="text-xs font-normal text-gray-400">美元 (11-20)</span></p>
+    <p class="text-[11px] text-emerald-600 dark:text-emerald-400 mt-1 font-mono">11-23盘中飙至 372.40 (+16.84%)</p>
+  </div>
+  <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700/80">
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">近 1 月区间涨跌幅</p>
+    <p class="text-xl sm:text-2xl font-black price-tag text-rose-500 dark:text-rose-400">-23.85% <span class="text-xs font-normal text-gray-400">(至11-20)</span></p>
+    <p class="text-[11px] text-amber-600 dark:text-amber-400 mt-1">11-23反弹后收窄至 -11.02%</p>
+  </div>
+  <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700/80">
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">区间最高 / 最低</p>
+    <p class="text-lg sm:text-2xl font-black price-tag text-gray-900 dark:text-white">440.88 <span class="text-sm font-normal text-gray-400">/</span> 318.48</p>
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">区间最大振幅 38.43%（122.40美元）</p>
+  </div>
+  <div class="card-interactive bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700/80">
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mb-1">当前技术定位</p>
+    <p class="text-base sm:text-lg font-black text-amber-600 dark:text-amber-400">超跌暴力修复冲击 MA10/20</p>
+    <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">已收复MA5，上方MA20/200仍待消化</p>
+  </div>
+</div>
+</div>
+</section>
+<section id="phases" data-aos="fade-up">
+<div class="flex items-center gap-2.5 mb-5">
+<span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="layers" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i>
+</span>
+<h2 class="text-lg sm:text-xl font-bold">一、近一月量价全景与阶段拆解</h2>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-5">
+<h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-4 h-4 text-primary-500"></i>标的 vs 半导体及美股基准指数（2026-10-23 → 2026-11-20 完整收盘，附 11-23 盘中修复）</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead>
+<tr class="text-gray-500 dark:text-gray-400 text-xs bg-gray-50 dark:bg-gray-800/70">
+<th>标的 / 指数</th><th>区间涨跌幅（至11-20）</th><th>最高日 / 点位</th><th>最低日 / 点位</th><th>量能与 11-23 反抽特征</th>
+</tr>
+</thead>
+<tbody class="text-gray-700 dark:text-gray-300">
+<tr>
+<td class="font-semibold text-primary-700 dark:text-primary-300 whitespace-nowrap">台积电 TSM</td>
+<td class="font-bold text-rose-500 dark:text-rose-400 price-tag whitespace-nowrap">-23.85%（418.51→318.71）</td>
+<td class="whitespace-nowrap font-mono">10-28 / 440.88</td>
+<td class="whitespace-nowrap font-mono">11-20 / 318.48</td>
+<td class="min-w-[200px]">11-05（4,303万股）与11-20（3,727万股）放量杀跌；11-23盘中暴涨+16.84%至372.40</td>
+</tr>
+<tr>
+<td class="font-semibold whitespace-nowrap">费城半导体指数 (SOX)</td>
+<td class="font-bold text-rose-500 dark:text-rose-400 price-tag whitespace-nowrap">-21.99%（10,779.5→8,408.6）</td>
+<td class="whitespace-nowrap font-mono">10-28 / 11,731.3</td>
+<td class="whitespace-nowrap font-mono">11-20 / 8,342.2</td>
+<td class="min-w-[200px]">11-05跌12.25%、11-20跌10.73%；11-23早盘飙涨约14%–15%</td>
+</tr>
+<tr>
+<td class="font-semibold whitespace-nowrap">纳斯达克综合 (IXIC)</td>
+<td class="font-bold text-rose-500 dark:text-rose-400 price-tag whitespace-nowrap">-12.86%（25,955.34→22,617.73）</td>
+<td class="whitespace-nowrap font-mono">10-23 / 25,955.34</td>
+<td class="whitespace-nowrap font-mono">11-20 / 22,617.73</td>
+<td class="min-w-[200px]">跌破年内全部涨幅转负；11-23早盘反弹约+6.8%</td>
+</tr>
+<tr>
+<td class="font-semibold whitespace-nowrap">标普 500 (S&amp;P 500)</td>
+<td class="font-bold text-rose-500 dark:text-rose-400 price-tag whitespace-nowrap">-9.36%（7,623.68→6,910.39）</td>
+<td class="whitespace-nowrap font-mono">10-23 / 7,623.68</td>
+<td class="whitespace-nowrap font-mono">11-20 / 6,910.39</td>
+<td class="min-w-[200px]">自10-06高点进入技术性调整；11-23早盘反弹约+5.0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-[11px] text-gray-400 dark:text-gray-500 mt-3 leading-relaxed">
+数据来源：Investing.com、Seeking Alpha、Market Chameleon、Dow Jones Market Data 及 Nasdaq GIW。按 11-20 完整收盘口径，TSM 略跑输 SOX 约 1.86pct、跑输纳指 10.99pct（主要受 11-19/20 BIS 管制落地直接冲击）；而截至 11-23 盘中反弹（+16.84% vs SOX ~+14%、纳指 ~+6.8%），TSM 弹性显著领跑全行业。
+</p>
+</div>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-bold px-2 py-0.5 rounded bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300">波段 1 · 冲高回落与中选踩踏</span>
+<span class="text-xs font-mono text-gray-400">10-23 → 11-05</span>
+</div>
+<p class="text-2xl font-black price-tag text-rose-500 dark:text-rose-400 mb-2">-15.63% <span class="text-xs font-normal text-gray-400">（440.88高点回撤19.9%）</span></p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+10-28 盘中触及区间最高 <strong>440.88 美元</strong>（缩量 804 万股），随后受 Intel 弱指引拖累 10-30 跌 5.95%（2,197 万股）。<strong>11-05</strong> 因民主党赢下中期选举激发 AI 监管担忧、高通内存成本预警及美光暂停台湾扩建传闻，放近月天量 <strong>4,303 万股</strong>暴跌 <strong>-10.78%</strong> 至 353.10 美元。
+</p>
+</div>
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">波段 2 · 护盘与10月营收强力修复</span>
+<span class="text-xs font-mono text-gray-400">11-06 → 11-11</span>
+</div>
+<p class="text-2xl font-black price-tag text-emerald-600 dark:text-emerald-400 mb-2">+17.06%</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+11-06 台湾当局出手限制卖空并筹备平准基金，TSM 放量 2,384 万股急涨 <strong>+6.33%</strong>。<strong>11-10</strong> 公布 10 月营收达创纪录的 <strong>5,868.9 亿新台币（同比 +59.7%）</strong>，次日 11-11 大涨 <strong>+4.25%</strong> 至 413.35 美元（高见 416.80 美元），一举重返 200 日均线（402.06 美元）上方。
+</p>
+</div>
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-primary-500">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-bold px-2 py-0.5 rounded bg-primary-50 dark:bg-primary-950/60 text-primary-700 dark:text-primary-300">波段 3 · 监管杀跌与 11-23 绝地飙升</span>
+<span class="text-xs font-mono text-gray-400">11-12 → 11-23盘中</span>
+</div>
+<p class="text-2xl font-black price-tag text-amber-600 dark:text-amber-400 mb-2">-22.90% → +16.84%</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+11-12 黄仁勋辞任英伟达 CEO 叠加 11-16/19 美 BIS 16nm 出口新规落地，股价连挫至 11-20 放量（3,727 万股）大跌 <strong>-9.48%</strong> 收 318.71 美元。<strong>11-23 早盘</strong>随黄仁勋复职英伟达与高层澄清“无客户砍单”，飙涨 <strong>+16.84%</strong> 至 372.40 美元（最高 386.90 美元）。
+</p>
+</div>
+</div>
+</section>
+<section id="drivers" data-aos="fade-up">
+<div class="flex items-center gap-2.5 mb-5">
+<span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+<i data-lucide="git-branch" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i>
+</span>
+<h2 class="text-lg sm:text-xl font-bold">二、上涨与下跌的深层根因剖析</h2>
+</div>
+<div class="grid lg:grid-cols-2 gap-5">
+<!-- 多头根因 -->
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
+<i data-lucide="arrow-up-circle" class="w-4 h-4"></i> 多头根因（核心上涨与反抽动力）
+</h3>
+<div class="space-y-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+<div class="pl-3.5 border-l-2 border-emerald-500">
+<p class="font-semibold text-gray-900 dark:text-white mb-1">① 11-23 英伟达“黄仁勋复职”引爆全行业空头回补</p>
+<p class="leading-relaxed">台积电是英伟达先进 AI GPU 几乎唯一的晶圆代工商（最大客户占台积电 2025 年营收 19%）。11 月 23 日英伟达董事会全票恢复黄仁勋 CEO 职务，直接消除算力龙头战略失焦阴霾，引爆 TSM 盘中跳涨最高 <strong>+21.4%</strong>（2002年以来最大盘中涨幅），推动资金疯狂回补超跌算力链。<span class="ref-tag">[Dow Jones / Investing]</span></p>
+</div>
+<div class="pl-3.5 border-l-2 border-emerald-500">
+<p class="font-semibold text-gray-900 dark:text-white mb-1">② 10 月营收创历史新高（+59.7%）与高层“零砍单”强心针</p>
+<p class="leading-relaxed">11-10 披露 10 月单月营收 <strong>5,868.9 亿新台币</strong>（约 178.8 亿美元，YoY +59.7%，MoM +14.7%），继 Q3 毛利率达 66.4% 后再证“所有 AI 玩家都在向台积电交过路费”。11-23 资深副总侯永清公开声明“没有任何客户调整订单”，行业景气直到 2028–2029 年仍供不应求。</p>
+</div>
+<div class="pl-3.5 border-l-2 border-emerald-500">
+<p class="font-semibold text-gray-900 dark:text-white mb-1">③ 估值跌出“黄金坑”+ 高管增持与大行重申看多</p>
+<p class="leading-relaxed">跌至 318.71 美元时前瞻市盈率仅约 14–16 倍（TTM P/E 20.6x，远低于5年均值 25.8x），Bernstein 维持“跑赢大盘”及 600 美元目标价（36位分析师一致目标价逾 533 美元）；同时 11-20 公司副总趁低增持股票及 11-06 台湾当局限制卖空，均有效托住底部买盘。</p>
+</div>
+</div>
+</div>
+Code
+<!-- 空头根因 -->
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+  <h3 class="text-sm font-bold mb-4 flex items-center gap-2 text-rose-600 dark:text-rose-400">
+    <i data-lucide="arrow-down-circle" class="w-4 h-4"></i> 空头 / 压制根因（重挫与高位受阻逻辑）
+  </h3>
+  <div class="space-y-4 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+    <div class="pl-3.5 border-l-2 border-rose-500">
+      <p class="font-semibold text-gray-900 dark:text-white mb-1">① 美 BIS 11-19 出口管制落地：封堵 16nm 并波及消费级 SoC</p>
+      <p class="leading-relaxed">11-16 公布、11-19 正式生效的 BIS 临时最终规则废除了“晶体管密度自证豁免通道”，台积电被迫向大陆客户发出 <strong>16nm 及以下制程停单/暂停出货通知</strong>，限退回无 HBM 及先进封装的 28/40nm；虽大陆客户仅占 Q3 营收约 5%（约 23 亿美元/季，北美占 79%），但《日经》报道其已波及全球消费芯片及 OSAT 审查，直接引爆 11-16（-6.34%）与 11-20（-9.48%）集中抛售。<span class="ref-tag">[Reuters / Nikkei]</span></p>
+    </div>
+    <div class="pl-3.5 border-l-2 border-rose-500">
+      <p class="font-semibold text-gray-900 dark:text-white mb-1">② 黄仁勋 11-12 辞任余震与板块连环闪崩（11-12 → 11-20）</p>
+      <p class="leading-relaxed">大客户英伟达 11-12 突然宣布黄仁勋离职，致使英伟达股价一周腰斩式重挫超 20%（11-20 单日暴跌 14.01%），SOX 指数一周创 2008 年以来最差表现。作为绝对核心代工标的，台积电承受了剧烈的衍生品平仓与被动 ETF 赎回抽血。</p>
+    </div>
+    <div class="pl-3.5 border-l-2 border-rose-500">
+      <p class="font-semibold text-gray-900 dark:text-white mb-1">③ 中期选举后“AI 建厂放缓”叙事与供应链成本警告（11-05）</p>
+      <p class="leading-relaxed">11-05 在高通警示内存成本挤压手机端需求、美光暂停台湾 45 亿美元扩厂传闻以及民主党赢得国会引发“限制数据中心能耗与建设”预期冲击下，机构借机从全年大涨的芯片股获利了结，单日砸出 4,303 万股巨量长阴。</p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mt-5">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2"><i data-lucide="pie-chart" class="w-4 h-4 text-accent-500"></i>归因权重矩阵（近一月走势解释力，合计 100%）</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs mb-1.5"><span class="font-semibold text-gray-800 dark:text-gray-200">行业景气与核心客户 / 板块情绪联动</span><span class="font-bold font-mono text-primary-600 dark:text-primary-400">45%</span></div>
+<div class="driver-bar"><div class="driver-fill" style="width:45%"></div></div>
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">英伟达帅位戏剧性震荡（11-12 辞任→11-23 复职）、SOX 半导体暴跌 22% 后的暴涨反抽，主导了台积电全月逾八成的日内波幅。</p>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1.5"><span class="font-semibold text-gray-800 dark:text-gray-200">宏观地缘、出口管制与选举政策冲击</span><span class="font-bold font-mono text-primary-600 dark:text-primary-400">35%</span></div>
+<div class="driver-bar"><div class="driver-fill" style="width:35%"></div></div>
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">美国中期选举后的 AI 监管担忧（11-05）、BIS 16nm 晶圆代工出口新规（11-16/19/20）及高利率环境（10Y美债近5%）对估值施加地缘折价。</p>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1.5"><span class="font-semibold text-gray-800 dark:text-gray-200">个股基本面与业绩订单验证</span><span class="font-bold font-mono text-primary-600 dark:text-primary-400">20%</span></div>
+<div class="driver-bar"><div class="driver-fill" style="width:20%"></div></div>
+<p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">10 月营收 5,868.9 亿新台币（+59.7%）与“2028年前产能持续紧缺”在 11-10 及 11-23 多次强行扭转悲观情绪，防止趋势彻底崩塌。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="technicals" data-aos="fade-up">
+<div class="flex items-center gap-2.5 mb-5">
+<span class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="activity" class="w-4 h-4 text-primary-600 dark:text-primary-300"></i>
+</span>
+<h2 class="text-lg sm:text-xl font-bold">三、资金行为与技术面关键位诊断</h2>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 mb-5 text-xs">
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+<span class="text-gray-400 block">MA5 / MA10（11-20基准）</span>
+<span class="font-bold font-mono text-sm text-emerald-600 dark:text-emerald-400">$353.31 / $376.92</span>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+<span class="text-gray-400 block">MA20 均线</span>
+<span class="font-bold font-mono text-sm text-rose-500 dark:text-rose-400">$391.78（上方反压）</span>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+<span class="text-gray-400 block">MA50 / MA100</span>
+<span class="font-bold font-mono text-sm text-rose-500 dark:text-rose-400">$422.11 / $420.08</span>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+<span class="text-gray-400 block">MA200 牛熊分界线</span>
+<span class="font-bold font-mono text-sm text-amber-600 dark:text-amber-400">$402.53（EMA $391.65）</span>
+</div>
+<div class="col-span-2 sm:col-span-1 bg-white dark:bg-[#161f2c] rounded-xl p-3 border border-gray-200 dark:border-gray-800">
+<span class="text-gray-400 block">RSI(14) / MACD（11-20）</span>
+<span class="font-bold font-mono text-sm text-emerald-600 dark:text-emerald-400">28.3 超卖反抽 · MACD -20.8</span>
+</div>
+</div>
+<div class="grid lg:grid-cols-2 gap-4 mb-5">
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800">
+<h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">量价配合与筹码交换结构</h3>
+<p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">极端恐慌洗盘完成 → 11-23 超卖脉冲收复短均线，待放量筑右底</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">
+近一月量能呈现极为标准的“情绪出清”结构：11-05（4,303万股，30日均量3.8倍）与 11-20（3,727万股，3.3倍）均在 351–318 美元低位区间爆出巨量，意味着杠杆盘与恐慌筹码已被大幅清洗；同时高管增持与长线对冲基金（如 Tiger Global 此前增持近50%）逢低吸筹，Put Wall 锚定在 350 美元形成强支撑。11-20 RSI 跌至 28.27 极致超卖后，11-23 早盘即以暴涨 16.84% 直接击穿 MA5（$353.31），目前正在测试 MA10（$376.92）及 Call Wall（$390）。
+</p>
+<div class="text-xs bg-gray-50 dark:bg-gray-800/70 rounded-lg p-3 border border-gray-100 dark:border-gray-700/70">
+<strong>趋势结论：</strong>由于 11 月连番暴跌，MA20/50/200 仍处于向下发散空头排列状态（现价仍较 200 日线低约 7%–10%）。11-23 的暴力上涨确立了 318.48 美元的阶段性恐慌底，但<strong>中期反转需放量重新站回 MA20/EMA200（$392）及 MA200（$402.5）上方</strong>，短线切忌将单日脉冲直接视为无阻碍单边牛市重启。
+</div>
+</div>
+Code
+<!-- 直观价格水位阶梯图 -->
+<div class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800">
+  <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 flex items-center justify-between">
+    <span>价格水位空间标尺（11-20收盘 $318.71 → 11-23反抽 $372.40）</span>
+    <span class="font-mono text-primary-600 dark:text-primary-400">当前博弈 ~372</span>
+  </h3>
+  <div class="space-y-2 text-xs font-mono">
+    <div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/50">
+      <span class="text-rose-700 dark:text-rose-300 font-bold">▲ 强阻力区 $402.50–$416.80</span>
+      <span class="text-rose-600 dark:text-rose-400">MA200 + 11-11反弹高点 + MA50</span>
+    </div>
+    <div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/50">
+      <span class="text-amber-700 dark:text-amber-300 font-bold">▲ 第一压力区 $385.60–$392.00</span>
+      <span class="text-amber-600 dark:text-amber-400">11-23高点 $386.9 + MA20/EMA200</span>
+    </div>
+    <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-primary-100/80 dark:bg-primary-900/50 border-2 border-primary-500">
+      <span class="text-primary-800 dark:text-primary-200 font-black">● 11-23盘中 $372.40（+16.8%反抽）</span>
+      <span class="text-primary-700 dark:text-primary-300 font-sans font-semibold">逼近 MA10 ($376.9)</span>
+    </div>
+    <div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50">
+      <span class="text-emerald-700 dark:text-emerald-300 font-bold">▼ 第一支撑 $350.00–$353.30</span>
+      <span class="text-emerald-600 dark:text-emerald-400">11-05/19双底 + MA5 + Put Wall</span>
+    </div>
+    <div class="flex items-center justify-between px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+      <span class="text-gray-700 dark:text-gray-300 font-bold">⛨ 强撑底线 $318.48–$325.00</span>
+      <span class="text-gray-500 dark:text-gray-400">11-20 恐慌砸盘最低点（防线底）</span>
+    </div>
+  </div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+<h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary-500"></i>关键价格锚点明细表（结合 11-20 官方收盘与 11-23 早盘反弹点位）</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead>
+<tr class="text-gray-500 dark:text-gray-400 text-xs bg-gray-50 dark:bg-gray-800/70">
+<th>层级</th><th>价格区间（美元）</th><th>技术与筹码依据</th><th>距 11-23 盘中 ($372.40)</th>
+</tr>
+</thead>
+<tbody class="text-gray-700 dark:text-gray-300">
+<tr>
+<td class="font-semibold text-rose-600 dark:text-rose-400 whitespace-nowrap">强阻力位</td>
+<td class="price-tag font-bold whitespace-nowrap">402.50 – 416.80</td>
+<td class="min-w-[220px]">200 日简单均线（402.53）、11-11 反弹高点（416.80）及 MA100/MA50（420–422）密集套牢压力区</td>
+<td class="text-rose-500 whitespace-nowrap font-mono">+8.1% ~ +11.9%</td>
+</tr>
+<tr>
+<td class="font-semibold text-amber-600 dark:text-amber-400 whitespace-nowrap">第一压力位</td>
+<td class="price-tag font-bold whitespace-nowrap">385.60 – 392.00</td>
+<td class="min-w-[220px]">11-23 盘中冲高阻力（386.90）、EMA200（391.65）、MA20（391.78）及期权 Call Wall（390）共振压制</td>
+<td class="text-amber-500 whitespace-nowrap font-mono">+3.5% ~ +5.3%</td>
+</tr>
+<tr class="bg-primary-50/70 dark:bg-primary-950/50">
+<td class="font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">当前参考价位</td>
+<td class="price-tag font-black text-primary-700 dark:text-primary-300 whitespace-nowrap">372.40 <span class="text-xs font-normal">(11-20收 318.71)</span></td>
+<td>11-23 早盘反弹报约 372.40 美元（+16.84%，高见 386.90），正在争夺 MA10（376.92）</td>
+<td class="font-mono">—</td>
+</tr>
+<tr>
+<td class="font-semibold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">第一支撑位</td>
+<td class="price-tag font-bold whitespace-nowrap">350.00 – 353.30</td>
+<td class="min-w-[220px]">11-05 铁底（351.19）、11-19 支撑（351.14）、MA5（353.31）及期权 Put Wall（350）构成回踩第一承接区</td>
+<td class="text-emerald-500 whitespace-nowrap font-mono">−6.0% ~ −5.1%</td>
+</tr>
+<tr>
+<td class="font-semibold text-emerald-700 dark:text-emerald-300 whitespace-nowrap">强支撑 / 防守底线</td>
+<td class="price-tag font-bold whitespace-nowrap">318.48 – 325.00</td>
+<td class="min-w-[220px]">11-20 恐慌砸盘最低点 318.48 与 3,727 万股放量换手起跳台；有效跌破则中期结构全面转熊</td>
+<td class="text-emerald-600 whitespace-nowrap font-mono">−14.5% ~ −12.7%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="strategy" x-data="{ role: 'all' }" data-aos="fade-up">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+<div class="flex items-center gap-2.5">
+<span class="w-9 h-9 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+<i data-lucide="target" class="w-4 h-4 text-accent-600 dark:text-accent-300"></i>
+</span>
+<h2 class="text-lg sm:text-xl font-bold">四、未来情景推演与实战操作指引</h2>
+</div>
+<!-- 交互角色切换 -->
+<div class="flex gap-1.5 text-xs">
+<button @click="role = 'all'" :class="role === 'all' ? 'bg-primary-500 text-white' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'" class="px-3 py-1.5 rounded-full font-semibold transition-colors">全部指引</button>
+<button @click="role = 'hold'" :class="role === 'hold' ? 'bg-emerald-600 text-white' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'" class="px-3 py-1.5 rounded-full font-semibold transition-colors">我是持仓者</button>
+<button @click="role = 'wait'" :class="role === 'wait' ? 'bg-primary-500 text-white' : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'" class="px-3 py-1.5 rounded-full font-semibold transition-colors">我是观望者</button>
+</div>
+</div>
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-5">
+<h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i data-lucide="git-merge" class="w-4 h-4 text-accent-500"></i>三情景推演矩阵（未来 2–4 周）</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm">
+<thead>
+<tr class="text-gray-500 dark:text-gray-400 text-xs bg-gray-50 dark:bg-gray-800/70">
+<th>情景</th><th>触发条件（价格 + 量能）</th><th>主观概率</th><th>目标区间</th><th>对应仓位动作</th>
+</tr>
+</thead>
+<tbody class="text-gray-700 dark:text-gray-300">
+<tr>
+<td class="font-bold text-emerald-700 dark:text-emerald-300 whitespace-nowrap">乐观突破</td>
+<td class="min-w-[180px]">放量（&gt; 2,500 万股）突破并连续2日收盘站稳 <strong>392.00 美元</strong>（MA20/EMA200）上方</td>
+<td class="font-mono font-bold whitespace-nowrap">30%</td>
+<td class="whitespace-nowrap font-mono">402–422 美元</td>
+<td class="min-w-[200px]">持有者顺势持股至 402–416 前高区再分批兑现；观望者确认站稳 392 后右侧跟进，止损 376 美元</td>
+</tr>
+<tr>
+<td class="font-bold text-amber-600 dark:text-amber-400 whitespace-nowrap">中性震荡（基准）</td>
+<td class="min-w-[180px]">11-23 暴力反抽后进入右侧筑底，在 <strong>350–387 美元</strong>区间换手震荡，量能收敛至 1,400–2,200 万股</td>
+<td class="font-mono font-bold whitespace-nowrap">45%</td>
+<td class="whitespace-nowrap font-mono">350–390 美元</td>
+<td class="min-w-[200px]">持有者趁 382–390 压力区减仓降成本、回踩 350–355 回补；观望者拒绝 375+ 追高，耐心等回踩 350–355 缩量低吸</td>
+</tr>
+<tr>
+<td class="font-bold text-rose-600 dark:text-rose-400 whitespace-nowrap">悲观二次探底</td>
+<td class="min-w-[180px]">11-23 反弹演变为一日游空头回补，放量（&gt; 3,000 万股）跌破 <strong>350.00 美元</strong></td>
+<td class="font-mono font-bold whitespace-nowrap">25%</td>
+<td class="whitespace-nowrap font-mono">318–332 美元</td>
+<td class="min-w-[200px]">短线仓跌破 349.00 果断止损；长线价值仓保留现金，等待 318–325 二次双底信号左侧分批吸纳</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-4 mb-5">
+<!-- 已持仓 -->
+<div x-show="role === 'all' || role === 'hold'" :class="role === 'hold' ? 'md:col-span-2' : ''" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-emerald-200/80 dark:border-emerald-900/60">
+<h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-emerald-700 dark:text-emerald-300">
+<i data-lucide="briefcase" class="w-4 h-4"></i>已持仓投资者操作指南
+</h3>
+<ul class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-2.5 leading-relaxed">
+<li><strong class="text-emerald-600 dark:text-emerald-400">利用11-23暴涨优化仓位：</strong>11-23 盘中已冲高至 <strong>386.90 美元</strong>并贴近 MA20/EMA200（385.6–392 美元）强压带，重仓或前期高位被套者可在 <strong>382–390 美元</strong>先逢高减持 20%–30% 波段/杠杆筹码，锁定流动性。</li>
+<li><strong class="text-emerald-600 dark:text-emerald-400">核心底仓持有锚点：</strong>只要后续回踩能守稳 <strong>350.00 美元</strong>（MA5/Put Wall 共振区），长线基本面底仓可继续持有（14x 前瞻 PE + 10 月营收 +59.7% 具备极高赔率）。</li>
+<li><strong class="text-amber-600 dark:text-amber-400">强压区止盈线：</strong>若强力放量上冲至 <strong>402.50 – 416.80 美元</strong>（200 日线与 11-11 高点），建议再兑现部分利润防假突破。</li>
+<li><strong class="text-rose-600 dark:text-rose-400">硬性破位止损纪律：</strong>若后续放量跌破 <strong>349.00 美元</strong>，短线交易仓无条件止损，严防二次探底 318 美元吞噬利润。</li>
+</ul>
+</div>
+Code
+<!-- 未持仓 -->
+<div x-show="role === 'all' || role === 'wait'" :class="role === 'wait' ? 'md:col-span-2' : ''" class="card-interactive bg-white dark:bg-[#161f2c] rounded-xl p-5 sm:p-6 shadow-sm border border-primary-200/80 dark:border-primary-900/60">
+  <h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-primary-700 dark:text-primary-300">
+    <i data-lucide="eye" class="w-4 h-4"></i>未持仓 / 观望者操作指南
+  </h3>
+  <ul class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-2.5 leading-relaxed">
+    <li><strong class="text-primary-600 dark:text-primary-400">最佳左侧低吸观察区：</strong><strong>350.00 – 356.00 美元</strong>。经验表明单日暴涨 +17% 后极易出现 2–5 个交易日的获利回踩测试，当缩量（&lt; 1,800 万股）回踩 350–355 美元（11-05/19 底及 MA5 位置）企稳时，分批左侧介入盈亏比极佳。</li>
+    <li><strong class="text-primary-600 dark:text-primary-400">右侧趋势确认买点：</strong>等待股价以大于 <strong>2,500 万股</strong>成交量收盘站稳 <strong>392.00 美元</strong>（收复 MA20 与 EMA200），方可确认中期下行趋势终结并右侧跟进，止损设于 376 美元。</li>
+    <li><strong class="text-rose-600 dark:text-rose-400">严禁情绪追高区：</strong><strong>372.00 – 387.00 美元（11-23 当日暴涨盘中段）</strong>。单日已飙升近 17% 且上方正对 385.6–392 均线与期权 Call Wall 强压，现价重仓追涨极易挨到隔夜回踩洗盘的耳光。</li>
+  </ul>
+</div>
+</div>
+<div class="bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/70 rounded-xl p-5 sm:p-6">
+<h3 class="text-sm font-bold mb-2.5 flex items-center gap-2 text-rose-700 dark:text-rose-300">
+<i data-lucide="shield-alert" class="w-4 h-4"></i>核心证伪与风控红线
+</h3>
+<div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm text-rose-900 dark:text-rose-200 leading-relaxed">
+<div>
+<p class="font-bold mb-1">1. 价格证伪红线</p>
+<p>① 若收盘有效跌破 <strong>350.00 美元</strong> → 11-23 反弹筑底失败，需防范二次下探 318 美元；② 若放量击穿 <strong>318.48 美元</strong>（11-20 恐慌最低点）→ 本轮阶段底部彻底证伪，下方真空区间直指 276–285 美元。</p>
+</div>
+<div>
+<p class="font-bold mb-1">2. 基本面 / 量价证伪信号</p>
+<p>① 12 月上旬公布的 11 月单月营收环比/同比增速若出现断崖失速（跌破 +25% 同比）；② 美 BIS 在 60 天意见期内进一步扩大对台湾代工厂成熟/非 AI 节点的客户审查或吊销关键大厂豁免；③ 英伟达等头部客户正式下修 2027 年 CoWoS 先进封装下单指引。</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 text-xs text-gray-500 dark:text-gray-400 leading-relaxed space-y-2">
+<p><strong class="text-gray-700 dark:text-gray-300">数据来源：</strong>Investing.com、Seeking Alpha、Market Chameleon 每日行情，TipRanks / SwingTradeBot 技术指标，Dow Jones Market Data、Reuters、Nikkei Asia、Forbes、CNA 及台积电 2026 年 10 月营收报告（SEC 6-K）公开披露。价格单位为美元（USD）。</p>
+<p><strong class="text-gray-700 dark:text-gray-300">分析基准：</strong>2026-10-23 至 2026-11-20（21个完整交易日官方收盘）并融合北京时间 2026-11-24 凌晨（美东 2026-11-23 早盘）最新异动实况。11-20 区间涨跌幅按收盘 418.51 → 318.71 计算。</p>
+<p><strong class="text-gray-700 dark:text-gray-300">免责声明：</strong>本报告为基于公开数据的量价归因与情景推演，仅供投研参考，不构成任何证券买卖建议。市场有风险，决策需谨慎。</p>
+</div>
+</footer>
+<script>
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+document.getElementById('progressBar').style.width = (height > 0 ? (winScroll / height) * 100 : 0) + '%';
+});
+document.addEventListener('DOMContentLoaded', () => {
+syncThemeIcons();
+if (window.lucide) lucide.createIcons();
+if (window.AOS) AOS.init({ duration: 450, once: true, offset: 30 });
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

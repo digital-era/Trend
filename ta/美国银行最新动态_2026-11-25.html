@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="美国银行 BAC 近一个月最新动态全景追踪：财报、业务、宏观、估值、风险与投资情景分析。">
+<title>美国银行 BAC｜最新动态全景追踪_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        navy: '#101b2d',
+        panel: '#17243a',
+        gold: '#d5ad68',
+        muted: '#91a0b5',
+        cyan: '#62c5d9',
+        up: '#24b47e',
+        down: '#e16b72'
+      },
+      fontFamily: {
+        sans: ['Inter','-apple-system','BlinkMacSystemFont','Segoe UI','Microsoft YaHei','sans-serif']
+      }
+    }
+  }
+};
+</script>
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:#0b1220;color:#e5eaf2;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;line-height:1.65}
+a{color:#78cce0;text-decoration:none}
+a:hover{text-decoration:underline}
+.topbar{background:rgba(12,21,36,.92);backdrop-filter:blur(14px);border-bottom:1px solid #26354b}
+.hero{background:radial-gradient(ellipse at 80% 15%,rgba(47,111,139,.25),transparent 40%),linear-gradient(130deg,#14243a,#0c1525 70%);border:1px solid #2b3c54}
+.panel{background:linear-gradient(145deg,#17243a,#121e31);border:1px solid #293a51;border-radius:15px}
+.panel-soft{background:#111d30;border:1px solid #26364c;border-radius:12px}
+.section-title{font-size:21px;font-weight:750;letter-spacing:.2px;color:#f2f5fa}
+.section-title:before{content:"";display:inline-block;width:4px;height:20px;background:#d5ad68;border-radius:3px;margin-right:11px;vertical-align:-3px}
+.muted{color:#91a0b5}
+.gold{color:#e2bd7d}
+.up{color:#45d3a0}
+.down{color:#f08086}
+.tag{display:inline-flex;align-items:center;border:1px solid #3a4a60;border-radius:999px;padding:3px 9px;font-size:11px;color:#bac8d9;background:#1a2940}
+.tag-green{color:#62d8a9;border-color:#28694f;background:#123328}
+.tag-red{color:#f28c91;border-color:#713e48;background:#351c29}
+.tag-yellow{color:#e6c47e;border-color:#665333;background:#302817}
+.kpi{font-size:27px;font-weight:800;letter-spacing:-.7px;line-height:1.2}
+.kpi-label{font-size:12px;color:#91a0b5;margin-bottom:9px}
+.kpi-foot{font-size:11px;color:#8797ad;margin-top:8px}
+.divider{border-color:#2a3a50}
+.navlink{font-size:12px;color:#aab8ca;white-space:nowrap}
+.navlink:hover{color:#e5c27e}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#1d2c43;color:#b9c8da;font-weight:650;text-align:left}
+th,td{padding:11px 12px;border-bottom:1px solid #2a3a50}
+tr:hover td{background:rgba(255,255,255,.018)}
+.bar-bg{height:7px;background:#26364b;border-radius:8px;overflow:hidden}
+.bar{height:100%;border-radius:8px}
+.event-line{position:relative;padding-left:23px;padding-bottom:23px;border-left:1px solid #3b506a;margin-left:7px}
+.event-line:last-child{border-left-color:transparent}
+.event-line:before{content:"";position:absolute;left:-5px;top:6px;width:9px;height:9px;border-radius:50%;background:#d5ad68;box-shadow:0 0 0 4px rgba(213,173,104,.12)}
+.event-date{font-size:11px;color:#d7b878;font-weight:700;letter-spacing:.5px}
+.event-title{font-size:15px;font-weight:700;color:#e8edf5;margin:3px 0}
+.event-desc{font-size:13px;color:#a8b6c8;line-height:1.7}
+.pill{padding:5px 10px;border-radius:7px;font-size:11px;background:#203149;color:#a9c8dc}
+.tab-btn{padding:8px 13px;border-radius:8px;color:#a8b6c8;font-size:12px;border:1px solid transparent}
+.tab-btn.active{background:#273a53;border-color:#52637a;color:#f0cc83}
+.scenario{border:1px solid #34465e;border-radius:12px;padding:16px;background:#142238}
+.source{font-size:12px;color:#92a4b9;line-height:1.7;overflow-wrap:anywhere}
+.source a{color:#83cce0}
+.footer{color:#72849b;font-size:11px}
+@media(max-width:700px){
+ .kpi{font-size:23px}
+ .section-title{font-size:18px}
+ th,td{padding:9px 8px;font-size:12px}
+ .hide-mobile{display:none}
+}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body>
+<header class="topbar sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-blue-900 flex items-center justify-center text-white font-black">B</div>
+      <div>
+        <div class="font-bold text-sm tracking-wide">AIPE · EQUITY INTELLIGENCE</div>
+        <div class="text-xs muted">事件驱动研究 / 美国银行</div>
+      </div>
+    </div>
+    <nav class="hidden md:flex gap-5">
+      <a class="navlink" href="#overview">核心结论</a>
+      <a class="navlink" href="#events">最新动态</a>
+      <a class="navlink" href="#business">经营分析</a>
+      <a class="navlink" href="#macro">宏观传导</a>
+      <a class="navlink" href="#valuation">估值分析</a>
+      <a class="navlink" href="#strategy">投资策略</a>
+    </nav>
+    <button id="themeBtn" class="text-xs border border-slate-600 rounded-lg px-3 py-2">切换主题</button>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 py-6 space-y-7">
+
+<!-- HERO -->
+<section class="hero rounded-2xl p-6 md:p-8">
+  <div class="flex flex-wrap justify-between items-start gap-4">
+    <div>
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="tag">NYSE · BAC</span>
+        <span class="tag">美国大型综合银行</span>
+        <span class="tag">研究窗口：近一个月</span>
+        <span class="tag tag-yellow">数据截至 2026-11-25</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">美国银行</h1>
+      <div class="text-lg text-slate-300 mt-1">Bank of America Corporation</div>
+      <p class="text-sm muted mt-4 max-w-2xl">
+        利率周期、存款成本、净息差与财富管理业务共同决定盈利弹性。
+        本报告从公司、行业、宏观三个层面追踪 BAC 近期经营变化与市场定价。
+      </p>
+    </div>
+    <div class="text-left md:text-right">
+      <div class="text-xs muted">最近已完成交易日收盘价</div>
+      <div class="text-4xl font-extrabold mt-1">$48.56</div>
+      <div class="up text-sm font-semibold mt-1">+0.42 / +0.87%</div>
+      <div class="text-xs muted mt-2">2026-11-24 · NYSE</div>
+    </div>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8">
+    <div class="panel-soft p-4">
+      <div class="kpi-label">市值（约）</div>
+      <div class="kpi">$335B</div>
+      <div class="kpi-foot">市场数据参考</div>
+    </div>
+    <div class="panel-soft p-4">
+      <div class="kpi-label">TTM 市盈率</div>
+      <div class="kpi">11.6x</div>
+      <div class="kpi-foot">不同数据源口径略有差异</div>
+    </div>
+    <div class="panel-soft p-4">
+      <div class="kpi-label">市净率</div>
+      <div class="kpi">约 1.2x</div>
+      <div class="kpi-foot">基于每股账面价值参考</div>
+    </div>
+    <div class="panel-soft p-4">
+      <div class="kpi-label">股息率（参考）</div>
+      <div class="kpi">约 2.6%</div>
+      <div class="kpi-foot">季度股息 $0.32</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXECUTIVE SUMMARY -->
+<section id="overview" class="space-y-4">
+  <h2 class="section-title">01｜核心结论与投资判断</h2>
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="panel p-5">
+      <div class="flex justify-between items-center">
+        <div class="text-sm font-bold">基本面趋势</div>
+        <span class="tag tag-green">中性偏积极</span>
+      </div>
+      <div class="text-2xl font-bold mt-4">盈利韧性仍在</div>
+      <p class="text-sm muted mt-3">
+        2026年第三季度净利息收入同比增长8%，总营收同比增长3%。
+        存贷款规模扩张与财富管理业务增长支撑收入，但监管和解费用明显压低报告净利润。
+      </p>
+    </div>
+    <div class="panel p-5">
+      <div class="flex justify-between items-center">
+        <div class="text-sm font-bold">市场定价</div>
+        <span class="tag tag-yellow">估值有吸引力</span>
+      </div>
+      <div class="text-2xl font-bold mt-4">低双位数 PE</div>
+      <p class="text-sm muted mt-3">
+        约11.6倍的历史市盈率、约1.2倍市净率，体现市场对利率敏感性、
+        资本回报率及费用压力仍保持一定折价。
+      </p>
+    </div>
+    <div class="panel p-5">
+      <div class="flex justify-between items-center">
+        <div class="text-sm font-bold">股价结构</div>
+        <span class="tag tag-red">短线偏弱</span>
+      </div>
+      <div class="text-2xl font-bold mt-4">高位回撤整理</div>
+      <p class="text-sm muted mt-3">
+        近一个月股价从约50美元上方回落，11月20日下探至47.04美元收盘。
+        近期虽有反弹，但尚需重新站稳50美元附近才能改善短线结构。
+      </p>
+    </div>
+  </div>
+
+  <div class="panel p-5">
+    <div class="text-sm font-bold gold mb-3">研究结论</div>
+    <p class="text-sm text-slate-200 leading-7">
+      BAC 当前的核心投资逻辑是：<b>净利息收入增长、存贷款规模扩张、财富管理手续费收入增长，
+      对冲交易业务波动和非利息费用上升。</b>
+      第三季度数据证明其核心经营业务仍具韧性，但报告净利润受到一次性监管和解费用冲击。
+      对股价而言，市场需要看到调整后盈利能力持续兑现、净息差改善，以及资本回报率保持稳定。
+    </p>
+    <div class="grid md:grid-cols-3 gap-3 mt-4">
+      <div class="bg-slate-900/60 rounded-lg p-3">
+        <div class="text-xs muted">积极催化剂</div>
+        <div class="text-sm mt-1">NII增长、存贷款扩张、财富管理资产增长、回购分红</div>
+      </div>
+      <div class="bg-slate-900/60 rounded-lg p-3">
+        <div class="text-xs muted">主要约束</div>
+        <div class="text-sm mt-1">监管成本、费用增长、交易业务波动、利率变化</div>
+      </div>
+      <div class="bg-slate-900/60 rounded-lg p-3">
+        <div class="text-xs muted">关键观察</div>
+        <div class="text-sm mt-1">净息差、存款成本、信贷损失、CET1、50美元价格区域</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section id="market" class="space-y-4">
+  <h2 class="section-title">02｜股价表现与市场定价</h2>
+  <div class="grid lg:grid-cols-3 gap-4">
+    <div class="panel p-5 lg:col-span-2">
+      <div class="flex flex-wrap justify-between items-center gap-2 mb-4">
+        <div>
+          <div class="font-bold">BAC 近期收盘价走势</div>
+          <div class="text-xs muted">2026-10-26 至 2026-11-24 · 美元</div>
+        </div>
+        <span class="tag">日线价格</span>
+      </div>
+      <div style="height:280px"><canvas id="priceChart"></canvas></div>
+      <div class="text-xs muted mt-3">注：使用可核实的近期日线收盘价样本展示，不代表完整逐笔行情。</div>
+    </div>
+    <div class="panel p-5">
+      <div class="font-bold mb-4">关键价格观察区</div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm"><span>短线压力区</span><b class="down">$50.00–51.00</b></div>
+          <div class="bar-bg mt-2"><div class="bar bg-rose-400" style="width:82%"></div></div>
+          <p class="text-xs muted mt-1">近期多次交易区域，反弹需观察成交量配合。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm"><span>当前价格</span><b class="gold">$48.56</b></div>
+          <div class="bar-bg mt-2"><div class="bar bg-amber-400" style="width:68%"></div></div>
+          <p class="text-xs muted mt-1">处于近一个月调整后的反弹区域。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm"><span>短线支撑观察</span><b class="up">$47.00–48.00</b></div>
+          <div class="bar-bg mt-2"><div class="bar bg-emerald-400" style="width:52%"></div></div>
+          <p class="text-xs muted mt-1">11月20日低收盘价附近，需观察回踩承接。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm"><span>52周低点</span><b>$46.12</b></div>
+          <div class="bar-bg mt-2"><div class="bar bg-slate-400" style="width:35%"></div></div>
+          <p class="text-xs muted mt-1">若跌破近期支撑，需重新评估中期趋势。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel p-5">
+    <div class="font-bold mb-3">近期交易数据</div>
+    <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>日期</th><th>开盘</th><th>最高</th><th>最低</th><th>收盘</th><th>涨跌幅</th><th>成交量</th></tr></thead>
+        <tbody>
+          <tr><td>11/24</td><td>47.88</td><td>48.89</td><td>47.81</td><td>48.56</td><td class="up">+0.87%</td><td>36.91M</td></tr>
+          <tr><td>11/23</td><td>48.28</td><td>48.59</td><td>47.69</td><td>48.14</td><td class="up">+2.34%</td><td>33.78M</td></tr>
+          <tr><td>11/20</td><td>48.51</td><td>48.77</td><td>46.88</td><td>47.04</td><td class="down">-3.15%</td><td>50.11M</td></tr>
+          <tr><td>11/19</td><td>49.31</td><td>49.37</td><td>48.05</td><td>48.57</td><td class="down">-0.70%</td><td>35.76M</td></tr>
+          <tr><td>11/18</td><td>49.20</td><td>49.49</td><td>48.74</td><td>48.91</td><td class="down">-1.07%</td><td>40.04M</td></tr>
+          <tr><td>11/17</td><td>49.80</td><td>50.16</td><td>49.08</td><td>49.44</td><td class="down">-1.28%</td><td>34.94M</td></tr>
+          <tr><td>11/16</td><td>50.85</td><td>50.90</td><td>49.63</td><td>50.08</td><td class="down">-1.84%</td><td>31.07M</td></tr>
+          <tr><td>11/13</td><td>50.90</td><td>51.05</td><td>50.43</td><td>51.02</td><td class="up">+1.01%</td><td>20.01M</td></tr>
+          <tr><td>11/12</td><td>50.65</td><td>50.93</td><td>50.38</td><td>50.51</td><td class="down">-0.32%</td><td>19.61M</td></tr>
+          <tr><td>11/05</td><td>52.65</td><td>53.03</td><td>49.76</td><td>49.76</td><td class="down">-3.62%</td><td>61.82M</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs muted mt-3">来源：Bank of America Investor Relations 历史行情页面。价格与成交量为公开市场数据。</p>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="space-y-4">
+  <h2 class="section-title">03｜近一个月最新动态全景追踪</h2>
+  <div class="panel p-5">
+    <div class="flex flex-wrap justify-between gap-2 mb-5">
+      <div class="font-bold">公司与市场事件时间轴</div>
+      <span class="tag">2026-10-25 — 2026-11-25</span>
+    </div>
+
+    <div class="event-line">
+      <div class="event-date">2026-11-24｜市场交易</div>
+      <div class="event-title">BAC 收复部分跌幅，收于 48.56 美元</div>
+      <div class="event-desc">
+        当日上涨0.87%，成交量约3,691万股。前一交易日上涨2.34%，表明47美元附近出现一定承接。
+        但股价仍低于11月中旬50美元上方的交易区间，短线趋势尚未确认反转。
+      </div>
+      <div class="mt-2"><span class="tag tag-yellow">市场表现</span></div>
+    </div>
+
+    <div class="event-line">
+      <div class="event-date">2026-11-20｜价格波动</div>
+      <div class="event-title">股价下跌3.15%，成交量明显放大</div>
+      <div class="event-desc">
+        BAC 收于47.04美元，成交量约5,011万股，高于前几个交易日。
+        这反映当日市场卖压集中释放，但仅凭价格和成交量不能将下跌归因于某一项公司公告。
+        需要结合利率预期、银行板块表现及市场风险偏好进一步验证。
+      </div>
+      <div class="mt-2"><span class="tag tag-red">风险事件观察</span></div>
+    </div>
+
+    <div class="event-line">
+      <div class="event-date">2026-11-16 至 11-19｜市场表现</div>
+      <div class="event-title">50美元附近回落，短线压力显现</div>
+      <div class="event-desc">
+        股价从11月13日的51.02美元收盘，回落至11月19日的48.57美元。
+        连续调整说明高位买盘承接不足，投资者可能重新评估银行盈利增长与宏观利率路径。
+      </div>
+      <div class="mt-2"><span class="tag">价格结构</span></div>
+    </div>
+
+    <div class="event-line">
+      <div class="event-date">2026-10-14｜最近一次已核实财报</div>
+      <div class="event-title">发布2026年第三季度业绩：净利息收入同比增长8%</div>
+      <div class="event-desc">
+        公司公布第三季度净利润69亿美元、稀释后每股收益0.91美元；
+        总营收约300亿美元，同比增长3%。净利息收入164亿美元，同比增长8%。
+        业绩包含12亿美元监管和解费用，约合每股0.17美元。
+        剔除该费用后，调整后净利润约81亿美元，调整后每股收益约1.08美元。
+      </div>
+      <div class="mt-2"><span class="tag tag-green">核心基本面催化剂</span></div>
+    </div>
+
+    <div class="event-line">
+      <div class="event-date">近一个月信息核验说明</div>
+      <div class="event-title">未将未核实的传闻或分析师观点包装成公司公告</div>
+      <div class="event-desc">
+        本报告能核实的核心公司经营信息主要来自10月14日第三季度财报。
+        近一个月股价变化与财报披露时间并不重合，因此不把11月价格波动直接归因于财报。
+        对于未能获得原始公告支持的评级调整、监管处罚或并购消息，不作事实性陈述。
+      </div>
+      <div class="mt-2"><span class="tag">信息质量控制</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS -->
+<section id="business" class="space-y-4">
+  <h2 class="section-title">04｜经营基本面：四大业务板块拆解</h2>
+  <div class="panel p-5">
+    <div class="flex flex-wrap justify-between gap-2 mb-4">
+      <div class="font-bold">2026年第三季度业务表现</div>
+      <span class="tag">公司官方披露 · 2026-10-14</span>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="panel-soft p-4">
+        <div class="flex justify-between items-center">
+          <h3 class="font-bold">Consumer Banking｜消费者银行</h3>
+          <span class="tag tag-green">稳健</span>
+        </div>
+        <div class="text-2xl font-extrabold mt-3">$11.6B</div>
+        <div class="text-xs muted">季度收入 · 同比增长4%</div>
+        <div class="grid grid-cols-2 gap-3 mt-4">
+          <div><div class="text-xs muted">净利润</div><div class="font-bold">$3.5B</div></div>
+          <div><div class="text-xs muted">平均存款</div><div class="font-bold">$949B</div></div>
+          <div><div class="text-xs muted">平均贷款</div><div class="font-bold">$321B</div></div>
+          <div><div class="text-xs muted">卡消费额</div><div class="font-bold">$266B</div></div>
+        </div>
+        <p class="text-xs muted mt-4">
+          信用卡贷款同比增长5%，信用卡与借记卡合计消费额同比增长8%。
+          消费者投资资产同比增长14%，但信用卡信贷成本仍需持续跟踪。
+        </p>
+      </div>
+
+      <div class="panel-soft p-4">
+        <div class="flex justify-between items-center">
+          <h3 class="font-bold">Global Wealth｜全球财富管理</h3>
+          <span class="tag tag-green">增长亮点</span>
+        </div>
+        <div class="text-2xl font-extrabold mt-3">$7.1B</div>
+        <div class="text-xs muted">季度收入 · 同比增长13%</div>
+        <div class="grid grid-cols-2 gap-3 mt-4">
+          <div><div class="text-xs muted">净利润</div><div class="font-bold">$1.5B</div></div>
+          <div><div class="text-xs muted">客户资产</div><div class="font-bold">$5.1T</div></div>
+          <div><div class="text-xs muted">资产管理费</div><div class="font-bold">$4.5B</div></div>
+          <div><div class="text-xs muted">管理费同比</div><div class="font-bold up">+16%</div></div>
+        </div>
+        <p class="text-xs muted mt-4">
+          财富管理收入受市场估值、客户资金流入与净利息收入共同推动。
+          在交易业务波动较大时，该板块提供相对稳定的手续费收入来源。
+        </p>
+      </div>
+
+      <div class="panel-soft p-4">
+        <div class="flex justify-between items-center">
+          <h3 class="font-bold">Global Banking｜全球银行业务</h3>
+          <span class="tag tag-yellow">结构分化</span>
+        </div>
+        <div class="text-2xl font-extrabold mt-3">$2.0B</div>
+        <div class="text-xs muted">季度净利润</div>
+        <div class="grid grid-cols-2 gap-3 mt-4">
+          <div><div class="text-xs muted">平均存款</div><div class="font-bold">$669B</div></div>
+          <div><div class="text-xs muted">平均贷款</div><div class="font-bold">同比+8%</div></div>
+          <div><div class="text-xs muted">投行费用</div><div class="font-bold down">同比-11%</div></div>
+          <div><div class="text-xs muted">资金服务费</div><div class="font-bold up">同比+10%</div></div>
+        </div>
+        <p class="text-xs muted mt-4">
+          商业贷款在各客户群体中增长，但投资银行费用下降11%。
+          资本市场活动复苏程度将影响未来投行手续费收入。
+        </p>
+      </div>
+
+      <div class="panel-soft p-4">
+        <div class="flex justify-between items-center">
+          <h3 class="font-bold">Global Markets｜全球市场业务</h3>
+          <span class="tag tag-red">波动较高</span>
+        </div>
+        <div class="text-2xl font-extrabold mt-3">$5.1B</div>
+        <div class="text-xs muted">销售与交易收入 · 同比下降5%</div>
+        <div class="grid grid-cols-2 gap-3 mt-4">
+          <div><div class="text-xs muted">固定收益交易</div><div class="font-bold down">$2.6B · -17%</div></div>
+          <div><div class="text-xs muted">股票交易</div><div class="font-bold up">$2.5B · +11%</div></div>
+          <div><div class="text-xs muted">净利润</div><div class="font-bold">$1.2B</div></div>
+          <div><div class="text-xs muted">收入特征</div><div class="font-bold">市场敏感</div></div>
+        </div>
+        <p class="text-xs muted mt-4">
+          固定收益、外汇及大宗商品交易收入下降，股票交易收入增长。
+          市场波动率、客户交易需求和债券市场流动性均会影响板块表现。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel p-5">
+    <div class="font-bold mb-4">集团整体财务指标</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div><div class="kpi-label">第三季度总营收</div><div class="kpi">$30.0B</div><div class="kpi-foot up">同比 +3%</div></div>
+      <div><div class="kpi-label">净利息收入</div><div class="kpi">$16.4B</div><div class="kpi-foot up">同比 +8%</div></div>
+      <div><div class="kpi-label">净息差（FTE）</div><div class="kpi">2.16%</div><div class="kpi-foot up">同比提升15bp</div></div>
+      <div><div class="kpi-label">拨备费用</div><div class="kpi">$1.27B</div><div class="kpi-foot">环比下降</div></div>
+      <div><div class="kpi-label">报告净利润</div><div class="kpi">$6.9B</div><div class="kpi-foot down">同比下降</div></div>
+      <div><div class="kpi-label">调整后净利润</div><div class="kpi">$8.1B</div><div class="kpi-foot">剔除监管和解费用</div></div>
+      <div><div class="kpi-label">报告 ROTCE</div><div class="kpi">12.6%</div><div class="kpi-foot">调整后约14.9%</div></div>
+      <div><div class="kpi-label">CET1 比率</div><div class="kpi">10.9%</div><div class="kpi-foot">标准法口径</div></div>
+    </div>
+  </div>
+
+  <div class="panel p-5">
+    <div class="font-bold mb-3">集团资产负债表观察</div>
+    <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>指标</th><th>2026年Q3</th><th>同比变化</th><th>投资含义</th></tr></thead>
+        <tbody>
+          <tr><td>平均存款</td><td>$2.02T</td><td class="up">+2%</td><td>存款基础保持稳定</td></tr>
+          <tr><td>平均贷款及租赁</td><td>$1.23T</td><td class="up">+6%</td><td>贷款规模扩张支撑利息收入</td></tr>
+          <tr><td>期末存款</td><td>$2.04T</td><td class="up">+2%</td><td>客户资金基础稳固</td></tr>
+          <tr><td>期末贷款及租赁</td><td>$1.25T</td><td class="up">+7%</td><td>信贷需求保持增长</td></tr>
+          <tr><td>CET1资本</td><td>$198B</td><td>环比下降约$3.2B</td><td>持续关注资本缓冲与分红回购</td></tr>
+          <tr><td>信贷损失准备金</td><td>$14.18B</td><td>环比略降</td><td>观察未来信用损失趋势</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="space-y-4">
+  <h2 class="section-title">05｜行业与宏观：三层传导框架</h2>
+  <div class="grid lg:grid-cols-3 gap-4">
+    <div class="panel p-5">
+      <div class="text-xs gold font-bold">第一层 · 宏观环境</div>
+      <h3 class="font-bold text-lg mt-2">利率与经济周期</h3>
+      <ul class="text-sm muted space-y-3 mt-4 list-disc pl-4">
+        <li>政策利率变化影响资产收益率与存款成本的重新定价速度。</li>
+        <li>经济增长放缓可能削弱贷款需求，并推高部分客户的违约风险。</li>
+        <li>债券收益率曲线变化影响长期资产配置和净息差。</li>
+        <li>就业、消费与企业投资决定银行客户的还款能力及融资需求。</li>
+      </ul>
+    </div>
+    <div class="panel p-5">
+      <div class="text-xs gold font-bold">第二层 · 行业竞争</div>
+      <h3 class="font-bold text-lg mt-2">银行业盈利结构</h3>
+      <ul class="text-sm muted space-y-3 mt-4 list-disc pl-4">
+        <li>存款竞争决定负债端成本，低成本核心存款是大型银行的重要护城河。</li>
+        <li>信贷需求影响贷款余额与利息收入增长。</li>
+        <li>投行、交易、财富管理业务决定非利息收入的多元化程度。</li>
+        <li>资本监管和流动性要求影响资本使用效率与股东回报。</li>
+      </ul>
+    </div>
+    <div class="panel p-5">
+      <div class="text-xs gold font-bold">第三层 · 公司传导</div>
+      <h3 class="font-bold text-lg mt-2">BAC 盈利与估值</h3>
+      <ul class="text-sm muted space-y-3 mt-4 list-disc pl-4">
+        <li>净息差改善与贷款增长共同影响净利息收入。</li>
+        <li>财富管理客户资产增长可带动管理费与顾问费。</li>
+        <li>信用卡及商业贷款资产质量决定信用成本。</li>
+        <li>ROTCE、CET1和回购规模影响长期估值中枢。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel p-5">
+    <div class="font-bold mb-4">关键宏观变量的方向性影响</div>
+    <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>宏观变量</th><th>变化方向</th><th>对 BAC 的潜在影响</th><th>关注指标</th></tr></thead>
+        <tbody>
+          <tr><td>短端利率下降</td><td class="gold">双向影响</td><td>资产收益率和存款成本下降节奏不同，决定净息差方向</td><td>NII、存款成本</td></tr>
+          <tr><td>长期利率上升</td><td class="gold">双向影响</td><td>可能提高新增资产收益，但也影响债券估值与融资需求</td><td>收益率曲线、AOCI</td></tr>
+          <tr><td>经济增长放缓</td><td class="down">偏负面</td><td>贷款需求和消费可能减弱，信用损失风险上升</td><td>逾期率、核销率</td></tr>
+          <tr><td>资本市场活跃</td><td class="up">偏正面</td><td>财富管理资产估值和投资银行业务可能受益</td><td>AUM、投行费用</td></tr>
+          <tr><td>信用利差扩大</td><td class="down">偏负面</td><td>融资条件收紧，部分商业客户和高风险借款人承压</td><td>拨备、非应计贷款</td></tr>
+          <tr><td>存款竞争加剧</td><td class="down">偏负面</td><td>负债端成本上升，压缩净息差</td><td>存款结构、存款利率</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section id="risk" class="space-y-4">
+  <h2 class="section-title">06｜风险地图与潜在催化剂</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="panel p-5">
+      <div class="font-bold mb-4 flex justify-between"><span>主要风险</span><span class="tag tag-red">需要跟踪</span></div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm"><b>监管与法律费用</b><span class="tag tag-red">高关注</span></div>
+          <p class="text-xs muted mt-1">第三季度出现12亿美元监管和解费用，需确认是否为一次性项目，以及后续是否存在新的监管支出。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm"><b>净息差与存款成本</b><span class="tag tag-yellow">高关注</span></div>
+          <p class="text-xs muted mt-1">利率下行不必然利好银行，资产端收益率和负债端成本的重定价速度决定净息差。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm"><b>信用卡与商业信贷风险</b><span class="tag tag-yellow">中高关注</span></div>
+          <p class="text-xs muted mt-1">消费信贷扩张提高收入潜力，但经济走弱可能导致核销率及拨备上升。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm"><b>资本市场业务波动</b><span class="tag">中等关注</span></div>
+          <p class="text-xs muted mt-1">交易收入和投行费用受市场活跃度影响，季度间波动可能较大。</p>
+        </div>
+      </div>
+    </div>
+    <div class="panel p-5">
+      <div class="font-bold mb-4 flex justify-between"><span>潜在正向催化剂</span><span class="tag tag-green">观察机会</span></div>
+      <div class="space-y-4">
+        <div>
+          <div class="text-sm font-bold">净利息收入继续增长</div>
+          <p class="text-xs muted mt-1">若贷款增长、固定利率资产重新定价及存款成本下降共同发挥作用，NII有望继续改善。</p>
+        </div>
+        <div>
+          <div class="text-sm font-bold">财富管理资产与客户资金流入</div>
+          <p class="text-xs muted mt-1">资产管理规模和净流入增长可提升管理费收入，并增强收入来源多元化。</p>
+        </div>
+        <div>
+          <div class="text-sm font-bold">股票市场及投行业务复苏</div>
+          <p class="text-xs muted mt-1">IPO、并购、债券发行和机构交易活跃度改善，有望推动非利息收入回升。</p>
+        </div>
+        <div>
+          <div class="text-sm font-bold">回购与股息回报</div>
+          <p class="text-xs muted mt-1">公司第三季度向股东返还约83亿美元，若资本水平允许，股东回报有望继续成为估值支撑。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUATION -->
+<section id="valuation" class="space-y-4">
+  <h2 class="section-title">07｜估值分析与情景推演</h2>
+  <div class="panel p-5">
+    <div class="font-bold mb-4">市场估值参考</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div><div class="kpi-label">市值</div><div class="kpi">$335B</div></div>
+      <div><div class="kpi-label">TTM PE</div><div class="kpi">约11.6x</div></div>
+      <div><div class="kpi-label">Forward PE</div><div class="kpi">约9.8x</div></div>
+      <div><div class="kpi-label">P/B</div><div class="kpi">约1.2x</div></div>
+    </div>
+    <p class="text-xs muted mt-4">
+      数据来源之间可能存在更新时点、EPS口径及股价基准差异。估值倍数为市场数据参考，不应视为精确的实时交易报价。
+    </p>
+  </div>
+
+  <div class="panel p-5">
+    <div class="font-bold mb-2">12个月情景估值模型</div>
+    <p class="text-xs muted mb-4">以下是研究情景假设，不是券商一致预期，也不是保证实现的目标价。</p>
+    <div class="grid md:grid-cols-3 gap-3">
+      <div class="scenario">
+        <div class="flex justify-between"><b>悲观情景</b><span class="tag tag-red">Bear</span></div>
+        <div class="text-3xl font-extrabold mt-3">$40–44</div>
+        <div class="text-xs muted mt-2">相对48.56美元约 -17.6% 至 -9.4%</div>
+        <hr class="divider my-3">
+        <ul class="text-xs muted space-y-2">
+          <li>· 净息差承压</li>
+          <li>· 信贷损失上升</li>
+          <li>· 监管与经营费用持续偏高</li>
+          <li>· 市场下调银行业估值倍数</li>
+        </ul>
+      </div>
+      <div class="scenario border-amber-500/50">
+        <div class="flex justify-between"><b>基准情景</b><span class="tag tag-yellow">Base</span></div>
+        <div class="text-3xl font-extrabold gold mt-3">$52–57</div>
+        <div class="text-xs muted mt-2">相对48.56美元约 +7.1% 至 +17.4%</div>
+        <hr class="divider my-3">
+        <ul class="text-xs muted space-y-2">
+          <li>· 净利息收入温和增长</li>
+          <li>· 信贷质量总体稳定</li>
+          <li>· 财富管理维持增长</li>
+          <li>· 估值保持在当前区间附近</li>
+        </ul>
+      </div>
+      <div class="scenario">
+        <div class="flex justify-between"><b>乐观情景</b><span class="tag tag-green">Bull</span></div>
+        <div class="text-3xl font-extrabold up mt-3">$60–65</div>
+        <div class="text-xs muted mt-2">相对48.56美元约 +23.6% 至 +33.8%</div>
+        <hr class="divider my-3">
+        <ul class="text-xs muted space-y-2">
+          <li>· 净息差与贷款规模同步改善</li>
+          <li>· 投行及交易收入回升</li>
+          <li>· 信贷成本保持低位</li>
+          <li>· ROTCE改善推动估值重估</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-5">
+      <div class="text-sm font-bold mb-2">情景估值区间可视化</div>
+      <div style="height:220px"><canvas id="valuationChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="panel p-5">
+    <div class="font-bold mb-3">估值的关键变量</div>
+    <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>变量</th><th>当前参考</th><th>改善信号</th><th>恶化信号</th></tr></thead>
+        <tbody>
+          <tr><td>净息差</td><td>2.16%（Q3 FTE）</td><td>持续环比改善</td><td>连续下降</td></tr>
+          <tr><td>ROTCE</td><td>12.6%报告口径</td><td>向调整后水平靠拢</td><td>持续下滑</td></tr>
+          <tr><td>信贷质量</td><td>净核销率0.44%</td><td>维持低位</td><td>信用卡核销明显上升</td></tr>
+          <tr><td>CET1</td><td>10.9%</td><td>资本缓冲稳健</td><td>资本压力增加</td></tr>
+          <tr><td>费用效率</td><td>调整后效率比率约62%</td><td>收入增长快于费用</td><td>成本持续侵蚀利润</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section id="strategy" class="space-y-4">
+  <h2 class="section-title">08｜投资策略与操作观察</h2>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="panel p-5">
+      <div class="flex justify-between items-center">
+        <div class="font-bold">中期投资者</div>
+        <span class="tag tag-yellow">等待确认</span>
+      </div>
+      <div class="text-xl font-bold mt-4">关注基本面兑现与估值修复</div>
+      <ul class="text-sm muted space-y-3 mt-4 list-disc pl-4">
+        <li>重点观察后续季度净利息收入是否延续增长。</li>
+        <li>比较调整后ROTCE与报告ROTCE，判断盈利质量。</li>
+        <li>关注存款成本、信贷损失及CET1资本变化。</li>
+        <li>若股价回到50美元上方并稳定运行，可观察中期趋势是否改善。</li>
+      </ul>
+    </div>
+    <div class="panel p-5">
+      <div class="flex justify-between items-center">
+        <div class="font-bold">短线交易者</div>
+        <span class="tag tag-red">控制追高</span>
+      </div>
+      <div class="text-xl font-bold mt-4">等待支撑确认或压力突破</div>
+      <ul class="text-sm muted space-y-3 mt-4 list-disc pl-4">
+        <li>47–48美元附近是近期价格承接观察区域。</li>
+        <li>若回踩该区域后缩量企稳，可观察反弹质量。</li>
+        <li>50–51美元附近是近期反弹压力观察区。</li>
+        <li>若跌破47美元且成交量放大，需防范进一步回撤。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel p-5">
+    <div class="font-bold mb-4">关键价位与交易条件</div>
+    <div class="overflow-x-auto">
+      <table>
+        <thead><tr><th>价格区域</th><th>技术含义</th><th>观察条件</th><th>策略含义</th></tr></thead>
+        <tbody>
+          <tr><td class="up font-bold">$46.12</td><td>52周低点参考</td><td>是否出现放量跌破</td><td>若失守，重新评估中期风险</td></tr>
+          <tr><td class="up font-bold">$47–48</td><td>近期支撑观察区</td><td>回踩后是否缩量企稳</td><td>等待确认，不宜仅凭触价买入</td></tr>
+          <tr><td class="gold font-bold">$48.56</td><td>最近收盘价</td><td>能否维持反弹结构</td><td>观察短线多空平衡</td></tr>
+          <tr><td class="down font-bold">$50–51</td><td>短线压力观察区</td><td>突破时成交量是否放大</td><td>有效突破后观察趋势改善</td></tr>
+          <tr><td class="down font-bold">$52–53</td><td>前期交易压力区域</td><td>是否形成更高高点</td><td>需要更强基本面或市场催化</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs muted mt-3">价位是根据近期公开日线数据进行的技术观察，并非精确支撑阻力预测。</p>
+  </div>
+</section>
+
+<!-- WATCHLIST -->
+<section id="watchlist" class="space-y-4">
+  <h2 class="section-title">09｜未来跟踪清单</h2>
+  <div class="panel p-5">
+    <div class="font-bold mb-4">下一阶段最重要的十项观察指标</div>
+    <div class="grid md:grid-cols-2 gap-x-8 gap-y-4">
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>净利息收入</b><span class="block text-xs muted">是否延续同比增长及环比改善</span></span></label>
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>净息差（NIM）</b><span class="block text-xs muted">资产与负债重定价差异</span></span></label>
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>存款规模与成本</b><span class="block text-xs muted">核心存款稳定性和利率竞争</span></span></label>
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>贷款增长</b><span class="block text-xs muted">商业贷款与消费贷款的增长质量</span></span></label>
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>信用卡核销率</b><span class="block text-xs muted">消费者资产质量变化</span></span></label>
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>拨备费用</b><span class="block text-xs muted">信用成本是否重新上升</span></span></label>
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>财富管理AUM</b><span class="block text-xs muted">客户资产流入与管理费增长</span></span></label>
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>投行与交易收入</b><span class="block text-xs muted">资本市场业务复苏情况</span></span></label>
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>CET1与资本回报</b><span class="block text-xs muted">资本充足率、回购及股息空间</span></span></label>
+      <label class="flex items-start gap-3 text-sm"><input type="checkbox" class="mt-1 accent-amber-400"><span><b>50美元价格区域</b><span class="block text-xs muted">是否放量突破并转为支撑</span></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="panel p-6 md:p-8">
+  <div class="text-xs gold font-bold tracking-widest">FINAL INVESTMENT VIEW</div>
+  <h2 class="text-2xl font-extrabold mt-2">核心判断：经营韧性强于近期股价表现，但趋势反转仍需验证</h2>
+  <p class="text-sm text-slate-300 leading-8 mt-4">
+    美国银行拥有规模庞大的存款基础、消费者银行客户网络、财富管理平台及全球市场业务。
+    2026年第三季度的核心经营数据表明，净利息收入、财富管理手续费收入和贷款余额均有增长，
+    资产质量指标整体尚未显示出全面恶化。
+  </p>
+  <p class="text-sm text-slate-300 leading-8 mt-2">
+    需要审慎看待的是，第三季度报告净利润受到12亿美元监管和解费用影响，
+    全球市场及投资银行收入表现分化，资本回报率和费用效率仍有改善空间。
+    近一个月股价回落说明市场并未仅凭核心盈利增长就给予更高估值。
+  </p>
+  <p class="text-sm text-slate-300 leading-8 mt-2">
+    因此，BAC当前更适合以“基本面跟踪 + 价格确认”的方式研究：
+    若净息差持续改善、信贷成本保持稳定、财富管理业务继续增长，
+    同时股价重新站稳50美元附近，估值修复逻辑将更有说服力；
+    若贷款质量恶化、存款成本上升或股价有效跌破近期支撑，
+    则应下调对盈利增长和估值扩张的预期。
+  </p>
+  <div class="flex flex-wrap gap-2 mt-5">
+    <span class="tag tag-green">长期基本面：中性偏积极</span>
+    <span class="tag tag-yellow">估值：具备一定吸引力</span>
+    <span class="tag tag-red">短线趋势：尚未确认反转</span>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="panel p-5">
+  <h2 class="font-bold text-lg mb-4">数据来源与参考资料</h2>
+  <div class="space-y-3 source">
+    <div>
+      <b class="text-slate-300">1. Bank of America Investor Relations — 2026 Q3 Earnings Release</b><br>
+      官方第三季度业绩、业务板块数据、净利息收入、监管和解费用及资产负债表数据。<br>
+      <a href="https://investor.bankofamerica.com/regulatory-and-other-filings/select-sec-filings/content/0000070858-26-000481/bac09302026ex991.htm" target="_blank" rel="noopener">查看官方财报公告</a>
+    </div>
+    <div>
+      <b class="text-slate-300">2. Bank of America Investor Relations — Supplemental Financial Information</b><br>
+      官方补充财务信息及季度经营数据。<br>
+      <a href="https://investor.bankofamerica.com/regulatory-and-other-filings/select-sec-filings/content/0000070858-26-000481/bac-09302026ex993.htm" target="_blank" rel="noopener">查看官方补充资料</a>
+    </div>
+    <div>
+      <b class="text-slate-300">3. Bank of America Investor Relations — Historical Stock Data</b><br>
+      BAC历史股价、成交量及交易数据。<br>
+      <a href="https://investor.bankofamerica.com/shareholder-information/historical-data" target="_blank" rel="noopener">查看历史行情</a>
+    </div>
+    <div>
+      <b class="text-slate-300">4. Bank of America Investor Relations — Stock Quote</b><br>
+      公司股票报价、股息及股本信息。<br>
+      <a href="https://investor.bankofamerica.com/shareholder-information/quote" target="_blank" rel="noopener">查看官方股票信息</a>
+    </div>
+    <div>
+      <b class="text-slate-300">5. Stock Analysis — BAC Statistics</b><br>
+      市值、估值倍数、股息及市场预期等辅助数据。<br>
+      <a href="https://stockanalysis.com/stocks/bac/statistics/" target="_blank" rel="noopener">查看估值统计</a>
+    </div>
+    <div>
+      <b class="text-slate-300">6. Yahoo Finance — BAC Quote</b><br>
+      辅助核对股价、成交量及市场数据。<br>
+      <a href="https://finance.yahoo.com/quote/BAC/" target="_blank" rel="noopener">查看市场行情</a>
+    </div>
+  </div>
+  <hr class="divider my-5">
+  <div class="footer">
+    研究日期：2026年11月25日｜标的：Bank of America Corporation（NYSE: BAC）<br>
+    免责声明：本报告仅用于金融研究、信息整理与投资教育，不构成证券投资建议、交易邀约或收益承诺。
+    价格数据可能存在延迟；估值和情景价格属于分析假设，实际结果可能显著不同。
+  </div>
+</section>
+
+</main>
+
+<footer class="max-w-7xl mx-auto px-4 pb-8 text-center footer">
+  AIPE EQUITY INTELLIGENCE · BANK OF AMERICA · 2026
+</footer>
+
+<script>
+/* 主题切换 */
+document.getElementById('themeBtn').addEventListener('click',()=>{
+  document.body.classList.toggle('light-mode');
+  const light=document.body.classList.contains('light-mode');
+  document.body.style.background=light?'#edf1f6':'#0b1220';
+  document.body.style.color=light?'#17243a':'#e5eaf2';
+  document.querySelectorAll('.panel,.panel-soft,.scenario').forEach(el=>{
+    el.style.background=light?'#ffffff':'';
+    el.style.color=light?'#17243a':'';
+    el.style.borderColor=light?'#d8e0e9':'';
+  });
+  document.querySelectorAll('.muted').forEach(el=>{
+    el.style.color=light?'#596b80':'';
+  });
+});
+
+/* 股价图：近期可核实的收盘价 */
+const priceLabels=[
+'10/26','10/27','10/28','10/29','10/30',
+'11/02','11/03','11/04','11/05','11/06',
+'11/09','11/10','11/11','11/12','11/13',
+'11/16','11/17','11/18','11/19','11/20',
+'11/23','11/24'
+];
+const priceValues=[
+50.52,50.68,50.85,51.14,50.01,
+49.57,49.66,51.63,49.76,49.42,
+50.55,50.68,50.67,50.51,51.02,
+50.08,49.44,48.91,48.57,47.04,
+48.14,48.56
+];
+
+new Chart(document.getElementById('priceChart'),{
+  type:'line',
+  data:{
+    labels:priceLabels,
+    datasets:[{
+      label:'BAC 收盘价',
+      data:priceValues,
+      borderColor:'#d8b56e',
+      backgroundColor:'rgba(216,181,110,.12)',
+      fill:true,
+      tension:.28,
+      borderWidth:2,
+      pointRadius:2,
+      pointHoverRadius:5
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:c=>' $'+c.raw.toFixed(2)}}
+    },
+    scales:{
+      x:{grid:{color:'rgba(140,160,185,.08)'},ticks:{color:'#91a0b5',maxRotation:0}},
+      y:{grid:{color:'rgba(140,160,185,.12)'},ticks:{color:'#91a0b5',callback:v=>'$'+v.toFixed(0)}}
+    }
+  }
+});
+
+/* 情景估值区间 */
+new Chart(document.getElementById('valuationChart'),{
+  type:'bar',
+  data:{
+    labels:['悲观情景','基准情景','乐观情景'],
+    datasets:[
+      {
+        label:'估值区间下沿',
+        data:[40,52,60],
+        backgroundColor:'rgba(225,107,114,.72)',
+        borderRadius:5
+      },
+      {
+        label:'区间上沿与下沿之差',
+        data:[4,5,5],
+        backgroundColor:['rgba(225,107,114,.32)','rgba(213,173,104,.65)','rgba(36,180,126,.65)'],
+        borderRadius:5
+      }
+    ]
+  },
+  options:{
+    indexAxis:'y',
+    responsive:true,
+    maintainAspectRatio:false,
+    plugins:{
+      legend:{labels:{color:'#aebbd0'}},
+      tooltip:{callbacks:{
+        label:c=>{
+          const lows=[40,52,60], highs=[44,57,65];
+          return c.datasetIndex===0?'下沿：$'+lows[c.dataIndex]:'上沿：$'+highs[c.dataIndex];
+        }
+      }}
+    },
+    scales:{
+      x:{
+        stacked:true,
+        min:0,
+        max:70,
+        grid:{color:'rgba(140,160,185,.12)'},
+        ticks:{color:'#91a0b5',callback:v=>'$'+v}
+      },
+      y:{
+        stacked:true,
+        grid:{display:false},
+        ticks:{color:'#d3dce8'}
+      }
+    }
+  }
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

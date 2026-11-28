@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palantir经营分析_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={
+ darkMode:"class",
+ theme:{extend:{
+  colors:{
+   primary:{
+    50:"hsl(20,90%,95%)",100:"hsl(20,90%,85%)",200:"hsl(20,90%,75%)",
+    300:"hsl(20,90%,65%)",400:"hsl(20,90%,55%)",500:"hsl(20,90%,50%)",
+    600:"hsl(20,90%,45%)",700:"hsl(20,90%,35%)",800:"hsl(20,90%,25%)",
+    900:"hsl(20,90%,15%)"
+   },
+   accent:{
+    50:"hsl(30,85%,95%)",100:"hsl(30,85%,85%)",200:"hsl(30,85%,75%)",
+    300:"hsl(30,85%,65%)",400:"hsl(30,85%,60%)",500:"hsl(30,85%,55%)",
+    600:"hsl(30,85%,50%)",700:"hsl(30,85%,40%)",800:"hsl(30,85%,30%)",
+    900:"hsl(30,85%,20%)"
+   }
+  }
+ }}
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+section{scroll-margin-top:100px}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.04);box-shadow:0 10px 15px -3px rgba(0,0,0,.12)}
+.card-interactive{transition:all .3s ease;border:1px solid transparent}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 20px 25px -5px rgba(0,0,0,.1)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.75rem;border-bottom:1px solid hsl(0,0%,90%);vertical-align:top}
+.dark th,.dark td{border-bottom-color:hsl(0,0%,30%)}
+.moat-bar{height:10px;border-radius:5px;background:#e5e7eb;overflow:hidden}
+.dark .moat-bar{background:#374151}
+.moat-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%));transition:width 1.2s}
+.risk-badge{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;border-radius:8px;font-weight:700}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.dark body{color:#f3f4f6}
+.dark header nav a{color:#e5e7eb!important}
+.dark header nav a:hover{color:hsl(20,90%,65%)!important}
+.dark .text-gray-400,.dark .text-gray-500{color:#9ca3af!important}
+.dark .text-gray-600{color:#d1d5db!important}
+.dark .text-gray-700{color:#e5e7eb!important}
+.dark table th{color:#f3f4f6}
+.dark table td{color:#e5e7eb}
+.dark .text-black{color:#f3f4f6!important}
+.source-link{color:#c2410c;text-decoration:underline;text-decoration-color:#fdba74;text-underline-offset:3px}
+.dark .source-link{color:#fdba74}
+</style>
+
+<script>
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ const dark=document.documentElement.classList.contains('dark');
+ document.getElementById("sunIcon").style.display=dark?"block":"none";
+ document.getElementById("moonIcon").style.display=dark?"none":"block";
+}
+function toggleMobileMenu(){
+ const m=document.getElementById("mobileMenu");
+ if(m)m.classList.toggle("mobile-menu-open");
+}
+function closeMobileMenu(){
+ const m=document.getElementById("mobileMenu");
+ if(m)m.classList.remove("mobile-menu-open");
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[60]" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20">
+<div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
+<div class="flex items-center justify-between gap-2">
+<h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+Palantir PLTR 经营分析
+</h1>
+<nav class="hidden md:flex gap-4 text-sm font-medium">
+<a href="#model">商业模式</a>
+<a href="#moat">护城河</a>
+<a href="#industry">行业</a>
+<a href="#financial">财务</a>
+<a href="#valuation">估值</a>
+<a href="#outlook">展望</a>
+<a href="#risk">风险</a>
+<a href="#longshort">多空</a>
+</nav>
+<div class="flex items-center gap-2">
+<button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300" aria-label="菜单">
+<i data-lucide="menu" class="w-5 h-5"></i>
+</button>
+<button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300" aria-label="切换主题">
+<i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-5 h-5"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+<nav class="flex flex-col gap-3 text-sm">
+<a href="#model" onclick="closeMobileMenu()">商业模式</a>
+<a href="#moat" onclick="closeMobileMenu()">竞争优势</a>
+<a href="#industry" onclick="closeMobileMenu()">行业趋势</a>
+<a href="#financial" onclick="closeMobileMenu()">财务状况</a>
+<a href="#valuation" onclick="closeMobileMenu()">估值分析</a>
+<a href="#outlook" onclick="closeMobileMenu()">经营展望</a>
+<a href="#risk" onclick="closeMobileMenu()">风险识别</a>
+<a href="#longshort" onclick="closeMobileMenu()">多空视角</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="pt-36 pb-20 bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<div class="flex flex-wrap gap-2 mb-5">
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300">美国科技股 · AI软件 · 数据平台</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300">NASDAQ: PLTR</span>
+<span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200">2026-11-25</span>
+</div>
+
+<h2 class="text-4xl md:text-6xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+Palantir Technologies
+<br>
+<span class="text-2xl md:text-4xl text-gray-600 dark:text-gray-400">经营分析与长期投资价值</span>
+</h2>
+
+<p class="max-w-4xl text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-10">
+Palantir已从政府情报数据分析供应商演化为企业AI操作平台。2026年最重要的变化是商业客户开始把生成式AI从试验阶段推进到核心业务流程，Palantir凭借Ontology、AIP、Foundry及Apollo形成的系统整合能力，正在捕获AI企业落地的价值。但公司面临的核心投资矛盾是：<strong>卓越的经营增长与极高的市场估值之间是否存在足够的安全边际。</strong>
+</p>
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="card-interactive bg-white/90 dark:bg-gray-800 p-5 rounded-xl shadow-md text-center">
+<div class="text-2xl font-bold text-primary-600 dark:text-primary-400">$2.313B</div>
+<div class="text-xs text-gray-500 mt-1">2026 Q3营收</div>
+<div class="text-xs text-green-600 mt-2">同比 +96%</div>
+</div>
+<div class="card-interactive bg-white/90 dark:bg-gray-800 p-5 rounded-xl shadow-md text-center">
+<div class="text-2xl font-bold text-accent-600 dark:text-accent-400">$8.53B</div>
+<div class="text-xs text-gray-500 mt-1">2026全年营收指引</div>
+<div class="text-xs text-green-600 mt-2">同比约 +91%</div>
+</div>
+<div class="card-interactive bg-white/90 dark:bg-gray-800 p-5 rounded-xl shadow-md text-center">
+<div class="text-2xl font-bold text-primary-600 dark:text-primary-400">53%</div>
+<div class="text-xs text-gray-500 mt-1">Q3调整后自由现金流率</div>
+<div class="text-xs text-green-600 mt-2">现金转换能力极强</div>
+</div>
+<div class="card-interactive bg-white/90 dark:bg-gray-800 p-5 rounded-xl shadow-md text-center">
+<div class="text-2xl font-bold text-red-500">极高</div>
+<div class="text-xs text-gray-500 mt-1">估值风险等级</div>
+<div class="text-xs text-gray-500 mt-2">增长兑现要求高</div>
+</div>
+</div>
+
+<div class="mt-8 p-5 rounded-xl bg-primary-50 dark:bg-primary-900/30 border-l-4 border-primary-500">
+<strong class="text-primary-800 dark:text-primary-200">核心结论：</strong>
+Palantir是一家经营质量优秀、AI商业化势头强劲、资产负债表极其稳健的软件公司；但在市场对未来增长给予极高溢价的情况下，企业优秀不等于股票便宜。现阶段更接近“高质量成长资产，但估值容错率有限”。
+</div>
+</div>
+</section>
+
+<!-- 一 商业模式 -->
+<section id="model" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"><i data-lucide="layers" class="w-5 h-5 text-primary-600"></i></div>
+<h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">一、商业模式</h2>
+</div>
+
+<p class="leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+Palantir的核心商业模式是<strong>“企业级数据整合平台 + AI决策操作系统 + 高价值订阅/服务合同”</strong>。它不只是卖数据库、模型或单一AI工具，而是帮助组织把分散数据、权限体系、业务流程和AI模型整合成能够执行真实任务的运营系统。
+</p>
+
+<div class="grid md:grid-cols-2 gap-5">
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex gap-2 items-center"><i data-lucide="shield"></i>Gotham：政府与国防</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+服务国防、情报、执法和公共部门客户。将多源数据连接起来，用于情报分析、任务规划、战场决策、物流和风险管理。政府合同周期长、准入壁垒高，形成相对稳定的客户关系与业务基础。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex gap-2 items-center"><i data-lucide="factory"></i>Foundry：企业数据运营</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+帮助制造、能源、金融、医疗、供应链等企业统一数据资产，将数据映射到业务实体、流程和决策。价值在于让数据从“报表信息”转化为“可操作的业务系统”。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex gap-2 items-center"><i data-lucide="brain-circuit"></i>AIP：企业AI平台</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+将大语言模型、开源模型、企业数据、权限控制和业务流程结合，使AI能够在真实业务环境中执行任务。通过AIP Bootcamp快速验证价值，推动试点进入部署和扩张。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex gap-2 items-center"><i data-lucide="cloud-cog"></i>Apollo：软件部署与持续运营</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+负责软件持续交付和更新，支持云端、私有云、政府隔离网络、边缘设备等复杂环境。让客户能够在不同安全等级的环境中持续运行平台。
+</p>
+</div>
+</div>
+
+<div class="mt-8 bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">商业价值闭环</h3>
+<div class="grid md:grid-cols-5 gap-3 text-center">
+<div class="p-4 rounded-lg bg-primary-100 dark:bg-primary-900/30">
+<strong>数据接入</strong><p class="text-xs mt-2">多源异构数据</p>
+</div>
+<div class="flex items-center justify-center text-primary-500"><i data-lucide="arrow-right"></i></div>
+<div class="p-4 rounded-lg bg-accent-100 dark:bg-accent-900/30">
+<strong>Ontology</strong><p class="text-xs mt-2">实体与业务关系</p>
+</div>
+<div class="flex items-center justify-center text-primary-500"><i data-lucide="arrow-right"></i></div>
+<div class="p-4 rounded-lg bg-primary-100 dark:bg-primary-900/30">
+<strong>AI决策/执行</strong><p class="text-xs mt-2">模型与工作流</p>
+</div>
+</div>
+<div class="mt-3 grid md:grid-cols-2 gap-3">
+<div class="p-4 rounded-lg bg-accent-100 dark:bg-accent-900/30 text-center">
+<strong>业务成果</strong><p class="text-xs mt-2">降低成本、提高效率、改善决策</p>
+</div>
+<div class="p-4 rounded-lg bg-primary-100 dark:bg-primary-900/30 text-center">
+<strong>续约与扩容</strong><p class="text-xs mt-2">提高客户支出与平台渗透</p>
+</div>
+</div>
+</div>
+
+<div class="mt-6 p-4 border-l-4 border-primary-500 bg-primary-50/50 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm leading-relaxed text-primary-900 dark:text-primary-100">
+<strong>经济模型：</strong>Palantir通过高价值合同获得收入，客户初始部署后持续增加应用场景、用户及数据连接，逐渐扩大合同金额。销售模式偏向解决方案销售和价值证明，客户成功后可能扩展至多个部门，带来较高客户生命周期价值。但这种模式需要较强的销售、实施与客户协作能力，不能简单视为纯自助式SaaS。
+</p>
+</div>
+
+<div class="mt-8">
+<h3 class="text-xl font-semibold mb-4 text-primary-700 dark:text-primary-300">收入结构变化：政府基础转向商业AI扩张</h3>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="p-5 bg-white dark:bg-gray-800 rounded-xl border">
+<div class="text-sm text-gray-500">2025全年收入</div>
+<div class="text-2xl font-bold mt-2">$4.475B</div>
+<div class="text-sm text-green-600 mt-1">同比 +56%</div>
+</div>
+<div class="p-5 bg-white dark:bg-gray-800 rounded-xl border">
+<div class="text-sm text-gray-500">2026 Q3美国商业收入</div>
+<div class="text-2xl font-bold mt-2">$984M</div>
+<div class="text-sm text-green-600 mt-1">同比 +148%</div>
+</div>
+<div class="p-5 bg-white dark:bg-gray-800 rounded-xl border">
+<div class="text-sm text-gray-500">Q3商业收入超过美国政府</div>
+<div class="text-2xl font-bold mt-2">首次</div>
+<div class="text-sm text-primary-600 mt-1">增长结构出现转折</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-500 mt-4">
+数据来源：2025年10-K、2026年Q3业绩公告及股东信。<a class="source-link" target="_blank" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/pltr-20251231.htm">2025 10-K</a> ·
+<a class="source-link" target="_blank" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/a2026q3ex991pressrelease.htm">Q3 2026业绩公告</a>
+</p>
+</div>
+</section>
+
+<!-- 二 护城河 -->
+<section id="moat" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"><i data-lucide="shield-check" class="w-5 h-5 text-accent-600"></i></div>
+<h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">二、竞争优势：护城河评估</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+Palantir的护城河不是某个AI模型本身，而是数据整合、Ontology、权限管理、业务流程、部署环境和组织决策之间的系统级整合。AI模型能力日趋商品化后，真正的竞争可能从模型转向“模型如何可靠地接入企业真实流程”。
+</p>
+
+<div class="space-y-5">
+
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">品牌实力</h3>
+<span class="text-2xl font-bold text-primary-600">8.5<span class="text-sm font-normal text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:85%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+在政府情报、国防和高安全等级数据软件领域具有强品牌认知。2026年AIP增长进一步将品牌拓展至商业AI市场。但其品牌仍偏专业、企业级，不是大众消费者品牌；在普通企业软件客户中的知名度与Microsoft、AWS、Google相比仍存在差距。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">网络效应</h3>
+<span class="text-2xl font-bold text-primary-600">6.5<span class="text-sm font-normal text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:65%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Palantir不是典型消费者社交平台，没有直接的用户规模网络效应。但随着企业内部更多部门、数据源、应用、AI Agent接入Ontology，平台价值会在客户内部呈现“应用网络效应”。跨客户数据并不会因平台使用而自动共享，因此网络效应更多是组织内部和合作生态层面。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">转换成本</h3>
+<span class="text-2xl font-bold text-primary-600">9.0<span class="text-sm font-normal text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:90%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+当平台成为关键业务系统后，客户需要迁移数据模型、权限体系、工作流、AI应用、历史配置和员工使用习惯。替换不仅是软件采购，更可能是业务流程重构。因此大型客户成功部署后，转换成本较高。但必须注意：合同价格、部署时间、平台复杂度也可能成为客户不续约的理由。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">成本优势</h3>
+<span class="text-2xl font-bold text-primary-600">7.0<span class="text-sm font-normal text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:70%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+软件平台的边际交付成本低于传统咨询和人力密集服务；成熟的Ontology、数据连接器、部署技术及应用模板可以复用。但Palantir仍需较高销售和客户实施投入，不能完全依靠规模经济。它并非云计算基础设施成本最低的提供者，成本优势主要体现为客户整体运营效率。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow">
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">专利与自有技术</h3>
+<span class="text-2xl font-bold text-primary-600">9.0<span class="text-sm font-normal text-gray-400">/10</span></span>
+</div>
+<div class="moat-bar mb-3"><div class="moat-fill" style="width:90%"></div></div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+核心壁垒主要来自多年积累的软件架构、Ontology、数据治理、权限体系、跨环境部署与运营经验，而非仅依赖专利。尤其在复杂、敏感、实时业务环境中的产品工程能力具有较高复制难度。专利评分不代表专利数量排名，而是综合评估技术体系的独特性与商业可复制性。
+</p>
+</div>
+
+</div>
+
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">与主要竞争对手的护城河比较</h3>
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+<table class="bg-white dark:bg-gray-900 text-sm">
+<thead class="bg-primary-50 dark:bg-primary-900/30">
+<tr>
+<th>维度</th><th>Palantir</th><th>Microsoft</th><th>Snowflake</th><th>Databricks</th><th>传统咨询</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>品牌</td><td class="font-bold text-primary-600">8.5</td><td>9.5</td><td>8.0</td><td>8.0</td><td>9.0</td></tr>
+<tr><td>网络效应</td><td>6.5</td><td class="font-bold">9.0</td><td>8.5</td><td>8.0</td><td>5.0</td></tr>
+<tr><td>转换成本</td><td class="font-bold text-primary-600">9.0</td><td>8.5</td><td>8.0</td><td>8.0</td><td>6.0</td></tr>
+<tr><td>成本优势</td><td>7.0</td><td>8.5</td><td>8.0</td><td>8.0</td><td>4.0</td></tr>
+<tr><td>技术壁垒</td><td class="font-bold text-primary-600">9.0</td><td>9.0</td><td>8.5</td><td>9.0</td><td>5.0</td></tr>
+<tr><td><strong>综合护城河</strong></td><td><strong class="text-primary-600">8.0</strong></td><td><strong>8.9</strong></td><td><strong>8.2</strong></td><td><strong>8.2</strong></td><td><strong>5.8</strong></td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 mt-3">评分为本报告研究者主观框架评估，并非官方统计。不同公司的商业模式、客户类型与产品定位不同，分数仅用于辅助比较。</p>
+</div>
+
+<div class="mt-6 p-5 border-l-4 border-accent-500 bg-accent-50/50 dark:bg-accent-900/30 rounded-r-lg">
+<strong class="text-accent-800 dark:text-accent-200">综合护城河：8.0/10。</strong>
+Palantir的核心优势是将AI与企业业务流程深度融合。真正的竞争壁垒不是“拥有更聪明的模型”，而是“让AI在企业数据、权限、安全和实际流程中持续可靠地创造价值”。风险在于大型科技公司正将AI功能快速嵌入现有软件生态。
+</div>
+</div>
+</section>
+
+<!-- 三 行业趋势 -->
+<section id="industry" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"><i data-lucide="trending-up" class="w-5 h-5 text-primary-600"></i></div>
+<h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">三、行业趋势</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+企业AI软件正从模型能力竞争转向商业价值兑现阶段。2024–2026年的关键变化是企业不再满足于聊天机器人和概念验证，而开始要求AI接入ERP、供应链、生产、金融、客户服务和决策流程。Palantir正处于这一结构性趋势的有利位置。
+</p>
+
+<div class="grid md:grid-cols-2 gap-5">
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3"><i data-lucide="rocket" class="inline w-5 h-5"></i> 企业AI由试验进入生产</h3>
+<ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+<li>• AI应用从个人辅助工具向部门级工作流升级</li>
+<li>• 企业更关注投资回报、可靠性和权限治理</li>
+<li>• AI Agent需要调用企业系统并执行实际操作</li>
+<li>• 数据质量和流程整合成为AI落地瓶颈</li>
+</ul>
+</div>
+
+<div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3"><i data-lucide="lock" class="inline w-5 h-5"></i> 企业数据与AI安全治理</h3>
+<ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+<li>• 企业要求AI严格遵守身份、权限和数据边界</li>
+<li>• 监管行业需要可追溯、可审计的AI决策</li>
+<li>• 私有化、主权AI和边缘部署需求提升</li>
+<li>• AI系统的安全与治理成为采购关键条件</li>
+</ul>
+</div>
+
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3"><i data-lucide="database" class="inline w-5 h-5"></i> 数据平台价值重新定义</h3>
+<ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+<li>• 单纯存储和分析数据的价值被压缩</li>
+<li>• 数据语义层、Ontology、流程引擎重要性提高</li>
+<li>• 数据平台与AI平台边界逐渐模糊</li>
+<li>• AI应用的结果质量取决于企业上下文</li>
+</ul>
+</div>
+
+<div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3"><i data-lucide="globe" class="inline w-5 h-5"></i> 国防与主权AI支出</h3>
+<ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+<li>• 国家安全与国防现代化推动软件采购</li>
+<li>• 数据主权与本地部署需求增长</li>
+<li>• AI辅助情报、物流和作战规划快速发展</li>
+<li>• 政府客户合同周期长、壁垒高，但受预算制约</li>
+</ul>
+</div>
+</div>
+
+<div class="mt-8 p-5 bg-gray-50 dark:bg-gray-800 rounded-xl">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">行业竞争结构正在发生变化</h3>
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+竞争者不再仅仅是传统数据分析公司。Microsoft凭借Azure、Copilot和企业客户渠道，Google拥有云平台与模型能力，AWS具备基础设施优势，Snowflake和Databricks争夺数据平台及AI应用入口。Palantir的差异化定位是将数据、业务语义、权限、安全、AI和工作流统一为操作系统级产品。
+</p>
+</div>
+</div>
+</section>
+
+<!-- 四 财务 -->
+<section id="financial" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"><i data-lucide="chart-no-axes-combined" class="w-5 h-5 text-accent-600"></i></div>
+<h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">四、财务状况</h2>
+</div>
+
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+Palantir已经完成从长期亏损、股权激励占比高的成长公司向大规模盈利、强现金流软件公司的转型。2021–2025年收入连续增长，2022年仍处于GAAP亏损阶段，2023年转正，2024–2025年利润快速增长。2026年前三季度进一步加速。财务质量强，但仍需注意股票薪酬对利润与股东稀释的影响。
+</p>
+
+<!-- 5年财务表 -->
+<div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8">
+<table class="bg-white/90 dark:bg-gray-900 text-sm">
+<thead class="bg-accent-50 dark:bg-accent-900/30">
+<tr>
+<th>财务指标（百万美元）</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+<th>2024</th>
+<th>2025</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="font-medium">营业收入</td><td>1,542</td><td>1,906</td><td>2,225</td><td>2,866</td><td class="font-bold text-primary-600">4,475</td></tr>
+<tr><td>收入同比增长</td><td>—</td><td>+24%</td><td>+17%</td><td>+29%</td><td class="text-green-600">+56%</td></tr>
+<tr><td>GAAP营业利润</td><td>-411</td><td>-161</td><td>120</td><td>310</td><td class="text-green-600">1,414</td></tr>
+<tr><td>归属普通股股东净利润</td><td>-520</td><td>-374</td><td>210</td><td>462</td><td class="text-green-600">1,625</td></tr>
+<tr><td>净利润率</td><td>-33.7%</td><td>-19.6%</td><td>9.4%</td><td>16.1%</td><td class="text-green-600">36.3%</td></tr>
+<tr><td>GAAP营业利润率</td><td>-26.7%</td><td>-8.5%</td><td>5.4%</td><td>10.8%</td><td class="text-green-600">31.6%</td></tr>
+<tr><td>自由现金流（估算/数据库口径）</td><td>321</td><td>184</td><td>697</td><td>1,141</td><td>2,101</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="text-xs text-gray-500 mb-8">
+注：2021–2025年数据以公司10-K及公开财务数据库整理；自由现金流可能因普通FCF与公司调整后FCF定义不同而存在口径差异。2021–2022为GAAP亏损时期，2023年开始转正。
+来源：
+<a class="source-link" target="_blank" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/pltr-20251231.htm">2025年10-K</a>、
+<a class="source-link" target="_blank" href="https://stockanalysis.com/stocks/pltr/financials/income-statement/">StockAnalysis历史财务数据</a>
+</p>
+
+<!-- Revenue chart -->
+<div class="card-interactive bg-white dark:bg-gray-900 rounded-xl p-6 shadow mb-8">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">五年收入趋势</h3>
+<div class="grid grid-cols-5 gap-3 items-end h-56">
+<div class="text-center">
+<div class="mx-auto bg-primary-400 rounded-t-lg w-full" style="height:62px"></div>
+<div class="text-sm font-bold mt-2">1,542</div><div class="text-xs text-gray-500">2021</div>
+</div>
+<div class="text-center">
+<div class="mx-auto bg-primary-500 rounded-t-lg w-full" style="height:77px"></div>
+<div class="text-sm font-bold mt-2">1,906</div><div class="text-xs text-gray-500">2022</div>
+</div>
+<div class="text-center">
+<div class="mx-auto bg-primary-500 rounded-t-lg w-full" style="height:90px"></div>
+<div class="text-sm font-bold mt-2">2,225</div><div class="text-xs text-gray-500">2023</div>
+</div>
+<div class="text-center">
+<div class="mx-auto bg-accent-500 rounded-t-lg w-full" style="height:116px"></div>
+<div class="text-sm font-bold mt-2">2,866</div><div class="text-xs text-gray-500">2024</div>
+</div>
+<div class="text-center">
+<div class="mx-auto bg-accent-600 rounded-t-lg w-full" style="height:181px"></div>
+<div class="text-sm font-bold mt-2">4,475</div><div class="text-xs text-gray-500">2025</div>
+</div>
+</div>
+<div class="text-xs text-gray-500 text-center">单位：百万美元</div>
+</div>
+
+<div class="grid md:grid-cols-2 gap-5 mb-8">
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex gap-2"><i data-lucide="trending-up"></i>收入增长：进入加速阶段</h3>
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+2021年收入15.42亿美元，2025年增长至44.75亿美元，五年复合增长率约30%。2025年同比增长56%，明显高于此前年份。增长驱动从政府合同逐渐扩展至商业客户AI应用。2026年Q3收入23.13亿美元，同比增长96%，全年管理层指引约85.3亿美元，显示增长势头仍在加速。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex gap-2"><i data-lucide="coins"></i>净利润：盈利杠杆释放</h3>
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+2021–2022年GAAP亏损，2023年盈利约2.10亿美元，2024年约4.62亿美元，2025年约16.25亿美元。2025年利润增速明显超过收入增速，反映经营杠杆释放、收入规模扩大及费用控制改善。2026年Q3单季归属普通股净利润约11.28亿美元，盈利水平显著提升。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex gap-2"><i data-lucide="wallet"></i>自由现金流：现金创造能力突出</h3>
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+2025年公司经营现金流约21.34亿美元，调整后自由现金流约22.70亿美元，调整后FCF率约51%。2026年Q3单季经营现金流12.05亿美元，调整后FCF约12.16亿美元，FCF率53%。资本开支相对较轻，软件业务规模扩大带来现金流快速增长。需要注意FCF与调整后FCF定义不同，以及SBC作为非现金项目仍具有经济成本。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex gap-2"><i data-lucide="scale"></i>利润率：软件平台的高盈利特征</h3>
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+2025年GAAP营业利润率约31.6%，调整后营业利润率约50%；2026年Q3 GAAP营业利润率约47%，调整后营业利润率约62%。软件收入增长带来规模效应，但调整后利润率剔除了部分股票薪酬等费用，因此GAAP与调整后指标必须同时观察。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex gap-2"><i data-lucide="shield"></i>债务水平：资产负债表非常稳健</h3>
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+截至2026年9月30日，公司现金、现金等价物及美国国债合计约104亿美元。公司没有显著有息债务，现有循环信贷额度并未形成重大借款。现金储备可以支持研发、收购、员工激励及经济下行期间的运营，融资风险远低于传统高杠杆企业。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex gap-2"><i data-lucide="percent"></i>股本回报率（ROE）</h3>
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+Palantir从亏损阶段转向大规模盈利后，ROE快速改善。2025年归母净利润约16.25亿美元，平均股东权益较高且现金储备充裕，因此ROE不能简单与轻资产、高回购公司直接比较。股权激励与股本扩张也会改变ROE。基于现有财务表现，ROE方向显著改善，但应结合平均权益与最新TTM数据计算，避免仅用年末净资产产生失真。
+</p>
+</div>
+</div>
+
+<!-- 最新季度 -->
+<div class="card-interactive p-8 bg-white dark:bg-gray-900 rounded-xl shadow mb-8">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">2026 Q3最新季度：经营进入高速增长区间</h3>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+<div class="text-2xl font-bold text-primary-600">$2.313B</div>
+<div class="text-xs text-gray-500 mt-1">季度收入</div>
+</div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+<div class="text-2xl font-bold text-accent-600">96%</div>
+<div class="text-xs text-gray-500 mt-1">同比增长</div>
+</div>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+<div class="text-2xl font-bold text-primary-600">47%</div>
+<div class="text-xs text-gray-500 mt-1">GAAP营业利润率</div>
+</div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+<div class="text-2xl font-bold text-accent-600">53%</div>
+<div class="text-xs text-gray-500 mt-1">调整后FCF率</div>
+</div>
+</div>
+<div class="mt-5 grid md:grid-cols-2 gap-4 text-sm">
+<div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+<strong>美国商业收入：</strong>$984M，同比增长148%，环比增长29%。首次超过美国政府收入，意味着商业AI成为增长核心。
+</div>
+<div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+<strong>美国政府收入：</strong>$953M，同比增长96%。政府和国防AI需求仍然强劲，商业增长没有替代政府业务，而是扩展了公司增长结构。
+</div>
+</div>
+</div>
+
+<!-- 财务判断 -->
+<div class="p-6 rounded-xl bg-primary-50 dark:bg-primary-900/30 border-l-4 border-primary-500">
+<h3 class="text-xl font-bold text-primary-700 dark:text-primary-300 mb-3">财务健康度综合判断</h3>
+<div class="grid md:grid-cols-4 gap-4 mb-4">
+<div class="text-center"><div class="text-2xl font-bold text-green-600">优秀</div><div class="text-xs text-gray-500">增长质量</div></div>
+<div class="text-center"><div class="text-2xl font-bold text-green-600">优秀</div><div class="text-xs text-gray-500">盈利能力</div></div>
+<div class="text-center"><div class="text-2xl font-bold text-green-600">极强</div><div class="text-xs text-gray-500">现金流</div></div>
+<div class="text-center"><div class="text-2xl font-bold text-green-600">极低</div><div class="text-xs text-gray-500">债务风险</div></div>
+</div>
+<p class="text-sm text-primary-900 dark:text-primary-100 leading-relaxed">
+综合来看，Palantir财务状况<strong>稳健且快速改善，并非下滑公司</strong>。其风险主要不是资金链、债务或经营亏损，而是增长能否持续、股票薪酬稀释是否下降以及市场估值是否提前透支未来盈利。
+</p>
+</div>
+</div>
+</section>
+
+<!-- 五 估值 -->
+<section id="valuation" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"><i data-lucide="calculator" class="w-5 h-5 text-primary-600"></i></div>
+<h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">五、估值分析</h2>
+</div>
+
+<div class="p-5 rounded-xl border border-orange-300 bg-orange-50 dark:bg-orange-900/20 mb-8">
+<strong class="text-orange-700 dark:text-orange-300">估值方法说明：</strong>
+Palantir处于超高速增长阶段，单纯使用传统成熟软件公司的PE均值会低估成长性；但将增长率无限外推也会高估价值。本报告采用市场倍数与DCF双重框架，并通过情景假设进行敏感性分析。市场价格、EPS及行业倍数因数据供应商和交易时间差异可能存在偏差，以下为研究估算，不是实时行情。
+</div>
+
+<!-- PE -->
+<div class="grid md:grid-cols-2 gap-5 mb-8">
+<div class="card-interactive p-6 bg-primary-50/60 dark:bg-primary-900/20 rounded-xl shadow">
+<h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">市盈率（P/E）估值对比</h3>
+<div class="space-y-4">
+<div class="flex justify-between"><span>Palantir（参考市场估值）</span><strong class="text-red-500">约120–160x TTM</strong></div>
+<div class="flex justify-between"><span>Microsoft（成熟AI龙头）</span><strong>约25–40x</strong></div>
+<div class="flex justify-between"><span>Snowflake（高增长数据软件）</span><strong>盈利口径差异较大</strong></div>
+<div class="flex justify-between"><span>Datadog（高增长软件）</span><strong>约40–80x</strong></div>
+<div class="flex justify-between border-t pt-3"><span>大型软件行业成熟估值</span><strong>约25–40x</strong></div>
+</div>
+<p class="text-xs text-gray-500 mt-4">
+以上为行业估值区间的概括性参考，并非统一日期的精确行情横向比较。PLTR倍数因股价、稀释后EPS及未来盈利预测不同而波动。其高PE意味着市场正在支付未来数年的高速增长。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-accent-50/60 dark:bg-accent-900/20 rounded-xl shadow">
+<h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">估值逻辑：市场买的是未来</h3>
+<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+<li>• <strong>高增长溢价：</strong>2026年收入指引约85亿美元，同比增长约91%。</li>
+<li>• <strong>盈利质量：</strong>GAAP利润率和现金流率持续提升。</li>
+<li>• <strong>AI平台溢价：</strong>市场认为企业AI应用处于早期扩张阶段。</li>
+<li>• <strong>风险：</strong>如果增长从90%下降到30%–40%，估值可能快速压缩。</li>
+</ul>
+</div>
+</div>
+
+<!-- DCF -->
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow mb-8">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex gap-2"><i data-lucide="line-chart"></i>现金流折现（DCF）估值模型</h3>
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mb-4">
+DCF使用未来自由现金流折现估算企业价值。Palantir当前FCF基数大，但未来收入增速和利润率的变化决定价值。模型以2026年调整后FCF约48–50亿美元的公司指引作为基准，未来五年收入增速逐步回落，并假设长期自由现金流利润率维持较高水平。为防止将股权薪酬视为完全免费，估值折扣应考虑稀释。
+</p>
+
+<div class="overflow-x-auto">
+<table class="bg-white dark:bg-gray-900 text-sm">
+<thead class="bg-primary-50 dark:bg-primary-900/30">
+<tr><th>DCF假设</th><th>悲观</th><th>基准</th><th>乐观</th></tr>
+</thead>
+<tbody>
+<tr><td>未来5年收入CAGR</td><td>25%</td><td>35%</td><td>45%</td></tr>
+<tr><td>长期FCF利润率</td><td>35%</td><td>45%</td><td>50%</td></tr>
+<tr><td>折现率/WACC</td><td>10.5%</td><td>9.5%</td><td>8.5%</td></tr>
+<tr><td>永续增长率</td><td>2.5%</td><td>3.0%</td><td>3.5%</td></tr>
+<tr><td>增长持续性</td><td>中低</td><td>较高</td><td>极高</td></tr>
+<tr><td>估值结论</td><td>显著低于市场</td><td>低于市场</td><td>可能接近市场</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid md:grid-cols-3 gap-4 mt-6">
+<div class="p-5 bg-red-50 dark:bg-red-900/20 rounded-lg text-center">
+<div class="text-lg font-bold text-red-600">悲观情景</div>
+<div class="text-sm mt-2">企业AI预算放缓、增长回归正常</div>
+<div class="text-xs text-gray-500 mt-2">DCF价值显著下降</div>
+</div>
+<div class="p-5 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+<div class="text-lg font-bold text-primary-600">基准情景</div>
+<div class="text-sm mt-2">增长逐步放缓但利润率维持</div>
+<div class="text-xs text-gray-500 mt-2">估值仍低于当前高溢价</div>
+</div>
+<div class="p-5 bg-green-50 dark:bg-green-900/20 rounded-lg text-center">
+<div class="text-lg font-bold text-green-600">乐观情景</div>
+<div class="text-sm mt-2">AIP持续扩张、长期增长超预期</div>
+<div class="text-xs text-gray-500 mt-2">当前估值可能合理化</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-500 mt-5">
+DCF的主要限制：Palantir处于高增长阶段，模型对收入增长、利润率、折现率和终值高度敏感。不同假设可导致数倍估值差异。因此本报告不将DCF伪装成精确目标价，而使用情景框架评估风险回报。
+</p>
+</div>
+
+<!-- Valuation conclusion -->
+<div class="p-6 border-l-4 border-red-500 rounded-r-lg bg-red-50 dark:bg-red-900/20">
+<h3 class="text-xl font-bold text-red-700 dark:text-red-300 mb-3">估值结论：公司优秀，股票价格包含高预期</h3>
+<p class="leading-relaxed text-sm text-gray-700 dark:text-gray-300">
+以2026年11月市场价格及公司最新盈利水平来看，PLTR的估值远高于传统软件行业。投资者不仅在购买当前收入和利润，更在提前支付企业AI未来多年商业化成功的价值。若收入增长、AIP客户扩张、利润率和FCF持续超预期，极高估值可以维持；若增长降速、竞争压价或AI资本开支回报低于预期，股价可能面临盈利与估值双重下修。<strong>综合判断：从传统估值框架看偏高/高估；从极高增长的长期情景看，存在合理化可能，但安全边际有限。</strong>
+</p>
+</div>
+</div>
+</section>
+
+<!-- 六 展望 -->
+<section id="outlook" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center"><i data-lucide="calendar-clock" class="w-5 h-5 text-accent-600"></i></div>
+<h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">六、经营展望：未来12–24个月</h2>
+</div>
+
+<div class="space-y-5">
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">1. AIP将成为商业增长主引擎</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+AIP通过Bootcamp模式快速展示AI在真实业务中的效果，减少客户从概念到部署的决策周期。2026年Q3美国商业收入同比增长148%，是最有力的商业化证据。未来增长取决于试点转合同、合同扩张及客户使用场景能否持续增加。投资者应关注客户数、合同金额、净留存和商业收入增速，而非只关注宣传案例。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">2. 企业AI从“助手”升级为“执行Agent”</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+未来AI不只是回答问题，而是能够查询企业系统、分析异常、提出决策并执行受控工作流。Ontology为Agent提供业务语义与权限边界，是Palantir的重要战略资产。若企业AI Agent从试点走向规模部署，平台支出可能随应用数量、计算需求和业务流程深度增加。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">3. 主权AI与国防业务有望持续增长</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+各国政府对本地AI、国防软件、数据主权、情报分析和安全部署的需求增强。Palantir在政府、国防和高安全等级场景具有长期经验。未来海外主权AI项目可拓展市场，但涉及政府预算、政治变化、采购周期和出口管制，收入增长可能不均匀。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">4. 平台扩张与客户钱包份额</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+客户先部署单一应用，再扩展到供应链、生产、财务、销售、风险管理和多个部门。客户内部扩张可能比单纯新增客户更重要。2026 Q3披露的百万美元级合同数量继续增加，说明大客户合同能力正在提升。但高额合同也意味着单个项目延期或终止可能造成季度收入波动。
+</p>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow">
+<h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">5. 增长逐步正常化后的经营杠杆</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+在极高增长阶段结束后，公司能否保持45%上下的现金流利润率与较高GAAP营业利润率，将决定长期价值。规模扩大后，研发、销售和支持团队增长是否低于收入增速，是持续释放经营杠杆的关键。员工股票薪酬、招聘、海外扩张与销售效率将影响利润质量。
+</p>
+</div>
+</div>
+
+<div class="mt-8 p-6 rounded-xl bg-primary-50 dark:bg-primary-900/30 border-l-4 border-primary-500">
+<h3 class="font-bold text-primary-700 dark:text-primary-300 mb-3">未来两年关键经营路径</h3>
+<div class="grid md:grid-cols-3 gap-4 text-center">
+<div class="p-4 rounded-lg bg-white dark:bg-gray-800">
+<div class="font-bold">2027</div>
+<div class="text-sm mt-2">AI试点转正式部署</div>
+<div class="text-xs text-gray-500 mt-1">商业合同扩张</div>
+</div>
+<div class="p-4 rounded-lg bg-white dark:bg-gray-800">
+<div class="font-bold">2027–2028</div>
+<div class="text-sm mt-2">AI Agent规模化应用</div>
+<div class="text-xs text-gray-500 mt-1">客户多部门渗透</div>
+</div>
+<div class="p-4 rounded-lg bg-white dark:bg-gray-800">
+<div class="font-bold">2028</div>
+<div class="text-sm mt-2">增长与利润率验证</div>
+<div class="text-xs text-gray-500 mt-1">现金流持续增长</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 七 风险 -->
+<section id="risk" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center"><i data-lucide="alert-triangle" class="w-5 h-5 text-red-600"></i></div>
+<h2 class="text-3xl font-bold text-red-700 dark:text-red-400">七、风险识别</h2>
+</div>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">按对股价与长期投资回报潜在危害排序，综合考虑概率、影响程度及可逆性。</p>
+
+<div class="space-y-4">
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-red-600">
+<div class="flex gap-4 items-start">
+<div class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400">1</div>
+<div>
+<h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2">估值风险 — 最大风险</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Palantir的股票价格包含对未来高速增长、AI商业化和高利润率的巨大预期。即使公司持续增长，只要增速低于市场预期、未来指引下调或风险偏好下降，估值倍数也可能大幅收缩。高PE股票的风险不一定来自业务恶化，而可能来自“增长仍很好，但没有市场预期那么好”。这是当前投资最核心的风险。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-orange-500">
+<div class="flex gap-4 items-start">
+<div class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400">2</div>
+<div>
+<h3 class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2">竞争风险 — 巨头平台化与AI商品化</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Microsoft、Google、AWS、Oracle等拥有云基础设施、模型、企业渠道和资本实力。它们可能把数据整合、AI Agent、权限治理和工作流能力打包进现有企业合同，降低客户单独购买Palantir的意愿。AI模型本身逐渐开源或商品化，也可能压缩平台溢价。Palantir必须持续证明其独立平台价值。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-yellow-500">
+<div class="flex gap-4 items-start">
+<div class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400">3</div>
+<div>
+<h3 class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2">行业颠覆 — AI技术快速演化</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+基础模型性能持续改善，AI开发工具、自动化Agent、数据语义层与企业平台不断演进。若未来AI应用可以通过更简单、低成本的技术栈构建，Ontology、复杂部署和集成能力的稀缺性可能下降。技术领先需要持续研发投入，当前领先并不保证未来领先。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-blue-500">
+<div class="flex gap-4 items-start">
+<div class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400">4</div>
+<div>
+<h3 class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2">监管威胁 — 隐私、监控、AI责任</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+Palantir产品涉及政府、国防、情报和数据分析场景。隐私保护、数据使用合法性、AI决策责任、跨境数据、出口限制、政府采购和伦理争议可能影响客户合同、品牌和市场准入。监管趋严可能增加合规成本或限制部分应用。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-purple-500">
+<div class="flex gap-4 items-start">
+<div class="risk-badge bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-400">5</div>
+<div>
+<h3 class="font-semibold text-lg text-purple-700 dark:text-purple-400 mb-2">经济风险 — 企业AI预算与宏观周期</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+经济放缓可能导致企业削减软件预算、延后大型数字化项目或压缩合同规模。虽然AI属于战略投资，但从试点到生产仍需预算审批。政府业务受预算、政治周期和采购政策影响。高增长时期的合同增长可能在宏观环境恶化时出现明显波动。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-green-500">
+<div class="flex gap-4 items-start">
+<div class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400">6</div>
+<div>
+<h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2">债务及财务风险 — 当前较低</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+截至2026年Q3，公司现金及美国国债约104亿美元、无重大债务负担，财务风险极低。但需持续监控并购、现金管理、股票回购、员工薪酬与潜在资本配置决策。公司面临的是估值和经营执行风险，而非短期偿债危机。
+</p>
+</div>
+</div>
+</div>
+
+<div class="card-interactive p-6 bg-white dark:bg-gray-900 rounded-xl shadow border-l-4 border-gray-500">
+<div class="flex gap-4 items-start">
+<div class="risk-badge bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">7</div>
+<div>
+<h3 class="font-semibold text-lg text-gray-700 dark:text-gray-300 mb-2">股权稀释与股票薪酬</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+股票薪酬是软件公司吸引人才的重要机制，但持续较高SBC会增加稀释股数，并使GAAP盈利与调整后盈利之间存在差异。2026年前三季度SBC约7.86亿美元，同比增长约61%。投资者应关注稀释后股数增长、SBC占收入比及管理层是否提高回购力度抵消稀释。
+</p>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="mt-8 p-5 rounded-xl bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500">
+<strong class="text-red-700 dark:text-red-300">风险排序结论：</strong>
+PLTR当前最大的风险是市场估值与增长预期之间的失衡，其次是大型科技公司的竞争、AI技术变化和监管。财务风险反而处于较低水平。对于投资者，最重要的问题不是“公司会不会倒闭”，而是“未来几年增长能否足以支撑当前股价”。
+</div>
+</div>
+</section>
+
+<!-- 八 多空 -->
+<section id="longshort" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center"><i data-lucide="scale" class="w-5 h-5 text-primary-600"></i></div>
+<h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">八、多空视角：机构投资组合经理评估</h2>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6 mb-8">
+<div class="card-interactive p-6 bg-green-50/70 dark:bg-green-900/20 rounded-xl shadow border border-green-200 dark:border-green-800">
+<h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex gap-2"><i data-lucide="thumbs-up"></i>可能买入的原因</h3>
+<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+<li><strong>企业AI商业化兑现：</strong>Q3美国商业收入同比增长148%，AI从概念进入真实付费业务。</li>
+<li><strong>增长速度极高：</strong>2026年全年收入指引约85.3亿美元，增长约91%。</li>
+<li><strong>高质量护城河：</strong>Ontology、数据治理、权限和工作流构成系统级壁垒。</li>
+<li><strong>高利润率：</strong>Q3 GAAP营业利润率约47%，调整后营业利润率约62%。</li>
+<li><strong>现金流强：</strong>Q3调整后FCF率约53%，财务稳健。</li>
+<li><strong>政府业务稳定：</strong>国防与情报领域长期合同为业务提供基本盘。</li>
+<li><strong>潜在长期市场巨大：</strong>企业AI应用、Agent和主权AI可能成为长期增长市场。</li>
+</ul>
+</div>
+
+<div class="card-interactive p-6 bg-red-50/70 dark:bg-red-900/20 rounded-xl shadow border border-red-200 dark:border-red-800">
+<h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex gap-2"><i data-lucide="thumbs-down"></i>可能回避的原因</h3>
+<ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+<li><strong>估值过高：</strong>传统PE、DCF和现金流收益率都难以支持现价，市场已预期多年增长。</li>
+<li><strong>增长预期苛刻：</strong>只要商业收入增长减速或指引低于预期，可能引发快速估值压缩。</li>
+<li><strong>巨头竞争：</strong>Microsoft、Google、AWS拥有更广渠道和更强资本投入能力。</li>
+<li><strong>客户集中和项目周期：</strong>大型合同采购时间不均匀，可能带来季度波动。</li>
+<li><strong>SBC稀释：</strong>高额股票薪酬影响长期股东每股价值。</li>
+<li><strong>技术不确定性：</strong>AI平台的竞争格局尚未稳定，未来可能出现新的技术范式。</li>
+<li><strong>安全与政治争议：</strong>政府和敏感行业业务可能受到监管或声誉冲击。</li>
+</ul>
+</div>
+</div>
+
+<!-- Key metrics -->
+<div class="card-interactive p-8 bg-white dark:bg-gray-900 rounded-xl shadow mb-8">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-5">机构投资者应跟踪的六个核心指标</h3>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+<i data-lucide="trending-up" class="w-6 h-6 mx-auto text-primary-600 mb-2"></i>
+<strong class="text-sm">美国商业收入增速</strong>
+<p class="text-xs text-gray-500 mt-2">观察是否持续高于整体增长，并保持较强环比动能。</p>
+</div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+<i data-lucide="users" class="w-6 h-6 mx-auto text-accent-600 mb-2"></i>
+<strong class="text-sm">客户数与大客户扩张</strong>
+<p class="text-xs text-gray-500 mt-2">客户新增、百万美元级合同数量、客户钱包份额。</p>
+</div>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+<i data-lucide="repeat" class="w-6 h-6 mx-auto text-primary-600 mb-2"></i>
+<strong class="text-sm">净收入留存率（NRR）</strong>
+<p class="text-xs text-gray-500 mt-2">客户扩张是否持续，平台使用深度是否增加。</p>
+</div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+<i data-lucide="bar-chart-3" class="w-6 h-6 mx-auto text-accent-600 mb-2"></i>
+<strong class="text-sm">GAAP营业利润率</strong>
+<p class="text-xs text-gray-500 mt-2">利润率能否持续扩张，而非仅调整后指标改善。</p>
+</div>
+<div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+<i data-lucide="wallet" class="w-6 h-6 mx-auto text-primary-600 mb-2"></i>
+<strong class="text-sm">FCF与SBC</strong>
+<p class="text-xs text-gray-500 mt-2">现金流增长是否超过股票薪酬和股本稀释速度。</p>
+</div>
+<div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+<i data-lucide="target" class="w-6 h-6 mx-auto text-accent-600 mb-2"></i>
+<strong class="text-sm">未来指引</strong>
+<p class="text-xs text-gray-500 mt-2">季度指引、全年增长率、商业AI需求预期。</p>
+</div>
+</div>
+</div>
+
+<!-- Portfolio strategy -->
+<div class="card-interactive p-8 bg-white dark:bg-gray-900 rounded-xl shadow mb-8">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">投资组合经理的配置策略</h3>
+<div class="overflow-x-auto">
+<table class="text-sm bg-white dark:bg-gray-900">
+<thead class="bg-accent-50 dark:bg-accent-900/30">
+<tr><th>投资风格</th><th>策略</th><th>PLTR定位</th><th>主要条件</th></tr>
+</thead>
+<tbody>
+<tr><td>保守型</td><td>回避追高 / 等待估值调整</td><td>观察名单</td><td>等待估值回归合理区间</td></tr>
+<tr><td>成长型</td><td>小仓位分批配置</td><td>AI成长卫星仓</td><td>增长与指引持续超预期</td></tr>
+<tr><td>高风险成长型</td><td>积极持有但控制集中度</td><td>核心AI主题仓</td><td>接受高波动和高估值</td></tr>
+<tr><td>价值型</td><td>暂不买入</td><td>估值不符合安全边际</td><td>等待FCF收益率提高</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-4">
+对于机构投资者，不宜仅因为AI赛道优质而无限提高持仓。高成长公司可以成为组合中的战略资产，但仓位应根据估值、波动率、相关性、增长兑现概率及风险预算确定。
+</p>
+</div>
+
+<!-- Investment thesis -->
+<div class="p-6 border-l-4 border-primary-500 bg-primary-50/50 dark:bg-primary-900/30 rounded-r-lg">
+<h3 class="text-xl font-bold text-primary-700 dark:text-primary-300 mb-4">最终投资论点</h3>
+<p class="leading-relaxed text-gray-700 dark:text-gray-300">
+Palantir是AI企业软件领域中极具竞争力的公司。其政府业务积累了高安全等级数据能力，Foundry和Ontology解决企业数据与流程整合，AIP推动生成式AI进入实际业务，Apollo则支持复杂环境下的持续部署。2026年商业收入高速增长、盈利能力和现金流进一步改善，说明公司不再只是AI概念股，而是已经出现真实商业兑现。
+</p>
+<p class="leading-relaxed text-gray-700 dark:text-gray-300 mt-4">
+<strong>但股票投资需要区分“公司价值”与“股票价格”。</strong>当前估值已经反映对未来多年高增长、高利润率和AI平台成功的期待。长期投资的关键不只是公司能否增长，而是增长能否超过市场已经预期的水平。若商业AI持续扩张，Palantir有机会成为长期AI基础设施与应用平台赢家；若增长逐渐正常化，估值压缩可能让优秀企业的股价在较长时期内表现不佳。
+</p>
+<p class="leading-relaxed font-semibold text-primary-800 dark:text-primary-200 mt-4">
+研究结论：长期业务质量——高度看好；竞争地位——看好；财务稳健性——优秀；当前估值——偏贵；投资策略——不宜因基本面优秀而无视估值，优先等待估值和增长预期之间出现更合理的风险回报关系。
+</p>
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 mb-4">关于本报告</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本报告对Palantir Technologies Inc.（NASDAQ: PLTR）进行商业模式、竞争优势、行业趋势、财务表现、估值、展望与投资风险分析。研究基准日为2026年11月25日，使用截至当日可获得的公开资料。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 mb-4">主要数据来源</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a target="_blank" class="underline" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000011/pltr-20251231.htm">Palantir 2025 Form 10-K</a></li>
+<li><a target="_blank" class="underline" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000048/pltr-20260930.htm">Palantir 2026 Q3 Form 10-Q</a></li>
+<li><a target="_blank" class="underline" href="https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/a2026q3ex991pressrelease.htm">2026 Q3 Earnings Release</a></li>
+<li><a target="_blank" class="underline" href="https://www.palantir.com/q3-2026-letter/en/">2026 Q3 Shareholder Letter</a></li>
+<li><a target="_blank" class="underline" href="https://investors.palantir.com/files/Palantir%20-%20Q3%202026%20Business%20Update.pdf">Q3 2026 Investor Presentation</a></li>
+<li><a target="_blank" class="underline" href="https://investors.palantir.com/governance/executive-management">Palantir Investor Relations</a></li>
+<li><a target="_blank" class="underline" href="https://stockanalysis.com/stocks/pltr/financials/income-statement/">历史财务数据参考</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本报告仅用于教育、研究和信息参考，不构成投资建议、证券推荐、交易邀约或收益保证。市场价格、估值、财务预测及情景分析可能随数据更新而变化。DCF和护城河评分为分析者假设与判断。投资者应结合个人风险承受能力、投资期限、资产配置及最新公告独立决策。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>Palantir经营分析报告 · PLTR · 生成日期：2026-11-25</p>
+<p class="mt-2">公开资料研究 · AI企业软件 · 价值与成长分析</p>
+</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener("scroll",()=>{
+ const y=document.body.scrollTop||document.documentElement.scrollTop;
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ document.getElementById("progressBar").style.width=(h>0?y/h*100:0)+"%";
+});
+document.addEventListener("DOMContentLoaded",()=>{
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:800,once:true});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

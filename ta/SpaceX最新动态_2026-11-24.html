@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SpaceX（NASDAQ: SPCX）近30日最新动态全景追踪，涵盖公司重大事件、Starship、Starlink、AI算力融资、全球商业航天竞争及宏观政策。">
+<title>SpaceX最新动态全景追踪 · 2026-11-24</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+          300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+          300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+          900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:90px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05)}
+.card-interactive{transition:all .28s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.5)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #d1d5db}
+.dark th,.dark td{border-bottom:1px solid #4b5563}
+.dark th{color:#f9fafb!important}
+.dark td{color:#d1d5db}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%));transition:width .8s}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.dark .text-gray-500{color:#a1aab8}
+.dark .text-gray-600{color:#c5ced9}
+.dark .border-gray-200{border-color:#374151}
+.dark .border-gray-100{border-color:#374151}
+.dark .bg-gray-50{background-color:#202b39}
+.dark .bg-gray-100{background-color:#263445}
+.dark .text-gray-700{color:#d1d9e3}
+.dark .text-gray-900{color:#f9fafb}
+.source-link{color:#c65c24;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#ffb078}
+.source-link:hover{opacity:.75}
+.kpi{background:linear-gradient(135deg,rgba(249,115,22,.09),rgba(245,158,11,.05))}
+.dark .kpi{background:linear-gradient(135deg,rgba(249,115,22,.13),rgba(245,158,11,.06))}
+.timeline-line{border-left:2px solid #f97316}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+}
+</style>
+<script>
+(function initTheme(){
+const inIframe=window.self!==window.top;
+if(inIframe||window.matchMedia('(prefers-color-scheme: dark)').matches){
+document.documentElement.classList.add('dark');
+}
+})();
+function syncThemeIcons(){
+const dark=document.documentElement.classList.contains('dark');
+const sun=document.getElementById('sunIcon');
+const moon=document.getElementById('moonIcon');
+if(sun)sun.style.display=dark?'block':'none';
+if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+document.documentElement.classList.toggle('dark');
+syncThemeIcons();
+}
+function toggleMobileMenu(){
+document.getElementById('mobileMenu')?.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[70]" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-700">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+<h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">SPACEX · 最新动态全景追踪</h1>
+</div>
+<nav class="hidden md:flex items-center space-x-5">
+<a href="#overview" class="text-sm font-medium hover:text-primary-500">总览</a>
+<a href="#company" class="text-sm font-medium hover:text-primary-500">公司Top3</a>
+<a href="#industry" class="text-sm font-medium hover:text-primary-500">行业Top3</a>
+<a href="#macro" class="text-sm font-medium hover:text-primary-500">宏观政策</a>
+<a href="#matrix" class="text-sm font-medium hover:text-primary-500">催化矩阵</a>
+</nav>
+<div class="flex items-center gap-2">
+<button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+<i data-lucide="menu" class="w-4 h-4"></i>
+</button>
+<button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+<i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+<i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+</button>
+</div>
+</div>
+<div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+<nav class="flex flex-col space-y-2.5">
+<a href="#overview" onclick="toggleMobileMenu()" class="text-sm py-1">总览</a>
+<a href="#company" onclick="toggleMobileMenu()" class="text-sm py-1">公司Top3</a>
+<a href="#industry" onclick="toggleMobileMenu()" class="text-sm py-1">行业Top3</a>
+<a href="#macro" onclick="toggleMobileMenu()" class="text-sm py-1">宏观政策</a>
+<a href="#matrix" onclick="toggleMobileMenu()" class="text-sm py-1">催化矩阵</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main class="pt-24 sm:pt-28 pb-16">
+
+<!-- HERO -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-700">
+
+<div class="flex flex-wrap items-center gap-2.5 mb-5">
+<span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-bold font-mono">NASDAQ: SPCX</span>
+<span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300 text-xs font-semibold">商业航天 · 火箭发射 · 卫星互联网 · AI算力</span>
+<span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-semibold">近30日 · 2026-10-26 至 2026-11-24</span>
+<span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-semibold">公开上市公司</span>
+</div>
+
+<h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">Space Exploration Technologies Corp.</h2>
+<p class="text-sm text-primary-600 dark:text-primary-400 font-semibold mb-5">SpaceX · 太空运输与全球空间基础设施平台</p>
+
+<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6 max-w-5xl">
+近30日SpaceX呈现<strong class="text-primary-600 dark:text-primary-400">“AI算力融资扩张、Starship技术突破、Starlink移动通信加速商业化”</strong>三线共振。11月20日约440亿美元GPU融资完成定价，但巨额租赁承诺同步抬升财务杠杆与资本开支压力；技术兑现和监管落地将决定下一阶段估值弹性。
+</p>
+
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+<div class="kpi rounded-xl p-4 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">2026 Q3总营收</div>
+<div class="text-xl sm:text-2xl font-bold font-mono text-gray-900 dark:text-white">$146亿</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">同比 +161%</div>
+</div>
+<div class="kpi rounded-xl p-4 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Starlink消费者订户</div>
+<div class="text-xl sm:text-2xl font-bold font-mono text-gray-900 dark:text-white">1,360万</div>
+<div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">截至 2026-09-30</div>
+</div>
+<div class="kpi rounded-xl p-4 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">GPU融资定价规模</div>
+<div class="text-xl sm:text-2xl font-bold font-mono text-primary-600 dark:text-primary-400">$440亿</div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2026-11-20</div>
+</div>
+<div class="kpi rounded-xl p-4 border border-primary-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Starship Flight 15</div>
+<div class="text-xl sm:text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400">首次飞船捕获</div>
+<div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2026-11-14</div>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-emerald-50 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800 card-interactive">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="gauge" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+<span class="text-xs font-bold text-emerald-700 dark:text-emerald-300">消息面总体基调</span>
+</div>
+<p class="text-2xl font-bold text-emerald-700 dark:text-emerald-300">中性偏多</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">卫星互联网增长、AI算力商业化及Starship可复用技术进展提供强支撑，但融资杠杆、技术验证和监管风险不可忽视。</p>
+</div>
+
+<div class="bg-primary-50 dark:bg-primary-950/30 rounded-xl p-5 border border-primary-200 dark:border-primary-800 card-interactive">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="zap" class="w-4 h-4 text-primary-600 dark:text-primary-400"></i>
+<span class="text-xs font-bold text-primary-700 dark:text-primary-300">本月最强单一催化剂</span>
+</div>
+<p class="text-base font-bold text-primary-800 dark:text-primary-200 leading-snug">$440亿GPU融资完成定价</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">Apollo、Goldman Sachs联合融资，Vera Rubin芯片预计2027年上半年交付，为SpaceX AI算力扩张提供资金支持。</p>
+</div>
+
+<div class="bg-rose-50 dark:bg-rose-950/30 rounded-xl p-5 border border-rose-200 dark:border-rose-800 card-interactive">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600 dark:text-rose-400"></i>
+<span class="text-xs font-bold text-rose-700 dark:text-rose-300">本月最需警惕信号</span>
+</div>
+<p class="text-base font-bold text-rose-800 dark:text-rose-200 leading-snug">巨额GPU融资与Starship双重执行风险</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">融资定价不等于投资回报兑现；Starship助推器回收失败，尚未实现完整两级重复使用。</p>
+</div>
+</div>
+
+<div class="mt-6 p-4 rounded-xl bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+<div class="flex gap-2 items-start">
+<i data-lucide="info" class="w-4 h-4 text-primary-500 mt-0.5 shrink-0"></i>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<strong>数据口径：</strong>SpaceX于2026年6月完成公开上市，SEC 2026-10-26提交的Form 8-K确认其Class A普通股交易代码为SPCX，并在Nasdaq Stock Market及Nasdaq Texas注册。本报告使用公开披露及监管文件，不使用未经核实的实时股价。Q3财务数据于2026-10-20发布，作为经营背景参考，不计入近30日新增事件。
+<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1181412/000110465926118614/" target="_blank" rel="noopener">SEC Form 8-K</a>。
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- COMPANY -->
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-5">按照对SpaceX营收、利润、现金流及长期竞争壁垒的潜在影响排序。信息窗口：2026-10-26 至 2026-11-24。</p>
+
+<!-- Company 1 -->
+<article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-20</span>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大利好 · 伴随杠杆风险</span>
+</div>
+<span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 9.8 / 10</span>
+</div>
+
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">SpaceX完成约440亿美元GPU融资定价，Vera Rubin算力基础设施扩张进入资本落实阶段</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-5">
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">融资定价规模</div>
+<div class="text-lg font-bold font-mono text-primary-600 dark:text-primary-400">$440亿</div>
+</div>
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">融资结构</div>
+<div class="text-sm font-bold text-gray-900 dark:text-white mt-1">优先及次级票据</div>
+</div>
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">设备交付预期</div>
+<div class="text-sm font-bold text-gray-900 dark:text-white mt-1">2027年上半年</div>
+</div>
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">资金主要用途</div>
+<div class="text-sm font-bold text-gray-900 dark:text-white mt-1">NVIDIA Vera Rubin</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月20日，Apollo Global Management与Goldman Sachs联合宣布，SpaceX约<strong>440亿美元GPU融资</strong>正式完成定价。该交易由Apollo与Goldman Sachs牵头，BlackRock、Goldman Sachs Asset Management及KKR相关资本账户提供锚定承诺。融资资金用于采购NVIDIA下一代Vera Rubin芯片及配套设备，服务于SpaceX地面AI计算基础设施建设。交易因投资者需求旺盛而超额认购并扩大规模，设备租赁计划预计在2027年上半年设备交付后启动。
+</p>
+
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+<p class="text-xs font-bold text-gray-900 dark:text-white mb-2">融资过程与关键时间节点</p>
+<div class="timeline-line pl-4 space-y-3">
+<div>
+<div class="text-xs font-mono text-primary-600 dark:text-primary-400 font-bold">2026-10-24</div>
+<p class="text-xs text-gray-600 dark:text-gray-300">SpaceX签署约400亿美元主融资租赁承诺函，租赁期预计约5至5.25年。</p>
+</div>
+<div>
+<div class="text-xs font-mono text-primary-600 dark:text-primary-400 font-bold">2026-10-26</div>
+<p class="text-xs text-gray-600 dark:text-gray-300">SpaceX正式披露约400亿美元GPU融资安排，预计2026年年底前完成交易。</p>
+</div>
+<div>
+<div class="text-xs font-mono text-primary-600 dark:text-primary-400 font-bold">2026-11-20</div>
+<p class="text-xs text-gray-600 dark:text-gray-300">Apollo与Goldman Sachs公布约440亿美元票据定价，较最初披露规模扩大约40亿美元。</p>
+</div>
+<div>
+<div class="text-xs font-mono text-primary-600 dark:text-primary-400 font-bold">2027年上半年</div>
+<p class="text-xs text-gray-600 dark:text-gray-300">预计开始交付GPU及配套设备，并启动相应租赁付款安排。</p>
+</div>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+<div class="rounded-xl p-4 bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50">
+<div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2 flex items-center gap-2">
+<i data-lucide="trending-up" class="w-4 h-4"></i> 正面传导：AI算力变现与资本效率
+</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+融资降低一次性现金采购对短期资金的占用，使公司能够更快部署GPU集群。若Grok、企业AI服务和云计算业务持续获得付费客户，算力投资将形成新的经常性收入，降低公司对发射服务及消费者卫星宽带的单一依赖。
+</p>
+</div>
+<div class="rounded-xl p-4 bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50">
+<div class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-2 flex items-center gap-2">
+<i data-lucide="trending-down" class="w-4 h-4"></i> 负面传导：固定支付与投资回报风险
+</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+约440亿美元不是无成本融资，而是需要偿付的资产融资安排。约5年以上的租赁期限意味着未来固定付款义务。若GPU利用率、客户签约或模型商业化收入不及预期，折旧、融资成本及租赁现金支出将压缩自由现金流。
+</p>
+</div>
+</div>
+
+<div class="bg-primary-50/70 dark:bg-primary-950/30 rounded-xl p-4 mb-4 border border-primary-100 dark:border-primary-800">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-primary-700 dark:text-primary-300">买方核心判断：</strong>这笔融资的意义不只是融资能力强，而是SpaceX正在由火箭及卫星运营商转型为具备大型AI计算基础设施能力的综合平台。需要警惕的是，市场可能先为AI增长支付估值溢价，而真实利润与现金流要到GPU交付及商业化阶段才能验证。应重点跟踪GPU利用率、云服务合同、单位算力收入和租赁利息成本。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+信源：
+<a class="source-link" href="https://ir.apollo.com/_assets/_96154d71700d7cd17bf1075ac49d39bf/apollo/news/2026-11-20_Apollo_and_Goldman_Sachs_Announce_Pricing_of_44_662.pdf" target="_blank" rel="noopener">Apollo / Goldman Sachs，2026-11-20</a>；
+<a class="source-link" href="https://ir.spacex.com/updates/releases-details/2026/SPACEX-SECURES-40-BILLION-IN-THE-LARGEST-GPU-FINANCING-EVER-2026-EnDqGhTAB3/" target="_blank" rel="noopener">SpaceX公告，2026-10-26</a>；
+<a class="source-link" href="https://www.reuters.com/business/media-telecom/spacex-enters-40-billion-deal-with-apollo-ai-chip-financing-2026-10-26/" target="_blank" rel="noopener">Reuters，2026-10-26</a>。
+</p>
+<div class="impact-bar"><div class="impact-fill" style="width:98%"></div></div>
+</article>
+
+<!-- Company 2 -->
+<article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-13 至 2026-11-14</span>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大利好 · 技术风险仍存</span>
+</div>
+<span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 9.5 / 10</span>
+</div>
+
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">Starship Flight 15实现首次轨道返回飞船机械臂捕获，但助推器回收失败</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-5">
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">试飞任务</div>
+<div class="text-lg font-bold font-mono">Flight 15</div>
+</div>
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">火箭总高度</div>
+<div class="text-lg font-bold font-mono">124米</div>
+</div>
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">部署卫星</div>
+<div class="text-lg font-bold font-mono text-emerald-600 dark:text-emerald-400">26颗</div>
+</div>
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">飞船回收</div>
+<div class="text-lg font-bold text-emerald-600 dark:text-emerald-400">首次成功</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月13日，SpaceX执行Starship第15次飞行测试。任务中，Starship成功进入轨道并部署<strong>26颗Starlink卫星</strong>。11月14日，飞船完成绕地飞行后返回Starbase，并首次通过发射塔机械臂成功捕获，实现轨道级飞船返回与地面捕获的关键突破。
+</p>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+但本次任务并未实现原计划的两级同时回收：Super Heavy助推器在返回阶段因发动机提前关机等异常，未能完成塔架捕获，最终在墨西哥湾附近落海并爆炸。因此，Flight 15应被认定为<strong>飞船上面级回收成功、助推器回收失败</strong>，而非完整可重复使用系统验证成功。
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+<div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+<div class="font-bold text-xs text-emerald-700 dark:text-emerald-300 mb-2">技术突破的商业价值</div>
+<ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+<li>• 验证飞船进入轨道、部署卫星及返回地面的完整关键环节。</li>
+<li>• 机械臂捕获有望减少传统海上回收、运输和翻修环节。</li>
+<li>• 未来可通过提高复用次数降低单位发射成本。</li>
+<li>• 为月球运输及NASA Artemis计划提供关键技术基础。</li>
+</ul>
+</div>
+<div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800/50">
+<div class="font-bold text-xs text-amber-700 dark:text-amber-300 mb-2">仍未解决的商业化障碍</div>
+<ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+<li>• 助推器回收及再飞行可靠性尚未验证。</li>
+<li>• 发射频率仍受FAA许可及环境审查约束。</li>
+<li>• 载人、货运和深空任务仍需进一步安全验证。</li>
+<li>• 需要连续多次成功才能证明维护成本及复用经济性。</li>
+</ul>
+</div>
+</div>
+
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4">
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+<strong class="text-gray-900 dark:text-white">影响深度：</strong>Starship最终若实现两级完全重复使用，SpaceX将获得远超Falcon 9现有经济模型的发射成本优势，并可能打开超大规模卫星部署、月球运输和轨道基础设施建设市场。26颗Starlink卫星的成功部署，也使本次测试具备了实际网络扩容价值。但当前仍处于工程验证阶段，不能将未来成本下降提前计入当期利润。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+信源：
+<a class="source-link" href="https://apnews.com/article/spacex-starship-rocket-elon-musk-f9452dd86770dda36828a35bb27d65ee" target="_blank" rel="noopener">Associated Press，2026-11-13/14</a>；
+<a class="source-link" href="https://spaceflightnow.com/2026/11/13/live-coverage-starship-flight-15-attempts-to-recover-full-vehicle-in-double-launch-pad-catch/" target="_blank" rel="noopener">Spaceflight Now，2026-11-13</a>；
+<a class="source-link" href="https://www.reuters.com/science/blue-origin-delays-new-glenn-rocket-launch-into-january-ft-reports-2026-11-05/" target="_blank" rel="noopener">Reuters相关行业背景，2026-11-05</a>。
+</p>
+<div class="impact-bar"><div class="impact-fill" style="width:95%"></div></div>
+</article>
+
+<!-- Company 3 -->
+<article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive" data-aos="fade-up">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-10</span>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏多 · 监管待审批</span>
+</div>
+<span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 8.8 / 10</span>
+</div>
+
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">FCC受理SpaceX收购Grain 800MHz频谱许可申请，Starlink Mobile向混合移动网络转型</h3>
+
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-5">
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">频谱许可</div>
+<div class="text-lg font-bold font-mono">546项</div>
+</div>
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">配对频谱</div>
+<div class="text-lg font-bold font-mono">最高14MHz</div>
+</div>
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">覆盖范围</div>
+<div class="text-lg font-bold font-mono">全美50州</div>
+</div>
+<div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+<div class="text-xs text-gray-500 dark:text-gray-400">评论截止</div>
+<div class="text-lg font-bold font-mono text-primary-600 dark:text-primary-400">12月1日</div>
+</div>
+</div>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月10日，美国FCC无线通信局发布DA 26-1218公共通知，受理SpaceX全资子公司Starlink Spectrum Holdings收购Grain Management旗下800MHz频谱许可控制权的申请，涉及<strong>546项配对许可</strong>，覆盖美国全部50个州及约100%人口，频段主要为817—824MHz和862—869MHz，合计最高14MHz配对频谱。
+</p>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+该交易并非单纯增加卫星频谱，而是为SpaceX构建地面移动通信与卫星直连终端结合的混合网络提供低频资源。低频信号传播距离更远、室内穿透能力更强，有利于补足卫星直连服务在复杂城市环境中的覆盖短板。
+</p>
+
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+<p class="text-xs font-bold mb-3 text-gray-900 dark:text-white">业务商业化传导路径</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div class="rounded-lg bg-white dark:bg-gray-900 p-3 border border-gray-200 dark:border-gray-700">
+<div class="text-xs font-bold text-primary-600 dark:text-primary-400 mb-1">第一阶段</div>
+<p class="text-xs text-gray-600 dark:text-gray-300">取得地面频谱控制权，部署地面基站及相关无线设备。</p>
+</div>
+<div class="rounded-lg bg-white dark:bg-gray-900 p-3 border border-gray-200 dark:border-gray-700">
+<div class="text-xs font-bold text-primary-600 dark:text-primary-400 mb-1">第二阶段</div>
+<p class="text-xs text-gray-600 dark:text-gray-300">完成FCC许可变更及卫星补充覆盖审批，推进终端与网络融合。</p>
+</div>
+<div class="rounded-lg bg-white dark:bg-gray-900 p-3 border border-gray-200 dark:border-gray-700">
+<div class="text-xs font-bold text-primary-600 dark:text-primary-400 mb-1">第三阶段</div>
+<p class="text-xs text-gray-600 dark:text-gray-300">面向移动运营商、消费者及企业客户拓展直连卫星通信服务。</p>
+</div>
+</div>
+</div>
+
+<div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 mb-4 border border-amber-200 dark:border-amber-800/50">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-amber-700 dark:text-amber-300">关键风险：</strong>截至2026年11月22日，FCC受理不等于最终批准，卫星使用该800MHz频段还需要单独的卫星许可修改及豁免审批。SpaceX需要继承相关地面网络建设义务，包括2029年、2034年的阶段性覆盖要求。外部媒体所称约80亿美元交易金额尚未在已披露FCC文件中得到确认，不作为已确定交易价格。
+</p>
+</div>
+
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+信源：
+<a class="source-link" href="https://spacelawjournal.com/spacex-grain-800-mhz-spectrum-fcc-review/" target="_blank" rel="noopener">Space Law Journal，2026-11-22</a>；
+<a class="source-link" href="https://thespacetap.com/fcc-accepts-spacex-800-mhz-transfer-applications/" target="_blank" rel="noopener">The Space Tap，2026-11-11</a>。
+</p>
+<div class="impact-bar"><div class="impact-fill" style="width:88%"></div></div>
+</article>
+
+<!-- Additional governance note -->
+<div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
+<div class="flex items-center gap-2 mb-2">
+<i data-lucide="users" class="w-4 h-4 text-primary-500"></i>
+<h3 class="text-sm font-bold">补充公司治理披露：董事Donald Harrison辞任</h3>
+</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+2026年11月6日，SpaceX披露Class B董事Donald Harrison辞任，辞任于11月4日生效。其自2015年2月起担任董事，同时担任Google全球合作及企业发展负责人。公司在SEC Form 8-K中明确表示，辞任并非源于与公司运营、政策或实践方面的分歧。该事项可能涉及大型科技企业之间的利益冲突及治理独立性，但目前没有证据表明其改变SpaceX的经营战略。
+<a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026071689/spcx-20261104.htm" target="_blank" rel="noopener">SEC Form 8-K，2026-11-06</a>。
+</p>
+</div>
+</section>
+
+<!-- INDUSTRY -->
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+<i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-6">
+行业界定：商业航天与全球低轨卫星互联网产业。重点覆盖可重复使用运载火箭、卫星发射服务、低轨宽带网络、卫星直连移动终端以及轨道算力基础设施。
+</p>
+
+<!-- Industry 1 -->
+<article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 card-interactive">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-19</span>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">竞争格局变化 · 中性偏多</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Google选择Blue Origin承担2029年轨道AI数据中心卫星发射任务，空间算力赛道竞争升级</h3>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月19日，Reuters报道，Google选择Jeff Bezos旗下Blue Origin，计划于2029年第一季度使用New Glenn重型火箭发射Project Suncatcher相关卫星。这项实验旨在测试在轨AI计算，利用接近持续的太阳能供电，降低地面数据中心对电力、土地及冷却资源的需求。
+</p>
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+Google的初始原型卫星已于2026年10月搭乘SpaceX火箭发射，测试TPU在发射振动、辐射及极端温度环境下的可靠性。此次选择Blue Origin承担后续任务，意味着未来大型AI计算卫星发射需求并非SpaceX独占。
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<div class="rounded-xl p-4 bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50">
+<p class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">对SpaceX的正向映射</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">Google此前使用SpaceX运载初始原型，证明SpaceX已经进入空间算力项目供应链。若在轨计算形成商业市场，卫星部署、补网、轨道运输及Starship大型载荷运输均有增量机会。</p>
+</div>
+<div class="rounded-xl p-4 bg-amber-50/70 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50">
+<p class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">竞争层面的潜在压力</p>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">Blue Origin取得Google后续发射任务，显示大型商业航天客户开始增加第二供应商。SpaceX需要通过成本、发射频率及任务可靠性维持主导地位。</p>
+</div>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">信源：<a class="source-link" href="https://www.reuters.com/business/media-telecom/google-picks-bezos-blue-origin-launch-ai-computing-satellites-2029-2026-11-19/" target="_blank" rel="noopener">Reuters，2026-11-19</a>。</p>
+</article>
+
+<!-- Industry 2 -->
+<article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 card-interactive">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-14</span>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">竞争优势 · 结构性利好</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Rocket Lab Electron完成第100次发射，商业小型火箭市场进入规模化运营阶段</h3>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月14日，Rocket Lab宣布Electron火箭完成第100次发射。该任务名为“The Mountain God Rises”，从新西兰Launch Complex 1起飞，将日本iQPS的YAMATSUMI-II合成孔径雷达卫星送入575公里低地球轨道。此次任务是Rocket Lab为iQPS执行的第11次Electron专属发射，自2023年以来该客户任务保持100%成功记录。iQPS另预订了7次专属发射，执行期延续至2030年。
+</p>
+
+<div class="bg-accent-50/70 dark:bg-accent-950/25 rounded-xl p-4 border border-accent-200 dark:border-accent-800">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-accent-700 dark:text-accent-300">对SpaceX的横向映射：</strong>Rocket Lab在小型专属发射领域形成成熟运营能力，竞争焦点从单次火箭性能转向客户交付、发射频率与任务可靠性。SpaceX Falcon 9具备更强的规模化运载经济性，但在客户需要独立轨道部署和精确任务排期时，Electron仍具有差异化竞争价值。长期看，SpaceX必须继续依靠可重复使用和大规模运输成本优势，而不是假设所有商业发射需求都由大型火箭垄断。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">信源：<a class="source-link" href="https://rocketlabcorp.com/updates/rocket-lab-hits-100-electron-launches-fastest-commercial-rocket-to-reach-the-milestone/" target="_blank" rel="noopener">Rocket Lab官方公告，2026-11-14</a>。</p>
+</article>
+
+<!-- Industry 3 -->
+<article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 card-interactive">
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-05</span>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">竞争延后 · 相对利好</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Blue Origin New Glenn再次延期至2027年1月，Amazon Leo卫星部署节奏面临挑战</h3>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+2026年11月5日，Reuters报道，Blue Origin已将下一次New Glenn重型火箭发射推迟至2027年1月。该火箭自2026年5月发生发射台爆炸后一直处于停飞状态，事故对佛罗里达发射设施造成严重损坏。CEO Dave Limp在内部备忘录中说明，夏季天气和后续洪水影响了设施修复进度。
+</p>
+
+<p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+New Glenn是Amazon Leo低轨卫星互联网星座的重要发射供应商。发射延期可能导致Amazon卫星部署节奏受到约束，影响其网络覆盖扩张及与Starlink竞争的时间表。
+</p>
+
+<div class="bg-accent-50/70 dark:bg-accent-950/25 rounded-xl p-4 border border-accent-200 dark:border-accent-800">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-accent-700 dark:text-accent-300">对SpaceX的横向映射：</strong>竞争对手的重型火箭停飞有利于SpaceX在政府任务、卫星发射及商业客户订单中维持供应优势。尤其是Amazon Leo需要持续扩大星座规模，若New Glenn延期时间进一步拉长，Amazon可能更依赖其他发射供应商。不过，Amazon拥有多家发射合作方，不能简单将其全部订单视为SpaceX可获取的增量收入。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">信源：<a class="source-link" href="https://www.reuters.com/science/blue-origin-delays-new-glenn-rocket-launch-into-january-ft-reports-2026-11-05/" target="_blank" rel="noopener">Reuters，2026-11-05</a>。</p>
+</article>
+
+<!-- Industry comparison -->
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+<h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+<i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i> 全球商业航天行业动态对标影响表
+</h3>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm min-w-[680px]">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800">
+<th>行业事件</th>
+<th>涉及主体</th>
+<th>对SpaceX利弊传导</th>
+<th>影响周期</th>
+</tr>
+</thead>
+<tbody class="text-gray-600 dark:text-gray-300">
+<tr>
+<td class="font-semibold">Google选择Blue Origin承接轨道AI卫星发射</td>
+<td>Google、Blue Origin、SpaceX</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-semibold">中性偏空竞争。</span>空间算力需求扩张利好整体行业，但客户开始分散发射供应商。</td>
+<td>2027—2029</td>
+</tr>
+<tr>
+<td class="font-semibold">Electron完成第100次发射</td>
+<td>Rocket Lab</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-semibold">中性。</span>专属发射服务成熟，提升行业竞争门槛，但与Falcon 9定位存在差异。</td>
+<td>中长期</td>
+</tr>
+<tr>
+<td class="font-semibold">New Glenn延期至2027年1月</td>
+<td>Blue Origin、Amazon Leo</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">相对利好。</span>竞争对手重型运载能力受限，SpaceX供应优势扩大。</td>
+<td>短期—中期</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+</div>
+
+<!-- Macro 1 -->
+<article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">国际 · 美国商业航天监管</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-05</span>
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">中长期利好</span>
+</div>
+<span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 9.0 / 10</span>
+</div>
+
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">美国交通部宣布四项商业航天监管改革，FAA计划2027年全面重构发射许可框架</h3>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">1. 政策要点</strong>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+2026年11月5日，美国交通部长Sean P. Duffy宣布FAA推进四项商业航天监管行动，包括明确飞行中止触发条件、允许调整部分中止能力、优化失控再入时的安全评估，以及对商业航天法规进行技术修订。同时计划2027年启动全面许可框架改革。
+</p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">2. 传导路径</strong>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+分子端：减少重复安全分析和审批流程，理论上降低许可成本、缩短发射等待时间，提高火箭利用率及卫星部署速度。分母端：监管确定性改善，有利于商业航天公司的长期现金流折现和估值风险溢价下降。
+</p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">3. SpaceX业务敞口</strong>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+直接涉及Starship、Falcon及未来商业载人、货运发射业务。SpaceX是美国商业发射的核心参与者，监管效率提升对其发射频率、运营效率及星座部署均具有较高价值。但拟议规则仍需按程序推进，不能视为已经全面生效。
+</p>
+</div>
+</div>
+
+<div class="mt-4 bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-emerald-700 dark:text-emerald-300">投资含义：</strong>商业航天行业真正的产能瓶颈不只是火箭制造，也包括发射场、空域协调、环境评估和许可审批。FAA改革如果转化为实际审批效率提升，将直接提高SpaceX固定资产的周转率，进而增强收入增长与经营杠杆。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">信源：<a class="source-link" href="https://www.faa.gov/newsroom/trumps-transportation-secretary-sean-p-duffy-supercharges-american-dominance-commercial" target="_blank" rel="noopener">美国联邦航空管理局FAA，2026-11-05</a>。</p>
+</article>
+
+<!-- Macro 2 -->
+<article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-amber-600 text-white text-xs font-bold">国际 · 频谱与移动通信监管</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-10</span>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏多 · 审批存在不确定性</span>
+</div>
+<span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 8.8 / 10</span>
+</div>
+
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">美国FCC受理800MHz频谱转让申请，卫星直连手机与地面移动网络融合进入监管审查阶段</h3>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">1. 政策与监管要点</strong>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+2026年11月10日，FCC无线通信局发布DA 26-1218，受理SpaceX子公司收购Grain 800MHz频谱许可控制权的申请，涉及546项配对许可。公众评论及反对申请截止日期为12月1日，后续反驳意见截止日期为12月8日。
+</p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">2. 传导路径</strong>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+分子端：若交易与卫星频段使用申请获批，可扩大Starlink Mobile的网络覆盖能力，提升移动通信服务的商业化潜力。分母端：监管批准将降低业务落地不确定性；若审批延误或附加建设义务超预期，可能增加资本支出并延迟现金流回报。
+</p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">3. 业务敞口评估</strong>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+直接涉及Starlink Mobile及美国移动通信市场。SpaceX需要承担许可覆盖义务，并且卫星使用800MHz仍须单独获得批准。地面基站、终端兼容、频谱干扰协调及运营商合作均决定最终商业化速度。
+</p>
+</div>
+</div>
+
+<div class="mt-4 bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-amber-700 dark:text-amber-300">投资含义：</strong>SpaceX正在从卫星互联网服务商向卫星与地面移动通信融合运营商转型。低频资源的价值在于改善终端覆盖和室内通信能力，而非简单增加卫星容量。需重点区分频谱控制权转让审批与卫星使用许可审批，两者不能混为一谈。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+信源：<a class="source-link" href="https://spacelawjournal.com/spacex-grain-800-mhz-spectrum-fcc-review/" target="_blank" rel="noopener">Space Law Journal，2026-11-22</a>；
+<a class="source-link" href="https://thespacetap.com/fcc-accepts-spacex-800-mhz-transfer-applications/" target="_blank" rel="noopener">FCC受理进展报道，2026-11-11</a>。
+</p>
+</article>
+
+<!-- Macro 3 -->
+<article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-primary-500 card-interactive">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 rounded-lg bg-primary-600 text-white text-xs font-bold">国内 · 卫星互联网产业与频率协调</span>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-09 / 2026-11-20</span>
+<span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">长期竞争压力</span>
+</div>
+<span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 7.8 / 10</span>
+</div>
+
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">中国低轨卫星互联网连续部署第29、30组卫星，频率协调和发射能力持续推进</h3>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<div class="text-xs font-bold text-primary-600 dark:text-primary-400 mb-2">2026-11-09 · 第29组</div>
+<div class="text-2xl font-bold font-mono text-gray-900 dark:text-white">长征十二号</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">海南商业航天发射场成功发射低轨卫星互联网第29组卫星，卫星进入预定轨道。工信部无线电管理局披露，前期已完成相关国内频率协调，并批量颁发空间无线电台执照和频率使用许可证。</p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<div class="text-xs font-bold text-primary-600 dark:text-primary-400 mb-2">2026-11-20 · 第30组</div>
+<div class="text-2xl font-bold font-mono text-gray-900 dark:text-white">长征八号甲</div>
+<p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">新华社报道，2026年11月20日19时59分，海南商业航天发射场再次成功将低轨卫星互联网第30组卫星送入预定轨道。</p>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm">
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">1. 产业政策要点</strong>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+工信部无线电管理局完成卫星互联网项目频率协调及许可发放，表明中国低轨星座建设不仅推进发射，也同步完善频谱资源和空间无线电管理。
+</p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">2. 对SpaceX的传导路径</strong>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+短期不会直接改变SpaceX美国市场的收入，但长期可能形成新的全球卫星宽带竞争者。竞争加剧可能影响国际用户获取、频谱协调、终端价格及跨境市场准入。
+</p>
+</div>
+<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+<strong class="text-gray-900 dark:text-white block mb-2">3. 业务敞口评估</strong>
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+主要涉及Starlink国际业务拓展、跨境频谱协调、全球漫游和用户终端市场。中国商业航天产业链成熟后，低轨卫星互联网的全球竞争将进一步从单一技术能力转向规模、成本与监管生态的综合竞争。
+</p>
+</div>
+</div>
+
+<div class="mt-4 bg-primary-50/70 dark:bg-primary-950/30 rounded-xl p-4 border border-primary-100 dark:border-primary-800">
+<p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+<strong class="text-primary-700 dark:text-primary-300">投资含义：</strong>中国卫星互联网建设是SpaceX全球市场长期竞争格局的重要变量。中国星座规模扩张有利于全球卫星制造、发射及通信产业链发展，但也会提升未来国际宽带市场的竞争强度。需要持续观察星座部署频率、用户商业化及国际业务开放程度，不能仅以单次发射推断已形成与Starlink等量的商业网络能力。
+</p>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">
+信源：<a class="source-link" href="https://wap.miit.gov.cn/xwfb/gxdt/sjdt/art/2026/art_1f66f736c54b4b8cb31c123429f7ffb9.html" target="_blank" rel="noopener">工业和信息化部无线电管理局，2026-11-09</a>；
+<a class="source-link" href="https://www3.xinhuanet.com/tech/20261120/c110f118f12744e0acacf4a506a7584e/c.html" target="_blank" rel="noopener">新华社，2026-11-20</a>。
+</p>
+</article>
+</section>
+
+<!-- MATRIX -->
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-12" data-aos="fade-up">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+<i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+</div>
+<h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+</div>
+
+<div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700 mb-8">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-2 text-sm sm:text-base">
+<i data-lucide="list" class="w-4 h-4 text-primary-500"></i> 九大核心动态催化矩阵
+</h3>
+<div class="flex flex-wrap gap-1.5 text-xs">
+<button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">全部 (9)</button>
+<button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">公司 (3)</button>
+<button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">行业 (3)</button>
+<button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1 rounded-full font-semibold">宏观 (3)</button>
+</div>
+</div>
+
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm min-w-[850px]">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800">
+<th>类别</th>
+<th>日期</th>
+<th>核心事件</th>
+<th>影响方向</th>
+<th>强度</th>
+<th>核心投资含义</th>
+</tr>
+</thead>
+<tbody class="text-gray-600 dark:text-gray-300">
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+<td><span class="text-primary-600 dark:text-primary-400 font-bold">公司</span></td>
+<td class="font-mono whitespace-nowrap">2026-11-20</td>
+<td class="font-semibold">440亿美元GPU融资完成定价</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-bold">利好 / 杠杆风险</span></td>
+<td class="font-mono font-bold">9.8</td>
+<td>加速AI算力扩张，但需验证投资回报与租赁现金流</td>
+</tr>
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+<td><span class="text-primary-600 dark:text-primary-400 font-bold">公司</span></td>
+<td class="font-mono whitespace-nowrap">2026-11-13/14</td>
+<td class="font-semibold">Starship首次成功捕获轨道返回飞船</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-bold">重大利好 / 部分失败</span></td>
+<td class="font-mono font-bold">9.5</td>
+<td>可复用技术壁垒提升，助推器回收仍待突破</td>
+</tr>
+<tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+<td><span class="text-primary-600 dark:text-primary-400 font-bold">公司</span></td>
+<td class="font-mono whitespace-nowrap">2026-11-10</td>
+<td class="font-semibold">Grain 800MHz频谱转让申请获FCC受理</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-bold">中性偏多</span></td>
+<td class="font-mono font-bold">8.8</td>
+<td>拓展卫星直连手机和地面移动通信业务</td>
+</tr>
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+<td><span class="text-accent-600 dark:text-accent-400 font-bold">行业</span></td>
+<td class="font-mono whitespace-nowrap">2026-11-19</td>
+<td class="font-semibold">Google选择Blue Origin承接轨道AI卫星发射</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-bold">需求利好 / 竞争加剧</span></td>
+<td class="font-mono font-bold">8.2</td>
+<td>空间算力市场扩大，但发射供应商更加多元化</td>
+</tr>
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+<td><span class="text-accent-600 dark:text-accent-400 font-bold">行业</span></td>
+<td class="font-mono whitespace-nowrap">2026-11-14</td>
+<td class="font-semibold">Rocket Lab完成Electron第100次发射</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-bold">竞争中性</span></td>
+<td class="font-mono font-bold">7.2</td>
+<td>行业运营成熟，推动专属发射市场竞争升级</td>
+</tr>
+<tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+<td><span class="text-accent-600 dark:text-accent-400 font-bold">行业</span></td>
+<td class="font-mono whitespace-nowrap">2026-11-05</td>
+<td class="font-semibold">Blue Origin New Glenn延期至2027年1月</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-bold">相对利好</span></td>
+<td class="font-mono font-bold">7.5</td>
+<td>竞争对手发射能力受限，SpaceX供应优势扩大</td>
+</tr>
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+<td><span class="text-rose-600 dark:text-rose-400 font-bold">宏观</span></td>
+<td class="font-mono whitespace-nowrap">2026-11-05</td>
+<td class="font-semibold">FAA推进商业航天监管改革</td>
+<td><span class="text-emerald-600 dark:text-emerald-400 font-bold">中长期利好</span></td>
+<td class="font-mono font-bold">9.0</td>
+<td>提高许可效率及发射设施利用率，改善运营效率</td>
+</tr>
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+<td><span class="text-rose-600 dark:text-rose-400 font-bold">宏观</span></td>
+<td class="font-mono whitespace-nowrap">2026-11-10</td>
+<td class="font-semibold">FCC受理800MHz频谱转让申请</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-bold">中性偏多</span></td>
+<td class="font-mono font-bold">8.8</td>
+<td>卫星通信与地面网络融合，审批仍是关键变量</td>
+</tr>
+<tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+<td><span class="text-rose-600 dark:text-rose-400 font-bold">宏观</span></td>
+<td class="font-mono whitespace-nowrap">2026-11-09/20</td>
+<td class="font-semibold">中国低轨卫星互联网第29、30组卫星成功发射</td>
+<td><span class="text-amber-600 dark:text-amber-400 font-bold">长期竞争压力</span></td>
+<td class="font-mono font-bold">7.8</td>
+<td>全球低轨星座竞争加速，国际市场份额面临挑战</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">说明：影响强度为研究判断评分，综合潜在盈利影响、商业化兑现概率、事件持续时间和估值敏感度，不代表股价涨跌幅预测。</p>
+</div>
+
+<!-- Forward calendar -->
+<h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+<i data-lucide="calendar-clock" class="w-5 h-5 text-primary-500"></i>
+未来30天重点跟踪日历（2026-11-24 至 2026-12-24）
+</h3>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-rose-200 dark:border-rose-900/60 card-interactive">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">2026-12-01</span>
+<span class="text-xs text-rose-600 dark:text-rose-400 font-semibold">重要监管节点</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Grain 800MHz频谱许可转让评论截止</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">关注FCC WT Docket No. 26-313的公众评论、竞争运营商反对意见及监管附加条件，判断Starlink Mobile取得低频频谱的进度。</p>
+<a class="source-link text-xs inline-block mt-3" href="https://spacelawjournal.com/spacex-grain-800-mhz-spectrum-fcc-review/" target="_blank" rel="noopener">监管事项来源</a>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-amber-200 dark:border-amber-900/60 card-interactive">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">2026-12-07</span>
+<span class="text-xs text-amber-600 dark:text-amber-400 font-semibold">重要环境审查节点</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">FAA Starbase Starship环境影响报告公众意见截止</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">关注Boca Chica发射与着陆频率提升、着陆及消耗区域扩张的环境影响评估，决定未来Starship发射频率与基础设施扩建空间。</p>
+<a class="source-link text-xs inline-block mt-3" href="https://www.faa.gov/space/stakeholder_engagement/spacex_starship" target="_blank" rel="noopener">FAA官方项目页面</a>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-primary-200 dark:border-primary-900/60 card-interactive">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 text-xs font-bold">2026-12-08</span>
+<span class="text-xs text-primary-600 dark:text-primary-400 font-semibold">监管后续节点</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">FCC 800MHz交易反对意见答复截止</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">观察申请方与相关利益主体对频谱转让的答复情况，以及是否出现额外频谱使用限制、网络覆盖义务或审批程序变化。</p>
+<a class="source-link text-xs inline-block mt-3" href="https://spacelawjournal.com/spacex-grain-800-mhz-spectrum-fcc-review/" target="_blank" rel="noopener">监管事项来源</a>
+</div>
+
+<div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 border border-emerald-200 dark:border-emerald-900/60 card-interactive">
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2.5 py-1 rounded bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">2026年12月31日前</span>
+<span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">融资执行窗口</span>
+</div>
+<h4 class="font-bold text-gray-900 dark:text-white text-sm mb-2">440亿美元GPU融资正式交割及租赁安排</h4>
+<p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">SpaceX此前披露主融资租赁预计于2026年底前完成交割，关注正式协议、融资成本、设备采购安排及是否出现新增债务或担保承诺。</p>
+<a class="source-link text-xs inline-block mt-3" href="https://ir.spacex.com/updates/" target="_blank" rel="noopener">SpaceX投资者关系</a>
+</div>
+
+</div>
+
+<!-- strategic dashboard -->
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-700 mb-8">
+<h3 class="font-bold text-gray-900 dark:text-white text-lg mb-5 flex items-center gap-2">
+<i data-lucide="target" class="w-5 h-5 text-primary-500"></i>
+未来一个月最重要的五项验证指标
+</h3>
+
+<div class="space-y-5">
+<div>
+<div class="flex justify-between items-center gap-3 mb-1.5">
+<span class="text-sm font-semibold">1. GPU融资与算力商业化</span>
+<span class="text-xs text-primary-600 dark:text-primary-400 font-bold">最高优先级</span>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width:100%"></div></div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">交割完成、融资利率、GPU交付节奏、AI云服务订单及算力利用率。</p>
+</div>
+
+<div>
+<div class="flex justify-between items-center gap-3 mb-1.5">
+<span class="text-sm font-semibold">2. Starship连续试飞及完整回收</span>
+<span class="text-xs text-primary-600 dark:text-primary-400 font-bold">最高优先级</span>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width:96%"></div></div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">助推器返回可靠性、飞船热防护、重复飞行间隔及FAA许可。</p>
+</div>
+
+<div>
+<div class="flex justify-between items-center gap-3 mb-1.5">
+<span class="text-sm font-semibold">3. Starlink用户增长与单位经济性</span>
+<span class="text-xs text-primary-600 dark:text-primary-400 font-bold">高优先级</span>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width:90%"></div></div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">消费者订户、ARPU、企业及政府合同、航空客户和网络扩容资本开支。</p>
+</div>
+
+<div>
+<div class="flex justify-between items-center gap-3 mb-1.5">
+<span class="text-sm font-semibold">4. 800MHz频谱审批与Starlink Mobile</span>
+<span class="text-xs text-primary-600 dark:text-primary-400 font-bold">高优先级</span>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width:86%"></div></div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">FCC审批意见、频谱使用许可、地面基站投资和移动运营商合作。</p>
+</div>
+
+<div>
+<div class="flex justify-between items-center gap-3 mb-1.5">
+<span class="text-sm font-semibold">5. Blue Origin及Amazon Leo竞争进度</span>
+<span class="text-xs text-primary-600 dark:text-primary-400 font-bold">中高优先级</span>
+</div>
+<div class="impact-bar"><div class="impact-fill" style="width:78%"></div></div>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">New Glenn复飞时间、Amazon Leo星座部署、Google空间算力项目发射安排。</p>
+</div>
+</div>
+</div>
+
+<!-- investment interpretation -->
+<div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 border border-primary-100 dark:border-gray-700">
+<h3 class="font-bold text-lg text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+<i data-lucide="brain-circuit" class="w-5 h-5 text-primary-500"></i>
+五、买方研究结论：SpaceX的核心估值驱动与风险
+</h3>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+<div class="rounded-xl p-5 bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800">
+<h4 class="font-bold text-sm text-emerald-700 dark:text-emerald-300 mb-3">核心多头逻辑</h4>
+<ul class="text-xs text-gray-700 dark:text-gray-300 space-y-2.5 leading-relaxed">
+<li>01 · Falcon系列形成成熟的发射服务及回收体系，提供现有商业收入基础。</li>
+<li>02 · Starlink订户及企业服务增长，卫星宽带具备规模化经常性收入特征。</li>
+<li>03 · Starship飞船轨道返回捕获成功，进一步验证超大型可复用运输技术路线。</li>
+<li>04 · 440亿美元GPU融资支持AI计算基础设施，打开新的企业服务收入来源。</li>
+<li>05 · FAA监管改革及美国移动频谱资源拓展，有望提高未来业务扩张上限。</li>
+</ul>
+</div>
+<div class="rounded-xl p-5 bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800">
+<h4 class="font-bold text-sm text-rose-700 dark:text-rose-300 mb-3">核心空头风险</h4>
+<ul class="text-xs text-gray-700 dark:text-gray-300 space-y-2.5 leading-relaxed">
+<li>01 · GPU租赁融资规模巨大，固定付款义务与资本回报错配可能压制自由现金流。</li>
+<li>02 · Starship助推器回收仍失败，完整两级复用的商业经济性尚未得到证明。</li>
+<li>03 · Starlink需要持续投入卫星制造、发射、地面站和用户终端，资本密集度高。</li>
+<li>04 · Blue Origin、Rocket Lab及中国低轨星座加速发展，竞争优势需要持续兑现。</li>
+<li>05 · FAA、FCC和跨国频谱监管仍可能导致审批延迟、频谱限制和市场准入成本上升。</li>
+</ul>
+</div>
+</div>
+
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">公司价值的三层传导框架</h4>
+<div class="overflow-x-auto">
+<table class="text-xs sm:text-sm min-w-[650px]">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800">
+<th>价值层次</th>
+<th>关键驱动</th>
+<th>需要验证的经营指标</th>
+<th>估值意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="font-bold">第一层：现金流基础</td>
+<td>Falcon、Starlink</td>
+<td>发射频率、订户、ARPU、EBITDA、自由现金流</td>
+<td>基础业务估值锚</td>
+</tr>
+<tr>
+<td class="font-bold">第二层：成长选择权</td>
+<td>Starship、Starlink Mobile</td>
+<td>复用次数、单位发射成本、移动用户、网络覆盖</td>
+<td>未来增长溢价</td>
+</tr>
+<tr>
+<td class="font-bold">第三层：平台扩张</td>
+<td>AI算力、Grok、轨道数据中心</td>
+<td>GPU利用率、云合同、算力收入、租赁成本</td>
+<td>跨行业平台估值</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="mt-6 p-5 rounded-xl bg-primary-50 dark:bg-primary-950/30 border border-primary-200 dark:border-primary-800">
+<div class="text-xs font-bold text-primary-700 dark:text-primary-300 mb-2">最终买方判断</div>
+<p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+SpaceX的长期投资价值正在由单一火箭发射平台，转向<strong>“太空运输 + 全球通信网络 + AI计算基础设施”</strong>三大业务协同。11月最重要的变化是440亿美元GPU融资落实与Starship飞船首次轨道返回捕获，两者分别代表资本扩张能力和技术壁垒兑现。短期真正决定估值方向的不是融资规模本身，而是资金投入能否转化为持续性AI收入，以及Starship能否从单次工程突破进入高频、低成本、可重复商业运营。建议将整体判断维持在中性偏多，但对资本开支、融资成本及技术可靠性保留较高风险折价。
+</p>
+</div>
+</div>
+
+</section>
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0b0f15] py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">核心数据来源</h4>
+<ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+<li><a class="source-link" href="https://ir.spacex.com/updates/" target="_blank" rel="noopener">SpaceX官方投资者关系及公告</a></li>
+<li><a class="source-link" href="https://www.sec.gov/edgar/browse/?CIK=1181412&owner=exclude" target="_blank" rel="noopener">美国SEC · SpaceX监管文件</a></li>
+<li><a class="source-link" href="https://ir.apollo.com/" target="_blank" rel="noopener">Apollo Global Management</a></li>
+<li><a class="source-link" href="https://www.faa.gov/space" target="_blank" rel="noopener">美国联邦航空管理局FAA</a></li>
+<li><a class="source-link" href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA官方信息</a></li>
+<li><a class="source-link" href="https://www.reuters.com/" target="_blank" rel="noopener">Reuters国际商业航天报道</a></li>
+<li><a class="source-link" href="https://apnews.com/" target="_blank" rel="noopener">Associated Press</a></li>
+<li><a class="source-link" href="https://rocketlabcorp.com/" target="_blank" rel="noopener">Rocket Lab官方公告</a></li>
+<li><a class="source-link" href="https://www.miit.gov.cn/" target="_blank" rel="noopener">中国工业和信息化部</a></li>
+<li><a class="source-link" href="https://www.news.cn/" target="_blank" rel="noopener">新华社</a></li>
+</ul>
+</div>
+
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">覆盖时间与数据口径</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
+主窗口：2026-10-26 至 2026-11-24，共30个自然日。
+</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
+公司事件、行业动态及宏观政策均按可核验的公告发布日期或实际事件发生日期标注。历史季度财务指标单独注明其实际披露日期，不纳入本期新增动态排名。
+</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+财务数据采用美元口径；卫星及发射数量采用公开披露数据。融资承诺、融资定价、正式交割及实际设备交付属于不同阶段，不应混同。
+</p>
+</div>
+
+<div>
+<h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">风险提示与免责声明</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+本报告基于截至2026年11月24日可检索的公开信息及监管披露整理，属于事件驱动研究分析，不构成任何投资建议、证券买卖推荐或收益保证。影响力评分及投资判断属于分析师主观评估。
+</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mt-3">
+SpaceX涉及高资本开支、技术研发、复杂监管、全球频谱协调及融资租赁风险。尤其是Starship尚未完成两级完整重复使用验证，AI算力融资的商业回报仍需后续财务数据确认。投资者应独立判断并承担相应风险。
+</p>
+</div>
+</div>
+
+<div class="border-t border-gray-200 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+<p class="text-xs text-gray-400 dark:text-gray-500">SpaceX（NASDAQ: SPCX）· 最新动态全景追踪 · 截至 2026-11-24</p>
+<p class="text-xs text-gray-400 dark:text-gray-500">BUY-SIDE RESEARCH · EVENT-DRIVEN INTELLIGENCE</p>
+</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+const s=document.documentElement.scrollTop||document.body.scrollTop;
+const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+const p=document.getElementById('progressBar');
+if(p)p.style.width=(h>0?s/h*100:0)+'%';
+});
+document.addEventListener('DOMContentLoaded',()=>{
+syncThemeIcons();
+if(window.lucide)lucide.createIcons();
+if(window.AOS)AOS.init({duration:450,offset:30,once:true});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

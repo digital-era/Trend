@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>穆迪（MCO）最新动态全景追踪_2026-11-28</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',
+          200:'hsl(20,90%,75%)',300:'hsl(20,90%,65%)',
+          400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',
+          800:'hsl(20,90%,25%)',900:'hsl(20,90%,15%)',
+          950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',
+          200:'hsl(30,85%,75%)',300:'hsl(30,85%,65%)',
+          400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',
+          800:'hsl(30,85%,30%)',900:'hsl(30,85%,20%)',
+          950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:90px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05)}
+.btn-interactive:active{transform:scale(.96)}
+.card-interactive{transition:all .28s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.5)}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#374151}
+.dark th{color:#e5e7eb}
+.dark td{color:#d1d5db}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%));transition:width .8s ease}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.source-link{color:#ea580c;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#fb923c}
+.source-link:hover{opacity:.75}
+.metric{font-variant-numeric:tabular-nums}
+.glass{backdrop-filter:blur(14px)}
+.tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700}
+.dark .bg-white{background-color:#161f2c}
+.dark .bg-gray-50{background-color:#111827}
+.dark .text-gray-900{color:#f3f4f6}
+.dark .text-gray-800{color:#e5e7eb}
+.dark .text-gray-700{color:#d1d5db}
+.dark .text-gray-600{color:#cbd5e1}
+.dark .text-gray-500{color:#9ca3af}
+.dark .border-gray-200{border-color:#374151}
+.dark .border-gray-100{border-color:#374151}
+</style>
+<script>
+(function(){
+  try{
+    if(window.self!==window.top || localStorage.getItem('mco-theme')==='dark' ||
+      (!localStorage.getItem('mco-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+      document.documentElement.classList.add('dark');
+    }
+  }catch(e){
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches)
+      document.documentElement.classList.add('dark');
+  }
+})();
+function syncThemeIcons(){
+ const dark=document.documentElement.classList.contains('dark');
+ const sun=document.getElementById('sunIcon');
+ const moon=document.getElementById('moonIcon');
+ if(sun)sun.style.display=dark?'block':'none';
+ if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ try{localStorage.setItem('mco-theme',document.documentElement.classList.contains('dark')?'dark':'light')}catch(e){}
+ syncThemeIcons();
+}
+function toggleMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ if(menu)menu.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[70]" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 glass bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+  <div class="flex items-center justify-between">
+   <div class="flex items-center gap-2.5 min-w-0">
+    <span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+    <h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">MOODY'S · 穆迪最新动态</h1>
+   </div>
+   <nav class="hidden md:flex items-center space-x-5">
+    <a href="#overview" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">总览</a>
+    <a href="#company" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">公司动态</a>
+    <a href="#industry" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">行业动态</a>
+    <a href="#macro" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">宏观政策</a>
+    <a href="#matrix" class="text-sm text-gray-700 dark:text-gray-200 hover:text-primary-500">催化矩阵</a>
+   </nav>
+   <div class="flex items-center gap-2">
+    <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+     <i data-lucide="menu" class="w-4 h-4"></i>
+    </button>
+    <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+   <nav class="flex flex-col gap-3 pb-2">
+    <a href="#overview" onclick="toggleMobileMenu()" class="text-sm text-gray-700 dark:text-gray-200">总览</a>
+    <a href="#company" onclick="toggleMobileMenu()" class="text-sm text-gray-700 dark:text-gray-200">公司动态</a>
+    <a href="#industry" onclick="toggleMobileMenu()" class="text-sm text-gray-700 dark:text-gray-200">行业动态</a>
+    <a href="#macro" onclick="toggleMobileMenu()" class="text-sm text-gray-700 dark:text-gray-200">宏观政策</a>
+    <a href="#matrix" onclick="toggleMobileMenu()" class="text-sm text-gray-700 dark:text-gray-200">催化矩阵</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main class="pt-24 sm:pt-28 pb-16">
+
+<!-- HERO -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+  <div class="flex flex-wrap items-center gap-2 mb-5">
+   <span class="tag bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">NYSE: MCO</span>
+   <span class="tag bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300">金融信息服务 · 信用评级</span>
+   <span class="tag bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">近30日 · 2026-10-30 至 2026-11-28</span>
+  </div>
+
+  <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-6">
+   <div>
+    <p class="text-xs tracking-[.25em] uppercase text-primary-600 dark:text-primary-400 font-bold mb-2">GLOBAL CREDIT INTELLIGENCE</p>
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">穆迪公司</h2>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Moody's Corporation · NYSE: MCO</p>
+   </div>
+   <div class="text-left lg:text-right">
+    <div class="text-xs text-gray-500 dark:text-gray-400">报告基准日期</div>
+    <div class="text-2xl font-bold font-mono text-primary-600 dark:text-primary-400">2026.11.28</div>
+   </div>
+  </div>
+
+  <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-8 mb-7">
+   穆迪本月的核心变化是<strong class="text-primary-600 dark:text-primary-400">信用数据与AI工作流深度融合</strong>：零拷贝数据共享打开平台分发新入口，AI基础设施融资和私人信贷继续支撑评级需求；但私人信贷违约、AI融资集中度及全球主权债务风险正在抬升信用研究与估值的不确定性。
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+   <div class="rounded-xl p-5 bg-primary-50 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700 card-interactive">
+    <div class="flex items-center gap-2 mb-3">
+     <i data-lucide="gauge" class="w-4 h-4 text-primary-500"></i>
+     <span class="text-xs font-semibold text-gray-500 dark:text-gray-400">消息面总体基调</span>
+    </div>
+    <div class="text-2xl font-bold text-primary-600 dark:text-primary-300">中性偏多</div>
+    <p class="text-xs text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">AI产品商业化与信用市场需求提供增长动力，信用风险和利率环境构成估值约束。</p>
+   </div>
+
+   <div class="rounded-xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-3">
+     <i data-lucide="zap" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+     <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">本月最强单一催化剂</span>
+    </div>
+    <div class="text-base font-bold text-emerald-800 dark:text-emerald-200 leading-snug">11月24日推出零拷贝数据共享</div>
+    <p class="text-xs text-emerald-700 dark:text-emerald-300 mt-2 leading-relaxed">将650M+实体及2B+所有权关系数据嵌入客户AI平台，强化数据分发与订阅变现能力。</p>
+   </div>
+
+   <div class="rounded-xl p-5 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-3">
+     <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-500"></i>
+     <span class="text-xs font-semibold text-rose-700 dark:text-rose-300">本月最需警惕信号</span>
+    </div>
+    <div class="text-base font-bold text-rose-800 dark:text-rose-200 leading-snug">私人信贷风险仍处高位</div>
+    <p class="text-xs text-rose-700 dark:text-rose-300 mt-2 leading-relaxed">Fitch披露美国私人信贷10月TTM违约率仍为6.2%，AI相关融资复杂化也可能放大信用损失。</p>
+   </div>
+  </div>
+
+  <div class="mt-7 p-4 rounded-xl bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+   <div class="flex items-center gap-2 mb-2">
+    <i data-lucide="target" class="w-4 h-4 text-primary-500"></i>
+    <span class="text-sm font-bold">本月投资判断</span>
+   </div>
+   <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+    穆迪正在从传统信用评级机构向嵌入式信用数据与决策智能平台延伸。未来市场更值得观察的不是AI概念本身，而是零拷贝数据、MCP连接器能否转化为新增客户、续约率和分析业务利润率，以及私人信贷信用事件能否带来更多评级和风险监测需求。
+   </p>
+  </div>
+
+  <div class="mt-5 flex flex-wrap gap-3 text-xs text-gray-500 dark:text-gray-400">
+   <span>资料核验：Moody's Investor Relations</span>
+   <span>·</span>
+   <span>Business Wire</span>
+   <span>·</span>
+   <span>Reuters</span>
+   <span>·</span>
+   <span>Federal Reserve</span>
+   <span>·</span>
+   <span>Bank of England</span>
+  </div>
+ </div>
+</section>
+
+<!-- COMPANY -->
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">按对穆迪未来收入、竞争优势及盈利预期的影响排序</p>
+  </div>
+ </div>
+
+ <!-- COMPANY 1 -->
+ <article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-24</span>
+    <span class="tag bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">重大利好</span>
+   </div>
+   <span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 9.5 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold mb-3">穆迪推出 Zero-copy Data Sharing：将信用情报直接嵌入客户AI平台</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">覆盖实体</div>
+    <div class="text-lg font-bold font-mono text-primary-600 dark:text-primary-400">650M+</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">所有权关系</div>
+    <div class="text-lg font-bold font-mono">2B+</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">数据覆盖</div>
+    <div class="text-lg font-bold font-mono">200+</div>
+    <div class="text-xs text-gray-500 dark:text-gray-400">司法辖区</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">分发渠道</div>
+    <div class="text-lg font-bold">Snowflake</div>
+    <div class="text-xs text-gray-500 dark:text-gray-400">Marketplace</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   2026年11月24日，穆迪宣布推出零拷贝数据共享（Zero-copy Data Sharing）。客户无需将数据复制或迁移到其他系统，即可在自身构建AI Agent、模型及分析工具的平台中直接调用穆迪的Connected Intelligence。该服务可通过穆迪自身平台或Snowflake Marketplace使用，并与现有MCP连接器协同工作。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   通过Snowflake，客户可以获取持续更新、可直接查询的公司基本资料、财务信息、股权结构、信用评级及每日违约概率数据。穆迪披露，其数据库覆盖超过6.5亿家公共及私人实体、超过20亿条所有权关系，数据来自200多个司法辖区的企业登记资料。
+  </p>
+
+  <div class="rounded-xl bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50 p-4 mb-4">
+   <h4 class="text-sm font-bold text-emerald-800 dark:text-emerald-300 mb-2 flex items-center gap-2">
+    <i data-lucide="trending-up" class="w-4 h-4"></i> 对收入与竞争壁垒的传导
+   </h4>
+   <ul class="text-xs text-gray-700 dark:text-gray-300 space-y-2 leading-relaxed">
+    <li><strong>第一，降低数据使用门槛：</strong>从客户主动登录穆迪平台查询，转变为在客户原有工作环境中直接调用，扩大产品触达频率。</li>
+    <li><strong>第二，增强客户黏性：</strong>信用评级、违约概率和企业关系数据被嵌入客户AI工作流后，替换供应商的技术与业务成本可能提高。</li>
+    <li><strong>第三，打开增量分发渠道：</strong>Snowflake Marketplace有机会触达原本不直接采购传统评级平台的企业、金融科技公司及AI应用开发者。</li>
+    <li><strong>第四，改善数据资产利用效率：</strong>同一套底层数据可支持多种客户工作流，具备扩大数字化产品收入的潜力。</li>
+   </ul>
+  </div>
+
+  <div class="rounded-xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/40 p-4 mb-4">
+   <h4 class="text-xs font-bold text-amber-800 dark:text-amber-300 mb-1">需要验证的风险</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    产品发布不等于已经形成可量化收入。公司尚未在此次公告中披露新增合同金额、客户数量、订阅转化率或产品单价。零拷贝模式还需要持续验证数据授权、平台合作分成、信息安全及客户实际使用量。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+   信源：Moody's Corporation / Business Wire，2026-11-24。
+   <a class="source-link" href="https://6ix.com/news/moodys-embeds-connected-intelligence-in-the-platforms-where-customers-build-with-ai" target="_blank" rel="noopener">查看公告全文</a>
+  </p>
+  <div class="impact-bar"><div class="impact-fill" style="width:95%"></div></div>
+ </article>
+
+ <!-- COMPANY 2 -->
+ <article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up" data-aos-delay="80">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-17</span>
+    <span class="tag bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">温和利好</span>
+   </div>
+   <span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 9.0 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold mb-3">J.P. Morgan投资者会议：AI基础设施贡献评级业务50%的发行增长、40%的收入增长</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+   <div class="p-3 rounded-lg bg-primary-50 dark:bg-gray-800 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">AI相关发行增长贡献</div>
+    <div class="text-xl font-bold text-primary-600 dark:text-primary-400 font-mono">50%</div>
+   </div>
+   <div class="p-3 rounded-lg bg-primary-50 dark:bg-gray-800 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">AI相关收入增长贡献</div>
+    <div class="text-xl font-bold text-primary-600 dark:text-primary-400 font-mono">40%</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">未来四年再融资规模</div>
+    <div class="text-xl font-bold font-mono">$5T</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">Q3首次市场委托增长</div>
+    <div class="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400">40%</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   2026年11月17日，穆迪CFO Noémie Heuland出席J.P. Morgan 2026 Ultimate Services Investor Conference。根据会议内容，年初至今AI相关基础设施贡献了穆迪评级业务发行增长的约50%、收入增长的约40%。公司维持此前公布的2026全年高个位数收入增长指引。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   管理层同时指出，穆迪分析（Moody's Analytics）维持高个位数有机增长，客户留存率处于90%中段水平，过去12个月利润率提升170个基点。私人信贷业务也开始贡献实际交易和收入，而非停留在市场讨论阶段。
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+   <div class="p-4 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50">
+    <div class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">增长端：AI与私人信贷</div>
+    <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+     <li>AI融资需求覆盖超大规模云厂商及更广泛的基础设施生态。</li>
+     <li>2026年Q3约120亿美元贷款交易量从直接贷款市场重新转入广泛银团贷款市场，为评级及相关服务带来业务机会。</li>
+     <li>新客户首次委托增长40%，可作为未来交易及持续性收入的领先观察指标。</li>
+    </ul>
+   </div>
+   <div class="p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50">
+    <div class="text-xs font-bold text-amber-700 dark:text-amber-300 mb-2">短期压力：发行基数与季度波动</div>
+    <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+     <li>去年第四季度超大规模云厂商融资发行基数较高，形成同比比较压力。</li>
+     <li>银行贷款重新定价业务预计无法复制上一年同期规模。</li>
+     <li>管理层表示全年收入指引不变，但季度间发行收入仍可能出现波动。</li>
+    </ul>
+   </div>
+  </div>
+
+  <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 mb-4">
+   <h4 class="text-sm font-bold mb-2">关键投资含义：评级需求从传统债券向多元融资扩张</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    管理层提到，未来四年再融资需求约5万亿美元，2031年成为更突出的到期高峰年份。复杂的项目融资、资产支持证券及私人信贷交易通常需要更多定制化研究。穆迪如果能够覆盖更多融资结构，将有机会提高单笔业务的复杂度与收入质量。但5万亿美元是市场再融资规模，不代表穆迪可获得的收入。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+   信源：Investing.com，2026-11-17，J.P. Morgan会议实录；
+   <a class="source-link" href="https://www.investing.com/news/transcripts/moodys-at-jp-morgan-conference-ai-and-private-credit-drive-growth-93CH-5033823" target="_blank" rel="noopener">查看会议实录</a>；
+   <a class="source-link" href="https://www.druckfin.com/en/articles/moodys-cfo-says-ai-infrastructure-drove-50-of-issuance-growth-and-40-of-ratings-20261117" target="_blank" rel="noopener">补充会议分析</a>。
+  </p>
+  <div class="impact-bar"><div class="impact-fill" style="width:90%"></div></div>
+ </article>
+
+ <!-- COMPANY 3 -->
+ <article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive" data-aos="fade-up" data-aos-delay="120">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-16</span>
+    <span class="tag bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">温和利好</span>
+   </div>
+   <span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 7.5 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold mb-3">穆迪设立新CIO职位：Timothy Bhatt统筹集团AI部署、技术战略与网络安全</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">任职生效日期</div>
+    <div class="text-base font-bold font-mono">12月07日</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">技术领导经验</div>
+    <div class="text-base font-bold font-mono">近30年</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">集团员工</div>
+    <div class="text-base font-bold font-mono">约16,000</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">业务覆盖</div>
+    <div class="text-base font-bold font-mono">40+国家</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   2026年11月16日，穆迪宣布任命Timothy Bhatt担任新设立的首席信息官（CIO），任命自12月7日起生效，并加入集团执行领导团队。Bhatt自2018年起担任Moody's Ratings首席技术官，此次任命后仍继续兼任该职位。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   新职位将统筹集团技术战略、AI能力部署、信息安全、技术服务及运营和网络安全团队。公司希望将人类专业判断、可信数据与AI Agent结合，推动AI从试点项目走向日常业务流程。
+  </p>
+
+  <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 mb-4">
+   <h4 class="text-sm font-bold mb-2">战略影响拆解</h4>
+   <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+    <li><strong>成本端：</strong>统一技术基础设施、云平台与AI工作流，有望减少重复系统建设及部分人工流程成本。</li>
+    <li><strong>收入端：</strong>加快评级与分析产品的AI化，有助于提高产品更新速度、客户体验及交叉销售机会。</li>
+    <li><strong>风险端：</strong>金融数据安全、模型可靠性、网络攻击及监管合规的重要性同步提升。</li>
+    <li><strong>执行端：</strong>由Ratings CTO兼任集团CIO，有利于将评级业务已经形成的技术平台经验推广至其他部门。</li>
+   </ul>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+   信源：Moody's Investor Relations / Business Wire，2026-11-16。
+   <a class="source-link" href="https://ir.moodys.com/press-releases/news-details/2026/Moodys-Names-Timothy-Bhatt-as-Chief-Information-Officer/default.aspx" target="_blank" rel="noopener">查看公司正式公告</a>
+  </p>
+  <div class="impact-bar"><div class="impact-fill" style="width:75%"></div></div>
+ </article>
+
+ <div class="rounded-xl p-5 bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700">
+  <h3 class="font-bold text-sm mb-2 flex items-center gap-2">
+   <i data-lucide="info" class="w-4 h-4 text-primary-500"></i> 财务基准与时间窗口径
+  </h3>
+  <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+   穆迪2026年第三季度财报于2026-10-21发布，早于本报告30日主窗口（2026-10-30至2026-11-28），因此不列为本月核心动态。该报告披露Q3营收20亿美元、同比增长1%，调整后营业利润率52.6%，调整后稀释每股收益增长6%，前三季度经营现金流24.71亿美元、同比增长21%。2026全年调整后EPS指引为16.50—17.00美元，全年收入增长指引维持高个位数。以上仅作为经营基准，不作为本月新事件。
+   <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1059556/000162828026066594/a3q26earningsrelease.htm" target="_blank" rel="noopener">SEC：2026 Q3正式财报</a>
+  </p>
+ </div>
+</section>
+
+<!-- INDUSTRY -->
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-3">
+  <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+   <i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">全球信用评级、固定收益数据、私人信贷与金融风险分析</p>
+  </div>
+ </div>
+
+ <div class="p-4 rounded-xl bg-accent-50/70 dark:bg-accent-950/20 border border-accent-100 dark:border-accent-900/40 mb-6">
+  <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+   <strong>细分赛道界定：</strong>穆迪并非单一传统评级机构，其核心业务覆盖信用评级、债券发行人及结构化金融评级、信用数据、风险分析软件、企业与所有权数据库、经济预测及合规解决方案。主要竞争对手包括S&P Global与Fitch Ratings。行业景气主要由债券发行量、再融资活动、私人信贷增长、信用风险复杂度及金融机构数据支出共同驱动。
+  </p>
+ </div>
+
+ <!-- INDUSTRY 1 -->
+ <article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+   <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-24</span>
+   <span class="tag bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">行业分化 · 结构性利好</span>
+  </div>
+  <h3 class="text-lg font-bold mb-3">美国私人信贷违约率仍在6%以上：信用风险评估和透明度需求继续上升</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="p-3 rounded-lg bg-rose-50 dark:bg-rose-950/20">
+    <div class="text-xs text-gray-500 dark:text-gray-400">10月TTM违约率</div>
+    <div class="text-xl font-bold font-mono text-rose-600 dark:text-rose-400">6.2%</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">9月TTM违约率</div>
+    <div class="text-xl font-bold font-mono">6.3%</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">过去12个月违约企业</div>
+    <div class="text-xl font-bold font-mono">90家</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">过去12个月违约事件</div>
+    <div class="text-xl font-bold font-mono">111次</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   2026年11月24日，Fitch Ratings发布美国私人信贷违约率更新。美国私人信贷TTM违约率截至2026年10月为6.2%，低于9月的6.3%，但自2026年4月以来始终不低于6%。仅统计破产、清算或重组的违约率为0.4%，高于前月的0.3%。过去12个月共有90家独立违约企业、111起违约事件。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   这一数据说明，私人信贷市场并非单纯的融资规模扩张，底层资产的信用质量正在出现压力。穆迪此前在11月17日的投资者会议上明确表示，私人信贷已经产生实际评级业务与收入，复杂交易结构也提高了专业信用评估的价值。
+  </p>
+
+  <div class="p-4 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50 mb-4">
+   <h4 class="text-sm font-bold text-emerald-800 dark:text-emerald-300 mb-2">对穆迪的横向映射：需求端偏利好</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    私人信贷资产透明度不足、估值滞后及贷款结构复杂，使投资者、保险公司和资产管理机构更加重视第三方信用评估。穆迪可以通过评级、违约概率监测、结构化金融研究及数据服务获取增量需求。另一方面，若违约持续扩散，也可能增加评级机构模型风险、声誉风险和客户信用损失。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400">
+   信源：Fitch Ratings，2026-11-24；
+   <a class="source-link" href="https://theleadpc.com/middle-market-private-credit-11-23-2026/" target="_blank" rel="noopener">查看Fitch违约率数据</a>。
+  </p>
+ </article>
+
+ <!-- INDUSTRY 2 -->
+ <article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+   <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-24</span>
+   <span class="tag bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中性偏空 · 风险分化</span>
+  </div>
+  <h3 class="text-lg font-bold mb-3">Fitch发布2027年全球主权评级展望：全球债务与融资成本成为核心风险</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">全球增长预测</div>
+    <div class="text-xl font-bold font-mono">2.5%</div>
+   </div>
+   <div class="p-3 rounded-lg bg-amber-50 dark:bg-amber-950/20">
+    <div class="text-xs text-gray-500 dark:text-gray-400">2027年全球政府债务</div>
+    <div class="text-xl font-bold font-mono">$115T</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">债务占全球GDP</div>
+    <div class="text-xl font-bold font-mono">88%</div>
+   </div>
+   <div class="p-3 rounded-lg bg-rose-50 dark:bg-rose-950/20">
+    <div class="text-xs text-gray-500 dark:text-gray-400">高赤字国家</div>
+    <div class="text-xl font-bold font-mono">13+</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   2026年11月24日，Reuters报道Fitch将2027年全球主权评级展望定为Neutral（中性）。Fitch预计2027年全球经济增长约2.5%，美国消费韧性与AI投资将支撑增长，但高债务和融资成本仍然是主要风险。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Fitch预计至少13个国家2027年财政赤字达到GDP的6.5%或以上，全球政府债务到2027年底可能增加超过7万亿美元，达到约115万亿美元，相当于全球GDP的88%。北美和西欧主权评级展望被描述为Deteriorating（恶化）。
+  </p>
+
+  <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 mb-4">
+   <h4 class="text-sm font-bold mb-2">对穆迪的竞争与业务映射</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    <strong>业务层面：</strong>主权信用风险重新受到关注，意味着政府债券、金融机构、企业债及跨境融资的信用评估需求可能增加。穆迪与Fitch、S&P在主权评级及相关研究领域直接竞争。评级机构的专业判断和全球覆盖能力因此更具价值。
+   </p>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mt-2">
+    <strong>估值层面：</strong>主权风险恶化可能推高融资成本和市场波动，增加债券发行人的融资压力；若发行量或资本市场交易活动因此下降，评级业务收入也可能承压。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400">
+   信源：Reuters，Marc Jones，2026-11-24。
+   <a class="source-link" href="https://www.reuters.com/markets/europe/fitch-sets-neutral-global-sovereign-rating-outlook-warns-debt-war-ai-risks-2026-11-24/" target="_blank" rel="noopener">查看Reuters报道</a>
+  </p>
+ </article>
+
+ <!-- INDUSTRY 3 -->
+ <article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+   <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-26</span>
+   <span class="tag bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300">短期承压 · 中长期需求增加</span>
+  </div>
+  <h3 class="text-lg font-bold mb-3">英国央行金融稳定报告：AI融资交叉关联加深，低评级信用利差明显扩大</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="p-3 rounded-lg bg-rose-50 dark:bg-rose-950/20">
+    <div class="text-xs text-gray-500 dark:text-gray-400">美国CCC级债券利差</div>
+    <div class="text-base font-bold text-rose-600 dark:text-rose-400">2023年以来高位</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">2026年超大规模云厂商发债</div>
+    <div class="text-xl font-bold font-mono">$305B+</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">全球IG发行占比</div>
+    <div class="text-xl font-bold font-mono">约8%</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">数据更新截止</div>
+    <div class="text-base font-bold font-mono">11月18日</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   2026年11月26日，英国央行金融政策委员会发布《Financial Stability Report – November 2026》。报告指出，全球融资成本上升，AI相关融资快速扩张，复杂、循环及不透明的融资结构正在增加金融体系的相互关联。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   报告指出，2026年超大规模云厂商债券发行预计超过3050亿美元，约占全球投资级债券发行量的8%。同时，美国CCC级债务信用利差已上升至2023年初以来最高水平，低评级AI相关借款人融资条件明显恶化。部分私人信贷基金对AI和数据中心项目融资采取更加谨慎的态度。
+  </p>
+
+  <div class="p-4 rounded-xl bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50 mb-4">
+   <h4 class="text-sm font-bold text-rose-800 dark:text-rose-300 mb-2">对穆迪的横向映射：双向影响</h4>
+   <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+    <li><strong>正向：</strong>AI数据中心、电力设施及算力融资结构更加复杂，增加项目融资评级、债券信用研究、企业关联分析和持续监测需求。</li>
+    <li><strong>负向：</strong>AI资产价格回调或项目现金流不达预期，可能引发降级、违约及融资延期，压低部分发行活动。</li>
+    <li><strong>结构性机会：</strong>融资主体之间存在循环资金及关联交易时，穆迪的所有权关系数据库、违约概率模型和跨主体风险识别能力更有价值。</li>
+   </ul>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400">
+   信源：Bank of England，2026-11-26。
+   <a class="source-link" href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener">查看英国央行报告</a>
+  </p>
+ </article>
+
+ <!-- INDUSTRY COMPARISON -->
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+  <h3 class="font-bold mb-4 flex items-center gap-2">
+   <i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i>
+   行业动态对标影响对比表
+  </h3>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm min-w-[760px]">
+    <thead>
+     <tr class="bg-gray-50 dark:bg-gray-800">
+      <th>行业事件</th>
+      <th>涉及主体</th>
+      <th>对穆迪的利弊传导</th>
+      <th>影响周期</th>
+     </tr>
+    </thead>
+    <tbody class="text-gray-600 dark:text-gray-300">
+     <tr>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">私人信贷违约率仍在6%以上</td>
+      <td>Fitch、穆迪、私人信贷基金、保险公司</td>
+      <td><span class="text-emerald-600 dark:text-emerald-400 font-bold">需求偏利好。</span>评级、监测和风险透明度需求提高；同时信用损失风险增加。</td>
+      <td>短期至中期</td>
+     </tr>
+     <tr>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">2027年全球主权评级展望中性</td>
+      <td>Fitch、Moody's、S&P、各国政府</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">双向影响。</span>信用研究需求增加，但高债务可能压制发行和交易活动。</td>
+      <td>2026Q4—2027</td>
+     </tr>
+     <tr>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">AI债务扩张与低评级利差扩大</td>
+      <td>云厂商、数据中心、私人信贷基金、评级机构</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">结构性机会。</span>复杂融资评级需求提升，尾部违约风险同时上升。</td>
+      <td>2026Q4—2028</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">重点分析利率、国债供给、融资成本及全球信用风险</p>
+  </div>
+ </div>
+
+ <!-- MACRO 1 -->
+ <article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">美国 · 货币政策</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-19公布会议纪要</span>
+    <span class="tag bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中性偏空 · 利率风险</span>
+   </div>
+   <span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 9.0 / 10</span>
+  </div>
+
+  <h3 class="text-lg font-bold mb-4">美联储10月会议纪要关注AI债务扩张、循环融资及金融稳定风险</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+    <h4 class="text-xs font-bold mb-2">1. 政策与会议要点</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     2026年10月27—28日FOMC会议讨论金融稳定问题，会议纪要于11月19日公布。官员关注AI相关债务快速增长、表外租赁承诺及企业之间的循环融资安排。
+    </p>
+   </div>
+   <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+    <h4 class="text-xs font-bold mb-2">2. 传导路径</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     高利率维持时间延长，将增加企业再融资成本、提高低评级发行人的信用风险。若AI投资回报不及预期，复杂融资结构可能放大损失。
+    </p>
+   </div>
+   <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+    <h4 class="text-xs font-bold mb-2">3. 穆迪业务敞口</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     直接影响美国债券评级、企业信用风险监测、结构化金融及宏观经济分析。风险上升能够增加研究需求，但也可能抑制发行活动。
+    </p>
+   </div>
+  </div>
+
+  <div class="p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/50">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+    <strong>投资判断：</strong>不能简单将风险讨论等同于立即加息。10月会议政策实施决定维持联邦基金利率目标区间在3.75%—4.00%。对穆迪而言，真正重要的是未来利率路径与信用利差是否同步走高，以及高风险融资活动是否因此收缩。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+   信源：Federal Reserve，FOMC Minutes，2026-10-27至28会议，11月公布。
+   <a class="source-link" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm" target="_blank" rel="noopener">查看美联储会议纪要</a>。
+  </p>
+ </article>
+
+ <!-- MACRO 2 -->
+ <article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · 全球金融稳定</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-26</span>
+    <span class="tag bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300">中性偏空 · 信用风险</span>
+   </div>
+   <span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 8.5 / 10</span>
+  </div>
+
+  <h3 class="text-lg font-bold mb-4">英国央行金融稳定报告：全球借贷成本上升，主权债务与AI融资交叉风险增加</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+    <h4 class="text-xs font-bold mb-2">1. 宏观态势要点</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     英国央行金融政策委员会于2026-11-26发布金融稳定报告，指出全球国债收益率、企业融资成本及市场波动上升，低评级信用市场和私人信贷存在压力。
+    </p>
+   </div>
+   <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+    <h4 class="text-xs font-bold mb-2">2. 分子端与分母端传导</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     分子端：信用评级、监测、数据分析需求有望提升。分母端：更高利率可能压低高估值金融信息服务企业的估值倍数，并影响债券发行量。
+    </p>
+   </div>
+   <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+    <h4 class="text-xs font-bold mb-2">3. 穆迪业务敞口</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     全球固定收益评级、私人信贷、AI基础设施融资、银行与保险机构风险管理均有直接业务敞口。美国和欧洲信用市场尤其重要。
+    </p>
+   </div>
+  </div>
+
+  <div class="p-4 rounded-xl bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+    <strong>关键判断：</strong>信用利差扩大对评级机构不是单向利空。它提高信用分析的边际价值，却也可能使低质量发行人退出资本市场。应重点监测穆迪评级业务的实际发行量、降级数量与结构化金融收入，而非只关注市场违约新闻。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">
+   信源：Bank of England，Financial Stability Report，2026-11-26。
+   <a class="source-link" href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener">查看官方报告</a>。
+  </p>
+ </article>
+
+ <!-- MACRO 3 -->
+ <article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">美国 · 财政融资政策</span>
+    <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2026-11-04</span>
+    <span class="tag bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">中性 · 供给与利率双向影响</span>
+   </div>
+   <span class="text-xs font-bold font-mono text-primary-600 dark:text-primary-400">影响力 7.5 / 10</span>
+  </div>
+
+  <h3 class="text-lg font-bold mb-4">美国财政部第四季度再融资计划：1250亿美元国债发行，新增融资约280亿美元</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">再融资总规模</div>
+    <div class="text-xl font-bold font-mono">$125B</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">到期置换规模</div>
+    <div class="text-xl font-bold font-mono">$97B</div>
+   </div>
+   <div class="p-3 rounded-lg bg-amber-50 dark:bg-amber-950/20">
+    <div class="text-xs text-gray-500 dark:text-gray-400">新增现金融资</div>
+    <div class="text-xl font-bold font-mono text-amber-600 dark:text-amber-400">$28B</div>
+   </div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
+    <div class="text-xs text-gray-500 dark:text-gray-400">10年期发行</div>
+    <div class="text-xl font-bold font-mono">$42B</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   2026年11月4日，美国财政部发布季度再融资声明，计划发行1250亿美元国债，以置换11月15日到期的约970亿美元私人持有国债，预计从私人投资者处获得约280亿美元新增现金。发行包括580亿美元3年期国债、420亿美元10年期国债和250亿美元30年期国债，分别于11月9日、10日和12日进行拍卖。
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+   <div class="p-4 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50">
+    <h4 class="text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2">潜在正面传导</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     国债融资和债券市场交易活动持续，为信用评级机构提供固定收益研究及相关数据服务需求。债券市场规模和发行人覆盖范围扩大，也有利于信用数据业务发展。
+    </p>
+   </div>
+   <div class="p-4 rounded-xl bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50">
+    <h4 class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-2">潜在负面传导</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     若国债供给叠加财政赤字和通胀预期推高长期收益率，企业融资成本可能上升，压制高杠杆借款人和低评级债券发行活动，也可能提高金融信息服务企业的折现率。
+    </p>
+   </div>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400">
+   信源：U.S. Department of the Treasury，2026-11-04。
+   <a class="source-link" href="https://home.treasury.gov/news/press-releases/sb0678" target="_blank" rel="noopener">查看财政部官方再融资声明</a>。
+  </p>
+ </article>
+
+</section>
+
+<!-- MATRIX -->
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-12" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">把公司、行业和宏观变量转化为可持续跟踪的投资信号</p>
+  </div>
+ </div>
+
+ <div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-8">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+   <h3 class="font-bold text-sm sm:text-base flex items-center gap-2">
+    <i data-lucide="list" class="w-4 h-4 text-primary-500"></i>
+    九大动态催化矩阵
+   </h3>
+   <div class="flex flex-wrap gap-2 text-xs">
+    <button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">全部（9）</button>
+    <button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">公司（3）</button>
+    <button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">行业（3）</button>
+    <button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">宏观（3）</button>
+   </div>
+  </div>
+
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm min-w-[900px]">
+    <thead>
+     <tr class="bg-gray-50 dark:bg-gray-800">
+      <th>类别</th>
+      <th>日期</th>
+      <th>核心事件</th>
+      <th>影响方向</th>
+      <th>强度</th>
+      <th>核心投资含义</th>
+     </tr>
+    </thead>
+    <tbody class="text-gray-600 dark:text-gray-300">
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+      <td><span class="tag bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td>
+      <td class="font-mono whitespace-nowrap">11-24</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">推出零拷贝数据共享，打通Snowflake与MCP工作流</td>
+      <td class="text-emerald-600 dark:text-emerald-400 font-bold">重大利好</td>
+      <td class="font-bold font-mono">9.5</td>
+      <td>扩大数据分发，提升客户嵌入度及商业化潜力</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+      <td><span class="tag bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td>
+      <td class="font-mono whitespace-nowrap">11-17</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">AI贡献发行增长50%、收入增长40%</td>
+      <td class="text-emerald-600 dark:text-emerald-400 font-bold">温和利好</td>
+      <td class="font-bold font-mono">9.0</td>
+      <td>AI融资与私人信贷成为评级业务的重要增量</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+      <td><span class="tag bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">公司</span></td>
+      <td class="font-mono whitespace-nowrap">11-16</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">任命Timothy Bhatt为集团CIO</td>
+      <td class="text-amber-600 dark:text-amber-400 font-bold">温和利好</td>
+      <td class="font-bold font-mono">7.5</td>
+      <td>集团AI部署、信息安全及技术整合提速</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+      <td><span class="tag bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td>
+      <td class="font-mono whitespace-nowrap">11-24</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">美国私人信贷10月TTM违约率6.2%</td>
+      <td class="text-amber-600 dark:text-amber-400 font-bold">双向影响</td>
+      <td class="font-bold font-mono">9.0</td>
+      <td>增加评级与风险监测需求，同时提高信用损失风险</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+      <td><span class="tag bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td>
+      <td class="font-mono whitespace-nowrap">11-24</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">Fitch发布2027年全球主权评级展望</td>
+      <td class="text-amber-600 dark:text-amber-400 font-bold">中性偏空</td>
+      <td class="font-bold font-mono">8.0</td>
+      <td>主权风险研究需求提升，融资环境可能趋紧</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+      <td><span class="tag bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">行业</span></td>
+      <td class="font-mono whitespace-nowrap">11-26</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">AI融资关联加深，低评级债券利差扩大</td>
+      <td class="text-amber-600 dark:text-amber-400 font-bold">双向影响</td>
+      <td class="font-bold font-mono">8.0</td>
+      <td>风险识别价值上升，但低质量发行活动可能收缩</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+      <td><span class="tag bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">11-19公布</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">美联储会议纪要关注AI债务与循环融资风险</td>
+      <td class="text-amber-600 dark:text-amber-400 font-bold">利率风险</td>
+      <td class="font-bold font-mono">9.0</td>
+      <td>高利率与AI融资风险共同影响评级和估值</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+      <td><span class="tag bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">11-26</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">英国央行发布全球金融稳定风险报告</td>
+      <td class="text-rose-600 dark:text-rose-400 font-bold">短期承压</td>
+      <td class="font-bold font-mono">8.5</td>
+      <td>信用利差扩大与私人信贷风险需要重点监测</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800">
+      <td><span class="tag bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">11-04</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">美国财政部1250亿美元季度再融资计划</td>
+      <td class="text-amber-600 dark:text-amber-400 font-bold">中性</td>
+      <td class="font-bold font-mono">7.5</td>
+      <td>国债供给影响收益率、信用利差及债券发行环境</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">注：影响强度为研究者对事件重要性的主观评分，并非穆迪官方指标或股票价格预测。点击表格行可跳转至事件详情。</p>
+ </div>
+
+ <!-- FUTURE CALENDAR -->
+ <div class="mb-6">
+  <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+   <i data-lucide="calendar-days" class="w-5 h-5 text-primary-500"></i>
+   未来30天重点跟踪日历
+  </h3>
+  <p class="text-xs text-gray-500 dark:text-gray-400">观察窗口：2026-11-29 至 2026-12-28。仅列出已确认日期及需要持续监测的事件，不将未公布日期写成确定日程。</p>
+ </div>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+   <div class="flex items-center justify-between mb-3">
+    <span class="tag bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300">2026-12-07</span>
+    <i data-lucide="users" class="w-5 h-5 text-primary-500"></i>
+   </div>
+   <h4 class="font-bold text-sm mb-2">新任CIO正式履职</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    Timothy Bhatt将正式担任集团CIO，同时继续兼任Moody's Ratings CTO。关注其后续技术组织整合、AI Agent部署、网络安全投入及集团运营效率。
+   </p>
+   <p class="text-xs text-gray-400 mt-3">来源：穆迪2026-11-16人事公告</p>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+   <div class="flex items-center justify-between mb-3">
+    <span class="tag bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300">2026-12-08 至 12-09</span>
+    <i data-lucide="landmark" class="w-5 h-5 text-amber-500"></i>
+   </div>
+   <h4 class="font-bold text-sm mb-2">美联储FOMC议息会议</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    重点观察利率决定、经济预测及政策声明。若融资成本维持高位，可能继续影响低评级债券、私人信贷、企业再融资和MCO估值折现率。
+   </p>
+   <p class="text-xs text-gray-400 mt-3">日期依据：Federal Reserve 2026年10月会议纪要所列下一次会议日期</p>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+   <div class="flex items-center justify-between mb-3">
+    <span class="tag bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300">未来30日持续跟踪</span>
+    <i data-lucide="database" class="w-5 h-5 text-accent-500"></i>
+   </div>
+   <h4 class="font-bold text-sm mb-2">Zero-copy与MCP产品商业化验证</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    关注Snowflake Marketplace客户使用情况、企业级AI工作流接入、客户合同与续约率变化。重点等待管理层披露实际商业化进度，而不是仅凭技术发布推算收入。
+   </p>
+   <p class="text-xs text-gray-400 mt-3">跟踪依据：Moody's 2026-11-24产品公告</p>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+   <div class="flex items-center justify-between mb-3">
+    <span class="tag bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">未来30日持续跟踪</span>
+    <i data-lucide="shield-alert" class="w-5 h-5 text-rose-500"></i>
+   </div>
+   <h4 class="font-bold text-sm mb-2">私人信贷违约与AI基础设施债务风险</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    跟踪Fitch、Moody's及S&P对私人信贷、数据中心项目、AI融资主体的评级行动，重点关注CCC级信用利差、债务延期、PIK利息和实际破产重组事件。
+   </p>
+   <p class="text-xs text-gray-400 mt-3">跟踪依据：Fitch 2026-11-24违约数据、英国央行2026-11-26报告</p>
+  </div>
+ </div>
+
+ <div class="mt-5 p-5 bg-white dark:bg-[#161f2c] rounded-xl border border-gray-200 dark:border-gray-800">
+  <div class="flex items-center gap-2 mb-3">
+   <i data-lucide="clock" class="w-4 h-4 text-primary-500"></i>
+   <h4 class="font-bold text-sm">其他待确认的重要时间点</h4>
+  </div>
+  <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+   <li>• 穆迪2026年第四季度财报：截至2026-11-28，本次检索未确认公司正式公布的下一次业绩发布日期，待投资者关系网站更新。</li>
+   <li>• 2026年全年债券发行及再融资统计：重点观察AI基础设施债券融资是否持续增长，以及投资级和高收益债券发行结构变化。</li>
+   <li>• 2027年初私人市场系统性风险评估：英国央行已表示计划于2027年初更新私人市场系统性情景分析的初步结果，后续报告预计于2027年第二季度发布。</li>
+  </ul>
+ </div>
+</section>
+
+<!-- INVESTMENT CONCLUSION -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="rounded-2xl bg-[#172333] dark:bg-[#101b2a] text-white p-6 sm:p-9 border border-gray-700">
+  <div class="flex items-center gap-2 mb-5">
+   <i data-lucide="brain-circuit" class="w-5 h-5 text-orange-400"></i>
+   <h2 class="text-xl sm:text-2xl font-bold">五、买方研究结论：穆迪未来的三条核心价值主线</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+   <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+    <div class="text-xs text-orange-300 font-bold mb-2">价值主线 01</div>
+    <h3 class="font-bold mb-2">数据资产平台化</h3>
+    <p class="text-xs text-gray-300 leading-relaxed">
+     零拷贝数据共享与MCP让穆迪的信用数据从独立产品进入AI工作流。核心验证指标是客户使用量、付费转化和续约率。
+    </p>
+   </div>
+   <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+    <div class="text-xs text-orange-300 font-bold mb-2">价值主线 02</div>
+    <h3 class="font-bold mb-2">信用风险复杂度提升</h3>
+    <p class="text-xs text-gray-300 leading-relaxed">
+     私人信贷、AI数据中心和结构化融资扩大专业信用分析需求。穆迪有机会通过复杂交易评级和持续风险监测提升收入质量。
+    </p>
+   </div>
+   <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+    <div class="text-xs text-orange-300 font-bold mb-2">价值主线 03</div>
+    <h3 class="font-bold mb-2">资本市场周期与估值</h3>
+    <p class="text-xs text-gray-300 leading-relaxed">
+     利率、国债供给和信用利差决定发行环境。评级需求增长不一定完全抵消发行量下滑及高利率对估值倍数的压力。
+    </p>
+   </div>
+  </div>
+
+  <div class="border-t border-white/15 pt-5">
+   <h3 class="font-bold text-lg mb-3">最终判断</h3>
+   <p class="text-sm text-gray-300 leading-8">
+    本月穆迪最有价值的变化不是单纯的AI题材，而是公司开始将拥有深厚数据壁垒的信用情报，直接部署到客户构建AI产品的环境中。这有机会提高数据使用频率、客户黏性和产品商业化空间。与此同时，AI相关债务增长、私人信贷违约以及全球融资成本上升，正在使信用风险分析变得更加重要，也更加复杂。
+   </p>
+   <p class="text-sm text-orange-300 font-bold leading-relaxed mt-3">
+    未来股价方向的关键验证：AI平台化能否形成新增经常性收入，以及评级业务能否在债券发行波动中维持盈利增长。
+   </p>
+   <p class="text-xs text-gray-400 mt-4">
+    研究评级：消息面中性偏多。该判断仅反映截至2026-11-28可核验的事件信息，不等同于股票买入评级或目标价。
+   </p>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+   <div>
+    <h4 class="font-bold text-sm mb-3">主要数据来源</h4>
+    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+     <li><a class="source-link" href="https://ir.moodys.com/press-releases/default.aspx" target="_blank" rel="noopener">Moody's Investor Relations</a>：公司正式公告</li>
+     <li><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1059556/000162828026066594/a3q26earningsrelease.htm" target="_blank" rel="noopener">SEC EDGAR</a>：2026年Q3财报</li>
+     <li><a class="source-link" href="https://www.investing.com/news/transcripts/moodys-at-jp-morgan-conference-ai-and-private-credit-drive-growth-93CH-5033823" target="_blank" rel="noopener">Investing.com</a>：J.P. Morgan会议实录</li>
+     <li><a class="source-link" href="https://www.reuters.com/markets/europe/fitch-sets-neutral-global-sovereign-rating-outlook-warns-debt-war-ai-risks-2026-11-24/" target="_blank" rel="noopener">Reuters</a>：全球主权评级展望</li>
+     <li><a class="source-link" href="https://theleadpc.com/middle-market-private-credit-11-23-2026/" target="_blank" rel="noopener">Fitch Ratings / The Lead</a>：私人信贷违约率</li>
+     <li><a class="source-link" href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener">Bank of England</a>：2026年11月金融稳定报告</li>
+     <li><a class="source-link" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm" target="_blank" rel="noopener">Federal Reserve</a>：FOMC会议纪要</li>
+     <li><a class="source-link" href="https://home.treasury.gov/news/press-releases/sb0678" target="_blank" rel="noopener">U.S. Treasury</a>：季度国债再融资声明</li>
+    </ul>
+   </div>
+
+   <div>
+    <h4 class="font-bold text-sm mb-3">覆盖时间区间</h4>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+     主窗口：2026-10-30 至 2026-11-28，共30个自然日。
+     <br><br>
+     公司动态：2026-11-16、11-17、11-24。
+     <br><br>
+     行业动态：2026-11-24、11-26等。
+     <br><br>
+     宏观政策：2026-11-04、11-19公布的FOMC会议纪要、11-26。
+     <br><br>
+     本报告未将2026-10-21的Q3财报纳入30日事件排名，仅将其作为历史财务基准。
+    </p>
+   </div>
+
+   <div>
+    <h4 class="font-bold text-sm mb-3">研究方法与免责声明</h4>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+     本报告采用“公司—行业—宏观”三层传导框架，对新闻事实、经营数据、行业趋势和宏观变量进行交叉分析。影响力评分是研究者对潜在投资影响的主观评价，不是统计模型结果。
+     <br><br>
+     部分行业数据为第三方评级机构发布的统计口径，可能存在统计范围、更新时间及定义差异。公司公告中的产品发布和管理层战略表述不等于已经实现的财务收益。
+     <br><br>
+     本报告仅供信息整理和研究参考，不构成投资建议、证券买卖邀约或收益承诺。投资者应结合最新财报、估值、市场价格及个人风险承受能力独立决策。
+    </p>
+   </div>
+  </div>
+
+  <div class="border-t border-gray-100 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+   <p class="text-xs text-gray-400 dark:text-gray-500">穆迪公司（NYSE: MCO）· 最新动态全景追踪 · 2026-11-28</p>
+   <p class="text-xs text-gray-400 dark:text-gray-500">AIPE Investment Research · Event-Driven Analysis</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const y=document.body.scrollTop||document.documentElement.scrollTop;
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const bar=document.getElementById('progressBar');
+ if(bar)bar.style.width=(h>0?Math.min(100,y/h*100):0)+'%';
+},{passive:true});
+
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:450,offset:35,once:true});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

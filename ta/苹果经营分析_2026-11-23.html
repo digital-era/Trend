@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>苹果（AAPL）经营分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "hsl(20, 90%, 95%)",
+                100: "hsl(20, 90%, 85%)",
+                200: "hsl(20, 90%, 75%)",
+                300: "hsl(20, 90%, 65%)",
+                400: "hsl(20, 90%, 55%)",
+                500: "hsl(20, 90%, 50%)",
+                600: "hsl(20, 90%, 45%)",
+                700: "hsl(20, 90%, 35%)",
+                800: "hsl(20, 90%, 25%)",
+                900: "hsl(20, 90%, 15%)",
+              },
+              accent: {
+                50: "hsl(30, 85%, 95%)",
+                100: "hsl(30, 85%, 85%)",
+                200: "hsl(30, 85%, 75%)",
+                300: "hsl(30, 85%, 65%)",
+                400: "hsl(30, 85%, 60%)",
+                500: "hsl(30, 85%, 55%)",
+                600: "hsl(30, 85%, 50%)",
+                700: "hsl(30, 85%, 40%)",
+                800: "hsl(30, 85%, 30%)",
+                900: "hsl(30, 85%, 20%)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        html { scroll-behavior: auto; }
+      }
+      .btn-interactive { transition: all 0.2s ease-out; }
+      .btn-interactive:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .btn-interactive:active { transform: scale(0.95); }
+      .card-interactive {
+        transition: all 0.3s ease-out;
+        border: 1px solid transparent;
+        --border-lightness: 40%;
+      }
+      .dark .card-interactive { --border-lightness: 60%; }
+      .card-interactive:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        filter: brightness(0.98);
+      }
+      .card-interactive[class*="primary"]:hover,
+      .card-interactive[class*="white"]:hover,
+      .card-interactive[class*="gray-"]:hover {
+        border-color: hsl(20, 90%, var(--border-lightness));
+      }
+      .card-interactive[class*="accent"]:hover {
+        border-color: hsl(30, 85%, var(--border-lightness));
+      }
+      table { width: 100%; border-collapse: collapse; }
+      th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid hsl(0, 0%, 90%); }
+      .dark th, .dark td { border-bottom-color: hsl(0, 0%, 30%); }
+      .moat-bar {
+        height: 10px;
+        border-radius: 5px;
+        background: hsl(0, 0%, 90%);
+        overflow: hidden;
+      }
+      .dark .moat-bar { background: hsl(0, 0%, 30%); }
+      .moat-fill {
+        height: 100%;
+        border-radius: 5px;
+        background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+        transition: width 1.2s ease-out;
+      }
+      .risk-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .dark body { color: #f3f4f6; }
+      .dark header nav a { color: #e5e7eb !important; }
+      .dark header nav a:hover { color: hsl(20, 90%, 65%) !important; }
+      .dark .text-gray-400, .dark .text-gray-500 { color: #9ca3af !important; }
+      .dark table th { color: #f3f4f6; }
+      .dark table td { color: #e5e7eb; }
+      .dark .text-gray-600 { color: #d1d5db !important; }
+      .dark .text-gray-700 { color: #e5e7eb !important; }
+      #mobileMenu { display: none; }
+      @media (min-width: 768px) { #mobileMenu { display: none !important; } }
+      @media (max-width: 767px) {
+        #mobileMenu.mobile-menu-open { display: block !important; }
+      }
+    </style>
+    <script>
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        document.getElementById("sunIcon").style.display = isDark ? "block" : "none";
+        document.getElementById("moonIcon").style.display = isDark ? "none" : "block";
+      }
+    </script>
+  <style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+    <div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%"></div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 overflow-visible backdrop-blur bg-gray-50/90 dark:bg-gray-950/95 border-b border-primary-500/20 dark:border-primary-600/30 text-gray-900 dark:text-gray-100">
+      <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1 class="text-base sm:text-xl font-bold text-primary-700 dark:text-primary-300 whitespace-nowrap">
+            苹果 AAPL 经营分析
+          </h1>
+          <nav class="hidden md:flex space-x-5">
+            <a href="#model" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+              <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+            <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all">
+              <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none"></i>
+              <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block"></i>
+            </button>
+          </div>
+        </div>
+        <div id="mobileMenu" class="mobile-menu mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 max-h-[calc(100vh-80px)] overflow-y-auto">
+          <nav class="flex flex-col space-y-3">
+            <a href="#model" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">商业模式</a>
+            <a href="#moat" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">护城河</a>
+            <a href="#industry" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">行业趋势</a>
+            <a href="#financial" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">财务状况</a>
+            <a href="#valuation" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">估值</a>
+            <a href="#outlook" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">展望</a>
+            <a href="#risk" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">风险</a>
+            <a href="#longshort" onclick="toggleMobileMenu()" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">多空</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen">
+      <!-- Hero -->
+      <section class="py-36 bg-gradient-to-br from-primary-50/60 via-white to-accent-50/40 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300">美股 · 科技 · 消费电子</span>
+            <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300">AAPL</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+            Apple Inc.<br /><span class="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-medium">经营分析报告</span>
+          </h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 mb-10 leading-relaxed max-w-3xl">
+            苹果是全球市值最高的公司之一，以硬件-软件-服务深度整合的生态体系构建了极强的竞争壁垒。2026财年公司实现营收4788亿美元（+15.1%）、净利润1322亿美元（+18%），创历史新高。本报告从八个维度系统评估其投资价值。
+          </p>
+          <div class="grid md:grid-cols-4 gap-4">
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">4788亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2026财年营收（美元）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">1322亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">2026财年净利润</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-primary-600 dark:text-primary-400">~5万亿</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">市值（美元）</div>
+            </div>
+            <div class="card-interactive p-5 bg-white/90 dark:bg-gray-800 rounded-xl shadow-md text-center">
+              <div class="text-2xl font-bold text-accent-600 dark:text-accent-400">38x</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">TTM市盈率</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 一、商业模式 -->
+      <section id="model" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="store" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">一、商业模式</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              苹果的核心商业模式可概括为<strong>“硬件入口 + 软件生态 + 高毛利服务飞轮”</strong>。公司以iPhone为超级入口设备，通过iOS、macOS、watchOS等封闭操作系统与硬件深度整合，锁定用户进入App Store、iCloud、Apple Music、Apple TV+、Apple Pay等服务体系。2026财年iPhone贡献2541亿美元营收（占比53.1%），服务业务贡献1233亿美元（占比25.8%），但服务业务毛利率约76%，贡献了约40%以上的毛利润。
+            </p>
+            <div class="grid md:grid-cols-3 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="smartphone" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">硬件为入口</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  iPhone仍是绝对核心，2026财年同比增长21.2%。Mac受益于Apple Silicon持续增长，iPad与可穿戴业务相对平稳。硬件负责获客与品牌溢价。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+                  <h3 class="font-semibold text-accent-700 dark:text-accent-300">服务为利润引擎</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  服务收入已连续多年双位数增长，付费订阅账户超15亿。App Store、广告、云服务与支付构成高粘性、高毛利经常性收入。
+                </p>
+              </div>
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="cpu" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+                  <h3 class="font-semibold text-primary-700 dark:text-primary-300">垂直整合</h3>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  自研Apple Silicon（A系列与M系列芯片）带来性能与能效优势，同时降低对外部供应商依赖，强化差异化与成本控制。
+                </p>
+              </div>
+            </div>
+            <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg mt-6">
+              <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+                <i data-lucide="lightbulb" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+                苹果商业模式的本质是“生态锁定驱动的高溢价消费电子 + 服务经常性收入”——用硬件创造极致体验与品牌溢价，用服务放大终身价值并提升利润质量。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 二、竞争优势 -->
+      <section id="moat" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="shield" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">二、竞争优势：护城河评估</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            护城河是公司抵御竞争、维持超额回报的结构性优势。以下从五个维度对苹果进行打分（1–10分），并与主要竞争对手对比。
+          </p>
+
+          <div class="space-y-6">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">品牌实力</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">10<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 100%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                苹果是全球最具价值的消费品牌之一，用户忠诚度与溢价能力远超同行。iPhone在高端市场长期主导，品牌本身即构成强大定价权。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">网络效应</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">8<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 80%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                App Store形成开发者-用户双边网络，iMessage、AirDrop、Universal Clipboard等功能强化设备间网络效应。服务订阅账户规模进一步放大网络价值。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">转换成本</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 90%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                一旦用户拥有iPhone+Watch+AirPods+Mac+iCloud数据，切换成本极高。照片、健康数据、消息、App购买记录与生态无性共同构成“切换成本金字塔”。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">成本优势</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">8<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 80%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                规模采购、自研芯片、高效供应链与极高的库存周转带来显著成本优势。毛利率长期维持在45%以上，远高于硬件同行。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <div class="flex items-center justify-between mb-3">
+                <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300">专利或自有技术</h3>
+                <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">9<span class="text-sm font-normal text-gray-400">/10</span></span>
+              </div>
+              <div class="moat-bar mb-3"><div class="moat-fill" style="width: 90%"></div></div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                Apple Silicon、自研神经网络引擎、隐私架构、相机算法与系统级优化构成难以复制的技术壁垒。垂直整合使硬件与软件协同效率远超竞争对手。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-5">与主要竞争对手的护城河对比</h3>
+            <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
+              <table class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+                <thead class="bg-primary-50 dark:bg-primary-900/30">
+                  <tr>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">维度</th>
+                    <th class="font-semibold text-primary-700 dark:text-primary-300">苹果</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">三星</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">谷歌</th>
+                    <th class="font-semibold text-gray-600 dark:text-gray-400">微软</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm">
+                  <tr>
+                    <td class="font-medium">品牌实力</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">10</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">转换成本</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>9</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">网络效应</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">8</td>
+                    <td>4</td>
+                    <td>9</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">成本/技术优势</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9</td>
+                    <td>7</td>
+                    <td>7</td>
+                    <td>8</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium">综合护城河</td>
+                    <td class="text-primary-600 dark:text-primary-400 font-semibold">9.0</td>
+                    <td>6.0</td>
+                    <td>7.5</td>
+                    <td>8.5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">数据来源：公开财务与行业研究整理。微软在企业软件领域护城河极深，但消费电子生态弱于苹果。</p>
+          </div>
+
+          <div class="mt-6 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+              <i data-lucide="award" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              综合护城河评分：<strong>9.0/10</strong>。苹果在品牌、转换成本与垂直整合技术上拥有全球顶级壁垒，是少数真正“宽护城河”的消费科技公司。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三、行业趋势 -->
+      <section id="industry" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="trending-up" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">三、行业趋势</h2>
+          </div>
+          <div class="space-y-6">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+              全球智能手机市场已进入成熟期，整体出货量增速有限，但高端与超高端市场仍具韧性。AI功能成为新一轮换机周期的核心驱动因素，同时内存芯片价格因AI数据中心需求暴涨，对手机BOM成本形成显著压力。
+            </p>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                  <i data-lucide="cpu" class="w-5 h-5"></i>AI与高端化
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• 设备端AI（Apple Intelligence等）成为差异化重点</li>
+                  <li>• 超高端机型（Pro系列）继续拉动ASP上升</li>
+                  <li>• 折叠屏等新形态开始商业化落地</li>
+                  <li>• 换机周期延长，但高端用户忠诚度更高</li>
+                </ul>
+              </div>
+              <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+                <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-3 flex items-center gap-2">
+                  <i data-lucide="alert-circle" class="w-5 h-5"></i>成本与监管压力
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li>• DRAM/NAND价格因AI需求大幅上涨，影响毛利率</li>
+                  <li>• 欧盟DMA、美国反垄断持续挑战App Store模式</li>
+                  <li>• 中美科技博弈增加供应链与市场不确定性</li>
+                  <li>• 中国市场本土品牌竞争加剧</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-4 p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <strong class="text-gray-800 dark:text-gray-200">对苹果的影响：</strong>行业高端化与AI趋势对苹果有利——其品牌与生态优势在超高端市场最强。但内存成本上升与监管压力是短期需密切跟踪的变量。苹果通过自研芯片与规模采购部分对冲成本压力，服务业务的持续增长则提供了利润缓冲。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四、财务状况 -->
+      <section id="financial" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="bar-chart-3" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">四、财务状况</h2>
+          </div>
+
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            以下分析苹果2022–2026财年五年财务表现（财年截止9月），数据来源于公司10-K及公开财务数据库。
+          </p>
+
+          <div class="w-full max-w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 mb-8">
+            <table class="bg-white/90 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+              <thead class="bg-accent-50 dark:bg-accent-900/30">
+                <tr>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">指标（亿美元）</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">FY2022</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">FY2023</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">FY2024</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">FY2025</th>
+                  <th class="font-semibold text-accent-700 dark:text-accent-300">FY2026</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                <tr>
+                  <td class="font-medium">营业收入</td>
+                  <td>3943</td>
+                  <td>3833</td>
+                  <td>3910</td>
+                  <td>4162</td>
+                  <td class="font-semibold text-primary-600 dark:text-primary-400">4788</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">营收同比</td>
+                  <td class="text-green-600 dark:text-green-400">+7.8%</td>
+                  <td class="text-red-600 dark:text-red-400">-2.8%</td>
+                  <td class="text-green-600 dark:text-green-400">+2.0%</td>
+                  <td class="text-green-600 dark:text-green-400">+6.4%</td>
+                  <td class="text-green-600 dark:text-green-400">+15.1%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">净利润</td>
+                  <td>998</td>
+                  <td>970</td>
+                  <td>937</td>
+                  <td>1120</td>
+                  <td class="font-semibold text-primary-600 dark:text-primary-400">1322</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">净利润同比</td>
+                  <td class="text-green-600 dark:text-green-400">+5.4%</td>
+                  <td class="text-red-600 dark:text-red-400">-2.8%</td>
+                  <td class="text-red-600 dark:text-red-400">-3.4%</td>
+                  <td class="text-green-600 dark:text-green-400">+19.5%</td>
+                  <td class="text-green-600 dark:text-green-400">+18.0%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">自由现金流</td>
+                  <td>1114</td>
+                  <td>996</td>
+                  <td>1088</td>
+                  <td>988</td>
+                  <td class="font-semibold text-primary-600 dark:text-primary-400">1361</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">毛利率</td>
+                  <td>43.3%</td>
+                  <td>44.1%</td>
+                  <td>46.2%</td>
+                  <td>46.9%</td>
+                  <td>48.8%</td>
+                </tr>
+                <tr>
+                  <td class="font-medium">净利率</td>
+                  <td>25.3%</td>
+                  <td>25.3%</td>
+                  <td>24.0%</td>
+                  <td>26.9%</td>
+                  <td>27.6%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>收入增长：强劲复苏
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2023–2024财年受宏观与换机周期影响增速放缓，2025财年回升，2026财年实现15.1%高速增长。iPhone贡献主要增量（+21.2%），服务业务稳健增长13%。产品结构持续向高端与服务倾斜。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>净利润与利润率
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                净利润连续两年双位数增长，净利率提升至27.6%历史高位。毛利率因高端产品与服务占比提升以及部分关税退税影响达到48.8%。经营杠杆显著。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="wallet" class="w-5 h-5"></i>自由现金流
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2026财年FCF达1361亿美元，同比大增37.8%，创历史新高。资本开支控制良好，经营现金流强劲。公司持续大规模回购与分红，股东回报极高。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3 flex items-center gap-2">
+                <i data-lucide="scale" class="w-5 h-5"></i>债务与资产负债表
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                总债务降至约801亿美元，净现金头寸充裕。债务/权益约0.7倍，净债务/EBITDA约0.1倍，财务结构极其稳健。大规模回购使股东权益规模相对较小，ROE显著抬升。
+              </p>
+            </div>
+          </div>
+
+          <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+            <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">股本回报率（ROE）与整体判断</h3>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-4">
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-primary-600 dark:text-primary-400">~140%</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">ROE (TTM)</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-accent-600 dark:text-accent-400">~33%</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">ROA (TTM)</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl sm:text-4xl font-bold text-green-600">73%</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">ROIC</div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              ROE极高主要因持续大规模回购压缩了股东权益账面价值，实际资本回报能力通过ROIC（约73%）更能体现。综合来看，苹果财务状况<strong>极为稳健且增长动能强劲</strong>——收入、利润、现金流全面刷新纪录，资产负债表健康，利润率处于高位。公司当前的核心问题不是“财务是否安全”，而是“高估值是否充分反映了未来增长与监管风险”。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五、估值分析 -->
+      <section id="valuation" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="calculator" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">五、估值分析</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-primary-700 dark:text-primary-300 mb-4">市盈率（P/E）对比</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">苹果（TTM）</span>
+                  <span class="font-bold text-primary-600 dark:text-primary-400">约38x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">苹果（Forward）</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">约36x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">微软（参考）</span>
+                  <span class="font-semibold text-gray-600 dark:text-gray-400">约25x</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-200 dark:border-gray-700 pt-3">
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">科技行业中位数</span>
+                  <span class="font-semibold text-gray-700 dark:text-gray-300">约23–26x</span>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 mt-3">
+                苹果当前P/E显著高于历史中枢（约28x）与多数科技同业，反映市场对其生态壁垒与稳定增长的溢价。
+              </p>
+            </div>
+
+            <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+              <h3 class="font-semibold text-accent-700 dark:text-accent-300 mb-4">关键估值指标</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">市销率（P/S）</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">约10.4x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">市现率（P/FCF）</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">约36–37x</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">股息率</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">约0.3%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-600 dark:text-gray-400">市值</span>
+                  <span class="font-semibold text-accent-600 dark:text-accent-400">约5万亿美元</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-8">
+            <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-4 flex items-center gap-2">
+              <i data-lucide="line-chart" class="w-5 h-5"></i>现金流折现（DCF）与相对估值参考
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+              以2026财年FCF 1361亿美元为起点，假设中长期FCF增速逐步回落至中个位数，折现率与永续增长率采用保守假设，合理价值区间大致落在当前股价附近或略低。相对估值方面，苹果相对历史与同业均处于溢价状态，市场已充分定价其高质量与护城河。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
+                <div class="text-lg font-bold text-primary-600 dark:text-primary-400">~38x</div>
+                <div class="text-xs text-gray-500">当前TTM P/E</div>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg">
+                <div class="text-lg font-bold text-accent-600 dark:text-accent-400">~28x</div>
+                <div class="text-xs text-gray-500">历史中枢参考</div>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div class="text-lg font-bold text-gray-700 dark:text-gray-300">溢价</div>
+                <div class="text-xs text-gray-500">相对历史与同业</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-4 pr-3 py-4 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="search" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+              <strong>估值结论：</strong>以当前约38倍TTM市盈率与约5万亿美元市值来看，苹果处于历史高估值区间。市场对其生态壁垒、服务增长与资本回报能力给予了显著溢价。若增长能持续兑现且监管冲击可控，当前估值可理解为“优质资产的合理溢价”；若服务增速进一步放缓或监管实质性削弱App Store利润，则存在估值压缩风险。综合判断：<strong>股票接近合理偏高估，上行空间有限，更适合作为核心长期持仓而非短期低估值标的。</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 六、经营展望 -->
+      <section id="outlook" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/30 flex items-center justify-center">
+              <i data-lucide="calendar" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-accent-700 dark:text-accent-300">六、经营展望（12–24个月）</h2>
+          </div>
+
+          <div class="space-y-5">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">iPhone与新品周期</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                2026财年iPhone强劲增长已部分透支短期换机需求。折叠屏等新形态与Apple Intelligence功能有望在未来12–24个月成为新催化剂。管理层指引显示下一季度营收增速将回落至高个位数，符合换机周期正常波动。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">服务业务持续扩张</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                服务收入增速已从双位数高位放缓至高个位数，但仍是利润质量与经常性收入的核心来源。广告、云服务与支付仍有空间。监管对App Store抽成的压力是主要变量。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">管理层与组织</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                新CEO上任后，市场关注战略延续性与执行力。硬件与软件深度整合的文化预计将延续，AI功能落地与供应链韧性将成为重点考核指标。
+              </p>
+            </div>
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md">
+              <h3 class="font-semibold text-lg text-primary-700 dark:text-primary-300 mb-3">资本回报</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                公司拥有强大的自由现金流与净现金头寸，回购与分红政策有望持续。高回购强度将继续支撑EPS增长与ROE。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 七、风险识别 -->
+      <section id="risk" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+              <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-red-700 dark:text-red-400">七、风险识别</h2>
+          </div>
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">按危险程度从高到低排序：</p>
+
+          <div class="space-y-4">
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-red-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 flex-shrink-0">1</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-2">监管威胁 — App Store与反垄断</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    欧盟DMA、美国反垄断诉讼、多国对App Store抽成与侧载规则的挑战是当前最大风险。若实质性降低佣金率或强制开放生态，服务业务利润与转换成本可能受损。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-orange-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-400 flex-shrink-0">2</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-orange-700 dark:text-orange-400 mb-2">中国市场与地缘政治风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    中国仍是重要制造基地与消费市场。地缘政治紧张、本土品牌竞争加剧以及潜在供应链限制，可能对出货与毛利率产生冲击。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-yellow-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 flex-shrink-0">3</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-yellow-700 dark:text-yellow-400 mb-2">竞争与行业颠覆</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    三星、中国高端品牌以及潜在的AI原生设备竞争。若AI体验被竞品大幅超越，或折叠屏等新形态被其他厂商率先主导，可能侵蚀份额。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-blue-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 flex-shrink-0">4</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-blue-700 dark:text-blue-400 mb-2">经济与需求风险</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    全球消费疲软或高端需求下滑会直接影响iPhone出货与ASP。内存等零部件成本上升也可能压缩短期毛利率。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-interactive p-6 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md border-l-4 border-green-500">
+              <div class="flex items-start gap-4">
+                <div class="risk-badge bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 flex-shrink-0">5</div>
+                <div>
+                  <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-2">债务或财务风险 — 极低</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    净现金头寸充裕，债务水平持续下降，财务风险在当前阶段几乎可忽略。真正风险来自增长预期与估值匹配度，而非资产负债表。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 八、多空视角 -->
+      <section id="longshort" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-6">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <i data-lucide="scale" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-primary-700 dark:text-primary-300">八、多空视角：机构投资组合经理评估</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="card-interactive p-6 bg-green-50/60 dark:bg-green-900/20 rounded-xl shadow-md border border-green-200 dark:border-green-800">
+              <h3 class="font-semibold text-lg text-green-700 dark:text-green-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-up" class="w-5 h-5"></i>可能买入的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>极宽护城河</strong>：品牌+生态+转换成本构成全球顶级消费科技壁垒，长期定价权强。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>财务质量卓越</strong>：高毛利、高净利率、巨额自由现金流、净现金头寸，资本回报能力顶尖。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>服务业务经常性收入</strong>：提升利润质量与可见性，降低对单一硬件周期的依赖。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>持续股东回报</strong>：大规模回购与稳定分红，对长期持有者友好。</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-interactive p-6 bg-red-50/60 dark:bg-red-900/20 rounded-xl shadow-md border border-red-200 dark:border-red-800">
+              <h3 class="font-semibold text-lg text-red-700 dark:text-red-400 mb-4 flex items-center gap-2">
+                <i data-lucide="thumbs-down" class="w-5 h-5"></i>可能回避的原因
+              </h3>
+              <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>估值已充分甚至偏高</strong>：38倍P/E处于历史高位，上行空间有限，容错率较低。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>监管不确定性高</strong>：App Store模式面临多司法管辖区挑战，可能削弱核心利润来源。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>增长中枢可能下移</strong>：硬件市场成熟，服务增速已放缓，未来高双位数增长难度加大。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <i data-lucide="x-circle" class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5"></i>
+                  <span><strong>中国与供应链集中风险</strong>：地缘政治与供应链韧性仍是长期隐忧。</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-interactive p-8 bg-white/90 dark:bg-gray-900 rounded-xl shadow-md mb-6">
+            <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">关键因素：需要密切跟踪的3个指标</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="p-4 bg-primary-50 dark:bg-primary-900/20 rounded-lg text-center">
+                <i data-lucide="smartphone" class="w-6 h-6 mx-auto mb-2 text-primary-600 dark:text-primary-400"></i>
+                <div class="font-semibold text-sm text-primary-700 dark:text-primary-300">iPhone出货与ASP</div>
+                <p class="text-xs text-gray-500 mt-1">高端化能否持续支撑收入与毛利率</p>
+              </div>
+              <div class="p-4 bg-accent-50 dark:bg-accent-900/20 rounded-lg text-center">
+                <i data-lucide="cloud" class="w-6 h-6 mx-auto mb-2 text-accent-600 dark:text-accent-400"></i>
+                <div class="font-semibold text-sm text-accent-700 dark:text-accent-300">服务业务增速与毛利率</div>
+                <p class="text-xs text-gray-500 mt-1">经常性收入质量与监管影响程度</p>
+              </div>
+              <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg text-center">
+                <i data-lucide="gavel" class="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-400"></i>
+                <div class="font-semibold text-sm text-gray-700 dark:text-gray-300">监管落地进展</div>
+                <p class="text-xs text-gray-500 mt-1">DMA与反垄断案件对App Store的实际冲击</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pl-4 pr-3 py-5 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+            <p class="text-base font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+              <i data-lucide="target" class="inline-block w-5 h-5 mr-2 -mt-0.5"></i>
+              <strong>投资论点：</strong>苹果是一家拥有全球顶级护城河、卓越财务质量与强大股东回报能力的公司。2026财年业绩全面创纪录，证明其生态与品牌在成熟市场仍具增长韧性。然而，当前约38倍市盈率已充分反映优质属性，上行空间有限，且监管与中国相关风险不可忽视。对于能够接受“合理偏高估+优质资产”组合的长期投资者而言，苹果仍可作为核心持仓；对于追求显著安全边际或高弹性的投资者，当前价位吸引力一般。投资论点成立的前提是：<strong>服务业务在监管压力下仍能维持合理增速与利润率，且高端硬件需求不出现系统性下滑。</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本报告</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告基于Apple Inc.（AAPL）公开财务报告、SEC文件及行业数据，从商业模式、护城河、财务状况、估值、风险与多空视角等八个维度进行系统分析。
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">数据来源</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>• Apple 2026财年10-K及季度业绩公告</li>
+              <li>• Stockrow、Macrotrends等财务数据库</li>
+              <li>• 公司新闻稿与管理层指引</li>
+              <li>• 公开行业研究报告与监管动态</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              本报告仅供教育与信息参考，不构成投资建议或买卖推荐。数据基于公开信息整理，分析观点仅代表研究判断。投资有风险，决策需谨慎。
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+          <p>© 2026 苹果经营分析报告 · 生成日期：2026-11-23</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (!menu) return;
+        menu.classList.toggle("mobile-menu-open");
+      }
+
+      window.addEventListener("scroll", () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        lucide.createIcons();
+        AOS.init({ duration: 800, once: true });
+      });
+    </script>
+  <script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

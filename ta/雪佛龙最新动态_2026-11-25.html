@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雪佛龙（CVX）最新动态全景追踪_2026-11-25</title>
+<meta name="description" content="雪佛龙CVX截至2026年11月25日近30日公司、行业、宏观事件驱动研究报告。">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+          300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+          300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+          900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+};
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:90px}
+.btn-interactive{transition:all .2s ease}
+.btn-interactive:hover{transform:scale(1.05)}
+.card-interactive{transition:all .28s ease}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.48)}
+table{width:100%;border-collapse:collapse;min-width:680px}
+th,td{text-align:left;padding:.8rem .85rem;border-bottom:1px solid #d1d5db;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#475569}
+.dark th{color:#f1f5f9}
+.dark td{color:#d1d5db}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%))}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.source-link{color:#c45a1b;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#f6a66e}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+<script>
+(function initTheme(){
+ const iframe=window.self!==window.top;
+ if(iframe||window.matchMedia('(prefers-color-scheme: dark)').matches)
+ document.documentElement.classList.add('dark');
+})();
+function syncThemeIcons(){
+ const dark=document.documentElement.classList.contains('dark');
+ const sun=document.getElementById('sunIcon');
+ const moon=document.getElementById('moonIcon');
+ if(sun)sun.style.display=dark?'block':'none';
+ if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ syncThemeIcons();
+}
+function toggleMobileMenu(){
+ document.getElementById('mobileMenu')?.classList.toggle('mobile-menu-open');
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 z-[60] transition-all duration-300" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-700">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+  <div class="flex items-center justify-between">
+   <div class="flex items-center gap-2.5 min-w-0">
+    <span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+    <h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">雪佛龙 CVX · 最新动态</h1>
+   </div>
+   <nav class="hidden md:flex items-center space-x-5">
+    <a href="#overview" class="text-sm font-medium hover:text-primary-500">总览</a>
+    <a href="#company" class="text-sm font-medium hover:text-primary-500">公司动态</a>
+    <a href="#industry" class="text-sm font-medium hover:text-primary-500">行业动态</a>
+    <a href="#macro" class="text-sm font-medium hover:text-primary-500">宏观政策</a>
+    <a href="#matrix" class="text-sm font-medium hover:text-primary-500">催化矩阵</a>
+   </nav>
+   <div class="flex items-center gap-2">
+    <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-300" aria-label="菜单"><i data-lucide="menu" class="w-4 h-4"></i></button>
+    <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-700 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+   <nav class="flex flex-col gap-2.5">
+    <a href="#overview" onclick="toggleMobileMenu()" class="text-sm py-1">总览</a>
+    <a href="#company" onclick="toggleMobileMenu()" class="text-sm py-1">公司动态</a>
+    <a href="#industry" onclick="toggleMobileMenu()" class="text-sm py-1">行业动态</a>
+    <a href="#macro" onclick="toggleMobileMenu()" class="text-sm py-1">宏观政策</a>
+    <a href="#matrix" onclick="toggleMobileMenu()" class="text-sm py-1">催化矩阵</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-16">
+
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-700">
+  <div class="flex flex-wrap items-center gap-2.5 mb-4">
+   <span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 text-xs font-semibold">NYSE: CVX</span>
+   <span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-800 dark:text-accent-200 text-xs font-semibold">综合能源 · 上游油气 / 炼化 / LNG</span>
+   <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-xs font-semibold">近30日 · 2026-10-26 至 2026-11-25</span>
+  </div>
+  <h2 class="text-2xl sm:text-3xl font-bold mb-3">雪佛龙公司（Chevron Corporation）</h2>
+  <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-6 max-w-5xl">
+   近30日雪佛龙呈现<strong class="text-primary-600 dark:text-primary-400">“强劲经营兑现、油价预期回落、项目扩张与能源转型并行”</strong>格局。三季度调整后盈利达104亿美元，但国际油市供需再平衡预期对上游价格形成压力；美国炼厂高负荷、委内瑞拉资产布局及生物燃料重启提供结构性增量。
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+   <div class="bg-gray-50 dark:bg-gray-800/80 rounded-xl p-5 border border-gray-200 dark:border-gray-700 card-interactive">
+    <div class="flex items-center gap-2 mb-2"><i data-lucide="gauge" class="w-4 h-4 text-primary-500"></i><span class="text-xs font-semibold text-gray-500 dark:text-gray-400">消息面总体基调</span></div>
+    <p class="text-xl font-bold text-amber-600 dark:text-amber-400">中性偏多</p>
+    <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">产量与炼化执行力强，现金盈利基础稳健；但油价回落预期与全球需求偏弱抵消部分上行弹性。</p>
+   </div>
+   <div class="bg-emerald-50/70 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2"><i data-lucide="zap" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i><span class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">本月最强单一催化剂</span></div>
+    <p class="text-sm font-bold text-emerald-800 dark:text-emerald-200 leading-relaxed">Q3调整后盈利104亿美元，美国产量较两年前增长27%，炼厂原油加工量创纪录。</p>
+    <p class="text-xs text-emerald-700 dark:text-emerald-400 mt-2">公司财报 · 2026-10-30</p>
+   </div>
+   <div class="bg-rose-50/70 dark:bg-rose-950/30 rounded-xl p-5 border border-rose-200 dark:border-rose-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-rose-500"></i><span class="text-xs font-semibold text-rose-700 dark:text-rose-300">本月最需警惕信号</span></div>
+    <p class="text-sm font-bold text-rose-800 dark:text-rose-200 leading-relaxed">IEA预计2026年全球石油需求下降，2027年供应显著回升，油价中枢可能承压。</p>
+    <p class="text-xs text-rose-700 dark:text-rose-400 mt-2">IEA《Oil Market Report》· 2026-11-13</p>
+   </div>
+  </div>
+  <div class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3">
+   <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Q3 2026 报告净利润</div>
+    <div class="text-xl font-bold font-mono">99.24亿美元</div>
+   </div>
+   <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">Q3 调整后盈利</div>
+    <div class="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400">104亿美元</div>
+   </div>
+   <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">调整后每股收益</div>
+    <div class="text-xl font-bold font-mono">$5.28</div>
+   </div>
+   <div class="rounded-xl p-3.5 bg-primary-50/70 dark:bg-gray-800 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">资本回报率 ROCE</div>
+    <div class="text-xl font-bold font-mono text-primary-600 dark:text-primary-400">18%</div>
+   </div>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">财报口径：Chevron 2026年第三季度业绩公告，2026-10-30。报告净利润与调整后盈利是不同口径，不可混用。</p>
+ </div>
+</section>
+
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div>
+  <h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+ </div>
+
+ <article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2.5">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-10-30</span>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-xs font-bold">重大利好 · 经营兑现</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.5 / 10</span>
+  </div>
+  <h3 class="text-lg sm:text-xl font-bold mb-4">Q3盈利强劲：调整后盈利104亿美元，美国油气产量及炼化吞吐同步走强</h3>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4">
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400 block">报告净利润</span><strong class="text-sm font-mono">99.24亿美元</strong></div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400 block">调整后盈利</span><strong class="text-sm font-mono text-emerald-600 dark:text-emerald-400">104亿美元</strong></div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400 block">调整后 EPS</span><strong class="text-sm font-mono">$5.28</strong></div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400 block">ROCE</span><strong class="text-sm font-mono">18%</strong></div>
+  </div>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Chevron于2026-10-30公布第三季度业绩：报告净利润99.24亿美元（摊薄每股5.06美元），调整后盈利104亿美元（摊薄每股5.28美元）。季度中包含1.60亿美元法律准备金、1.10亿美元资产减值及2400万美元养老金结算成本；汇兑影响减少盈利1.43亿美元。公司披露美国产量较两年前增长27%，美国炼厂原油加工量创纪录，原油装置利用率达到98%。来源：Chevron官方《Reports Third Quarter 2026 Results》及同期业绩材料。
+  </p>
+  <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed"><strong>影响深度：</strong>上游产量增长扩大可销售油气量，下游98%的原油利用率体现炼化资产执行力与供应链调度能力。在油价波动环境中，上下游组合有助于平滑单一业务周期；但高炼厂负荷本身并不等于炼油利润率同步扩大，仍需观察成品油裂解价差、原油采购成本和检修安排。调整后盈利显示经营能力，但不能直接视为自由现金流或股东可分配现金。</p>
+  </div>
+  <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2"><span>事件影响评分</span><span>9.5 / 10</span></div>
+  <div class="impact-bar"><div class="impact-fill" style="width:95%"></div></div>
+  <p class="text-xs mt-4"><a class="source-link" href="https://www.chevron.com/newsroom/2026/q4/chevron-reports-third-quarter-2026-results" target="_blank" rel="noopener">Chevron官方三季度业绩公告（2026-10-30）↗</a></p>
+ </article>
+
+ <article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up" data-aos-delay="70">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2.5">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-12</span>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-xs font-bold">温和利好 · 新能源燃料</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.8 / 10</span>
+  </div>
+  <h3 class="text-lg sm:text-xl font-bold mb-4">爱荷华州Ralston生物柴油工厂计划重启，Landus提供原料供应支持</h3>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   2026-11-12，Chevron旗下Chevron U.S.A.宣布将恢复爱荷华州Ralston生物柴油生产设施运营，并与农业合作社Landus建立商业及运营合作，为重启提供原料供应支持。该公告由Chevron通过Business Wire发布。公司新闻稿确认了重启计划与原料合作，但没有在该公告中披露可核验的工厂年产能、具体投产日、资本开支金额或盈利贡献，因此本报告不对这些指标作推算。
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+    <strong class="text-xs text-emerald-800 dark:text-emerald-300 block mb-2">正向传导</strong>
+    <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">恢复既有设施有望提高低碳燃料产品供给能力，原料合作降低重启阶段的供应不确定性，并扩大Chevron在美国生物燃料市场的运营布局。</p>
+   </div>
+   <div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800/50">
+    <strong class="text-xs text-amber-800 dark:text-amber-300 block mb-2">需要验证</strong>
+    <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">生物柴油盈利受大豆油等原料价格、柴油价差、税收抵免及政策规则影响。未披露产量和利润数据前，不应将该项目视为显著的短期盈利增量。</p>
+   </div>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">来源：Chevron官方新闻稿，2026-11-12。</p>
+  <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2"><span>事件影响评分</span><span>7.8 / 10</span></div>
+  <div class="impact-bar"><div class="impact-fill" style="width:78%"></div></div>
+  <p class="text-xs mt-4"><a class="source-link" href="https://chevroncorp.gcs-web.com/news-releases/?items_per_page=10&mobile=1&page=95" target="_blank" rel="noopener">Chevron官方新闻稿列表（2026-11-12）↗</a></p>
+ </article>
+
+ <article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-sky-500 card-interactive" data-aos="fade-up" data-aos-delay="110">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2.5">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-02</span>
+    <span class="px-2.5 py-1 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-800 dark:text-sky-200 text-xs font-bold">中性 · 治理与人事</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 5.5 / 10</span>
+  </div>
+  <h3 class="text-lg sm:text-xl font-bold mb-4">Siva Barnwell Adams获任公司秘书兼首席治理官，2027年1月1日生效</h3>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Chevron于2026-11-02宣布，Siva Barnwell Adams将出任公司秘书（Corporate Secretary）及首席治理官（Chief Governance Officer），任命自2027-01-01起生效。公司公告指出，该岗位将为董事会和高级管理层提供公司治理相关支持。
+  </p>
+  <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed"><strong>影响深度：</strong>该任命属于治理架构与管理层职责安排，不是核心经营团队更替，也未伴随资产处置、战略转向或盈利预测调整。对短期产量、资本开支、炼化利润和自由现金流的直接影响有限；投资层面主要关注重大项目执行、合规管理及资本配置纪律的持续性。</p>
+  </div>
+  <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2"><span>事件影响评分</span><span>5.5 / 10</span></div>
+  <div class="impact-bar"><div class="impact-fill" style="width:55%"></div></div>
+  <p class="text-xs mt-4"><a class="source-link" href="https://chevroncorp.gcs-web.com/news-releases/" target="_blank" rel="noopener">Chevron官方投资者关系新闻稿（2026-11-02）↗</a></p>
+ </article>
+ <div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 rounded-xl p-4 text-xs text-amber-900 dark:text-amber-200 leading-relaxed">
+  <strong>信息完整性说明：</strong>本窗口内已核实的三条公司公告如上。没有将窗口外的Hess并购整合、历史资产交易或未经确认的分析师目标价变动伪装成本月新事件。公司公告检索截至2026-11-25。
+ </div>
+</section>
+
+
+
+
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-2">
+  <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center"><i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i></div>
+  <h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+ </div>
+ <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mb-6">细分赛道：全球综合油气巨头（Integrated Oil & Gas），核心覆盖上游勘探开发、原油天然气生产、LNG、炼油、成品油营销及低碳燃料。以下按对CVX盈利和估值的影响排序。</p>
+
+ <article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-rose-500 card-interactive">
+  <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-13</span>
+    <span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-800 dark:text-rose-200 text-xs font-bold">中期承压 · 供给宽松</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.5 / 10</span>
+  </div>
+  <h3 class="text-lg font-bold mb-3">IEA下调需求预期并上修供给：2026年全球石油需求预计下降270万桶/日</h3>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">2026年需求预测</span><div class="font-bold text-lg font-mono">1.023亿桶/日</div><div class="text-xs text-rose-600 dark:text-rose-400">同比减少270万桶/日</div></div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">2026年10月供给</span><div class="font-bold text-lg font-mono">1.054亿桶/日</div><div class="text-xs text-gray-500 dark:text-gray-400">环比增加230万桶/日</div></div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">2027年供给预测</span><div class="font-bold text-lg font-mono">1.081亿桶/日</div><div class="text-xs text-rose-600 dark:text-rose-400">预计增加660万桶/日</div></div>
+   <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">2027年需求变化</span><div class="font-bold text-lg font-mono">+200万</div><div class="text-xs text-emerald-600 dark:text-emerald-400">桶/日</div></div>
+  </div>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   国际能源署（IEA）2026-11-13发布《Oil Market Report – November 2026》。报告预计2026年全球石油需求减少270万桶/日，降至1.023亿桶/日；2026年10月全球供应增加230万桶/日，达到1.054亿桶/日。2027年供应预计回升660万桶/日，至1.081亿桶/日，而需求预计增长200万桶/日。IEA指出，中东出口恢复推动第四季度供应预期上修，市场在2026年第四季度重新出现供应过剩的可能性上升。
+  </p>
+  <div class="bg-rose-50/70 dark:bg-rose-950/25 rounded-xl p-4 mb-4 border border-rose-200 dark:border-rose-800/50">
+   <strong class="text-xs text-rose-800 dark:text-rose-300 block mb-2">对雪佛龙的横向映射：上游盈利与估值承压</strong>
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+    原油价格下降会直接压低美国页岩油、墨西哥湾、哈萨克斯坦及其他国际上游资产的单位实现价格，影响经营现金流、项目回报和储量经济性。雪佛龙的炼化业务可能受益于较低原料采购成本，但若成品油价格和裂解价差同步走弱，炼化对冲效果会打折。综合判断：对上游利润的负面传导大于对下游的潜在成本利好。
+   </p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">信源：IEA，Oil Market Report – November 2026，发布日期2026-11-13。</p>
+  <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2"><span>事件影响评分</span><span>9.5 / 10</span></div>
+  <div class="impact-bar"><div class="impact-fill" style="width:95%"></div></div>
+  <p class="text-xs mt-4"><a class="source-link" href="https://www.iea.org/reports/oil-market-report-november-2026" target="_blank" rel="noopener">IEA官方原始报告 ↗</a></p>
+ </article>
+
+ <article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-01 / 2026-11-29（待召开）</span>
+    <span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 text-xs font-bold">中性偏空 · 政策不确定性</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.8 / 10</span>
+  </div>
+  <h3 class="text-lg font-bold mb-3">七个OPEC+成员国决定维持12月产量要求不变，11月29日将讨论2027年产量政策</h3>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   2026-11-01，沙特、俄罗斯、伊拉克、科威特、哈萨克斯坦、阿尔及利亚和阿曼七国举行线上会议，决定2026年12月维持2026年9月的要求产量水平不变，并重申遵守《合作宣言》的承诺。OPEC公告同时确认下一次会议为2026-11-29。该决定意味着相关成员国没有在12月进一步增加计划产量，但也没有宣布新的减产安排。
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+    <strong class="text-xs text-emerald-800 dark:text-emerald-300 block mb-2">对油价的支撑</strong>
+    <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">维持产量要求避免计划供应立即进一步增加，为油价提供一定政策底部；若成员国执行纪律增强，供给宽松速度可能低于市场担忧。</p>
+   </div>
+   <div class="bg-amber-50/70 dark:bg-amber-950/25 rounded-xl p-4 border border-amber-200 dark:border-amber-800/50">
+    <strong class="text-xs text-amber-800 dark:text-amber-300 block mb-2">对油价的压制</strong>
+    <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">不新增减产无法单独消除IEA预测的供给过剩。成员国实际产量、配额执行和2027年基准产能调整，才是决定中期油价的关键变量。</p>
+   </div>
+  </div>
+  <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 mb-4 border border-gray-200 dark:border-gray-700">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed"><strong>对雪佛龙的横向映射：</strong>雪佛龙并非OPEC+配额成员，产量政策不会直接限制其美国、加拿大及其他非OPEC资产；但OPEC+政策通过全球边际原油供给决定油价。油价稳定有利于上游预算与现金流预测，若市场认为2027年配额放松，则会压制CVX的远期盈利估值。</p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">信源：OPEC官方新闻稿，2026-11-01；下一次会议日期为2026-11-29。</p>
+  <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2"><span>事件影响评分</span><span>8.8 / 10</span></div>
+  <div class="impact-bar"><div class="impact-fill" style="width:88%"></div></div>
+  <p class="text-xs mt-4"><a class="source-link" href="https://www.opec.org/pr-detail/620-1-november-2026.html" target="_blank" rel="noopener">OPEC官方公告 ↗</a></p>
+ </article>
+
+ <article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-emerald-500 card-interactive">
+  <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-24</span>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-xs font-bold">结构性利好 · 资产增量</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.2 / 10</span>
+  </div>
+  <h3 class="text-lg font-bold mb-3">ExxonMobil预计圭亚那产量数周内突破100万桶/日，Uaru项目提升Stabroek区块产能</h3>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Reuters于2026-11-24报道，ExxonMobil预计其圭亚那业务未来数周日产量将超过100万桶。Stabroek区块Uaru项目已于11月启动生产，使圭亚那已安装原油产能达到110万桶/日；Uaru上周产量约8万桶/日。报道同时提及，合资财团本月批准了Longtail项目12.5亿美元级开发计划，该项目预计2030年投产，主要生产非伴生天然气及凝析油。
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">圭亚那已安装产能</span><div class="text-lg font-bold font-mono">110万桶/日</div></div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">Uaru上周产量</span><div class="text-lg font-bold font-mono">8万桶/日</div></div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">Longtail开发金额</span><div class="text-lg font-bold font-mono">$12.5B</div></div>
+  </div>
+  <div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 mb-4 border border-emerald-200 dark:border-emerald-800/50">
+   <strong class="text-xs text-emerald-800 dark:text-emerald-300 block mb-2">对雪佛龙的特殊映射：竞争对手扩产，同时也是合资资产增值</strong>
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+    这不是单纯的竞争对手抢占份额。Chevron完成Hess收购后，间接持有Stabroek区块30%的权益，Exxon为运营商，CNOOC亦为合资伙伴。因此，Exxon运营产量爬坡既意味着行业新增供给可能压低油价，也意味着Chevron权益产量和相关现金流具备增长空间。对CVX而言，净影响取决于权益产量兑现速度、项目成本、合同财政条款以及全球油价变化。
+   </p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">信源：Reuters，2026-11-24；Chevron/Hess资产权益背景按已完成收购后的Stabroek权益结构分析。</p>
+  <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-2"><span>事件影响评分</span><span>8.2 / 10</span></div>
+  <div class="impact-bar"><div class="impact-fill" style="width:82%"></div></div>
+  <p class="text-xs mt-4"><a class="source-link" href="https://www.reuters.com/business/energy/exxon-mobil-says-guyana-output-top-1-million-bpd-within-weeks-2026-11-24/" target="_blank" rel="noopener">Reuters原始报道 ↗</a></p>
+ </article>
+
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+  <h3 class="font-bold mb-4 flex items-center gap-2"><i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i> 行业动态对标影响对比表</h3>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead><tr class="bg-gray-50 dark:bg-gray-800"><th>行业事件</th><th>涉及主体</th><th>对雪佛龙利弊传导</th><th>影响周期</th></tr></thead>
+    <tbody class="text-gray-600 dark:text-gray-300">
+     <tr><td class="font-semibold text-gray-900 dark:text-gray-100">全球供需再平衡、2027年供应预计增加660万桶/日</td><td>IEA、全球产油国</td><td><span class="text-rose-600 dark:text-rose-400 font-semibold">偏利空。</span>上游实现价格与估值承压；炼化原料成本下降可能部分对冲。</td><td>2026Q4—2027</td></tr>
+     <tr><td class="font-semibold text-gray-900 dark:text-gray-100">OPEC+维持12月产量要求不变</td><td>沙特、俄罗斯等七国</td><td><span class="text-amber-600 dark:text-amber-400 font-semibold">中性偏多。</span>短期供给纪律支撑油价，2027配额仍有不确定性。</td><td>短期—2027</td></tr>
+     <tr><td class="font-semibold text-gray-900 dark:text-gray-100">圭亚那Uaru投产、产能达到110万桶/日</td><td>Exxon、Chevron、CNOOC</td><td><span class="text-emerald-600 dark:text-emerald-400 font-semibold">结构性利好。</span>权益产量增长，但全球新增供给可能形成价格压力。</td><td>2026—2030</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div>
+  <h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+ </div>
+ <p class="text-xs text-gray-500 dark:text-gray-400 mb-6">宏观筛选原则：只纳入能够影响原油实现价格、成品油需求、能源贸易或美元计价资产折现率的事件。国内维度采用中国海关进口数据，国际维度覆盖油市地缘、货币金融条件。</p>
+
+ <article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-rose-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · 能源供需与地缘风险</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-13 / 11-20 / 11-25</span>
+    <span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-800 dark:text-rose-200 text-xs font-bold">中性偏空 · 波动放大</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.8 / 10</span>
+  </div>
+  <h3 class="text-lg font-bold mb-4">全球石油供需宽松预期与霍尔木兹海峡航运风险并存，油价从单边风险溢价转为双向博弈</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 text-xs text-gray-700 dark:text-gray-300">
+   <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <strong class="text-gray-900 dark:text-white block mb-2">1. 事实与政策态势</strong>
+    11月20日Reuters报道，Brent收于92.57美元/桶，WTI收于83.98美元/桶，尽管中东航运风险上升，两大基准油价仍面临连续第三周下跌。11月25日Reuters报道，Brent约90.58美元/桶、WTI约80.96美元/桶，供应过剩预期继续主导市场。
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <strong class="text-gray-900 dark:text-white block mb-2">2. 传导路径：分子端与分母端</strong>
+    分子端：原油价格决定上游实现价格和利润，航运中断则增加运输、保险及交付成本。分母端：地缘风险抬升能源股风险溢价，油价剧烈波动会增加现金流预测折价。供给恢复则压低风险溢价。
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <strong class="text-gray-900 dark:text-white block mb-2">3. 雪佛龙业务敞口</strong>
+    美国页岩油及国际上游资产直接暴露于Brent/WTI价格变化；全球原油贸易、LNG与成品油物流受海运安全影响。下游炼化在低油价环境下可能受益于原料成本下降，但产品价差是最终利润关键。
+   </div>
+  </div>
+  <div class="bg-rose-50/70 dark:bg-rose-950/25 rounded-xl p-4 border border-rose-200 dark:border-rose-800/50">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed"><strong>投资判断：</strong>当前不是简单的地缘风险单边交易。供应恢复、库存变化和OPEC+政策是油价的基本面锚，航运冲突则构成上行尾部风险。CVX应以中期油价中枢而非单日地缘溢价估值。</p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">信源：Reuters，2026-11-20、2026-11-25；IEA，2026-11-13。</p>
+  <p class="text-xs mt-2"><a class="source-link" href="https://www.reuters.com/business/energy/oil-prices-fall-supply-glut-concerns-offset-middle-east-disruption-fears-2026-11-25/" target="_blank" rel="noopener">Reuters 11月25日油价报道 ↗</a> · <a class="source-link" href="https://www.iea.org/reports/oil-market-report-november-2026" target="_blank" rel="noopener">IEA 11月报告 ↗</a></p>
+ </article>
+
+ <article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国内 · 中国能源需求</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-10</span>
+    <span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-200 text-xs font-bold">中性偏空 · 需求恢复不均</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.2 / 10</span>
+  </div>
+  <h3 class="text-lg font-bold mb-4">中国10月原油进口环比反弹9.4%，但同比仍下降13.3%，前10个月累计进口下降15.1%</h3>
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">10月进口量</span><div class="text-lg font-bold font-mono">4,194万吨</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">日均进口</span><div class="text-lg font-bold font-mono">988万桶</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">环比变化</span><div class="text-lg font-bold font-mono text-emerald-600 dark:text-emerald-400">+9.4%</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">同比变化</span><div class="text-lg font-bold font-mono text-rose-600 dark:text-rose-400">-13.3%</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">前10个月累计</span><div class="text-lg font-bold font-mono">3.999亿吨</div></div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700"><span class="text-xs text-gray-500 dark:text-gray-400">累计同比</span><div class="text-lg font-bold font-mono text-rose-600 dark:text-rose-400">-15.1%</div></div>
+  </div>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Reuters于2026-11-10报道中国海关数据：2026年10月原油进口4194万吨，日均988万桶，较9月增长9.4%，达到当年3月以来最高水平；但同比下降13.3%。2026年前10个月累计进口3.999亿吨，同比下降15.1%。Kpler数据同时显示，10月海运原油到港量约920万桶/日，环比增长12%。
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+   <div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800/50">
+    <strong class="text-xs text-emerald-800 dark:text-emerald-300 block mb-2">正向传导</strong>
+    <p class="text-xs text-gray-700 dark:text-gray-300">进口环比恢复有助于稳定全球原油贸易流量，亚洲炼厂补库和加工活动回升可能改善部分成品油需求及炼化利润机会。</p>
+   </div>
+   <div class="bg-rose-50/70 dark:bg-rose-950/25 rounded-xl p-4 border border-rose-200 dark:border-rose-800/50">
+    <strong class="text-xs text-rose-800 dark:text-rose-300 block mb-2">负向传导</strong>
+    <p class="text-xs text-gray-700 dark:text-gray-300">累计进口大幅同比下降意味着需求恢复尚未得到持续验证。若中国经济活动和炼厂加工需求持续偏弱，全球边际原油需求将缺乏足够支撑。</p>
+   </div>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400">对雪佛龙的敞口：亚洲原油贸易、国际原油定价和全球LNG需求预期。需注意中国进口量不等同于最终消费量，亦受到战略库存、炼厂检修及进口配额影响。</p>
+  <p class="text-xs mt-3"><a class="source-link" href="https://www.investing.com/news/commodities-news/chinas-october-crude-oil-imports-rise-to-highest-level-since-march-amid-middle-east-war-5014020" target="_blank" rel="noopener">Reuters报道及中国海关数据（2026-11-10）↗</a></p>
+ </article>
+
+ <article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 border-l-sky-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-sky-600 text-white text-xs font-bold">国际 · 美联储货币政策</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-10-28</span>
+    <span class="px-2.5 py-1 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-800 dark:text-sky-200 text-xs font-bold">中性 · 估值与融资成本</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.0 / 10</span>
+  </div>
+  <h3 class="text-lg font-bold mb-4">美联储维持联邦基金利率目标区间3.75%—4.00%，高利率环境延续</h3>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   美联储于2026-10-28公布FOMC货币政策决定，维持联邦基金利率目标区间在3.75%—4.00%，并将相关准备金利率安排维持在既定水平。该决定体现政策利率暂时保持稳定，而非启动新一轮宽松。美联储同时继续通过公开市场操作管理准备金供给。
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-gray-700 dark:text-gray-300 mb-4">
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <strong class="block text-gray-900 dark:text-white mb-2">1. 政策要点</strong>
+    2026-10-28，FOMC维持3.75%—4.00%的联邦基金利率目标区间；准备金利率为3.90%，自10月29日起实施。
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <strong class="block text-gray-900 dark:text-white mb-2">2. 传导路径</strong>
+    高利率提高债务再融资和新增项目资本成本，抬高长期现金流折现率；美元强弱会影响美元计价原油及跨国经营的汇兑收益。若未来降息，则可能改善风险资产估值与能源需求预期。
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <strong class="block text-gray-900 dark:text-white mb-2">3. 业务敞口</strong>
+    雪佛龙拥有资本密集型上游开发、LNG及炼化项目。利率变化影响项目净现值、融资成本和资本配置回报门槛，尤其是投资周期较长的深水油气与天然气项目。
+   </div>
+  </div>
+  <div class="bg-sky-50/70 dark:bg-sky-950/25 rounded-xl p-4 border border-sky-200 dark:border-sky-800/50">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed"><strong>投资判断：</strong>利率维持高位对CVX估值的直接压力通常弱于油价本身，但可能通过美元、融资成本和全球经济活动形成二阶影响。不能将一次利率维持决议直接解释为美元必然上涨或油价必然下跌。</p>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-4">信源：Federal Reserve，Implementation Note，2026-10-28。</p>
+  <p class="text-xs mt-2"><a class="source-link" href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a1.htm" target="_blank" rel="noopener">美联储官方政策公告 ↗</a></p>
+ </article>
+</section>
+
+
+
+
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center"><i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i></div>
+  <h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+ </div>
+
+ <div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-700 mb-8">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <h3 class="font-bold text-sm sm:text-base flex items-center gap-2"><i data-lucide="list" class="w-4 h-4 text-primary-500"></i>九大核心事件催化矩阵</h3>
+   <div class="flex flex-wrap gap-1.5 text-xs">
+    <button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">全部（9）</button>
+    <button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">公司（3）</button>
+    <button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">行业（3）</button>
+    <button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">宏观（3）</button>
+   </div>
+  </div>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead><tr class="bg-gray-50 dark:bg-gray-800"><th>类别</th><th>日期</th><th>核心事件</th><th>影响方向</th><th>强度</th><th>核心投资含义</th></tr></thead>
+    <tbody>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/80">
+      <td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 font-semibold">公司</span></td>
+      <td class="font-mono whitespace-nowrap">2026-10-30</td>
+      <td class="font-semibold text-gray-900 dark:text-white">Q3调整后盈利104亿美元，美国产量增长27%，炼厂利用率98%</td>
+      <td class="text-emerald-600 dark:text-emerald-400 font-semibold">重大利好</td><td class="font-mono font-bold">9.5</td><td>经营执行力强，上下游盈利基础稳固</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/80">
+      <td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 font-semibold">公司</span></td>
+      <td class="font-mono whitespace-nowrap">2026-11-12</td>
+      <td class="font-semibold text-gray-900 dark:text-white">Ralston生物柴油工厂重启，Landus提供原料支持</td>
+      <td class="text-emerald-600 dark:text-emerald-400 font-semibold">温和利好</td><td class="font-mono font-bold">7.8</td><td>低碳燃料业务增加，但规模和盈利贡献待验证</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/80">
+      <td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 font-semibold">公司</span></td>
+      <td class="font-mono whitespace-nowrap">2026-11-02</td>
+      <td class="font-semibold text-gray-900 dark:text-white">Siva Barnwell Adams获任公司秘书及首席治理官</td>
+      <td class="text-sky-600 dark:text-sky-400 font-semibold">中性</td><td class="font-mono font-bold">5.5</td><td>治理架构调整，短期经营影响有限</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/80">
+      <td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-800 dark:text-accent-200 font-semibold">行业</span></td>
+      <td class="font-mono whitespace-nowrap">2026-11-13</td>
+      <td class="font-semibold text-gray-900 dark:text-white">IEA预计2026年全球需求减少270万桶/日，2027年供应增加660万桶/日</td>
+      <td class="text-rose-600 dark:text-rose-400 font-semibold">偏空</td><td class="font-mono font-bold">9.5</td><td>上游油价中枢面临下行风险，炼化对冲能力重要性提高</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/80">
+      <td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-800 dark:text-accent-200 font-semibold">行业</span></td>
+      <td class="font-mono whitespace-nowrap">2026-11-01</td>
+      <td class="font-semibold text-gray-900 dark:text-white">OPEC+七国维持12月要求产量不变</td>
+      <td class="text-amber-600 dark:text-amber-400 font-semibold">中性偏多</td><td class="font-mono font-bold">8.8</td><td>政策供给纪律形成油价缓冲，2027年配额仍待确定</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/80">
+      <td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-800 dark:text-accent-200 font-semibold">行业</span></td>
+      <td class="font-mono whitespace-nowrap">2026-11-24</td>
+      <td class="font-semibold text-gray-900 dark:text-white">Exxon圭亚那产量将突破100万桶/日，Uaru产能释放</td>
+      <td class="text-emerald-600 dark:text-emerald-400 font-semibold">结构性利好</td><td class="font-mono font-bold">8.2</td><td>Chevron持有Stabroek权益，分享增产收益</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/80">
+      <td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-200 font-semibold">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">2026-11-13~25</td>
+      <td class="font-semibold text-gray-900 dark:text-white">全球供应过剩预期与霍尔木兹航运风险交织，Brent回落</td>
+      <td class="text-rose-600 dark:text-rose-400 font-semibold">中性偏空</td><td class="font-mono font-bold">9.8</td><td>上游利润和估值受油价中枢影响，地缘风险放大波动</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/80">
+      <td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-200 font-semibold">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">2026-11-10</td>
+      <td class="font-semibold text-gray-900 dark:text-white">中国10月原油进口环比+9.4%，同比-13.3%</td>
+      <td class="text-amber-600 dark:text-amber-400 font-semibold">中性偏空</td><td class="font-mono font-bold">8.2</td><td>中国需求恢复尚未确认，全球边际需求存在隐忧</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/80">
+      <td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-200 font-semibold">宏观</span></td>
+      <td class="font-mono whitespace-nowrap">2026-10-28</td>
+      <td class="font-semibold text-gray-900 dark:text-white">美联储维持利率3.75%—4.00%</td>
+      <td class="text-sky-600 dark:text-sky-400 font-semibold">中性</td><td class="font-mono font-bold">7.0</td><td>高融资成本及折现率影响长期项目回报</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-3">说明：影响强度代表事件对CVX基本面及市场定价的潜在重要程度，不代表股价涨跌幅预测；每行可点击跳转至对应分析。</p>
+ </div>
+
+ <div class="mb-6">
+  <h3 class="text-lg font-bold mb-2 flex items-center gap-2"><i data-lucide="calendar-days" class="w-5 h-5 text-primary-500"></i>未来30天关键观察日历</h3>
+  <p class="text-xs text-gray-500 dark:text-gray-400">观察区间：2026-11-26 至 2026-12-25。以下区分已公布的日程与持续跟踪事项，不把预测日期当作已确认公告。</p>
+ </div>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-700 card-interactive">
+   <div class="flex items-center gap-2 mb-3"><i data-lucide="landmark" class="w-4 h-4 text-primary-500"></i><span class="text-xs font-bold text-primary-600 dark:text-primary-300 font-mono">2026-11-29 · 已公布会议日程</span></div>
+   <h4 class="font-bold text-sm mb-2">OPEC+ 2027年产量政策会议</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">关注2027年配额、成员国基准产能调整及增产安排。若释放更多供给，油价与CVX上游现金流可能承压；若强化产量纪律，则可能稳定油价。</p>
+   <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold">重点级别：极高</span>
+   <p class="text-xs mt-3"><a class="source-link" href="https://www.opec.org/pr-detail/620-1-november-2026.html" target="_blank" rel="noopener">OPEC会议安排 ↗</a></p>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-700 card-interactive">
+   <div class="flex items-center gap-2 mb-3"><i data-lucide="chart-line" class="w-4 h-4 text-accent-500"></i><span class="text-xs font-bold text-accent-600 dark:text-accent-300 font-mono">2026-12-08 · 已公布发布日</span></div>
+   <h4 class="font-bold text-sm mb-2">美国EIA短期能源展望（STEO）</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">关注Brent/WTI价格预测、美国页岩油产量、全球库存及2027年供需平衡。重点比较IEA与EIA对供需缺口的预测是否继续分化。</p>
+   <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold">重点级别：极高</span>
+   <p class="text-xs mt-3"><a class="source-link" href="https://www.eia.gov/outlooks/steo/release_schedule.php" target="_blank" rel="noopener">EIA官方发布日历 ↗</a></p>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-700 card-interactive">
+   <div class="flex items-center gap-2 mb-3"><i data-lucide="activity" class="w-4 h-4 text-sky-500"></i><span class="text-xs font-bold text-sky-600 dark:text-sky-300 font-mono">2026-12-08 至 12-09 · 已公布会议日程</span></div>
+   <h4 class="font-bold text-sm mb-2">美联储12月FOMC议息会议</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">关注政策利率、经济预测和新闻发布会。重点观察美元、美国经济增长预期和融资成本变化，对能源需求与CVX长期项目折现率的影响。</p>
+   <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold">重点级别：高</span>
+   <p class="text-xs mt-3"><a class="source-link" href="https://www.federalreserve.gov/newsevents/2026-december.htm" target="_blank" rel="noopener">美联储官方日历 ↗</a></p>
+  </div>
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-700 card-interactive">
+   <div class="flex items-center gap-2 mb-3"><i data-lucide="ship" class="w-4 h-4 text-rose-500"></i><span class="text-xs font-bold text-rose-600 dark:text-rose-300 font-mono">未来30日 · 持续跟踪</span></div>
+   <h4 class="font-bold text-sm mb-2">中东航运、全球库存及圭亚那产量爬坡</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">跟踪霍尔木兹海峡通航、油轮保险费率、美国商业原油库存、圭亚那Uaru项目产量及Stabroek区块运营情况。重点验证地缘溢价与新增供给哪个力量占优。</p>
+   <span class="text-xs text-rose-600 dark:text-rose-400 font-semibold">重点级别：极高</span>
+   <p class="text-xs mt-3"><a class="source-link" href="https://www.eia.gov/petroleum/supply/weekly/" target="_blank" rel="noopener">EIA每周石油数据 ↗</a> · <a class="source-link" href="https://www.reuters.com/business/energy/exxon-mobil-says-guyana-output-top-1-million-bpd-within-weeks-2026-11-24/" target="_blank" rel="noopener">Reuters圭亚那项目报道 ↗</a></p>
+  </div>
+ </div>
+
+ <div class="mt-8 bg-gray-900 dark:bg-[#0b0f15] rounded-2xl p-6 sm:p-8 text-white border border-gray-700">
+  <div class="flex items-center gap-2 mb-4"><i data-lucide="target" class="w-5 h-5 text-amber-400"></i><h3 class="font-bold text-lg">首席策略师 · 一分钟投资结论</h3></div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+   <div>
+    <p class="text-xs text-gray-400 mb-2">基本面判断</p>
+    <p class="font-bold text-emerald-400">经营质量强，现金创造能力值得关注</p>
+    <p class="text-xs text-gray-300 mt-2 leading-relaxed">Q3盈利、美国上游产量和炼厂执行力均提供基本面支撑，圭亚那权益资产提供中长期增量。</p>
+   </div>
+   <div>
+    <p class="text-xs text-gray-400 mb-2">主要估值约束</p>
+    <p class="font-bold text-rose-400">原油价格中枢及2027年供给过剩预期</p>
+    <p class="text-xs text-gray-300 mt-2 leading-relaxed">IEA需求与供应预测显示市场再平衡压力，油价下行将直接影响上游盈利与估值锚。</p>
+   </div>
+   <div>
+    <p class="text-xs text-gray-400 mb-2">未来最重要验证点</p>
+    <p class="font-bold text-amber-400">11月29日OPEC+会议及12月EIA预测</p>
+    <p class="text-xs text-gray-300 mt-2 leading-relaxed">观察2027年供给纪律、库存变化及Brent价格能否稳定，判断油价下行是否已经充分反映。</p>
+   </div>
+  </div>
+  <div class="border-t border-gray-700 pt-5">
+   <p class="text-sm font-semibold text-gray-200 mb-2">综合判断</p>
+   <p class="text-sm text-gray-300 leading-relaxed">
+    雪佛龙不是单纯的油价交易标的，而是具有上游资源、炼化、LNG及能源转型业务的综合能源平台。当前最值得重视的不是单季度盈利数字，而是盈利在何种油价条件下能够持续。若油价回落但炼化利润、产量增长及成本控制仍能支撑自由现金流，CVX的盈利韧性将优于单一上游公司；反之，若全球供应持续超预期增长，油价下行将重新成为主导变量。策略上保持中性偏多判断，但不应忽略油价下行带来的估值风险。
+   </p>
+  </div>
+  <p class="text-xs text-gray-400 mt-5">注：本结论为基本面和事件驱动判断，不是基于实时技术指标生成的买卖点，也不构成投资建议。</p>
+ </div>
+</section>
+
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+   <div>
+    <h4 class="font-bold text-sm mb-3">一、主要数据来源</h4>
+    <ul class="text-xs text-gray-600 dark:text-gray-400 space-y-2 leading-relaxed">
+     <li><a class="source-link" href="https://www.chevron.com/newsroom/2026/q4/chevron-reports-third-quarter-2026-results" target="_blank" rel="noopener">Chevron Q3 2026财报，2026-10-30</a></li>
+     <li><a class="source-link" href="https://chevroncorp.gcs-web.com/news-releases/?items_per_page=10&mobile=1&page=95" target="_blank" rel="noopener">Chevron公司新闻稿，2026-11-02及11-12</a></li>
+     <li><a class="source-link" href="https://www.iea.org/reports/oil-market-report-november-2026" target="_blank" rel="noopener">IEA Oil Market Report，2026-11-13</a></li>
+     <li><a class="source-link" href="https://www.opec.org/pr-detail/620-1-november-2026.html" target="_blank" rel="noopener">OPEC+七国声明，2026-11-01</a></li>
+     <li><a class="source-link" href="https://www.reuters.com/business/energy/exxon-mobil-says-guyana-output-top-1-million-bpd-within-weeks-2026-11-24/" target="_blank" rel="noopener">Reuters圭亚那产量报道，2026-11-24</a></li>
+     <li><a class="source-link" href="https://www.reuters.com/business/energy/oil-prices-fall-supply-glut-concerns-offset-middle-east-disruption-fears-2026-11-25/" target="_blank" rel="noopener">Reuters原油市场报道，2026-11-25</a></li>
+     <li><a class="source-link" href="https://www.investing.com/news/commodities-news/chinas-october-crude-oil-imports-rise-to-highest-level-since-march-amid-middle-east-war-5014020" target="_blank" rel="noopener">Reuters中国海关原油进口数据，2026-11-10</a></li>
+     <li><a class="source-link" href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a1.htm" target="_blank" rel="noopener">Federal Reserve政策公告，2026-10-28</a></li>
+     <li><a class="source-link" href="https://www.eia.gov/outlooks/steo/marketreview/crude.php" target="_blank" rel="noopener">EIA Short-Term Energy Outlook，2026-11-10</a></li>
+    </ul>
+   </div>
+   <div>
+    <h4 class="font-bold text-sm mb-3">二、覆盖范围与数据口径</h4>
+    <div class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed space-y-2">
+     <p><strong class="text-gray-800 dark:text-gray-200">研究对象：</strong>Chevron Corporation，NYSE: CVX。</p>
+     <p><strong class="text-gray-800 dark:text-gray-200">主窗口：</strong>2026-10-26 至 2026-11-25，共30个自然日，包含首尾日期。</p>
+     <p><strong class="text-gray-800 dark:text-gray-200">公司动态：</strong>以公司正式公告及公开披露为优先。</p>
+     <p><strong class="text-gray-800 dark:text-gray-200">行业动态：</strong>采用IEA、OPEC、EIA及Reuters公开报道。</p>
+     <p><strong class="text-gray-800 dark:text-gray-200">宏观动态：</strong>采用中国海关数据、美联储公告及国际能源市场数据。</p>
+     <p><strong class="text-gray-800 dark:text-gray-200">数据截点：</strong>2026-11-25。市场价格注明对应交易日期与盘中时间，不将实时行情和收盘行情混为一谈。</p>
+     <p><strong class="text-gray-800 dark:text-gray-200">事件与发布日期：</strong>分别注明实际发生日期及信息发布日；对尚未召开会议仅标为预定事项。</p>
+    </div>
+   </div>
+   <div>
+    <h4 class="font-bold text-sm mb-3">三、研究限制与免责声明</h4>
+    <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+     本报告依据截至2026-11-25可检索的公开信息制作。部分经营数字来自公司新闻稿或第三方报道，宏观预测属于发布机构的情景预测，并非已实现结果。公司、行业及宏观事件之间的因果传导为研究分析，不代表公司官方指引。
+    </p>
+    <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mt-3">
+     影响评分为定性分析工具，不代表收益概率、价格目标或统计显著性。油价、汇率、库存、地缘政治及政策变化均可能使判断失效。
+    </p>
+    <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mt-3">
+     本报告仅供投资研究和信息交流，不构成证券买卖建议、投资邀约或收益承诺。投资者应结合自身风险承受能力独立决策。
+    </p>
+   </div>
+  </div>
+  <div class="border-t border-gray-200 dark:border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+   <p class="text-xs text-gray-500 dark:text-gray-400">雪佛龙 Chevron（NYSE: CVX）· 最新动态全景追踪 · 2026-11-25</p>
+   <p class="text-xs text-gray-500 dark:text-gray-400">Event-Driven Equity Research · 30-Day Intelligence Report</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+ const current=document.documentElement.scrollTop||document.body.scrollTop;
+ const total=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const bar=document.getElementById('progressBar');
+ if(bar)bar.style.width=(total>0?current/total*100:0)+'%';
+},{passive:true});
+
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:450,offset:30,once:true});
+});
+
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){
+  document.getElementById('mobileMenu')?.classList.remove('mobile-menu-open');
+ }
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

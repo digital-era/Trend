@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthropic（ANT）最新动态全景追踪_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:'hsl(20,90%,95%)',100:'hsl(20,90%,85%)',200:'hsl(20,90%,75%)',
+          300:'hsl(20,90%,65%)',400:'hsl(20,90%,55%)',500:'hsl(20,90%,50%)',
+          600:'hsl(20,90%,45%)',700:'hsl(20,90%,35%)',800:'hsl(20,90%,25%)',
+          900:'hsl(20,90%,15%)',950:'hsl(20,90%,10%)'
+        },
+        accent: {
+          50:'hsl(30,85%,95%)',100:'hsl(30,85%,85%)',200:'hsl(30,85%,75%)',
+          300:'hsl(30,85%,65%)',400:'hsl(30,85%,60%)',500:'hsl(30,85%,55%)',
+          600:'hsl(30,85%,50%)',700:'hsl(30,85%,40%)',800:'hsl(30,85%,30%)',
+          900:'hsl(30,85%,20%)',950:'hsl(30,85%,10%)'
+        }
+      }
+    }
+  }
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+section[id],article[id],div[id^="card-"]{scroll-margin-top:90px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+.btn-interactive{transition:all .2s ease-out}
+.btn-interactive:hover{transform:scale(1.05)}
+.btn-interactive:active{transform:scale(.96)}
+.card-interactive{transition:all .28s ease-out}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 18px 28px -8px rgba(0,0,0,.14)}
+.dark .card-interactive:hover{box-shadow:0 18px 28px -8px rgba(0,0,0,.5)}
+table{width:100%;border-collapse:collapse;min-width:680px}
+th,td{text-align:left;padding:.85rem .8rem;border-bottom:1px solid #e5e7eb;vertical-align:top}
+.dark th,.dark td{border-bottom-color:#374151}
+.dark th{color:#f3f4f6}
+.dark td{color:#d1d5db}
+.impact-bar{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}
+.dark .impact-bar{background:#374151}
+.impact-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,hsl(20,90%,55%),hsl(30,85%,55%));transition:width .8s cubic-bezier(.22,1,.36,1)}
+#mobileMenu{display:none}
+@media(min-width:768px){#mobileMenu{display:none!important}}
+@media(max-width:767px){#mobileMenu.mobile-menu-open{display:block!important}}
+.dark .text-gray-500{color:#a1a1aa}
+.dark .text-gray-600{color:#d1d5db}
+.dark .text-gray-700{color:#e5e7eb}
+.dark .text-gray-800{color:#f3f4f6}
+.dark .border-gray-200{border-color:#374151}
+.dark .border-gray-100{border-color:#374151}
+.dark .bg-gray-50{background-color:#1e293b}
+.dark .bg-gray-100{background-color:#293548}
+.dark .bg-white{background-color:#161f2c}
+.dark a{overflow-wrap:anywhere}
+.source-link{color:#ea580c;text-decoration:underline;text-underline-offset:3px}
+.dark .source-link{color:#fb923c}
+.source-link:hover{opacity:.75}
+.kpi{min-height:112px}
+.timeline-line{position:relative}
+.timeline-line:before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:2px;background:#e5e7eb}
+.dark .timeline-line:before{background:#374151}
+.timeline-dot{position:relative;z-index:1}
+@media print{header,#progressBar,.no-print{display:none!important}body{background:white!important;color:black!important}.card-interactive{box-shadow:none!important;transform:none!important}main{padding-top:0!important}}
+</style>
+<script>
+(function initTheme(){
+ const saved=localStorage.getItem('anthropic-theme');
+ if(saved==='dark'||(!saved&&window.matchMedia('(prefers-color-scheme: dark)').matches)||window.self!==window.top){
+ document.documentElement.classList.add('dark');
+ }
+})();
+function syncThemeIcons(){
+ const dark=document.documentElement.classList.contains('dark');
+ const sun=document.getElementById('sunIcon');
+ const moon=document.getElementById('moonIcon');
+ if(sun)sun.style.display=dark?'block':'none';
+ if(moon)moon.style.display=dark?'none':'block';
+}
+function toggleDarkMode(){
+ document.documentElement.classList.toggle('dark');
+ localStorage.setItem('anthropic-theme',document.documentElement.classList.contains('dark')?'dark':'light');
+ syncThemeIcons();
+}
+function toggleMobileMenu(){
+ const menu=document.getElementById('mobileMenu');
+ if(menu)menu.classList.toggle('mobile-menu-open');
+}
+function scrollProgress(){
+ const y=document.documentElement.scrollTop||document.body.scrollTop;
+ const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+ const bar=document.getElementById('progressBar');
+ if(bar)bar.style.width=(h>0?y/h*100:0)+'%';
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+
+<body class="bg-gray-50 dark:bg-[#0f1419] text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60]" style="width:0%"></div>
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 dark:bg-[#111827]/95 border-b border-primary-500/20 dark:border-gray-800">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
+  <div class="flex items-center justify-between">
+   <div class="flex items-center gap-2.5 min-w-0">
+    <span class="w-2.5 h-2.5 rounded-full bg-primary-500 shrink-0"></span>
+    <h1 class="text-sm sm:text-lg font-bold text-primary-700 dark:text-primary-300 truncate">ANT · Anthropic 最新动态</h1>
+   </div>
+   <nav class="hidden md:flex items-center space-x-5">
+    <a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">总览</a>
+    <a href="#company" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">公司动态</a>
+    <a href="#industry" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">行业动态</a>
+    <a href="#macro" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">宏观政策</a>
+    <a href="#matrix" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-500">催化矩阵</a>
+   </nav>
+   <div class="flex items-center gap-2">
+    <button onclick="toggleMobileMenu()" class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="菜单">
+     <i data-lucide="menu" class="w-4 h-4"></i>
+    </button>
+    <button onclick="toggleDarkMode()" class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-gray-800 text-primary-600 dark:text-primary-300" aria-label="切换暗色模式">
+     <i data-lucide="sun" id="sunIcon" class="w-4 h-4" style="display:none"></i>
+     <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+    </button>
+   </div>
+  </div>
+  <div id="mobileMenu" class="mt-3 pt-3 border-t border-gray-200 dark:border-gray-800">
+   <nav class="flex flex-col space-y-2">
+    <a href="#overview" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">总览</a>
+    <a href="#company" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">公司动态</a>
+    <a href="#industry" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">行业动态</a>
+    <a href="#macro" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">宏观政策</a>
+    <a href="#matrix" onclick="toggleMobileMenu()" class="text-sm py-1 text-gray-700 dark:text-gray-200">催化矩阵</a>
+   </nav>
+  </div>
+ </div>
+</header>
+
+<main class="pt-20 sm:pt-24 pb-16">
+
+<!-- HERO -->
+<section id="overview" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-10 shadow-sm border border-primary-100 dark:border-gray-800">
+  <div class="flex flex-wrap items-center gap-2 mb-4">
+   <span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-xs font-bold">NASDAQ: ANT</span>
+   <span class="px-3 py-1 rounded-full bg-accent-100 dark:bg-accent-900/40 text-accent-700 dark:text-accent-300 text-xs font-semibold">人工智能 · 基础模型 · 企业级AI</span>
+   <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-semibold">近30日 · 2026-10-27 至 11-25</span>
+   <span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-semibold">已上市</span>
+  </div>
+
+  <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-5">
+   <div>
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">Anthropic, PBC</h2>
+    <p class="text-sm text-gray-500 dark:text-gray-400">Claude 系列模型开发商 · Nasdaq Global Select Market · Ticker: ANT</p>
+   </div>
+   <div class="lg:text-right">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-1">IPO发行价格</div>
+    <div class="text-3xl font-bold font-mono text-primary-600 dark:text-primary-400">$83.00</div>
+    <div class="text-xs text-gray-500 dark:text-gray-400">2026-11-18 定价 · 2026-11-19 开始交易</div>
+   </div>
+  </div>
+
+  <p class="text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-6">
+   Anthropic在本轮窗口内完成历史性IPO、获得大规模资本补充，并凭借新一代Claude模型强化技术竞争力；但上市后股价迅速由首日高位回落至发行价下方，市场开始重新审视巨额算力投入、商业化兑现速度与AI估值泡沫风险。核心矛盾已从融资能力转向长期盈利能力。
+  </p>
+
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+   <div class="kpi rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">IPO发行规模（毛额）</div>
+    <div class="text-xl sm:text-2xl font-bold font-mono text-gray-900 dark:text-white">$93.5B</div>
+    <div class="text-xs text-emerald-600 dark:text-emerald-400 mt-1">公司所得约$91.6B</div>
+   </div>
+   <div class="kpi rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">首日收盘价</div>
+    <div class="text-xl sm:text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400">$97.17</div>
+    <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">较发行价 +17.1%</div>
+   </div>
+   <div class="kpi rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">11月24日收盘</div>
+    <div class="text-xl sm:text-2xl font-bold font-mono text-rose-600 dark:text-rose-400">$76.60</div>
+    <div class="text-xs text-rose-600 dark:text-rose-400 mt-1">低于IPO价 7.7%</div>
+   </div>
+   <div class="kpi rounded-xl p-4 bg-primary-50/70 dark:bg-gray-800/80 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">并行私募融资</div>
+    <div class="text-xl sm:text-2xl font-bold font-mono text-gray-900 dark:text-white">$26.0B</div>
+    <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">战略投资者参与</div>
+   </div>
+  </div>
+  <p class="text-[11px] text-gray-400 dark:text-gray-500 mb-5">
+   数据口径：IPO融资数据来自Anthropic 2026-11-20公告；交易价格及11-24跌破发行价数据来自Reuters 2026-11-19、11-24报道。11-25盘中价格未纳入，避免将未核验行情作为收盘价。
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+   <div class="bg-amber-50 dark:bg-amber-950/30 rounded-xl p-5 border border-amber-200 dark:border-amber-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2">
+     <i data-lucide="gauge" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
+     <span class="text-xs font-semibold text-amber-700 dark:text-amber-300">消息面总体基调</span>
+    </div>
+    <p class="text-xl font-bold text-amber-700 dark:text-amber-300">中性偏多</p>
+    <p class="text-xs text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">融资与技术竞争力显著增强，但当前股价已经进入估值和商业化兑现的压力测试阶段。</p>
+   </div>
+   <div class="bg-emerald-50 dark:bg-emerald-950/30 rounded-xl p-5 border border-emerald-200 dark:border-emerald-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2">
+     <i data-lucide="zap" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+     <span class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">本月最强单一催化剂</span>
+    </div>
+    <p class="text-sm font-bold text-emerald-800 dark:text-emerald-200 leading-relaxed">11月20日完成IPO交割，发行融资约935亿美元，并完成260亿美元战略私募。</p>
+    <p class="text-xs text-emerald-700 dark:text-emerald-400 mt-2">资本实力与战略资源显著增强</p>
+   </div>
+   <div class="bg-rose-50 dark:bg-rose-950/30 rounded-xl p-5 border border-rose-200 dark:border-rose-800/60 card-interactive">
+    <div class="flex items-center gap-2 mb-2">
+     <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600 dark:text-rose-400"></i>
+     <span class="text-xs font-semibold text-rose-700 dark:text-rose-300">本月最需警惕信号</span>
+    </div>
+    <p class="text-sm font-bold text-rose-800 dark:text-rose-200 leading-relaxed">11月24日股价跌至76.60美元，低于83美元发行价，AI巨额基础设施投入与估值承压同步显现。</p>
+    <p class="text-xs text-rose-700 dark:text-rose-400 mt-2">Reuters · 2026-11-24</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- COMPANY -->
+<section id="company" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">一、公司最近一个月 Top 3 核心动态</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">按对股价、资本结构与长期经营价值的影响排序</p>
+  </div>
+ </div>
+
+ <!-- COMPANY 1 -->
+ <article id="card-company-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive" data-aos="fade-up">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 1</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-18 至 11-20</span>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">重大利好</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 10.0 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">Anthropic完成史上规模最大的IPO之一：公开发行约935亿美元，战略私募再融资260亿美元</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">公开发行股数</div>
+    <div class="text-base font-bold font-mono mt-1">11.27亿股</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">发行价格</div>
+    <div class="text-base font-bold font-mono mt-1">$83.00</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">公开发行毛额</div>
+    <div class="text-base font-bold font-mono text-emerald-600 dark:text-emerald-400">$93.5B</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">公司实际获得</div>
+    <div class="text-base font-bold font-mono text-emerald-600 dark:text-emerald-400">$91.6B</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Anthropic于<strong>2026-11-18</strong>确定每股83美元的IPO发行价格，并于<strong>2026-11-20</strong>公告完成发行。公开发行总计1,127,000,000股Class A普通股，其中承销商全额行使额外147,000,000股的超额配售权。发行毛额约935亿美元，其中公司获得约916亿美元，出售股东获得约20亿美元。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   此外，公司同步完成313,253,007股Class N普通股的私募，以每股83美元向AMD、博通、Google、Micron、Microsoft、NVIDIA及TSMC Partners等战略投资者出售，融资约260亿美元。公开发行与私募合计融资毛额约1,195亿美元。公司股票于<strong>2026-11-19</strong>正式在Nasdaq Global Select Market以ANT代码交易。
+  </p>
+
+  <div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 mb-4 border border-emerald-200 dark:border-emerald-800/50">
+   <div class="font-bold text-emerald-800 dark:text-emerald-300 text-sm mb-2">投资影响：资本结构发生根本性变化</div>
+   <ul class="text-xs text-gray-700 dark:text-gray-300 space-y-2 leading-relaxed">
+    <li>• <strong>现金流：</strong>公开发行带来约916亿美元公司资金，可为模型训练、推理基础设施、数据中心与人才投入提供长期资本缓冲。</li>
+    <li>• <strong>融资成本：</strong>降低未来完全依赖债务或外部私募融资的压力，增强基础设施投资持续性。</li>
+    <li>• <strong>战略资源：</strong>AI芯片与云计算产业链核心企业参与私募，体现供应链资本与商业生态的深度绑定。</li>
+    <li>• <strong>治理结构：</strong>公司为Public Benefit Corporation，不能仅以传统股东利润最大化解释治理决策；长期利益信托与公共利益使命也可能影响资本配置。</li>
+   </ul>
+  </div>
+
+  <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4">
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    <strong>需要注意：</strong>约1,195亿美元是公开发行与私募的合计毛融资规模，并非全部进入公司现金账户；公开发行中约20亿美元属于出售股东所得。私募股份类别与公开交易的Class A股份也不能简单等同。
+   </p>
+  </div>
+  <div class="flex items-center justify-between text-xs mb-2">
+   <span class="font-semibold text-gray-600 dark:text-gray-300">事件影响力</span>
+   <span class="font-bold text-primary-600 dark:text-primary-400">10.0 / 10</span>
+  </div>
+  <div class="impact-bar"><div class="impact-fill" style="width:100%"></div></div>
+  <div class="mt-4 text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+   信源：
+   <a class="source-link" href="https://www.anthropic.com/news/ipo-close" target="_blank" rel="noopener">Anthropic官方IPO完成公告 · 2026-11-20</a>；
+   <a class="source-link" href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm" target="_blank" rel="noopener">SEC Form 424B4最终招股书</a>。
+  </div>
+ </article>
+
+ <!-- COMPANY 2 -->
+ <article id="card-company-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive" data-aos="fade-up" data-aos-delay="70">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 2</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-19 至 11-24</span>
+    <span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">短期承压</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.5 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">上市首日冲高后持续回撤，11月24日跌破83美元发行价：市场开始对AI估值重新定价</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">IPO发行价</div>
+    <div class="text-lg font-bold font-mono">$83.00</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">首日开盘</div>
+    <div class="text-lg font-bold font-mono text-emerald-600 dark:text-emerald-400">$111.50</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">首日收盘</div>
+    <div class="text-lg font-bold font-mono">$97.17</div>
+   </div>
+   <div class="rounded-lg p-3 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">11月24日收盘</div>
+    <div class="text-lg font-bold font-mono text-rose-600 dark:text-rose-400">$76.60</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Reuters于<strong>2026-11-19</strong>报道，ANT上市首日开盘价为111.50美元，较83美元发行价高约34%，盘中估值一度触及约2万亿美元；当日收盘97.17美元，上涨约17.1%。首日热烈需求证明机构对前沿AI公司的资本市场兴趣，但高开低走也显示市场并未形成一致的长期估值锚。
+  </p>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   更值得关注的是，Reuters于<strong>2026-11-24</strong>报道，股价当日下跌12.6%至76.60美元，低于83美元发行价约7.7%，较首日开盘价累计回撤约31.3%。报道称，市场调整与科技股整体抛售、利率上行担忧、AI基础设施投入成本以及投资者对长期商业化回报的质疑有关。
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-xl bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50 p-4">
+    <div class="font-bold text-rose-700 dark:text-rose-300 text-sm mb-2">估值端负面传导</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">上市初期的高溢价被快速压缩，说明投资者不愿仅以模型能力、融资规模与市场叙事为依据持续支付极高估值。未来收入增长与利润率需要承担更严格的验证要求。</p>
+   </div>
+   <div class="rounded-xl bg-amber-50/70 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50 p-4">
+    <div class="font-bold text-amber-700 dark:text-amber-300 text-sm mb-2">供给与资金面风险</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">IPO解禁安排、早期股东潜在出售、员工股权兑现和承销商超额配售完成后，均可能影响短期股票供需。应区分实际已出售股份与未来潜在可售股份。</p>
+   </div>
+  </div>
+
+  <div class="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 mb-4">
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    <strong>关键判断：</strong>发行价83美元是重要的心理与市场参考位，但不是公司内在价值底线。股价跌破发行价并不自动意味着基本面恶化，必须结合收入增速、毛利率、算力成本、现金消耗及后续股份解禁情况验证。
+   </p>
+  </div>
+
+  <div class="flex items-center justify-between text-xs mb-2">
+   <span class="font-semibold text-gray-600 dark:text-gray-300">事件影响力</span>
+   <span class="font-bold text-primary-600 dark:text-primary-400">9.5 / 10</span>
+  </div>
+  <div class="impact-bar"><div class="impact-fill" style="width:95%"></div></div>
+  <div class="mt-4 text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+   信源：
+   <a class="source-link" href="https://www.reuters.com/legal/transactional/view-anthropic-set-to-soar-debut-will-ai-peers-follow-2026-11-19/" target="_blank" rel="noopener">Reuters · 上市首日交易 · 2026-11-19</a>；
+   <a class="source-link" href="https://www.reuters.com/business/anthropic-breaks-below-83-ipo-price-debut-rally-unravels-2026-11-24/" target="_blank" rel="noopener">Reuters · 跌破IPO发行价 · 2026-11-24</a>。
+  </div>
+ </article>
+
+ <!-- COMPANY 3 -->
+ <article id="card-company-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-sky-500 card-interactive" data-aos="fade-up" data-aos-delay="120">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-primary-500 text-white text-xs font-bold">TOP 3</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-09</span>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">温和利好</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.5 / 10</span>
+  </div>
+
+  <h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">推出Claude Fable 5.2与Claude Mythos 5.2：强化编码、金融与科学研究等高价值应用</h3>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-primary-50 dark:bg-gray-800 border border-primary-100 dark:border-gray-700">
+    <div class="text-xs font-semibold text-primary-700 dark:text-primary-300 mb-2">Claude Fable 5.2</div>
+    <div class="text-base font-bold mb-2">专业任务能力升级</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">面向复杂技术任务、编程与专业工作流程，强化实际工作环境中的任务执行能力。</p>
+   </div>
+   <div class="rounded-xl p-4 bg-accent-50 dark:bg-gray-800 border border-accent-100 dark:border-gray-700">
+    <div class="text-xs font-semibold text-accent-700 dark:text-accent-300 mb-2">Claude Mythos 5.2</div>
+    <div class="text-base font-bold mb-2">前沿能力提升</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">针对高难度编码、金融与科学研究等专业场景，进一步拓展前沿模型能力边界。</p>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Anthropic官方新闻室于<strong>2026-11-09</strong>发布Fable 5.2和Mythos 5.2，称两款模型在编码、金融和科学领域的复杂技术工作中提升能力，并将其定位为公司当前最强大的专业任务模型。
+  </p>
+
+  <div class="bg-sky-50/70 dark:bg-sky-950/25 rounded-xl p-4 mb-4 border border-sky-200 dark:border-sky-800/50">
+   <div class="font-bold text-sky-800 dark:text-sky-300 text-sm mb-2">影响深度：从模型能力转向高价值商业场景</div>
+   <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+    <li>• <strong>收入端：</strong>编码、金融和科学研发通常具有更高的专业工作价值，为企业API、订阅和长期合同提供更强的付费理由。</li>
+    <li>• <strong>客户留存：</strong>如果模型能深入客户研发、软件工程和企业工作流，切换成本有望提高。</li>
+    <li>• <strong>竞争端：</strong>模型能力升级有助于抵御OpenAI及Google的竞争，但必须进一步证明性价比与实际使用量增长。</li>
+    <li>• <strong>利润端：</strong>高能力模型通常伴随训练及推理资源需求，若单位任务成本下降速度不及收入增长，技术领先未必转化为利润领先。</li>
+   </ul>
+  </div>
+
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">
+   数据限制：官方公告没有在所核验材料中提供足以支持精确量化比较的新增收入、API调用增长、模型毛利率或客户数量，因此本报告不编造性能提升百分比和商业化增量。
+  </p>
+
+  <div class="flex items-center justify-between text-xs mb-2">
+   <span class="font-semibold text-gray-600 dark:text-gray-300">事件影响力</span>
+   <span class="font-bold text-primary-600 dark:text-primary-400">8.5 / 10</span>
+  </div>
+  <div class="impact-bar"><div class="impact-fill" style="width:85%"></div></div>
+  <div class="mt-4 text-xs text-gray-500 dark:text-gray-400">
+   信源：
+   <a class="source-link" href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic官方Newsroom · 2026-11-09</a>。
+  </div>
+ </article>
+</section>
+
+<!-- INDUSTRY -->
+<section id="industry" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-2">
+  <div class="w-10 h-10 rounded-xl bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
+   <i data-lucide="layers" class="w-5 h-5 text-accent-600 dark:text-accent-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">二、所属行业最近一个月 Top 3 关键动态</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">细分赛道：生成式AI基础模型、企业级AI软件、AI Agent与云端算力基础设施</p>
+  </div>
+ </div>
+ <p class="text-xs text-gray-500 dark:text-gray-400 mb-6">本部分重点跟踪模型能力与成本竞争、AI基础设施资本开支，以及算力能源供给约束。</p>
+
+ <!-- INDUSTRY 1 -->
+ <article id="card-industry-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 1</span>
+   <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-17</span>
+   <span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">竞争压力上升</span>
+  </div>
+  <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">OpenAI推出GPT-6.2 Astra与Sol：前沿推理和低成本Agent工作流同步升级</h3>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   <strong>2026-11-17</strong>，OpenAI正式发布GPT-6.2 Astra与GPT-6.2 Sol，并向ChatGPT Work、Codex及API开放。官方将Astra定位为高难度推理、编码和复杂专业任务模型，将Sol定位为速度更快、成本更低的通用工作流模型。OpenAI同时强调两款模型相较前代具有更好的任务结果与更少的输出Token。
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50">
+    <div class="font-bold text-rose-700 dark:text-rose-300 text-sm mb-2">对Anthropic的竞争压力</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">GPT-6.2 Astra直接竞争高端编程、金融分析和专业工作任务；Sol强调成本效率，对Claude的API定价与企业使用成本形成压力。</p>
+   </div>
+   <div class="rounded-xl p-4 bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50">
+    <div class="font-bold text-emerald-700 dark:text-emerald-300 text-sm mb-2">行业扩容的正面效应</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">高质量模型逐步进入日常办公、软件开发和企业Agent工作流，扩大付费用户及API使用场景，有利于Anthropic分享行业需求增长。</p>
+   </div>
+  </div>
+
+  <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   <strong>横向映射：</strong>这是对Anthropic最直接的产品竞争催化剂。未来竞争重点不是单一Benchmark排名，而是模型实际任务成功率、每项工作完成成本、企业留存率和推理毛利率。Anthropic若无法保持Claude在编码及企业Agent方面的优势，可能面临价格压力与市场份额流失。
+  </p>
+  <div class="flex justify-between text-xs mb-2"><span class="text-gray-500 dark:text-gray-400">对标影响力</span><strong class="text-primary-600 dark:text-primary-400">9.5 / 10</strong></div>
+  <div class="impact-bar mb-4"><div class="impact-fill" style="width:95%"></div></div>
+  <div class="text-xs text-gray-500 dark:text-gray-400">
+   信源：
+   <a class="source-link" href="https://openai.com/news/product-releases/" target="_blank" rel="noopener">OpenAI官方产品发布 · 2026-11-17</a>；
+   <a class="source-link" href="https://help.openai.com/en/articles/9624314-model-release-notes" target="_blank" rel="noopener">OpenAI Model Release Notes</a>。
+  </div>
+ </article>
+
+ <!-- INDUSTRY 2 -->
+ <article id="card-industry-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 2</span>
+   <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-20</span>
+   <span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏空（成本约束）</span>
+  </div>
+  <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">美国参议院通过数据中心与能源基础设施法案：AI算力扩张面临新的电网成本分摊要求</h3>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Reuters于<strong>2026-11-20</strong>报道，美国参议院以<strong>62票赞成、33票反对</strong>通过Bipartisan American Affordability and Jobs Act，并提交众议院审议。法案旨在加快能源与基础设施项目建设，包括缩短部分联邦环境审查时限、加速输电线路规划与建设，同时要求大型AI数据中心承担更大比例的电网升级成本。
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+    <div class="font-bold text-sm mb-2">供给侧</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">能源项目审批提速、输电网络建设加快，有利于未来数据中心建设和算力部署。</p>
+   </div>
+   <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50">
+    <div class="font-bold text-sm text-amber-700 dark:text-amber-300 mb-2">成本侧</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">大型算力设施承担更多电网升级费用，可能抬高新建数据中心的综合资本开支和长期电力成本。</p>
+   </div>
+   <div class="rounded-xl p-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+    <div class="font-bold text-sm mb-2">立法进度</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">参议院已通过，但仍须众议院审议，不能视为已经生效的完整法律。</p>
+   </div>
+  </div>
+
+  <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   <strong>横向映射：</strong>Anthropic是大型AI算力需求方，模型训练和推理服务依赖数据中心、GPU集群、电力供应及云基础设施。若合作云厂商承担更高电网建设费用，成本可能通过云服务定价和长期算力合同传导至Anthropic；若基础设施审批提速，则中长期可能改善算力供给，降低部署瓶颈。
+  </p>
+
+  <div class="flex justify-between text-xs mb-2"><span class="text-gray-500 dark:text-gray-400">对标影响力</span><strong class="text-primary-600 dark:text-primary-400">8.5 / 10</strong></div>
+  <div class="impact-bar mb-4"><div class="impact-fill" style="width:85%"></div></div>
+  <div class="text-xs text-gray-500 dark:text-gray-400">
+   信源：
+   <a class="source-link" href="https://www.reuters.com/legal/litigation/us-senate-passes-bipartisan-bill-speed-energy-infrastructure-projects-2026-11-20/" target="_blank" rel="noopener">Reuters · 2026-11-20</a>。
+  </div>
+ </article>
+
+ <!-- INDUSTRY 3 -->
+ <article id="card-industry-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+  <div class="flex flex-wrap items-center gap-2 mb-3">
+   <span class="px-2.5 py-1 rounded bg-accent-500 text-white text-xs font-bold">行业 TOP 3</span>
+   <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-18</span>
+   <span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">中性偏多（市场扩容）</span>
+  </div>
+  <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">Google DeepMind推出Genie 4与Project Genie：多模态交互式世界模型竞争升级</h3>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   Google DeepMind于<strong>2026-11-18</strong>发布Project Genie新体验，采用Genie 4世界模型，结合Gemini多模态能力，使用户能够通过自然语言创建和探索交互式世界。产品支持实时改变环境、角色和场景，并引入Agent辅助生成初始视觉内容及交互体验。新体验向符合条件的Google AI Ultra订阅用户逐步开放，Google AI Pro用户可加入候补名单。
+  </p>
+
+  <div class="bg-accent-50/70 dark:bg-accent-950/20 border border-accent-200 dark:border-accent-800/50 rounded-xl p-4 mb-4">
+   <div class="font-bold text-accent-800 dark:text-accent-300 text-sm mb-2">产业意义：竞争维度从文本与代码走向多模态Agent</div>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+    Google正在将基础模型、世界模型与Agent工作流整合，竞争边界进一步扩展至多模态内容生成、交互式模拟、数字环境和复杂任务执行。Anthropic的Claude主要在专业工作流和企业开发场景竞争，需要持续提升工具调用、计算机使用及多模态任务能力。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   <strong>横向映射：</strong>短期内Project Genie并非Claude核心业务的直接替代品，但它反映了Google依靠模型、云服务、消费入口和订阅生态进行纵向整合的趋势。长期而言，具备完整产品入口与基础设施能力的科技巨头可能压缩独立模型公司的获客空间与利润率。
+  </p>
+
+  <div class="flex justify-between text-xs mb-2"><span class="text-gray-500 dark:text-gray-400">对标影响力</span><strong class="text-primary-600 dark:text-primary-400">7.5 / 10</strong></div>
+  <div class="impact-bar mb-4"><div class="impact-fill" style="width:75%"></div></div>
+  <div class="text-xs text-gray-500 dark:text-gray-400">
+   信源：
+   <a class="source-link" href="https://deepmind.google/" target="_blank" rel="noopener">Google DeepMind官方渠道 · 2026-11-18</a>；
+   <a class="source-link" href="https://www.youtube.com/watch?v=EDp4IoAUsXY" target="_blank" rel="noopener">Project Genie官方发布视频</a>。
+  </div>
+ </article>
+
+ <!-- COMPARISON TABLE -->
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800">
+  <h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+   <i data-lucide="table-2" class="w-4 h-4 text-accent-500"></i>
+   行业动态对标影响对比表
+  </h3>
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead><tr class="bg-gray-50 dark:bg-gray-800">
+     <th>行业事件</th><th>涉及主体</th><th>对Anthropic利弊传导</th><th>影响周期</th>
+    </tr></thead>
+    <tbody>
+     <tr>
+      <td class="font-semibold">GPT-6.2系列发布</td>
+      <td>OpenAI、Anthropic</td>
+      <td><span class="text-rose-600 dark:text-rose-400 font-bold">偏利空。</span>直接竞争企业级推理、编码与Agent业务，增加价格与研发投入压力。</td>
+      <td>短期—长期</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">美国数据中心能源法案</td>
+      <td>美国参议院、数据中心及云厂商</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">双向影响。</span>审批提速利好供给，成本分摊可能推高算力价格。</td>
+      <td>中长期</td>
+     </tr>
+     <tr>
+      <td class="font-semibold">Genie 4及Project Genie</td>
+      <td>Google DeepMind、AI基础模型厂商</td>
+      <td><span class="text-amber-600 dark:text-amber-400 font-bold">中性偏空。</span>科技巨头产品生态增强，独立模型公司的入口竞争加剧。</td>
+      <td>中长期</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<!-- MACRO -->
+<section id="macro" class="max-w-7xl mx-auto px-4 sm:px-6 mb-14" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="globe" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">三、强相关国内与国际宏观政策/态势 Top 3</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">围绕算力供应、跨境监管、AI基础设施和估值折现率展开</p>
+  </div>
+ </div>
+
+ <!-- MACRO 1 -->
+ <article id="card-macro-1" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-rose-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-rose-500 text-white text-xs font-bold">国际 · 美国出口管制</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-19</span>
+    <span class="px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 text-xs font-bold">合规风险上升</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 9.5 / 10</span>
+  </div>
+
+  <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">美国商务部BIS发布远程获取先进半导体算力新规：跨境数据中心和算力租赁面临更严格审查</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="font-bold text-gray-900 dark:text-white text-sm mb-2">1. 政策要点</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     美国商务部BIS于2026-11-19在Federal Register公布《Addressing Remote Access to Advanced Semiconductors》临时最终规则。针对为特定受关注国家及澳门相关主体提供大量远程先进计算能力的数据中心，建立额外许可及尽职调查要求。
+    </p>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="font-bold text-gray-900 dark:text-white text-sm mb-2">2. 传导路径</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     数据中心、海外晶圆代工厂和芯片出口商需要加强客户尽调，识别最终用户及间接控制关系。跨境算力交易可能增加合规成本、交付周期与业务限制。
+    </p>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="font-bold text-gray-900 dark:text-white text-sm mb-2">3. 业务敞口</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     Anthropic依赖美国及全球云服务、先进GPU和数据中心资源。若客户地域、数据中心位置、最终控制人或算力流向触发监管要求，可能影响海外扩张与客户交付。
+    </p>
+   </div>
+  </div>
+
+  <div class="bg-rose-50 dark:bg-rose-950/25 rounded-xl p-4 mb-4 border border-rose-200 dark:border-rose-800/50">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+    <strong class="text-rose-700 dark:text-rose-300">重要边界：</strong>该规则不是对Anthropic本身的直接制裁，也不能推断所有海外算力租赁都会被禁止。具体影响取决于受监管芯片、最终用户、远程计算能力、国家归属及许可条件。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   <strong>分子端：</strong>潜在提高云端算力采购与跨境部署的合规成本；<strong>分母端：</strong>地缘政治风险可能提高投资者对全球AI基础设施公司的风险溢价。
+  </p>
+  <div class="flex justify-between text-xs mb-2"><span class="text-gray-500 dark:text-gray-400">影响力</span><strong class="text-primary-600 dark:text-primary-400">9.5 / 10</strong></div>
+  <div class="impact-bar mb-4"><div class="impact-fill" style="width:95%"></div></div>
+  <div class="text-xs text-gray-500 dark:text-gray-400">
+   信源：
+   <a class="source-link" href="https://www.govinfo.gov/content/pkg/FR-2026-11-19/pdf/2026-23529.pdf" target="_blank" rel="noopener">美国Federal Register · 91 FR 74970 · 2026-11-19</a>；
+   <a class="source-link" href="https://www.govinfo.gov/app/details/FR-2026-11-19/2026-23529" target="_blank" rel="noopener">BIS规则正式文件</a>。
+  </div>
+ </article>
+
+ <!-- MACRO 2 -->
+ <article id="card-macro-2" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-emerald-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">中国 · 算力基础设施</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-19</span>
+    <span class="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold">中长期利好（行业）</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 7.5 / 10</span>
+  </div>
+
+  <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">江苏发布新型信息基础设施建设行动计划：到2030年智能算力规模目标超过700 EFLOPS</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+   <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="font-bold text-gray-900 dark:text-white text-sm mb-2">1. 政策要点</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     江苏省工信厅等部门于<strong>2026-11-19</strong>发布《江苏省新型信息基础设施建设发展行动计划》。提出深化算力网络布局，推进算力调度平台、公共算力中心与智能算力供给体系建设。
+    </p>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="font-bold text-gray-900 dark:text-white text-sm mb-2">2. 量化建设目标</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     到2030年底，江苏智能算力规模超过<strong>700 EFLOPS</strong>，先进存力规模达到<strong>200 EB</strong>；推动算力与电力协同，提升数据中心能源使用效率。
+    </p>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800/70 rounded-xl p-4 border border-gray-200 dark:border-gray-700">
+    <div class="font-bold text-gray-900 dark:text-white text-sm mb-2">3. 产业敞口</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+     主要作用于中国境内算力基础设施、云计算、数据中心与AI应用生态，不是对Anthropic的直接采购、补贴或商业合同。
+    </p>
+   </div>
+  </div>
+
+  <div class="bg-emerald-50/70 dark:bg-emerald-950/25 rounded-xl p-4 mb-4 border border-emerald-200 dark:border-emerald-800/50">
+   <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+    <strong class="text-emerald-700 dark:text-emerald-300">投资传导：</strong>中国算力供给、网络效率与产业应用进一步发展，有利于全球AI行业需求扩张和应用创新。但Anthropic是否能够直接受益，取决于中国市场准入、模型服务区域限制、数据合规、跨境算力和商业合作条件，不能将区域政策目标直接计入公司收入预测。
+   </p>
+  </div>
+
+  <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   <strong>分子端：</strong>全球AI需求扩大可能带动模型API及企业服务市场增长；<strong>分母端：</strong>政策对算力供给的支持有助于改善行业长期供给预期，但并不直接改变Anthropic的融资成本。
+  </p>
+  <div class="flex justify-between text-xs mb-2"><span class="text-gray-500 dark:text-gray-400">影响力</span><strong class="text-primary-600 dark:text-primary-400">7.5 / 10</strong></div>
+  <div class="impact-bar mb-4"><div class="impact-fill" style="width:75%"></div></div>
+  <div class="text-xs text-gray-500 dark:text-gray-400">
+   信源：
+   <a class="source-link" href="https://gxt.jiangsu.gov.cn/art/2026/11/19/art_6299_11862213.html" target="_blank" rel="noopener">江苏省工业和信息化厅 · 2026-11-19</a>。
+  </div>
+ </article>
+
+ <!-- MACRO 3 -->
+ <article id="card-macro-3" class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 mb-5 shadow-sm border border-gray-200 dark:border-gray-800 border-l-4 border-l-amber-500 card-interactive">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+   <div class="flex flex-wrap items-center gap-2">
+    <span class="px-3 py-1 rounded-lg bg-amber-500 text-white text-xs font-bold">国际 · 美联储货币政策</span>
+    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">2026-11-18</span>
+    <span class="px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 text-xs font-bold">估值承压</span>
+   </div>
+   <span class="text-xs font-mono font-bold text-primary-600 dark:text-primary-400">影响力 8.0 / 10</span>
+  </div>
+
+  <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">美联储公布10月FOMC会议纪要：维持利率3.75%—4.00%，但两名委员倾向进一步加息</h3>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">联邦基金利率</div>
+    <div class="text-lg font-bold font-mono">3.75%–4.00%</div>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">会议表决</div>
+    <div class="text-lg font-bold font-mono">10 : 2</div>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">纪要公布日期</div>
+    <div class="text-lg font-bold font-mono">11-18</div>
+   </div>
+   <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+    <div class="text-xs text-gray-500 dark:text-gray-400">下一次议息会议</div>
+    <div class="text-lg font-bold font-mono">12-08/09</div>
+   </div>
+  </div>
+
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   美联储于<strong>2026-11-18</strong>公布2026年10月27日至28日FOMC会议纪要。此前10月28日会议以10比2决定维持联邦基金利率目标区间于3.75%至4.00%。会议纪要显示，反对维持利率不变的两名委员倾向加息25个基点。政策制定者指出，美国经济活动增长强劲，居民支出保持韧性，通胀仍高于2%的长期目标。
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+   <div class="rounded-xl p-4 bg-rose-50 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50">
+    <div class="font-bold text-rose-700 dark:text-rose-300 text-sm mb-2">分母端：估值折现压力</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">利率维持高位、降息预期推迟，会提高远期现金流折现率，压缩高成长科技公司的估值倍数。对于上市时间极短、盈利预期尚需验证的ANT尤其敏感。</p>
+   </div>
+   <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50">
+    <div class="font-bold text-amber-700 dark:text-amber-300 text-sm mb-2">分子端：资本投入成本</div>
+    <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">高利率环境可能提高云厂商、数据中心开发商和产业链融资成本，间接传导至长期算力合同和基础设施建设成本。</p>
+   </div>
+  </div>
+
+  <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   <strong>业务敞口：</strong>Anthropic近期融资规模巨大，短期资金约束相对缓和，但其未来经营价值高度依赖长期算力资本投入与收入回收周期。因此，高利率对其影响主要体现在资本市场估值，而非简单的短期融资断裂风险。
+  </p>
+
+  <div class="flex justify-between text-xs mb-2"><span class="text-gray-500 dark:text-gray-400">影响力</span><strong class="text-primary-600 dark:text-primary-400">8.0 / 10</strong></div>
+  <div class="impact-bar mb-4"><div class="impact-fill" style="width:80%"></div></div>
+  <div class="text-xs text-gray-500 dark:text-gray-400">
+   信源：
+   <a class="source-link" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20261028.htm" target="_blank" rel="noopener">Federal Reserve · FOMC会议纪要 · 2026-11-18</a>；
+   <a class="source-link" href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm" target="_blank" rel="noopener">FOMC政策声明 · 2026-10-28</a>。
+  </div>
+ </article>
+</section>
+
+<!-- MATRIX -->
+<section id="matrix" class="max-w-7xl mx-auto px-4 sm:px-6 mb-12" data-aos="fade-up">
+ <div class="flex items-center gap-3 mb-6">
+  <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+   <i data-lucide="grid-3x3" class="w-5 h-5 text-primary-600 dark:text-primary-300"></i>
+  </div>
+  <div>
+   <h2 class="text-xl sm:text-2xl font-bold">四、九大动态催化矩阵与未来30天跟踪日历</h2>
+   <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">将公司、行业、宏观三层变量整合为可执行观察清单</p>
+  </div>
+ </div>
+
+ <div x-data="{filter:'all'}" class="bg-white dark:bg-[#161f2c] rounded-2xl p-5 sm:p-6 shadow-sm border border-gray-200 dark:border-gray-800 mb-8">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+   <h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-2 text-sm sm:text-base">
+    <i data-lucide="list" class="w-4 h-4 text-primary-500"></i> 九大动态催化矩阵
+   </h3>
+   <div class="flex flex-wrap gap-2 text-xs">
+    <button @click="filter='all'" :class="filter==='all'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">全部</button>
+    <button @click="filter='company'" :class="filter==='company'?'bg-primary-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">公司</button>
+    <button @click="filter='industry'" :class="filter==='industry'?'bg-accent-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">行业</button>
+    <button @click="filter='macro'" :class="filter==='macro'?'bg-rose-500 text-white':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'" class="px-3 py-1.5 rounded-full font-semibold">宏观</button>
+   </div>
+  </div>
+
+  <div class="overflow-x-auto">
+   <table class="text-xs sm:text-sm">
+    <thead><tr class="bg-gray-50 dark:bg-gray-800">
+     <th>类别</th><th>日期</th><th>核心事件</th><th>影响方向</th><th>强度</th><th>核心投资含义</th>
+    </tr></thead>
+    <tbody>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-1') && document.getElementById('card-company-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 font-semibold">公司</span></td>
+      <td class="whitespace-nowrap font-mono">11-18/20</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">IPO完成，公开发行约935亿美元，私募260亿美元</td>
+      <td class="text-emerald-600 dark:text-emerald-400 font-bold">重大利好</td><td class="font-bold">10.0</td>
+      <td>资本实力、战略资源与长期投资能力显著增强</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-2') && document.getElementById('card-company-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 font-semibold">公司</span></td>
+      <td class="whitespace-nowrap font-mono">11-19/24</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">股价从111.50美元开盘回撤至76.60美元</td>
+      <td class="text-rose-600 dark:text-rose-400 font-bold">短期承压</td><td class="font-bold">9.5</td>
+      <td>上市后估值重定价，短期波动与资金面风险升高</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='company'" onclick="(document.getElementById('card-company-3') && document.getElementById('card-company-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="px-2 py-1 rounded bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 font-semibold">公司</span></td>
+      <td class="whitespace-nowrap font-mono">11-09</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">推出Claude Fable 5.2与Mythos 5.2</td>
+      <td class="text-emerald-600 dark:text-emerald-400 font-bold">温和利好</td><td class="font-bold">8.5</td>
+      <td>提升专业场景竞争力，争取企业级高价值收入</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-1') && document.getElementById('card-industry-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold">行业</span></td>
+      <td class="whitespace-nowrap font-mono">11-17</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">OpenAI推出GPT-6.2 Astra与Sol</td>
+      <td class="text-rose-600 dark:text-rose-400 font-bold">竞争承压</td><td class="font-bold">9.5</td>
+      <td>企业AI竞争升级，模型性价比决定市场份额</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-2') && document.getElementById('card-industry-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold">行业</span></td>
+      <td class="whitespace-nowrap font-mono">11-20</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">美国参议院通过数据中心能源基础设施法案</td>
+      <td class="text-amber-600 dark:text-amber-400 font-bold">双向影响</td><td class="font-bold">8.5</td>
+      <td>供给改善与电网成本上升并存</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='industry'" onclick="(document.getElementById('card-industry-3') && document.getElementById('card-industry-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="px-2 py-1 rounded bg-accent-100 dark:bg-accent-900/50 text-accent-700 dark:text-accent-300 font-semibold">行业</span></td>
+      <td class="whitespace-nowrap font-mono">11-18</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">Google DeepMind推出Project Genie与Genie 4</td>
+      <td class="text-amber-600 dark:text-amber-400 font-bold">中性偏空</td><td class="font-bold">7.5</td>
+      <td>生态型科技巨头进一步扩大AI产品竞争范围</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-1') && document.getElementById('card-macro-1').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold">宏观</span></td>
+      <td class="whitespace-nowrap font-mono">11-19</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">美国BIS出台先进半导体远程算力新规</td>
+      <td class="text-rose-600 dark:text-rose-400 font-bold">合规风险</td><td class="font-bold">9.5</td>
+      <td>跨境算力和海外客户合规成本可能提高</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-2') && document.getElementById('card-macro-2').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold">宏观</span></td>
+      <td class="whitespace-nowrap font-mono">11-19</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">江苏新型信息基础设施行动计划，700 EFLOPS目标</td>
+      <td class="text-emerald-600 dark:text-emerald-400 font-bold">行业利好</td><td class="font-bold">7.5</td>
+      <td>中国算力供给及AI应用生态扩容</td>
+     </tr>
+     <tr x-show="filter==='all'||filter==='macro'" onclick="(document.getElementById('card-macro-3') && document.getElementById('card-macro-3').scrollIntoView({behavior:'smooth',block:'start'}))" class="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/70">
+      <td><span class="px-2 py-1 rounded bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 font-semibold">宏观</span></td>
+      <td class="whitespace-nowrap font-mono">11-18</td>
+      <td class="font-semibold text-gray-900 dark:text-gray-100">美联储公布10月FOMC纪要，利率维持3.75%—4%</td>
+      <td class="text-amber-600 dark:text-amber-400 font-bold">估值承压</td><td class="font-bold">8.0</td>
+      <td>高利率环境抬升远期现金流折现压力</td>
+     </tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-3">点击任意事件行可跳转至对应详细分析。影响强度为研究判断评分，不代表市场已实现的价格涨跌幅。</p>
+ </div>
+
+ <!-- WATCH CALENDAR -->
+ <div class="mb-5">
+  <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+   <i data-lucide="calendar-days" class="w-5 h-5 text-primary-500"></i>
+   未来30天重点跟踪日历
+  </h3>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mb-5">观察窗口：2026-11-26 至 2026-12-25。以下区分已公布日期与需要持续验证的事件窗口，不把未公告事项写成确定日程。</p>
+ </div>
+
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+   <div class="flex items-center gap-2 mb-3">
+    <i data-lucide="landmark" class="w-4 h-4 text-primary-500"></i>
+    <span class="text-xs font-bold text-primary-600 dark:text-primary-300">2026-12-08 至 12-09</span>
+   </div>
+   <h4 class="font-bold text-gray-900 dark:text-white mb-2">美联储12月FOMC议息会议</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">美联储官方日历已列出12月8—9日会议及新闻发布会。重点关注利率路径、通胀预测与政策委员分歧，判断高估值科技股的折现率压力。</p>
+   <span class="text-xs text-amber-600 dark:text-amber-400 font-semibold">关注：估值折现率、美元利率</span>
+   <div class="mt-3 text-xs"><a class="source-link" href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">美联储官方议息日历</a></div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+   <div class="flex items-center gap-2 mb-3">
+    <i data-lucide="trending-up" class="w-4 h-4 text-emerald-500"></i>
+    <span class="text-xs font-bold text-emerald-600 dark:text-emerald-300">持续跟踪 · 11-26 至 12-25</span>
+   </div>
+   <h4 class="font-bold text-gray-900 dark:text-white mb-2">ANT上市后交易与机构持仓变化</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">跟踪83美元IPO价附近的交易结构、日均成交量、波动率、机构持仓披露及承销商稳定价格安排。特别关注发行后股份供给与锁定期安排。</p>
+   <span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">关注：发行价、成交量、股份供给</span>
+   <div class="mt-3 text-xs"><a class="source-link" href="https://investor.anthropic.com/" target="_blank" rel="noopener">Anthropic Investor Relations</a> · <a class="source-link" href="https://www.sec.gov/edgar/search/" target="_blank" rel="noopener">SEC披露查询</a></div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+   <div class="flex items-center gap-2 mb-3">
+    <i data-lucide="cpu" class="w-4 h-4 text-accent-500"></i>
+    <span class="text-xs font-bold text-accent-600 dark:text-accent-300">持续跟踪 · 未来30日</span>
+   </div>
+   <h4 class="font-bold text-gray-900 dark:text-white mb-2">Claude模型更新与企业API商业化</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">跟踪Fable 5.2与Mythos 5.2在真实编码、金融和科学工作流中的应用，重点观察API价格、Token使用成本、企业客户扩展与模型调用量。</p>
+   <span class="text-xs text-accent-600 dark:text-accent-400 font-semibold">关注：收入增速、客户留存、推理成本</span>
+   <div class="mt-3 text-xs"><a class="source-link" href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic Newsroom</a></div>
+  </div>
+
+  <div class="bg-white dark:bg-[#161f2c] rounded-xl p-5 shadow-sm border border-gray-200 dark:border-gray-800 card-interactive">
+   <div class="flex items-center gap-2 mb-3">
+    <i data-lucide="shield-alert" class="w-4 h-4 text-rose-500"></i>
+    <span class="text-xs font-bold text-rose-600 dark:text-rose-300">2027-01-19 · 窗口外预警</span>
+   </div>
+   <h4 class="font-bold text-gray-900 dark:text-white mb-2">BIS先进算力规则公众意见截止日</h4>
+   <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed mb-3">BIS 2026-11-19临时最终规则要求相关意见于2027-01-19前提交。虽然截止日在未来30天窗口之外，但未来一个月应关注实施细则、合规解释与行业反馈。</p>
+   <span class="text-xs text-rose-600 dark:text-rose-400 font-semibold">关注：海外算力合规、客户地域</span>
+   <div class="mt-3 text-xs"><a class="source-link" href="https://www.govinfo.gov/app/details/FR-2026-11-19/2026-23529" target="_blank" rel="noopener">Federal Register规则原文</a></div>
+  </div>
+ </div>
+
+ <!-- INVESTMENT FRAMEWORK -->
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 border border-gray-200 dark:border-gray-800 mb-8">
+  <div class="flex items-center gap-2 mb-5">
+   <i data-lucide="crosshair" class="w-5 h-5 text-primary-500"></i>
+   <h3 class="font-bold text-lg">五、买方视角：未来股价的核心观察框架</h3>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+   <div class="rounded-xl bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-800/50 p-4">
+    <div class="flex items-center gap-2 mb-3">
+     <i data-lucide="trending-up" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+     <span class="font-bold text-sm text-emerald-800 dark:text-emerald-300">多头逻辑</span>
+    </div>
+    <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+     <li>• IPO募集大量资金，增强长期算力投资能力。</li>
+     <li>• Claude专业任务能力提升，有望扩大企业付费场景。</li>
+     <li>• 战略投资者与芯片、云产业链合作强化。</li>
+     <li>• AI Agent与企业自动化市场仍有长期增长空间。</li>
+    </ul>
+   </div>
+   <div class="rounded-xl bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-800/50 p-4">
+    <div class="flex items-center gap-2 mb-3">
+     <i data-lucide="trending-down" class="w-4 h-4 text-rose-600 dark:text-rose-400"></i>
+     <span class="font-bold text-sm text-rose-800 dark:text-rose-300">空头逻辑</span>
+    </div>
+    <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+     <li>• 上市后迅速跌破IPO发行价，市场估值锚尚未稳定。</li>
+     <li>• OpenAI与Google的模型竞争持续升级。</li>
+     <li>• 巨额算力投入和能源成本可能侵蚀未来毛利率。</li>
+     <li>• 高利率与监管风险可能提高估值风险溢价。</li>
+    </ul>
+   </div>
+   <div class="rounded-xl bg-amber-50/70 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/50 p-4">
+    <div class="flex items-center gap-2 mb-3">
+     <i data-lucide="scale" class="w-4 h-4 text-amber-600 dark:text-amber-400"></i>
+     <span class="font-bold text-sm text-amber-800 dark:text-amber-300">关键验证指标</span>
+    </div>
+    <ul class="text-xs text-gray-600 dark:text-gray-300 space-y-2 leading-relaxed">
+     <li>• 企业客户及API收入增长速度。</li>
+     <li>• 推理成本与单位Token收入变化。</li>
+     <li>• 经营现金流、资本开支与现金消耗。</li>
+     <li>• 云基础设施承诺、GPU供应及合同期限。</li>
+    </ul>
+   </div>
+  </div>
+
+  <h4 class="font-bold text-sm mb-3">当前最值得跟踪的三个股价变量</h4>
+  <div class="space-y-4">
+   <div>
+    <div class="flex justify-between text-xs mb-2">
+     <span class="font-semibold">IPO价格与二级市场供需</span><span class="font-mono text-primary-600 dark:text-primary-400">高优先级</span>
+    </div>
+    <div class="impact-bar"><div class="impact-fill" style="width:95%"></div></div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">重点跟踪83美元发行价附近的买卖盘、成交量、流通股变化和锁定期。</p>
+   </div>
+   <div>
+    <div class="flex justify-between text-xs mb-2">
+     <span class="font-semibold">模型竞争力与商业化效率</span><span class="font-mono text-primary-600 dark:text-primary-400">高优先级</span>
+    </div>
+    <div class="impact-bar"><div class="impact-fill" style="width:92%"></div></div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">关注Claude能否维持专业任务优势，同时降低单位推理成本。</p>
+   </div>
+   <div>
+    <div class="flex justify-between text-xs mb-2">
+     <span class="font-semibold">算力成本与监管合规</span><span class="font-mono text-primary-600 dark:text-primary-400">高优先级</span>
+    </div>
+    <div class="impact-bar"><div class="impact-fill" style="width:87%"></div></div>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">关注GPU供给、数据中心电力成本、云合同和跨境算力规则。</p>
+   </div>
+  </div>
+ </div>
+
+ <!-- FINAL CONCLUSION -->
+ <div class="bg-white dark:bg-[#161f2c] rounded-2xl p-6 sm:p-8 border border-primary-200 dark:border-primary-900/60 shadow-sm">
+  <div class="flex items-center gap-2 mb-4">
+   <i data-lucide="brain-circuit" class="w-5 h-5 text-primary-500"></i>
+   <h3 class="text-lg font-bold">最终投资判断：Anthropic正从融资驱动转向盈利能力定价</h3>
+  </div>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   本轮30日动态最重要的变化，是Anthropic完成从私人AI独角兽到公开市场公司的身份转换。约1,195亿美元的公开发行与私募合计毛融资，显著增强其资本实力，但并不意味着未来利润已经兑现。11月24日跌破83美元发行价，说明市场正在要求公司证明高额算力投资能够产生可持续的商业回报。
+  </p>
+  <p class="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+   从公司层面看，融资和Claude模型升级构成中长期正向催化；从行业层面看，OpenAI、Google的产品升级使竞争日趋激烈，数据中心能源和基础设施成本可能成为利润率的关键约束；从宏观层面看，BIS跨境算力监管与美联储利率路径决定外部风险溢价。
+  </p>
+  <div class="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
+   <p class="font-bold text-sm text-primary-700 dark:text-primary-300 mb-2">核心结论</p>
+   <p class="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+    <strong>长期商业前景积极，但短期股价风险偏高。</strong>当前最重要的不是继续追逐融资规模和模型发布叙事，而是验证收入增长、企业客户留存、推理成本下降及现金流改善。若这些经营指标不能匹配市场给予的高估值，技术领先与融资优势仍可能无法转化为股东回报。
+   </p>
+  </div>
+  <p class="text-xs text-gray-400 dark:text-gray-500 mt-4">研究评级为消息面定性判断，不等同于正式证券评级或价格目标。</p>
+ </div>
+</section>
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0f15] py-10">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+   <div>
+    <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">一、主要数据来源</h4>
+    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+     <li><a class="source-link" href="https://www.anthropic.com/news" target="_blank" rel="noopener">Anthropic Newsroom</a>：Claude模型发布及IPO公告。</li>
+     <li><a class="source-link" href="https://investor.anthropic.com/" target="_blank" rel="noopener">Anthropic Investor Relations</a>：上市公司公告。</li>
+     <li><a class="source-link" href="https://www.sec.gov/edgar/search/" target="_blank" rel="noopener">美国SEC EDGAR</a>：招股书及监管披露。</li>
+     <li><a class="source-link" href="https://www.reuters.com/" target="_blank" rel="noopener">Reuters</a>：IPO交易、股价与AI产业动态。</li>
+     <li><a class="source-link" href="https://openai.com/news/" target="_blank" rel="noopener">OpenAI</a>：GPT-6.2产品与模型发布。</li>
+     <li><a class="source-link" href="https://deepmind.google/" target="_blank" rel="noopener">Google DeepMind</a>：Genie 4与Project Genie。</li>
+    </ul>
+   </div>
+   <div>
+    <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">二、政策与宏观来源</h4>
+    <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2 leading-relaxed">
+     <li><a class="source-link" href="https://www.govinfo.gov/" target="_blank" rel="noopener">美国Federal Register / GovInfo</a>：BIS远程算力规则。</li>
+     <li><a class="source-link" href="https://www.federalreserve.gov/" target="_blank" rel="noopener">Federal Reserve</a>：FOMC声明与会议纪要。</li>
+     <li><a class="source-link" href="https://gxt.jiangsu.gov.cn/" target="_blank" rel="noopener">江苏省工业和信息化厅</a>：新型信息基础设施建设行动计划。</li>
+     <li><a class="source-link" href="https://www.sec.gov/" target="_blank" rel="noopener">SEC</a>：上市、股份与股东披露。</li>
+    </ul>
+   </div>
+   <div>
+    <h4 class="font-bold text-sm text-gray-900 dark:text-white mb-3">三、覆盖区间与免责声明</h4>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
+     主窗口：2026-10-27至2026-11-25，共30个自然日。所有核心事件均标明实际发生或公告日期。涉及市场价格的数据截至已核验的2026-11-24收盘；不将11月25日未经核验的盘中行情作为收盘数据。
+    </p>
+    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+     本报告基于公开信息进行研究整理，部分经营影响为分析推断，并非公司正式财务指引。行业政策对Anthropic的影响属于间接传导判断。报告不构成投资建议、证券买卖邀约或收益保证。投资者应结合正式SEC文件、公司财报和实时市场数据独立判断，并承担投资风险。
+    </p>
+   </div>
+  </div>
+  <div class="border-t border-gray-100 dark:border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+   <p class="text-xs text-gray-400 dark:text-gray-500">Anthropic, PBC（NASDAQ: ANT）· 最新动态全景追踪 · 截至2026-11-25</p>
+   <p class="text-xs text-gray-400 dark:text-gray-500">AI · Fundamental Research · Event-Driven Analysis</p>
+  </div>
+ </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',scrollProgress,{passive:true});
+document.addEventListener('DOMContentLoaded',()=>{
+ syncThemeIcons();
+ if(window.lucide)lucide.createIcons();
+ if(window.AOS)AOS.init({duration:450,offset:35,once:true});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

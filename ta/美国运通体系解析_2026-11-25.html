@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美国运通公司（AXP）体系全景解析</title>
+<!-- Essential CDN Libraries -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+colors: {
+primary: {
+50: 'hsl(20, 90%, 95%)',
+100: 'hsl(20, 90%, 85%)',
+200: 'hsl(20, 90%, 75%)',
+300: 'hsl(20, 90%, 65%)',
+400: 'hsl(20, 90%, 55%)',
+500: 'hsl(20, 90%, 50%)',
+600: 'hsl(20, 90%, 45%)',
+700: 'hsl(20, 90%, 35%)',
+800: 'hsl(20, 90%, 25%)',
+900: 'hsl(20, 90%, 15%)'
+},
+accent: {
+50: 'hsl(30, 85%, 95%)',
+100: 'hsl(30, 85%, 85%)',
+200: 'hsl(30, 85%, 75%)',
+300: 'hsl(30, 85%, 65%)',
+400: 'hsl(30, 85%, 60%)',
+500: 'hsl(30, 85%, 55%)',
+600: 'hsl(30, 85%, 50%)',
+700: 'hsl(30, 85%, 40%)',
+800: 'hsl(30, 85%, 30%)',
+900: 'hsl(30, 85%, 20%)'
+}
+}
+}
+}
+}
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Micro-interactions & Custom Styles -->
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+}
+html { scroll-behavior: auto; }
+}
+.btn-interactive {
+transition: all 0.2s ease-out;
+}
+.btn-interactive:hover {
+transform: scale(1.05);
+box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.btn-interactive:active {
+transform: scale(0.95);
+}
+.card-interactive {
+transition: all 0.3s ease-out;
+border: 1px solid transparent;
+--border-lightness: 40%;
+}
+.dark .card-interactive {
+--border-lightness: 60%;
+}
+.card-interactive:hover {
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+filter: brightness(0.98);
+}
+.card-interactive[class*="primary"]:hover,
+.card-interactive[class*="white"]:hover,
+.card-interactive[class*="gray-"]:hover {
+border-color: hsl(20, 90%, var(--border-lightness));
+}
+.card-interactive[class*="accent"]:hover {
+border-color: hsl(30, 85%, var(--border-lightness));
+}
+table {
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+text-align: left;
+padding: 0.75rem;
+border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.dark th, .dark td {
+border-bottom-color: hsl(0, 0%, 30%);
+}
+.moat-bar {
+height: 10px;
+border-radius: 5px;
+background: hsl(0, 0%, 90%);
+overflow: hidden;
+}
+.dark .moat-bar {
+background: hsl(0, 0%, 30%);
+}
+.moat-fill {
+height: 100%;
+border-radius: 5px;
+background: linear-gradient(90deg, hsl(20, 90%, 55%), hsl(30, 85%, 55%));
+transition: width 1.2s ease-out;
+}
+/* ===== 移动端导航菜单 ===== */
+#mobileMenu {
+display: none;
+}
+#mobileMenu.mobile-menu-open {
+display: block;
+}
+@media (min-width: 768px) {
+#mobileMenu {
+display: none !important;
+}
+}
+@media (max-width: 767px) {
+header .max-w-7xl {
+padding-left: 1rem;
+padding-right: 1rem;
+}
+header .flex.items-center.justify-between > h1 {
+font-size: 1rem;
+line-height: 1.25rem;
+white-space: nowrap;
+margin-right: 0.5rem;
+}
+#mobileMenu {
+margin-top: 1rem;
+padding-top: 1rem;
+padding-bottom: 0.5rem;
+border-top: 1px solid rgba(20, 20, 20, 0.12);
+max-height: calc(100vh - 90px);
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+}
+.dark #mobileMenu {
+border-top-color: rgba(255, 255, 255, 0.15);
+}
+#mobileMenu a {
+display: block;
+width: 100%;
+padding: 0.7rem 0.5rem;
+border-radius: 0.5rem;
+}
+#mobileMenu a:active {
+background: rgba(20, 20, 20, 0.06);
+}
+.dark #mobileMenu a:active {
+background: rgba(255, 255, 255, 0.08);
+}
+}
+/* 桌面端导航 */
+@media (min-width: 768px) {
+header nav[aria-label="桌面端导航"] a {
+color: #374151;
+}
+.dark header nav[aria-label="桌面端导航"] a {
+color: #e5e7eb;
+}
+header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 45%);
+}
+.dark header nav[aria-label="桌面端导航"] a:hover {
+color: hsl(20, 90%, 55%);
+}
+}
+header {
+overflow: visible;
+}
+</style>
+<script>
+function toggleDarkMode() {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
+document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
+}
+</script>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 h-1 bg-primary-500 dark:bg-primary-400 z-[60] transition-all duration-300 ease-out" id="progressBar" style="width: 0%;"></div>
+<!-- Floating Header -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-gray-50/90 dark:bg-gray-900/90 border-b border-primary-500/20 dark:border-primary-600/20">
+<div class="max-w-7xl mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-primary-700 dark:text-primary-300">美国运通体系全景解析</h1>
+<!-- 桌面端导航 -->
+<nav class="hidden md:flex space-x-6 flex-shrink-0" aria-label="桌面端导航">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联生态</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+Code
+<!-- 右侧按钮 -->
+<div class="flex items-center space-x-2 flex-shrink-0">
+  <!-- 移动端汉堡菜单 -->
+  <button
+    type="button"
+    onclick="toggleMobileMenu()"
+    class="md:hidden btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="打开或关闭导航菜单"
+    aria-controls="mobileMenu"
+    aria-expanded="false"
+    id="mobileMenuButton"
+  >
+    <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+  </button>
+
+  <!-- 暗色模式 -->
+  <button
+    type="button"
+    onclick="toggleDarkMode()"
+    class="btn-interactive p-2 rounded-lg bg-primary-100 dark:bg-primary-800 text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700 transition-all"
+    aria-label="切换暗色模式"
+  >
+    <i data-lucide="sun" id="sunIcon" class="w-5 h-5" style="display: none;"></i>
+    <i data-lucide="moon" id="moonIcon" class="w-5 h-5" style="display: block;"></i>
+  </button>
+</div>
+</div>
+<div id="mobileMenu" aria-hidden="true">
+<nav class="flex flex-col space-y-1">
+<a href="#overview" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总览</a>
+<a href="#founder" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">管理层</a>
+<a href="#capital" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股本</a>
+<a href="#equity" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">股权</a>
+<a href="#companies" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">关联生态</a>
+<a href="#employee" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">员工激励</a>
+<a href="#summary" class="text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">总结</a>
+</nav>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section id="overview" class="py-40 bg-primary-50/50 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-300 text-xs font-semibold mb-4">
+<span>NYSE: AXP</span>
+<span>•</span>
+<span>百年闭环支付网络 · 截至 2026-11-25 最新披露全景</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-bold mb-6 text-primary-700 dark:text-primary-300">
+美国运通公司（AXP）体系全景解析
+</h2>
+<p class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+美国运通（American Express Company）成立于 1850 年，是全球唯一将“发卡行、清算网络、商户收单与高净值消费信贷”集于一身的闭环支付巨头。本报告综合 FY2025 年报（10-K）、2026 年第三季度财报（10-Q，截至 2026 年 9 月 30 日）及 2026 年代理声明书（DEF 14A），全景剖析 Stephen J. Squeri 掌舵下的年轻化会员与年费订阅化转型、持续回购驱动的股本“自我吞噬”机制、伯克希尔 22.32% 零减持压舱石架构、银行子公司与商旅参股剥离矩阵，以及相对 ROE 锚定的高管激励体系。
+</p>
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="user" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">百年传承与年轻化转型</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+从 1850 年快递联营起家，到 Squeri 带领运通重塑千禧/Z世代高端年费会员生态
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="database" class="w-6 h-6 text-accent-600 dark:text-accent-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">股本缩容与巴菲特压舱</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+十年回购近 30% 流通股本，伯克希尔一股未卖被动跃升至 22.32% 第一大股东
+</p>
+</div>
+<div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-800 rounded-xl shadow-md">
+<div class="flex items-center space-x-4 mb-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+<i data-lucide="pie-chart" class="w-6 h-6 text-primary-600 dark:text-primary-400"></i>
+</div>
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">银行子公司与 ROE 激励</h3>
+</div>
+<p class="text-sm text-gray-700 dark:text-gray-300">
+AENB 储蓄银行资金池、Amex GBT 股权兑现与高管 10 倍年薪强制持股锁定
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="founder" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+历史演进与核心管理层发展：从“快递马车”到“青年高净值会员俱乐部”
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+美国运通诞生于 1850 年纽约布法罗，由 <strong>Henry Wells、William G. Fargo 与 John Butterfield</strong> 将各自快递马车业务合并设立为股份合营体（Joint-stock Association）。此后 176 年间，公司完成了三次极具前瞻性的物种进化：从货物递送转向金融票据（1891年发明旅行支票），再到 1958 年推出高端签账卡，最终在当代演化为拥有“闭环支付网络 + 储蓄银行 + 餐饮/航空生活方式特权”的超级金融科技生态。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000004962|1">（来源：SEC FY2025 10-K &amp; 官网历史档案）</span>
+</p>
+<div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+<p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+<i data-lucide="info" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+关键转折点：2018年2月1日，自 1985 年起即在运通任职逾 30 年的资深内部老将 Stephen J. Squeri 接棒 Kenneth Chenault 出任董事长兼 CEO。面对失去 Costco 联名卡后的增长低谷，Squeri 摒弃了单纯低价抢量的恶性竞争，确立“高年费权益订阅化 + 抢占千禧及 Z 世代年轻人 + 全面扩充美国小微商户覆盖率”三大支柱，将运通市值从接任初的约 850 亿美元推升至 2026 年 11 月的逾 2,400 亿美元。
+</p>
+</div>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">早中期：金融转型与银行化 (1850–2018)</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>百年主业蜕变：</strong>1882年推出汇票，1891年发明全球首张旅行支票，奠定“环球旅行信用”品牌基因。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>金融大拆解（1994–2005）：</strong>早年曾并购雷曼兄弟与理财业务企图打造“金融超市”；后痛定思痛分别于 1994 年分拆雷曼、2005 年分拆 Ameriprise Financial（AMP），回归纯粹支付核心。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>2008 年转制银行控股公司：</strong>在次贷危机风暴中获美联储批准转为受监管银行控股公司，获取稳定储蓄存款资金池支撑借贷扩张。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">Squeri 时代重塑与近年高层布局 (2018–2026)</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>内生梯队接力：</strong>运通极度推崇“内部培养文化”。2023年8月长期资深财务高管 <strong>Christophe Le Caillec</strong> 升任 CFO；<strong>Howard Grosfield</strong> 掌舵美国消费卡事业群，并构成潜在 CEO 继任核心梯队。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>首席法务官平稳交棒 (2026)：</strong>资深首席法务官 Laureen Seeger 宣布于 2026 年底退休，由内部历练多年的 <strong>Denise Pickett</strong>（负责全球风险与合规）协调推进治理与监管对接。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>白金卡焕新与年费跃升 (2025–2026)：</strong>2025 年底重磅升级美区白金卡（年费由 695 美元提至 895 美元，绑定高端餐饮 Resy、旅游与生活方式积分），推动 2026 年 Q3 净卡费收入突破 <strong>25.60 亿美元</strong>（年化破百亿美元，连续逾 30 季双位数高增）。</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+管理哲学演变与 2026 年战略重心：千禧世代红利 + AI 赋能闭环
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+长期以来外界误以为运通是一张“专属于中老年商务男性的老派卡”。Squeri 彻底颠覆了这一运营哲学，将内部考核与产品研发全面转向<strong>“生命周期价值（LTV）前置捕获”</strong>——截至 2026 年，千禧世代（Millennials）与 Z 世代已占美国区新获个人卡用户的 <strong>60% 以上</strong>，并贡献了美国消费卡总交易额的约 <strong>36%</strong>（增速远超 X 世代与婴儿潮世代）。在商业端，运通放弃盲目打折，在全美实现 99% 商户受理覆盖（与 Visa/Mastercard 基本持平），并将 AI 风控与机器学习植入每秒逾千笔交易的授信中台，把坏账净核销率压制在约 1.90%–2.10% 的全行业最优水平。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://ir.americanexpress.com|2">（来源：AXP Q3 2026 业绩发布会及 Investor Day）</span>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="capital" class="py-20 bg-primary-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+股本数量变化过程：教科书级的“自我吞噬型”回购缩股机器
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+与高频增发、靠 SBC 稀释股东的高成长科技股截然相反，美国运通是华尔街最负盛名的“股本注销机器（Share Cannibal）”。自 2000 年实施 3 拆 1 拆股后，公司从未再进行拆股或公开增发融资，而是依靠极高的净资产收益率（ROE 常年超 33%）产生的充沛过剩资本，在过去十年里将流通股本硬生生缩减了近 <strong>30%</strong>（从 2016 年约 9.60 亿股一路缩水至 2026 年 10 月的 <strong>6.79 亿股</strong>）。
+</p>
+Code
+<div class="overflow-x-auto bg-white/90 dark:bg-gray-900 rounded-xl shadow-md p-4">
+    <table>
+      <thead>
+        <tr class="text-xs uppercase text-primary-700 dark:text-primary-300">
+          <th>时间节点</th>
+          <th>股本变动关键事件</th>
+          <th>期末基础 / 稀释股本变化</th>
+          <th>资本返还规模与股东意义</th>
+        </tr>
+      </thead>
+      <tbody class="text-sm text-gray-700 dark:text-gray-300">
+        <tr>
+          <td class="font-medium whitespace-nowrap">1977年5月–2000年</td>
+          <td>纽交所正式挂牌及历次拆股</td>
+          <td>1977年5月18日上市；1987/1994（2拆1）、2000年（3拆1）</td>
+          <td>奠定单一普通股架构，2000年后停止拆股</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2016年–2020年</td>
+          <td>常年稳定回购注销流通股</td>
+          <td>稀释股数由约 9.60 亿股降至 2020 年约 8.05 亿股</td>
+          <td>即使在 2020 年疫情期仍维持稳健资本基础与分红</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2023年3月</td>
+          <td>批准 1.20 亿股新回购授权计划</td>
+          <td>替代旧回购计划；FY2023 年末流通股缩至 7.23 亿股</td>
+          <td>2023年斥资 35.00 亿美元回购股票</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2024年–2025年</td>
+          <td>高利润支撑大额回购 + 持续提息</td>
+          <td>2024年底缩至 7.02 亿股；2025年底缩至 6.90 亿股</td>
+          <td>FY24 回购 59.00 亿美元（总返还 74.00 亿美元）；FY25 回购 53.00 亿美元（总返还 76.00 亿美元）</td>
+        </tr>
+        <tr>
+          <td class="font-medium whitespace-nowrap">2026年1月–11月</td>
+          <td>Q1 提息 16%（0.95$/季）+ Q3 继续加速回购</td>
+          <td>截至 2026-10-15 基础流通股降至 <strong>6.79 亿股</strong>（679.29M）</td>
+          <td>2026年前9月累计回购 46.00 亿美元（Q3单季 17.00 亿）+ 派息 20.00 亿美元；市值约 <strong>2,410–2,460 亿美元</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">大股东与内部人持股变动规律</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>伯克希尔“零增减持却被动扩股”奇观：</strong>沃伦·巴菲特旗下 Berkshire Hathaway 自 1990 年代末完成建仓后始终精确持有 <strong>151,610,700 股</strong>（一股未卖、亦未在二级市场增买），但因运通不断注销其他流通股，伯克希尔持股比例已由 2012 年的 13% 自动飙升至 2024 年底的 21.60%，并于 2026 年 10 月进一步攀升至 <strong>22.32%</strong>！</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>高管常规税务/行权减持：</strong>过去一年间，包括 CEO Stephen Squeri、CFO Christophe Le Caillec 等高管仅在 RSU 归属或期权行权后进行常规税务与资产分散性小额减持，仍远高于公司规定的“CEO 须持有 10 倍基本年薪股票”强制红线。</span>
+        </li>
+      </ul>
+    </div>
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">最新股本与股东回报指标 (2026-10 / 11)</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">最新流通普通股 (2026-10-15)</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">6.79 亿股</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">2026年11月下旬总市值 (股价~355–362$)</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">约 2,410–2,460 亿美元</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">2026年季度现金股息（年化 3.80 美元）</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">0.95 美元/股 (+16%)</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-gray-700 dark:text-gray-300">一级普通股资本充足率 (CET1, 2026 Q3)</span>
+          <span class="text-base font-semibold text-accent-600 dark:text-accent-400">10.50%（稳居10%–11%目标带）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+      <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      资本回报效率提示：FY2025 至 2026 年前三季度，美国运通几乎将 <strong>80% 以上</strong>的年度净利润通过“回购 + 派息”直接返还股东，同时依然保持 CET1 充足率稳固在 10.50%（目标区间 10%–11%）。这种“低资本消耗 + 强缩股效应”让每股收益（EPS）增速持续快于净利润增速约 2–3 个百分点。<span class="text-xs opacity-80" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000004962|3">（来源：Q3 2026 Form 10-Q）</span>
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="equity" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+股权结构演变：彻底同股同权下的“伯克希尔压舱石”共治模式
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+作为拥有 176 年历史的老牌美股蓝筹，美国运通早已完成彻底的公众化与机构化治理，不存在任何创始家族信托或 AB 类超级投票权。其股权架构最显著的特征是：由巴菲特旗下 <strong>Berkshire Hathaway 长期锁定逾 22% 核心基石股权</strong>，叠加全球三大被动指数巨头（Vanguard、BlackRock、State Street）合计持股近 18%，共同构成“超级长线基石 + 独立董事会”的高稳定性现代治理范式。
+</p>
+Code
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">2026年主要股东持股比例</h3>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">Berkshire Hathaway Inc.（151.61M 股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">22.32%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 67%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">The Vanguard Group（~50.11M–51.50M 股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">7.38%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 28%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">BlackRock, Inc.（~45.57M–48.00M 股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">6.71%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 25%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">State Street Corporation（~27.60M 股）</span>
+            <span class="font-semibold text-accent-600 dark:text-accent-400">4.06%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 16%;"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="font-medium text-gray-700 dark:text-gray-300">全体在任董事及高管内部持股</span>
+            <span class="font-semibold text-primary-600 dark:text-primary-400">&lt;0.20%</span>
+          </div>
+          <div class="moat-bar"><div class="moat-fill" style="width: 4%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+      <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">股权与控制权演变时间线</h3>
+      <ul class="space-y-3">
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>1965年公司化改制：</strong>结束运行逾百年的“无限责任联营股份体”历史，正式改制为纽约州股份有限公司，确立单一普通股制度。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>1995–1998年伯克希尔锁定基石：</strong>巴菲特以约 13 亿美元总成本集齐 1.516 亿股（经拆股后）并向美联储作出“被动投资不干预控制”承诺（Passivity Commitments）。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-accent-400 flex-shrink-0 mt-0.5" style="display:none"></span>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2008年受银行控股监管约束：</strong>受《银行控股公司法》严苛监管，任何单方持有超过 10% 或 25% 有表决权股份均须通过美联储严格控制权审查。</span>
+        </li>
+        <li class="flex items-start space-x-3">
+          <i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+          <span class="text-sm text-gray-700 dark:text-gray-300"><strong>2020–2026年“跨过20%红线”：</strong>因运通持续回购，伯克希尔股比于 2022 年突破 20% 并于 2026 年达 22.32%（持仓市值逾 540 亿美元），但依美联储豁免与协议依然保持严格非控制性被动地位。</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      银行监管下的控制权防火墙与董事会制衡
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      在美联储《银行控股公司法》（BHCA）的制度框架下，伯克希尔虽然持有逾 22% 股权且与管理层保持高度互信，但在法律上被归类为“无控制权大股东”——不得单方面改组董事会、不得向运通指派伯克希尔高管介入日常信贷审批，且在涉及重大议案时按照美联储被动性协议（Passivity Commitments）通常按董事会建议投票或按比例跟投。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      与此同时，美国运通董事会实行全员年度改选制（无交错任期防卫条款）及多数票当选机制。2026 年 13 名董事中有 12 名为独立董事，且由前 Vanguard 集团董事长 <strong>John J. Brennan</strong> 出任首席独立董事（Lead Independent Director），对 CEO 兼董事长 Stephen Squeri 形成专业且高透明度的制衡，机构投资者合计持股约 <strong>85%–86%</strong>。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000004962|4">（来源：2026 DEF 14A 代理声明书）</span>
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="companies" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+核心银行子公司、商旅参股剥离（Amex GBT）与战略联名矩阵
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+美国运通历史上已先后剥离了投行（雷曼兄弟）与财富管理（Ameriprise），目前并无控股的二级市场上市子公司。其体系版图由<strong>“两大核心全资银行/网络运营实体 + 参股商旅平台 Amex GBT（2026年Q3大幅减持兑现）+ 达美航空等超级联名伙伴”</strong>构成，形成了极其严密的资金与生态闭环。
+</p>
+Code
+<div class="grid md:grid-cols-3 gap-6 mt-8">
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="building-2" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">American Express National Bank</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">核心全资受监管银行子公司（犹他州）</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• 承接绝大部分美国持卡人信用卡应收账款及贷款资产</li>
+        <li>• 吸收高粘性个人储蓄存款（2026年存款规模逾 <strong>1,540 亿美元</strong>）</li>
+        <li>• 低成本存款支撑约 70%+ 内部融资，大幅降低对债券批发市场依赖</li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-accent-100 dark:bg-accent-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="globe" class="w-5 h-5 text-accent-600 dark:text-accent-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300">Amex Global Business Travel (GBTG)</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">关联商旅上市公司（2026年Q3大额减持）</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• 2014年剥离为合资企业，2022年借壳 SPAC 上市（NYSE: GBTG）</li>
+        <li>• 运通长期持有逾 30% 股权并保留商业品牌授权与企业卡导流合作</li>
+        <li>• <strong>2026年Q3重大变动：</strong>运通大幅减持 GBTG 股权，录得 <strong>1.29 亿美元</strong>税前收益（增厚 EPS $0.14），进一步剥离重人力商旅资产</li>
+      </ul>
+    </div>
+
+    <div class="card-interactive p-6 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center">
+          <i data-lucide="credit-card" class="w-5 h-5 text-primary-600 dark:text-primary-400"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300">TRS 闭环网络与餐饮并购</h3>
+      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-300 mb-2">支付清算与高端生活方式引擎</p>
+      <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+        <li>• TRS（Travel Related Services）掌管全球清算、商户收单与 Membership Rewards</li>
+        <li>• 整合 <strong>Resy、Tock、Rooam (2024) 及 Center (2025)</strong> 强化高端餐饮与企业报销软件护城河</li>
+        <li>• 2024年出售非核心反欺诈子公司 Accertify，聚焦主业高回报资产</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      关联交易透视与“达美航空”命脉级合作风险
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      在正式 SEC 关联交易监管口径下，运通主要涉及两类交易：第一类是与 <strong>Amex GBT（GBTG）</strong> 的长期品牌许可、企业卡获客推荐及 IT 共享服务协议，以及与第一大股东 <strong>伯克希尔体系下属企业</strong>（如 NetJets、BNSF、GEICO 等）在一般商业公允条款（Arm's-length）下的企业卡与商户受理往来；审计委员会依据《关联人交易政策》严格核查上述往来以确保无利益倾斜。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000004962|5">（来源：FY2025 10-K &amp; 2026 Proxy）</span>
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      第二类则是虽非股权关联却堪比生命线的<strong>超级战略联名合作——达美航空（Delta Air Lines）</strong>。运通与达美的 SkyMiles 联名卡组合单独贡献了运通全球总交易额（Billed Business）的约 <strong>10%</strong> 以及全球信用卡贷款余额的约 <strong>21%–22%</strong>（当前合作协议延续至 <strong>2029 年</strong>，运通每年向达美支付逾 70–80 亿美元里程与合作分成）。该合作极度双赢，但 2029 年续约节点亦构成公司中期最大的单一大客户续约与议价压力点。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+<section id="employee" class="py-20 bg-white/80 dark:bg-gray-900" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-primary-700 dark:text-primary-300">
+员工持股与激励机制：相对 ROE 锚定、10 倍持仓红线与高粘性文化
+</h2>
+<div class="space-y-6">
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+与硅谷软件公司动辄消耗 30% 营收发股不同，美国运通全年股权激励支出极度克制（仅约占总营收 0.6%–0.8%），核心通过<strong>“严苛的三年期相对 ROE + EPS 绩效股（PRSU）+ 全员养老金配比 + 强制高管重仓锁定”</strong>，把约 7.68 万名员工与管理层牢牢锚定在高质量增长轨道上。
+</p>
+<div class="grid md:grid-cols-2 gap-6 mt-8">
+<div class="card-interactive p-6 bg-primary-50/50 dark:bg-primary-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-primary-700 dark:text-primary-300 mb-4">高管长期股权与绩效考核框架</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>高风险浮动薪酬占比逾 90%：</strong>CEO Stephen Squeri FY2025 总薪酬约 3,700 万–4,190 万美元，其中固定底薪仅 150 万–155 万美元，其余超 90% 均为挂钩业绩的年度奖金（AIA）及长期股权激励（LTI，含 70%–80% PRSU + 20%–30% 股票期权）。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>PRSU 三年硬核双指标：</strong>绩效限制性股票（PRSU）长达 3 年归属期，核心考核 <strong>3年平均 ROE 相对同业/标普500金融表现</strong> 与 <strong>3年累计营收/EPS 增长</strong>，并叠加相对总股东回报（TSR）±20% 修正因子，防止管理层靠过度加杠杆虚增短期 EPS。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>10 倍底薪强制持股红线：</strong>规定 CEO 必须长期实益持有至少相当于基本年薪 <strong>10 倍</strong> 的运通普通股（其他核心高管为 4 倍），且期权行权后须强制锁定持有 1 年方能变现。</span>
+</li>
+</ul>
+</div>
+<div class="card-interactive p-6 bg-accent-50/50 dark:bg-accent-900/20 rounded-xl shadow-md">
+<h3 class="text-lg font-semibold text-accent-700 dark:text-accent-300 mb-4">基层福利、权益保障与内部晋升文化</h3>
+<ul class="space-y-3">
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>慷慨的退休储蓄与全员分红：</strong>美国员工享有 401(k) 自动 3% 核心供款 + 最高 6% 对等配比（合计最高 9% 公司出资），以及与全公司绩效挂钩的年度奖金。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>“Blue Work”灵活办公与家庭保障：</strong>全球约 7.68 万名员工享有行业领先的 20 周带薪育儿假、Healthy Living 身心健康中心，连续多年入选《财富》全球最佳雇主榜单，内部晋升率在金融业名列前茅。</span>
+</li>
+<li class="flex items-start space-x-3">
+<i data-lucide="check" class="w-5 h-5 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5"></i>
+<span class="text-sm text-gray-700 dark:text-gray-300"><strong>严格的追回政策（Clawback）：</strong>建立符合 NYSE 规则及金融风控要求的薪酬追回机制，若出现财务重述或重大风险管理失职，可追回已归属股权及奖金。</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-8">
+<h3 class="text-xl font-semibold text-primary-700 dark:text-primary-300 mb-4">
+激励效果与潜在组织张力
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+运通激励体系的最大成功在于极低股权稀释下换取了极高管理层稳定性（连续两任 CEO 均为内部服务逾 30 年老将）和持续 33%+ 的高 ROE，机构股东对 Say-on-Pay 薪酬提案的赞成率常年维持在 90% 以上。<span class="text-xs text-gray-500 dark:text-gray-400" data-ref="https://www.sec.gov/edgar/browse/?CIK=0000004962|6">（来源：2026 DEF 14A 薪酬讨论与分析）</span> 潜在矛盾在于：随着数字银行与 AI 工程师争夺白热化，如何在保持传统金融“低 SBC 纪律”的同时吸引顶尖 AI 算法人才，以及如何在高企的客户权益支出（占净营收近 37%）下平衡员工费用率，考验管理层精细化运营能力。
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="summary" class="py-20 bg-accent-50/50 dark:bg-gray-800" data-aos="fade-up">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-bold mb-8 text-accent-700 dark:text-accent-300">
+综合研判与关键结论
+</h2>
+<div class="space-y-6">
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+<h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+1. 组织与战略阶段：“高净值订阅型支付生态”成熟跃升期
+</h3>
+<p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+在 Squeri 任内，美国运通成功摆脱了“老龄化商务签账卡”标签，蜕变为以年轻高净值人群为增量核心、年费收入破百亿美元且兼具全行业最优信贷质量的闭环帝国。2026 年前三季度营收 554.30 亿美元、净利润 89.20 亿美元，公司已将全年营收增速指引上调至 10%–11%、EPS 指引抬升至 <strong>17.50–17.80 美元</strong>。
+</p>
+<div class="grid md:grid-cols-3 gap-4 pt-2">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">治理透明与长线稳定性</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">94/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 94%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">信贷风控与 ROE 盈利质量</span>
+<span class="font-bold text-primary-600 dark:text-primary-400">92/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 92%;"></div></div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium text-gray-600 dark:text-gray-400">商户费率与获客成本免疫度</span>
+<span class="font-bold text-accent-600 dark:text-accent-400">72/100</span>
+</div>
+<div class="moat-bar"><div class="moat-fill" style="width: 72%;"></div></div>
+</div>
+</div>
+</div>
+Code
+<div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      2. 财务核心张力：“极致风控低坏账”与“高企会员权益成本”的平衡术
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+      运通 2026 年的坏账核销率（~1.9%–2.1%）继续远低于 Capital One（~4%–5%）等大众发卡行，这是其赚取超 33% ROE 的根源。但硬币的另一面是：为了维系 895 美元高年费白金卡的高留存并抢夺年轻客户，公司在持卡人奖励（Rewards）、服务权益（贵宾室/Resy报销）和市场营销上的支出合计已占净营收逾 <strong>36%–38%</strong>。
+    </p>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      好在年费订阅收入（+17%+ YoY）与银行存款低成本利差完美对冲了权益支出抬升，实现了“营收稳健双位数增长 + 股本缩容推动 EPS 高增”的复利循环。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      3. 伯克希尔锚定与“低稀释”激励的双重稳定器
+    </h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      伯克希尔三十年一股未卖的 22.32% 被动压舱石，使得运通无需迎合短视资金的炒作节奏；而“10 倍薪资持仓 + 三年相对 ROE 绩效股”则确保高管层在做大发卡量时绝不以牺牲资产质量为代价。这种由上至下的长线文化契合，是运通穿越多轮金融周期的核心暗线。
+    </p>
+  </div>
+
+  <div class="card-interactive p-8 bg-white/90 backdrop-blur-sm dark:bg-gray-900 rounded-xl shadow-md">
+    <h3 class="text-xl font-semibold text-accent-700 dark:text-accent-300 mb-4">
+      4. 体系与治理风险提示
+    </h3>
+    <div class="space-y-4">
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>单一超级联名伙伴依赖风险（达美航空 2029 年大考）。</strong>达美航空联名卡占据运通 10% 总刷卡额与逾 21% 贷款余额。距离 2029 年合约到期仅余三年，航空巨头议价诉求上升或分润条款重谈，可能像当年 Costco 撤出一样对中期利润率构成实质挤压。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>CEO 接班过渡与内部治理延续风险。</strong>董事长兼 CEO Stephen Squeri 年满 67 岁且执掌帅印近九年，未来 12–24 个月内接班规划（如 CFO Christophe Le Caillec 或消金总裁 Howard Grosfield 顺位接替）是否平顺，以及“新帅”能否延续 Squeri 对年轻一代和高端权益的敏锐嗅觉，将成为机构紧密跟踪的治理变量。
+        </p>
+      </div>
+      <div class="pl-4 pr-3 py-3 border-l-4 border-accent-500 bg-accent-50/40 dark:bg-accent-900/30 rounded-r-lg">
+        <p class="text-sm font-medium text-accent-900 dark:text-accent-100 leading-relaxed">
+          <i data-lucide="alert-circle" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+          <strong>美国《信用卡竞争法案》与刷卡费率监管威胁。</strong>尽管美国运通作为三方闭环网络（Three-party closed-loop）在过往法案草案中获部分豁免，但监管机构对大型商户手续费（平均 ~2.35% 显著高于借记卡）的持续审视，以及零售联盟和稳定币/即时支付对传统卡组织的长期分流，仍可能压制商户折扣率（Discount Rate）扩张空间。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-8 pl-4 pr-3 py-3 border-l-4 border-primary-500 bg-primary-50/40 dark:bg-primary-900/30 rounded-r-lg">
+    <p class="text-sm font-medium text-primary-900 dark:text-primary-100 leading-relaxed">
+      <i data-lucide="trending-up" class="inline-block w-4 h-4 mr-1.5 -mt-0.5"></i>
+      一句话总结：美国运通用“伯克希尔 22% 压舱石股权 + 青年高净值闭环年费生态 + 十年缩股 30%”打造了一台金融界罕见的 34% ROE 复合增长引擎；只要达美续约与白领消费信用不出现系统性裂变，它仍是美股治理最干净、复利路径最清晰的长线核心蓝筹之一。
+    </p>
+  </div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-primary-900 dark:bg-gray-950 text-gray-300 py-12">
+<div class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-3 gap-8">
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">关于本页面</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页综合美国运通公司（NYSE: AXP）SEC FY2025 10-K、Q3 2026 10-Q、2026 年代理声明书（DEF 14A）及伯克希尔持仓披露，系统梳理其管理层演进、回购缩股历程、治理结构、银行与参股关联生态及高管 ROE 激励机制。
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">研究范围</h3>
+<ul class="space-y-2 text-sm text-gray-400">
+<li>• 1850年创立至 Squeri 战略转型</li>
+<li>• 十年缩股 30% 与资本返还</li>
+<li>• 伯克希尔 22.32% 持股与控制权</li>
+<li>• AENB 银行与 Amex GBT 剥离</li>
+<li>• 相对 ROE 绩效股与 10 倍持仓红线</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-primary-300 dark:text-primary-400 mb-4">免责声明</h3>
+<p class="text-sm text-gray-400 leading-relaxed">
+本页面仅供教育与金融治理研究参考，不构成任何证券买卖或投资建议。所有数据均基于截至 2026 年 11 月 25 日（北京时间）的公开披露信息整理，具体以公司官方 SEC 文件为准。
+</p>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+<p>© 2026 美国运通公司体系全景研究（2026-11-25）。保留所有权利。</p>
+</div>
+</div>
+</footer>
+<script>
+function toggleMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+const isOpen = menu.classList.toggle('mobile-menu-open');
+menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+if (button) {
+button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+lucide.createIcons();
+}
+}
+
+function closeMobileMenu() {
+const menu = document.getElementById('mobileMenu');
+const button = document.getElementById('mobileMenuButton');
+const icon = document.getElementById('mobileMenuIcon');
+if (!menu) return;
+menu.classList.remove('mobile-menu-open');
+menu.setAttribute('aria-hidden', 'true');
+if (button) {
+button.setAttribute('aria-expanded', 'false');
+}
+if (icon) {
+icon.setAttribute('data-lucide', 'menu');
+lucide.createIcons();
+}
+}
+
+// Progress Bar
+window.addEventListener('scroll', () => {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('progressBar').style.width = scrolled + '%';
+});
+
+// Initialize AOS & Lucide
+document.addEventListener('DOMContentLoaded', function() {
+lucide.createIcons();
+AOS.init({ duration: 800, once: true });
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+link.addEventListener('click', () => {
+closeMobileMenu();
+});
+});
+
+// Citation System
+let i = 1, map = new Map();
+document.querySelectorAll('[data-ref]').forEach(el => {
+if (el.dataset.citationProcessed) return;
+const raw = (el.getAttribute('data-ref')||'').trim();
+if (!raw) return;
+const parts = raw.split('|');
+const url = parts[0].trim();
+const idx = (parts[1]||'').trim() || map.get(raw) || (map.set(raw, String(i)), String(i++));
+if (!el.textContent || !el.textContent.trim()) { el.dataset.citationProcessed = 'true'; return; }
+const btn = document.createElement('sup'); btn.textContent = String(idx);
+Object.assign(btn.style, { fontSize:'8px', color:'#fff', cursor:'pointer', top: '1px', fontWeight:'bold', backgroundColor:'#0284c7', borderRadius:'50%', transition:'all .15s', userSelect:'none', minWidth:'19px', height:'19px', marginLeft:'6px', display:'inline-flex', alignItems:'center', justifyContent:'center', boxShadow:'0 1px 3px rgba(0,0,0,.2)', lineHeight:'1'});
+btn.addEventListener('mouseenter', ()=> Object.assign(btn.style, { backgroundColor:'#0369a1', transform:'scale(1.12)' }));
+btn.addEventListener('mouseleave', ()=> Object.assign(btn.style, { backgroundColor:'#0284c7', transform:'scale(1)' }));
+btn.addEventListener('click', e=>{ e.preventDefault(); e.stopPropagation(); window.open(url, '_blank'); });
+el.appendChild(btn); el.dataset.citationProcessed = 'true';
+});
+});
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>

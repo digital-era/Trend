@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>美国运通（AXP）最新走势归因与操作指引_2026-11-25</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50:"#fff4ef",100:"#ffe5d8",200:"#ffc9ae",300:"#ffa47b",
+          400:"#fb7950",500:"#ed552c",600:"#d83c1c",700:"#b52d17",
+          800:"#922719",900:"#782419"
+        },
+        accent: {
+          50:"#fff9eb",100:"#ffefc6",200:"#ffdc8a",300:"#ffc44d",
+          400:"#f9a826",500:"#e98a12",600:"#ca670b",700:"#a8490d",
+          800:"#893911",900:"#713011"
+        }
+      },
+      fontFamily: {
+        sans:["Inter","-apple-system","BlinkMacSystemFont","Segoe UI","PingFang SC","Microsoft YaHei","sans-serif"]
+      },
+      boxShadow: {
+        soft:"0 10px 35px rgba(15,23,42,.07)",
+        glow:"0 10px 35px rgba(237,85,44,.15)"
+      }
+    }
+  }
+};
+</script>
+<style>
+:root{color-scheme:light;--bg:#f5f7fb;--panel:#fff;--text:#172033;--muted:#64748b;--line:#e5eaf1;--soft:#f8fafc}
+html.dark{color-scheme:dark;--bg:#0b1220;--panel:#111c2e;--text:#edf2fa;--muted:#a8b5c8;--line:#28364a;--soft:#172438}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px}
+.muted{color:var(--muted)}
+.soft{background:var(--soft)}
+.card-interactive{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card-interactive:hover{transform:translateY(-3px);box-shadow:0 14px 35px rgba(15,23,42,.09);border-color:#fb9b75}
+.dark .card-interactive:hover{box-shadow:0 14px 35px rgba(0,0,0,.24)}
+.driver-bar{height:9px;background:var(--line);border-radius:99px;overflow:hidden}
+.driver-bar>span{display:block;height:100%;border-radius:99px}
+.price-tag{display:inline-flex;align-items:center;gap:5px;border-radius:8px;padding:5px 9px;font-size:12px;font-weight:700;white-space:nowrap}
+.tag-support{background:#dcfce7;color:#166534}
+.tag-resistance{background:#fee2e2;color:#991b1b}
+.tag-neutral{background:#e0e7ff;color:#3730a3}
+.dark .tag-support{background:#123d30;color:#9ce6c2}
+.dark .tag-resistance{background:#4a2029;color:#ffb0b9}
+.dark .tag-neutral{background:#252d55;color:#c6caff}
+.nav-link{color:var(--muted);font-size:13px;font-weight:600;transition:.2s}
+.nav-link:hover,.nav-link.active{color:#ed552c}
+#progressBar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#ed552c,#f9a826);width:0;z-index:100}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{font-weight:700;color:var(--muted);background:var(--soft);text-align:left}
+th,td{padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+tbody tr:hover{background:var(--soft)}
+.section-kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#ed552c;font-weight:800}
+.section-title{font-size:clamp(23px,3vw,31px);font-weight:850;letter-spacing:-.035em}
+.metric{font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.chart-grid{stroke:var(--line);stroke-width:1}
+.chart-label{fill:var(--muted);font-size:11px}
+.chart-line{fill:none;stroke:#ed552c;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.chart-area{fill:url(#areaGradient)}
+.chart-point{fill:#ed552c;stroke:var(--panel);stroke-width:2}
+.pill{border:1px solid var(--line);border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700}
+.btn{border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12px;font-weight:700}
+.btn:hover{border-color:#ed552c;color:#ed552c}
+.mobile-menu{display:none}
+.mobile-menu.open{display:block}
+@media(max-width:768px){
+  .desktop-nav{display:none}
+  .mobile-menu{position:absolute;top:68px;left:12px;right:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 16px 35px rgba(0,0,0,.14)}
+  .mobile-menu a{display:block;padding:10px 8px}
+  .hero-grid{grid-template-columns:1fr!important}
+  .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+<style>section[id],article[id],div[id^="card-"]{scroll-margin-top:80px;}</style>
+</head>
+<body>
+<div id="progressBar"></div>
+
+<header class="sticky top-0 z-50 border-b backdrop-blur-xl" style="background:color-mix(in srgb,var(--panel) 92%,transparent);border-color:var(--line)">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[66px] flex items-center justify-between gap-4">
+    <a href="#top" class="flex items-center gap-3 min-w-0">
+      <div class="w-9 h-9 rounded-xl bg-primary-600 text-white flex items-center justify-center font-black text-sm shadow-glow">AXP</div>
+      <div class="min-w-0">
+        <div class="font-extrabold text-sm tracking-tight">美国运通 <span class="muted font-medium">/ American Express</span></div>
+        <div class="text-[10px] muted tracking-widest uppercase">Equity Intelligence · 2026.11.25</div>
+      </div>
+    </a>
+    <nav class="desktop-nav flex items-center gap-5">
+      <a class="nav-link" href="#overview">行情概览</a>
+      <a class="nav-link" href="#phases">阶段拆解</a>
+      <a class="nav-link" href="#drivers">走势归因</a>
+      <a class="nav-link" href="#technical">技术结构</a>
+      <a class="nav-link" href="#strategy">操作策略</a>
+      <a class="nav-link" href="#risks">风险监控</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="btn flex items-center gap-2" onclick="toggleDarkMode()" aria-label="切换暗色模式"><i data-lucide="moon" class="w-4 h-4" id="themeIcon"></i><span class="hidden sm:inline">主题</span></button>
+      <button class="md:hidden btn" onclick="toggleMobileMenu()" aria-label="打开菜单"><i data-lucide="menu" class="w-4 h-4"></i></button>
+    </div>
+    <div id="mobileMenu" class="mobile-menu md:hidden">
+      <a class="nav-link" href="#overview" onclick="closeMobileMenu()">行情概览</a>
+      <a class="nav-link" href="#phases" onclick="closeMobileMenu()">阶段拆解</a>
+      <a class="nav-link" href="#drivers" onclick="closeMobileMenu()">走势归因</a>
+      <a class="nav-link" href="#technical" onclick="closeMobileMenu()">技术结构</a>
+      <a class="nav-link" href="#strategy" onclick="closeMobileMenu()">操作策略</a>
+      <a class="nav-link" href="#risks" onclick="closeMobileMenu()">风险监控</a>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+  <section class="pt-10 sm:pt-14 pb-8" data-aos="fade-up">
+    <div class="flex flex-wrap items-center gap-2 mb-5">
+      <span class="pill text-primary-600 border-primary-200">最新走势归因</span>
+      <span class="pill muted">近一个月 · 2026.10.26—11.24</span>
+      <span class="pill muted">NYSE: AXP · USD</span>
+      <span class="pill text-amber-700 border-amber-200">数据截至最近完整交易日</span>
+    </div>
+    <div class="grid hero-grid grid-cols-[1.5fr_.8fr] gap-6 items-stretch">
+      <div class="py-3">
+        <div class="section-kicker mb-3">American Express Company</div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] mb-5">美国运通 <span class="text-primary-600">AXP</span></h1>
+        <p class="text-lg sm:text-xl font-semibold leading-relaxed max-w-3xl">高位冲高失败后的回撤，正在进入关键支撑验证阶段。</p>
+        <p class="muted text-sm leading-7 mt-4 max-w-3xl">近一个月股价先上冲、后持续回落。11月20日随美股市场风险偏好急剧降温而下探至区间低位，随后两个交易日有所修复，但反弹力度弱于大盘，且价格仍处于10日与20日均线下方。当前更接近“弱势修复观察期”，尚不足以确认趋势反转。</p>
+        <div class="flex flex-wrap gap-2 mt-6">
+          <span class="price-tag tag-support"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i>区间低点 $300.90</span>
+          <span class="price-tag tag-resistance"><i data-lucide="trending-down" class="w-3.5 h-3.5"></i>中期均线压制</span>
+          <span class="price-tag tag-neutral"><i data-lucide="activity" class="w-3.5 h-3.5"></i>等待量价确认</span>
+        </div>
+      </div>
+      <div class="panel p-6 sm:p-7 shadow-soft flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="muted text-sm font-semibold">最新收盘价</span>
+            <span class="text-xs muted">2026-11-24</span>
+          </div>
+          <div class="metric text-5xl sm:text-6xl font-black mt-3">$308.63</div>
+          <div class="flex items-center gap-2 mt-3">
+            <span class="text-rose-600 font-bold text-sm">-2.04%</span>
+            <span class="muted text-xs">近一个月区间收益</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mt-8 pt-5 border-t" style="border-color:var(--line)">
+          <div><div class="muted text-xs mb-1">区间最高盘中价</div><div class="font-extrabold text-lg metric">$343.89</div><div class="muted text-xs">11月05日</div></div>
+          <div><div class="muted text-xs mb-1">区间最低盘中价</div><div class="font-extrabold text-lg metric">$300.90</div><div class="muted text-xs">11月20日</div></div>
+          <div><div class="muted text-xs mb-1">MA10</div><div class="font-bold metric">$314.03</div></div>
+          <div><div class="muted text-xs mb-1">MA20</div><div class="font-bold metric">$319.05</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-5 rounded-xl px-4 py-3 text-xs leading-6" style="background:var(--soft);color:var(--muted)">
+      <strong style="color:var(--text)">数据口径：</strong>报告日期为2026年11月25日。美股11月25日尚未形成完整收盘数据，因此行情与技术指标以11月24日收盘为准。近一个月按2026年10月26日至11月24日的可用交易日计算。本文为研究分析，不构成投资建议。
+    </div>
+  </section>
+
+  <section id="overview" class="py-9" data-aos="fade-up">
+    <div class="flex items-end justify-between gap-4 mb-5">
+      <div><div class="section-kicker mb-2">01 / Market snapshot</div><h2 class="section-title">行情概览</h2></div>
+      <span class="muted text-xs">收盘价及公开历史行情整理</span>
+    </div>
+    <div class="grid metric-grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="panel p-5 card-interactive">
+        <div class="muted text-xs font-semibold">近一个月收益</div>
+        <div class="metric text-3xl font-black text-rose-600 mt-3">-2.04%</div>
+        <div class="muted text-xs mt-2">315.05 → 308.63</div>
+      </div>
+      <div class="panel p-5 card-interactive">
+        <div class="muted text-xs font-semibold">区间盘中振幅</div>
+        <div class="metric text-3xl font-black mt-3">13.65%</div>
+        <div class="muted text-xs mt-2">以期初收盘价为基准</div>
+      </div>
+      <div class="panel p-5 card-interactive">
+        <div class="muted text-xs font-semibold">标普500同期收益</div>
+        <div class="metric text-3xl font-black text-rose-600 mt-3">-6.20%</div>
+        <div class="muted text-xs mt-2">AXP相对超额约 +4.16pct</div>
+      </div>
+      <div class="panel p-5 card-interactive">
+        <div class="muted text-xs font-semibold">11月24日成交量</div>
+        <div class="metric text-3xl font-black mt-3">2.47M</div>
+        <div class="muted text-xs mt-2">较11月23日明显收缩</div>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-[1.4fr_.8fr] gap-4 mt-4">
+      <div class="panel p-5 sm:p-6">
+        <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+          <div><h3 class="font-extrabold">AXP 收盘价走势</h3><p class="muted text-xs mt-1">关键交易日收盘价，非逐日完整K线</p></div>
+          <span class="text-xs muted">USD</span>
+        </div>
+        <div class="w-full overflow-hidden">
+          <svg viewBox="0 0 720 280" role="img" aria-label="美国运通关键交易日收盘价走势折线图" class="w-full h-auto">
+            <defs><linearGradient id="areaGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#ed552c" stop-opacity=".23"/><stop offset="100%" stop-color="#ed552c" stop-opacity="0"/></linearGradient></defs>
+            <line x1="48" y1="35" x2="690" y2="35" class="chart-grid"/>
+            <line x1="48" y1="90" x2="690" y2="90" class="chart-grid"/>
+            <line x1="48" y1="145" x2="690" y2="145" class="chart-grid"/>
+            <line x1="48" y1="200" x2="690" y2="200" class="chart-grid"/>
+            <text x="8" y="39" class="chart-label">345</text><text x="8" y="94" class="chart-label">330</text><text x="8" y="149" class="chart-label">315</text><text x="8" y="204" class="chart-label">300</text>
+            <path class="chart-area" d="M48 145 L78 153 L108 134 L138 113 L168 130 L198 98 L228 107 L258 81 L288 109 L318 123 L348 111 L378 114 L408 115 L438 133 L468 124 L498 130 L528 142 L558 144 L588 159 L618 193 L648 174 L678 168 L678 225 L48 225 Z"/>
+            <path class="chart-line" d="M48 145 L78 153 L108 134 L138 113 L168 130 L198 98 L228 107 L258 81 L288 109 L318 123 L348 111 L378 114 L408 115 L438 133 L468 124 L498 130 L528 142 L558 144 L588 159 L618 193 L648 174 L678 168"/>
+            <circle cx="258" cy="81" r="5" class="chart-point"/><circle cx="618" cy="193" r="5" class="chart-point"/><circle cx="678" cy="168" r="5" class="chart-point"/>
+            <text x="266" y="68" class="chart-label" fill="#ed552c">11/05 高位冲高</text>
+            <text x="548" y="214" class="chart-label">11/20 低位</text>
+            <text x="48" y="249" class="chart-label">10/26</text><text x="250" y="249" class="chart-label">11/04</text><text x="450" y="249" class="chart-label">11/13</text><text x="630" y="249" class="chart-label">11/24</text>
+            <text x="48" y="270" class="chart-label">数据点为关键交易日收盘价，折线仅用于观察趋势。</text>
+          </svg>
+        </div>
+      </div>
+      <div class="panel p-5 sm:p-6">
+        <h3 class="font-extrabold mb-1">相对大盘表现</h3>
+        <p class="muted text-xs mb-5">同期累计回报率对比</p>
+        <div class="space-y-5">
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span class="font-semibold">AXP</span><strong class="text-rose-600">-2.04%</strong></div>
+            <div class="driver-bar"><span style="width:25%;background:#ed552c"></span></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-2"><span class="font-semibold">S&P 500</span><strong class="text-rose-600">-6.20%</strong></div>
+            <div class="driver-bar"><span style="width:76%;background:#64748b"></span></div>
+          </div>
+          <div class="rounded-xl p-4 mt-6" style="background:var(--soft)">
+            <div class="text-xs muted mb-2">相对收益差</div>
+            <div class="text-3xl font-black text-emerald-600 metric">+4.16<span class="text-base">pct</span></div>
+            <p class="text-xs muted leading-5 mt-2">AXP跌幅显著小于标普500，体现相对抗跌性；但相对强势并不等同于绝对趋势转强。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel mt-4 overflow-hidden">
+      <div class="p-5 flex items-center justify-between flex-wrap gap-2">
+        <div><h3 class="font-extrabold">关键交易日行情</h3><p class="muted text-xs mt-1">覆盖阶段拐点及近期交易日</p></div>
+        <span class="muted text-xs">价格：美元 · 成交量：股</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>日期</th><th>开盘</th><th>最高</th><th>最低</th><th>收盘</th><th>日涨跌</th><th>成交量</th><th>观察</th></tr></thead>
+          <tbody>
+            <tr><td>10/26</td><td>313.70</td><td>318.54</td><td>312.03</td><td>315.05</td><td>—</td><td>3,477,900</td><td>窗口起点</td></tr>
+            <tr><td>10/29</td><td>320.95</td><td>326.49</td><td>320.95</td><td>323.71</td><td class="text-emerald-600">+1.81%</td><td>2,882,400</td><td>阶段上行</td></tr>
+            <tr><td>11/04</td><td>334.00</td><td>337.25</td><td>325.37</td><td>332.59</td><td class="text-emerald-600">+2.18%</td><td>3,872,700</td><td>高位区域</td></tr>
+            <tr><td>11/05</td><td>339.60</td><td>343.89</td><td>324.41</td><td>324.97</td><td class="text-rose-600">-2.29%</td><td>4,576,300</td><td>放量冲高回落</td></tr>
+            <tr><td>11/12</td><td>324.63</td><td>325.66</td><td>318.02</td><td>318.06</td><td class="text-rose-600">-1.56%</td><td>2,428,600</td><td>回撤延续</td></tr>
+            <tr><td>11/19</td><td>316.12</td><td>316.38</td><td>309.41</td><td>311.11</td><td class="text-rose-600">-1.36%</td><td>3,922,200</td><td>下行放量</td></tr>
+            <tr><td>11/20</td><td>311.23</td><td>314.72</td><td>300.90</td><td>301.70</td><td class="text-rose-600">-3.02%</td><td>3,507,800</td><td>区间低点</td></tr>
+            <tr><td>11/23</td><td>308.08</td><td>309.72</td><td>303.23</td><td>306.90</td><td class="text-emerald-600">+1.72%</td><td>3,641,500</td><td>反弹修复</td></tr>
+            <tr><td>11/24</td><td>305.97</td><td>311.09</td><td>305.00</td><td>308.63</td><td class="text-emerald-600">+0.56%</td><td>2,468,600</td><td>缩量反弹</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="phases" class="py-9" data-aos="fade-up">
+    <div class="section-kicker mb-2">02 / Price action</div>
+    <h2 class="section-title mb-5">阶段拆解：三段式走势演变</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="panel p-5 card-interactive">
+        <div class="flex justify-between items-center mb-4"><span class="pill">阶段一</span><span class="text-xs muted">10/26—11/05</span></div>
+        <div class="text-2xl font-black metric">315.05 → 324.97</div>
+        <div class="text-emerald-600 font-bold text-sm mt-1">阶段收盘 +3.15%</div>
+        <div class="h-1.5 rounded-full my-5" style="background:linear-gradient(90deg,#16a34a 0%,#16a34a 70%,#ef4444 100%)"></div>
+        <h3 class="font-extrabold mb-2">上冲失败，高位分歧</h3>
+        <p class="text-sm muted leading-6">股价一度上探343.89美元，11月5日成交量放大至约457.6万股，盘中冲高后收于324.97美元，日跌2.29%。高位放量回落表明供需分歧显著，短线追价资金承压。</p>
+        <div class="mt-4 text-xs muted">阶段特征：上涨动能衰减、上影线压力显现。</div>
+      </div>
+      <div class="panel p-5 card-interactive">
+        <div class="flex justify-between items-center mb-4"><span class="pill">阶段二</span><span class="text-xs muted">11/06—11/13</span></div>
+        <div class="text-2xl font-black metric">320.99 → 320.60</div>
+        <div class="text-rose-600 font-bold text-sm mt-1">阶段收盘 -0.12%</div>
+        <div class="h-1.5 rounded-full my-5" style="background:linear-gradient(90deg,#64748b,#ef4444)"></div>
+        <h3 class="font-extrabold mb-2">横盘消化，重心下移</h3>
+        <p class="text-sm muted leading-6">价格在320美元附近反复拉锯，11月12日收跌至318.06美元。反弹未能重新站稳此前高位，走势从强势上攻转向弱势整理，市场对估值和风险偏好的敏感度上升。</p>
+        <div class="mt-4 text-xs muted">阶段特征：反弹缺乏持续性、支撑逐步下移。</div>
+      </div>
+      <div class="panel p-5 card-interactive">
+        <div class="flex justify-between items-center mb-4"><span class="pill">阶段三</span><span class="text-xs muted">11/16—11/24</span></div>
+        <div class="text-2xl font-black metric">319.05 → 308.63</div>
+        <div class="text-rose-600 font-bold text-sm mt-1">阶段收盘 -3.27%</div>
+        <div class="h-1.5 rounded-full my-5" style="background:linear-gradient(90deg,#ef4444,#f97316)"></div>
+        <h3 class="font-extrabold mb-2">连续回撤，低位修复</h3>
+        <p class="text-sm muted leading-6">11月19—20日连续下挫，11月20日最低触及300.90美元。11月23—24日连续反弹，但相较大盘反弹幅度偏弱，且收盘仍低于MA10与MA20。</p>
+        <div class="mt-4 text-xs muted">阶段特征：超跌修复初现，趋势反转尚待确认。</div>
+      </div>
+    </div>
+    <div class="panel p-5 mt-4">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
+        <div><h3 class="font-extrabold">阶段结论</h3><p class="muted text-sm leading-6 mt-1">本轮走势并非单边持续下跌，而是先冲高、后回撤，再进入低位修复。11月5日的放量冲高回落是短线结构转弱的重要价格信号；11月20日的大盘同步下挫放大了回撤幅度。11月24日仍未收复关键均线，现阶段宜先观察支撑与反弹质量，而非直接按趋势反转处理。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="drivers" class="py-9" data-aos="fade-up">
+    <div class="section-kicker mb-2">03 / Attribution framework</div>
+    <h2 class="section-title mb-2">上涨与下跌归因</h2>
+    <p class="muted text-sm mb-5">以公司基本面、行业情绪、宏观市场三个层级拆解。权重是研究判断，不是可观测的资金流或量化回归结果。</p>
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-4">
+      <div class="panel p-5 sm:p-6">
+        <h3 class="font-extrabold mb-5 flex items-center gap-2"><i data-lucide="trending-up" class="w-5 h-5 text-emerald-600"></i>支撑因素</h3>
+        <div class="space-y-5">
+          <div>
+            <div class="flex justify-between gap-3 text-sm mb-2"><strong>经营基本面仍有韧性</strong><span class="text-emerald-600 font-bold">中长期支撑</span></div>
+            <p class="text-xs muted leading-5">Q3 2026收入同比增长9%，账单业务规模与调整后EPS保持增长，公司上调全年EPS指引。为估值提供基本面支撑，但该财报发布于10月23日，早于本报告统计窗口，不应当作月内某日涨跌的直接催化剂。</p>
+          </div>
+          <div>
+            <div class="flex justify-between gap-3 text-sm mb-2"><strong>相对大盘表现抗跌</strong><span class="text-emerald-600 font-bold">已观察</span></div>
+            <p class="text-xs muted leading-5">近一个月AXP下跌约2.04%，标普500同期约下跌6.20%，相对收益约+4.16个百分点，说明其在本轮市场调整中表现出一定相对韧性。</p>
+          </div>
+          <div>
+            <div class="flex justify-between gap-3 text-sm mb-2"><strong>消费金融品牌与会员生态</strong><span class="text-emerald-600 font-bold">结构性支撑</span></div>
+            <p class="text-xs muted leading-5">高端客户、商户网络、会员服务与联名合作构成长期竞争壁垒。若高收入客群支出保持韧性，有助于稳定交易量及折扣收入，但需持续验证信用成本和消费趋势。</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel p-5 sm:p-6">
+        <h3 class="font-extrabold mb-5 flex items-center gap-2"><i data-lucide="trending-down" class="w-5 h-5 text-rose-600"></i>压制因素</h3>
+        <div class="space-y-5">
+          <div>
+            <div class="flex justify-between gap-3 text-sm mb-2"><strong>宏观风险偏好收缩</strong><span class="text-rose-600 font-bold">主要短线压力</span></div>
+            <p class="text-xs muted leading-5">11月20日标普500下跌约3.70%，AXP当日下跌3.02%。大盘风险冲击是该交易日下跌的重要背景，AXP跌幅反而小于标普500。</p>
+          </div>
+          <div>
+            <div class="flex justify-between gap-3 text-sm mb-2"><strong>高位放量冲高回落</strong><span class="text-rose-600 font-bold">技术压力</span></div>
+            <p class="text-xs muted leading-5">11月5日盘中触及343.89美元后收于324.97美元，成交量约457.6万股，为观察窗口内高位成交日。显示高位供需分歧，随后股价未能重回该区域。</p>
+          </div>
+          <div>
+            <div class="flex justify-between gap-3 text-sm mb-2"><strong>均线压制与反弹偏弱</strong><span class="text-rose-600 font-bold">趋势压力</span></div>
+            <p class="text-xs muted leading-5">11月24日收盘308.63美元，低于MA10约314.03美元和MA20约319.05美元。11月23日标普500大幅反弹约4.73%，AXP上涨约1.72%，相对反弹力度偏弱。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel p-5 sm:p-6 mt-4">
+      <div class="flex justify-between items-center flex-wrap gap-3 mb-5">
+        <h3 class="font-extrabold">走势影响因素权重判断</h3>
+        <span class="text-xs muted">研究主观分配 · 合计100%</span>
+      </div>
+      <div class="space-y-5">
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-semibold">宏观市场Beta / 风险偏好</span><strong>50%</strong></div>
+          <div class="driver-bar"><span style="width:50%;background:#64748b"></span></div>
+          <p class="muted text-xs mt-2">11月20日大盘显著回撤，市场系统性风险对短期价格形成主要冲击。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-semibold">行业 / 金融消费板块情绪</span><strong>25%</strong></div>
+          <div class="driver-bar"><span style="width:25%;background:#f59e0b"></span></div>
+          <p class="muted text-xs mt-2">消费金融、银行及支付相关资产的风险偏好变化可能影响估值折价与交易情绪。</p>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2"><span class="font-semibold">公司基本面 / 公司特异因素</span><strong>25%</strong></div>
+          <div class="driver-bar"><span style="width:25%;background:#ed552c"></span></div>
+          <p class="muted text-xs mt-2">经营数据提供中期支撑，但窗口内未核实到足以解释主要日度波动的单一公司新事件。</p>
+        </div>
+      </div>
+      <div class="mt-5 p-4 rounded-xl text-xs muted leading-6" style="background:var(--soft)">重要边界：上述权重用于表达研究判断，不是从收益率回归、机构持仓或资金净流入数据中计算得出。报告未取得可靠的AXP日度机构资金流序列，因此不虚构主力净流入、基金增减仓或期权大单方向。</div>
+    </div>
+  </section>
+
+  <section id="technical" class="py-9" data-aos="fade-up">
+    <div class="section-kicker mb-2">04 / Technical structure</div>
+    <h2 class="section-title mb-5">量价结构与关键价格锚点</h2>
+    <div class="grid lg:grid-cols-3 gap-4">
+      <div class="panel p-5">
+        <div class="muted text-xs font-semibold mb-2">MA5 · 5日均线</div>
+        <div class="text-3xl font-black metric">$308.75</div>
+        <div class="text-xs text-amber-600 font-bold mt-2">现价略低于MA5</div>
+        <p class="muted text-xs leading-5 mt-3">短线均线与现价几乎重合，显示最近两日的修复刚好触及短期成本区，仍需观察能否连续站稳。</p>
+      </div>
+      <div class="panel p-5">
+        <div class="muted text-xs font-semibold mb-2">MA10 · 10日均线</div>
+        <div class="text-3xl font-black metric">$314.03</div>
+        <div class="text-xs text-rose-600 font-bold mt-2">现价低约1.72%</div>
+        <p class="muted text-xs leading-5 mt-3">短线反弹第一道重要均线压力。若放量收复并回踩不破，才可视为短线修复质量改善。</p>
+      </div>
+      <div class="panel p-5">
+        <div class="muted text-xs font-semibold mb-2">MA20 · 20日均线</div>
+        <div class="text-3xl font-black metric">$319.05</div>
+        <div class="text-xs text-rose-600 font-bold mt-2">现价低约3.27%</div>
+        <p class="muted text-xs leading-5 mt-3">中短期趋势分界观察位。价格重新站上MA20并维持，才能进一步讨论趋势性反转。</p>
+      </div>
+    </div>
+    <div class="panel p-5 sm:p-6 mt-4">
+      <div class="flex items-center justify-between flex-wrap gap-3 mb-5">
+        <h3 class="font-extrabold">价格结构：支撑与阻力区间</h3>
+        <span class="muted text-xs">基于区间高低点、近期收盘与均线</span>
+      </div>
+      <div class="space-y-4">
+        <div class="grid grid-cols-[100px_1fr] gap-3 items-center">
+          <div class="text-xs font-bold text-rose-600">强阻力</div>
+          <div class="rounded-xl p-3 border border-rose-200 dark:border-rose-900" style="background:color-mix(in srgb,#ef4444 7%,var(--panel))">
+            <div class="flex justify-between flex-wrap gap-2"><strong>$325—$333</strong><span class="muted text-xs">前期成交密集 / 阶段高位区域</span></div>
+            <div class="muted text-xs mt-1">11月2日收盘327.98；11月4日收盘332.59。</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-[100px_1fr] gap-3 items-center">
+          <div class="text-xs font-bold text-rose-600">第二阻力</div>
+          <div class="rounded-xl p-3 border border-rose-200 dark:border-rose-900" style="background:color-mix(in srgb,#ef4444 5%,var(--panel))">
+            <div class="flex justify-between flex-wrap gap-2"><strong>$319—$324</strong><span class="muted text-xs">MA20附近 / 近期平台</span></div>
+            <div class="muted text-xs mt-1">MA20约319.05；11月10—11日收盘约323美元。</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-[100px_1fr] gap-3 items-center">
+          <div class="text-xs font-bold text-amber-600">近端阻力</div>
+          <div class="rounded-xl p-3 border border-amber-200 dark:border-amber-900" style="background:color-mix(in srgb,#f59e0b 7%,var(--panel))">
+            <div class="flex justify-between flex-wrap gap-2"><strong>$311—$315</strong><span class="muted text-xs">MA10与近期高点</span></div>
+            <div class="muted text-xs mt-1">11月19日收盘311.11；11月24日最高311.09；MA10约314.03。</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-[100px_1fr] gap-3 items-center">
+          <div class="text-xs font-bold text-emerald-600">近端支撑</div>
+          <div class="rounded-xl p-3 border border-emerald-200 dark:border-emerald-900" style="background:color-mix(in srgb,#16a34a 7%,var(--panel))">
+            <div class="flex justify-between flex-wrap gap-2"><strong>$303—$306</strong><span class="muted text-xs">近期低点区域</span></div>
+            <div class="muted text-xs mt-1">11月23日最低303.23；11月24日最低305.00。</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-[100px_1fr] gap-3 items-center">
+          <div class="text-xs font-bold text-emerald-600">关键支撑</div>
+          <div class="rounded-xl p-3 border border-emerald-200 dark:border-emerald-900" style="background:color-mix(in srgb,#16a34a 10%,var(--panel))">
+            <div class="flex justify-between flex-wrap gap-2"><strong>$300.90</strong><span class="muted text-xs">本窗口最低盘中价</span></div>
+            <div class="muted text-xs mt-1">11月20日低点。若有效跌破，需防止回撤向下一档推演区域扩展。</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 rounded-xl p-4" style="background:var(--soft)">
+        <div class="flex items-center gap-2 font-bold text-sm mb-2"><i data-lucide="alert-triangle" class="w-4 h-4 text-amber-500"></i>下方情景推演区间</div>
+        <p class="muted text-xs leading-6">若300.90美元被有效跌破，下一观察区域为295—298美元。该区域是风险情景下的推演价位，并非本窗口已验证的历史支撑，也不代表价格必然到达。</p>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4 mt-4">
+      <div class="panel p-5">
+        <h3 class="font-extrabold mb-3">均线结构判断</h3>
+        <div class="flex items-center gap-2 flex-wrap mb-3">
+          <span class="price-tag tag-neutral">MA5 $308.75</span>
+          <span class="price-tag tag-neutral">MA10 $314.03</span>
+          <span class="price-tag tag-neutral">MA20 $319.05</span>
+        </div>
+        <p class="muted text-sm leading-6">MA5低于MA10，MA10低于MA20，短中期均线呈空头排列。价格虽回到MA5附近，但尚未收复MA10、MA20，反弹仍属于弱势修复范畴。</p>
+      </div>
+      <div class="panel p-5">
+        <h3 class="font-extrabold mb-3">成交量与价格配合</h3>
+        <p class="muted text-sm leading-6">11月5日放量冲高回落，说明高位分歧较大；11月19日成交量升至约392万股，伴随收跌；11月23日反弹成交约364万股，11月24日缩至约247万股。反弹尚缺少持续放量确认。</p>
+      </div>
+    </div>
+    <div class="rounded-xl mt-4 px-4 py-3 text-xs muted leading-6" style="background:var(--soft)">MA5、MA10、MA20根据本报告可用收盘价序列计算。由于未取得完整且经交叉验证的60个交易日序列，本报告不提供MA60数值；不以推测值替代真实数据。</div>
+  </section>
+
+  <section id="strategy" class="py-9" data-aos="fade-up">
+    <div class="section-kicker mb-2">05 / Trading playbook</div>
+    <h2 class="section-title mb-2">未来情景与操作指引</h2>
+    <p class="muted text-sm mb-5">策略核心：先确认300.90美元附近支撑是否有效，再观察311—315美元反弹压力能否被收复。避免在弱势反弹中仅凭单日上涨追价。</p>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="panel p-5 card-interactive">
+        <div class="flex items-center justify-between mb-4"><span class="pill text-emerald-700 border-emerald-200">情景A · 修复反弹</span><span class="text-2xl font-black text-emerald-600">30%</span></div>
+        <div class="driver-bar mb-4"><span style="width:30%;background:#16a34a"></span></div>
+        <h3 class="font-extrabold text-lg">收复311—315美元</h3>
+        <p class="muted text-sm leading-6 mt-2">若股价放量站上311—315美元，并在回踩时守住该区域，短线修复有望延伸至319—324美元。进一步站稳MA20，才考虑趋势转强。</p>
+        <div class="mt-4 pt-4 border-t" style="border-color:var(--line)">
+          <div class="text-xs muted mb-1">确认信号</div><div class="text-sm font-semibold">放量突破 + 回踩不破 + 大盘企稳</div>
+        </div>
+      </div>
+      <div class="panel p-5 card-interactive">
+        <div class="flex items-center justify-between mb-4"><span class="pill text-amber-700 border-amber-200">情景B · 区间震荡</span><span class="text-2xl font-black text-amber-600">45%</span></div>
+        <div class="driver-bar mb-4"><span style="width:45%;background:#f59e0b"></span></div>
+        <h3 class="font-extrabold text-lg">303—315美元反复拉锯</h3>
+        <p class="muted text-sm leading-6 mt-2">如果成交量继续收缩，股价在303—315美元间反复震荡，说明多空暂时平衡。应降低交易频率，等待区间边界出现明确突破。</p>
+        <div class="mt-4 pt-4 border-t" style="border-color:var(--line)">
+          <div class="text-xs muted mb-1">确认信号</div><div class="text-sm font-semibold">低位缩量整理 + 突破方向未定</div>
+        </div>
+      </div>
+      <div class="panel p-5 card-interactive">
+        <div class="flex items-center justify-between mb-4"><span class="pill text-rose-700 border-rose-200">情景C · 支撑破位</span><span class="text-2xl font-black text-rose-600">25%</span></div>
+        <div class="driver-bar mb-4"><span style="width:25%;background:#ef4444"></span></div>
+        <h3 class="font-extrabold text-lg">有效跌破300.90美元</h3>
+        <p class="muted text-sm leading-6 mt-2">若放量跌破区间低点，且反抽无法重新站回300.90美元，需警惕下行趋势延续，295—298美元为下一档情景观察区域。</p>
+        <div class="mt-4 pt-4 border-t" style="border-color:var(--line)">
+          <div class="text-xs muted mb-1">确认信号</div><div class="text-sm font-semibold">放量破位 + 反抽受阻 + 市场继续走弱</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel p-5 sm:p-6 mt-4">
+      <h3 class="font-extrabold mb-4">可执行操作矩阵</h3>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>投资者类型</th><th>当前判断</th><th>行动建议</th><th>关键观察条件</th></tr></thead>
+          <tbody>
+            <tr><td class="font-bold">已有持仓</td><td>短中期结构偏弱</td><td>避免盲目补仓；评估仓位与可承受回撤，反弹至311—315美元观察承接和量能。</td><td>300.90美元是否有效守住；311—315美元能否收复。</td></tr>
+            <tr><td class="font-bold">空仓观望</td><td>风险收益比尚未充分改善</td><td>不宜仅因连续反弹两日就追涨；等待突破压力位并回踩确认，或等待支撑区域出现止跌结构。</td><td>收盘站上315美元，且成交量较近期均值改善。</td></tr>
+            <tr><td class="font-bold">短线交易者</td><td>区间波动可能较大</td><td>优先控制仓位与单笔风险；只围绕确认后的支撑、阻力执行，不在区间中部追单。</td><td>303—306美元支撑反应；311—315美元突破有效性。</td></tr>
+            <tr><td class="font-bold">中长期投资者</td><td>基本面与价格趋势暂时分化</td><td>结合下一期账单业务、信用损失率、净利息收入与费用率判断基本面；分批决策，不把短线技术位当作企业价值。</td><td>消费支出质量、逾期率、信用损失准备及全年指引兑现。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4 mt-4">
+      <div class="panel p-5">
+        <div class="flex items-center gap-2 mb-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i><h3 class="font-extrabold">偏多确认条件</h3></div>
+        <ul class="text-sm muted space-y-2 leading-6 list-disc pl-5">
+          <li>300.90美元附近不再出现有效破位。</li>
+          <li>股价放量收复311—315美元压力带。</li>
+          <li>突破后回踩该区域能够获得承接。</li>
+          <li>进一步收复319美元附近MA20，且大盘风险偏好改善。</li>
+        </ul>
+      </div>
+      <div class="panel p-5">
+        <div class="flex items-center gap-2 mb-3"><i data-lucide="alert-octagon" class="w-5 h-5 text-rose-600"></i><h3 class="font-extrabold">偏空确认条件</h3></div>
+        <ul class="text-sm muted space-y-2 leading-6 list-disc pl-5">
+          <li>收盘有效跌破300.90美元，且成交量明显放大。</li>
+          <li>反抽300.90美元附近失败，重新转弱。</li>
+          <li>标普500及金融消费板块同步走弱。</li>
+          <li>公司信用成本、逾期率或消费数据出现恶化迹象。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="rounded-xl p-4 mt-4 border border-amber-200 dark:border-amber-900" style="background:color-mix(in srgb,#f59e0b 7%,var(--panel))">
+      <div class="flex items-center gap-2 font-extrabold text-sm mb-1"><i data-lucide="shield-alert" class="w-4 h-4 text-amber-600"></i>仓位与风险控制原则</div>
+      <p class="text-xs muted leading-6">不提供脱离个人成本、风险承受能力和账户约束的固定买卖数量。任何交易计划应预先定义最大亏损、失效条件与仓位上限。若发生跳空、重大宏观消息或财报信息变化，应重新评估，而非机械执行静态价位。</p>
+    </div>
+  </section>
+
+  <section id="risks" class="py-9" data-aos="fade-up">
+    <div class="section-kicker mb-2">06 / Risk dashboard</div>
+    <h2 class="section-title mb-5">风险红线与后续跟踪清单</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="panel p-5">
+        <h3 class="font-extrabold mb-4">价格与市场风险</h3>
+        <div class="space-y-4">
+          <div class="flex gap-3"><span class="w-2 h-2 rounded-full bg-rose-500 mt-2 shrink-0"></span><div><strong class="text-sm">300.90美元失守</strong><p class="muted text-xs leading-5 mt-1">区间最低价被有效跌破，短线结构可能进一步恶化。</p></div></div>
+          <div class="flex gap-3"><span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span><div><strong class="text-sm">反弹无法收复315美元</strong><p class="muted text-xs leading-5 mt-1">均线压制仍在，反弹可能只是下跌趋势中的技术性修复。</p></div></div>
+          <div class="flex gap-3"><span class="w-2 h-2 rounded-full bg-rose-500 mt-2 shrink-0"></span><div><strong class="text-sm">美股市场波动再度放大</strong><p class="muted text-xs leading-5 mt-1">市场Beta可能压过公司自身基本面，导致估值与价格同步承压。</p></div></div>
+        </div>
+      </div>
+      <div class="panel p-5">
+        <h3 class="font-extrabold mb-4">公司经营风险</h3>
+        <div class="space-y-4">
+          <div class="flex gap-3"><span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span><div><strong class="text-sm">信用损失与逾期率</strong><p class="muted text-xs leading-5 mt-1">需跟踪信用卡贷款组合的逾期迁徙、净核销率及准备金变化。</p></div></div>
+          <div class="flex gap-3"><span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span><div><strong class="text-sm">高端消费与会员支出</strong><p class="muted text-xs leading-5 mt-1">观察账单业务增长是否持续，避免只依据收入增速忽视客户支出质量。</p></div></div>
+          <div class="flex gap-3"><span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span><div><strong class="text-sm">资金成本与监管环境</strong><p class="muted text-xs leading-5 mt-1">利率变化、融资成本、信用卡监管及商户费率争议可能影响利润率和估值。</p></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel p-5 mt-4">
+      <h3 class="font-extrabold mb-3">未来一至四周重点观察事项</h3>
+      <div class="overflow-x-auto">
+        <table>
+          <thead><tr><th>跟踪维度</th><th>重点指标 / 事件</th><th>偏积极信号</th><th>偏负面信号</th></tr></thead>
+          <tbody>
+            <tr><td class="font-bold">价格行为</td><td>300.90、311—315、319美元</td><td>守住支撑并逐级收复均线</td><td>放量破位，反抽持续受阻</td></tr>
+            <tr><td class="font-bold">市场环境</td><td>标普500、金融与消费板块</td><td>风险偏好企稳，板块同步修复</td><td>指数再度急跌，板块相对走弱</td></tr>
+            <tr><td class="font-bold">消费经营</td><td>Billed Business、会员支出、交易量</td><td>账单业务保持稳健增长</td><td>消费支出明显放缓</td></tr>
+            <tr><td class="font-bold">信用质量</td><td>逾期率、净核销率、信用损失准备</td><td>信用指标稳定或改善</td><td>逾期迁徙与核销加速</td></tr>
+            <tr><td class="font-bold">盈利质量</td><td>净利息收入、折扣收入、费用率</td><td>收入增长转化为利润增长</td><td>成本上升侵蚀利润率</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-9" data-aos="fade-up">
+    <div class="section-kicker mb-2">07 / Investment conclusion</div>
+    <h2 class="section-title mb-5">核心判断</h2>
+    <div class="panel p-6 sm:p-8 shadow-soft">
+      <div class="grid md:grid-cols-[1fr_auto] gap-6 items-start">
+        <div>
+          <div class="text-primary-600 text-xs tracking-widest font-extrabold mb-3">CURRENT VIEW · NEUTRAL TO CAUTIOUS</div>
+          <h3 class="text-2xl sm:text-3xl font-black leading-tight">基本面有韧性，技术面仍偏弱；等待关键位确认。</h3>
+          <p class="muted text-sm leading-7 mt-4">美国运通近一个月股价下跌约2.04%，明显跑赢同期标普500，但价格路径呈现典型的高位冲高失败与随后回撤。11月20日的下跌与市场整体风险冲击同步，不能简单归因于公司基本面突然恶化。公司Q3经营数据提供一定中期支撑，但股价仍受MA10与MA20压制，近期反弹也尚未获得持续量能确认。</p>
+          <p class="muted text-sm leading-7 mt-3">短线关键在于300.90美元支撑是否有效，以及311—315美元压力区能否被收复。若守住支撑并放量突破，反弹空间可观察319—324美元；若有效跌破300.90美元，则应优先防范进一步回撤。当前最合理的策略不是预测单一方向，而是围绕关键价位设置条件，等待市场给出确认。</p>
+        </div>
+        <div class="rounded-2xl p-5 min-w-[170px]" style="background:var(--soft)">
+          <div class="muted text-xs mb-2">当前策略标签</div>
+          <div class="text-xl font-black text-amber-600">谨慎观察</div>
+          <div class="mt-4 text-xs muted">趋势状态</div><div class="font-bold text-sm mt-1">弱势修复</div>
+          <div class="mt-3 text-xs muted">关键支撑</div><div class="font-bold text-sm mt-1 metric">$300.90</div>
+          <div class="mt-3 text-xs muted">第一压力</div><div class="font-bold text-sm mt-1 metric">$311—315</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="pt-8 pb-10 border-t" style="border-color:var(--line)">
+    <div class="flex flex-col md:flex-row justify-between gap-6">
+      <div class="max-w-2xl">
+        <div class="font-extrabold text-sm mb-2">美国运通 AXP · 最新走势归因与操作指引</div>
+        <p class="muted text-xs leading-6">报告日期：2026年11月25日。市场数据截至2026年11月24日最近完整常规交易日。价格、成交量及均线为历史公开行情整理与计算结果；不同数据供应商可能因复权、时区及数据修订产生细微差异。</p>
+        <p class="muted text-xs leading-6 mt-2">本报告仅供信息交流与研究参考，不构成证券买卖建议、投资咨询、收益承诺或对未来价格的保证。历史表现不代表未来结果。投资者应结合自身风险承受能力、投资期限及最新披露信息独立决策。</p>
+      </div>
+      <div class="min-w-[230px]">
+        <div class="font-bold text-xs mb-3">数据与资料来源</div>
+        <ul class="text-xs muted space-y-2">
+          <li><a class="hover:text-primary-600 underline" href="https://finance.yahoo.com/quote/AXP/history/" target="_blank" rel="noopener">Yahoo Finance · AXP Historical Data</a></li>
+          <li><a class="hover:text-primary-600 underline" href="https://finance.yahoo.com/quote/%5ESPX/history/" target="_blank" rel="noopener">Yahoo Finance · S&P 500 Historical Data</a></li>
+          <li><a class="hover:text-primary-600 underline" href="https://www.sec.gov/Archives/edgar/data/4962/000000496226000405/q326exhibit991.htm" target="_blank" rel="noopener">American Express · Q3 2026 Earnings Release</a></li>
+          <li><a class="hover:text-primary-600 underline" href="https://www.marketwatch.com/data-news/american-express-co-stock-outperforms-competitors-despite-losses-on-the-day-5652fa02-b602ec9a79f2" target="_blank" rel="noopener">MarketWatch · 2026-11-20 Market Commentary</a></li>
+          <li><a class="hover:text-primary-600 underline" href="https://tickertiles.com/stock/axp/" target="_blank" rel="noopener">TickerTiles · AXP Market Context</a></li>
+          <li><a class="hover:text-primary-600 underline" href="https://www.investing.com/equities/american-express-historical-data" target="_blank" rel="noopener">Investing.com · AXP Historical Data</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 pt-4 border-t flex flex-wrap justify-between gap-3 muted text-[10px]" style="border-color:var(--line)">
+      <span>© 2026 · Equity Intelligence Research</span>
+      <span>Generated: 2026-11-25 · AXP / NYSE</span>
+    </div>
+  </footer>
+</main>
+
+<script>
+function toggleDarkMode(){
+  const html=document.documentElement;
+  html.classList.toggle("dark");
+  const isDark=html.classList.contains("dark");
+  try{localStorage.setItem("axp-report-theme",isDark?"dark":"light")}catch(e){}
+  updateThemeIcon();
+}
+function updateThemeIcon(){
+  const icon=document.getElementById("themeIcon");
+  if(!icon)return;
+  icon.setAttribute("data-lucide",document.documentElement.classList.contains("dark")?"sun":"moon");
+  if(window.lucide)lucide.createIcons();
+}
+function toggleMobileMenu(){
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+function closeMobileMenu(){
+  document.getElementById("mobileMenu").classList.remove("open");
+}
+function updateProgress(){
+  const doc=document.documentElement;
+  const scrollTop=doc.scrollTop||document.body.scrollTop;
+  const max=doc.scrollHeight-doc.clientHeight;
+  document.getElementById("progressBar").style.width=(max>0?scrollTop/max*100:0)+"%";
+}
+function updateActiveNav(){
+  const sections=["overview","phases","drivers","technical","strategy","risks"];
+  let current="";
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&window.scrollY>=el.offsetTop-150)current=id;
+  });
+  document.querySelectorAll(".nav-link").forEach(link=>{
+    link.classList.toggle("active",link.getAttribute("href")==="#"+current);
+  });
+}
+document.addEventListener("DOMContentLoaded",()=>{
+  try{
+    if(localStorage.getItem("axp-report-theme")==="dark")document.documentElement.classList.add("dark");
+  }catch(e){}
+  updateThemeIcon();
+  if(window.lucide)lucide.createIcons();
+  if(window.AOS)AOS.init({duration:650,once:true,offset:40});
+  updateProgress();
+  updateActiveNav();
+});
+window.addEventListener("scroll",()=>{updateProgress();updateActiveNav()},{passive:true});
+window.addEventListener("resize",closeMobileMenu);
+</script>
+<script>(function(){
+                if(window.self!==window.top){
+                    document.documentElement.classList.add('dark');
+                    var s=document.getElementById('sunIcon'),m=document.getElementById('moonIcon');
+                    if(s)s.style.display='block';
+                    if(m)m.style.display='none';
+                }
+                document.addEventListener('click',function(e){
+                    var a=e.target&&e.target.closest?e.target.closest('a'):null;
+                    if(!a)return;
+                    var href=(a.getAttribute('href')||'').trim();
+                    if(!href||href==='#'||/^javascript:/i.test(href))return;
+                    if(href.charAt(0)==='#'){
+                        var el=document.getElementById(href.slice(1));
+                        if(el){
+                            e.preventDefault();
+                            el.scrollIntoView({behavior:'smooth',block:'start'});
+                        }
+                        return;
+                    }
+                    if(/^(https?:)?\/\//i.test(href)){
+                        e.preventDefault();
+                        var fullUrl=href.indexOf('//')===0?('https:'+href):href;
+                        var w=window.open(fullUrl,'_blank','noopener,noreferrer');
+                        if(!w&&window.parent){
+                            window.parent.postMessage({type:'QGR_OPEN_EXTERNAL_URL',url:fullUrl},'*');
+                        }
+                    }
+                },true);
+            })();</script>
+</body>
+</html>
